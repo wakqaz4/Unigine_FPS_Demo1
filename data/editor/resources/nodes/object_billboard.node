@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="ObjectBillboard" id="1769870521" collider="0">
+		<width>1</width>
+		<height>1</height>
+		<screen>1</screen>
+		<surface name="billboard" material="billboard_base" property="surface_base"/>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

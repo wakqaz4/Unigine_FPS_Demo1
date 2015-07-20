@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="ObjectGrass" id="1643314849" collider="0">
+		<thinning>1</thinning>
+		<variation>1</variation>
+		<orientation>0</orientation>
+		<intersection>0</intersection>
+		<num_textures>4</num_textures>
+		<shadow_radius>0</shadow_radius>
+		<spawn_rate>1</spawn_rate>
+		<seed>0</seed>
+		<size_x>100</size_x>
+		<size_y>100</size_y>
+		<step>40</step>
+		<subdivision>1</subdivision>
+		<density>0.1</density>
+		<threshold>0.5</threshold>
+		<angle>0</angle>
+		<probability>1 1 1 1</probability>
+		<min_height_mean>1 1 1 1</min_height_mean>
+		<min_height_spread>0.3 0.3 0.3 0.3</min_height_spread>
+		<max_height_mean>1 1 1 1</max_height_mean>
+		<max_height_spread>0.3 0.3 0.3 0.3</max_height_spread>
+		<aspect_mean>1 1 1 1</aspect_mean>
+		<aspect_spread>0.1 0.1 0.1 0.1</aspect_spread>
+		<offset_mean>0 0 0 0</offset_mean>
+		<offset_spread>0 0 0 0</offset_spread>
+		<surface name="grass" max_visible_distance="100" max_fade_distance="100" material="grass_base" property="surface_base"/>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="ObstacleSphere" id="1575170647">
+		<radius>1</radius>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

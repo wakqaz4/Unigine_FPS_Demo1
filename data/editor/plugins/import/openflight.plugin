@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin name="open_flight" version="1.0">
+	<text>OpenFlight Import</text>
+	<description>Import of OpenFlight format files</description>
+	<dependencies>HAS_OPEN_FLIGHT_IMPORT</dependencies>
+	<source>openflight.cpp</source>
+</plugin>

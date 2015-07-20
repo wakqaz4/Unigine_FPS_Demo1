@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin name="gdal" version="1.0">
+	<text>GDAL Import</text>
+	<description>GDAL (Geospatial Data Abstraction Library) plugin</description>
+	<dependencies>HAS_GDAL_IMPORT</dependencies>
+	<source>gdal.cpp</source>
+</plugin>

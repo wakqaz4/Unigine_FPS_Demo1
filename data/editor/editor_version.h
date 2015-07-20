@@ -1,0 +1,1 @@
+#define EDITOR_VERSION		"2.0-r1818"

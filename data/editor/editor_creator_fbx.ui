@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_creator_fbx.ui
+ * Desc:    Unigine editor
+ * Version: 1.01
+ * Authors: Alexander Zapryagaev <frustum@unigine.com>
+ *          Andrey Viktorov <unclebob@unigine.com>
+ *          Denis Shergin <binstream@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<dialog name="Creator::FBX::dialog" export="1" width="100" height="10" padding="-4">
+	<text>Autodesk FBX Import</text>
+	<vbox>
+		<gridbox align="expand" columns="2" space="4">
+			
+			<vbox/>
+			<button name="Creator::FBX::info_b" export="1" align="expand">
+				<text>Info</text>
+				<tooltip>FBX file info</tooltip>
+				<callback type="clicked">Creator::FBX::info_clicked</callback>
+			</button>
+			
+			<vbox/>
+			<checkbox name="Creator::FBX::merge_meshes_cb" export="1" align="left">
+				<text>Merge static meshes</text>
+				<tooltip>Merge all static meshes into a single one</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Creator::FBX::vertex_cache_cb" export="1" align="left">
+				<text>Optimize vertex cache</text>
+				<tooltip>Vertex cache reordering for faster rendering</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Creator::FBX::import_joints_cb" export="1" align="left">
+				<text>Import joints</text>
+				<tooltip>Create joint nodes</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Creator::FBX::import_lights_cb" export="1" align="left">
+				<text>Import lights</text>
+				<tooltip>Create light nodes</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Creator::FBX::import_cameras_cb" export="1" align="left">
+				<text>Import cameras</text>
+				<tooltip>Create camera nodes</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Creator::FBX::import_materials_cb" export="1" align="left">
+				<text>Import materials</text>
+				<tooltip>Create materials</tooltip>
+				<callback type="changed">Creator::FBX::update_dialog</callback>
+			</checkbox>
+			
+			<vbox/>
+			<button name="Creator::FBX::workflow_b" export="1" align="expand">
+				<text>Select workflow</text>
+				<tooltip>Select import workflow</tooltip>
+				<callback type="clicked">Creator::FBX::workflow_clicked</callback>
+			</button>
+			
+			<vbox/>
+			<checkbox name="Creator::FBX::import_textures_cb" export="1" align="left">
+				<text>Import textures</text>
+				<tooltip>Create material textures</tooltip>
+				<callback type="changed">Creator::FBX::update_dialog</callback>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Creator::FBX::compress_textures_cb" export="1" align="left">
+				<text>Compress textures</text>
+				<tooltip>Compress material textures into runtime formats</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Creator::FBX::import_animation_cb" export="1" align="left">
+				<text>Import animations</text>
+				<tooltip>Create animation frames</tooltip>
+				<callback type="changed">Creator::FBX::update_dialog</callback>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Creator::FBX::import_tangent_space_cb" export="1" align="left">
+				<text>Import tangent space</text>
+				<tooltip>Import tangent space data instead of re-calculating it</tooltip>
+				<callback type="changed">Creator::FBX::update_dialog</callback>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Creator::FBX::verbose_operations_cb" export="1" align="left">
+				<text>Verbose output</text>
+				<tooltip>Display more info on import</tooltip>
+			</checkbox>
+			</gridbox>
+			
+			<gridbox align="expand" columns="2" space="4">
+			
+			<label align="left"><text>Mesh prefix:</text></label>
+			<editline name="Creator::FBX::meshes_prefix_el" export="1" align="expand">
+				<tooltip>Mesh name prefix</tooltip>
+				<callback type="pressed,focus_out">Creator::FBX::mesh_pressed</callback>
+			</editline>
+			
+			<label align="left"><text>Material prefix:</text></label>
+			<editline name="Creator::FBX::materials_prefix_el" export="1" align="expand">
+				<tooltip>Material name prefix</tooltip>
+				<callback type="pressed,focus_out">Creator::FBX::material_pressed</callback>
+			</editline>
+			
+			<label align="left"><text>Texture prefix:</text></label>
+			<editline name="Creator::FBX::textures_prefix_el" export="1" align="expand">
+				<tooltip>Texture name prefix</tooltip>
+				<callback type="pressed,focus_out">Creator::FBX::texture_pressed</callback>
+			</editline>
+			
+			<label align="left"><text>Scale:</text></label>
+			<editline name="Creator::FBX::scale_el" export="1" align="expand">
+				<tooltip>Import scale</tooltip>
+				<callback type="pressed,focus_out">Creator::FBX::scale_pressed</callback>
+			</editline>
+			
+			<label align="left"><text>Animation FPS:</text></label>
+			<editline name="Creator::FBX::fps_el" export="1" align="expand">
+				<tooltip>Import animation FPS</tooltip>
+				<callback type="pressed,focus_out">Creator::FBX::fps_pressed</callback>
+			</editline>
+			
+		</gridbox>
+	</vbox>
+</dialog>
+
+<dialog name="Creator::FBX::workflow_d" export="1" moveable="1">
+	<text>Select import workflow</text>
+	
+	<vbox>
+	<checkbox name="Creator::FBX::specular_cb" export="1" align="left">
+		<text>Specular workflow</text>
+		<callback type="clicked">Creator::FBX::specular_clicked</callback>
+	</checkbox>
+	
+	<checkbox name="Creator::FBX::metalness_cb" export="1" align="left">
+		<text>Metalness workflow</text>
+		<callback type="clicked">Creator::FBX::metalness_clicked</callback>
+	</checkbox>
+	</vbox>
+</dialog>
+
+</ui>

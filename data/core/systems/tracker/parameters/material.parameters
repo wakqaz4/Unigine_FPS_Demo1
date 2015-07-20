@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<parameters version="1.00">
+	
+	<!-- Option parameters -->
+	<parameter type="material.downsize" track="switch" object="Material">
+		<set>OBJECT.setDownsize(VALUE);</set>
+		<get>VALUE = OBJECT.getDownsize();</get>
+	</parameter>
+	<parameter type="material.group" track="switch" object="Material">
+		<set>OBJECT.setGroup(VALUE);</set>
+		<get>VALUE = OBJECT.getGroup();</get>
+	</parameter>
+	<parameter type="material.order" track="switch" object="Material">
+		<set>OBJECT.setOrder(VALUE);</set>
+		<get>VALUE = OBJECT.getOrder();</get>
+	</parameter>
+	<parameter type="material.offset" track="switch" object="Material">
+		<set>OBJECT.setOffset(VALUE);</set>
+		<get>VALUE = OBJECT.getOffset();</get>
+	</parameter>
+	<parameter type="material.postDeferred" track="toggle" object="Material">
+		<set>OBJECT.setPostDeferred(VALUE);</set>
+		<get>VALUE = OBJECT.getPostDeferred();</get>
+	</parameter>
+	<parameter type="material.postRefraction" track="toggle" object="Material">
+		<set>OBJECT.setPostRefraction(VALUE);</set>
+		<get>VALUE = OBJECT.getPostRefraction();</get>
+	</parameter>
+	<parameter type="material.postScattering" track="toggle" object="Material">
+		<set>OBJECT.setPostScattering(VALUE);</set>
+		<get>VALUE = OBJECT.getPostScattering();</get>
+	</parameter>
+	<parameter type="material.depthMask" track="toggle" object="Material">
+		<set>OBJECT.setDepthMask(VALUE);</set>
+		<get>VALUE = OBJECT.getDepthMask();</get>
+	</parameter>
+	<parameter type="material.glowMask" track="toggle" object="Material">
+		<set>OBJECT.setGlowMask(VALUE);</set>
+		<get>VALUE = OBJECT.getGlowMask();</get>
+	</parameter>
+	<parameter type="material.parallaxMask" track="toggle" object="Material">
+		<set>OBJECT.setParallaxMask(VALUE);</set>
+		<get>VALUE = OBJECT.getParallaxMask();</get>
+	</parameter>
+	<parameter type="material.alphaTest" track="toggle" object="Material">
+		<set>OBJECT.setAlphaTest(VALUE);</set>
+		<get>VALUE = OBJECT.getAlphaTest();</get>
+	</parameter>
+	<parameter type="material.twoSided" track="toggle" object="Material">
+		<set>OBJECT.setTwoSided(VALUE);</set>
+		<get>VALUE = OBJECT.getTwoSided();</get>
+	</parameter>
+	<parameter type="material.castShadow" track="toggle" object="Material">
+		<set>OBJECT.setCastShadow(VALUE);</set>
+		<get>VALUE = OBJECT.getCastShadow();</get>
+	</parameter>
+	<parameter type="material.receiveShadow" track="toggle" object="Material">
+		<set>OBJECT.setReceiveShadow(VALUE);</set>
+		<get>VALUE = OBJECT.getReceiveShadow();</get>
+	</parameter>
+	<parameter type="material.worldShadow" track="toggle" object="Material">
+		<set>OBJECT.setCastWorldShadow(VALUE);</set>
+		<get>VALUE = OBJECT.getCastWorldShadow();</get>
+	</parameter>
+	<parameter type="material.receiveWorldShadow" track="toggle" object="Material">
+		<set>OBJECT.setReceiveWorldShadow(VALUE);</set>
+		<get>VALUE = OBJECT.getReceiveWorldShadow();</get>
+	</parameter>
+	<parameter type="material.castTranslucent" track="toggle" object="Material">
+		<set>OBJECT.setCastTranslucent(VALUE);</set>
+		<get>VALUE = OBJECT.getCastTranslucent();</get>
+	</parameter>
+	<parameter type="material.receiveTranslucent" track="toggle" object="Material">
+		<set>OBJECT.setReceiveTranslucent(VALUE);</set>
+		<get>VALUE = OBJECT.getReceiveTranslucent();</get>
+	</parameter>
+	
+	<!-- State parameters -->
+	<parameter type="material.stateToggle" track="toggle" object="Material" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findState(ARGUMENT);
+			if(CACHE == -1) {
+				log.error("material.stateToggle: can't find \"%s\" state\n",ARGUMENT);
+			} else if(OBJECT.getStateType(CACHE) != MATERIAL_STATE_TOGGLE) {
+				log.error("material.stateToggle: bad \"%s\" state type\n",ARGUMENT);
+				CACHE = -1;
+			}
+		]]></init>
+		<set>if(CACHE != -1 &amp;&amp; OBJECT.getState(CACHE) != VALUE) OBJECT.setState(CACHE,VALUE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getState(CACHE);</get>
+	</parameter>
+	<parameter type="material.stateSwitch" track="switch" object="Material" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findState(ARGUMENT);
+			if(CACHE == -1) {
+				log.error("material.stateSwitch: can't find \"%s\" state\n",ARGUMENT);
+			} else if(OBJECT.getStateType(CACHE) != MATERIAL_STATE_SWITCH) {
+				log.error("material.stateSwitch: bad \"%s\" state type\n",ARGUMENT);
+				CACHE = -1;
+			}
+		]]></init>
+		<set>if(CACHE != -1 &amp;&amp; OBJECT.getState(CACHE) != VALUE) OBJECT.setState(CACHE,VALUE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getState(CACHE);</get>
+	</parameter>
+	
+	<!-- Texture parameters -->
+	<parameter type="material.textureImage" track="string" filter="image" object="Material" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findTexture(ARGUMENT);
+			if(CACHE == -1) {
+				log.error("material.textureImage: can't find \"%s\" texture\n",ARGUMENT);
+			} else if(OBJECT.getTextureType(CACHE) != MATERIAL_TEXTURE_IMAGE) {
+				log.error("material.textureImage: bad \"%s\" texture type\n",ARGUMENT);
+				CACHE = -1;
+			}
+		]]></init>
+		<set>if(CACHE != -1 &amp;&amp; OBJECT.getImageTextureName(CACHE) != VALUE) OBJECT.setImageTextureName(CACHE,VALUE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getImageTextureName(CACHE);</get>
+	</parameter>
+	
+	<!-- Parameter parameters -->
+	<parameter type="material.parameterColor" track="color" object="Material" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findParameter(ARGUMENT);
+			if(CACHE == -1) {
+				log.error("material.parameterColor: can't find \"%s\" parameter\n",ARGUMENT);
+			} else if(OBJECT.getParameterType(CACHE) != MATERIAL_PARAMETER_COLOR) {
+				log.error("material.parameterColor: bad \"%s\" parameter type\n",ARGUMENT);
+				CACHE = -1;
+			}
+		]]></init>
+		<set>if(CACHE != -1 &amp;&amp; OBJECT.getParameter(CACHE) != VALUE) OBJECT.setParameter(CACHE,VALUE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getParameter(CACHE);</get>
+	</parameter>
+	<parameter type="material.parameterSlider" track="float" object="Material" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findParameter(ARGUMENT);
+			if(CACHE == -1) {
+				log.error("material.parameterSlider: can't find \"%s\" parameter\n",ARGUMENT);
+			} else if(OBJECT.getParameterType(CACHE) != MATERIAL_PARAMETER_SLIDER) {
+				log.error("material.parameterSlider: bad \"%s\" parameter type\n",ARGUMENT);
+				CACHE = -1;
+			}
+		]]></init>
+		<set>if(CACHE != -1 &amp;&amp; OBJECT.getParameterSlider(CACHE) != VALUE) OBJECT.setParameterSlider(CACHE,VALUE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getParameterSlider(CACHE);</get>
+	</parameter>
+	
+	<!-- Object material state parameters -->
+	<parameter type="node.object.material.stateToggle" track="toggle" object="Object" argument="string">
+		<init><![CDATA[
+			int pos = strstr(ARGUMENT,":");
+			if(pos == -1) {
+				log.error("node.object.material.stateToggle: can't find delimiter\n");
+				CACHE = ivec3(-1);
+			} else {
+				string surface_name = substr(ARGUMENT,0,pos);
+				string state_name = substr(ARGUMENT,pos + 1);
+				int surface = OBJECT.findSurface(surface_name);
+				if(surface == -1) {
+					log.error("node.object.material.stateToggle: can't find \"%s\" surface\n",surface_name);
+					CACHE = ivec3(-1);
+				} else {
+					Material material = OBJECT.getMaterial(surface);
+					if(material == 0) {
+						log.error("node.object.material.stateToggle: material is NULL in \"%s\" surface\n",surface_name);
+						CACHE = ivec3(-1);
+					} else {
+						int state = material.findState(state_name);
+						if(state == -1) {
+							log.error("node.object.material.stateToggle: can't find \"%s\" state\n",state_name);
+							CACHE = ivec3(-1);
+						} else if(material.getStateType(state) != MATERIAL_STATE_TOGGLE) {
+							log.error("node.object.material.stateToggle: bad \"%s\" state type\n",state_name);
+							CACHE = ivec3(-1);
+						} else {
+							CACHE = ivec3(surface,state,0);
+						}
+					}
+				}
+			}
+		]]></init>
+		<set><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Material material = OBJECT.getMaterialInherit(CACHE.x);
+				if(material.getState(CACHE.y) != VALUE) material.setState(CACHE.y,VALUE);
+			}
+		]]></set>
+		<get><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Material material = OBJECT.getMaterialInherit(CACHE.x);
+				VALUE = material.getState(CACHE.y);
+			}
+		]]></get>
+	</parameter>
+	<parameter type="node.object.material.stateSwitch" track="switch" object="Object" argument="string">
+		<init><![CDATA[
+			int pos = strstr(ARGUMENT,":");
+			if(pos == -1) {
+				log.error("node.object.material.stateSwitch: can't find delimiter\n");
+				CACHE = ivec3(-1);
+			} else {
+				string surface_name = substr(ARGUMENT,0,pos);
+				string state_name = substr(ARGUMENT,pos + 1);
+				int surface = OBJECT.findSurface(surface_name);
+				if(surface == -1) {
+					log.error("node.object.material.stateSwitch: can't find \"%s\" surface\n",surface_name);
+					CACHE = ivec3(-1);
+				} else {
+					Material material = OBJECT.getMaterial(surface);
+					if(material == 0) {
+						log.error("node.object.material.stateSwitch: material is NULL in \"%s\" surface\n",surface_name);
+						CACHE = ivec3(-1);
+					} else {
+						int state = material.findState(state_name);
+						if(state == -1) {
+							log.error("node.object.material.stateSwitch: can't find \"%s\" state\n",state_name);
+							CACHE = ivec3(-1);
+						} else if(material.getStateType(state) != MATERIAL_STATE_SWITCH) {
+							log.error("node.object.material.stateSwitch: bad \"%s\" state type\n",state_name);
+							CACHE = ivec3(-1);
+						} else {
+							CACHE = ivec3(surface,state,0);
+						}
+					}
+				}
+			}
+		]]></init>
+		<set><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Material material = OBJECT.getMaterialInherit(CACHE.x);
+				if(material.getState(CACHE.y) != VALUE) material.setState(CACHE.y,VALUE);
+			}
+		]]></set>
+		<get><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Material material = OBJECT.getMaterialInherit(CACHE.x);
+				VALUE = material.getState(CACHE.y);
+			}
+		]]></get>
+	</parameter>
+	
+	<!-- Object material texture parameters -->
+	<parameter type="node.object.material.textureImage" track="string" filter="image" object="Object" argument="string">
+		<init><![CDATA[
+			int pos = strstr(ARGUMENT,":");
+			if(pos == -1) {
+				log.error("node.object.material.textureImage: can't find delimiter\n");
+				CACHE = ivec3(-1);
+			} else {
+				string surface_name = substr(ARGUMENT,0,pos);
+				string texture_name = substr(ARGUMENT,pos + 1);
+				int surface = OBJECT.findSurface(surface_name);
+				if(surface == -1) {
+					log.error("node.object.material.textureImage: can't find \"%s\" surface\n",surface_name);
+					CACHE = ivec3(-1);
+				} else {
+					Material material = OBJECT.getMaterial(surface);
+					if(material == 0) {
+						log.error("node.object.material.textureImage: material is NULL in \"%s\" surface\n",surface_name);
+						CACHE = ivec3(-1);
+					} else {
+						int texture = material.findTexture(texture_name);
+						if(texture == -1) {
+							log.error("node.object.material.textureImage: can't find \"%s\" texture\n",texture_name);
+							CACHE = ivec3(-1);
+						} else if(material.getTextureType(texture) != MATERIAL_TEXTURE_IMAGE) {
+							log.error("node.object.material.textureImage: bad \"%s\" texture type\n",texture_name);
+							CACHE = ivec3(-1);
+						} else {
+							CACHE = ivec3(surface,texture,0);
+						}
+					}
+				}
+			}
+		]]></init>
+		<set><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Material material = OBJECT.getMaterialInherit(CACHE.x);
+				if(material.getImageTextureName(CACHE.y) != VALUE) material.setImageTextureName(CACHE.y,VALUE);
+			}
+		]]></set>
+		<get><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Material material = OBJECT.getMaterialInherit(CACHE.x);
+				VALUE = material.getImageTextureName(CACHE.y);
+			}
+		]]></get>
+	</parameter>
+	
+	<!-- Object material parameter parameters -->
+	<parameter type="node.object.material.parameterColor" track="color" object="Object" argument="string">
+		<init><![CDATA[
+			int pos = strstr(ARGUMENT,":");
+			if(pos == -1) {
+				log.error("node.object.material.parameterColor: can't find delimiter\n");
+				CACHE = ivec3(-1);
+			} else {
+				string surface_name = substr(ARGUMENT,0,pos);
+				string parameter_name = substr(ARGUMENT,pos + 1);
+				int surface = OBJECT.findSurface(surface_name);
+				if(surface == -1) {
+					log.error("node.object.material.parameterColor: can't find \"%s\" surface\n",surface_name);
+					CACHE = ivec3(-1);
+				} else {
+					Material material = OBJECT.getMaterial(surface);
+					if(material == 0) {
+						log.error("node.object.material.parameterColor: material is NULL in \"%s\" surface\n",surface_name);
+						CACHE = ivec3(-1);
+					} else {
+						int parameter = material.findParameter(parameter_name);
+						if(parameter == -1) {
+							log.error("node.object.material.parameterColor: can't find \"%s\" parameter\n",parameter_name);
+							CACHE = ivec3(-1);
+						} else if(material.getParameterType(parameter) != MATERIAL_PARAMETER_COLOR) {
+							log.error("node.object.material.parameterColor: bad \"%s\" parameter type\n",parameter_name);
+							CACHE = ivec3(-1);
+						} else {
+							CACHE = ivec3(surface,parameter,0);
+						}
+					}
+				}
+			}
+		]]></init>
+		<set><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Material material = OBJECT.getMaterialInherit(CACHE.x);
+				if(material.getParameter(CACHE.y) != VALUE) material.setParameter(CACHE.y,VALUE);
+			}
+		]]></set>
+		<get><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Material material = OBJECT.getMaterialInherit(CACHE.x);
+				VALUE = material.getParameter(CACHE.y);
+			}
+		]]></get>
+	</parameter>
+	<parameter type="node.object.material.parameterSlider" track="float" object="Object" argument="string">
+		<init><![CDATA[
+			int pos = strstr(ARGUMENT,":");
+			if(pos == -1) {
+				log.error("node.object.material.parameterSlider: can't find delimiter\n");
+				CACHE = ivec3(-1);
+			} else {
+				string surface_name = substr(ARGUMENT,0,pos);
+				string parameter_name = substr(ARGUMENT,pos + 1);
+				int surface = OBJECT.findSurface(surface_name);
+				if(surface == -1) {
+					log.error("node.object.material.parameterSlider: can't find \"%s\" surface\n",surface_name);
+					CACHE = ivec3(-1);
+				} else {
+					Material material = OBJECT.getMaterial(surface);
+					if(material == 0) {
+						log.error("node.object.material.parameterSlider: material is NULL in \"%s\" surface\n",surface_name);
+						CACHE = ivec3(-1);
+					} else {
+						int parameter = material.findParameter(parameter_name);
+						if(parameter == -1) {
+							log.error("node.object.material.parameterSlider: can't find \"%s\" parameter\n",parameter_name);
+							CACHE = ivec3(-1);
+						} else if(material.getParameterType(parameter) != MATERIAL_PARAMETER_SLIDER) {
+							log.error("node.object.material.parameterSlider: bad \"%s\" parameter type\n",parameter_name);
+							CACHE = ivec3(-1);
+						} else {
+							CACHE = ivec3(surface,parameter,0);
+						}
+					}
+				}
+			}
+		]]></init>
+		<set><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Material material = OBJECT.getMaterialInherit(CACHE.x);
+				if(material.getParameterSlider(CACHE.y) != VALUE) material.setParameterSlider(CACHE.y,VALUE);
+			}
+		]]></set>
+		<get><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Material material = OBJECT.getMaterialInherit(CACHE.x);
+				VALUE = material.getParameterSlider(CACHE.y);
+			}
+		]]></get>
+	</parameter>
+	
+</parameters>

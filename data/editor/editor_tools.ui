@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_tools.ui
+ * Desc:    Unigine editor
+ * Version: 1.51
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Anna Ishina <anet@unigine.com>
+ *          Andrey Viktorov <unclebob@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Tools
+ */
+-->
+<window name="Tools::window" export="1">
+	<text>Tools</text>
+	<vbox align="expand">
+		<tabbox name="Tools::tabbox" export="1" align="expand">
+			
+			<tab>
+				<text>Common</text>
+				<tooltip>Common editor parameters</tooltip>
+				<hbox>
+					<vbox space="4">
+						<gridbox align="expand" columns="2" space="4">
+							
+							<checkbox name="Tools::Common::system_mouse_cb" export="1" align="left">
+								<text>System mouse</text>
+							</checkbox>
+							
+							<checkbox name="Tools::Common::always_update_cb" export="1" align="left">
+								<text>Always update</text>
+								<tooltip>Update application window even when it is not in focus.</tooltip>
+							</checkbox>
+							
+							<checkbox name="Tools::Common::node_reparent_cb" export="1" align="left">
+								<text>New node reparenting</text>
+								<tooltip>Create new node as a child of the currently selected node</tooltip>
+							</checkbox>
+							
+							<checkbox name="Tools::Common::node_name_cb" export="1" align="left">
+								<text>New node naming</text>
+								<tooltip>Create name for the new created node</tooltip>
+							</checkbox>
+							
+							<checkbox name="Tools::Common::clone_confirm_cb" export="1" align="left">
+								<text>Node clone confirmation</text>
+								<tooltip>Show/Hide Clone node confirmation dialog</tooltip>
+							</checkbox>
+							
+							<checkbox name="Tools::Common::keep_backups_cb" export="1" align="left">
+								<text>Keep backups</text>
+								<tooltip>Keep editor backups</tooltip>
+							</checkbox>
+							
+							<checkbox name="Tools::Common::node_materials_cb" export="1" align="left">
+								<text>Node materials</text>
+								<tooltip>Save node materials</tooltip>
+							</checkbox>
+							
+							<checkbox name="Tools::Common::selection_cb" export="1" align="left">
+								<text>Selection</text>
+								<tooltip>Automatic selection of edit lines</tooltip>
+							</checkbox>
+							
+							<checkbox name="Tools::Common::game_camera_cb" export="1" align="left">
+								<text>Game camera</text>
+								<tooltip>Update game camera position</tooltip>
+							</checkbox>
+							
+						</gridbox>
+						
+						<hspacer align="expand"/>
+						
+						<gridbox align="expand" columns="2" space="4">
+							
+							<label align="right"><text>Rotation order:</text></label>
+							<combobox name="Tools::Common::rotation_order_cb" export="1" align="expand">
+								<text>XYZ</text>
+								<text>XZY</text>
+								<text>YXZ</text>
+								<text>YZX</text>
+								<text>ZXY</text>
+								<text>ZYX</text>
+							</combobox>
+							<label align="right"><text>Handle size:</text></label>
+							<editline name="Tools::Common::size_el" export="1" align="expand" validator="uint">
+								<callback type="pressed,focus_out">Tools::Common::size_pressed</callback>
+							</editline>
+						</gridbox>
+						
+					</vbox>
+				</hbox>
+			</tab>
+			
+			<tab>
+				<text>Flash-light</text>
+				<tooltip>Camera Flash-light parameters</tooltip>
+				<vbox space="4">
+					<gridbox align="expand" columns="4" space="4">
+						
+						<vbox/>
+						<checkbox name="Tools::Light::enabled_cb" export="1" align="left">
+							<text>Enabled</text>
+							<callback type="clicked">Tools::Light::enabled_clicked</callback>
+						</checkbox>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Color:</text></label>
+						<groupbox align="expand">
+							<hbox align="expand">
+								<sprite name="Tools::Light::color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<callback type="clicked">Tools::Light::color_clicked</callback>
+								</sprite>
+								<sprite name="Tools::Light::color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<callback type="clicked">Tools::Light::color_clicked</callback>
+								</sprite>
+							</hbox>
+						</groupbox>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Multiplier:</text></label>
+						<editline name="Tools::Light::multiplier_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Tools::Light::multiplier_pressed</callback>
+						</editline>
+						<hslider align="expand" min="0" max="3000">
+							<attach multiplier="1000" flags="log10">Tools::Light::multiplier_el</attach>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Attenuation:</text></label>
+						<editline name="Tools::Light::attenuation_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Tools::Light::attenuation_pressed</callback>
+						</editline>
+						<hslider align="expand" min="1" max="1000">
+							<attach multiplier="1000">Tools::Light::attenuation_el</attach>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Radius:</text></label>
+						<editline name="Tools::Light::radius_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Tools::Light::radius_pressed</callback>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Field of view:</text></label>
+						<editline name="Tools::Light::fov_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Tools::Light::fov_pressed</callback>
+						</editline>
+						<hslider align="expand" min="10000" max="160000">
+							<attach multiplier="1000">Tools::Light::fov_el</attach>
+						</hslider>
+						<vbox/>
+						
+					</gridbox>
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>Grabber</text>
+				<tooltip>Image grabber tool</tooltip>
+				<vbox space="4">
+					<gridbox align="expand" columns="4" space="4">
+						
+						<label align="right"><text>Mode:</text></label>
+						<combobox name="Tools::Grabber::mode_cb" export="1" align="expand">
+							<callback type="changed">Tools::Grabber::mode_changed</callback>
+							<text>2D</text>
+							<text>Cube</text>
+							<text>LightMap</text>
+							<text>Impostor</text>
+						</combobox>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Field of view:</text></label>
+						<editline name="Tools::Grabber::fov_el" export="1" align="expand" validator="float">
+							<tooltip>Filed of view of 2D image grabber</tooltip>
+							<callback type="pressed,focus_out">Tools::Grabber::fov_pressed</callback>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Near clipping:</text></label>
+						<editline name="Tools::Grabber::znear_el" export="1" align="expand" validator="float">
+							<tooltip>Near clipping plane</tooltip>
+							<callback type="pressed,focus_out">Tools::Grabber::znear_pressed</callback>
+						</editline>
+						<label align="right"><text>Far clipping:</text></label>
+						<editline name="Tools::Grabber::zfar_el" export="1" align="expand" validator="float">
+							<tooltip>Far clipping plane</tooltip>
+							<callback type="pressed,focus_out">Tools::Grabber::zfar_pressed</callback>
+						</editline>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<checkbox name="Tools::Grabber::hdr_cb" export="1" align="left">
+							<tooltip>Grab 2D or Cube image in HDR format</tooltip>
+							<text>HDR</text>
+						</checkbox>
+						<vbox/>
+						<checkbox name="Tools::Grabber::mipmaps_cb" export="1" align="left">
+							<tooltip>Create mipmaps</tooltip>
+							<text>Mipmaps</text>
+						</checkbox>
+						
+						<vbox/>
+						<checkbox name="Tools::Grabber::compress_cb" export="1" align="left">
+							<tooltip>Compress image</tooltip>
+							<text>Compress</text>
+						</checkbox>
+						<vbox/>
+						<checkbox name="Tools::Grabber::normals_cb" export="1" align="left">
+							<tooltip>Create normals</tooltip>
+							<text>Normals</text>
+						</checkbox>
+						
+						<vbox/>
+						<checkbox name="Tools::Grabber::noise_cb" export="1" align="left">
+							<tooltip>Alpha channel noise</tooltip>
+							<text>Noise</text>
+						</checkbox>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Image size:</text></label>
+						<combobox name="Tools::Grabber::size_cb" export="1" align="expand">
+							<tooltip>Image size in pixels</tooltip>
+							<callback type="changed">Tools::Grabber::size_changed</callback>
+							<text>32</text>
+							<text>64</text>
+							<text>128</text>
+							<text>256</text>
+							<text>512</text>
+							<text>1024</text>
+							<text>2048</text>
+							<text>4096</text>
+							<text>8192</text>
+						</combobox>
+						<label align="right"><text>Extrude:</text></label>
+						<combobox name="Tools::Grabber::extrude_cb" export="1" align="expand">
+							<tooltip>Contour extrude in pixels</tooltip>
+							<text>0</text>
+							<text>1</text>
+							<text>2</text>
+							<text>3</text>
+							<text>4</text>
+						</combobox>
+						
+						<label align="right"><text>Supersampling:</text></label>
+						<combobox name="Tools::Grabber::supersampling_cb" export="1" align="expand">
+							<callback type="changed">Tools::Grabber::supersampling_changed</callback>
+							<tooltip>Image supersampling antialiasing<br/>The grabbed image is rendered in higher resolution (N times bigger) and than down-sampled to the specified size</tooltip>
+							<text>1x</text>
+							<text>2x</text>
+							<text>4x</text>
+							<text>8x</text>
+						</combobox>
+						<label align="right"><text>Blur:</text></label>
+						<combobox name="Tools::Grabber::blur_cb" export="1" align="expand">
+							<tooltip>Image blur fliter</tooltip>
+							<text>0</text>
+							<text>1</text>
+							<text>2</text>
+							<text>4</text>
+							<text>8</text>
+							<text>16</text>
+							<text>32</text>
+							<text>64</text>
+						</combobox>
+						
+						<label align="right"><text>Phi:</text></label>
+						<combobox name="Tools::Grabber::phi_cb" export="1" align="expand">
+							<tooltip>Horizontal subdivision</tooltip>
+							<text>4</text>
+							<text>8</text>
+							<text>16</text>
+							<text>32</text>
+							<text>64</text>
+						</combobox>
+						<label align="right"><text>Theta:</text></label>
+						<combobox name="Tools::Grabber::theta_cb" export="1" align="expand">
+							<tooltip>Vertical subdivision</tooltip>
+							<text>1</text>
+							<text>2</text>
+							<text>4</text>
+							<text>8</text>
+							<text>16</text>
+						</combobox>
+						
+						<label align="right"><text>Aspect:</text></label>
+						<combobox name="Tools::Grabber::aspect_cb" export="1" align="expand">
+							<tooltip>Aspect ratio (width/height)</tooltip>
+							<text>1/4</text>
+							<text>1/2</text>
+							<text>1/1</text>
+							<text>2/1</text>
+							<text>4/1</text>
+						</combobox>
+						<label align="right"><text>Border:</text></label>
+						<combobox name="Tools::Grabber::border_cb" export="1" align="expand">
+							<tooltip>Automatic border adjustment</tooltip>
+							<text>1%</text>
+							<text>2%</text>
+							<text>4%</text>
+							<text>8%</text>
+							<text>16%</text>
+							<text>32%</text>
+						</combobox>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<button align="expand">
+							<text>Grab</text>
+							<callback type="clicked">Tools::Grabber::grab_clicked</callback>
+						</button>
+						<vbox/>
+						<vbox/>
+						
+					</gridbox>
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>Illumination</text>
+				<tooltip>Illumination grabber tool</tooltip>
+				<vbox space="4">
+					<gridbox align="expand" columns="4" space="4">
+						
+						<label align="right"><text>Step:</text></label>
+						<editline name="Tools::Illumination::step_el" export="1" align="expand" validator="float">
+							<tooltip>Step of LightProb grid</tooltip>
+							<callback type="pressed,focus_out">Tools::Illumination::step_pressed</callback>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Near clipping:</text></label>
+						<editline name="Tools::Illumination::znear_el" export="1" align="expand" validator="float">
+							<tooltip>Near clipping plane</tooltip>
+							<callback type="pressed,focus_out">Tools::Illumination::znear_pressed</callback>
+						</editline>
+						<label align="right"><text>Far clipping:</text></label>
+						<editline name="Tools::Illumination::zfar_el" export="1" align="expand" validator="float">
+							<tooltip>Far clipping plane</tooltip>
+							<callback type="pressed,focus_out">Tools::Illumination::zfar_pressed</callback>
+						</editline>
+						
+						<label align="right"><text>Bound mesh:</text></label>
+						<hbox align="expand">
+							<editline name="Tools::Illumination::mesh_el" export="1" align="expand">
+								<tooltip>Bounding mesh which restricts LightProb positions</tooltip>
+								<callback type="pressed,focus_out">Tools::Illumination::mesh_pressed</callback>
+							</editline>
+							<icon texture="editor/gui/action_load.png" width="22" height="20">
+								<callback type="clicked">Tools::Illumination::mesh_load_clicked</callback>
+							</icon>
+							<icon texture="editor/gui/action_clear.png" width="22" height="20">
+								<callback type="clicked">Tools::Illumination::mesh_clear_clicked</callback>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Bound expand:</text></label>
+						<editline name="Tools::Illumination::expand_el[0]" export="1" align="expand" validator="float">
+							<tooltip>Bounding box expand by X axis</tooltip>
+							<callback type="pressed,focus_out">Tools::Illumination::expand_pressed</callback>
+						</editline>
+						<editline name="Tools::Illumination::expand_el[1]" export="1" align="expand" validator="float">
+							<tooltip>Bounding box expand by Y axis</tooltip>
+							<callback type="pressed,focus_out">Tools::Illumination::expand_pressed</callback>
+						</editline>
+						<editline name="Tools::Illumination::expand_el[2]" export="1" align="expand" validator="float">
+							<tooltip>Bounding box expand by Z axis</tooltip>
+							<callback type="pressed,focus_out">Tools::Illumination::expand_pressed</callback>
+						</editline>
+						
+						<label align="right"><text>Merge threshold:</text></label>
+						<editline name="Tools::Illumination::merge_el" export="1" align="expand" validator="float">
+							<tooltip>LightProbe merging threshold</tooltip>
+							<callback type="pressed,focus_out">Tools::Illumination::merge_pressed</callback>
+						</editline>
+						<hslider align="expand" min="0" max="1000">
+							<attach multiplier="1000">Tools::Illumination::merge_el</attach>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<button align="expand">
+							<text>Create LightProbs</text>
+							<tooltip>Create LightProbs for selected nodes</tooltip>
+							<callback type="clicked">Tools::Illumination::create_light_prob_clicked</callback>
+						</button>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Direct scale:</text></label>
+						<editline name="Tools::Illumination::direct_el" export="1" align="expand" validator="float">
+							<tooltip>Direct illumination scale</tooltip>
+							<callback type="pressed,focus_out">Tools::Illumination::direct_pressed</callback>
+						</editline>
+						<hslider align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Tools::Illumination::direct_el</attach>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Indirect scale:</text></label>
+						<editline name="Tools::Illumination::indirect_el" export="1" align="expand" validator="float">
+							<tooltip>Indirect illumination scale</tooltip>
+							<callback type="pressed,focus_out">Tools::Illumination::indirect_pressed</callback>
+						</editline>
+						<hslider align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Tools::Illumination::indirect_el</attach>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Radius:</text></label>
+						<editline name="Tools::Illumination::radius_el" export="1" align="expand" validator="float">
+							<tooltip>Ambient occlusion radius (use 0.0 to disable ambient occlusion)</tooltip>
+							<callback type="pressed,focus_out">Tools::Illumination::radius_pressed</callback>
+						</editline>
+						<label align="right"><text>Samples:</text></label>
+						<combobox name="Tools::Illumination::samples_cb" export="1" align="expand">
+							<tooltip>Number of ambient occlusion samples</tooltip>
+							<text>16</text>
+							<text>32</text>
+							<text>64</text>
+							<text>128</text>
+							<text>256</text>
+							<text>512</text>
+						</combobox>
+						
+						<label align="right"><text>Supersampling:</text></label>
+						<combobox name="Tools::Illumination::supersampling_cb" export="1" align="expand">
+							<tooltip>Lightmaps supersampling</tooltip>
+							<text>1x</text>
+							<text>2x</text>
+							<text>4x</text>
+							<text>8x</text>
+						</combobox>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Extrude:</text></label>
+						<combobox name="Tools::Illumination::extrude_cb" export="1" align="expand">
+							<tooltip>Lightmaps contour extrude</tooltip>
+							<text>0</text>
+							<text>1</text>
+							<text>2</text>
+							<text>3</text>
+							<text>4</text>
+						</combobox>
+						<label align="right"><text>Blur:</text></label>
+						<combobox name="Tools::Illumination::blur_cb" export="1" align="expand">
+							<tooltip>Lightmaps blur</tooltip>
+							<text>0</text>
+							<text>1</text>
+							<text>2</text>
+							<text>3</text>
+							<text>4</text>
+						</combobox>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<gridbox align="expand" columns="2" space="4">
+							<button align="expand">
+								<text>Create LightMaps</text>
+								<tooltip>Create lightmaps for selected ObjectMeshes</tooltip>
+								<callback type="clicked">Tools::Illumination::create_lightmap_clicked</callback>
+							</button>
+							<button align="expand">
+								<text>Update LightMaps</text>
+								<tooltip>Update already created lightmaps</tooltip>
+								<callback type="clicked">Tools::Illumination::update_lightmap_clicked</callback>
+							</button>
+							<button align="expand">
+								<text>Enable LightMaps</text>
+								<tooltip>Enable lightmaps on selected ObjectMeshes</tooltip>
+								<callback type="clicked">Tools::Illumination::enable_lightmap_clicked</callback>
+							</button>
+							<button align="expand">
+								<text>Disable LightMaps</text>
+								<tooltip>Disable lightmaps on selected ObjectMeshes</tooltip>
+								<callback type="clicked">Tools::Illumination::disable_lightmap_clicked</callback>
+							</button>
+						</gridbox>
+						<vbox/>
+						<vbox/>
+						
+					</gridbox>
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>LUT</text>
+				<tooltip>LUT texture configuration tool</tooltip>
+				<hbox space="4" align="expand">
+
+					<groupbox align="top">
+						<sprite name="Tools::Lut::texture_s" export="1" width="256" height="256"/>
+					</groupbox>
+					
+					<vbox align="expand">
+						<vbox align="top">
+							<gridbox columns="4" space="4" align="expand">
+								
+								<label align="right"><text>Width:</text></label>
+								<combobox name="Tools::Lut::width_cb" export="1" align="expand">
+									<text>32</text>
+									<text>64</text>
+									<text>128</text>
+									<text>256</text>
+									<callback type="changed">Tools::Lut::size_changed</callback>
+								</combobox>
+								<label align="right"><text>Height:</text></label>
+								<combobox name="Tools::Lut::height_cb" export="1" align="expand">
+									<text>32</text>
+									<text>64</text>
+									<text>128</text>
+									<text>256</text>
+									<callback type="changed">Tools::Lut::size_changed</callback>
+								</combobox>
+								
+								<vbox/>
+								<hspacer align="expand"/>
+								<vbox/>
+								<vbox/>
+								
+								<label align="right"><text>Diffuse shading:</text></label>
+								<vbox name="Tools::Lut::diffuse_vb" export="1" align="expand"/>
+								<vbox/>
+								<vbox/>
+								
+								<label align="right"><text>Diffuse scale:</text></label>
+								<editline name="Tools::Lut::diffuse_scale_el" export="1" align="expand" validator="float">
+									<tooltip>Diffuse color multiplier</tooltip>
+									<callback type="pressed,focus_out">Tools::Lut::diffuse_scale_pressed</callback>
+								</editline>
+								<hslider align="expand" min="0" max="2000">
+									<attach multiplier="1000" flags="max_expand">Tools::Lut::diffuse_scale_el</attach>
+								</hslider>
+								<vbox/>
+								
+								<vbox/>
+								<hspacer align="expand"/>
+								<vbox/>
+								<vbox/>
+								
+								<label align="right"><text>Specular lighting:</text></label>
+								<vbox name="Tools::Lut::specular_vb" export="1" align="expand"/>
+								<vbox/>
+								<vbox/>
+								
+								<label align="right"><text>Specular scale:</text></label>
+								<editline name="Tools::Lut::specular_scale_el" export="1" align="expand" validator="float">
+									<tooltip>Specular color multiplier</tooltip>
+									<callback type="pressed,focus_out">Tools::Lut::specular_scale_pressed</callback>
+								</editline>
+								<hslider align="expand" min="0" max="2000">
+									<attach multiplier="1000" flags="max_expand">Tools::Lut::specular_scale_el</attach>
+								</hslider>
+								<vbox/>
+								
+								<label align="right"><text>Glossiness:</text></label>
+								<editline name="Tools::Lut::specular_power_el" export="1" align="expand" validator="float">
+									<tooltip>Width of specular highlights</tooltip>
+									<callback type="pressed,focus_out">Tools::Lut::specular_power_pressed</callback>
+								</editline>
+								<hslider align="expand" min="0" max="2000">
+									<attach multiplier="1000" flags="log10,max_expand">Tools::Lut::specular_power_el</attach>
+								</hslider>
+								<vbox/>
+								
+								<label align="right"><text>Angle:</text></label>
+								<editline name="Tools::Lut::specular_angle_el" export="1" align="expand" validator="float">
+									<tooltip>Specular angle</tooltip>
+									<callback type="pressed,focus_out">Tools::Lut::specular_angle_pressed</callback>
+								</editline>
+								<hslider align="expand" min="0" max="2000">
+									<attach multiplier="1000">Tools::Lut::specular_angle_el</attach>
+								</hslider>
+								<vbox/>
+								
+								<label align="right"><text>Shift:</text></label>
+								<editline name="Tools::Lut::specular_shift_el" export="1" align="expand" validator="float">
+									<tooltip>Specular shift</tooltip>
+									<callback type="pressed,focus_out">Tools::Lut::specular_shift_pressed</callback>
+								</editline>
+								<hslider align="expand" min="0" max="2000">
+									<attach multiplier="1000">Tools::Lut::specular_shift_el</attach>
+								</hslider>
+								<vbox/>
+								
+								<vbox/>
+								<hspacer align="expand"/>
+								<vbox/>
+								<vbox/>
+								
+								<vbox/>
+								<gridbox space="4" align="expand">
+									<button align="expand">
+										<tooltip>Clear LUT texture editor</tooltip>
+										<text>Clear</text>
+										<callback type="clicked">Tools::Lut::clear_clicked</callback>
+									</button>
+									<button name="Tools::Lut::update_b" export="1" align="expand">
+										<tooltip>Update LUT texture</tooltip>
+										<text>Update</text>
+										<callback type="clicked">Tools::Lut::update_clicked</callback>
+									</button>
+									<button align="expand">
+										<tooltip>Load LUT texture</tooltip>
+										<text>Load</text>
+										<callback type="clicked">Tools::Lut::load_clicked</callback>
+									</button>
+									<button align="expand">
+										<tooltip>Save LUT texture</tooltip>
+										<text>Save</text>
+										<callback type="clicked">Tools::Lut::save_clicked</callback>
+									</button>
+								</gridbox>
+								<vbox/>
+								<vbox/>
+								
+							</gridbox>
+						</vbox>
+					</vbox>
+					
+				</hbox>
+			</tab>
+			
+			<tab>
+				<text>Show</text>
+				<tooltip>Visualizer parameters</tooltip>
+				<vbox space="4">
+					<hbox>
+						<gridbox align="expand" columns="2" space="2">
+							
+							<checkbox name="Tools::Show::render_show_mipmaps_cb" export="1" align="left">
+								<text>Render mipmaps</text>
+								<callback type="clicked" string="render_show_mipmaps">Tools::Show::clicked</callback>
+							</checkbox>
+							
+							<checkbox name="Tools::Show::render_show_normals_cb" export="1" align="left">
+								<text>Render normals</text>
+								<callback type="clicked" string="render_show_normals">Tools::Show::clicked</callback>
+							</checkbox>
+							
+							<checkbox name="Tools::Show::render_show_triangles_cb" export="1" align="left">
+								<text>Render triangles</text>
+								<callback type="clicked" string="render_show_triangles">Tools::Show::clicked</callback>
+							</checkbox>
+							
+							<checkbox name="Tools::Show::render_show_decals_cb" export="1" align="left">
+								<text>Render decals</text>
+								<callback type="clicked" string="render_show_decals">Tools::Show::clicked</callback>
+							</checkbox>
+							
+							<checkbox name="Tools::Show::render_show_textures_cb" export="1" align="left">
+								<text>Render textures</text>
+								<callback type="clicked" string="render_show_textures">Tools::Show::clicked</callback>
+							</checkbox>
+							
+							<checkbox name="Tools::Show::render_show_scissors_cb" export="1" align="left">
+								<text>Render scissors</text>
+								<callback type="clicked" string="render_show_scissors">Tools::Show::clicked</callback>
+							</checkbox>
+							
+							<checkbox name="Tools::Show::render_show_queries_cb" export="1" align="left">
+								<text>Render queries</text>
+								<callback type="clicked" string="render_show_queries">Tools::Show::clicked</callback>
+							</checkbox>
+							
+							<checkbox name="Tools::Show::render_show_occluder_cb" export="1" align="left">
+								<text>Render occluder</text>
+								<callback type="clicked" string="render_show_occluder">Tools::Show::clicked</callback>
+							</checkbox>
+							
+							<checkbox name="Tools::Show::render_show_splits_cb" export="1" align="left">
+								<text>Render splits</text>
+								<callback type="clicked" string="render_show_splits">Tools::Show::clicked</callback>
+							</checkbox>
+							
+							<checkbox name="Tools::Show::render_show_lights_cb" export="1" align="left">
+								<text>Render lights</text>
+								<callback type="clicked" string="render_show_lights">Tools::Show::clicked</callback>
+							</checkbox>
+							
+							<checkbox name="Tools::Show::render_show_penumbra_cb" export="1" align="left">
+								<text>Render penumbra</text>
+								<callback type="clicked" string="render_show_penumbra">Tools::Show::clicked</callback>
+							</checkbox>
+							
+							<checkbox name="Tools::Show::render_show_occlusion_cb" export="1" align="left">
+								<text>Render occlusion</text>
+								<callback type="clicked" string="render_show_occlusion">Tools::Show::clicked</callback>
+							</checkbox>
+							
+						</gridbox>
+					</hbox>
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>Batch</text>
+				<tooltip>Batch node processing</tooltip>
+				<vbox space="4">
+					<gridbox align="expand" columns="4" space="4">
+						
+						<vbox/>
+						<checkbox name="Tools::Batch::hierarchical_cb" export="1" align="left">
+							<text>Hierarchical</text>
+							<tooltip>Apply to all children</tooltip>
+							<callback type="clicked">Tools::Batch::hierarchical_clicked</callback>
+						</checkbox>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Light mask:</text></label>
+						<hbox align="expand">
+							<editline name="Tools::Batch::light_mask_el" export="1" capacity="8" align="expand">
+								<text face="core/gui/console.ttf"/>
+								<callback type="pressed,focus_out">Tools::Batch::light_mask_pressed</callback>
+								<callback type="double_clicked">Tools::Batch::light_mask_clicked</callback>
+							</editline>
+							<icon texture="editor/gui/action_edit.png" width="24" height="24">
+								<callback type="clicked">Tools::Batch::light_mask_clicked</callback>
+								<tooltip>Edit mask</tooltip>
+							</icon>
+						</hbox>
+						<button align="expand">
+							<text>Apply</text>
+							<tooltip>Apply light mask to selected object surfaces</tooltip>
+							<callback type="clicked">Tools::Batch::apply_light_mask_clicked</callback>
+						</button>
+						<vbox/>
+						
+						<label align="right"><text>Decal mask:</text></label>
+						<hbox align="expand">
+							<editline name="Tools::Batch::decal_mask_el" export="1" capacity="8" align="expand">
+								<text face="core/gui/console.ttf"/>
+								<callback type="pressed,focus_out">Tools::Batch::decal_mask_pressed</callback>
+								<callback type="double_clicked">Tools::Batch::decal_mask_clicked</callback>
+							</editline>
+							<icon texture="editor/gui/action_edit.png" width="24" height="24">
+								<callback type="clicked">Tools::Batch::decal_mask_clicked</callback>
+								<tooltip>Edit mask</tooltip>
+							</icon>
+						</hbox>
+						<button align="expand">
+							<text>Apply</text>
+							<tooltip>Apply decal mask to selected object surfaces</tooltip>
+							<callback type="clicked">Tools::Batch::apply_decal_mask_clicked</callback>
+						</button>
+						<vbox/>
+						
+						<label align="right"><text>Viewport mask:</text></label>
+						<hbox align="expand">
+							<editline name="Tools::Batch::viewport_mask_el" export="1" capacity="8" align="expand">
+								<text face="core/gui/console.ttf"/>
+								<callback type="pressed,focus_out">Tools::Batch::viewport_mask_pressed</callback>
+								<callback type="double_clicked">Tools::Batch::viewport_mask_clicked</callback>
+							</editline>
+							<icon texture="editor/gui/action_edit.png" width="24" height="24">
+								<callback type="clicked">Tools::Batch::viewport_mask_clicked</callback>
+								<tooltip>Edit mask</tooltip>
+							</icon>
+						</hbox>
+						<button align="expand">
+							<text>Apply</text>
+							<tooltip>Apply viewport mask to selected object surfaces</tooltip>
+							<callback type="clicked">Tools::Batch::apply_viewport_mask_clicked</callback>
+						</button>
+						<vbox/>
+						
+						<label align="right"><text>Intersection mask:</text></label>
+						<hbox align="expand">
+							<editline name="Tools::Batch::intersection_mask_el" export="1" capacity="8" align="expand">
+								<text face="core/gui/console.ttf"/>
+								<callback type="pressed,focus_out">Tools::Batch::intersection_mask_pressed</callback>
+								<callback type="double_clicked">Tools::Batch::intersection_mask_clicked</callback>
+							</editline>
+							<icon texture="editor/gui/action_edit.png" width="24" height="24">
+								<callback type="clicked">Tools::Batch::intersection_mask_clicked</callback>
+								<tooltip>Edit mask</tooltip>
+							</icon>
+						</hbox>
+						<button align="expand">
+							<text>Apply</text>
+							<tooltip>Apply intersection mask to selected object surfaces</tooltip>
+							<callback type="clicked">Tools::Batch::apply_intersection_mask_clicked</callback>
+						</button>
+						<vbox/>
+						
+						<label align="right"><text>Collision mask:</text></label>
+						<hbox align="expand">
+							<editline name="Tools::Batch::collision_mask_el" export="1" capacity="8" align="expand">
+								<text face="core/gui/console.ttf"/>
+								<callback type="pressed,focus_out">Tools::Batch::collision_mask_pressed</callback>
+								<callback type="double_clicked">Tools::Batch::collision_mask_clicked</callback>
+							</editline>
+							<icon texture="editor/gui/action_edit.png" width="24" height="24">
+								<callback type="clicked">Tools::Batch::collision_mask_clicked</callback>
+								<tooltip>Edit mask</tooltip>
+							</icon>
+						</hbox>
+						<button align="expand">
+							<text>Apply</text>
+							<tooltip>Apply collision mask to selected object surfaces</tooltip>
+							<callback type="clicked">Tools::Batch::apply_collision_mask_clicked</callback>
+						</button>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Grab LightProb:</text></label>
+						<hbox align="expand">
+							<editline name="Tools::Batch::znear_el" export="1" align="expand" validator="float">
+								<tooltip>Near clipping</tooltip>
+								<callback type="pressed,focus_out">Tools::Batch::znear_pressed</callback>
+							</editline>
+							<vbox space="4"/>
+							<editline name="Tools::Batch::zfar_el" export="1" align="expand" validator="float">
+								<tooltip>Far clipping</tooltip>
+								<callback type="pressed,focus_out">Tools::Batch::zfar_pressed</callback>
+							</editline>
+						</hbox>
+						<button align="expand">
+							<text>Apply</text>
+							<tooltip>Grab selected LightProbs</tooltip>
+							<callback type="clicked">Tools::Batch::apply_grab_light_prob_clicked</callback>
+						</button>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<button align="expand">
+							<text>Generate Decals</text>
+							<tooltip>Generate selected decals</tooltip>
+							<callback type="clicked">Tools::Batch::generate_decals_clicked</callback>
+						</button>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Frames:</text></label>
+						<combobox name="Tools::Batch::frames_cb" export="1" align="expand">
+							<callback type="changed">Tools::Batch::frames_changed</callback>
+							<text>16</text>
+							<text>32</text>
+							<text>64</text>
+							<text>128</text>
+							<text>256</text>
+							<text>512</text>
+						</combobox>
+						<button align="expand">
+							<text>Run samples</text>
+							<tooltip>Run all scenes from the "data/samples" directory</tooltip>
+							<callback type="clicked">Tools::Batch::run_samples_clicked</callback>
+						</button>
+						<vbox/>
+						
+					</gridbox>
+				</vbox>
+			</tab>
+			
+		</tabbox>
+	</vbox>
+</window>
+
+</ui>

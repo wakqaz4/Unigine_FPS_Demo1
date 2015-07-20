@@ -1,0 +1,1114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<blocks version="1.00">
+	
+	<!-- base blocks -->
+	<block type="skinner.bone">
+		<output_link>name</output_link>
+	</block>
+	
+	<block type="skinner.smooth">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value" value="0">v</input_link>
+		<input_link value="1.0f" edit="1">speed</input_link>
+		<input_link value="0.0f" edit="1">min</input_link>
+		<input_link value="1.0f" edit="1">max</input_link>
+		<output_link label="value">value</output_link>
+		<init><![CDATA[
+			value = clamp(v,min,max);
+		]]></init>
+		<update><![CDATA[
+			float delta = speed * ifps;
+			if(abs(value - v) < delta) value = v;
+			else if(value < v) value += delta;
+			else if(value > v) value -= delta;
+			value = clamp(value,min,max);
+		]]></update>
+	</block>
+	<block type="skinner.ragdoll">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link>enabled</input_link>
+		<input_link label="bone">name</input_link>
+		<common><![CDATA[
+			int bone;
+			BodyRagDoll ragdoll;
+		]]></common>
+		<init><![CDATA[
+			bone = -1;
+			Body body = mesh.getBody();
+			if(body != 0 && body.getType() == BODY_RAGDOLL) {
+				ragdoll = class_cast(body.getTypeName(),body);
+				bone = ragdoll.findBone(name);
+			}
+		]]></init>
+		<shutdown><![CDATA[
+			if(ragdoll != 0) {
+				if(bone != -1) ragdoll.setBoneFrameBased(bone,1);
+				else ragdoll.setFrameBased(1);
+			}
+		]]></shutdown>
+		<update><![CDATA[
+			if(ragdoll != 0) {
+				if(bone != -1) ragdoll.setBoneFrameBased(bone,(enabled == 0));
+				else ragdoll.setFrameBased((enabled == 0));
+			}
+		]]></update>
+	</block>
+	
+	<block type="skinner.set">
+		<output_path align="left">output</output_path>
+		<input_link align="right" value="-1" mask="128">layer</input_link>
+		<input_path label="input" align="right">input</input_path>
+		<update><![CDATA[
+			if(layer != -1) mesh.copyLayer(-1,layer);
+		]]></update>
+	</block>
+	<block type="skinner.get">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<output_link mask="128">layer</output_link>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+			mesh.importLayer(layer);
+		]]></update>
+	</block>
+	
+	<!-- animations -->
+	<block type="skinner.animation">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<input_link>name</input_link>
+		<input_link value="0.0f" edit="1">time</input_link>
+		<input_link value="25.0f" edit="1">speed</input_link>
+		<input_link value="-1" edit="1">from</input_link>
+		<input_link value="-1" edit="1">to</input_link>
+		<output_link label="frames">num_frames</output_link>
+		<output_link label="time">current_time</output_link>
+		<common><![CDATA[
+			int animation;
+		]]></common>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+			animation = mesh.addAnimation(name);
+			num_frames = mesh.getNumAnimationFrames(animation);
+		]]></init>
+		<update><![CDATA[
+			current_time = time;
+			time += speed * ifps;
+			mesh.setAnimation(layer,animation);
+			time = mesh.setFrame(layer,time,from,to);
+		]]></update>
+	</block>
+	<block type="skinner.animation2">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<input_link label="name 0">name_0</input_link>
+		<input_link label="name 1">name_1</input_link>
+		<input_link label="speed 0" value="25.0f" edit="1">speed_0</input_link>
+		<input_link label="speed 1" value="25.0f" edit="1">speed_1</input_link>
+		<input_link value="0.5f" edit="1">weight</input_link>
+		<common><![CDATA[
+			float time_0;
+			float time_1;
+			int animation_0;
+			int animation_1;
+			int layer_0;
+		]]></common>
+		<init><![CDATA[
+			time_0 = 0.0f;
+			time_1 = 0.0f;
+			layer = mesh.addLayer();
+			layer_0 = mesh.addLayer();
+			animation_0 = mesh.addAnimation(name_0);
+			animation_1 = mesh.addAnimation(name_1);
+		]]></init>
+		<update><![CDATA[
+			time_0 += speed_0 * ifps;
+			time_1 += speed_1 * ifps;
+			mesh.setAnimation(layer_0,animation_0);
+			mesh.setFrame(layer_0,time_0);
+			mesh.setAnimation(layer,animation_1);
+			mesh.setFrame(layer,time_1);
+			mesh.lerpLayer(layer,layer_0,layer,weight);
+		]]></update>
+	</block>
+	<block type="skinner.animation3">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<input_link label="name 0">name_0</input_link>
+		<input_link label="name 1">name_1</input_link>
+		<input_link label="name 2">name_2</input_link>
+		<input_link label="speed 0" value="25.0f" edit="1">speed_0</input_link>
+		<input_link label="speed 1" value="25.0f" edit="1">speed_1</input_link>
+		<input_link label="speed 2" value="25.0f" edit="1">speed_2</input_link>
+		<input_link value="0.5f" edit="1">weight</input_link>
+		<common><![CDATA[
+			float time_0;
+			float time_1;
+			float time_2;
+			int animation_0;
+			int animation_1;
+			int animation_2;
+			int layer_0;
+		]]></common>
+		<init><![CDATA[
+			time_0 = 0.0f;
+			time_1 = 0.0f;
+			time_2 = 0.0f;
+			layer = mesh.addLayer();
+			layer_0 = mesh.addLayer();
+			animation_0 = mesh.addAnimation(name_0);
+			animation_1 = mesh.addAnimation(name_1);
+			animation_2 = mesh.addAnimation(name_2);
+		]]></init>
+		<update><![CDATA[
+			time_0 += speed_0 * ifps;
+			time_1 += speed_1 * ifps;
+			time_2 += speed_2 * ifps;
+			if(weight < 0.5f) {
+				mesh.setAnimation(layer_0,animation_0);
+				mesh.setFrame(layer_0,time_0);
+				mesh.setAnimation(layer,animation_1);
+				mesh.setFrame(layer,time_1);
+				mesh.lerpLayer(layer,layer_0,layer,weight * 2.0f);
+			} else {
+				mesh.setAnimation(layer_0,animation_1);
+				mesh.setFrame(layer_0,time_1);
+				mesh.setAnimation(layer,animation_2);
+				mesh.setFrame(layer,time_2);
+				mesh.lerpLayer(layer,layer_0,layer,weight * 2.0f - 1.0f);
+			}
+		]]></update>
+	</block>
+	
+	<block type="skinner.sequence">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path>stop</output_path>
+		<input_path label="input" align="right">input_stop</input_path>
+		<input_path align="bottom">play</input_path>
+		<output_path label="output" align="bottom">output_play</output_path>
+		<input_link>name</input_link>
+		<input_link value="1.0f" edit="1">threshold</input_link>
+		<input_link value="25.0f" edit="1">speed</input_link>
+		<input_link value="-1" edit="1">from</input_link>
+		<input_link value="-1" edit="1">to</input_link>
+		<output_link label="frames">num_frames</output_link>
+		<output_link>weight</output_link>
+		<common><![CDATA[
+			float time;
+			int playing;
+			int animation;
+		]]></common>
+		<init><![CDATA[
+			time = 0.0f;
+			playing = 0;
+			weight = 0.0f;
+			layer = mesh.addLayer();
+			animation = mesh.addAnimation(name);
+			num_frames = mesh.getNumAnimationFrames(animation);
+		]]></init>
+		<update><![CDATA[
+		input:
+			if(playing) {
+				time += speed * ifps;
+				mesh.setAnimation(layer,animation);
+				if(mesh.setFrame(layer,time,from,to) >= time) {
+					weight = saturate(1.0f - ((time - to) / speed + threshold) / threshold);
+					if(weight < 1.0f) goto stop;
+		input_stop:
+				} else {
+					time = 0.0f;
+					playing = 0;
+					weight = 0.0f;
+				}
+			}
+			goto output;
+		play:
+			time = 0.0f;
+			playing = 1;
+			weight = 1.0f;
+			if(from < 0) from = 0;
+			if(to < 0) to = num_frames;
+			if(from >= num_frames) from = num_frames - 1;
+			if(to > num_frames) to = num_frames;
+			if(to <= from) to = from + 1;
+			goto output_play;
+		]]></update>
+	</block>
+	
+	<block type="skinner.difference">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<input_link>name</input_link>
+		<input_link value="0.0f" edit="1">reference</input_link>
+		<input_link value="0.0f" edit="1">time</input_link>
+		<input_link value="25.0f" edit="1">speed</input_link>
+		<input_link value="-1" edit="1">from</input_link>
+		<input_link value="-1" edit="1">to</input_link>
+		<output_link label="frames">num_frames</output_link>
+		<output_link label="time">current_time</output_link>
+		<common><![CDATA[
+			int animation;
+			int layer_0;
+		]]></common>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+			layer_0 = mesh.addLayer();
+			animation = mesh.addAnimation(name);
+			num_frames = mesh.getNumAnimationFrames(animation);
+			mesh.setAnimation(layer_0,animation);
+			mesh.setFrame(layer_0,reference,from,to);
+			mesh.inverseLayer(layer_0,layer_0);
+		]]></init>
+		<update><![CDATA[
+			current_time = time;
+			time += speed * ifps;
+			mesh.setAnimation(layer,animation);
+			time = mesh.setFrame(layer,time,from,to);
+			mesh.mulLayer(layer,layer_0,layer);
+		]]></update>
+	</block>
+	
+	<!-- bone transformations -->
+	<block type="skinner.transform">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="output">output_0</output_path>
+		<input_link label="layer" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="input" align="right">input_0</input_path>
+		<input_link label="bone">name</input_link>
+		<input_link edit="1">value</input_link>
+		<common><![CDATA[
+			int bone;
+		]]></common>
+		<init><![CDATA[
+			bone = mesh.findBone(name);
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			if(bone != -1 && layer_0 != -1) {
+				layer = layer_0;
+				if(mesh.isLayerBoneTransform(layer,bone)) {
+					mat4 transform = mesh.getLayerBoneTransform(layer,bone);
+					mesh.setLayerBoneTransform(layer,bone,transform * value);
+				}
+			}
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.rotation">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="output">output_0</output_path>
+		<input_link label="layer" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="input" align="right">input_0</input_path>
+		<input_link label="bone">name</input_link>
+		<input_link value="vec3(0,0,1)" edit="1">axis</input_link>
+		<input_link value="0.0f" edit="1">angle</input_link>
+		<common><![CDATA[
+			int bone;
+		]]></common>
+		<init><![CDATA[
+			bone = mesh.findBone(name);
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			if(bone != -1 && layer_0 != -1) {
+				layer = layer_0;
+				if(mesh.isLayerBoneTransform(layer,bone)) {
+					mat4 transform = mesh.getLayerBoneTransform(layer,bone);
+					mesh.setLayerBoneTransform(layer,bone,transform * mat4(axis,angle));
+				}
+			}
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.lookat">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="output">output_0</output_path>
+		<input_link label="layer" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="input" align="right">input_0</input_path>
+		<input_link label="bone">name</input_link>
+		<input_link label="pos" value="vec3(0,0,0)" edit="1">position</input_link>
+		<input_link value="360.0f" edit="1">speed</input_link>
+		<input_link label="min x" value="-90.0f" edit="1">min_x</input_link>
+		<input_link label="min y" value="-90.0f" edit="1">min_y</input_link>
+		<input_link label="max x" value="90.0f" edit="1">max_x</input_link>
+		<input_link label="max y" value="90.0f" edit="1">max_y</input_link>
+		<common><![CDATA[
+			float angle_x;
+			float angle_y;
+			int bone;
+		]]></common>
+		<init><![CDATA[
+			angle_x = 0.0f;
+			angle_y = 0.0f;
+			bone = mesh.findBone(name);
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			if(bone != -1 && layer_0 != -1) {
+				layer = layer_0;
+				mesh.copyLayer(-1,layer);
+				vec3 direction = normalize(position - mesh.getWorldBoneTransform(bone) * vec3_zero);
+				direction = rotation(mesh.getIWorldTransform()) * direction;
+				float delta = speed * ifps;
+				float x = atan2(direction.x,-direction.y) * RAD2DEG;
+				if(abs(angle_x - x) > delta) angle_x -= sign(angle_x - x) * delta;
+				else angle_x = x;
+				angle_x = clamp(angle_x,min_x,max_x);
+				float y = atan2(length(direction.xy0),direction.z) * RAD2DEG - 90.0f;
+				if(abs(angle_y - y) > delta) angle_y -= sign(angle_y - y) * delta;
+				else angle_y = y;
+				angle_y = clamp(angle_y,min_y,max_y);
+				if(mesh.isLayerBoneTransform(layer,bone)) {
+					mat4 transform = mesh.getLayerBoneTransform(layer,bone);
+					mesh.setLayerBoneTransform(layer,bone,transform * mat4(quat(1.0f,0.0f,0.0f,angle_x) * quat(0.0f,0.0f,1.0f,angle_y)));
+				}
+			}
+			goto output;
+		]]></update>
+	</block>
+	
+	<!-- layer operations -->
+	<block type="skinner.inverse">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="output">output_0</output_path>
+		<input_link label="layer" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="input" align="right">input_0</input_path>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			if(layer_0 != -1) mesh.inverseLayer(layer,layer_0);
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.add">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<input_link value="1.0f" edit="1">weight</input_link>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			goto output_1;
+		input_1:
+			if(layer_0 != -1 && layer_1 != -1) {
+				mesh.mulLayer(layer,layer_0,layer_1,weight);
+			}
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.sub">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<input_link value="1.0f" edit="1">weight</input_link>
+		<common><![CDATA[
+			int layer_2;
+		]]></common>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+			layer_2 = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			goto output_1;
+		input_1:
+			if(layer_0 != -1 && layer_1 != -1) {
+				mesh.inverseLayer(layer_2,layer_1);
+				mesh.mulLayer(layer,layer_0,layer_2,weight);
+			}
+			goto output;
+		]]></update>
+	</block>
+	
+	<!-- layer interpolation -->
+	<block type="skinner.lerp">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<input_link label="weight" value="0.5f" edit="1">weight</input_link>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			goto output_1;
+		input_1:
+			if(layer_0 != -1 && layer_1 != -1) {
+				mesh.lerpLayer(layer,layer_0,layer_1,weight);
+			}
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.lerp3">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<output_path label="out 2">output_2</output_path>
+		<input_link label="buf 2" align="right" value="-1" mask="128">layer_2</input_link>
+		<input_path label="in 2" align="right">input_2</input_path>
+		<input_link label="weight" value="0.5f" edit="1">weight</input_link>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_1;
+		input_1:
+			if(weight < 0.5f) goto output_0;
+			else goto output_2;
+		input_0:
+			if(layer_0 != -1 && layer_1 != -1) {
+				mesh.lerpLayer(layer,layer_0,layer_1,weight * 2.0f);
+			}
+			goto output;
+		input_2:
+			if(layer_1 != -1 && layer_2 != -1) {
+				mesh.lerpLayer(layer,layer_1,layer_2,weight * 2.0f - 1.0f);
+			}
+			goto output;
+		]]></update>
+	</block>
+	
+	<!-- layer combination -->
+	<block type="skinner.combine">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			goto output_1;
+		input_1:
+			if(layer_0 != -1) mesh.copyLayer(layer,layer_0);
+			if(layer_1 != -1) mesh.copyLayer(layer,layer_1);
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.combine3">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<output_path label="out 2">output_2</output_path>
+		<input_link label="buf 2" align="right" value="-1" mask="128">layer_2</input_link>
+		<input_path label="in 2" align="right">input_2</input_path>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			goto output_1;
+		input_1:
+			goto output_2;
+		input_2:
+			if(layer_0 != -1) mesh.copyLayer(layer,layer_0);
+			if(layer_1 != -1) mesh.copyLayer(layer,layer_1);
+			if(layer_2 != -1) mesh.copyLayer(layer,layer_2);
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.combine4">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<output_path label="out 2">output_2</output_path>
+		<input_link label="buf 2" align="right" value="-1" mask="128">layer_2</input_link>
+		<input_path label="in 2" align="right">input_2</input_path>
+		<output_path label="out 3">output_3</output_path>
+		<input_link label="buf 3" align="right" value="-1" mask="128">layer_3</input_link>
+		<input_path label="in 3" align="right">input_3</input_path>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			goto output_1;
+		input_1:
+			goto output_2;
+		input_2:
+			goto output_3;
+		input_3:
+			if(layer_0 != -1) mesh.copyLayer(layer,layer_0);
+			if(layer_1 != -1) mesh.copyLayer(layer,layer_1);
+			if(layer_2 != -1) mesh.copyLayer(layer,layer_2);
+			if(layer_3 != -1) mesh.copyLayer(layer,layer_3);
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.combine5">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<output_path label="out 2">output_2</output_path>
+		<input_link label="buf 2" align="right" value="-1" mask="128">layer_2</input_link>
+		<input_path label="in 2" align="right">input_2</input_path>
+		<output_path label="out 3">output_3</output_path>
+		<input_link label="buf 3" align="right" value="-1" mask="128">layer_3</input_link>
+		<input_path label="in 3" align="right">input_3</input_path>
+		<output_path label="out 4">output_4</output_path>
+		<input_link label="buf 4" align="right" value="-1" mask="128">layer_4</input_link>
+		<input_path label="in 4" align="right">input_4</input_path>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			goto output_1;
+		input_1:
+			goto output_2;
+		input_2:
+			goto output_3;
+		input_3:
+			goto output_4;
+		input_4:
+			if(layer_0 != -1) mesh.copyLayer(layer,layer_0);
+			if(layer_1 != -1) mesh.copyLayer(layer,layer_1);
+			if(layer_2 != -1) mesh.copyLayer(layer,layer_2);
+			if(layer_3 != -1) mesh.copyLayer(layer,layer_3);
+			if(layer_4 != -1) mesh.copyLayer(layer,layer_4);
+			goto output;
+		]]></update>
+	</block>
+	
+	<!-- layer blending -->
+	<block type="skinner.blend">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<input_link label="weight 0" value="1.0f" edit="1">weight_0</input_link>
+		<input_link label="weight 1" value="0.0f" edit="1">weight_1</input_link>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			goto output_1;
+		input_1:
+			float weight = 0.0f;
+			if(layer_0 != -1 && weight_0 > 0.0f) {
+				weight += weight_0;
+				mesh.lerpLayer(layer,layer,layer_0,weight_0 / weight);
+			}
+			if(layer_1 != -1 && weight_1 > 0.0f) {
+				weight += weight_1;
+				mesh.lerpLayer(layer,layer,layer_1,weight_1 / weight);
+			}
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.blend3">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<output_path label="out 2">output_2</output_path>
+		<input_link label="buf 2" align="right" value="-1" mask="128">layer_2</input_link>
+		<input_path label="in 2" align="right">input_2</input_path>
+		<input_link label="weight 0" value="1.0f" edit="1">weight_0</input_link>
+		<input_link label="weight 1" value="0.0f" edit="1">weight_1</input_link>
+		<input_link label="weight 2" value="0.0f" edit="1">weight_2</input_link>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			goto output_1;
+		input_1:
+			goto output_2;
+		input_2:
+			float weight = 0.0f;
+			if(layer_0 != -1 && weight_0 > 0.0f) {
+				weight += weight_0;
+				mesh.lerpLayer(layer,layer,layer_0,weight_0 / weight);
+			}
+			if(layer_1 != -1 && weight_1 > 0.0f) {
+				weight += weight_1;
+				mesh.lerpLayer(layer,layer,layer_1,weight_1 / weight);
+			}
+			if(layer_2 != -1 && weight_2 > 0.0f) {
+				weight += weight_2;
+				mesh.lerpLayer(layer,layer,layer_2,weight_2 / weight);
+			}
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.blend4">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<output_path label="out 2">output_2</output_path>
+		<input_link label="buf 2" align="right" value="-1" mask="128">layer_2</input_link>
+		<input_path label="in 2" align="right">input_2</input_path>
+		<output_path label="out 3">output_3</output_path>
+		<input_link label="buf 3" align="right" value="-1" mask="128">layer_3</input_link>
+		<input_path label="in 3" align="right">input_3</input_path>
+		<input_link label="weight 0" value="1.0f" edit="1">weight_0</input_link>
+		<input_link label="weight 1" value="0.0f" edit="1">weight_1</input_link>
+		<input_link label="weight 2" value="0.0f" edit="1">weight_2</input_link>
+		<input_link label="weight 3" value="0.0f" edit="1">weight_3</input_link>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			goto output_1;
+		input_1:
+			goto output_2;
+		input_2:
+			goto output_3;
+		input_3:
+			float weight = 0.0f;
+			if(layer_0 != -1 && weight_0 > 0.0f) {
+				weight += weight_0;
+				mesh.lerpLayer(layer,layer,layer_0,weight_0 / weight);
+			}
+			if(layer_1 != -1 && weight_1 > 0.0f) {
+				weight += weight_1;
+				mesh.lerpLayer(layer,layer,layer_1,weight_1 / weight);
+			}
+			if(layer_2 != -1 && weight_2 > 0.0f) {
+				weight += weight_2;
+				mesh.lerpLayer(layer,layer,layer_2,weight_2 / weight);
+			}
+			if(layer_3 != -1 && weight_3 > 0.0f) {
+				weight += weight_3;
+				mesh.lerpLayer(layer,layer,layer_3,weight_3 / weight);
+			}
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.blend5">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<output_path label="out 2">output_2</output_path>
+		<input_link label="buf 2" align="right" value="-1" mask="128">layer_2</input_link>
+		<input_path label="in 2" align="right">input_2</input_path>
+		<output_path label="out 3">output_3</output_path>
+		<input_link label="buf 3" align="right" value="-1" mask="128">layer_3</input_link>
+		<input_path label="in 3" align="right">input_3</input_path>
+		<output_path label="out 4">output_4</output_path>
+		<input_link label="buf 4" align="right" value="-1" mask="128">layer_4</input_link>
+		<input_path label="in 4" align="right">input_4</input_path>
+		<input_link label="weight 0" value="1.0f" edit="1">weight_0</input_link>
+		<input_link label="weight 1" value="0.0f" edit="1">weight_1</input_link>
+		<input_link label="weight 2" value="0.0f" edit="1">weight_2</input_link>
+		<input_link label="weight 3" value="0.0f" edit="1">weight_3</input_link>
+		<input_link label="weight 4" value="0.0f" edit="1">weight_4</input_link>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			goto output_0;
+		input_0:
+			goto output_1;
+		input_1:
+			goto output_2;
+		input_2:
+			goto output_3;
+		input_3:
+			goto output_4;
+		input_4:
+			float weight = 0.0f;
+			if(layer_0 != -1 && weight_0 > 0.0f) {
+				weight += weight_0;
+				mesh.lerpLayer(layer,layer,layer_0,weight_0 / weight);
+			}
+			if(layer_1 != -1 && weight_1 > 0.0f) {
+				weight += weight_1;
+				mesh.lerpLayer(layer,layer,layer_1,weight_1 / weight);
+			}
+			if(layer_2 != -1 && weight_2 > 0.0f) {
+				weight += weight_2;
+				mesh.lerpLayer(layer,layer,layer_2,weight_2 / weight);
+			}
+			if(layer_3 != -1 && weight_3 > 0.0f) {
+				weight += weight_3;
+				mesh.lerpLayer(layer,layer,layer_3,weight_3 / weight);
+			}
+			if(layer_4 != -1 && weight_4 > 0.0f) {
+				weight += weight_4;
+				mesh.lerpLayer(layer,layer,layer_4,weight_4 / weight);
+			}
+			goto output;
+		]]></update>
+	</block>
+	
+	<!-- layer switching -->
+	<block type="skinner.switch">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<input_link value="0">value</input_link>
+		<input_link value="1.0f" edit="1">speed</input_link>
+		<output_link label="weight 0" value="1.0f">weight_0</output_link>
+		<output_link label="weight 1" value="0.0f">weight_1</output_link>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			value = int(value);
+			float delta = speed * ifps;
+			if(value == 0) weight_0 = saturate(weight_0 + delta);
+			else weight_0 = saturate(weight_0 - delta);
+			if(value == 1) weight_1 = saturate(weight_1 + delta);
+			else weight_1 = saturate(weight_1 - delta);
+			if(weight_0 > 0.0f) goto output_0;
+		input_0:
+			if(weight_1 > 0.0f) goto output_1;
+		input_1:
+			float weight = 0.0f;
+			if(layer_0 != -1 && weight_0 > 0.0f) {
+				weight += weight_0;
+				mesh.lerpLayer(layer,layer,layer_0,weight_0 / weight);
+			}
+			if(layer_1 != -1 && weight_1 > 0.0f) {
+				weight += weight_1;
+				mesh.lerpLayer(layer,layer,layer_1,weight_1 / weight);
+			}
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.switch3">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<output_path label="out 2">output_2</output_path>
+		<input_link label="buf 2" align="right" value="-1" mask="128">layer_2</input_link>
+		<input_path label="in 2" align="right">input_2</input_path>
+		<input_link value="0">value</input_link>
+		<input_link value="1.0f" edit="1">speed</input_link>
+		<output_link label="weight 0" value="1.0f">weight_0</output_link>
+		<output_link label="weight 1" value="0.0f">weight_1</output_link>
+		<output_link label="weight 2" value="0.0f">weight_2</output_link>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			value = int(value);
+			float delta = speed * ifps;
+			if(value == 0) weight_0 = saturate(weight_0 + delta);
+			else weight_0 = saturate(weight_0 - delta);
+			if(value == 1) weight_1 = saturate(weight_1 + delta);
+			else weight_1 = saturate(weight_1 - delta);
+			if(value == 2) weight_2 = saturate(weight_2 + delta);
+			else weight_2 = saturate(weight_2 - delta);
+			if(weight_0 > 0.0f) goto output_0;
+		input_0:
+			if(weight_1 > 0.0f) goto output_1;
+		input_1:
+			if(weight_2 > 0.0f) goto output_2;
+		input_2:
+			float weight = 0.0f;
+			if(layer_0 != -1 && weight_0 > 0.0f) {
+				weight += weight_0;
+				mesh.lerpLayer(layer,layer,layer_0,weight_0 / weight);
+			}
+			if(layer_1 != -1 && weight_1 > 0.0f) {
+				weight += weight_1;
+				mesh.lerpLayer(layer,layer,layer_1,weight_1 / weight);
+			}
+			if(layer_2 != -1 && weight_2 > 0.0f) {
+				weight += weight_2;
+				mesh.lerpLayer(layer,layer,layer_2,weight_2 / weight);
+			}
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.switch4">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<output_path label="out 2">output_2</output_path>
+		<input_link label="buf 2" align="right" value="-1" mask="128">layer_2</input_link>
+		<input_path label="in 2" align="right">input_2</input_path>
+		<output_path label="out 3">output_3</output_path>
+		<input_link label="buf 3" align="right" value="-1" mask="128">layer_3</input_link>
+		<input_path label="in 3" align="right">input_3</input_path>
+		<input_link value="0">value</input_link>
+		<input_link value="1.0f" edit="1">speed</input_link>
+		<output_link label="weight 0" value="1.0f">weight_0</output_link>
+		<output_link label="weight 1" value="0.0f">weight_1</output_link>
+		<output_link label="weight 2" value="0.0f">weight_2</output_link>
+		<output_link label="weight 3" value="0.0f">weight_3</output_link>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			value = int(value);
+			float delta = speed * ifps;
+			if(value == 0) weight_0 = saturate(weight_0 + delta);
+			else weight_0 = saturate(weight_0 - delta);
+			if(value == 1) weight_1 = saturate(weight_1 + delta);
+			else weight_1 = saturate(weight_1 - delta);
+			if(value == 2) weight_2 = saturate(weight_2 + delta);
+			else weight_2 = saturate(weight_2 - delta);
+			if(value == 3) weight_3 = saturate(weight_3 + delta);
+			else weight_3 = saturate(weight_3 - delta);
+			if(weight_0 > 0.0f) goto output_0;
+		input_0:
+			if(weight_1 > 0.0f) goto output_1;
+		input_1:
+			if(weight_2 > 0.0f) goto output_2;
+		input_2:
+			if(weight_3 > 0.0f) goto output_3;
+		input_3:
+			float weight = 0.0f;
+			if(layer_0 != -1 && weight_0 > 0.0f) {
+				weight += weight_0;
+				mesh.lerpLayer(layer,layer,layer_0,weight_0 / weight);
+			}
+			if(layer_1 != -1 && weight_1 > 0.0f) {
+				weight += weight_1;
+				mesh.lerpLayer(layer,layer,layer_1,weight_1 / weight);
+			}
+			if(layer_2 != -1 && weight_2 > 0.0f) {
+				weight += weight_2;
+				mesh.lerpLayer(layer,layer,layer_2,weight_2 / weight);
+			}
+			if(layer_3 != -1 && weight_3 > 0.0f) {
+				weight += weight_3;
+				mesh.lerpLayer(layer,layer,layer_3,weight_3 / weight);
+			}
+			goto output;
+		]]></update>
+	</block>
+	<block type="skinner.switch5">
+		<input_path>input</input_path>
+		<output_link align="left" mask="128">layer</output_link>
+		<output_path align="left">output</output_path>
+		<output_path label="out 0">output_0</output_path>
+		<input_link label="buf 0" align="right" value="-1" mask="128">layer_0</input_link>
+		<input_path label="in 0" align="right">input_0</input_path>
+		<output_path label="out 1">output_1</output_path>
+		<input_link label="buf 1" align="right" value="-1" mask="128">layer_1</input_link>
+		<input_path label="in 1" align="right">input_1</input_path>
+		<output_path label="out 2">output_2</output_path>
+		<input_link label="buf 2" align="right" value="-1" mask="128">layer_2</input_link>
+		<input_path label="in 2" align="right">input_2</input_path>
+		<output_path label="out 3">output_3</output_path>
+		<input_link label="buf 3" align="right" value="-1" mask="128">layer_3</input_link>
+		<input_path label="in 3" align="right">input_3</input_path>
+		<output_path label="out 4">output_4</output_path>
+		<input_link label="buf 4" align="right" value="-1" mask="128">layer_4</input_link>
+		<input_path label="in 4" align="right">input_4</input_path>
+		<input_link value="0">value</input_link>
+		<input_link value="1.0f" edit="1">speed</input_link>
+		<output_link label="weight 0" value="1.0f">weight_0</output_link>
+		<output_link label="weight 1" value="0.0f">weight_1</output_link>
+		<output_link label="weight 2" value="0.0f">weight_2</output_link>
+		<output_link label="weight 3" value="0.0f">weight_3</output_link>
+		<output_link label="weight 4" value="0.0f">weight_4</output_link>
+		<init><![CDATA[
+			layer = mesh.addLayer();
+		]]></init>
+		<update><![CDATA[
+		input:
+			value = int(value);
+			float delta = speed * ifps;
+			if(value == 0) weight_0 = saturate(weight_0 + delta);
+			else weight_0 = saturate(weight_0 - delta);
+			if(value == 1) weight_1 = saturate(weight_1 + delta);
+			else weight_1 = saturate(weight_1 - delta);
+			if(value == 2) weight_2 = saturate(weight_2 + delta);
+			else weight_2 = saturate(weight_2 - delta);
+			if(value == 3) weight_3 = saturate(weight_3 + delta);
+			else weight_3 = saturate(weight_3 - delta);
+			if(value == 4) weight_4 = saturate(weight_4 + delta);
+			else weight_4 = saturate(weight_4 - delta);
+			if(weight_0 > 0.0f) goto output_0;
+		input_0:
+			if(weight_1 > 0.0f) goto output_1;
+		input_1:
+			if(weight_2 > 0.0f) goto output_2;
+		input_2:
+			if(weight_3 > 0.0f) goto output_3;
+		input_3:
+			if(weight_4 > 0.0f) goto output_4;
+		input_4:
+			float weight = 0.0f;
+			if(layer_0 != -1 && weight_0 > 0.0f) {
+				weight += weight_0;
+				mesh.lerpLayer(layer,layer,layer_0,weight_0 / weight);
+			}
+			if(layer_1 != -1 && weight_1 > 0.0f) {
+				weight += weight_1;
+				mesh.lerpLayer(layer,layer,layer_1,weight_1 / weight);
+			}
+			if(layer_2 != -1 && weight_2 > 0.0f) {
+				weight += weight_2;
+				mesh.lerpLayer(layer,layer,layer_2,weight_2 / weight);
+			}
+			if(layer_3 != -1 && weight_3 > 0.0f) {
+				weight += weight_3;
+				mesh.lerpLayer(layer,layer,layer_3,weight_3 / weight);
+			}
+			if(layer_4 != -1 && weight_4 > 0.0f) {
+				weight += weight_4;
+				mesh.lerpLayer(layer,layer,layer_4,weight_4 / weight);
+			}
+			goto output;
+		]]></update>
+	</block>
+	
+</blocks>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="DecalDeferredProj" id="694202952">
+		<radius>1</radius>
+		<fov>60</fov>
+		<aspect>1</aspect>
+		<znear>0.001</znear>
+		<material>decal_deferred_base</material>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

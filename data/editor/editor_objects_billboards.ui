@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_objects_billboards.ui
+ * Desc:    Unigine editor
+ * Version: 1.04
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* ObjectBillboards
+ */
+-->
+<vbox name="Nodes::Object::Billboards::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Billboards::depth_sort_cb" export="1" align="left,expand">
+				<text>Depth sort</text>
+				<callback type="clicked">Nodes::Object::Billboards::depth_sort_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Object::Billboards::billboards_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<vbox>
+			<hbox align="expand">
+				<button align="right">
+					<text>Add</text>
+					<callback type="clicked">Nodes::Object::Billboards::Billboards::add_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button name="Nodes::Object::Billboards::Billboards::remove_b" export="1">
+					<text>Remove</text>
+					<callback type="clicked">Nodes::Object::Billboards::Billboards::remove_clicked</callback>
+				</button>
+			</hbox>
+		</vbox>
+		
+		<vbox space="2"/>
+		
+		<scrollbox align="expand" height="60">
+			<listbox name="Nodes::Object::Billboards::Billboards::billboards_lb" export="1" align="expand">
+				<callback type="changed">Nodes::Object::Billboards::Billboards::billboard_changed</callback>
+			</listbox>
+		</scrollbox>
+		
+		<vbox space="2"/>
+		
+		<vbox>
+			<gridbox align="expand" columns="4" space="4">
+				
+				<label align="right"><text>Position:</text></label>
+				<editline name="Nodes::Object::Billboards::Billboards::position_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Billboards::Billboards::position_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Billboards::Billboards::position_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Billboards::Billboards::position_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Billboards::Billboards::position_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Billboards::Billboards::position_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>ScaleX:</text></label>
+				<editline name="Nodes::Object::Billboards::Billboards::texcoord_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Billboards::Billboards::texcoord_pressed</callback>
+				</editline>
+				<label align="right"><text>ScaleY:</text></label>
+				<editline name="Nodes::Object::Billboards::Billboards::texcoord_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Billboards::Billboards::texcoord_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>TranslateX:</text></label>
+				<editline name="Nodes::Object::Billboards::Billboards::texcoord_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Billboards::Billboards::texcoord_pressed</callback>
+				</editline>
+				<label align="right"><text>TranslateY:</text></label>
+				<editline name="Nodes::Object::Billboards::Billboards::texcoord_el[3]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Billboards::Billboards::texcoord_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>Width:</text></label>
+				<editline name="Nodes::Object::Billboards::Billboards::width_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Billboards::Billboards::width_pressed</callback>
+				</editline>
+				<label align="right"><text>Height:</text></label>
+				<editline name="Nodes::Object::Billboards::Billboards::height_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Billboards::Billboards::height_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>Angle:</text></label>
+				<editline name="Nodes::Object::Billboards::Billboards::angle_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Billboards::Billboards::angle_pressed</callback>
+				</editline>
+				<vbox/>
+				<vbox/>
+				
+			</gridbox>
+		</vbox>
+		
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Object::Billboards::generator_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Count:</text></label>
+			<editline name="Nodes::Object::Billboards::Generator::count_el" export="1" align="expand" validator="uint">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Generator::count_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Width:</text></label>
+			<editline name="Nodes::Object::Billboards::Generator::atlas_width_el" export="1" align="expand" validator="uint">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Generator::atlas_width_pressed</callback>
+			</editline>
+			<label align="right"><text>Height:</text></label>
+			<editline name="Nodes::Object::Billboards::Generator::atlas_height_el" export="1" align="expand" validator="uint">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Generator::atlas_height_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Object::Billboards::Generator::radius_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Generator::radius_mean_pressed</callback>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::Billboards::Generator::radius_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Generator::radius_spread_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Aspect:</text></label>
+			<editline name="Nodes::Object::Billboards::Generator::aspect_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Generator::aspect_mean_pressed</callback>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::Billboards::Generator::aspect_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Generator::aspect_spread_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Angle:</text></label>
+			<editline name="Nodes::Object::Billboards::Generator::angle_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Generator::angle_mean_pressed</callback>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::Billboards::Generator::angle_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Generator::angle_spread_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Bound:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Billboards::Generator::mesh_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::Billboards::Generator::mesh_pressed</callback>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Billboards::Generator::mesh_load_clicked</callback>
+				</icon>
+				<icon texture="editor/gui/action_clear.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Billboards::Generator::mesh_clear_clicked</callback>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<gridbox align="expand" columns="2" space="4">
+				<button align="expand">
+					<text>Create</text>
+					<callback type="clicked">Nodes::Object::Billboards::Generator::create_clicked</callback>
+				</button>
+				<button align="expand">
+					<text>Clear</text>
+					<callback type="clicked">Nodes::Object::Billboards::Generator::clear_clicked</callback>
+				</button>
+			</gridbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Object::Billboards::stars_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Count:</text></label>
+			<editline name="Nodes::Object::Billboards::Stars::count_el" export="1" align="expand" validator="uint">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Stars::count_pressed</callback>
+				<tooltip>The number of stars</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Object::Billboards::Stars::radius_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Stars::radius_pressed</callback>
+				<tooltip>Stars sphere radius</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Angle:</text></label>
+			<editline name="Nodes::Object::Billboards::Stars::angle_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Stars::angle_pressed</callback>
+				<tooltip>Maximum stars angular radius</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Catalog:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Billboards::Stars::catalog_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::Billboards::Stars::catalog_pressed</callback>
+					<tooltip>Stars catalog in "Fifth Fundamental Catalogue (FK5)" format</tooltip>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Billboards::Stars::catalog_load_clicked</callback>
+				</icon>
+				<icon texture="editor/gui/action_clear.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Billboards::Stars::catalog_clear_clicked</callback>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Latitude:</text></label>
+			<editline name="Nodes::Object::Billboards::Stars::latitude_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Stars::latitude_pressed</callback>
+				<tooltip>The observer's latitude</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Longitude:</text></label>
+			<editline name="Nodes::Object::Billboards::Stars::longitude_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboards::Stars::longitude_pressed</callback>
+				<tooltip>The observer's longitude</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Location:</text></label>
+			<combobox name="Nodes::Object::Billboards::Stars::location_cb" export="1" align="expand">
+				<text>Custom</text>
+				<text>San Francisco</text>
+				<text>New York</text>
+				<text>London</text>
+				<text>Paris</text>
+				<text>Tomsk</text>
+				<text>Hong Kong</text>
+				<text>Tokyo</text>
+				<text>Sidney</text>
+				<callback type="changed">Nodes::Object::Billboards::Stars::location_changed</callback>
+				<tooltip>The observer's location</tooltip>
+			</combobox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<gridbox align="expand" columns="3" space="4">
+				<button align="expand">
+					<text>Create</text>
+					<callback type="clicked">Nodes::Object::Billboards::Stars::create_clicked</callback>
+				</button>
+				<button align="expand">
+					<text>Clear</text>
+					<callback type="clicked">Nodes::Object::Billboards::Stars::clear_clicked</callback>
+				</button>
+				<button align="expand">
+					<text>Texture</text>
+					<callback type="clicked">Nodes::Object::Billboards::Stars::texture_clicked</callback>
+				</button>
+			</gridbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+</ui>

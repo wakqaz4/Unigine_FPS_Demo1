@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_objects_sky.ui
+ * Desc:    Unigine editor
+ * Version: 1.03
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* ObjectSky
+ */
+-->
+<vbox name="Nodes::Object::Sky::main_vb" export="1" space="4">
+	<vbox space_y="4">
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Sky::spherical_cb" export="1" align="left,expand">
+				<text>Spherical</text>
+				<callback type="clicked">Nodes::Object::Sky::spherical_clicked</callback>
+				<tooltip>Spherical sky sphere</tooltip>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Sky::simulation_cb" export="1" align="left,expand">
+				<text>Simulation</text>
+				<callback type="clicked">Nodes::Object::Sky::simulation_clicked</callback>
+				<tooltip>Always simulate volumetric clouds</tooltip>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::Object::Sky::size_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Sky::size_pressed</callback>
+				<tooltip>Width of the volumetric clouds</tooltip>
+			</editline>
+			<editline name="Nodes::Object::Sky::size_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Sky::size_pressed</callback>
+				<tooltip>Height of the volumetric clouds</tooltip>
+			</editline>
+			<editline name="Nodes::Object::Sky::size_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Sky::size_pressed</callback>
+				<tooltip>Depth of the volumetric clouds</tooltip>
+			</editline>
+			
+			<label align="right"><text>Min slices:</text></label>
+			<editline name="Nodes::Object::Sky::min_slices_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Sky::min_slices_pressed</callback>
+				<tooltip>Minimal number of slices</tooltip>
+			</editline>
+			<label align="right"><text>Max slices:</text></label>
+			<editline name="Nodes::Object::Sky::max_slices_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Sky::max_slices_pressed</callback>
+				<tooltip>Maximal number of slices</tooltip>
+			</editline>
+			
+			<label align="right"><text>Distribute:</text></label>
+			<editline name="Nodes::Object::Sky::distribute_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Sky::distribute_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Sky::distribute_sl" export="1" align="expand" min="2000" max="4000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::Sky::distribute_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Mask:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Sky::density_image_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::Sky::density_image_pressed</callback>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Sky::density_image_load_clicked</callback>
+				</icon>
+				<icon texture="editor/gui/action_view.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Sky::density_image_view_clicked</callback>
+				</icon>
+				<icon texture="editor/gui/action_clear.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Sky::density_image_clear_clicked</callback>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Velocity:</text></label>
+			<editline name="Nodes::Object::Sky::density_velocity_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Sky::density_velocity_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::Sky::density_velocity_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Sky::density_velocity_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::Sky::density_velocity_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Sky::density_velocity_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Layer:</text></label>
+			<editline name="Nodes::Object::Sky::density_layer_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Sky::density_layer_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Sky::density_layer_sl" export="1" align="expand" min="0" max="3">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1" flags="max_expand">Nodes::Object::Sky::density_layer_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Humidity:</text></label>
+			<editline name="Nodes::Object::Sky::humidity_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Sky::humidity_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Sky::humidity_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::Sky::humidity_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Transition:</text></label>
+			<editline name="Nodes::Object::Sky::transition_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Sky::transition_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Sky::transition_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::Sky::transition_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Extinction:</text></label>
+			<editline name="Nodes::Object::Sky::extinction_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Sky::extinction_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Sky::extinction_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::Sky::extinction_el</attach>
+			</hslider>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+</ui>

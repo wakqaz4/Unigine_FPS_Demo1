@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_nodes_node.ui
+ * Desc:    Unigine editor
+ * Version: 1.01
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* NodeLayer
+ */
+-->
+<vbox name="Nodes::Layer::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="2">
+			
+			<label align="right"><text>Name:</text></label>
+			<editline name="Nodes::Layer::name_el" export="1" align="expand">
+				<tooltip>Node layer name</tooltip>
+				<callback type="pressed,focus_out">Nodes::Layer::name_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			
+			<vbox/>
+			<button align="expand">
+				<text>Save</text>
+				<callback type="clicked">Nodes::Layer::save_clicked</callback>
+			</button>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* NodePivot
+ */
+-->
+<vbox name="Nodes::Pivot::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Pivot position:</text></label>
+			<editline name="Nodes::Pivot::pivot_translate_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::pivot_transform_pressed</callback>
+			</editline>
+			<editline name="Nodes::Pivot::pivot_translate_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::pivot_transform_pressed</callback>
+			</editline>
+			<editline name="Nodes::Pivot::pivot_translate_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::pivot_transform_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Pivot rotation:</text></label>
+			<editline name="Nodes::Pivot::pivot_rotate_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::pivot_transform_pressed</callback>
+			</editline>
+			<editline name="Nodes::Pivot::pivot_rotate_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::pivot_transform_pressed</callback>
+			</editline>
+			<editline name="Nodes::Pivot::pivot_rotate_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::pivot_transform_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Pivot scale:</text></label>
+			<editline name="Nodes::Pivot::pivot_scale_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::pivot_transform_pressed</callback>
+			</editline>
+			<editline name="Nodes::Pivot::pivot_scale_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::pivot_transform_pressed</callback>
+			</editline>
+			<editline name="Nodes::Pivot::pivot_scale_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::pivot_transform_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Local position:</text></label>
+			<editline name="Nodes::Pivot::local_translate_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::local_transform_pressed</callback>
+			</editline>
+			<editline name="Nodes::Pivot::local_translate_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::local_transform_pressed</callback>
+			</editline>
+			<editline name="Nodes::Pivot::local_translate_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::local_transform_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Local rotation:</text></label>
+			<editline name="Nodes::Pivot::local_rotate_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::local_transform_pressed</callback>
+			</editline>
+			<editline name="Nodes::Pivot::local_rotate_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::local_transform_pressed</callback>
+			</editline>
+			<editline name="Nodes::Pivot::local_rotate_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::local_transform_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Local scale:</text></label>
+			<editline name="Nodes::Pivot::local_scale_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::local_transform_pressed</callback>
+			</editline>
+			<editline name="Nodes::Pivot::local_scale_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::local_transform_pressed</callback>
+			</editline>
+			<editline name="Nodes::Pivot::local_scale_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Pivot::local_transform_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<button name="Nodes::Pivot::edit_pivot_b" export="1" align="expand" toggleable="1">
+				<text>Edit pivot</text>
+			</button>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* NodeTrigger
+ */
+-->
+<vbox name="Nodes::Trigger::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Enabled:</text></label>
+			<editline name="Nodes::Trigger::enabled_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::Trigger::enabled_pressed</callback>
+				<tooltip>Name of enabled world script callback function</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Position:</text></label>
+			<editline name="Nodes::Trigger::position_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::Trigger::position_pressed</callback>
+				<tooltip>Name of position world script callback function</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* NodeReference
+ */
+-->
+<vbox name="Nodes::Reference::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="2">
+			
+			<label align="right"><text>Name:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Reference::name_el" export="1" align="expand">
+					<tooltip>Node reference name</tooltip>
+					<callback type="pressed,focus_out">Nodes::Reference::name_pressed</callback>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<tooltip>Load node reference</tooltip>
+					<callback type="clicked">Nodes::Reference::load_clicked</callback>
+				</icon>
+			</hbox>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			
+			<vbox/>
+			<button align="expand">
+				<text>Edit</text>
+				<callback type="clicked">Nodes::Reference::edit_clicked</callback>
+			</button>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+</ui>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<properties version="1.0" editable="0">
+	
+	<!--
+	/**************************************************************************\
+	 *
+	 * Node property
+	 *
+	\**************************************************************************/
+	-->
+	
+	<!--
+	/* Node base property
+	 */
+	-->
+	<property name="node_base" editable="0">
+		
+	</property>
+	
+	<!--
+	/**************************************************************************\
+	 *
+	 * Surface property
+	 *
+	\**************************************************************************/
+	-->
+	
+	<!--
+	/* Surface base property
+	 */
+	-->
+	<property name="surface_base" editable="0">
+		
+		<!-- parameters -->
+		<parameter collision="1" name="friction" type="float" min="0.0" max="4.0" flags="max_expand">0.5</parameter>
+		<parameter collision="1" name="restitution" type="float" min="0.0" max="1.0">0.5</parameter>
+		<parameter intersection="1" name="occlusion" type="float" min="0.0" max="1.0">0.5</parameter>
+	</property>
+	
+</properties>

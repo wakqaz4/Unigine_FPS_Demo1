@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resource version="1.0">
+	<animation expose="1024.0" fade_in="1024.0" fade_out="1024.0"/>
+	<default size="13" color="#ffffffef" alpha="1.0"/>
+	<focused enabled="1" color="#ffffffff" alpha="1.0"/>
+	<disabled enabled="1" color="#999999ff" alpha="0.8"/>
+	<transparent enabled="0" color="#eeeeeeee" alpha="0.9"/>
+	<tooltip size="13" width="512" color="#000000ff" alpha="0.95" time="0.4"/>
+</resource>

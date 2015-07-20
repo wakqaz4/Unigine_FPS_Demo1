@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin name="mesh_combiner" version="1.0">
+	<text>Mesh Combiner</text>
+	<description>Merge multiple meshes into one</description>
+	<source>mesh_combiner.cpp</source>
+</plugin>

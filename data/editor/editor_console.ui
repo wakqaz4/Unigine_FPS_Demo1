@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_console.ui
+ * Desc:    Editor Console
+ * Version: 1.00
+ * Author:  Borovskikh Vladimir <futurist@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.03">
+
+<window name="ConsoleLog::window" export="1" snap_distance="16" sizeable="1">
+	<text>ConsoleLog</text>
+	<icon align="overlap,top,right" pos_x="4" pos_y="-24" texture="core/gui/window_close.png">
+		<callback type="clicked">consoleLogHide</callback>
+	</icon>
+	<vbox align="expand">
+		<scrollbox name="ConsoleLog::log_sb" export="1" align="expand" henabled="0">
+			<vbox space="4">
+				<gridbox name="ConsoleLog::log_gb" export="1" align="expand" space="4" columns="3">
+				</gridbox>
+			</vbox>
+		</scrollbox>
+	</vbox>
+</window>
+
+</ui>

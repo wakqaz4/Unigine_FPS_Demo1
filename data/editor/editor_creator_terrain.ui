@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_creator_terrain.ui
+ * Desc:    Unigine editor
+ * Version: 1.00
+ * Author:  Mikhail Lyubimov <alterego@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* CreatorTerrain
+ */
+-->
+<dialog name="Creator::Terrain::dialog" export="1" padding="-4">
+	<text align="left">New Terrain</text>
+	
+	<vbox space="4">
+		<gridbox align="expand" columns="2" space="4">
+			<label align="right"><text>X size:</text></label>
+			<combobox name="Creator::Terrain::create_size_x" export="1" align="expand">
+				<text>257</text>
+				<text>513</text>
+				<text>1025</text>
+				<text>2049</text>
+				<text>4097</text>
+				<text>8193</text>
+				<text>16385</text>
+			</combobox>
+			
+			<label align="right"><text>Y size:</text></label>
+			<combobox name="Creator::Terrain::create_size_y" export="1" align="expand">
+				<text>257</text>
+				<text>513</text>
+				<text>1025</text>
+				<text>2049</text>
+				<text>4097</text>
+				<text>8193</text>
+				<text>16385</text>
+			</combobox>
+			
+			<label align="right"><text>Grid cell step:</text></label>
+			<editline name="Creator::Terrain::create_step" export="1" align="expand" validator="float">1</editline>
+			
+			<label align="right"><text>LOD distance:</text></label>
+			<editline name="Creator::Terrain::create_lod" export="1" align="expand" validator="float">100</editline>
+			
+		</gridbox>
+		
+	</vbox>
+	
+</dialog>
+
+</ui>

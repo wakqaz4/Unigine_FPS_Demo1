@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="ObjectVolumeOmni" id="1096749472" collider="0">
+		<width>1</width>
+		<height>1</height>
+		<radius>1</radius>
+		<attenuation>1</attenuation>
+		<surface name="volume" material="volume_omni_base" property="surface_base"/>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="ObjectGuiMesh" id="413624044" collider="0">
+		<mesh_name/>
+		<gui_name>core/gui/</gui_name>
+		<mouse_show>1</mouse_show>
+		<control_distance>2</control_distance>
+		<screen_width>1024</screen_width>
+		<screen_height>768</screen_height>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

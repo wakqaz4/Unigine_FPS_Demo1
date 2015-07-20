@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dictionary version="1.01">
+	<msg file="landscape/landscape.cpp">
+		<src> - None</src>
+		<ru> - отсутствует</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src> - Overlap</src>
+		<ru> - Режим перекрытия</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src> - Overlay</src>
+		<ru> - Режим наложения</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src> - disabled</src>
+		<ru> - отключен</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Animation:</src>
+		<ru>Анимация:</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Author:</src>
+		<ru>Автор:</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Autodesk FBX info</src>
+		<ru>Информация об Autodesk FBX</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Autodesk plugin library is not loaded.</src>
+		<ru>Библиотека плагина Autodesk не загружена.</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Bad "%s" image format %s</src>
+		<ru>Неверный "%s" формат изображения %s</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Bad "%s" image size %dx%d</src>
+		<ru>Неверный "%s" размер изображения %dx%d</ru>
+	</msg>
+	<msg file="tools/video_grabber.cpp">
+		<src>Bad directory:\n</src>
+		<ru>Неверная директория:\n</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Bessel</src>
+		<ru>Эллипсоид Бесселя</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Can't find parent for "%d" depth</src>
+		<ru>Невозможно найти родителя для "%d" уровня глубины иерархии</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Can't find root node</src>
+		<ru>Невозможно найти родительский узел</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Can't open "%s" texture.\nSelect a %s texture manually?</src>
+		<ru>Невозможно открыть текстуру "%s".\nВыбрать текстуру %s вручную?</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Can't save "%s" terrain</src>
+		<ru>Невозможно сохранить ландшафт "%s"</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Clarke</src>
+		<ru>Модель земли Кларка</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Collada info</src>
+		<ru>Информация о Collada</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Collada plugin library is not loaded.</src>
+		<ru>Библиотека плагина Collada не загружена.</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Comment:</src>
+		<ru>Комментарий:</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Compress all landscape textures?</src>
+		<ru>Сжать все текстуры ландшафта?</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Compressing Textures...</src>
+		<ru>Производится сжатие текстур...</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Confirm</src>
+		<ru>Подтвердите</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Coordinate units:</src>
+		<ru>Единицы измерения юнита:</ru>
+	</msg>
+	<msg file="tools/video_grabber.cpp">
+		<src>Counter:</src>
+		<ru>Счетчик:</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Create an empty landscape?</src>
+		<ru>Создать пустой ландшафт?</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Create landscape nodes?</src>
+		<ru>Создать узлы ландшафтра?</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Create landscape normal textures?</src>
+		<ru>Создать карты нормалей ландшафта?</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Creating Normal Textures...</src>
+		<ru>Создание карт нормалей...</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Creating Terrain Nodes...</src>
+		<ru>Создание узлов ландшафта...</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Creating Terrains...</src>
+		<ru>Создание ландшафтов...</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Creator:</src>
+		<ru>Создатель:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>DIG I/DIG II</src>
+		<ru>DIG I/DIG II</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Database origin:</src>
+		<ru>База данных:</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Decompress all landscape textures?</src>
+		<ru>Распаковать все текстуры ландшафта?</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Decompressing Textures...</src>
+		<ru>Распаковка текстур...</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Delta X/Y/Z:</src>
+		<ru>Дельта X/Y/Z:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Earth model:</src>
+		<ru>Модель земли:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Edit revision/date:</src>
+		<ru>Редактировать уровень ревизии/время последней ревизии:</ru>
+	</msg>
+	<msg file="tools/video_grabber.cpp">
+		<src>Error</src>
+		<ru>Ошибка</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Evans and Sutherland CT5A/CT6</src>
+		<ru>Evans and Sutherland CT5A/CT6</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Evans and Sutherland GDF</src>
+		<ru>Evans and Sutherland GDF</ru>
+	</msg>
+	<msg file="tools/video_grabber.cpp">
+		<src>FPS:</src>
+		<ru>FPS:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Feet</src>
+		<ru>Футы</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>File:</src>
+		<ru>Файл:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Flat Earth</src>
+		<ru>Плоская земля</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Format revision:</src>
+		<ru>Форматировать уровень ревизии:</ru>
+	</msg>
+	<msg file="tools/video_grabber.cpp">
+		<src>Frames dir /screenshots/:</src>
+		<ru>Папка с кадрами /screenshots/:</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Front Axis:</src>
+		<ru>Передняя ось:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>General Electric CIV/CV/PT2000</src>
+		<ru>General Electric CIV/CV/PT2000</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Geocentric</src>
+		<ru>Геоцентричный</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Geodetic</src>
+		<ru>Геодезический</ru>
+	</msg>
+	<msg file="tools/video_grabber.cpp">
+		<src>Grab</src>
+		<ru>Захватить</ru>
+	</msg>
+	<msg file="tools/video_grabber.cpp">
+		<src>Grab main viewport</src>
+		<ru>Захватить главное видовое окно</ru>
+	</msg>
+	<msg file="tools/video_grabber.cpp">
+		<src>Grabber Extended</src>
+		<ru>Расширенный граббер</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Import selected landscape resources?</src>
+		<ru>Импортировать выбранные ресурсы ландшафта?</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Importing Node Mask...</src>
+		<ru>Импорт маски узла...</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Importing Terrain Diffuse...</src>
+		<ru>Импорт диффузных текстур ландшафта...</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Importing Terrain Height...</src>
+		<ru>Импорт карты высот ландшафта...</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Importing Terrain Mask...</src>
+		<ru>Импорт масок деталей ландшафта...</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Importing Terrain Normal...</src>
+		<ru>Импорт карт нормалей ландшафта...</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Importing area is lower than terrain size</src>
+		<ru>Импортируемая область меньше ландшафта</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Inches</src>
+		<ru>Дюймы</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Keywords:</src>
+		<ru>Ключевые слова:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Kilometers</src>
+		<ru>Километры</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Lambert</src>
+		<ru>Проекция Ламберта</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Lambert lower lat:</src>
+		<ru>Нижняя широта Ламберта:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Lambert upper lat:</src>
+		<ru>Верхняя широта Ламберта:</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Left handed</src>
+		<ru>Против часовой стрелки</ru>
+	</msg>
+	<msg file="tools/video_grabber.cpp">
+		<src>Load track</src>
+		<ru>Загрузить трэк</ru>
+	</msg>
+	<msg file="tools/video_grabber.cpp">
+		<src>Clear track</src>
+		<ru>Очистить трэк</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Material %d</src>
+		<ru>Материал %d</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Material diffuse texture</src>
+		<ru>Диффузная текстура материала</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Material normal texture</src>
+		<ru>Карта нормалей материала</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Meter:</src>
+		<ru>Метр:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Meters</src>
+		<ru>Метры</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>NAD 1927</src>
+		<ru>NAD 1927</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Nautical miles</src>
+		<ru>Морские мили</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Node  %d</src>
+		<ru>Узел %d</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Northeast lat/long:</src>
+		<ru>Северо-восточная широта/долгота:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>OpenFlight</src>
+		<ru>OpenFlight</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>OpenFlight info</src>
+		<ru>Информация об OpenFlight</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>OpenFlight plugin library is not loaded.</src>
+		<ru>Библиотека плагина OpenFlight не загружена.</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Orientation:</src>
+		<ru>Ориентация:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Origin lat/long:</src>
+		<ru>Начальная широта/долгота:</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Override "%s" material?</src>
+		<ru>Перезаписать материал "%s"?</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>PSP DIG</src>
+		<ru>PSP DIG</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Projection type:</src>
+		<ru>Тип проекции:</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+
+		<src>Remove "%s" material?</src>
+		<ru>Удалить материал "%s"?</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Remove \"%s\" reference ?</src>
+		<ru>Удалить ссылку "%s"?</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Remove old nodes?</src>
+		<ru>Удалить старые узлы?</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Revision:</src>
+		<ru>Проверка:</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Right handed</src>
+		<ru>По часовой стрелке</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Round Earth</src>
+		<ru>Круглая земля</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Select %s texture</src>
+		<ru>Выберите текстуру %s</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Select Autodesk material library</src>
+		<ru>Выберите библиотеку материалов Autodesk</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Select Collada material library</src>
+		<ru>Выберите библиотеку материалов Collada</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Select DAE animation file</src>
+		<ru>Выберите файл анимации DAE</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Select DAE scene file</src>
+		<ru>Выберите файл сцены DAE</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Select FBX animation file</src>
+		<ru>Выберите файл анимации FBX</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Select FBX scene file</src>
+		<ru>Выберите файл сцены FBX</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Select FLT scene file</src>
+		<ru>Выберите файл сцены FLT</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Select OpenFlight material library</src>
+		<ru>Выберите библиотеку материалов OpenFlight</ru>
+	</msg>
+	<msg file="import/speedtree.cpp">
+		<src>Select SRT file</src>
+		<ru>Выберите SRT файл</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Select diffuse texture</src>
+		<ru>Выберите диффузную текстуру</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Select height texture</src>
+		<ru>Выберите карту высот</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Select landscape settings to load</src>
+		<ru>Выберите настройки ландшафта, которые следует загрузить</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Select landscape settings to save</src>
+		<ru>Выберите настройки ландшафта, которые следует сохранить</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Select mask image texture</src>
+		<ru>Выберите изображение маски</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Select mask texture</src>
+		<ru>Выберите маску</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Select material diffuse texture</src>
+		<ru>Выберите диффузную текстуру материала</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Select material normal texture</src>
+		<ru>Выберите карту нормалей материала</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Select node reference</src>
+		<ru>Выберите ссылку на узел</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Select normal texture</src>
+		<ru>Выберите карту нормалей</ru>
+	</msg>
+	<msg file="import/speedtree.cpp">
+		<src>Select speedtree material library</src>
+		<ru>Выберите библиотеку материалов SpeedTree</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Southwest X/Y:</src>
+		<ru>Юго-Запад X/Y:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Southwest lat/long:</src>
+		<ru>Юго-западная широта/долгота:</ru>
+	</msg>
+	<msg file="import/speedtree.cpp">
+		<src>SpeedTree plugin library is not loaded.</src>
+		<ru>Библиотека плагина SpeedTree не загружена.</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Subject:</src>
+		<ru>Объект:</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Time:</src>
+		<ru>Время:</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Title:</src>
+		<ru>Заголовок:</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Tool:</src>
+		<ru>Инструмент:</ru>
+	</msg>
+	<msg file="tools/video_grabber.cpp">
+		<src>Track:</src>
+		<ru>Трэк:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>Trapezoidal</src>
+		<ru>Трапецевидный</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>UTM</src>
+		<ru>UTM</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>UTM zone:</src>
+		<ru>Зона UTM:</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Unknown</src>
+		<ru>Неизвестный</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Up Axis:</src>
+		<ru>Верхняя ось:</ru>
+	</msg>
+	<msg file="landscape/landscape.cpp">
+		<src>Update landscape nodes?</src>
+		<ru>Обновить узлы?</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>User defined</src>
+		<ru>Определяемый пользователем</ru>
+	</msg>
+	<msg file="import/autodesk.cpp">
+		<src>Version:</src>
+		<ru>Версия:</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>WGS 1972</src>
+		<ru>WGS 1972</ru>
+	</msg>
+	<msg file="import/openflight.cpp">
+		<src>WGS 1984</src>
+		<ru>WGS 1984</ru>
+	</msg>
+	<msg file="import/collada.cpp">
+		<src>Warning</src>
+		<ru>Предупреждение</ru>
+	</msg>
+	<msg file="tools/video_grabber.cpp">
+		<src>World is not loaded</src>
+		<ru>Мир не загружен</ru>
+	</msg>
+</dictionary>

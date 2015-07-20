@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_hotkeys.ui
+ * Desc:    Unigine editor
+ * Version: 1.10
+ * Author:  Valia Vaneeva <fattie@unigine.com>
+ *          Alexander Zapryagaev <frustum@unigine.com>
+ *          Alexey Egorov <evilsprit@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Hotkeys
+ */
+-->
+<window name="Hotkeys::window" export="1" width="450" height="550">
+	<text>Controls</text>
+	<vbox align="expand">
+		<vbox>
+			<hbox align="expand" height="40" padding_b="10">
+				<label align="left"><text>Preset: </text></label>
+				<vbox space="2"/>
+				<combobox name="Hotkeys::preset_cb" export="1">
+					<callback type="changed">Hotkeys::preset_changed</callback>
+					<callback type="clicked">Hotkeys::preset_clicked</callback>
+				</combobox>
+				<button align="right">
+					<callback type="clicked">Hotkeys::save_as_clicked</callback>
+					<text>Save as...</text>
+				</button>
+			</hbox>
+		</vbox>
+		
+		<tabbox name="Hotkeys::tabbox" export="1" align="expand">
+		</tabbox>
+		
+		<vbox space="4"/>
+		
+		<vbox>
+			<hbox align="expand">
+				<button align="right" width="64" name="Hotkeys::ok_b" export="0">
+					<text>Ok</text>
+					<callback type="clicked">Hotkeys::ok_clicked</callback>
+					<tooltip>Apply changes and close dialog</tooltip>
+				</button>
+				<vbox space="4"/>
+				<button align="right" width="64" name="Hotkeys::cancel_b" export="0">
+					<text>Cancel</text>
+					<callback type="clicked">Hotkeys::cancel_clicked</callback>
+					<tooltip>Cancel changes and close dialog</tooltip>
+				</button>
+				<vbox space="4"/>
+				<button align="right" width="64" name="Hotkeys::apply_b" export="1">
+					<text>Apply</text>
+					<callback type="clicked">Hotkeys::apply_clicked</callback>
+					<tooltip>Apply changes</tooltip>
+				</button>
+			</hbox>
+		</vbox>
+		
+	</vbox>
+</window>
+
+<window name="Hotkeys::learn_w" export="1" moveable="0">
+	<text>Hotkey binding</text>
+	<icon name="Hotkeys::learn_cancel_i" export="1" texture="core/gui/window_close.png" pos_x="4" pos_y="-24" align="overlap,top,right"/>
+	<vbox space="8">
+		<label align="left" name="Hotkeys::learn_lb" export="1"/>
+		<label align="left" name="Hotkeys::learn_pattern_lb" export="1"/>
+		
+		<vbox space="4"/>
+		
+		<hbox align="right" space="0">
+			<button name="Hotkeys::clear_binding_b" export="1"><text>Clear binding</text></button>
+			<vbox space="4"/>
+			<button name="Hotkeys::cancel_binding_b" export="1"><text>Cancel</text></button>
+		</hbox>
+	</vbox>
+</window>
+
+</ui>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin name="landscape" version="1.0">
+	<text>Landscape</text>
+	<description>Creation of large multi-terrain landscapes</description>
+	<source>landscape.cpp</source>
+</plugin>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_fields.ui
+ * Desc:    Unigine editor
+ * Version: 1.02
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* FieldSpacer
+ */
+-->
+<vbox name="Nodes::Field::Spacer::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::Field::Spacer::ellipse_cb" export="1" align="left,expand">
+				<text>Ellipse</text>
+				<callback type="clicked">Nodes::Field::Spacer::ellipse_clicked</callback>
+				<tooltip>Ellipse shape</tooltip>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Field:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Field::Spacer::field_mask_el" export="1" align="expand">
+					<tooltip>Field mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Field::field_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Field::field_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Field::field_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Viewport:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Field::Spacer::viewport_mask_el" export="1" align="expand">
+					<tooltip>Viewport mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Field::viewport_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Field::viewport_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Field::viewport_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::Field::Spacer::size_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Field::Spacer::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Field::Spacer::size_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Field::Spacer::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Field::Spacer::size_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Field::Spacer::size_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Atten:</text></label>
+			<editline name="Nodes::Field::Spacer::attenuation_el" export="1" align="expand" validator="float">
+				<tooltip>Attenuation factor value</tooltip>
+				<callback type="pressed,focus_out">Nodes::Field::Spacer::attenuation_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* FieldAnimation
+ */
+-->
+<vbox name="Nodes::Field::Animation::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::Field::Animation::ellipse_cb" export="1" align="left,expand">
+				<text>Ellipse</text>
+				<callback type="clicked">Nodes::Field::Animation::ellipse_clicked</callback>
+				<tooltip>Ellipse shape</tooltip>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Field:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Field::Animation::field_mask_el" export="1" align="expand">
+					<tooltip>Field mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Field::field_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Field::field_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Field::field_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Viewport:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Field::Animation::viewport_mask_el" export="1" align="expand">
+					<tooltip>Viewport mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Field::viewport_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Field::viewport_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Field::viewport_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::Field::Animation::size_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Field::Animation::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Field::Animation::size_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Field::Animation::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Field::Animation::size_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Field::Animation::size_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Atten:</text></label>
+			<editline name="Nodes::Field::Animation::attenuation_el" export="1" align="expand" validator="float">
+				<tooltip>Attenuation value</tooltip>
+				<callback type="pressed,focus_out">Nodes::Field::Animation::attenuation_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Stem:</text></label>
+			<editline name="Nodes::Field::Animation::stem_el" export="1" align="expand" validator="float">
+				<tooltip>Stem animation coefficient</tooltip>
+				<callback type="pressed,focus_out">Nodes::Field::Animation::stem_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Field::Animation::stem_sl" export="1" align="expand" min="0" max="2000">
+				<attach multiplier="1000" flags="max_expand">Nodes::Field::Animation::stem_el</attach>
+				<callback type="clicked">Nodes::slider_clicked</callback>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Leaf:</text></label>
+			<editline name="Nodes::Field::Animation::leaf_el" export="1" align="expand" validator="float">
+				<tooltip>Leaf animation coefficient</tooltip>
+				<callback type="pressed,focus_out">Nodes::Field::Animation::leaf_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Field::Animation::leaf_sl" export="1" align="expand" min="0" max="2000">
+				<attach multiplier="1000" flags="max_expand">Nodes::Field::Animation::leaf_el</attach>
+				<callback type="clicked">Nodes::slider_clicked</callback>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Scale:</text></label>
+			<editline name="Nodes::Field::Animation::scale_el" export="1" align="expand" validator="float">
+				<tooltip>Animation scale</tooltip>
+				<callback type="pressed,focus_out">Nodes::Field::Animation::scale_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Field::Animation::scale_sl" export="1" align="expand" min="0" max="2000">
+				<attach multiplier="1000" flags="max_expand">Nodes::Field::Animation::scale_el</attach>
+				<callback type="clicked">Nodes::slider_clicked</callback>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Wind:</text></label>
+			<editline name="Nodes::Field::Animation::wind_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Field::Animation::wind_pressed</callback>
+			</editline>
+			<editline name="Nodes::Field::Animation::wind_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Field::Animation::wind_pressed</callback>
+			</editline>
+			<editline name="Nodes::Field::Animation::wind_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Field::Animation::wind_pressed</callback>
+			</editline>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+</ui>

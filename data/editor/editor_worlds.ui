@@ -1,0 +1,1296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_worlds.ui
+ * Desc:    Unigine editor
+ * Version: 1.40
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Valia Vaneeva <fattie@unigine.com>
+ *          Andrey Viktorov <unclebob@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* WorldLayer
+ */
+-->
+<vbox name="Nodes::World::Layer::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::World::Layer::point_cb" export="1" align="left,expand">
+				<text>Point </text>
+				<callback type="clicked">Nodes::World::Layer::point_clicked</callback>
+				<tooltip>Distance to the bounding sphere center</tooltip>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::World::Layer::size_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Layer::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Layer::size_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Layer::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Layer::size_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Layer::size_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Offset:</text></label>
+			<editline name="Nodes::World::Layer::offset_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Layer::offset_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Layer::offset_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Layer::offset_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Layer::offset_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Layer::offset_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Load distance:</text></label>
+			<editline name="Nodes::World::Layer::load_distance_el" export="1" align="expand">
+				<tooltip>Automatically loads the node when the distance to the layer is smaller than loading distance</tooltip>
+				<callback type="pressed,focus_out">Nodes::World::Layer::load_distance_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Clear distance:</text></label>
+			<editline name="Nodes::World::Layer::clear_distance_el" export="1" align="expand">
+				<tooltip>Automatically clears the node when the distance to the layer is bigger than clear distance</tooltip>
+				<callback type="pressed,focus_out">Nodes::World::Layer::clear_distance_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Name:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::World::Layer::name_el" export="1" align="expand">
+					<tooltip>World node name</tooltip>
+					<callback type="pressed,focus_out">Nodes::World::Layer::name_pressed</callback>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<tooltip>Load world node</tooltip>
+					<callback type="clicked">Nodes::World::Layer::load_clicked</callback>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Group:</text></label>
+			<editline name="Nodes::World::Layer::group_el" export="1" align="expand" validator="int">
+				<callback type="pressed,focus_out">Nodes::World::Layer::group_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Weight:</text></label>
+			<editline name="Nodes::World::Layer::weight_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Layer::weight_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+		
+		<hspacer align="expand"/>
+		
+		<hbox align="expand">
+			<button name="Nodes::World::Layer::createt_b" export="1" align="expand">
+				<text>Create</text>
+				<callback type="clicked">Nodes::World::Layer::create_clicked</callback>
+			</button>
+			
+			<button align="expand">
+				<text>Expand</text>
+				<callback type="clicked">Nodes::World::Layer::expand_clicked</callback>
+			</button>
+		</hbox>
+		
+	</vbox>
+</vbox>
+
+<!--
+/* WorldSector
+ */
+-->
+<vbox name="Nodes::World::Sector::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::World::Sector::size_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Sector::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Sector::size_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Sector::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Sector::size_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Sector::size_pressed</callback>
+			</editline>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* WorldPortal
+ */
+-->
+<vbox name="Nodes::World::Portal::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="2" space="4">
+			
+			<label align="right"><text>Width:</text></label>
+			<editline name="Nodes::World::Portal::width_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Portal::width_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Height:</text></label>
+			<editline name="Nodes::World::Portal::height_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Portal::height_pressed</callback>
+			</editline>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* WorldTrigger
+ */
+-->
+<vbox name="Nodes::World::Trigger::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::World::Trigger::touch_cb" export="1" align="left,expand">
+				<text>Touch</text>
+				<callback type="clicked">Nodes::World::Trigger::touch_clicked</callback>
+				<tooltip>Trigger activates on bounding box touch</tooltip>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::World::Trigger::size_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Trigger::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Trigger::size_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Trigger::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Trigger::size_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Trigger::size_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Enter:</text></label>
+			<editline name="Nodes::World::Trigger::enter_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::World::Trigger::enter_pressed</callback>
+				<tooltip>Name of enter world script callback function</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Leave:</text></label>
+			<editline name="Nodes::World::Trigger::leave_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::World::Trigger::leave_pressed</callback>
+				<tooltip>Name of leave world script callback function</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* WorldCluster
+ */
+-->
+<vbox name="Nodes::World::Cluster::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<label name="Nodes::World::Cluster::info_l" export="1" align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Visible:</text></label>
+			<editline name="Nodes::World::Cluster::visible_distance_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::World::Cluster::visible_distance_pressed</callback>
+				<tooltip>Distance up to which nodes are fully visible</tooltip>
+			</editline>
+			<label align="right"><text>Fade:</text></label>
+			<editline name="Nodes::World::Cluster::fade_distance_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::World::Cluster::fade_distance_pressed</callback>
+				<tooltip>Distance up to which nodes fade out completely</tooltip>
+			</editline>
+			
+			<label align="right"><text>Shadow:</text></label>
+			<editline name="Nodes::World::Cluster::shadow_radius_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::World::Cluster::shadow_radius_pressed</callback>
+				<tooltip>Additional shadow radius</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hbox align="expand">
+				<button align="expand">
+					<text>Create</text>
+					<callback type="clicked">Nodes::World::Cluster::create_clicked</callback>
+				</button>
+				<vbox space="4"/>
+				<button align="expand">
+					<text>Expand</text>
+					<callback type="clicked">Nodes::World::Cluster::expand_clicked</callback>
+				</button>
+				<vbox space="4"/>
+				<button align="expand">
+					<text>Clear</text>
+					<callback type="clicked">Nodes::World::Cluster::clear_clicked</callback>
+				</button>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::World::Cluster::generator_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<vbox>
+			<hbox align="expand">
+				<button align="right">
+					<text>Add</text>
+					<callback type="clicked">Nodes::World::Cluster::Generator::add_clicked</callback>
+					<tooltip>Add node reference</tooltip>
+				</button>
+				<vbox space="2"/>
+				<button>
+					<text>Remove</text>
+					<callback type="clicked">Nodes::World::Cluster::Generator::remove_clicked</callback>
+					<tooltip>Remove selected node references</tooltip>
+				</button>
+			</hbox>
+		</vbox>
+		
+		<vbox space="2"/>
+		
+		<scrollbox align="expand" height="60">
+			<vbox space="4">
+				<gridbox name="Nodes::World::Cluster::Generator::references_gb" export="1" align="expand" columns="2" space="4"/>
+			</vbox>
+		</scrollbox>
+		
+		<vbox space="2"/>
+		
+		<vbox>
+			<gridbox align="expand" columns="4" space="4">
+				
+				<vbox/>
+				<checkbox name="Nodes::World::Cluster::Generator::orientation_cb" export="1" align="left,expand">
+					<text>Orientation</text>
+					<callback type="clicked">Nodes::World::Cluster::Generator::orientation_clicked</callback>
+					<tooltip>Keep surface orientation</tooltip>
+				</checkbox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Mask:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::World::Cluster::Generator::mask_image_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::mask_image_pressed</callback>
+						<tooltip>Name of the density mask</tooltip>
+					</editline>
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::World::Cluster::Generator::mask_image_load_clicked</callback>
+					</icon>
+					<icon texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked">Nodes::World::Cluster::Generator::mask_image_view_clicked</callback>
+					</icon>
+					<icon texture="editor/gui/action_clear.png" width="22" height="20">
+						<callback type="clicked">Nodes::World::Cluster::Generator::mask_image_clear_clicked</callback>
+					</icon>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Seed:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::World::Cluster::Generator::seed_el" export="1" align="expand" validator="uint">
+						<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::seed_pressed</callback>
+						<tooltip>Random seed</tooltip>
+					</editline>
+					<vbox space="4"/>
+					<button>
+						<text>Randomize</text>
+						<callback type="clicked">Nodes::World::Cluster::Generator::randomize_clicked</callback>
+					</button>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>SizeX:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::size_x_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::size_x_pressed</callback>
+					<tooltip>X size of generated area</tooltip>
+				</editline>
+				<label align="right"><text>SizeY:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::size_y_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::size_y_pressed</callback>
+					<tooltip>Y size of generated area</tooltip>
+				</editline>
+				
+				<label align="right"><text>Step:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::step_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::step_pressed</callback>
+					<tooltip>Cell step</tooltip>
+				</editline>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Density:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::density_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::density_pressed</callback>
+					<tooltip>Number of nodes per square unit</tooltip>
+				</editline>
+				<hslider align="expand" min="0" max="10000">
+					<attach multiplier="10000" flags="max_expand">Nodes::World::Cluster::Generator::density_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<label align="right"><text>Threshold:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::threshold_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::threshold_pressed</callback>
+					<tooltip>Density mask threshold</tooltip>
+				</editline>
+				<hslider align="expand" min="0" max="1000">
+					<attach multiplier="1000">Nodes::World::Cluster::Generator::threshold_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<label align="right"><text>Angle:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::angle_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::angle_pressed</callback>
+					<tooltip>Surface angle threshold</tooltip>
+				</editline>
+				<hslider align="expand" min="0" max="1000">
+					<attach multiplier="1000">Nodes::World::Cluster::Generator::angle_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Min scale:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::min_scale_mean_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::min_scale_mean_pressed</callback>
+					<tooltip>Minimum mean scale of nodes</tooltip>
+				</editline>
+				<label align="right"><text>Spread:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::min_scale_spread_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::min_scale_spread_pressed</callback>
+					<tooltip>Minimum spread scale of nodes</tooltip>
+				</editline>
+				
+				<label align="right"><text>Max scale:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::max_scale_mean_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::max_scale_mean_pressed</callback>
+					<tooltip>Maximum mean scale of nodes</tooltip>
+				</editline>
+				<label align="right"><text>Spread:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::max_scale_spread_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::max_scale_spread_pressed</callback>
+					<tooltip>Maximum spread scale of nodes</tooltip>
+				</editline>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Offset:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::offset_mean_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::offset_mean_pressed</callback>
+					<tooltip>Mean offset from surface</tooltip>
+				</editline>
+				<label align="right"><text>Spread:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::offset_spread_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::offset_spread_pressed</callback>
+					<tooltip>Spread offset from surface</tooltip>
+				</editline>
+				
+				<label align="right"><text>Rotation X:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::rotation_mean_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::rotation_mean_pressed</callback>
+					<tooltip>Mean rotation around X axis</tooltip>
+				</editline>
+				<label align="right"><text>Spread:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::rotation_spread_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::rotation_spread_pressed</callback>
+					<tooltip>Spread rotation around X axis</tooltip>
+				</editline>
+				
+				<label align="right"><text>Rotation Y:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::rotation_mean_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::rotation_mean_pressed</callback>
+					<tooltip>Mean rotation around Y axis</tooltip>
+				</editline>
+				<label align="right"><text>Spread:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::rotation_spread_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::rotation_spread_pressed</callback>
+					<tooltip>Spread rotation around Y axis</tooltip>
+				</editline>
+				
+				<label align="right"><text>Rotation Z:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::rotation_mean_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::rotation_mean_pressed</callback>
+					<tooltip>Mean rotation around Z axis</tooltip>
+				</editline>
+				<label align="right"><text>Spread:</text></label>
+				<editline name="Nodes::World::Cluster::Generator::rotation_spread_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Cluster::Generator::rotation_spread_pressed</callback>
+					<tooltip>Spread rotation around Z axis</tooltip>
+				</editline>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<button align="expand">
+					<text>Generate</text>
+					<callback type="clicked">Nodes::World::Cluster::Generator::generate_clicked</callback>
+					<tooltip>Generate nodes by density mask</tooltip>
+				</button>
+				<vbox/>
+				<vbox/>
+				
+			</gridbox>
+		</vbox>
+		
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::World::Cluster::collector_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<vbox>
+			<hbox align="expand">
+				<button align="right">
+					<text>Update</text>
+					<callback type="clicked">Nodes::World::Cluster::Collector::update_clicked</callback>
+					<tooltip>Update node references list</tooltip>
+				</button>
+				<vbox space="2"/>
+				<button>
+					<text>Collect</text>
+					<callback type="clicked">Nodes::World::Cluster::Collector::collect_clicked</callback>
+					<tooltip>Collect selected node references</tooltip>
+				</button>
+			</hbox>
+		</vbox>
+		
+		<vbox space="2"/>
+		
+		<scrollbox align="expand" height="60">
+			<vbox space="4">
+				<vbox name="Nodes::World::Cluster::Collector::references_vb" export="1" align="expand" space="4"/>
+			</vbox>
+		</scrollbox>
+		
+	</vbox>
+</vbox>
+
+<!--
+/* WorldClutter
+ */
+-->
+<vbox name="Nodes::World::Clutter::main_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<vbox>
+			<hbox align="expand">
+				<button align="right">
+					<text>Add</text>
+					<callback type="clicked">Nodes::World::Clutter::add_clicked</callback>
+					<tooltip>Add node reference</tooltip>
+				</button>
+				<vbox space="2"/>
+				<button>
+					<text>Remove</text>
+					<callback type="clicked">Nodes::World::Clutter::remove_clicked</callback>
+					<tooltip>Remove selected node references</tooltip>
+				</button>
+				<vbox space="2"/>
+				<button>
+					<text>Reload</text>
+					<callback type="clicked">Nodes::World::Clutter::reload_clicked</callback>
+					<tooltip>Reload all node references</tooltip>
+				</button>
+			</hbox>
+		</vbox>
+		
+		<vbox space="2"/>
+		
+		<scrollbox align="expand" height="60">
+			<vbox space="4">
+				<gridbox name="Nodes::World::Clutter::references_gb" export="1" align="expand" columns="3" space="4"/>
+			</vbox>
+		</scrollbox>
+		
+		<vbox space="2"/>
+		
+		<vbox>
+			<gridbox align="expand" columns="4" space="4">
+				
+				<vbox/>
+				<checkbox name="Nodes::World::Clutter::orientation_cb" export="1" align="left,expand">
+					<text>Orientation</text>
+					<callback type="clicked">Nodes::World::Clutter::orientation_clicked</callback>
+					<tooltip>Keep surface orientation</tooltip>
+				</checkbox>
+				<vbox/>
+				<checkbox name="Nodes::World::Clutter::intersection_cb" export="1" align="left,expand">
+					<text>Intersection</text>
+					<callback type="clicked">Nodes::World::Clutter::intersection_clicked</callback>
+					<tooltip>Intersections with parent object</tooltip>
+				</checkbox>
+				
+				<vbox/>
+				<checkbox name="Nodes::World::Clutter::mask_flip_x_cb" export="1" align="left,expand">
+					<text>Flip X</text>
+					<callback type="clicked">Nodes::World::Clutter::mask_flip_x_clicked</callback>
+					<tooltip>Image mask vertical flip</tooltip>
+				</checkbox>
+				<vbox/>
+				<checkbox name="Nodes::World::Clutter::mask_flip_y_cb" export="1" align="left,expand">
+					<text>Flip Y</text>
+					<callback type="clicked">Nodes::World::Clutter::mask_flip_y_clicked</callback>
+					<tooltip>Image mask horizontal flip</tooltip>
+				</checkbox>
+				
+				<vbox/>
+				<checkbox name="Nodes::World::Clutter::mask_inverse_cb" export="1" align="left,expand">
+					<text>Inverse</text>
+					<callback type="clicked">Nodes::World::Clutter::mask_inverse_clicked</callback>
+					<tooltip>Mesh mask inverse</tooltip>
+				</checkbox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Mask:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::World::Clutter::mask_image_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::World::Clutter::mask_image_update_pressed</callback>
+						<tooltip>Name of the density mask</tooltip>
+					</editline>
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::World::Clutter::mask_image_load_update_clicked</callback>
+						<tooltip>Open mask image</tooltip>
+					</icon>
+					<icon texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked">Nodes::World::Clutter::mask_image_view_clicked</callback>
+						<tooltip>Preview mask image</tooltip>
+					</icon>
+					<icon texture="editor/gui/action_add.png" width="22" height="20">
+						<callback type="clicked">Nodes::World::Clutter::mask_image_create_clicked</callback>
+						<tooltip>Create mask image</tooltip>
+					</icon>
+					<icon name="Nodes::World::Clutter::mask_edit_i" export="1" texture="editor/gui/action_edit.png" width="22" height="20">
+						<callback type="clicked">Nodes::World::Clutter::mask_image_edit_clicked</callback>
+						<tooltip>Press ALT to use the brush</tooltip>
+					</icon>
+					<icon texture="editor/gui/action_clear.png" width="22" height="20">
+						<callback type="clicked">Nodes::World::Clutter::mask_image_clear_update_clicked</callback>
+						<tooltip>Clear mask image</tooltip>
+					</icon>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Mask mesh:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::World::Clutter::mask_mesh_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::World::Clutter::mask_mesh_pressed</callback>
+						<tooltip>Name of the mesh mask</tooltip>
+					</editline>
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::World::Clutter::mask_mesh_load_clicked</callback>
+						<tooltip>Open mask mesh</tooltip>
+					</icon>
+					<icon texture="editor/gui/action_clear.png" width="22" height="20">
+						<callback type="clicked">Nodes::World::Clutter::mask_mesh_clear_clicked</callback>
+						<tooltip>Clear mask mesh</tooltip>
+					</icon>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Min value:</text></label>
+				<editline name="Nodes::World::Clutter::mask_min_value_el" export="1" align="expand" validator="int">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::mask_min_value_pressed</callback>
+					<tooltip>Minimum mask value</tooltip>
+				</editline>
+				<label align="right"><text>Max value:</text></label>
+				<editline name="Nodes::World::Clutter::mask_max_value_el" export="1" align="expand" validator="int">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::mask_max_value_pressed</callback>
+					<tooltip>Maximum mask value</tooltip>
+				</editline>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Visible:</text></label>
+				<editline name="Nodes::World::Clutter::visible_distance_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::visible_distance_pressed</callback>
+					<tooltip>Distance up to which nodes are fully visible</tooltip>
+				</editline>
+				<label align="right"><text>Fade:</text></label>
+				<editline name="Nodes::World::Clutter::fade_distance_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::fade_distance_pressed</callback>
+					<tooltip>Distance up to which nodes fade out completely</tooltip>
+				</editline>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Spawn:</text></label>
+				<editline name="Nodes::World::Clutter::spawn_rate_el" export="1" align="expand" validator="int">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::spawn_rate_pressed</callback>
+					<tooltip>Spawn rate</tooltip>
+				</editline>
+				<label align="right"><text>Seed:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::World::Clutter::seed_el" export="1" align="expand" validator="uint">
+						<callback type="pressed,focus_out">Nodes::World::Clutter::seed_pressed</callback>
+						<tooltip>Random seed</tooltip>
+					</editline>
+					<vbox space="4"/>
+					<button>
+						<text>Randomize</text>
+						<callback type="clicked">Nodes::World::Clutter::randomize_clicked</callback>
+					</button>
+				</hbox>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Size X:</text></label>
+				<editline name="Nodes::World::Clutter::size_x_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::size_x_pressed</callback>
+					<tooltip>X size of clutter area</tooltip>
+				</editline>
+				<label align="right"><text>Size Y:</text></label>
+				<editline name="Nodes::World::Clutter::size_y_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::size_y_pressed</callback>
+					<tooltip>Y size of clutter area</tooltip>
+				</editline>
+				
+				<label align="right"><text>Step:</text></label>
+				<editline name="Nodes::World::Clutter::step_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::step_pressed</callback>
+					<tooltip>Cell step</tooltip>
+				</editline>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Density:</text></label>
+				<editline name="Nodes::World::Clutter::density_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::density_pressed</callback>
+					<tooltip>Number of nodes per square unit</tooltip>
+				</editline>
+				<hslider name="Nodes::World::Clutter::density_sl" export="1" align="expand" min="0" max="10000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="10000" flags="max_expand">Nodes::World::Clutter::density_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<label align="right"><text>Threshold:</text></label>
+				<editline name="Nodes::World::Clutter::threshold_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::threshold_pressed</callback>
+					<tooltip>Density mask threshold</tooltip>
+				</editline>
+				<hslider name="Nodes::World::Clutter::threshold_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::World::Clutter::threshold_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<label align="right"><text>Angle:</text></label>
+				<editline name="Nodes::World::Clutter::angle_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::angle_pressed</callback>
+					<tooltip>Surface angle threshold</tooltip>
+				</editline>
+				<hslider name="Nodes::World::Clutter::angle_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::World::Clutter::angle_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Min scale:</text></label>
+				<editline name="Nodes::World::Clutter::min_scale_mean_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::min_scale_pressed</callback>
+					<tooltip>Minimum mean scale of nodes</tooltip>
+				</editline>
+				<label align="right"><text>Spread:</text></label>
+				<editline name="Nodes::World::Clutter::min_scale_spread_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::min_scale_pressed</callback>
+					<tooltip>Minimum spread scale of nodes</tooltip>
+				</editline>
+				
+				<label align="right"><text>Max scale:</text></label>
+				<editline name="Nodes::World::Clutter::max_scale_mean_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::max_scale_pressed</callback>
+					<tooltip>Maximum mean scale of nodes</tooltip>
+				</editline>
+				<label align="right"><text>Spread:</text></label>
+				<editline name="Nodes::World::Clutter::max_scale_spread_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::max_scale_pressed</callback>
+					<tooltip>Maximum spread scale of nodes</tooltip>
+				</editline>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Offset:</text></label>
+				<editline name="Nodes::World::Clutter::offset_mean_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::offset_pressed</callback>
+					<tooltip>Mean offset from surface</tooltip>
+				</editline>
+				<label align="right"><text>Spread:</text></label>
+				<editline name="Nodes::World::Clutter::offset_spread_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::offset_pressed</callback>
+					<tooltip>Spread offset from surface</tooltip>
+				</editline>
+				
+				<label align="right"><text>Rotation X:</text></label>
+				<editline name="Nodes::World::Clutter::rotation_mean_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::rotation_pressed</callback>
+					<tooltip>Mean rotation around X axis</tooltip>
+				</editline>
+				<label align="right"><text>Spread:</text></label>
+				<editline name="Nodes::World::Clutter::rotation_spread_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::rotation_pressed</callback>
+					<tooltip>Spread rotation around X axis</tooltip>
+				</editline>
+				
+				<label align="right"><text>Rotation Y:</text></label>
+				<editline name="Nodes::World::Clutter::rotation_mean_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::rotation_pressed</callback>
+					<tooltip>Mean rotation around Y axis</tooltip>
+				</editline>
+				<label align="right"><text>Spread:</text></label>
+				<editline name="Nodes::World::Clutter::rotation_spread_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::rotation_pressed</callback>
+					<tooltip>Spread rotation around Y axis</tooltip>
+				</editline>
+				
+				<label align="right"><text>Rotation Z:</text></label>
+				<editline name="Nodes::World::Clutter::rotation_mean_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::rotation_pressed</callback>
+					<tooltip>Mean rotation around Z axis</tooltip>
+				</editline>
+				<label align="right"><text>Spread:</text></label>
+				<editline name="Nodes::World::Clutter::rotation_spread_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::World::Clutter::rotation_pressed</callback>
+					<tooltip>Spread rotation around Z axis</tooltip>
+				</editline>
+				
+			</gridbox>
+		</vbox>
+		
+	</vbox>
+</vbox>
+
+<!--
+/* WorldSwitcher
+ */
+-->
+<vbox name="Nodes::World::Switcher::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::World::Switcher::point_cb" export="1" align="left,expand">
+				<text>Point</text>
+				<callback type="clicked">Nodes::World::Switcher::point_clicked</callback>
+				<tooltip>Distance to the bounding sphere center</tooltip>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::World::Switcher::size_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Switcher::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Switcher::size_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Switcher::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Switcher::size_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Switcher::size_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Offset:</text></label>
+			<editline name="Nodes::World::Switcher::offset_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Switcher::offset_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Switcher::offset_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Switcher::offset_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Switcher::offset_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Switcher::offset_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Min distance:</text></label>
+			<editline name="Nodes::World::Switcher::min_distance_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::World::Switcher::min_distance_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Max distance:</text></label>
+			<editline name="Nodes::World::Switcher::max_distance_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::World::Switcher::max_distance_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* WorldOccluder
+ */
+-->
+<vbox name="Nodes::World::Occluder::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::World::Occluder::back_face_cb" export="1" align="left,expand">
+				<text>Back face</text>
+				<callback type="clicked">Nodes::World::Occluder::back_face_clicked</callback>
+				<tooltip>Occluder uses back faces instead of front ones</tooltip>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::World::Occluder::size_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Occluder::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Occluder::size_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Occluder::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::Occluder::size_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::Occluder::size_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Distance:</text></label>
+			<editline name="Nodes::World::Occluder::distance_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::World::Occluder::distance_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* WorldOccluderMesh
+ */
+-->
+<vbox name="Nodes::World::OccluderMesh::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<hbox align="expand">
+				<button align="expand">
+					<text>Load</text>
+					<callback type="clicked">Nodes::World::OccluderMesh::load_clicked</callback>
+				</button>
+				<vbox space="4"/>
+				<button align="expand">
+					<text>Save</text>
+					<callback type="clicked">Nodes::World::OccluderMesh::save_clicked</callback>
+				</button>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Distance:</text></label>
+			<editline name="Nodes::World::OccluderMesh::distance_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::World::OccluderMesh::distance_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* WorldOccluderTerrain
+ */
+-->
+<vbox name="Nodes::World::OccluderTerrain::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::World::OccluderTerrain::size_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::OccluderTerrain::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::OccluderTerrain::size_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::OccluderTerrain::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::World::OccluderTerrain::size_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::OccluderTerrain::size_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::World::OccluderTerrain::radius_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::World::OccluderTerrain::radius_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Distance:</text></label>
+			<editline name="Nodes::World::OccluderTerrain::distance_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::World::OccluderTerrain::distance_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Heights:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::World::OccluderTerrain::heights_image_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::World::OccluderTerrain::heights_image_pressed</callback>
+					<tooltip>Name of the density heights</tooltip>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<callback type="clicked">Nodes::World::OccluderTerrain::heights_image_load_clicked</callback>
+				</icon>
+				<icon texture="editor/gui/action_view.png" width="22" height="20">
+					<callback type="clicked">Nodes::World::OccluderTerrain::heights_image_view_clicked</callback>
+				</icon>
+				<icon texture="editor/gui/action_clear.png" width="22" height="20">
+					<callback type="clicked">Nodes::World::OccluderTerrain::heights_image_clear_clicked</callback>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* WorldTransformPath
+ */
+-->
+<vbox name="Nodes::World::TransformPath::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Path:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::World::TransformPath::path_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::World::TransformPath::path_pressed</callback>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<tooltip>Load path</tooltip>
+					<callback type="clicked">Nodes::World::TransformPath::path_load_clicked</callback>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::World::TransformPath::orientation_cb" export="1" align="left,expand">
+				<text>Orientation</text>
+				<callback type="clicked">Nodes::World::TransformPath::orientation_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::World::TransformPath::loop_cb" export="1" align="left,expand">
+				<text>Loop</text>
+				<callback type="clicked">Nodes::World::TransformPath::loop_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::World::TransformPath::radius_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::World::TransformPath::radius_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Time:</text></label>
+			<editline name="Nodes::World::TransformPath::time_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::TransformPath::time_pressed</callback>
+			</editline>
+			<label align="right"><text>Speed:</text></label>
+			<editline name="Nodes::World::TransformPath::speed_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::World::TransformPath::speed_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<vbox align="expand">
+				<hbox align="expand">
+					<button name="Nodes::World::TransformPath::play_b" export="1" align="expand">
+						<text>Play</text>
+						<callback type="clicked">Nodes::World::TransformPath::play_clicked</callback>
+					</button>
+					<vbox space="4"/>
+					<button name="Nodes::World::TransformPath::stop_b" export="1" align="expand">
+						<text>Stop</text>
+						<callback type="clicked">Nodes::World::TransformPath::stop_clicked</callback>
+					</button>
+				</hbox>
+			</vbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* WorldTransformBone
+ */
+-->
+<vbox name="Nodes::World::TransformBone::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="2" space="4">
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::World::TransformBone::radius_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::World::TransformBone::radius_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Bone:</text></label>
+			<combobox name="Nodes::World::TransformBone::bone_cb" export="1" align="expand">
+				<callback type="changed">Nodes::World::TransformBone::bone_changed</callback>
+			</combobox>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* WorldExpression
+ */
+-->
+<vbox name="Nodes::World::Expression::main_vb" export="1" space="4">
+		<gridbox align="expand" columns="2" space="4">
+			
+			<label align="right"><text>Size:</text></label>
+			<vbox>
+				<hbox align="expand">
+					<editline name="Nodes::World::Expression::size_el[0]" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Nodes::World::Expression::size_pressed</callback>
+					</editline>
+					<vbox space="4"/>
+					<editline name="Nodes::World::Expression::size_el[1]" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Nodes::World::Expression::size_pressed</callback>
+					</editline>
+					<vbox space="4"/>
+					<editline name="Nodes::World::Expression::size_el[2]" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Nodes::World::Expression::size_pressed</callback>
+					</editline>
+				</hbox>
+			</vbox>
+			
+			<label align="right"><text>Offset:</text></label>
+			<vbox>
+				<hbox align="expand">
+					<editline name="Nodes::World::Expression::offset_el[0]" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Nodes::World::Expression::offset_pressed</callback>
+					</editline>
+					<vbox space="4"/>
+					<editline name="Nodes::World::Expression::offset_el[1]" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Nodes::World::Expression::offset_pressed</callback>
+					</editline>
+					<vbox space="4"/>
+					<editline name="Nodes::World::Expression::offset_el[2]" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Nodes::World::Expression::offset_pressed</callback>
+					</editline>
+				</hbox>
+			</vbox>
+			
+			<label align="right"><text>Distance:</text></label>
+			<vbox>
+				<editline name="Nodes::World::Expression::distance_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::World::Expression::distance_pressed</callback>
+				</editline>
+			</vbox>
+			
+			<label align="right"><text>IFps:</text></label>
+				<vbox>
+				<editline name="Nodes::World::Expression::ifps_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::World::Expression::ifps_pressed</callback>
+				</editline>
+			</vbox>
+			
+			<label align="right"><text>File:</text></label>
+			<vbox>
+				<hbox align="expand">
+					<editline name="Nodes::World::Expression::file_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::World::Expression::file_pressed</callback>
+						<callback type="changed">Nodes::World::Expression::file_changed</callback>
+						<tooltip>Expression source file</tooltip>
+					</editline>
+					
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::World::Expression::file_load_clicked</callback>
+					</icon>
+					
+					<icon name="Nodes::World::Expression::file_edit_i" export="1" texture="editor/gui/action_edit.png" width="22" height="20">
+						<callback type="clicked">Nodes::World::Expression::file_edit_clicked</callback>
+					</icon>
+					
+					<icon name="Nodes::World::Expression::file_update_i" export="1" texture="editor/gui/action_reset.png" width="22" height="20">
+						<callback type="clicked">Nodes::World::Expression::file_update_clicked</callback>
+					</icon>
+				</hbox>
+			</vbox>
+			
+			<label align="right,top"><text> Source:</text></label>
+			<scrollbox align="expand">
+				<edittext name="Nodes::World::Expression::expression_et" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::World::Expression::expression_pressed</callback>
+				</edittext>
+			</scrollbox>
+			
+		</gridbox>
+	
+</vbox>
+
+</ui>

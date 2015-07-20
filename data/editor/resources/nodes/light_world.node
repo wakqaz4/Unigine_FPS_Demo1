@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="LightWorld" id="1420031241">
+		<scattering>1</scattering>
+		<shadow_range>8000</shadow_range>
+		<shadow_distribute>0.05</shadow_distribute>
+		<shadow_size>5</shadow_size>
+		<shadow_bias>0.1</shadow_bias>
+		<transform>0.1257044257956044 -0.884296911563926 -0.449686217460572 0 0.2779147673547425 0.4665212189202672 -0.8397151089756537 0 0.9523455064298543 -0.01941860865137621 0.3044029662226631 0 0 0 0 1</transform>
+	</node>
+</nodes>

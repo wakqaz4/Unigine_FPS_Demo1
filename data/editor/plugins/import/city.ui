@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    city.ui
+ * Desc:    City import plugin
+ * Version: 1.14
+ * Author:  Andrey Viktorov <unclebob@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.02">
+
+<!--
+/* Surfaces dialog
+ */
+-->
+<dialog name="MeshUtils::Surfaces::dialog" export="1" sizeable="1" space="4">
+	<text>Surfaces</text>
+	
+	<scrollbox align="expand" width="256" height="256">
+		<listbox name="MeshUtils::Surfaces::surfaces_lb" export="1" multi_selection="1" align="expand">
+			<callback type="clicked">MeshUtils::Surfaces::surfaces_changed</callback>
+			<callback type="double_clicked">MeshUtils::Surfaces::surfaces_double_clicked</callback>
+		</listbox>
+	</scrollbox>
+</dialog>
+
+<!--
+/* Marker create dialog
+ */
+-->
+<dialog name="MeshUtils::MarkerCreate::dialog" export="1" sizeable="1" space="4">
+	<text>Add City</text>
+	
+	<gridbox align="expand" width="300" columns="3" space="4">
+		
+		<label align="right" width="30">Name:</label>
+		<editline name="MeshUtils::MarkerCreate::marker_name_el" export="1" align="expand">
+			<tooltip>City name</tooltip>
+			<callback type="changed,focus_out">MeshUtils::MarkerCreate::marker_name_changed</callback>
+		</editline>
+		<vbox/>
+		
+		<label align="right" width="30">Node:</label>
+		<editline name="MeshUtils::MarkerCreate::marker_path_el" export="1" align="expand">
+			<tooltip>Path to city node (relative to the data directory)</tooltip>
+			<callback type="double_clicked">MeshUtils::MarkerCreate::marker_path_clicked</callback>
+		</editline>
+		<button width="10">
+			<text>...</text>
+			<tooltip>Choose the path to the city node</tooltip>
+			<callback type="clicked">MeshUtils::MarkerCreate::marker_path_clicked</callback>
+		</button>
+		
+	</gridbox>
+</dialog>
+
+<!--
+/* Layer create dialog
+ */
+-->
+<dialog name="MeshUtils::LayerCreate::dialog" export="1" sizeable="1" space="4">
+	<text>Add City Layer</text>
+	
+	<gridbox align="expand" width="300" columns="3" space="4">
+		
+		<label align="right" width="30">Name:</label>
+		<editline name="MeshUtils::LayerCreate::layer_name_el" export="1" align="expand">
+			<callback type="changed,focus_out">MeshUtils::LayerCreate::layer_name_changed</callback>
+			<tooltip>Layer name</tooltip>
+		</editline>
+		<vbox/>
+		
+	</gridbox>
+</dialog>
+
+<!--
+/* Main plugin window
+ */
+-->
+<window name="MeshUtils::window" export="1" sizeable="1" space="4">
+	<text>City Import</text>
+	
+	<icon align="overlap,top,right" pos_x="4" pos_y="-24" texture="core/gui/window_close.png">
+		<callback type="clicked">MeshUtils::UI::window_close_clicked</callback>
+	</icon>
+	
+	<groupbox space="4">
+		<hbox align="expand">
+			
+			<button name="MeshUtils::UI::marker_add_b" align="expand">
+				<text>Add City</text>
+				<tooltip>Add new city (NodeDummy)</tooltip>
+				<callback type="clicked">MeshUtils::UI::marker_add_clicked</callback>
+			</button>
+			<button name="MeshUtils::UI::marker_remove_b" export="1" align="expand">
+				<text>Remove City</text>
+				<tooltip>Remove selected city</tooltip>
+				<callback type="clicked">MeshUtils::UI::marker_remove_clicked</callback>
+			</button>
+			
+			<button name="MeshUtils::UI::layer_add_b" export="1" align="expand">
+				<text>Add City Layer</text>
+				<tooltip>Add new city layer (NodeDummy)</tooltip>
+				<callback type="clicked">MeshUtils::UI::layer_add_clicked</callback>
+			</button>
+			<button name="MeshUtils::UI::layer_remove_b" export="1" align="expand">
+				<text>Remove City Layer</text>
+				<tooltip>Remove selected city layer</tooltip>
+				<callback type="clicked">MeshUtils::UI::layer_remove_clicked</callback>
+			</button>
+			
+		</hbox>
+		
+		<scrollbox align="expand" height="200">
+			<treebox name="MeshUtils::UI::tree_tb" export="1" editable="0" align="expand">
+				<callback type="changed">MeshUtils::UI::update</callback>
+			</treebox>
+		</scrollbox>
+		
+		<hbox align="expand">
+			
+			<button name="MeshUtils::UI::clear_all_b" export="1" align="expand">
+				<text>Clear All</text>
+				<tooltip>Clear generated nodes for all cities</tooltip>
+				<callback type="clicked">MeshUtils::UI::clear_all_clicked</callback>
+			</button>
+			<button name="MeshUtils::UI::generate_all_b" export="1" align="expand">
+				<text>Generate All</text>
+				<tooltip>Generate nodes for all cities</tooltip>
+				<callback type="clicked">MeshUtils::UI::generate_all_clicked</callback>
+			</button>
+			
+		</hbox>
+	</groupbox>
+	
+	<groupbox name="MeshUtils::UI::marker_gb" export="1" space="4">
+		<text>City</text>
+		<gridbox align="expand" columns="3" space="4">
+			
+			<label align="right" width="30">Name:</label>
+			<editline name="MeshUtils::UI::marker_name_el" export="1" align="expand">
+				<tooltip>City name</tooltip>
+				<callback type="pressed,focus_out">MeshUtils::UI::marker_name_pressed</callback>
+			</editline>
+			<vbox/>
+			
+			<label align="right" width="30">Node:</label>
+			<editline name="MeshUtils::UI::marker_path_el" export="1" align="expand">
+				<tooltip>Path to city node with auxiliary geometry</tooltip>
+				<callback type="pressed">MeshUtils::UI::marker_path_pressed</callback>
+				<callback type="double_clicked">MeshUtils::UI::marker_path_clicked</callback>
+			</editline>
+			<icon name="MeshUtils::UI::marker_path_b" texture="editor/gui/action_load.png" width="22" height="20">
+				<tooltip>Choose the path to the city node</tooltip>
+				<callback type="clicked">MeshUtils::UI::marker_path_clicked</callback>
+			</icon>
+			
+		</gridbox>
+	</groupbox>
+	
+	<groupbox name="MeshUtils::UI::layer_gb" export="1" space="4">
+		<text>City Layer</text>
+		<gridbox align="expand" columns="3" space="4">
+			
+			<label align="right" width="30">Name:</label>
+			<editline name="MeshUtils::UI::layer_name_el" export="1" align="expand">
+				<tooltip>City layer name</tooltip>
+				<callback type="pressed,focus_out">MeshUtils::UI::layer_name_pressed</callback>
+			</editline>
+			<vbox/>
+			
+		</gridbox>
+		
+		<hspacer align="expand"/>
+		
+		<tabbox align="expand" space="4">
+			<tab>
+				<text>Cluster</text>
+				
+				<vbox space="4">
+					
+					<checkbox name="MeshUtils::UI::layer_cluster_bake_cb" export="1" align="left">
+						<text>Bake</text>
+						<callback type="clicked">MeshUtils::UI::layer_cluster_bake_checked</callback>
+					</checkbox>
+					
+					<gridbox name="MeshUtils::UI::layer_cluster_gb" export="1" align="expand" columns="3" space="4">
+						
+						<label align="right" width="30">Surfaces:</label>
+						<editline name="MeshUtils::UI::layer_cluster_surfaces_el" export="1" align="expand">
+							<tooltip>City surfaces (placeholders) which will be used to place city layer reference node</tooltip>
+							<callback type="pressed">MeshUtils::UI::layer_cluster_surfaces_pressed</callback>
+							<callback type="double_clicked">MeshUtils::UI::layer_cluster_surfaces_clicked</callback>
+						</editline>
+						<icon name="MeshUtils::UI::layer_cluster_surfaces_b" texture="editor/gui/action_load.png" width="22" height="20">
+							<tooltip>Select city surfaces</tooltip>
+							<callback type="clicked">MeshUtils::UI::layer_cluster_surfaces_clicked</callback>
+						</icon>
+						
+						<label align="right" width="30">Node:</label>
+						<editline name="MeshUtils::UI::layer_cluster_path_el" export="1" align="expand">
+							<tooltip>Path to node that will be placed on the city surfaces</tooltip>
+							<callback type="pressed">MeshUtils::UI::layer_cluster_path_pressed</callback>
+							<callback type="double_clicked">MeshUtils::UI::layer_cluster_path_clicked</callback>
+						</editline>
+						<icon name="MeshUtils::UI::layer_cluster_path_b" texture="editor/gui/action_load.png" width="22" height="20">
+							<tooltip>Select reference node</tooltip>
+							<callback type="clicked">MeshUtils::UI::layer_cluster_path_clicked</callback>
+						</icon>
+						
+						<label align="right" width="30">Visibility:</label>
+						<editline name="MeshUtils::UI::layer_cluster_distance_el" export="1" align="expand" validator="float">
+							<tooltip>Distance up to which meshes are fully visible</tooltip>
+							<callback type="pressed,focus_out">MeshUtils::UI::layer_cluster_distance_pressed</callback>
+						</editline>
+						<vbox/>
+						
+						<label align="right" width="30">Shadow:</label>
+						<editline name="MeshUtils::UI::layer_cluster_shadow_el" export="1" align="expand" validator="float">
+							<tooltip>Additional shadow radius</tooltip>
+							<callback type="pressed,focus_out">MeshUtils::UI::layer_cluster_shadow_pressed</callback>
+						</editline>
+						<vbox/>
+						
+					</gridbox>
+					
+					<vbox space="4"/>
+					
+					<checkbox name="MeshUtils::UI::layer_cluster_project_cb" export="1" align="left">
+						<text>Bind to terrain</text>
+						<callback type="clicked">MeshUtils::UI::layer_cluster_project_checked</callback>
+					</checkbox>
+					
+					<hspacer/>
+					
+					<checkbox name="MeshUtils::UI::layer_lod_bake_cb" export="1" align="left">
+						<text>LOD</text>
+						<callback type="clicked">MeshUtils::UI::layer_lod_bake_checked</callback>
+					</checkbox>
+					
+					<gridbox name="MeshUtils::UI::layer_lod_gb" export="1" align="expand" columns="3" space="4">
+						
+						<label align="right" width="30">Surfaces:</label>
+						<editline name="MeshUtils::UI::layer_lod_surfaces_el" export="1" align="expand">
+							<tooltip>City layer surfaces which will be baked into ObjectMesh node</tooltip>
+							<callback type="pressed">MeshUtils::UI::layer_lod_surfaces_pressed</callback>
+							<callback type="double_clicked">MeshUtils::UI::layer_lod_surfaces_clicked</callback>
+						</editline>
+						<icon name="MeshUtils::UI::layer_lod_surfaces_b" texture="editor/gui/action_load.png" width="22" height="20">
+							<tooltip>Select city layer surfaces</tooltip>
+							<callback type="clicked">MeshUtils::UI::layer_lod_surfaces_clicked</callback>
+						</icon>
+						
+						<label align="right" width="30">Path:</label>
+						<editline name="MeshUtils::UI::layer_lod_path_el" export="1" align="expand">
+							<tooltip>Path where generated meshes will be placed (relative to data directory)</tooltip>
+							<callback type="pressed,focus_out">MeshUtils::UI::layer_lod_path_pressed</callback>
+						</editline>
+						<vbox/>
+						
+					</gridbox>
+					
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>Decal</text>
+				
+				<vbox space="4">
+					
+					<checkbox name="MeshUtils::UI::layer_decal_bake_cb" export="1" align="left">
+						<text>Bake</text>
+						<callback type="clicked">MeshUtils::UI::layer_decal_bake_checked</callback>
+					</checkbox>
+					
+					<gridbox name="MeshUtils::UI::layer_decal_gb" export="1" align="expand" columns="3" space="4">
+						
+						<label align="right" width="30">Surfaces:</label>
+						<editline name="MeshUtils::UI::layer_decal_surfaces_el" export="1" align="expand">
+							<tooltip>City surfaces which will be baked into DecalDeferredMesh node</tooltip>
+							<callback type="pressed">MeshUtils::UI::layer_decal_surfaces_pressed</callback>
+							<callback type="double_clicked">MeshUtils::UI::layer_decal_surfaces_clicked</callback>
+						</editline>
+						<icon name="MeshUtils::UI::layer_decal_surfaces_b" texture="editor/gui/action_load.png" width="22" height="20">
+							<tooltip>Select city surfaces</tooltip>
+							<callback type="clicked">MeshUtils::UI::layer_decal_surfaces_clicked</callback>
+						</icon>
+						
+						<label align="right" width="30">Material:</label>
+						<editline name="MeshUtils::UI::layer_decal_material_el" export="1" align="expand">
+							<tooltip>Decal material</tooltip>
+							<callback type="pressed">MeshUtils::UI::layer_decal_material_pressed</callback>
+							<callback type="double_clicked">MeshUtils::UI::layer_decal_material_clicked</callback>
+						</editline>
+						<icon name="MeshUtils::UI::layer_decal_material_b" texture="editor/gui/action_load.png" width="22" height="20">
+							<tooltip>Select decal material</tooltip>
+							<callback type="clicked">MeshUtils::UI::layer_decal_material_clicked</callback>
+						</icon>
+						
+						<label align="right" width="30">Height:</label>
+						<editline name="MeshUtils::UI::layer_decal_radius_el" export="1" align="expand" validator="float">
+							<tooltip>Height of the decal projection</tooltip>
+							<callback type="pressed,focus_out">MeshUtils::UI::layer_decal_radius_pressed</callback>
+						</editline>
+						<vbox/>
+						
+						<label align="right" width="30">Max Visibility:</label>
+						<editline name="MeshUtils::UI::layer_decal_distance_el" export="1" align="expand" validator="float">
+							<tooltip>Maximum visibility distance</tooltip>
+							<callback type="pressed,focus_out">MeshUtils::UI::layer_decal_distance_pressed</callback>
+						</editline>
+						<vbox/>
+						
+						<label align="right" width="30">Max Fade:</label>
+						<editline name="MeshUtils::UI::layer_decal_fade_el" export="1" align="expand" validator="float">
+							<tooltip>Maximum fade distance</tooltip>
+							<callback type="pressed,focus_out">MeshUtils::UI::layer_decal_fade_pressed</callback>
+						</editline>
+						<vbox/>
+						
+					</gridbox>
+					
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>Mesh</text>
+				
+				<vbox space="4">
+					
+					<checkbox name="MeshUtils::UI::layer_mesh_bake_cb" export="1" align="left">
+						<text>Bake</text>
+						<callback type="clicked">MeshUtils::UI::layer_mesh_bake_checked</callback>
+					</checkbox>
+					
+					<gridbox name="MeshUtils::UI::layer_mesh_gb" export="1" align="expand" columns="3" space="4">
+						
+						<label align="right" width="30">Surfaces:</label>
+						<editline name="MeshUtils::UI::layer_mesh_surfaces_el" export="1" align="expand">
+							<tooltip>City surfaces which will be baked into ObjectMesh node</tooltip>
+							<callback type="pressed">MeshUtils::UI::layer_mesh_surfaces_pressed</callback>
+							<callback type="double_clicked">MeshUtils::UI::layer_mesh_surfaces_clicked</callback>
+						</editline>
+						<icon name="MeshUtils::UI::layer_mesh_surfaces_b" texture="editor/gui/action_load.png" width="22" height="20">
+							<tooltip>Select city surfaces</tooltip>
+							<callback type="clicked">MeshUtils::UI::layer_mesh_surfaces_clicked</callback>
+						</icon>
+						
+						<label align="right" width="30">Material:</label>
+						<editline name="MeshUtils::UI::layer_mesh_material_el" export="1" align="expand">
+							<tooltip>Mesh material</tooltip>
+							<callback type="pressed">MeshUtils::UI::layer_mesh_material_pressed</callback>
+							<callback type="double_clicked">MeshUtils::UI::layer_mesh_material_clicked</callback>
+						</editline>
+						<icon name="MeshUtils::UI::layer_mesh_material_b" texture="editor/gui/action_load.png" width="22" height="20">
+							<tooltip>Select mesh material</tooltip>
+							<callback type="clicked">MeshUtils::UI::layer_mesh_material_clicked</callback>
+						</icon>
+						
+						<label align="right" width="30">Path:</label>
+						<editline name="MeshUtils::UI::layer_mesh_path_el" export="1" align="expand">
+							<tooltip>Path where generated meshes will be placed (relative to data directory)</tooltip>
+							<callback type="pressed,focus_out">MeshUtils::UI::layer_mesh_path_pressed</callback>
+						</editline>
+						<vbox/>
+						
+						<label align="right" width="30">Max Visibility:</label>
+						<editline name="MeshUtils::UI::layer_mesh_distance_el" export="1" align="expand" validator="float">
+							<tooltip>Maximum visibility distance</tooltip>
+							<callback type="pressed,focus_out">MeshUtils::UI::layer_mesh_distance_pressed</callback>
+						</editline>
+						<vbox/>
+						
+						<label align="right" width="30">Max Fade:</label>
+						<editline name="MeshUtils::UI::layer_mesh_fade_el" export="1" align="expand" validator="float">
+							<tooltip>Maximum fade distance</tooltip>
+							<callback type="pressed,focus_out">MeshUtils::UI::layer_mesh_fade_pressed</callback>
+						</editline>
+						<vbox/>
+						
+					</gridbox>
+					
+				</vbox>
+			</tab>
+		</tabbox>
+		
+		<hspacer align="expand"/>
+		
+		<hbox align="expand">
+			
+			<button name="MeshUtils::UI::layer_clear_b" export="1" align="expand">
+				<text>Clear</text>
+				<tooltip>Clear selected city layer nodes</tooltip>
+				<callback type="clicked">MeshUtils::UI::layer_clear_clicked</callback>
+			</button>
+			<button name="MeshUtils::UI::layer_generate_b" export="1" align="expand">
+				<text>Generate</text>
+				<tooltip>Generate selected city layer nodes</tooltip>
+				<callback type="clicked">MeshUtils::UI::layer_generate_clicked</callback>
+			</button>
+			
+		</hbox>
+	</groupbox>
+</window>
+
+</ui>

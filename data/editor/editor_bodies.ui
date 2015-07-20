@@ -1,0 +1,1311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_bodies.ui
+ * Desc:    Unigine editor
+ * Version: 1.32
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Valia Vaneeva <fattie@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Body
+ */
+-->
+<vbox name="Nodes::Object::Body::main_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<vbox name="Nodes::Object::Body::parameters_vb" export="1">
+			<gridbox name="body_parameters_gb" align="expand" columns="4" space="4">
+				
+				<label align="right"><text>Type:</text></label>
+				<combobox name="Nodes::Object::Body::type_cb" export="1" align="expand">
+					<tooltip>The body type</tooltip>
+					<text>None</text>
+					<text>Dummy</text>
+					<text>Rigid</text>
+					<text>RagDoll</text>
+					<text>Fracture</text>
+					<text>Rope</text>
+					<text>Cloth</text>
+					<text>Water</text>
+					<text>Path</text>
+					<callback type="changed">Nodes::Object::Body::type_changed</callback>
+				</combobox>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<vbox align="expand"/>
+				<vbox align="expand"/>
+				<vbox align="expand"/>
+				
+			</gridbox>
+			
+			<vbox space="2"/>
+			<vbox name="Nodes::Object::Body::dummy_vb" export="1"/>
+			
+		</vbox>
+		
+	</vbox>
+</vbox>
+
+<!--
+/* BodyDummy
+ */
+-->
+<gridbox name="Nodes::Object::Body::Dummy::parameters_gb" export="1" columns="4" space="4">
+	<attach>body_parameters_gb</attach>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Dummy::enabled_cb" export="1" align="left,expand">
+		<tooltip>The body is enabled</tooltip>
+		<text>Enabled</text>
+		<callback type="clicked">Nodes::Object::Body::enabled_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Name:</text></label>
+	<editline name="Nodes::Object::Body::Dummy::name_el" export="1" align="expand">
+		<tooltip>Name of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::name_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Physical:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Dummy::physical_mask_el" export="1" align="expand">
+			<tooltip>Physical mask of the body</tooltip>
+			<text face="core/gui/console.ttf"/>
+			<callback type="pressed,focus_out">Nodes::Object::Body::physical_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+<!--
+/* BodyRigid
+ */
+-->
+<gridbox name="Nodes::Object::Body::Rigid::parameters_gb" export="1" columns="4" space="4">
+	<attach>body_parameters_gb</attach>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Rigid::enabled_cb" export="1" align="left,expand">
+		<tooltip>The body is enabled</tooltip>
+		<text>Enabled</text>
+		<callback type="clicked">Nodes::Object::Body::enabled_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Rigid::gravity_cb" export="1" align="left,expand">
+		<tooltip>The gravity is enabled</tooltip>
+		<text>Gravity</text>
+		<callback type="clicked">Nodes::Object::Body::gravity_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Rigid::freezable_cb" export="1" align="left,expand">
+		<tooltip>The body is freezable</tooltip>
+		<text>Freezable</text>
+		<callback type="clicked">Nodes::Object::Body::Rigid::freezable_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Rigid::shape_based_cb" export="1" align="left,expand">
+		<tooltip>Shape-based parameters</tooltip>
+		<text>Shape-based mass parameters</text>
+		<callback type="clicked">Nodes::Object::Body::Rigid::shape_based_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Name:</text></label>
+	<editline name="Nodes::Object::Body::Rigid::name_el" export="1" align="expand">
+		<tooltip>Name of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::name_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Physical:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Rigid::physical_mask_el" export="1" align="expand">
+			<tooltip>Physical mask of the body</tooltip>
+			<text face="core/gui/console.ttf"/>
+			<callback type="pressed,focus_out">Nodes::Object::Body::physical_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Mass:</text></label>
+	<editline name="Nodes::Object::Body::Rigid::mass_el" export="1" align="expand" validator="float">
+		<tooltip>Mass of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::mass_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Inertia:</text></label>
+	<editline name="Nodes::Object::Body::Rigid::inertia_0_el[0]" export="1" align="expand" validator="float">
+		<tooltip>Inertia tensor of the body (mass distribution)</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::inertia_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Body::Rigid::inertia_0_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Inertia tensor of the body (mass distribution)</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::inertia_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Body::Rigid::inertia_0_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Inertia tensor of the body (mass distribution)</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::inertia_pressed</callback>
+	</editline>
+	<vbox/>
+	<editline name="Nodes::Object::Body::Rigid::inertia_1_el[0]" export="1" align="expand" validator="float">
+		<tooltip>Inertia tensor of the body (mass distribution)</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::inertia_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Body::Rigid::inertia_1_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Inertia tensor of the body (mass distribution)</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::inertia_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Body::Rigid::inertia_1_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Inertia tensor of the body (mass distribution)</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::inertia_pressed</callback>
+	</editline>
+	<vbox/>
+	<editline name="Nodes::Object::Body::Rigid::inertia_2_el[0]" export="1" align="expand" validator="float">
+		<tooltip>Inertia tensor of the body (mass distribution)</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::inertia_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Body::Rigid::inertia_2_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Inertia tensor of the body (mass distribution)</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::inertia_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Body::Rigid::inertia_2_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Inertia tensor of the body (mass distribution)</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::inertia_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>CMass:</text></label>
+	<editline name="Nodes::Object::Body::Rigid::center_of_mass_el[0]" export="1" align="expand" validator="float">
+		<tooltip>Center of mass of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::center_of_mass_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Body::Rigid::center_of_mass_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Center of mass of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::center_of_mass_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Body::Rigid::center_of_mass_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Center of mass of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::center_of_mass_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>LScale:</text></label>
+	<editline name="Nodes::Object::Body::Rigid::linear_scale_el[0]" export="1" align="expand" validator="float">
+		<tooltip>Linear velocity scale</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::linear_scale_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Body::Rigid::linear_scale_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Linear velocity scale</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::linear_scale_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Body::Rigid::linear_scale_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Linear velocity scale</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::linear_scale_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>AScale:</text></label>
+	<editline name="Nodes::Object::Body::Rigid::angular_scale_el[0]" export="1" align="expand" validator="float">
+		<tooltip>Angular velocity scale</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::angular_scale_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Body::Rigid::angular_scale_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Angular velocity scale</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::angular_scale_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Body::Rigid::angular_scale_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Angular velocity scale</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::angular_scale_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>LDamping:</text></label>
+	<editline name="Nodes::Object::Body::Rigid::linear_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Linear damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::linear_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Rigid::linear_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Body::Rigid::linear_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>ADamping:</text></label>
+	<editline name="Nodes::Object::Body::Rigid::angular_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Angular damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::angular_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Rigid::angular_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Body::Rigid::angular_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>MLVelocity:</text></label>
+	<editline name="Nodes::Object::Body::Rigid::max_linear_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Maximum linear velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::max_linear_velocity_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>MAVelocity:</text></label>
+	<editline name="Nodes::Object::Body::Rigid::max_angular_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Maximum angular velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::max_angular_velocity_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>FLVelocity:</text></label>
+	<editline name="Nodes::Object::Body::Rigid::frozen_linear_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Frozen linear velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::frozen_linear_velocity_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>FAVelocity:</text></label>
+	<editline name="Nodes::Object::Body::Rigid::frozen_angular_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Frozen angular velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rigid::frozen_angular_velocity_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+<!--
+/* BodyRagDoll
+ */
+-->
+<gridbox name="Nodes::Object::Body::RagDoll::parameters_gb" export="1" columns="4" space="4">
+	<attach>body_parameters_gb</attach>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::RagDoll::enabled_cb" export="1" align="left,expand">
+		<tooltip>The body is enabled</tooltip>
+		<text>Enabled</text>
+		<callback type="clicked">Nodes::Object::Body::enabled_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::RagDoll::gravity_cb" export="1" align="left,expand">
+		<tooltip>The gravity is enabled</tooltip>
+		<text>Gravity</text>
+		<callback type="clicked">Nodes::Object::Body::gravity_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::RagDoll::frame_based_cb" export="1" align="left,expand">
+		<tooltip>Frame-based animation transformations</tooltip>
+		<text>Frame-based animation</text>
+		<callback type="clicked">Nodes::Object::Body::RagDoll::frame_based_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Name:</text></label>
+	<editline name="Nodes::Object::Body::RagDoll::name_el" export="1" align="expand">
+		<tooltip>Name of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::name_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Mass:</text></label>
+	<editline name="Nodes::Object::Body::RagDoll::mass_el" export="1" align="expand" validator="float">
+		<tooltip>Mass of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::RagDoll::mass_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Rigidity:</text></label>
+	<editline name="Nodes::Object::Body::RagDoll::rigidity_el" export="1" align="expand" validator="float">
+		<tooltip>Rigidity of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::RagDoll::rigidity_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::RagDoll::rigidity_sl" export="1" align="expand" min="0" max="1000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000">Nodes::Object::Body::RagDoll::rigidity_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Bones:</text></label>
+	<hbox align="expand">
+		<button align="expand">
+			<tooltip>Autogenerate bones from the mesh</tooltip>
+			<text>Create</text>
+			<callback type="clicked">Nodes::Object::Body::RagDoll::create_clicked</callback>
+		</button>
+		<vbox space="2"/>
+		<button align="expand">
+			<tooltip>Load bones from the node file</tooltip>
+			<text>Load</text>
+			<callback type="clicked">Nodes::Object::Body::RagDoll::load_clicked</callback>
+		</button>
+		<vbox space="2"/>
+		<button align="expand">
+			<tooltip>Save bones to the node file</tooltip>
+			<text>Save</text>
+			<callback type="clicked">Nodes::Object::Body::RagDoll::save_clicked</callback>
+		</button>
+		<vbox space="2"/>
+		<button align="expand">
+			<tooltip>Remove all bones</tooltip>
+			<text>Remove</text>
+			<callback type="clicked">Nodes::Object::Body::RagDoll::remove_clicked</callback>
+		</button>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<scrollbox align="expand" width="120" height="160">
+		<treebox name="Nodes::Object::Body::RagDoll::bones_tb" export="1" align="expand">
+			<callback type="changed">Nodes::Object::Body::RagDoll::bones_changed</callback>
+		</treebox>
+	</scrollbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Type:</text></label>
+	<label name="Nodes::Object::Body::RagDoll::bone_type_l" export="1" align="left,expand"/>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::RagDoll::bone_enabled_cb" export="1" align="left,expand">
+		<tooltip>The bone is enabled</tooltip>
+		<text>Enabled</text>
+		<callback type="clicked">Nodes::Object::Body::RagDoll::bone_enabled_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::RagDoll::bone_frame_based_cb" export="1" align="left,expand">
+		<tooltip>Frame-based bone animation transformations</tooltip>
+		<text>Frame-based animation</text>
+		<callback type="clicked">Nodes::Object::Body::RagDoll::bone_frame_based_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Physical:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::RagDoll::bone_physical_mask_el" export="1" align="expand">
+			<tooltip>Physical mask of the body</tooltip>
+			<text face="core/gui/console.ttf"/>
+			<callback type="pressed,focus_out">Nodes::Object::Body::RagDoll::bone_physical_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Object::Body::RagDoll::bone_physical_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Object::Body::RagDoll::bone_physical_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>LDamping:</text></label>
+	<editline name="Nodes::Object::Body::RagDoll::linear_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Linear damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::RagDoll::linear_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::RagDoll::linear_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Body::RagDoll::linear_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>ADamping:</text></label>
+	<editline name="Nodes::Object::Body::RagDoll::angular_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Angular damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::RagDoll::angular_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::RagDoll::angular_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Body::RagDoll::angular_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>MLVelocity:</text></label>
+	<editline name="Nodes::Object::Body::RagDoll::max_linear_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Maximum linear velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::RagDoll::max_linear_velocity_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>MAVelocity:</text></label>
+	<editline name="Nodes::Object::Body::RagDoll::max_angular_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Maximum angular velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::RagDoll::max_angular_velocity_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>FLVelocity:</text></label>
+	<editline name="Nodes::Object::Body::RagDoll::frozen_linear_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Frozen linear velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::RagDoll::frozen_linear_velocity_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>FAVelocity:</text></label>
+	<editline name="Nodes::Object::Body::RagDoll::frozen_angular_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Frozen angular velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::RagDoll::frozen_angular_velocity_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+<!--
+/* BodyFracture
+ */
+-->
+<gridbox name="Nodes::Object::Body::Fracture::parameters_gb" export="1" columns="4" space="4">
+	<attach>body_parameters_gb</attach>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Fracture::enabled_cb" export="1" align="left,expand">
+		<tooltip>The body is enabled</tooltip>
+		<text>Enabled</text>
+		<callback type="clicked">Nodes::Object::Body::enabled_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Fracture::gravity_cb" export="1" align="left,expand">
+		<tooltip>The gravity is enabled</tooltip>
+		<text>Gravity</text>
+		<callback type="clicked">Nodes::Object::Body::gravity_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Fracture::broken_cb" export="1" align="left,expand">
+		<tooltip>The body is broken</tooltip>
+		<text>Broken</text>
+		<callback type="clicked">Nodes::Object::Body::Fracture::broken_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Name:</text></label>
+	<editline name="Nodes::Object::Body::Fracture::name_el" export="1" align="expand">
+		<tooltip>Name of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::name_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Physical:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Fracture::physical_mask_el" export="1" align="expand">
+			<tooltip>Physical mask of the body</tooltip>
+			<text face="core/gui/console.ttf"/>
+			<callback type="pressed,focus_out">Nodes::Object::Body::physical_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Collision:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Fracture::collision_mask_el" export="1" align="expand">
+			<tooltip>Collision mask of the body</tooltip>
+			<text face="core/gui/console.ttf"/>
+			<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::collision_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Object::Body::Fracture::collision_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Object::Body::Fracture::collision_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<label align="right"><text>Exclusion:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Fracture::exclusion_mask_el" export="1" align="expand">
+			<tooltip>Exclusion mask of the body that prevents collisions of the body with other ones</tooltip>
+			<text face="core/gui/console.ttf"/>
+			<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::exclusion_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Object::Body::Fracture::exclusion_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Object::Body::Fracture::exclusion_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	
+	<label align="right"><text>Error:</text></label>
+	<editline name="Nodes::Object::Body::Fracture::error_el" export="1" align="expand" validator="float">
+		<tooltip>Approximation error permissible by creating convex shape for the mesh</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::error_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Threshold:</text></label>
+	<editline name="Nodes::Object::Body::Fracture::threshold_el" export="1" align="expand" validator="float">
+		<tooltip>Minimum shape volume</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::threshold_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Material:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Fracture::material_el" export="1" align="expand">
+			<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::material_pressed</callback>
+		</editline>
+		<icon texture="editor/gui/action_load.png" width="22" height="20">
+			<callback type="clicked">Nodes::Object::Body::Fracture::material_load_clicked</callback>
+		</icon>
+		<icon name="Nodes::Object::Body::Fracture::material_clear_i" export="1" texture="editor/gui/action_clear.png" width="22" height="20">
+			<callback type="clicked">Nodes::Object::Body::Fracture::material_clear_clicked</callback>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Property:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Fracture::property_el" export="1" align="expand">
+			<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::property_pressed</callback>
+		</editline>
+		<icon texture="editor/gui/action_load.png" width="22" height="20">
+			<callback type="clicked">Nodes::Object::Body::Fracture::property_load_clicked</callback>
+		</icon>
+		<icon name="Nodes::Object::Body::Fracture::property_clear_i" export="1" texture="editor/gui/action_clear.png" width="22" height="20">
+			<callback type="clicked">Nodes::Object::Body::Fracture::property_clear_clicked</callback>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Mass:</text></label>
+	<editline name="Nodes::Object::Body::Fracture::mass_el" export="1" align="expand" validator="float">
+		<tooltip>Mass of the shape</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::mass_pressed</callback>
+	</editline>
+	<label align="right"><text>Density:</text></label>
+	<editline name="Nodes::Object::Body::Fracture::density_el" export="1" align="expand" validator="float">
+		<tooltip>Density of the shape</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::density_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Friction:</text></label>
+	<editline name="Nodes::Object::Body::Fracture::friction_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::friction_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Fracture::friction_sl" export="1" align="expand" min="0" max="4000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Body::Fracture::friction_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Restitution:</text></label>
+	<editline name="Nodes::Object::Body::Fracture::restitution_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::restitution_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Fracture::restitution_sl" export="1" align="expand" min="0" max="1000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000">Nodes::Object::Body::Fracture::restitution_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>LDamping:</text></label>
+	<editline name="Nodes::Object::Body::Fracture::linear_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Linear damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::linear_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Fracture::linear_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Body::Fracture::linear_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>ADamping:</text></label>
+	<editline name="Nodes::Object::Body::Fracture::angular_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Angular damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::angular_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Fracture::angular_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Body::Fracture::angular_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>MLVelocity:</text></label>
+	<editline name="Nodes::Object::Body::Fracture::max_linear_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Maximum linear velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::max_linear_velocity_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>MAVelocity:</text></label>
+	<editline name="Nodes::Object::Body::Fracture::max_angular_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Maximum angular velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::max_angular_velocity_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>FLVelocity:</text></label>
+	<editline name="Nodes::Object::Body::Fracture::frozen_linear_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Frozen linear velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::frozen_linear_velocity_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>FAVelocity:</text></label>
+	<editline name="Nodes::Object::Body::Fracture::frozen_angular_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Frozen angular velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Fracture::frozen_angular_velocity_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+<!--
+/* BodyRope
+ */
+-->
+<gridbox name="Nodes::Object::Body::Rope::parameters_gb" export="1" columns="4" space="4">
+	<attach>body_parameters_gb</attach>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Rope::enabled_cb" export="1" align="left,expand">
+		<tooltip>The body is enabled</tooltip>
+		<text>Enabled</text>
+		<callback type="clicked">Nodes::Object::Body::enabled_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Rope::gravity_cb" export="1" align="left,expand">
+		<tooltip>The gravity is enabled</tooltip>
+		<text>Gravity</text>
+		<callback type="clicked">Nodes::Object::Body::gravity_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Rope::collision_cb" export="1" align="left,expand">
+		<text>Collision</text>
+		<tooltip>The collision is enabled</tooltip>
+		<callback type="clicked">Nodes::Object::Body::Rope::collision_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Name:</text></label>
+	<editline name="Nodes::Object::Body::Rope::name_el" export="1" align="expand">
+		<tooltip>Name of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::name_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Physical:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Rope::physical_mask_el" export="1" align="expand">
+			<text face="core/gui/console.ttf"/>
+			<tooltip>Physical mask of the body</tooltip>
+			<callback type="pressed,focus_out">Nodes::Object::Body::physical_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Collision:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Rope::collision_mask_el" export="1" align="expand">
+			<text face="core/gui/console.ttf"/>
+			<tooltip>Collision mask of the body</tooltip>
+			<callback type="pressed,focus_out">Nodes::Object::Body::Rope::collision_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Object::Body::Rope::collision_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Object::Body::Rope::collision_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Iterations:</text></label>
+	<editline name="Nodes::Object::Body::Rope::num_iterations_el" export="1" align="expand" validator="uint">
+		<tooltip>The number of iterations</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rope::num_iterations_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Rope::num_iterations_sl" export="1" align="expand" min="1" max="16">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach flags="max_expand">Nodes::Object::Body::Rope::num_iterations_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Distance:</text></label>
+	<editline name="Nodes::Object::Body::Rope::distance_el" export="1" align="expand" validator="float">
+		<tooltip>Simulation distance</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rope::distance_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Mass:</text></label>
+	<editline name="Nodes::Object::Body::Rope::mass_el" export="1" align="expand" validator="float">
+		<tooltip>Mass of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rope::mass_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Radius:</text></label>
+	<editline name="Nodes::Object::Body::Rope::radius_el" export="1" align="expand" validator="float">
+		<tooltip>Collision radius of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rope::radius_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Rigidity:</text></label>
+	<editline name="Nodes::Object::Body::Rope::rigidity_el" export="1" align="expand" validator="float">
+		<tooltip>Rigidity of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rope::rigidity_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Rope::rigidity_sl" export="1" align="expand" min="0" max="1000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000">Nodes::Object::Body::Rope::rigidity_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Friction:</text></label>
+	<editline name="Nodes::Object::Body::Rope::friction_el" export="1" align="expand" validator="float">
+		<tooltip>Coefficient of friction</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rope::friction_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Rope::friction_sl" export="1" align="expand" min="0" max="4000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Body::Rope::friction_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Restitution:</text></label>
+	<editline name="Nodes::Object::Body::Rope::restitution_el" export="1" align="expand" validator="float">
+		<tooltip>Coefficient of restitution</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rope::restitution_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Rope::restitution_sl" export="1" align="expand" min="0" max="1000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000">Nodes::Object::Body::Rope::restitution_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>LDamping:</text></label>
+	<editline name="Nodes::Object::Body::Rope::linear_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Linear damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rope::linear_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Rope::linear_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Body::Rope::linear_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>LStretch:</text></label>
+	<editline name="Nodes::Object::Body::Rope::linear_stretch_el" export="1" align="expand" validator="float">
+		<tooltip>Linear stretch</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rope::linear_stretch_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Rope::linear_stretch_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Body::Rope::linear_stretch_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>LThreshold:</text></label>
+	<editline name="Nodes::Object::Body::Rope::linear_threshold_el" export="1" align="expand" validator="float">
+		<tooltip>Linear threshold</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rope::linear_threshold_pressed</callback>
+	</editline>
+	<label align="right"><text>AThreshold:</text></label>
+	<editline name="Nodes::Object::Body::Rope::angular_threshold_el" export="1" align="expand" validator="float">
+		<tooltip>Angular threshold</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rope::angular_threshold_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>LRestitution:</text></label>
+	<editline name="Nodes::Object::Body::Rope::linear_restitution_el" export="1" align="expand" validator="float">
+		<tooltip>Linear restitution</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rope::linear_restitution_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Rope::linear_restitution_sl" export="1" align="expand" min="0" max="1000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000">Nodes::Object::Body::Rope::linear_restitution_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>ARestitution:</text></label>
+	<editline name="Nodes::Object::Body::Rope::angular_restitution_el" export="1" align="expand" validator="float">
+		<tooltip>Angular restitution</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Rope::angular_restitution_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Rope::angular_restitution_sl" export="1" align="expand" min="0" max="1000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000">Nodes::Object::Body::Rope::angular_restitution_el</attach>
+	</hslider>
+	<vbox/>
+	
+</gridbox>
+
+<!--
+/* BodyCloth
+ */
+-->
+<gridbox name="Nodes::Object::Body::Cloth::parameters_gb" export="1" columns="4" space="4">
+	<attach>body_parameters_gb</attach>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Cloth::enabled_cb" export="1" align="left,expand">
+		<tooltip>The body is enabled</tooltip>
+		<text>Enabled</text>
+		<callback type="clicked">Nodes::Object::Body::enabled_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Cloth::gravity_cb" export="1" align="left,expand">
+		<tooltip>The gravity is enabled</tooltip>
+		<text>Gravity</text>
+		<callback type="clicked">Nodes::Object::Body::gravity_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Cloth::collision_cb" export="1" align="left,expand">
+		<tooltip>The collision is enabled</tooltip>
+		<text>Collision</text>
+		<callback type="clicked">Nodes::Object::Body::Cloth::collision_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Cloth::two_sided_cb" export="1" align="left,expand">
+		<tooltip>Two sided surface</tooltip>
+		<text>Two sided</text>
+		<callback type="clicked">Nodes::Object::Body::Cloth::two_sided_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Name:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::name_el" export="1" align="expand">
+		<tooltip>Name of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::name_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Physical:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Cloth::physical_mask_el" export="1" align="expand">
+			<tooltip>Physical mask of the body</tooltip>
+			<text face="core/gui/console.ttf"/>
+			<callback type="pressed,focus_out">Nodes::Object::Body::physical_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Collision:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Cloth::collision_mask_el" export="1" align="expand">
+			<tooltip>Collision mask of the body</tooltip>
+			<text face="core/gui/console.ttf"/>
+			<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::collision_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Object::Body::Cloth::collision_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Object::Body::Cloth::collision_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Iterations:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::num_iterations_el" export="1" align="expand" validator="uint">
+		<tooltip>The number of iterations</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::num_iterations_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Cloth::num_iterations_sl" export="1" align="expand" min="1" max="16">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach flags="max_expand">Nodes::Object::Body::Cloth::num_iterations_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Distance:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::distance_el" export="1" align="expand" validator="float">
+		<tooltip>Simulation distance</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::distance_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Mass:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::mass_el" export="1" align="expand" validator="float">
+		<tooltip>Mass of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::mass_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Radius:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::radius_el" export="1" align="expand" validator="float">
+		<tooltip>Collision radius of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::radius_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Rigidity:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::rigidity_el" export="1" align="expand" validator="float">
+		<tooltip>Rigidity of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::rigidity_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Cloth::rigidity_sl" export="1" align="expand" min="0" max="1000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000">Nodes::Object::Body::Cloth::rigidity_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Friction:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::friction_el" export="1" align="expand" validator="float">
+		<tooltip>Coefficient of friction</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::friction_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Cloth::friction_sl" export="1" align="expand" min="0" max="4000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Body::Cloth::friction_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Restitution:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::restitution_el" export="1" align="expand" validator="float">
+		<tooltip>Coefficient of restitution</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::restitution_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Cloth::restitution_sl" export="1" align="expand" min="0" max="1000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000">Nodes::Object::Body::Cloth::restitution_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>LDamping:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::linear_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Linear damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::linear_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Cloth::linear_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Body::Cloth::linear_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>LStretch:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::linear_stretch_el" export="1" align="expand" validator="float">
+		<tooltip>Linear stretch</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::linear_stretch_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Cloth::linear_stretch_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Body::Cloth::linear_stretch_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>LThreshold:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::linear_threshold_el" export="1" align="expand" validator="float">
+		<tooltip>Linear threshold</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::linear_threshold_pressed</callback>
+	</editline>
+	<label align="right"><text>AThreshold:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::angular_threshold_el" export="1" align="expand" validator="float">
+		<tooltip>Angular threshold</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::angular_threshold_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>LRestitution:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::linear_restitution_el" export="1" align="expand" validator="float">
+		<tooltip>Linear restitution</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::linear_restitution_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Cloth::linear_restitution_sl" export="1" align="expand" min="0" max="1000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000">Nodes::Object::Body::Cloth::linear_restitution_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>ARestitution:</text></label>
+	<editline name="Nodes::Object::Body::Cloth::angular_restitution_el" export="1" align="expand" validator="float">
+		<tooltip>Angular restitution</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Cloth::angular_restitution_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Body::Cloth::angular_restitution_sl" export="1" align="expand" min="0" max="1000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000">Nodes::Object::Body::Cloth::angular_restitution_el</attach>
+	</hslider>
+	<vbox/>
+	
+</gridbox>
+
+<!--
+/* BodyWater
+ */
+-->
+<gridbox name="Nodes::Object::Body::Water::parameters_gb" export="1" columns="4" space="4">
+	<attach>body_parameters_gb</attach>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Water::enabled_cb" export="1" align="left,expand">
+		<tooltip>The body is enabled</tooltip>
+		<text>Enabled</text>
+		<callback type="clicked">Nodes::Object::Body::enabled_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Water::absorption_cb" export="1" align="left,expand">
+		<tooltip>Waves are absorbed by the boundaries</tooltip>
+		<text>Absorption</text>
+		<callback type="clicked">Nodes::Object::Body::Water::absorption_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Water::intersection_cb" export="1" align="left,expand">
+		<tooltip>Ground intersection</tooltip>
+		<text>Intersection</text>
+		<callback type="clicked">Nodes::Object::Body::Water::intersection_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Name:</text></label>
+	<editline name="Nodes::Object::Body::Water::name_el" export="1" align="expand">
+		<tooltip>Name of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::name_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Physical:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Water::physical_mask_el" export="1" align="expand">
+			<tooltip>Physical mask of the body</tooltip>
+			<text face="core/gui/console.ttf"/>
+			<callback type="pressed,focus_out">Nodes::Object::Body::physical_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Distance:</text></label>
+	<editline name="Nodes::Object::Body::Water::distance_el" export="1" align="expand" validator="float">
+		<tooltip>Simulation distance</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Water::distance_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Depth:</text></label>
+	<editline name="Nodes::Object::Body::Water::depth_el" export="1" align="expand" validator="float">
+		<tooltip>Maximum water depth</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Water::depth_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+
+	<label align="right"><text>Density:</text></label>
+	<editline name="Nodes::Object::Body::Water::density_el" export="1" align="expand" validator="float">
+		<tooltip>Water density</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Water::density_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Liquidity:</text></label>
+	<editline name="Nodes::Object::Body::Water::liquidity_el" export="1" align="expand" validator="float">
+		<tooltip>Water liquidity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Water::liquidity_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Linear damp:</text></label>
+	<editline name="Nodes::Object::Body::Water::linear_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Linear velocity damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Water::linear_damping_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Angular damp:</text></label>
+	<editline name="Nodes::Object::Body::Water::angular_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Angular velocity damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Water::angular_damping_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Interaction:</text></label>
+	<editline name="Nodes::Object::Body::Water::interaction_force_el" export="1" align="expand" validator="float">
+		<tooltip>Interaction force</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::Water::interaction_force_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+<!--
+/* BodyPath
+ */
+-->
+<gridbox name="Nodes::Object::Body::Path::parameters_gb" export="1" columns="4" space="4">
+	<attach>body_parameters_gb</attach>
+	
+	<vbox/>
+	<checkbox name="Nodes::Object::Body::Path::enabled_cb" export="1" align="left,expand">
+		<tooltip>The body is enabled</tooltip>
+		<text>Enabled</text>
+		<callback type="clicked">Nodes::Object::Body::enabled_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Name:</text></label>
+	<editline name="Nodes::Object::Body::Path::name_el" export="1" align="expand">
+		<tooltip>Name of the body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Body::name_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Physical:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Path::physical_mask_el" export="1" align="expand">
+			<tooltip>Physical mask of the body</tooltip>
+			<text face="core/gui/console.ttf"/>
+			<callback type="pressed,focus_out">Nodes::Object::Body::physical_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Object::Body::physical_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Path:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Object::Body::Path::path_el" export="1" align="expand">
+			<callback type="pressed,focus_out">Nodes::Object::Body::Path::path_pressed</callback>
+		</editline>
+		<icon texture="editor/gui/action_load.png" width="22" height="20">
+			<tooltip>Load path</tooltip>
+			<callback type="clicked">Nodes::Object::Body::Path::path_load_clicked</callback>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+</ui>

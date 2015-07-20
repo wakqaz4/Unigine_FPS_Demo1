@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="ObjectMeshCluster" id="327048486" property="node_base">
+		<mesh_name/>
+		<shadow_radius>100</shadow_radius>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

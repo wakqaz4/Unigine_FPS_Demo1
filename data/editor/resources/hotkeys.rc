@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hotkeys version="1.0">
+	<tab text="Common">
+		<group text="World">
+			<hotkey name="create_world" type="keyboard" text="New world" tooltip="Create an empty world"/>
+			<hotkey name="open_world" type="keyboard" text="Open world" tooltip="Load a world"/>
+			<hotkey name="save_world" type="keyboard" text="Save world" tooltip="Save the world"/>
+			<hotkey name="reload_world" type="keyboard" text="Reload world" tooltip="Reload the world"/>
+		</group>
+		<group text="Edit">
+			<hotkey name="undo" text="Undo" type="keyboard" tooltip="Undo the last action"/>
+			<hotkey name="redo" text="Redo" type="keyboard" tooltip="Redo the last action"/>
+		</group>
+		<group text="Common">
+			<hotkey name="other_stop_play" type="keyboard" text="Play (toggle)" tooltip="Stop or resume animations and physics interactions"/>
+			<hotkey name="system_menu" type="keyboard" text="System menu (toggle)" tooltip="Open a system menu"/>
+			<hotkey name="quick_save" type="keyboard" text="Quick save" tooltip="World state save"/>
+			<hotkey name="quick_load" type="keyboard" text="Quick load" tooltip="World state load"/>
+			<hotkey name="other_screenshot" type="keyboard" text="Take a screenshot" tooltip="Take a screenshot"/>
+			<hotkey name="quit" type="keyboard" text="Quit editor" tooltip="Quit the editor"/>
+			<hotkey name="help" type="keyboard" text="Help" tooltip="Open documentation"/>
+		</group>
+	</tab>
+	<tab text="Navigation">
+		<group text="Navigation">
+			<hotkey name="change_direction" text="Change direction" tooltip="Change Direction" no_conflict="orbit"/>
+			<hotkey name="dolly" text="Zoom (Dolly)" tooltip="Dolly"/>
+			<hotkey name="track" text="Track (Crab)" tooltip="Track"/>
+			<hotkey name="orbit" text="Orbit" tooltip="Orbit" no_conflict="change_direction"/>
+			<hotkey name="zoom_in" text="Zoom in" tooltip="Zoom in"/>
+			<hotkey name="zoom_out" text="Zoom out" tooltip="Zoom out"/>
+			<hotkey name="move_forward" type="keyboard" text="Move forward" tooltip="Move Forward"/>
+			<hotkey name="move_backward" type="keyboard" text="Move backward" tooltip="Move Backward"/>
+			<hotkey name="move_left" type="keyboard" text="Move left" tooltip="Move Left"/>
+			<hotkey name="move_right" type="keyboard" text="Move right" tooltip="Move Right"/>
+			<hotkey name="move_crouch" type="keyboard" text="Crouch" tooltip="Crouch"/>
+			<hotkey name="move_jump" type="keyboard" text="Jump" tooltip="Jump"/>
+			<hotkey name="inclination_right" type="keyboard" text="Inclination right" tooltip="Clockwise rotation around view axis"/>
+			<hotkey name="inclination_left" type="keyboard" text="Inclination left" tooltip="Counterclockwise rotation around view axis"/>
+		</group>
+		<group text="Speed">
+			<hotkey name="move_run" type="modifier" text="Run" tooltip="Run modifier. Hold it to increase movement speed."/>
+			<hotkey name="camera_speed_1" text="Camera speed 1" tooltip="The first camera speed"/>
+			<hotkey name="camera_speed_2" text="Camera speed 2" tooltip="The second camera speed"/>
+			<hotkey name="camera_speed_3" text="Camera speed 3" tooltip="The third camera speed"/>
+			<hotkey name="camera_speed_switch" text="Cycle camera speeds" tooltip="Cycle camera speeds"/>
+		</group>
+		<group text="Focusing">
+			<hotkey name="nodes_focus" text="Focus camera on node" tooltip="Focus the camera on the selected node"/>
+			<hotkey name="other_camera" text="Reset camera focus" tooltip="Reset a rotation pivot for the camera"/>
+		</group>
+		<group text="Utilities">
+			<hotkey name="other_light" text="Camera flashlight (toggle)" tooltip="Toggle a flashlight attached to the camera"/>
+		</group>
+	</tab>
+	<tab text="Nodes">
+		<group text="Selection">
+			<hotkey name="select" text="Select" tooltip="Select"/>
+			<hotkey name="rectangle_select" text="Rectangle select" tooltip="Rectangle select"/>
+			<hotkey name="add_selection" text="Add to selection" tooltip="Add to selection"/>
+			<hotkey name="remove_selection" text="Remove from selection" tooltip="Remove from selection"/>
+			<hotkey name="select_all" text="Select all" tooltip="Select all nodes"/>
+			<hotkey name="reset_selection" text="Reset selection" tooltip="Deselect all nodes"/>
+			<hotkey name="invert_selection" text="Invert selection" tooltip="Select all unselected nodes"/>
+			<hotkey name="isolate_nodes" text="Isolate selection" tooltip="Hide all nodes except for the selected ones"/>
+		</group>
+		<group text="Placement">
+			<hotkey name="manipulator_selector" type="keyboard" text="Select" tooltip="Changes the mode to nodes selection"/>
+			<hotkey name="manipulator_translator" type="keyboard" text="Move" tooltip="Changes the mode to nodes positioning"/>
+			<hotkey name="manipulator_rotator" type="keyboard" text="Rotate" tooltip="Changes the mode to nodes rotation"/>
+			<hotkey name="manipulator_scaler" type="keyboard" text="Scale" tooltip="Changes the mode to nodes scaling"/>
+			<hotkey name="manipulator_pivot" type="keyboard" text="Switch manipulator pivot" tooltip="Switch manipulator pivot"/>
+			<hotkey name="manipulator_basis" type="keyboard" text="Switch manipulator basis" tooltip="Switch manipulator basis"/>
+			<hotkey name="nodes_clone" type="keyboard" text="Clone" tooltip="Clone selected nodes"/>
+			<hotkey name="nodes_delete" type="keyboard" text="Delete" tooltip="Delete selected nodes"/>
+			<hotkey name="clone_node" type="modifier" text="Clone and move" tooltip="Clone node" conflict_group="node_move"/>
+			<hotkey name="move_without_children" type="modifier" text="Move ignoring hierarchy" tooltip="Move ignoring hierarchy" conflict_group="node_move"/>
+			<hotkey name="nodes_place_here" type="keyboard" text="Move node to camera" tooltip="Move the selected nodes in front of the camera"/>
+			<hotkey name="nodes_drop_down" type="keyboard" text="Drop node to the ground" tooltip="Positions selected nodes to the surface below them"/>
+		</group>
+		<group text="Snapping">
+			<hotkey name="nodes_position_snap" type="keyboard" text="Snap to grid (toggle)" tooltip="Snap node position to a grid"/>
+			<hotkey name="nodes_rotation_snap" type="keyboard" text="Snap by angle (toggle)" tooltip="Snap node rotation to a grid"/>
+		</group>
+		<group text="Snap to surface">
+			<hotkey name="nodes_place_manually" text="Place node on surface" tooltip="Align the selected node with the underlying surface"/>
+			<hotkey name="place_node_relative_transform" text="Orient by surface normal" tooltip="Orient by surface normal" conflict_group="node_placement"/>
+			<hotkey name="place_node_offset_reset" text="Reset distance to surface" tooltip="Reset distance to surface" conflict_group="node_placement"/>
+			<hotkey name="place_node_increase_offset" text="Increase distance to surface" tooltip="Increase distance to surface" conflict_group="node_placement"/>
+			<hotkey name="place_node_decrease_offset" text="Decrease distance to surface" tooltip="Decrease distance to surface" conflict_group="node_placement"/>
+			<hotkey name="place_node_success" text="Confirm placement" tooltip="Place object" conflict_group="node_placement"/>
+			<hotkey name="place_node_cancel" text="Abort placement" tooltip="Abort placement" conflict_group="node_placement"/>
+		</group>
+		<group text="Grouping">
+			<hotkey name="group_selected" type="keyboard" text="Group selected" tooltip="Group selected as children of a NodeDummy"/>
+			<hotkey name="convert_into_node_reference" type="keyboard" text="Convert selected into NodeReference" tooltip="Convert selected nodes into NodeReference (save nodes into a file and add a NodeReference to it into the world)"/>
+		</group>
+	</tab>
+	<tab text="Brushes">
+		<group text="Brushes">
+			<hotkey name="brushes_apply_brush" text="Apply brush" tooltip="Apply brush" conflict_group="brushes_editor"/>
+			<hotkey name="brushes_get_brush_value" text="Picker" tooltip="Get brush value" conflict_group="brushes_editor"/>
+			<hotkey name="brushes_increment_brush_radius" text="Increase brush size" tooltip="Increment brush size" conflict_group="brushes_editor"/>
+			<hotkey name="brushes_decrement_brush_radius" text="Decrease brush size" tooltip="Decrement brush size" conflict_group="brushes_editor"/>
+		</group>
+	</tab>
+	<tab text="Visualization">
+		<group text="Rendering mode">
+			<hotkey name="final_image" type="keyboard" text="Final image" tooltip="Renders the scene without any modifications"/>
+			<hotkey name="ambient_mode" type="keyboard" text="Unlit" tooltip="Toggle simplified lighting mode"/>
+			<hotkey name="toggle_render_mode" type="keyboard" text="Unlit - Final mode (toggle)" tooltip="Toggle between simplified lighting mode and Final image"/>
+			<hotkey name="scene_wireframe" type="keyboard" text="Wireframe" tooltip="Show a wireframe for the whole scene"/>
+			<hotkey name="normals" type="keyboard" text="Gray materials" tooltip="Show normals for the whole scene"/>
+			<hotkey name="mipmaps" type="keyboard" text="Mipmap levels" tooltip="Show levels of detail for textures with different colors"/>
+			<hotkey name="deferred_depth" type="keyboard" text="Depth buffer" tooltip="Show depth buffer contents"/>
+			<hotkey name="deferred_color" type="keyboard" text="Color buffer" tooltip="Show color buffer contents"/>
+			<hotkey name="deferred_normal" type="keyboard" text="Normals buffer" tooltip="Show normals buffer contents"/>
+		</group>
+		<group text="Helpers">
+			<hotkey name="fps" type="keyboard" text="FPS counter (toggle)" tooltip="Show the FPS counter in the upper right corner"/>
+			<hotkey name="messages" type="keyboard" text="Debug messages (toggle)" tooltip="Show debugging messages in the upper left corner"/>
+			<hotkey name="profiler" type="keyboard" text="Profiler mode (selector)" tooltip="Cycle through performance profiler modes"/>
+			<hotkey name="nodes_info" type="keyboard" text="Node info (toggle)" tooltip="Display information on the selected node"/>
+			<hotkey name="visualizer" type="keyboard" text="Visualizer (toggle)" tooltip="Toggle visualization of all helpers, bounding boxes, handlers, etc"/>
+			<hotkey name="object_wireframe" type="keyboard" text="Selected object wireframe" tooltip="Show a wireframe for selected nodes"/>
+			<hotkey name="object_bounds" type="keyboard" text="Bounds (toggle)" tooltip="Show bounding boxes for selected objects"/>
+			<hotkey name="mesh_bones" type="keyboard" text="Bones (toggle)" tooltip="Show bones for skinned meshes"/>
+			<hotkey name="textures" type="keyboard" text="Render buffers (toggle)" tooltip="Show renderer buffers"/>
+			<hotkey name="world_objects" type="keyboard" text="World objects (toggle)" tooltip="Show sectors, portals, occluders and world triggers"/>
+			<hotkey name="physics_objects" type="keyboard" text="Physics (toggle)" tooltip="Show object shapes, joints and contacts"/>
+		</group>
+	</tab>
+	<tab text="Windows">
+		<group text="Windows">
+			<hotkey name="panel_nodes" type="keyboard" text="Nodes" tooltip="Open a panel with nodes and their settings"/>
+			<hotkey name="panel_materials" type="keyboard" text="Materials" tooltip="Open a panel with materials"/>
+			<hotkey name="panel_properties" type="keyboard" text="Properties" tooltip="Open a panel with properties"/>
+			<hotkey name="panel_render" type="keyboard" text="Rendering settings" tooltip="Open a panel with world rendering settings"/>
+			<hotkey name="panel_sound" type="keyboard" text="Sound settings" tooltip="Open a panel with sound settings"/>
+			<hotkey name="panel_physics" type="keyboard" text="Physics settings" tooltip="Open a panel with world physics settings"/>
+			<hotkey name="panel_tools" type="keyboard" text="Tools" tooltip="Open a panel with editor settings and tools"/>
+			<hotkey name="panel_keys" type="keyboard" text="Key bindings" tooltip="Open a panel with key bindings"/>
+			<hotkey name="panel_plugins" type="keyboard" text="Plugins" tooltip="Open a panel with plugins"/>
+		</group>
+	</tab>
+	<tab text="Helpers">
+		<group text="Helpers">
+			<hotkey name="helpers_nodes" type="keyboard" text="Nodes" tooltip=""/>
+			<hotkey name="helpers_objects" type="keyboard" text="Objects" tooltip=""/>
+			<hotkey name="helpers_effects" type="keyboard" text="Effects" tooltip=""/>
+			<hotkey name="helpers_lights" type="keyboard" text="Lights" tooltip=""/>
+			<hotkey name="helpers_decals" type="keyboard" text="Decals" tooltip=""/>
+			<hotkey name="helpers_worlds" type="keyboard" text="Worlds" tooltip=""/>
+			<hotkey name="helpers_sounds" type="keyboard" text="Sounds" tooltip=""/>
+			<hotkey name="helpers_paths" type="keyboard" text="Paths" tooltip=""/>
+			<hotkey name="helpers_players" type="keyboard" text="Players" tooltip=""/>
+		</group>
+	</tab>
+	
+</hotkeys>

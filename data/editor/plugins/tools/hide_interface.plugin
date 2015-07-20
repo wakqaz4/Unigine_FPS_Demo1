@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin name="hide_interface" version="1.0">
+	<text>Hide Interface</text>
+	<description>Hides all interface elements by a hotkey</description>
+	<source>hide_interface.cpp</source>
+</plugin>

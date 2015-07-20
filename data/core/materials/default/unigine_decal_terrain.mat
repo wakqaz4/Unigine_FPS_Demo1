@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<materials version="1.00" editable="0">
+	
+	<!--
+	/**************************************************************************\
+	*
+	* Decal terrain material
+	*
+	\**************************************************************************/
+	-->
+	
+	<!--
+	/* Decal terrain material
+	 */
+	-->
+	<material name="decal_terrain_base" editable="0">
+		
+		<!-- options -->
+		<options depth_mask="0"/>
+		
+		<!-- states -->
+		<state name="deferred" type="switch" items="none,default">1</state>
+		<state name="auxiliary" type="switch" items="none,default">0</state>
+		<state name="ambient" type="switch" items="none,default">1</state>
+		<state name="light_spot" type="switch" items="none,default">1</state>
+		<state name="light_omni" type="switch" items="none,default">1</state>
+		<state name="light_proj" type="switch" items="none,default">1</state>
+		<state name="light_world" type="switch" items="none,default">1</state>
+		<state name="detail_0" type="switch" items="none,overlay,overlap">0</state>
+		<state name="detail_1" type="switch" items="none,overlay,overlap">0</state>
+		<state name="detail_2" type="switch" items="none,overlay,overlap">0</state>
+		<state name="detail_3" type="switch" items="none,overlay,overlap">0</state>
+		<state name="ambient_light" type="toggle">0</state>
+		
+		<!-- wireframe shaders -->
+		<shader pass="wireframe" decal="terrain_proj"
+			defines="BASE_WIREFRAME"
+			vertex="core/shaders/default/decal/vertex_terrain.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- deferred shaders -->
+		<shader pass="deferred" decal="terrain_proj"
+			defines="BASE_DEFERRED,TERRAIN"
+			alpha_test_defines=",ALPHA_TEST"
+			deferred="1"
+			detail_0_defines=",DETAIL_0_OVERLAY,DETAIL_0_OVERLAP"
+			detail_1_defines=",DETAIL_1_OVERLAY,DETAIL_1_OVERLAP"
+			detail_2_defines=",DETAIL_2_OVERLAY,DETAIL_2_OVERLAP"
+			detail_3_defines=",DETAIL_3_OVERLAY,DETAIL_3_OVERLAP"
+			vertex="core/shaders/default/decal/vertex_terrain.shader"
+			fragment="core/shaders/default/decal/fragment_terrain_deferred.shader"/>
+		
+		<!-- auxiliary shaders -->
+		<shader pass="auxiliary" decal="terrain_proj"
+			defines="BASE_AUXILIARY"
+			alpha_test_defines=",ALPHA_TEST"
+			auxiliary="1"
+			vertex="core/shaders/default/decal/vertex_terrain.shader"
+			fragment="core/shaders/default/decal/fragment_base_auxiliary.shader"/>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient" decal="terrain_proj"
+			defines="BASE_AMBIENT,AMBIENT,TERRAIN"
+			alpha_test_defines=",ALPHA_TEST"
+			receive_world_shadow_defines=",SHADOW"
+			ambient="1"
+			detail_0_defines=",DETAIL_0_OVERLAY,DETAIL_0_OVERLAP"
+			detail_1_defines=",DETAIL_1_OVERLAY,DETAIL_1_OVERLAP"
+			detail_2_defines=",DETAIL_2_OVERLAY,DETAIL_2_OVERLAP"
+			detail_3_defines=",DETAIL_3_OVERLAY,DETAIL_3_OVERLAP"
+			ambient_light_defines=",AMBIENT_LIGHT"
+			vertex="core/shaders/default/decal/vertex_terrain.shader"
+			fragment="core/shaders/default/decal/fragment_terrain_ambient.shader"/>
+		
+		<!-- light spot shaders -->
+		<shader pass="light_spot" decal="terrain_proj"
+			defines="BASE_LIGHT_SPOT,SPOT,TERRAIN"
+			alpha_test_defines=",ALPHA_TEST"
+			light_spot="1"
+			detail_0_defines=",DETAIL_0_OVERLAY,DETAIL_0_OVERLAP"
+			detail_1_defines=",DETAIL_1_OVERLAY,DETAIL_1_OVERLAP"
+			detail_2_defines=",DETAIL_2_OVERLAY,DETAIL_2_OVERLAP"
+			detail_3_defines=",DETAIL_3_OVERLAY,DETAIL_3_OVERLAP"
+			vertex="core/shaders/default/decal/vertex_terrain.shader"
+			fragment="core/shaders/default/decal/fragment_terrain_light_spot.shader"/>
+		
+		<!-- light omni shaders -->
+		<shader pass="light_omni" decal="terrain_proj"
+			defines="BASE_LIGHT_OMNI,OMNI,TERRAIN"
+			alpha_test_defines=",ALPHA_TEST"
+			receive_shadow_defines=",SHADOW"
+			light_omni="1"
+			detail_0_defines=",DETAIL_0_OVERLAY,DETAIL_0_OVERLAP"
+			detail_1_defines=",DETAIL_1_OVERLAY,DETAIL_1_OVERLAP"
+			detail_2_defines=",DETAIL_2_OVERLAY,DETAIL_2_OVERLAP"
+			detail_3_defines=",DETAIL_3_OVERLAY,DETAIL_3_OVERLAP"
+			vertex="core/shaders/default/decal/vertex_terrain.shader"
+			fragment="core/shaders/default/decal/fragment_terrain_light_omni.shader"/>
+		
+		<!-- light proj shaders -->
+		<shader pass="light_proj" decal="terrain_proj"
+			defines="BASE_LIGHT_PROJ,PROJ,TERRAIN"
+			alpha_test_defines=",ALPHA_TEST"
+			receive_shadow_defines=",SHADOW"
+			light_proj="1"
+			detail_0_defines=",DETAIL_0_OVERLAY,DETAIL_0_OVERLAP"
+			detail_1_defines=",DETAIL_1_OVERLAY,DETAIL_1_OVERLAP"
+			detail_2_defines=",DETAIL_2_OVERLAY,DETAIL_2_OVERLAP"
+			detail_3_defines=",DETAIL_3_OVERLAY,DETAIL_3_OVERLAP"
+			vertex="core/shaders/default/decal/vertex_terrain.shader"
+			fragment="core/shaders/default/decal/fragment_terrain_light_proj.shader"/>
+		
+		<!-- light world shaders -->
+		<shader pass="light_world" decal="terrain_proj"
+			defines="BASE_LIGHT_WORLD,WORLD,TERRAIN"
+			alpha_test_defines=",ALPHA_TEST"
+			receive_world_shadow_defines=",SHADOW"
+			light_world="1"
+			ambient_light="0"
+			detail_0_defines=",DETAIL_0_OVERLAY,DETAIL_0_OVERLAP"
+			detail_1_defines=",DETAIL_1_OVERLAY,DETAIL_1_OVERLAP"
+			detail_2_defines=",DETAIL_2_OVERLAY,DETAIL_2_OVERLAP"
+			detail_3_defines=",DETAIL_3_OVERLAY,DETAIL_3_OVERLAP"
+			vertex="core/shaders/default/decal/vertex_terrain.shader"
+			fragment="core/shaders/default/decal/fragment_terrain_light_world.shader"/>
+		
+		<!-- bindings -->
+		<bind decal="terrain_ortho" to="terrain_proj"/>
+		
+		<!-- textures -->
+		<texture name="diffuse" wrap="clamp" anisotropy="1">core/textures/decal_base_diffuse.dds</texture>
+		<texture name="mask" pass="deferred,ambient,light_spot,light_omni,light_proj,light_world" unit="2" wrap="clamp" anisotropy="1">core/textures/decal_terrain_mask.dds</texture>
+		<texture name="detail_0_diffuse" pass="deferred,ambient,light_spot,light_omni,light_proj,light_world" detail_0="1,2" unit="3" anisotropy="1">core/textures/decal_base_diffuse.dds</texture>
+		<texture name="detail_0_normal" pass="deferred,ambient,light_spot,light_omni,light_proj,light_world" detail_0="1,2" format="signed" anisotropy="1">core/textures/decal_base_normal.dds</texture>
+		<texture name="detail_1_diffuse" pass="deferred,ambient,light_spot,light_omni,light_proj,light_world" detail_1="1,2" unit="5" anisotropy="1">core/textures/decal_base_diffuse.dds</texture>
+		<texture name="detail_1_normal" pass="deferred,ambient,light_spot,light_omni,light_proj,light_world" detail_1="1,2" format="signed" anisotropy="1">core/textures/decal_base_normal.dds</texture>
+		<texture name="detail_2_diffuse" pass="deferred,ambient,light_spot,light_omni,light_proj,light_world" detail_2="1,2" unit="7" anisotropy="1">core/textures/decal_base_diffuse.dds</texture>
+		<texture name="detail_2_normal" pass="deferred,ambient,light_spot,light_omni,light_proj,light_world" detail_2="1,2" format="signed" anisotropy="1">core/textures/decal_base_normal.dds</texture>
+		<texture name="detail_3_diffuse" pass="deferred,ambient,light_spot,light_omni,light_proj,light_world" detail_3="1,2" unit="9" anisotropy="1">core/textures/decal_base_diffuse.dds</texture>
+		<texture name="detail_3_normal" pass="deferred,ambient,light_spot,light_omni,light_proj,light_world" detail_3="1,2" format="signed" anisotropy="1">core/textures/decal_base_normal.dds</texture>
+		<texture name="environment" pass="ambient" unit="11" type="environment"/>
+		<texture name="deferred_occlusion" pass="ambient" unit="15" type="deferred_occlusion"/>
+		<texture name="light_image" pass="light_omni,light_proj,light_world" unit="11" type="light_image"/>
+		<texture name="light_color" pass="ambient,light_omni,light_proj,light_world" unit="12" type="light_color"/>
+		<texture name="light_depth" pass="ambient,light_omni,light_proj,light_world" type="light_depth"/>
+		<texture name="light_noise" pass="ambient,light_omni,light_proj,light_world" type="light_noise"/>
+		<texture name="light_vcube" pass="light_omni" type="light_vcube"/>
+		
+		<!-- parameters -->
+		<parameter name="base_transform" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="detail_0_transform" detail_0="1,2" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="detail_1_transform" detail_1="1,2" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="detail_2_transform" detail_2="1,2" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="detail_3_transform" detail_3="1,2" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="detail_0_value" detail_0="2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_0_threshold" detail_0="2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_0_diffuse" detail_0="1,2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_0_normal" detail_0="1,2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_1_value" detail_1="2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_1_threshold" detail_1="2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_1_diffuse" detail_1="1,2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_1_normal" detail_1="1,2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_2_value" detail_2="2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_2_threshold" detail_2="2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_2_diffuse" detail_2="1,2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_2_normal" detail_2="1,2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_3_value" detail_3="2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_3_threshold" detail_3="2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_3_diffuse" detail_3="1,2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_3_normal" detail_3="1,2" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="auxiliary_color" auxiliary="1" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="environment_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="diffuse_scale" type="slider" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="specular_scale" type="slider" min="0.0" max="8.0" flags="max_expand">1.0</parameter>
+		<parameter name="specular_power" type="slider" min="0.0" max="2.0" flags="log10,max_expand">16.0</parameter>
+		<parameter name="fresnel_bias" type="slider" min="0.0" max="1.0">1.0</parameter>
+		<parameter name="fresnel_power" type="slider" min="0.0" max="1.0" flags="log10,max_expand">5.0</parameter>
+	</material>
+	
+</materials>

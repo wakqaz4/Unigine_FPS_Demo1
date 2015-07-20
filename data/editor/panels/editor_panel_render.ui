@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_panel_render.ui
+ * Desc:    Unigine editor
+ * Version: 1.0
+ * Author:  Mikhail Lyubimov <alterego@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.0">
+
+<!--
+/* PanelRender
+ */
+-->
+<groupbox name="main_widget" export="1" space="1" height="28">
+	<button name="main_b" export="1" align="expand" toggleable="1">
+		<text>Rendering</text>
+		<callback type="clicked" instance="instance" string="show_clicked" widget="main_b">callback_redirector_1</callback>
+	</button>
+</groupbox>
+
+<vbox name="hotkey" align="right" reference="1">
+	<label align="right">
+		<text>hotkey</text>
+		<data>data</data>
+	</label>
+</vbox>
+
+<vbox name="menu_vb" export="1" space="0" align="expand,overlap">
+	
+	<hbox space="4" align="expand">
+		<data>item</data>
+		<checkbox name="final_cb" export="1" checked="1" align="left">
+			<text>Final image</text>
+			<tooltip>Renders the scene without any modifications $(final_image).</tooltip>
+			<callback type="clicked" instance="instance" string="final">mode_clicked</callback>
+		</checkbox>
+		
+		<reference name="hotkey" data="final_image"/>
+	</hbox>
+	
+	<hbox space="4" align="expand">
+		<data>item</data>
+		<checkbox name="unlit_cb" export="1" align="left">
+			<attach>final_cb</attach>
+			<text>Simplified unlit</text>
+			<tooltip>Renders the scene in the simplified lighting mode $(ambient_mode).</tooltip>
+			<callback type="clicked" instance="instance" string="unlit">mode_clicked</callback>
+		</checkbox>
+		
+		<reference name="hotkey" data="ambient_mode"/>
+	</hbox>
+	
+	<hbox space="4" align="expand">
+		<data>item</data>
+		<checkbox name="wireframe_cb" export="1" align="left">
+			<attach>final_cb</attach>
+			<text>Wireframe</text>
+			<tooltip>Renders a wireframe for the whole scene $(scene_wireframe).</tooltip>
+			<callback type="clicked" instance="instance" string="wireframe">mode_clicked</callback>
+		</checkbox>
+		
+		<reference name="hotkey" data="scene_wireframe"/>
+	</hbox>
+	
+	<hbox space="4" align="expand">
+		<data>item</data>
+		<checkbox name="gray_materials_cb" export="1" align="left">
+			<attach>final_cb</attach>
+			<text>Gray materials</text>
+			<tooltip>Renders normal maps only for the whole scene $(normals).</tooltip>
+			<callback type="clicked" instance="instance" string="gray_materials">mode_clicked</callback>
+		</checkbox>
+		
+		<reference name="hotkey" data="normals"/>
+	</hbox>
+	
+	<hbox space="4" align="expand">
+		<data>item</data>
+		<checkbox name="mipmap_cb" export="1" align="left">
+			<attach>final_cb</attach>
+			<text>Mipmap levels</text>
+			<tooltip>Renders mipmap levels for textures. The original texture is rendered in a red color, the following mipmap level are rendered in green, blue, yellow, etc. $(mipmaps)</tooltip>
+			<callback type="clicked" instance="instance" string="mipmap">mode_clicked</callback>
+		</checkbox>
+		
+		<reference name="hotkey" data="mipmaps"/>
+	</hbox>
+	
+	<hbox space="4" align="expand">
+		<data>item</data>
+		
+		<hbox space_x="10"/>
+		<label align="left"><text>Buffers</text></label>
+		<label align="right"><text size="10">►</text></label>
+		
+		<vbox space="0">
+			<data>menu</data>
+			<hbox space="4" align="expand">
+				<data>item</data>
+				
+				<checkbox name="depth_cb" export="1" align="left">
+					<attach>final_cb</attach>
+					<text>Depth</text>
+					<tooltip>Shows the contents of the depth buffer $(deferred_depth)</tooltip>
+					<callback type="clicked" instance="instance" string="post_deferred_depth">buffer_clicked</callback>
+				</checkbox>
+				
+				<reference name="hotkey" data="deferred_depth"/>
+			</hbox>
+			
+			<hbox space="4" align="expand">
+				<data>item</data>
+				
+				<checkbox name="color_cb" export="1" align="left">
+					<attach>final_cb</attach>
+					<text>Color</text>
+					<tooltip>Shows the contents of the color buffer $(deferred_color)</tooltip>
+					<callback type="clicked" instance="instance" string="post_deferred_color">buffer_clicked</callback>
+				</checkbox>
+				
+				<reference name="hotkey" data="deferred_color"/>
+			</hbox>
+			
+			<hbox space="4" align="expand">
+				<data>item</data>
+				
+				<checkbox name="normal_cb" export="1" align="left">
+					<attach>final_cb</attach>
+					<text>Normal</text>
+					<tooltip>Shows the contents of the normals buffer $(deferred_normal)</tooltip>
+					<callback type="clicked" instance="instance" string="post_deferred_normal">buffer_clicked</callback>
+				</checkbox>
+				
+				<reference name="hotkey" data="deferred_normal"/>
+			</hbox>
+		</vbox>
+	</hbox>
+	
+	<hbox space="4" align="expand">
+		<data>item</data>
+		
+		<hbox space_x="10"/>
+		<label align="left"><text>Features</text></label>
+		<label align="right"><text size="10">►</text></label>
+		
+		<vbox space="0">
+			<data>menu</data>
+			<vbox space="4" align="expand">
+				<data>items</data>
+				
+				<checkbox align="left">
+					<text>sRGB</text>
+					<tooltip>Enables the sRGB color space</tooltip>
+					<data>render_use_srgb,render_reload,render_manager_reload</data>
+				</checkbox>
+				
+				<checkbox align="left">
+					<text>HDR</text>
+					<tooltip>Enables the high-dynamic range rendering</tooltip>
+					<data>render_hdr,render_restart</data>
+				</checkbox>
+				
+				<checkbox align="left">
+					<text>LDR glow</text>
+					<tooltip>Enables the LDR (low-dynamic range) glow post-processing effect. If the HDR rendering is used, the LDR glow effect should be disabled</tooltip>
+					<data>render_glow,render_restart</data>
+				</checkbox>
+				
+				<checkbox align="left">
+					<text>SSAO</text>
+					<tooltip>Enables the screen-space ambient occlusion</tooltip>
+					<data>render_show_occlusion,render_occlusion,render_restart</data>
+				</checkbox>
+				
+				<checkbox align="left">
+					<text>DOF</text>
+					<tooltip>Enables the Gaussian blur depth of field effect</tooltip>
+					<data>render_dof,render_restart</data>
+				</checkbox>
+				
+				<checkbox align="left">
+					<text>Motion blur</text>
+					<tooltip>Enables the motion blur effect</tooltip>
+					<data>render_motion_blur,render_restart</data>
+				</checkbox>
+				
+				<checkbox align="left">
+					<text>Increased depth buffer precision</text>
+					<tooltip>Enables the depth buffer of a 32-bit floating point precision</tooltip>
+					<data>render_use_d32f</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Enhanced color gradients</text>
+					<tooltip>Enables the RGB10A2 texture format for the screen buffer that provides more color gradations. If disabled, the RGBA8 format will be used instead</tooltip>
+					<data>render_use_rgb10a2,video_restart</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Dithering for object LODs</text>
+					<tooltip>Uses alpha fading (dithering) for objects</tooltip>
+					<data>render_alpha_fade</data>
+				</checkbox>
+				
+				<checkbox align="left">
+					<text>Filmic tone mapping</text>
+					<tooltip>Enables the filmic HDR color correction rendering</tooltip>
+					<data>render_use_filmic,render_reload,render_manager_reload</data>
+				</checkbox>
+				
+				<checkbox align="left">
+					<text>Dynamic reflections</text>
+					<tooltip>Enables dynamic reflections for materials</tooltip>
+					<data>render_reflection,render_restart</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Refraction</text>
+					<tooltip>Enables refraction for materials</tooltip>
+					<data>render_refraction,render_restart</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Light scattering</text>
+					<tooltip>Enables the light scattering</tooltip>
+					<data>render_scattering,render_restart</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Translucence</text>
+					<tooltip>Enables translucent shadow maps (colored shadows)</tooltip>
+					<data>render_translucent,render_restart</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Phong-rim shading</text>
+					<tooltip>Enables the Phong rim shading</tooltip>
+					<data>render_use_phong_rim,render_reload,render_manager_reload</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Environment lighting</text>
+					<tooltip>Enables the environment texture and exposure modulation for lighting</tooltip>
+					<data>render_use_environment,render_reload,render_manager_reload</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Directional lightmaps</text>
+					<tooltip>Enables directional lightmaps that account for surface normal map thus providing higher detailed results. If enabled, one light map contains 2×2 tiles. If the light map is exported from an external light mapping tool, disable this option</tooltip>
+					<data>render_use_directional_lightmaps,render_reload,render_manager_reload</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Parallax occlusion mapping</text>
+					<tooltip>Enables the parallax occlusion mapping</tooltip>
+					<data>render_parallax,render_restart</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Scissors test for lights</text>
+					<tooltip>Enables light scissors optimization: calculation of a bounding rectangle in screen space for the light according to its position and radius</tooltip>
+					<data>render_use_scissors</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Stencil test for lights</text>
+					<tooltip>Enables the stencil test for lights</tooltip>
+					<data>render_use_stencil</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Deferred lights</text>
+					<tooltip>Forces all lights to be rendered as deferred</tooltip>
+					<data>render_force_deferred</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Volumetric shadows</text>
+					<tooltip>Enables volumetric shadows from world light sources (God Rays)</tooltip>
+					<data>render_volumetric,render_restart</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Enhanced shadows</text>
+					<tooltip>Renders high-quality shadows. This option affects the quality of the shadows only if the high quality render settings are set</tooltip>
+					<data>render_use_shadow_kernel,render_reload,render_manager_reload</data>
+				</checkbox>
+				<!-- TODO: add render_occlusion 0|1|2|3 (render_restart)-->
+				<checkbox align="left">
+					<text>Prob lights</text>
+					<tooltip>Enables global illumination baked into prob lights</tooltip>
+					<data>render_light_prob,render_restart</data>
+				</checkbox>
+				
+				<checkbox align="left">
+					<text>Additional hardware occlusion culling</text>
+					<tooltip>Runs the additional hardware occlusion query test before sending data to GPU</tooltip>
+					<data>render_use_queries</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Disable shadows</text>
+					<tooltip>Disables all shadows</tooltip>
+					<data>render_force_no_shadows</data>
+				</checkbox>
+				<checkbox align="left">
+					<text>Auxiliary buffer</text>
+					<tooltip>Enables the auxiliary rendering buffer</tooltip>
+					<data>render_auxiliary,render_restart</data>
+				</checkbox>
+			</vbox>
+		</vbox>
+	</hbox>
+	
+	<hbox space="4" align="expand">
+		<data>item</data>
+		
+		<hbox space_x="10"/>
+		<label align="left"><text>Passes</text></label>
+		<label align="right"><text size="10">►</text></label>
+		
+		<vbox space="0">
+			<data>menu</data>
+			<vbox space="4" align="expand">
+				<data>items</data>
+				<checkbox>
+					<text>Translucent</text>
+					<tooltip>Enables the translucent rendering pass that passes colored translucent shadows to the renderer. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_translucent</data>
+				</checkbox>
+				<checkbox>
+					<text>Ambient light</text>
+					<tooltip>Enables the ambient light pass. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_ambient_light</data>
+				</checkbox>
+				<checkbox>
+					<text>Auxiliary</text>
+					<tooltip>Enables the auxiliary rendering pass that renders objects into the auxiliary buffer. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_auxiliary</data>
+				</checkbox>
+				<checkbox>
+					<text>Decal ambient</text>
+					<tooltip>Enables the ambient light pass for decals. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_decal_ambient</data>
+				</checkbox>
+				<checkbox>
+					<text>Decal light</text>
+					<tooltip>Enables the light pass for decals. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_decal_light</data>
+				</checkbox>
+				<checkbox>
+					<text>Deferred</text>
+					<tooltip>Enables the deferred light pass. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_deferred</data>
+				</checkbox>
+				<checkbox>
+					<text>Light prob</text>
+					<tooltip>Enables the light prob pass that renders global illumination created with the prob lights. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_light_prob</data>
+				</checkbox>
+				<checkbox>
+					<text>Motion blur</text>
+					<tooltip>Enables the velocity (motion blur) pass. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_motion_blur</data>
+				</checkbox>
+				<checkbox>
+					<text>Occlusion</text>
+					<tooltip>Enables the ambient occlusion and indirect illumination pass. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_occlusion</data>
+				</checkbox>
+				<checkbox>
+					<text>Opacity ambient</text>
+					<tooltip>Enables the ambient pass for opaque objects. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_opacity_ambient</data>
+				</checkbox>
+				<checkbox>
+					<text>Opacity light</text>
+					<tooltip>Enables the light pass for opaque objects. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_opacity_light</data>
+				</checkbox>
+				<checkbox>
+					<text>Post materials</text>
+					<tooltip>Enables the post materials pass that renders postprocess materials applied after other postprocesses, such as HDR, DOF, refraction, motion blur and so on. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_post_materials</data>
+				</checkbox>
+				<checkbox>
+					<text>Reflection</text>
+					<tooltip>Enables the reflection pass. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_reflection</data>
+				</checkbox>
+				<checkbox>
+					<text>Refraction</text>
+					<tooltip>Enables the refraction pass. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_refraction</data>
+				</checkbox>
+				<checkbox>
+					<text>Render materials</text>
+					<tooltip>Enables the pass to render postprocess materials applied before all other Unigine postprocesses (such as HDR, DOF and so on) are rendered. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_render_materials</data>
+				</checkbox>
+				<checkbox>
+					<text>Scattering</text>
+					<tooltip>Enables the light scattering pass. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_scattering</data>
+				</checkbox>
+				<checkbox>
+					<text>Transparent ambient</text>
+					<tooltip>Enables the ambient pass for transparent objects. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_transparent_ambient</data>
+				</checkbox>
+				<checkbox>
+					<text>Transparent light</text>
+					<tooltip>Enables the light pass for transparent objects. Uncheck to skip the pass</tooltip>
+					<data>!render_skip_transparent_light</data>
+				</checkbox>
+			</vbox>
+			
+		</vbox>
+	</hbox>
+</vbox>
+</ui>

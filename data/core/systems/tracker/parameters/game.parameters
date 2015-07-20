@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<parameters version="1.00">
+	
+	<!-- Common parameters -->
+	<parameter type="game.enabled" track="toggle">
+		<set>engine.game.setEnabled(VALUE);</set>
+		<get>VALUE = engine.game.isEnabled();</get>
+	</parameter>
+	
+	<!-- Player parameters -->
+	<parameter type="game.player.node" track="node">
+		<set><![CDATA[
+			if(VALUE != NULL && VALUE.isPlayer()) engine.game.setPlayer(VALUE);
+			else log.error("game.player.node: bad player node %s\n",typeinfo(VALUE));
+		]]></set>
+		<get>VALUE = engine.game.getPlayer();</get>
+	</parameter>
+	<parameter type="game.player.fov" track="float" min="0.0">
+		<set>if(engine.game.getPlayer() != 0) Player(engine.game.getPlayer()).setFov(VALUE);</set>
+		<get>if(engine.game.getPlayer() != 0) VALUE = Player(engine.game.getPlayer()).getFov(); else VALUE = 60.0f;</get>
+	</parameter>
+	<parameter type="game.player.znear" track="float" min="0.0">
+		<set>if(engine.game.getPlayer() != 0) Player(engine.game.getPlayer()).setZNear(VALUE);</set>
+		<get>if(engine.game.getPlayer() != 0) VALUE = Player(engine.game.getPlayer()).getZNear(); else VALUE = 0.1f;</get>
+	</parameter>
+	<parameter type="game.player.zfar" track="float" min="0.0">
+		<set>if(engine.game.getPlayer() != 0) Player(engine.game.getPlayer()).setZFar(VALUE);</set>
+		<get>if(engine.game.getPlayer() != 0) VALUE = Player(engine.game.getPlayer()).getZFar(); else VALUE = 10000.0f;</get>
+	</parameter>
+	<parameter type="game.player.postMaterials" track="string" filter="material">
+		<set>if(engine.game.getPlayer() != 0) Player(engine.game.getPlayer()).setPostMaterials(VALUE);</set>
+		<get>if(engine.game.getPlayer() != 0) VALUE = Player(engine.game.getPlayer()).getPostMaterials(); else VALUE = "";</get>
+	</parameter>
+	
+</parameters>

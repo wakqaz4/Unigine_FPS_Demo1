@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<materials version="1.00" editable="0">
+	
+	<!--
+	/**************************************************************************\
+	*
+	* Mesh paint materials
+	*
+	\**************************************************************************/
+	-->
+	
+	<!--
+	/* Mesh paint base material
+	 */
+	-->
+	<material name="mesh_paint_base" editable="0">
+		
+		<!-- states -->
+		<state name="alpha_fade" hidden="1" type="toggle">0</state>
+		<state name="deferred" type="switch" items="none,default">1</state>
+		<state name="auxiliary" type="switch" items="none,default">0</state>
+		<state name="refraction" type="switch" items="none,default">0</state>
+		<state name="velocity" type="switch" items="none,default">0</state>
+		<state name="ambient" type="switch" items="none,opacity,transparent,lightmap">1</state>
+		<state name="light_prob" type="switch" items="none,default">0</state>
+		<state name="light_spot" type="switch" items="none,default">1</state>
+		<state name="light_omni" type="switch" items="none,default">1</state>
+		<state name="light_proj" type="switch" items="none,default">1</state>
+		<state name="light_world" type="switch" items="none,default">1</state>
+		<state name="detail" type="switch" items="disabled,overlay_0,overlay_1,multiply_0,multiply_1">0</state>
+		<state name="fleck" type="toggle">0</state>
+		<state name="emission" type="toggle">0</state>
+		<state name="volumetric" type="toggle">0</state>
+		
+		<!-- wireframe shaders -->
+		<shader pass="wireframe" object="mesh_static"
+			defines="BASE_WIREFRAME"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- deferred shaders -->
+		<shader pass="deferred" object="mesh_static"
+			defines="BASE_DEFERRED"
+			alpha_fade_defines=",ALPHA_FADE"
+			deferred="1"
+			detail_defines=",OVERLAY_0,OVERLAY_1,MULTIPLY_0,MULTIPLY_1"
+			emission_defines=",EMISSION"
+			volumetric_defines=",VOLUMETRIC"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			fragment="core/shaders/default/mesh/fragment_base_deferred.shader"/>
+		
+		<!-- auxiliary shaders -->
+		<shader pass="auxiliary" object="mesh_static"
+			defines="BASE_AUXILIARY"
+			alpha_fade_defines=",ALPHA_FADE"
+			auxiliary="1"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			fragment="core/shaders/default/mesh/fragment_base_auxiliary.shader"/>
+		
+		<!-- refraction shaders -->
+		<shader pass="refraction" object="mesh_static"
+			defines="BASE_REFRACTION"
+			alpha_fade_defines=",ALPHA_FADE"
+			refraction="1"
+			detail_defines=",OVERLAY_0,OVERLAY_1,MULTIPLY_0,MULTIPLY_1"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			fragment="core/shaders/default/mesh/fragment_base_refraction.shader"/>
+		
+		<!-- velocity shaders -->
+		<shader pass="velocity" object="mesh_static"
+			defines="BASE_VELOCITY"
+			alpha_fade_defines=",ALPHA_FADE"
+			velocity="1"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			fragment="core/shaders/default/mesh/fragment_base_velocity.shader"/>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient" object="mesh_static"
+			defines="BASE_AMBIENT,AMBIENT,PAINT"
+			alpha_fade_defines=",ALPHA_FADE"
+			ambient_defines="0,OPACITY,TRANSPARENT,LIGHTMAP"
+			detail_defines=",OVERLAY_0,OVERLAY_1,MULTIPLY_0,MULTIPLY_1"
+			fleck_defines=",FLECK"
+			emission_defines=",EMISSION"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			fragment="core/shaders/default/mesh/fragment_paint_ambient.shader"/>
+		
+		<!-- light prob shaders -->
+		<shader pass="light_prob" object="mesh_static"
+			defines="BASE_LIGHT_PROB,PROB"
+			alpha_fade_defines=",ALPHA_FADE"
+			light_prob="1"
+			detail_defines=",OVERLAY_0,OVERLAY_1,MULTIPLY_0,MULTIPLY_1"
+			fleck_defines=",FLECK"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			fragment="core/shaders/default/mesh/fragment_paint_light_prob.shader"/>
+		
+		<!-- light spot shaders -->
+		<shader pass="light_spot" object="mesh_static"
+			defines="BASE_LIGHT_SPOT,SPOT"
+			alpha_fade_defines=",ALPHA_FADE"
+			light_spot="1"
+			detail_defines=",OVERLAY_0,OVERLAY_1,MULTIPLY_0,MULTIPLY_1"
+			fleck_defines=",FLECK"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			fragment="core/shaders/default/mesh/fragment_paint_light_spot.shader"/>
+		
+		<!-- light omni shaders -->
+		<shader pass="light_omni" object="mesh_static"
+			defines="BASE_LIGHT_OMNI,OMNI"
+			receive_shadow_defines=",SHADOW"
+			alpha_fade_defines=",ALPHA_FADE"
+			light_omni="1"
+			detail_defines=",OVERLAY_0,OVERLAY_1,MULTIPLY_0,MULTIPLY_1"
+			fleck_defines=",FLECK"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			fragment="core/shaders/default/mesh/fragment_paint_light_omni.shader"/>
+		
+		<!-- light proj shaders -->
+		<shader pass="light_proj" object="mesh_static"
+			defines="BASE_LIGHT_PROJ,PROJ"
+			receive_shadow_defines=",SHADOW"
+			alpha_fade_defines=",ALPHA_FADE"
+			light_proj="1"
+			detail_defines=",OVERLAY_0,OVERLAY_1,MULTIPLY_0,MULTIPLY_1"
+			fleck_defines=",FLECK"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			fragment="core/shaders/default/mesh/fragment_paint_light_proj.shader"/>
+		
+		<!-- light world shaders -->
+		<shader pass="light_world" object="mesh_static"
+			defines="BASE_LIGHT_WORLD,WORLD"
+			receive_world_shadow_defines=",SHADOW"
+			alpha_fade_defines=",ALPHA_FADE"
+			light_world="1"
+			detail_defines=",OVERLAY_0,OVERLAY_1,MULTIPLY_0,MULTIPLY_1"
+			fleck_defines=",FLECK"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			fragment="core/shaders/default/mesh/fragment_paint_light_world.shader"/>
+		
+		<!-- shadow shaders -->
+		<shader pass="shadow" object="mesh_static"
+			defines="BASE_SHADOW"
+			alpha_fade_defines=",ALPHA_FADE"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			fragment="core/shaders/default/mesh/fragment_base_shadow.shader"/>
+		
+		<!-- translucent shaders -->
+		<shader pass="translucent" object="mesh_static"
+			defines="BASE_SHADOW,TRANSLUCENT"
+			alpha_fade_defines=",ALPHA_FADE"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			fragment="core/shaders/default/mesh/fragment_base_shadow.shader"/>
+		
+		<!-- bindings -->
+		<bind object="mesh_cluster" to="mesh_static"/>
+		<bind object="mesh_clutter" to="mesh_static"/>
+		<bind object="mesh_dynamic" to="mesh_static"/>
+		<bind object="mesh_skinned" to="mesh_static"/>
+		
+		<!-- textures -->
+		<texture name="diffuse" anisotropy="1">core/textures/mesh_base_diffuse.dds</texture>
+		<texture name="normal" pass="deferred,refraction,ambient,light_prob,light_spot,light_omni,light_proj,light_world,translucent" format="signed" anisotropy="1">core/textures/mesh_base_normal.dds</texture>
+		<texture name="specular" pass="deferred,refraction,ambient,light_prob,light_spot,light_omni,light_proj,light_world" anisotropy="1">core/textures/mesh_base_specular.dds</texture>
+		<texture name="detail_diffuse" pass="deferred,refraction,ambient,light_prob,light_spot,light_omni,light_proj,light_world" detail="1,2,3,4" anisotropy="1">core/textures/mesh_base_diffuse.dds</texture>
+		<texture name="detail_normal" pass="deferred,refraction,ambient,light_prob,light_spot,light_omni,light_proj,light_world" detail="1,2,3,4" format="signed" anisotropy="1">core/textures/mesh_base_normal.dds</texture>
+		<texture name="detail_specular" pass="deferred,refraction,ambient,light_prob,light_spot,light_omni,light_proj,light_world" detail="1,2,3,4" anisotropy="1">core/textures/mesh_base_specular.dds</texture>
+		<texture name="alpha_fade" alpha_fade="1" unit="9" type="alpha_fade"/>
+		<texture name="noise" pass="deferred,ambient,light_prob,light_spot,light_omni,light_proj,light_world" fleck="1" unit="10" filter="point">core/textures/mesh_paint_noise.dds</texture>
+		<texture name="emission" pass="deferred,ambient" emission="1" unit="11" format="srgb" anisotropy="1">core/textures/mesh_base_emission.dds</texture>
+		<texture name="ambient" pass="ambient" unit="12" format="srgb">core/textures/mesh_base_ambient.dds</texture>
+		<texture name="deferred_occlusion" pass="ambient" unit="13" type="deferred_occlusion"/>
+		<texture name="lightmap" pass="ambient" ambient="3" unit="14" format="srgb">core/textures/mesh_base_lightmap.dds</texture>
+		<texture name="deferred_light" pass="ambient" unit="15" type="deferred_light"/>
+		<texture name="light_image" pass="light_omni,light_proj,light_world" unit="11" type="light_image"/>
+		<texture name="light_color" pass="light_omni,light_proj,light_world" type="light_color"/>
+		<texture name="light_depth" pass="light_omni,light_proj,light_world" type="light_depth"/>
+		<texture name="light_noise" pass="light_omni,light_proj,light_world" type="light_noise"/>
+		<texture name="light_vcube" pass="light_omni" type="light_vcube"/>
+		
+		<!-- parameters -->
+		<parameter name="base_transform" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="detail_transform" detail="1,2,3,4" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="auxiliary_color" auxiliary="1" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="detail_diffuse" detail="1,2,3,4" type="slider" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_normal" detail="1,2,3,4" type="slider" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="detail_specular" detail="1,2,3,4" type="slider" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="environment_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="lightmap_scale" ambient="3" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="emission_color" emission="1" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="emission_scale" emission="1" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="glow_scale" emission="1" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="refraction_scale" refraction="1" type="slider" shared="1" min="-2.0" max="2.0" flags="min_expand,max_expand">1.0</parameter>
+		<parameter name="refraction_power" refraction="1" type="slider" shared="1" min="0.0" max="2.0">1.0</parameter>
+		<parameter name="diffuse_color" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="diffuse_scale" type="slider" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="normal_scale" type="slider" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="specular_color" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="specular_scale" type="slider" min="0.0" max="8.0" flags="max_expand">1.0</parameter>
+		<parameter name="specular_power" type="slider" min="0.0" max="2.0" flags="log10,max_expand">16.0</parameter>
+		<parameter name="fresnel_bias" type="slider" min="0.0" max="1.0">1.0</parameter>
+		<parameter name="fresnel_power" type="slider" min="0.0" max="1.0" flags="log10,max_expand">5.0</parameter>
+		<parameter name="diffuse_0_power" type="slider" shared="1" min="0.0" max="2.0" flags="log10,max_expand">1.0</parameter>
+		<parameter name="diffuse_1_power" type="slider" shared="1" min="0.0" max="2.0" flags="log10,max_expand">2.0</parameter>
+		<parameter name="diffuse_2_power" type="slider" shared="1" min="0.0" max="2.0" flags="log10,max_expand">4.0</parameter>
+		<parameter name="diffuse_0_color" type="color" shared="1">1.0 1.0 0.0 1.0</parameter>
+		<parameter name="diffuse_1_color" type="color" shared="1">0.0 1.0 1.0 1.0</parameter>
+		<parameter name="diffuse_2_color" type="color" shared="1">1.0 0.0 1.0 1.0</parameter>
+		<parameter name="fleck_size" fleck="1" type="slider" shared="1" min="0.0" max="16.0" flags="max_expand">1.0</parameter>
+		<parameter name="fleck_power" fleck="1" type="slider" shared="1" min="0.0" max="2.0" flags="log10,max_expand">16.0</parameter>
+		<parameter name="fleck_radius" fleck="1" type="slider" shared="1" min="0.0" max="2.0" flags="log10,max_expand">16.0</parameter>
+		<parameter name="fleck_color" fleck="1" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+	<!--
+	/* Mesh paint reflection cube base material
+	 */
+	-->
+	<material name="mesh_paint_reflection_cube_base" parent="mesh_paint_base" editable="0">
+		
+		<!-- states -->
+		<state name="reflection_dynamic" type="toggle" shared="1">0</state>
+		<state name="reflection_size" type="switch" items="64,128,256,512,1024,quart_height,half_height,height">2</state>
+		<state name="reflection_update" type="switch" items="discard,1/6,2/6,3/6,4/6,5/6,6/6">0</state>
+		<state name="reflection_filter" type="switch" items="disabled,1x,2x,3x,4x">0</state>
+		<state name="reflection_shared" type="toggle">1</state>
+		<state name="reflection_shadow" type="toggle">0</state>
+		<state name="reflection_mipmaps" type="toggle">0</state>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient" object="mesh_static"
+			defines="BASE_AMBIENT_REFLECTION_CUBE,AMBIENT,PAINT"
+			alpha_fade_defines=",ALPHA_FADE"
+			ambient_defines="0,OPACITY,TRANSPARENT,LIGHTMAP"
+			detail_defines=",OVERLAY_0,OVERLAY_1,MULTIPLY_0,MULTIPLY_1"
+			fleck_defines=",FLECK"
+			emission_defines=",EMISSION"
+			reflection_dynamic_defines=",REFLECTION_DYNAMIC"
+			vertex="core/shaders/default/mesh/vertex_base.shader"
+			fragment="core/shaders/default/mesh/fragment_paint_ambient_reflection_cube.shader"/>
+		
+		<!-- bindings -->
+		<bind object="mesh_cluster" to="mesh_static"/>
+		<bind object="mesh_clutter" to="mesh_static"/>
+		<bind object="mesh_dynamic" to="mesh_static"/>
+		<bind object="mesh_skinned" to="mesh_static"/>
+		
+		<!-- textures -->
+		<texture name="reflection" pass="ambient" reflection_dynamic="0" unit="6" format="srgb" wrap="clamp">core/textures/mesh_reflection.dds</texture>
+		<texture name="reflection0x" pass="ambient" reflection_dynamic="1" reflection_filter="0" unit="6" type="reflection_cube"/>
+		<texture name="reflection1x" pass="ambient" reflection_dynamic="1" reflection_filter="1" unit="6" type="reflection_cube" materials="post_hblur_cube,post_vblur_cube"/>
+		<texture name="reflection2x" pass="ambient" reflection_dynamic="1" reflection_filter="2" unit="6" type="reflection_cube" materials="post_hblur_cube,post_vblur_cube,post_hblur_cube,post_vblur_cube"/>
+		<texture name="reflection3x" pass="ambient" reflection_dynamic="1" reflection_filter="3" unit="6" type="reflection_cube" materials="post_hblur_cube,post_vblur_cube,post_hblur_cube,post_vblur_cube,post_hblur_cube,post_vblur_cube"/>
+		<texture name="reflection4x" pass="ambient" reflection_dynamic="1" reflection_filter="4" unit="6" type="reflection_cube" materials="post_hblur_cube,post_vblur_cube,post_hblur_cube,post_vblur_cube,post_hblur_cube,post_vblur_cube,post_hblur_cube,post_vblur_cube"/>
+		
+		<!-- parameters -->
+		<parameter name="reflection_mask" reflection_dynamic="1" type="expression">0x01</parameter>
+		<parameter name="reflection_offset" type="expression" shared="1">vec3(0.0f,0.0f,0.0f)</parameter>
+		<parameter name="reflection_distance" reflection_dynamic="1" type="expression">-1.0f</parameter>
+		<parameter name="reflection_normal" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="reflection_bias" type="slider" shared="1" min="0.0" max="8.0" flags="max_expand">0.0</parameter>
+		<parameter name="reflection_adjust" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="reflection_color" type="color">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="reflection_scale" type="slider" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="refraction_color" ambient="2" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+</materials>

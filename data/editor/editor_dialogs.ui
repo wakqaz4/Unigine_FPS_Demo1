@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_dialogs.ui
+ * Desc:    Unigine editor
+ * Version: 1.51
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Valia Vaneeva <fattie@unigine.com>
+ *          Andrey Viktorov <unclebob@unigine.com>
+ *          Pavel Nakaznenko <crio@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Vec
+ */
+-->
+<dialog name="Editor::Dialogs::Vec::dialog" export="1" width="480" sizeable="1">
+	<text>Expressions</text>
+	<vbox align="expand">
+		<gridbox align="expand" columns="2" space="4">
+			<label name="Editor::Dialogs::Vec::vec_l[0]" export="1" align="right">
+				<text>X:</text>
+			</label>
+			<editline name="Editor::Dialogs::Vec::vec_el[0]" export="1" align="expand">
+				<callback type="pressed,focus_out">Editor::Dialogs::Vec::vec_pressed</callback>
+			</editline>
+			<label name="Editor::Dialogs::Vec::vec_l[1]" export="1" align="right">
+				<text>Y:</text>
+			</label>
+			<editline name="Editor::Dialogs::Vec::vec_el[1]" export="1" align="expand">
+				<callback type="pressed,focus_out">Editor::Dialogs::Vec::vec_pressed</callback>
+			</editline>
+			<label name="Editor::Dialogs::Vec::vec_l[2]" export="1" align="right">
+				<text>Z:</text>
+			</label>
+			<editline name="Editor::Dialogs::Vec::vec_el[2]" export="1" align="expand">
+				<callback type="pressed,focus_out">Editor::Dialogs::Vec::vec_pressed</callback>
+			</editline>
+			<label name="Editor::Dialogs::Vec::vec_l[3]" export="1" align="right">
+				<text>W:</text>
+			</label>
+			<editline name="Editor::Dialogs::Vec::vec_el[3]" export="1" align="expand">
+				<callback type="pressed,focus_out">Editor::Dialogs::Vec::vec_pressed</callback>
+			</editline>
+		</gridbox>
+	</vbox>
+</dialog>
+
+<!--
+/* TexCoord
+ */
+-->
+<dialog name="Editor::Dialogs::TexCoord::dialog" export="1" width="480" sizeable="1">
+	<text>Expressions</text>
+	<tabbox name="Editor::Dialogs::TexCoord::texcoord_tb" export="1" align="expand">
+		<callback type="changed">Editor::Dialogs::TexCoord::texcoord_changed</callback>
+		
+		<tab>
+			<text>Native</text>
+			<vbox space="4">
+				<gridbox align="expand" columns="2" space="4">
+					<label align="right">
+						<text>Scale X:</text>
+					</label>
+					<editline name="Editor::Dialogs::TexCoord::native_el[0]" export="1" align="expand">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+					<label align="right">
+						<text>Scale Y:</text>
+					</label>
+					<editline name="Editor::Dialogs::TexCoord::native_el[1]" export="1" align="expand">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+					<label align="right">
+						<text>Offset X:</text>
+					</label>
+					<editline name="Editor::Dialogs::TexCoord::native_el[2]" export="1" align="expand">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+					<label align="right">
+						<text>Offset Y:</text>
+					</label>
+					<editline name="Editor::Dialogs::TexCoord::native_el[3]" export="1" align="expand">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+				</gridbox>
+			</vbox>
+		</tab>
+		
+		<tab>
+			<text>Animation</text>
+			<vbox space="4">
+				<gridbox align="expand" columns="4" space="4">
+					<label align="right"><text>Scale X:</text></label>
+					<editline name="Editor::Dialogs::TexCoord::scale_x_el" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+					<hslider align="expand" min="0" max="2000" value="1000">
+						<attach flags="max_expand" multiplier="1000">Editor::Dialogs::TexCoord::scale_x_el</attach>
+					</hslider>
+					<vbox/>
+					<label align="right"><text>Scale Y:</text></label>
+					<editline name="Editor::Dialogs::TexCoord::scale_y_el" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+					<hslider align="expand" min="0" max="2000" value="1000">
+						<attach flags="max_expand" multiplier="1000">Editor::Dialogs::TexCoord::scale_y_el</attach>
+					</hslider>
+					<vbox/>
+					<label align="right"><text>Frequency:</text></label>
+					<editline name="Editor::Dialogs::TexCoord::frequency_el" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+					<hslider align="expand" min="-10000" max="10000">
+						<attach flags="max_expand" multiplier="1000">Editor::Dialogs::TexCoord::frequency_el</attach>
+					</hslider>
+					<vbox/>
+					<label align="right"><text>Amplitude:</text></label>
+					<editline name="Editor::Dialogs::TexCoord::amplitude_el" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+					<hslider align="expand" min="0" max="1000">
+						<attach flags="max_expand" multiplier="1000">Editor::Dialogs::TexCoord::amplitude_el</attach>
+					</hslider>
+					<vbox/>
+					<label align="right"><text>Velocity:</text></label>
+					<editline name="Editor::Dialogs::TexCoord::velocity_el" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+					<hslider align="expand" min="0" max="1000">
+						<attach flags="max_expand" multiplier="1000">Editor::Dialogs::TexCoord::velocity_el</attach>
+					</hslider>
+					<vbox/>
+					<label align="right"><text>Angle:</text></label>
+					<editline name="Editor::Dialogs::TexCoord::angle_el" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+					<hslider align="expand" min="-180000" max="180000">
+						<attach multiplier="1000">Editor::Dialogs::TexCoord::angle_el</attach>
+					</hslider>
+					<vbox/>
+				</gridbox>
+			</vbox>
+		</tab>
+		
+		<tab>
+			<text>3DStudio Max</text>
+			<vbox space="4">
+				<gridbox align="expand" columns="4" space="4">
+					<label align="right">
+						<text>Scale X:</text>
+					</label>
+					<editline name="Editor::Dialogs::TexCoord::max_el[0]" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+					<hslider align="expand" min="-2000" max="2000">
+						<attach flags="expand" multiplier="1000">Editor::Dialogs::TexCoord::max_el[0]</attach>
+					</hslider>
+					<vbox/>
+					<label align="right">
+						<text>Scale Y:</text>
+					</label>
+					<editline name="Editor::Dialogs::TexCoord::max_el[1]" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+					<hslider align="expand" min="-2000" max="2000">
+						<attach flags="expand" multiplier="1000">Editor::Dialogs::TexCoord::max_el[1]</attach>
+					</hslider>
+					<vbox/>
+					<label align="right">
+						<text>Offset X:</text>
+					</label>
+					<editline name="Editor::Dialogs::TexCoord::max_el[2]" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+					<hslider align="expand" min="-1000" max="1000">
+						<attach flags="expand" multiplier="1000">Editor::Dialogs::TexCoord::max_el[2]</attach>
+					</hslider>
+					<vbox/>
+					<label align="right">
+						<text>Offset Y:</text>
+					</label>
+					<editline name="Editor::Dialogs::TexCoord::max_el[3]" export="1" align="expand" validator="float">
+						<callback type="pressed,focus_out">Editor::Dialogs::TexCoord::texcoord_pressed</callback>
+					</editline>
+					<hslider align="expand" min="-1000" max="1000">
+						<attach flags="expand" multiplier="1000">Editor::Dialogs::TexCoord::max_el[3]</attach>
+					</hslider>
+					<vbox/>
+				</gridbox>
+			</vbox>
+		</tab>
+		
+		<tab>
+			<text>Visual</text>
+			<scrollbox align="expand">
+				<sprite name="Editor::Dialogs::TexCoord::texture_s" export="1">
+					<callback type="pressed">Editor::Dialogs::TexCoord::texture_pressed</callback>
+					<callback type="clicked">Editor::Dialogs::TexCoord::texture_clicked</callback>
+					<layer texture="core/gui/gui_white.png" color="#ffffffaa"/>
+				</sprite>
+			</scrollbox>
+		</tab>
+		
+	</tabbox>
+</dialog>
+
+<!--
+/* Texture
+ */
+-->
+<dialog name="Editor::Dialogs::Texture::dialog" export="1" sizeable="1">
+	<text>Texture</text>
+	<vbox align="expand" space="4">
+		<vbox name="Editor::Dialogs::Texture::material_vbox" export="1" align="expand">
+			<checkbox name="Editor::Dialogs::Texture::clamp_x_cb" export="1" align="left">
+				<text>Clamp X</text>
+				<callback type="changed">Editor::Dialogs::Texture::clamp_changed</callback>
+			</checkbox>
+			<checkbox name="Editor::Dialogs::Texture::clamp_y_cb" export="1" align="left">
+				<text>Clamp Y</text>
+				<callback type="changed">Editor::Dialogs::Texture::clamp_changed</callback>
+			</checkbox>
+			<checkbox name="Editor::Dialogs::Texture::clamp_z_cb" export="1" align="left">
+				<text>Clamp Z</text>
+				<callback type="changed">Editor::Dialogs::Texture::clamp_changed</callback>
+			</checkbox>
+			<checkbox name="Editor::Dialogs::Texture::clamp_xyz_cb" export="1" align="left">
+				<text>Clamp XYZ</text>
+				<callback type="changed">Editor::Dialogs::Texture::clamp_xyz_changed</callback>
+			</checkbox>
+			
+			<hspacer align="expand"/>
+			
+			<checkbox name="Editor::Dialogs::Texture::anisotropy_cb" export="1" align="left">
+				<text>Anisotropy</text>
+				<callback type="changed">Editor::Dialogs::Texture::anisotropy_changed</callback>
+			</checkbox>
+			
+			<hspacer align="expand"/>
+		</vbox>
+		
+		<vbox name="Editor::Dialogs::Texture::image_format_vb" export="1" align="expand">
+			<label align="left"><text>Image format:</text></label>
+			<combobox name="Editor::Dialogs::Texture::image_format_cb" export="1" align="expand">
+				<callback type="changed">Editor::Dialogs::Texture::image_format_changed</callback>
+			</combobox>
+		</vbox>
+		
+		<label align="left"><text>MipMap type:</text></label>
+		<combobox name="Editor::Dialogs::Texture::mipmap_type_cb" export="1" align="expand">
+			<callback type="changed">Editor::Dialogs::Texture::mipmap_type_changed</callback>
+			<text>Box filtering</text>
+			<text>Point filtering</text>
+			<text>Combine MipMaps</text>
+		</combobox>
+		<vbox name="Editor::Dialogs::Texture::invert_vbox" export="1" align="expand">
+			<hspacer align="expand"/>
+			
+			<checkbox name="Editor::Dialogs::Texture::invert_y_cb" export="1" align="left">
+				<text>Invert Y channel</text>
+				<callback type="changed">Editor::Dialogs::Texture::invert_y_changed</callback>
+			</checkbox>
+		</vbox>
+	</vbox>
+</dialog>
+
+<!--
+/* Mask
+ */
+-->
+<dialog name="Editor::Dialogs::Mask::dialog" export="1">
+	<text>Mask</text>
+	<hbox>
+		<vbox align="expand">
+			<gridbox name="Editor::Dialogs::Mask::mask_gb" export="1" align="expand" columns="8" space="4"/>
+		</vbox>
+		<vbox space="2"/>
+		<hbox>
+			<vbox align="expand">
+				<button align="expand">
+					<text>Set</text>
+					<callback type="clicked">Editor::Dialogs::Mask::set_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button align="expand">
+					<text>Clear</text>
+					<callback type="clicked">Editor::Dialogs::Mask::clear_clicked</callback>
+				</button>
+			</vbox>
+		</hbox>
+	</hbox>
+</dialog>
+
+<!--
+/* World
+ */
+-->
+<dialog name="Editor::Dialogs::World::dialog" export="1" sizeable="1">
+	<text>Worlds</text>
+	<vbox align="expand">
+		
+		<scrollbox align="expand" width="240" height="320">
+			<treebox name="Editor::Dialogs::World::worlds_tb" export="1" align="expand">
+				<callback type="changed">Editor::Dialogs::World::worlds_changed</callback>
+				<callback type="double_clicked">Editor::Dialogs::World::worlds_double_clicked</callback>
+			</treebox>
+		</scrollbox>
+		
+		<vbox space_y="4">
+			<checkbox name="Editor::Dialogs::World::add_cb" export="1" align="left">
+				<text>Append to the current world</text>
+			</checkbox>
+		</vbox>
+		
+	</vbox>
+</dialog>
+
+<!--
+/* Material
+ */
+-->
+<dialog name="Editor::Dialogs::Material::dialog" export="1" sizeable="1">
+	<text>Materials</text>
+	<vbox align="expand">
+		
+		<groupbox>
+			<vbox name="Editor::Dialogs::Material::material_vb" export="1"/>
+		</groupbox>
+		
+		<vbox space_y="4">
+			<gridbox align="expand" columns="2" space="4">
+				<label align="right"><text>Library:</text></label>
+				<combobox name="Editor::Dialogs::Material::libraries_cb" export="1" align="expand">
+					<callback type="changed">Editor::Dialogs::Material::libraries_changed</callback>
+				</combobox>
+				<label align="right"><text>Search:</text></label>
+				<editline name="Editor::Dialogs::Material::name_el" export="1" align="expand">
+					<callback type="changed">Editor::Dialogs::Material::name_changed</callback>
+					<callback type="pressed">Editor::Dialogs::Material::name_pressed</callback>
+				</editline>
+			</gridbox>
+		</vbox>
+		
+		<scrollbox align="expand" height="240">
+			<treebox name="Editor::Dialogs::Material::materials_tb" export="1" align="expand">
+				<callback type="changed">Editor::Dialogs::Material::materials_changed</callback>
+				<callback type="double_clicked">Editor::Dialogs::Material::ok_clicked</callback>
+			</treebox>
+		</scrollbox>
+		
+	</vbox>
+</dialog>
+
+<!--
+/* MaterialName
+ */
+-->
+<dialog name="Editor::Dialogs::MaterialName::dialog" export="1" sizeable="1">
+	<text>Material name</text>
+	<gridbox align="expand" columns="2" space="4">
+		
+		<label align="right"><text>Library:</text></label>
+		<combobox name="Editor::Dialogs::MaterialName::libraries_cb" export="1" align="expand"/>
+		
+		<label align="right"><text>Name:</text></label>
+		<editline name="Editor::Dialogs::MaterialName::name_el" export="1" align="expand" width="180">
+			<callback type="changed">Editor::Dialogs::MaterialName::name_changed</callback>
+			<callback type="pressed">Editor::Dialogs::MaterialName::name_pressed</callback>
+		</editline>
+		
+	</gridbox>
+</dialog>
+
+<!--
+/* MaterialLibraries
+ */
+-->
+<dialog name="Editor::Dialogs::MaterialLibraries::dialog" export="1" sizeable="1">
+	<text>Material libraries</text>
+	<hbox align="expand">
+		
+		<vbox align="expand" space="4">
+			<scrollbox align="expand" width="256" height="256">
+				<listbox name="Editor::Dialogs::MaterialLibraries::libraries_lb" export="1" align="expand">
+					<callback type="changed">Editor::Dialogs::MaterialLibraries::libraries_changed</callback>
+				</listbox>
+			</scrollbox>
+		</vbox>
+		
+		<vbox align="top">
+			<icon name="Editor::Dialogs::MaterialLibraries::up_i" export="1" texture="editor/gui/editor_up.png">
+				<tooltip>Move library up</tooltip>
+				<callback type="clicked">Editor::Dialogs::MaterialLibraries::up_clicked</callback>
+			</icon>
+			<icon name="Editor::Dialogs::MaterialLibraries::down_i" export="1" texture="editor/gui/editor_down.png">
+				<tooltip>Move library down</tooltip>
+				<callback type="clicked">Editor::Dialogs::MaterialLibraries::down_clicked</callback>
+			</icon>
+			<vbox space="4"/>
+			<icon name="Editor::Dialogs::MaterialLibraries::add_i" texture="editor/gui/editor_add.png">
+				<tooltip>Add library</tooltip>
+				<callback type="clicked">Editor::Dialogs::MaterialLibraries::add_clicked</callback>
+			</icon>
+			<icon name="Editor::Dialogs::MaterialLibraries::save_i" export="1" texture="editor/gui/editor_save.png">
+				<tooltip>Save library</tooltip>
+				<callback type="clicked">Editor::Dialogs::MaterialLibraries::save_clicked</callback>
+			</icon>
+			<icon name="Editor::Dialogs::MaterialLibraries::remove_i" export="1" texture="editor/gui/editor_remove.png">
+				<tooltip>Remove library from the list</tooltip>
+				<callback type="clicked">Editor::Dialogs::MaterialLibraries::remove_clicked</callback>
+			</icon>
+		</vbox>
+		
+	</hbox>
+</dialog>
+
+<!--
+/* Property
+ */
+-->
+<dialog name="Editor::Dialogs::Property::dialog" export="1" sizeable="1">
+	<text>Properties</text>
+	<vbox align="expand">
+		
+		<vbox space_y="4">
+			<gridbox align="expand" columns="2" space="4">
+				<label align="right"><text>Library:</text></label>
+				<combobox name="Editor::Dialogs::Property::libraries_cb" export="1" align="expand">
+					<callback type="changed">Editor::Dialogs::Property::libraries_changed</callback>
+				</combobox>
+				<label align="right"><text>Search:</text></label>
+				<editline name="Editor::Dialogs::Property::name_el" export="1" align="expand">
+					<callback type="changed">Editor::Dialogs::Property::name_changed</callback>
+					<callback type="pressed">Editor::Dialogs::Property::name_pressed</callback>
+				</editline>
+			</gridbox>
+		</vbox>
+		
+		<scrollbox align="expand" height="240">
+			<treebox name="Editor::Dialogs::Property::properties_tb" export="1" align="expand">
+				<callback type="changed">Editor::Dialogs::Property::properties_changed</callback>
+				<callback type="double_clicked">Editor::Dialogs::Property::ok_clicked</callback>
+			</treebox>
+		</scrollbox>
+		
+	</vbox>
+</dialog>
+
+<!--
+/* PropertyName
+ */
+-->
+<dialog name="Editor::Dialogs::PropertyName::dialog" export="1" sizeable="1">
+	<text>Property name</text>
+	<gridbox align="expand" columns="2" space="4">
+		
+		<label align="right"><text>Library:</text></label>
+		<combobox name="Editor::Dialogs::PropertyName::libraries_cb" export="1" align="expand"/>
+		
+		<label align="right"><text>Name:</text></label>
+		<editline name="Editor::Dialogs::PropertyName::name_el" export="1" align="expand" width="180">
+			<callback type="changed">Editor::Dialogs::PropertyName::name_changed</callback>
+			<callback type="pressed">Editor::Dialogs::PropertyName::name_pressed</callback>
+		</editline>
+		
+	</gridbox>
+</dialog>
+
+<!--
+/* PropertyLibraries
+ */
+-->
+<dialog name="Editor::Dialogs::PropertyLibraries::dialog" export="1" sizeable="1">
+	<text>Property libraries</text>
+	<hbox align="expand">
+		
+		<vbox align="expand" space="4">
+			<scrollbox align="expand" width="256" height="256">
+				<listbox name="Editor::Dialogs::PropertyLibraries::libraries_lb" export="1" align="expand">
+					<callback type="changed">Editor::Dialogs::PropertyLibraries::libraries_changed</callback>
+				</listbox>
+			</scrollbox>
+		</vbox>
+		
+		<vbox align="top">
+			<icon name="Editor::Dialogs::PropertyLibraries::up_i" export="1" texture="editor/gui/editor_up.png">
+				<tooltip>Move library up</tooltip>
+				<callback type="clicked">Editor::Dialogs::PropertyLibraries::up_clicked</callback>
+			</icon>
+			<icon name="Editor::Dialogs::PropertyLibraries::down_i" export="1" texture="editor/gui/editor_down.png">
+				<tooltip>Move library down</tooltip>
+				<callback type="clicked">Editor::Dialogs::PropertyLibraries::down_clicked</callback>
+			</icon>
+			<vbox space="4"/>
+			<icon name="Editor::Dialogs::PropertyLibraries::add_i" texture="editor/gui/editor_add.png">
+				<tooltip>Add library</tooltip>
+				<callback type="clicked">Editor::Dialogs::PropertyLibraries::add_clicked</callback>
+			</icon>
+			<icon name="Editor::Dialogs::PropertyLibraries::save_i" export="1" texture="editor/gui/editor_save.png">
+				<tooltip>Save library</tooltip>
+				<callback type="clicked">Editor::Dialogs::PropertyLibraries::save_clicked</callback>
+			</icon>
+			<icon name="Editor::Dialogs::PropertyLibraries::remove_i" export="1" texture="editor/gui/editor_remove.png">
+				<tooltip>Remove library from the list</tooltip>
+				<callback type="clicked">Editor::Dialogs::PropertyLibraries::remove_clicked</callback>
+			</icon>
+		</vbox>
+		
+	</hbox>
+</dialog>
+
+<!--
+/* Body
+ */
+-->
+<dialog name="Editor::Dialogs::Body::dialog" export="1" sizeable="1">
+	<text>Bodies</text>
+	<vbox align="expand">
+		
+		<scrollbox align="expand" width="240" height="240">
+			<treebox name="Editor::Dialogs::Body::bodies_tb" export="1" align="expand"/>
+		</scrollbox>
+		
+	</vbox>
+</dialog>
+
+<!--
+/* RagDoll
+ */
+-->
+<dialog name="Editor::Dialogs::RagDoll::dialog" export="1" sizeable="1">
+	<text>RagDoll</text>
+	<gridbox align="expand" columns="3" space="4">
+		
+		<label align="right"><text>Total mass:</text></label>
+		<editline name="Editor::Dialogs::RagDoll::mass_el" export="1" align="expand" validator="float">
+			<callback type="pressed,focus_out">Editor::Dialogs::RagDoll::mass_pressed</callback>
+		</editline>
+		<vbox/>
+		
+		<label align="right"><text>Approximation error:</text></label>
+		<editline name="Editor::Dialogs::RagDoll::error_el" export="1" align="expand" validator="float">
+			<callback type="pressed,focus_out">Editor::Dialogs::RagDoll::error_pressed</callback>
+		</editline>
+		<hslider align="expand" width="96" min="0" max="1000">
+			<attach multiplier="1000">Editor::Dialogs::RagDoll::error_el</attach>
+		</hslider>
+		
+		<label align="right"><text>Volume threshold:</text></label>
+		<editline name="Editor::Dialogs::RagDoll::threshold_el" export="1" align="expand" validator="float">
+			<callback type="pressed,focus_out">Editor::Dialogs::RagDoll::threshold_pressed</callback>
+		</editline>
+		<hslider align="expand" min="0" max="1000">
+			<attach multiplier="1000">Editor::Dialogs::RagDoll::threshold_el</attach>
+		</hslider>
+		
+		<vbox/>
+		<checkbox name="Editor::Dialogs::RagDoll::capsule_cb" export="1" align="left">
+			<text>Capsule shape</text>
+		</checkbox>
+		<vbox/>
+		
+	</gridbox>
+</dialog>
+
+<!--
+/* Convex
+ */
+-->
+<dialog name="Editor::Dialogs::Convex::dialog" export="1" sizeable="1">
+	<text>Convex</text>
+	<gridbox align="expand" columns="3" space="4">
+		
+		<label align="right"><text>Approximation error:</text></label>
+		<editline name="Editor::Dialogs::Convex::error_el" export="1" align="expand" validator="float">
+			<callback type="pressed,focus_out">Editor::Dialogs::Convex::error_pressed</callback>
+		</editline>
+		<hslider align="expand" width="96" min="0" max="1000">
+			<attach multiplier="1000">Editor::Dialogs::Convex::error_el</attach>
+		</hslider>
+		
+	</gridbox>
+</dialog>
+
+<!--
+/* Decompose
+ */
+-->
+<dialog name="Editor::Dialogs::Decompose::dialog" export="1" sizeable="1">
+	<text>Decompose</text>
+	<gridbox align="expand" columns="3" space="4">
+		
+		<label align="right"><text>Recursion depth:</text></label>
+		<editline name="Editor::Dialogs::Decompose::depth_el" export="1" align="expand" validator="uint">
+			<callback type="pressed,focus_out">Editor::Dialogs::Decompose::depth_pressed</callback>
+		</editline>
+		<vbox/>
+		<spinbox align="overlap" min="0" max="16">
+			<attach>Editor::Dialogs::Decompose::depth_el</attach>
+		</spinbox>
+		
+		<label align="right"><text>Approximation error:</text></label>
+		<editline name="Editor::Dialogs::Decompose::error_el" export="1" align="expand" validator="float">
+			<callback type="pressed,focus_out">Editor::Dialogs::Decompose::error_pressed</callback>
+		</editline>
+		<hslider align="expand" width="96" min="0" max="1000">
+			<attach multiplier="1000">Editor::Dialogs::Decompose::error_el</attach>
+		</hslider>
+		
+		<label align="right"><text>Merging threshold:</text></label>
+		<editline name="Editor::Dialogs::Decompose::threshold_el" export="1" align="expand" validator="float">
+			<callback type="pressed,focus_out">Editor::Dialogs::Decompose::threshold_pressed</callback>
+		</editline>
+		<hslider align="expand" min="0" max="1000">
+			<attach multiplier="1000">Editor::Dialogs::Decompose::threshold_el</attach>
+		</hslider>
+		
+	</gridbox>
+</dialog>
+
+<!--
+/* ImageSize
+ */
+-->
+<dialog name="Editor::Dialogs::ImageSize::dialog" export="1" width="320" sizeable="1">
+	<text>Image size</text>
+	<vbox>
+		<gridbox align="expand" columns="2" space="4">
+			<label align="right"><text>Size:</text></label>
+			<combobox name="Editor::Dialogs::ImageSize::size_cb" export="1" align="expand">
+				<text>128</text>
+				<text>256</text>
+				<text>512</text>
+				<text>1024</text>
+				<text>2048</text>
+				<text>4096</text>
+				<text>8192</text>
+			</combobox>
+			<label name="Editor::Dialogs::ImageSize::format_l" export="1" align="right"><text>Format:</text></label>
+			<combobox name="Editor::Dialogs::ImageSize::format_cb" export="1" align="expand">
+				<text>R8</text>
+				<text>RG8</text>
+				<text>RGB8</text>
+				<text>RGBA8</text>
+			</combobox>
+			<vbox/>
+			<checkbox name="Editor::Dialogs::ImageSize::flip_cb" export="1" align="left">
+				<text>Flip Y axis</text>
+			</checkbox>
+		</gridbox>
+	</vbox>
+</dialog>
+
+<!--
+/* TerrainImport
+ */
+-->
+<dialog name="Editor::Dialogs::TerrainImport::dialog" export="1" width="320" sizeable="1">
+	<text>Terrain import</text>
+	<vbox align="expand">
+		<gridbox align="expand" columns="2" space="4">
+			<label align="right"><text>Offset X:</text></label>
+			<editline name="Editor::Dialogs::TerrainImport::offset_x_el" export="1" align="expand" validator="uint">
+				<callback type="pressed,focus_out">Editor::Dialogs::TerrainImport::offset_x_pressed</callback>
+			</editline>
+			<spinbox name="Editor::Dialogs::TerrainImport::offset_x_sb" export="1" align="overlap">
+				<attach>Editor::Dialogs::TerrainImport::offset_x_el</attach>
+			</spinbox>
+			<label align="right"><text>Offset Y:</text></label>
+			<editline name="Editor::Dialogs::TerrainImport::offset_y_el" export="1" align="expand" validator="uint">
+				<callback type="pressed,focus_out">Editor::Dialogs::TerrainImport::offset_y_pressed</callback>
+			</editline>
+			<spinbox name="Editor::Dialogs::TerrainImport::offset_y_sb" export="1" align="overlap">
+				<attach>Editor::Dialogs::TerrainImport::offset_y_el</attach>
+			</spinbox>
+			<label align="right"><text>Scale:</text></label>
+			<editline name="Editor::Dialogs::TerrainImport::scale_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Editor::Dialogs::TerrainImport::scale_pressed</callback>
+			</editline>
+			<vbox/>
+			<checkbox name="Editor::Dialogs::TerrainImport::flip_cb" export="1" align="left">
+				<text>Flip Y axis</text>
+			</checkbox>
+		</gridbox>
+	</vbox>
+</dialog>
+
+<!--
+/* TerrainExport
+ */
+-->
+<dialog name="Editor::Dialogs::TerrainExport::dialog" export="1" width="320" sizeable="1">
+	<text>Terrain export</text>
+	<vbox align="expand">
+		<gridbox align="expand" columns="2" space="4">
+			<label align="right"><text>Offset X:</text></label>
+			<editline name="Editor::Dialogs::TerrainExport::offset_x_el" export="1" align="expand" validator="uint">
+				<callback type="pressed,focus_out">Editor::Dialogs::TerrainExport::offset_x_pressed</callback>
+			</editline>
+			<spinbox name="Editor::Dialogs::TerrainExport::offset_x_sb" export="1" align="overlap">
+				<attach>Editor::Dialogs::TerrainExport::offset_x_el</attach>
+			</spinbox>
+			<label align="right"><text>Offset Y:</text></label>
+			<editline name="Editor::Dialogs::TerrainExport::offset_y_el" export="1" align="expand" validator="uint">
+				<callback type="pressed,focus_out">Editor::Dialogs::TerrainExport::offset_y_pressed</callback>
+			</editline>
+			<spinbox name="Editor::Dialogs::TerrainExport::offset_y_sb" export="1" align="overlap">
+				<attach>Editor::Dialogs::TerrainExport::offset_y_el</attach>
+			</spinbox>
+			<label align="right"><text>Size X:</text></label>
+			<editline name="Editor::Dialogs::TerrainExport::size_x_el" export="1" align="expand" validator="uint">
+				<callback type="pressed,focus_out">Editor::Dialogs::TerrainExport::size_x_pressed</callback>
+			</editline>
+			<spinbox name="Editor::Dialogs::TerrainExport::size_x_sb" export="1" align="overlap" min="1">
+				<attach>Editor::Dialogs::TerrainExport::size_x_el</attach>
+			</spinbox>
+			<label align="right"><text>Size Y:</text></label>
+			<editline name="Editor::Dialogs::TerrainExport::size_y_el" export="1" align="expand" validator="uint">
+				<callback type="pressed,focus_out">Editor::Dialogs::TerrainExport::size_y_pressed</callback>
+			</editline>
+			<spinbox name="Editor::Dialogs::TerrainExport::size_y_sb" export="1" align="overlap" min="1">
+				<attach>Editor::Dialogs::TerrainExport::size_y_el</attach>
+			</spinbox>
+			<label align="right"><text>Scale:</text></label>
+			<editline name="Editor::Dialogs::TerrainExport::scale_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Editor::Dialogs::TerrainExport::scale_pressed</callback>
+			</editline>
+		</gridbox>
+	</vbox>
+</dialog>
+
+<!--
+/* TerrainImageSize
+ */
+-->
+<dialog name="Editor::Dialogs::TerrainImageSize::dialog" export="1" width="320" sizeable="1">
+	<text>New terrain diffuse texture</text>
+	<vbox>
+		<gridbox align="expand" columns="2" space="4">
+			<label align="right"><text>Coarse size:</text></label>
+			<combobox name="Editor::Dialogs::TerrainImageSize::coarse_size_cb" export="1" align="expand">
+				<text>128</text>
+				<text>256</text>
+				<text>512</text>
+				<text>1024</text>
+				<text>2048</text>
+				<text>4096</text>
+				<text>8192</text>
+			</combobox>
+			<label align="right"><text>Surface size:</text></label>
+			<combobox name="Editor::Dialogs::TerrainImageSize::surface_size_cb" export="1" align="expand">
+				<text>128</text>
+				<text>256</text>
+				<text>512</text>
+				<text>1024</text>
+				<text>2048</text>
+				<text>4096</text>
+				<text>8192</text>
+			</combobox>
+			<label name="Editor::Dialogs::TerrainImageSize::color_l" export="1" align="right"><text>Diffuse color:</text></label>
+			<groupbox name="Editor::Dialogs::TerrainImageSize::color_gb" export="1" align="expand">
+				<hbox align="expand">
+					<sprite name="Editor::Dialogs::TerrainImageSize::color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+						<callback type="clicked">Editor::Dialogs::TerrainImageSize::color_clicked</callback>
+					</sprite>
+					<sprite name="Editor::Dialogs::TerrainImageSize::color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+						<callback type="clicked">Editor::Dialogs::TerrainImageSize::color_clicked</callback>
+					</sprite>
+				</hbox>
+			</groupbox>
+		</gridbox>
+	</vbox>
+</dialog>
+
+<!--
+/* CorePlugin
+ */
+-->
+<dialog name="Editor::Dialogs::CorePlugin::dialog" export="1" sizeable="1">
+	<text>CorePlugin</text>
+	<vbox align="expand" space="4">
+		<scrollbox align="expand" width="240" height="320">
+			<listbox name="Editor::Dialogs::CorePlugin::plugins_lb" export="1" align="expand">
+				<callback type="double_clicked">Editor::Dialogs::CorePlugin::plugins_double_clicked</callback>
+			</listbox>
+		</scrollbox>
+	</vbox>
+</dialog>
+
+</ui>

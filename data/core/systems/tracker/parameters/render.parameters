@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<parameters version="1.00">
+	
+	<!-- Common parameters -->
+	<parameter type="render.enabled" track="toggle">
+		<set>engine.render.setEnabled(VALUE);</set>
+		<get>VALUE = engine.render.isEnabled();</get>
+	</parameter>
+	<parameter type="render.firstFrame" track="toggle">
+		<set>engine.render.setFirstFrame(VALUE);</set>
+		<get>VALUE = engine.render.isFirstFrame();</get>
+	</parameter>
+	
+	<!-- Distance parameters -->
+	<parameter type="render.distanceScale" track="float" min="0.0">
+		<set>engine.render.setDistanceScale(VALUE);</set>
+		<get>VALUE = engine.render.getDistanceScale();</get>
+	</parameter>
+	<parameter type="render.lightDistance" track="float">
+		<set>engine.render.setLightDistance(VALUE);</set>
+		<get>VALUE = engine.render.getLightDistance();</get>
+	</parameter>
+	<parameter type="render.decalDistance" track="float">
+		<set>engine.render.setDecalDistance(VALUE);</set>
+		<get>VALUE = engine.render.getDecalDistance();</get>
+	</parameter>
+	<parameter type="render.objectDistance" track="float">
+		<set>engine.render.setObjectDistance(VALUE);</set>
+		<get>VALUE = engine.render.getObjectDistance();</get>
+	</parameter>
+	<parameter type="render.clutterDistance" track="float">
+		<set>engine.render.setClutterDistance(VALUE);</set>
+		<get>VALUE = engine.render.getClutterDistance();</get>
+	</parameter>
+	<parameter type="render.shadowDistance" track="float">
+		<set>engine.render.setShadowDistance(VALUE);</set>
+		<get>VALUE = engine.render.getShadowDistance();</get>
+	</parameter>
+	<parameter type="render.reflectionDistance" track="float">
+		<set>engine.render.setReflectionDistance(VALUE);</set>
+		<get>VALUE = engine.render.getReflectionDistance();</get>
+	</parameter>
+	
+	<!-- Stereo parameters -->
+	<parameter type="render.stereo.separation" track="float" min="0.0">
+		<set>engine.render.setStereoSeparation(VALUE);</set>
+		<get>VALUE = engine.render.getStereoSeparation();</get>
+	</parameter>
+	<parameter type="render.stereo.distance" track="float" min="0.0">
+		<set>engine.render.setStereoDistance(VALUE);</set>
+		<get>VALUE = engine.render.getStereoDistance();</get>
+	</parameter>
+	
+	<!-- Impostor parameters -->
+	<parameter type="render.reflection.distance" track="float">
+		<set>engine.render.setImpostorDistance(VALUE);</set>
+		<get>VALUE = engine.render.getImpostorDistance();</get>
+	</parameter>
+	
+	<!-- Tessellation parameters -->
+	<parameter type="render.tessellation.scale" track="float" min="0.0">
+		<set>engine.render.setTessellationScale(VALUE);</set>
+		<get>VALUE = engine.render.getTessellationScale();</get>
+	</parameter>
+	<parameter type="render.tessellation.factor" track="float" min="0.0">
+		<set>engine.render.setTessellationFactor(VALUE);</set>
+		<get>VALUE = engine.render.getTessellationFactor();</get>
+	</parameter>
+	<parameter type="render.tessellation.distance" track="float" min="0.0">
+		<set>engine.render.setTessellationDistance(VALUE);</set>
+		<get>VALUE = engine.render.getTessellationDistance();</get>
+	</parameter>
+	
+	<!-- Animation parameters -->
+	<parameter type="render.animation.stem" track="float" min="0.0">
+		<set>engine.render.setAnimationStem(VALUE);</set>
+		<get>VALUE = engine.render.getAnimationStem();</get>
+	</parameter>
+	<parameter type="render.animation.leaf" track="float" min="0.0">
+		<set>engine.render.setAnimationLeaf(VALUE);</set>
+		<get>VALUE = engine.render.getAnimationLeaf();</get>
+	</parameter>
+	<parameter type="render.animation.scale" track="float" min="0.0">
+		<set>engine.render.setAnimationScale(VALUE);</set>
+		<get>VALUE = engine.render.getAnimationScale();</get>
+	</parameter>
+	<parameter type="render.animation.wind" track="vec3">
+		<set>engine.render.setAnimationWind(VALUE);</set>
+		<get>VALUE = engine.render.getAnimationWind();</get>
+	</parameter>
+	
+	<!-- Color parameters -->
+	<parameter type="render.ambientColor" track="color">
+		<set>engine.render.setAmbientColor(VALUE);</set>
+		<get>VALUE = engine.render.getAmbientColor();</get>
+	</parameter>
+	<parameter type="render.reflectionColor" track="color">
+		<set>engine.render.setReflectionColor(VALUE);</set>
+		<get>VALUE = engine.render.getReflectionColor();</get>
+	</parameter>
+	<parameter type="render.backgroundColor" track="color">
+		<set>engine.render.setBackgroundColor(VALUE);</set>
+		<get>VALUE = engine.render.getBackgroundColor();</get>
+	</parameter>
+	
+	<!-- Environment parameters -->
+	<parameter type="render.environment.texture" track="environment">
+		<set>engine.render.setEnvironmentCoefficients(VALUE);</set>
+		<get>engine.render.getEnvironmentCoefficients(VALUE);</get>
+	</parameter>
+	<parameter type="render.environment.exposure" track="float" min="0.0">
+		<set>engine.render.setEnvironmentExposure(VALUE);</set>
+		<get>VALUE = engine.render.getEnvironmentExposure();</get>
+	</parameter>
+	
+	<!-- LightProb environment parameters -->
+	<parameter type="render.lightprob.distance" track="float">
+		<set>engine.render.setLightProbDistance(VALUE);</set>
+		<get>VALUE = engine.render.getLightProbDistance();</get>
+	</parameter>
+	<parameter type="render.lightprob.attenuation" track="float" min="0.0" max="1.0">
+		<set>engine.render.setLightProbAttenuation(VALUE);</set>
+		<get>VALUE = engine.render.getLightProbAttenuation();</get>
+	</parameter>
+	<parameter type="render.lightprob.fresnelBias" track="float" min="0.0" max="1.0">
+		<set>engine.render.setLightProbFresnelBias(VALUE);</set>
+		<get>VALUE = engine.render.getLightProbFresnelBias();</get>
+	</parameter>
+	<parameter type="render.lightprob.fresnelPower" track="float" min="0.0">
+		<set>engine.render.setLightProbFresnelPower(VALUE);</set>
+		<get>VALUE = engine.render.getLightProbFresnelPower();</get>
+	</parameter>
+	<parameter type="render.lightprob.diffuseScale" track="float" min="0.0">
+		<set>engine.render.setLightProbDiffuseScale(VALUE);</set>
+		<get>VALUE = engine.render.getLightProbDiffuseScale();</get>
+	</parameter>
+	<parameter type="render.lightprob.specularScale" track="float" min="0.0">
+		<set>engine.render.setLightProbSpecularScale(VALUE);</set>
+		<get>VALUE = engine.render.getLightProbSpecularScale();</get>
+	</parameter>
+	
+	<!-- Ambient occlusion parameters -->
+	<parameter type="render.occlusion.ambient.screenRadius" track="float" min="0.0" max="1.0">
+		<set>engine.render.setOcclusionAmbientScreenRadius(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionAmbientScreenRadius();</get>
+	</parameter>
+	<parameter type="render.occlusion.ambient.sampleRadius" track="float" min="0.0">
+		<set>engine.render.setOcclusionAmbientSampleRadius(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionAmbientSampleRadius();</get>
+	</parameter>
+	<parameter type="render.occlusion.ambient.perspective" track="float" min="0.0">
+		<set>engine.render.setOcclusionAmbientPerspective(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionAmbientPerspective();</get>
+	</parameter>
+	<parameter type="render.occlusion.ambient.attenuation" track="float" min="0.0" max="1.0">
+		<set>engine.render.setOcclusionAmbientAttenuation(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionAmbientAttenuation();</get>
+	</parameter>
+	<parameter type="render.occlusion.ambient.threshold" track="float" min="0.0">
+		<set>engine.render.setOcclusionAmbientThreshold(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionAmbientThreshold();</get>
+	</parameter>
+	<parameter type="render.occlusion.ambient.emitter" track="float" min="0.0" max="1.0">
+		<set>engine.render.setOcclusionAmbientEmitter(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionAmbientEmitter();</get>
+	</parameter>
+	<parameter type="render.occlusion.ambient.receiver" track="float" min="0.0" max="1.0">
+		<set>engine.render.setOcclusionAmbientReceiver(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionAmbientReceiver();</get>
+	</parameter>
+	<parameter type="render.occlusion.ambient.scale" track="float" min="0.0" max="1.0">
+		<set>engine.render.setOcclusionAmbientScale(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionAmbientScale();</get>
+	</parameter>
+	<parameter type="render.occlusion.ambient.power" track="float" min="0.0">
+		<set>engine.render.setOcclusionAmbientPower(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionAmbientPower();</get>
+	</parameter>
+	
+	<!-- Light occlusion parameters -->
+	<parameter type="render.occlusion.light.screenRadius" track="float" min="0.0" max="1.0">
+		<set>engine.render.setOcclusionLightScreenRadius(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionLightScreenRadius();</get>
+	</parameter>
+	<parameter type="render.occlusion.light.sampleRadius" track="float" min="0.0">
+		<set>engine.render.setOcclusionLightSampleRadius(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionLightSampleRadius();</get>
+	</parameter>
+	<parameter type="render.occlusion.light.perspective" track="float" min="0.0">
+		<set>engine.render.setOcclusionLightPerspective(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionLightPerspective();</get>
+	</parameter>
+	<parameter type="render.occlusion.light.attenuation" track="float" min="0.0" max="1.0">
+		<set>engine.render.setOcclusionLightAttenuation(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionLightAttenuation();</get>
+	</parameter>
+	<parameter type="render.occlusion.light.threshold" track="float" min="0.0">
+		<set>engine.render.setOcclusionLightThreshold(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionLightThreshold();</get>
+	</parameter>
+	<parameter type="render.occlusion.light.emitter" track="float" min="0.0" max="1.0">
+		<set>engine.render.setOcclusionLightEmitter(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionLightEmitter();</get>
+	</parameter>
+	<parameter type="render.occlusion.light.receiver" track="float" min="0.0" max="1.0">
+		<set>engine.render.setOcclusionLightReceiver(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionLightReceiver();</get>
+	</parameter>
+	<parameter type="render.occlusion.light.scale" track="float" min="0.0">
+		<set>engine.render.setOcclusionLightScale(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionLightScale();</get>
+	</parameter>
+	<parameter type="render.occlusion.light.power" track="float" min="0.0">
+		<set>engine.render.setOcclusionLightPower(VALUE);</set>
+		<get>VALUE = engine.render.getOcclusionLightPower();</get>
+	</parameter>
+	
+	<!-- Refraction parameters -->
+	<parameter type="render.refractionDispersion" track="vec3">
+		<set>engine.render.setRefractionDispersion(VALUE);</set>
+		<get>VALUE = engine.render.getRefractionDispersion();</get>
+	</parameter>
+	
+	<!-- MotionBlur parameters -->
+	<parameter type="render.motionBlur.linearScale" track="float" min="0.0">
+		<set>engine.render.setMotionBlurLinearScale(VALUE);</set>
+		<get>VALUE = engine.render.getMotionBlurLinearScale();</get>
+	</parameter>
+	<parameter type="render.motionBlur.angularScale" track="float" min="0.0">
+		<set>engine.render.setMotionBlurAngularScale(VALUE);</set>
+		<get>VALUE = engine.render.getMotionBlurAngularScale();</get>
+	</parameter>
+	<parameter type="render.motionBlur.velocityScale" track="float" min="0.0">
+		<set>engine.render.setMotionBlurVelocityScale(VALUE);</set>
+		<get>VALUE = engine.render.getMotionBlurVelocityScale();</get>
+	</parameter>
+	
+	<!-- Scattering parameters -->
+	<parameter type="render.scattering.sunColor" track="color">
+		<set>engine.render.setScatteringSunColor(VALUE);</set>
+		<get>VALUE = engine.render.getScatteringSunColor();</get>
+	</parameter>
+	<parameter type="render.scattering.rayColor" track="color">
+		<set>engine.render.setScatteringRayColor(VALUE);</set>
+		<get>VALUE = engine.render.getScatteringRayColor();</get>
+	</parameter>
+	<parameter type="render.scattering.mieColor" track="color">
+		<set>engine.render.setScatteringMieColor(VALUE);</set>
+		<get>VALUE = engine.render.getScatteringMieColor();</get>
+	</parameter>
+	<parameter type="render.scattering.areal" track="float" min="0.0">
+		<set>engine.render.setScatteringAreal(VALUE);</set>
+		<get>VALUE = engine.render.getScatteringAreal();</get>
+	</parameter>
+	<parameter type="render.scattering.greenstein" track="float" min="0.0" max="1.0">
+		<set>engine.render.setScatteringGreenstein(VALUE);</set>
+		<get>VALUE = engine.render.getScatteringGreenstein();</get>
+	</parameter>
+	<parameter type="render.scattering.angularity" track="float" min="0.0" max="1.0">
+		<set>engine.render.setScatteringAngularity(VALUE);</set>
+		<get>VALUE = engine.render.getScatteringAngularity();</get>
+	</parameter>
+	<parameter type="render.scattering.threshold" track="float" min="1.0">
+		<set>engine.render.setScatteringThreshold(VALUE);</set>
+		<get>VALUE = engine.render.getScatteringThreshold();</get>
+	</parameter>
+	<parameter type="render.scattering.energy" track="float" min="0.0">
+		<set>engine.render.setScatteringEnergy(VALUE);</set>
+		<get>VALUE = engine.render.getScatteringEnergy();</get>
+	</parameter>
+	<parameter type="render.scattering.power" track="float" min="0.0">
+		<set>engine.render.setScatteringPower(VALUE);</set>
+		<get>VALUE = engine.render.getScatteringPower();</get>
+	</parameter>
+	<parameter type="render.scattering.sun" track="float" min="0.0">
+		<set>engine.render.setScatteringSun(VALUE);</set>
+		<get>VALUE = engine.render.getScatteringSun();</get>
+	</parameter>
+	<parameter type="render.scattering.ray" track="float" min="0.0">
+		<set>engine.render.setScatteringRay(VALUE);</set>
+		<get>VALUE = engine.render.getScatteringRay();</get>
+	</parameter>
+	<parameter type="render.scattering.mie" track="float" min="0.0">
+		<set>engine.render.setScatteringMie(VALUE);</set>
+		<get>VALUE = engine.render.getScatteringMie();</get>
+	</parameter>
+	
+	<!-- Volumetric parameters -->
+	<parameter type="render.volumetric.exposure" track="float" min="0.0" max="1.0">
+		<set>engine.render.setVolumetricExposure(VALUE);</set>
+		<get>VALUE = engine.render.getVolumetricExposure();</get>
+	</parameter>
+	<parameter type="render.volumetric.length" track="float" min="0.0" max="1.0">
+		<set>engine.render.setVolumetricLength(VALUE);</set>
+		<get>VALUE = engine.render.getVolumetricLength();</get>
+	</parameter>
+	<parameter type="render.volumetric.attenuation" track="float" min="0.0" max="1.0">
+		<set>engine.render.setVolumetricAttenuation(VALUE);</set>
+		<get>VALUE = engine.render.getVolumetricAttenuation();</get>
+	</parameter>
+	
+	<!-- Glow parameters -->
+	<parameter type="render.glow.threshold" track="float" min="0.0">
+		<set>engine.render.setGlowThreshold(VALUE);</set>
+		<get>VALUE = engine.render.getGlowThreshold();</get>
+	</parameter>
+	<parameter type="render.glow.largeExposure" track="float" min="0.0">
+		<set>engine.render.setGlowLargeExposure(VALUE);</set>
+		<get>VALUE = engine.render.getGlowLargeExposure();</get>
+	</parameter>
+	<parameter type="render.glow.mediumExposure" track="float" min="0.0">
+		<set>engine.render.setGlowMediumExposure(VALUE);</set>
+		<get>VALUE = engine.render.getGlowMediumExposure();</get>
+	</parameter>
+	<parameter type="render.glow.smallExposure" track="float" min="0.0">
+		<set>engine.render.setGlowSmallExposure(VALUE);</set>
+		<get>VALUE = engine.render.getGlowSmallExposure();</get>
+	</parameter>
+	
+	<!-- DOF parameters -->
+	<parameter type="render.dof.focalDistance" track="float" min="0.0">
+		<set>engine.render.setDOFFocalDistance(VALUE);</set>
+		<get>VALUE = engine.render.getDOFFocalDistance();</get>
+	</parameter>
+	<parameter type="render.dof.farBlurRange" track="float" min="0.0">
+		<set>engine.render.setDOFFarBlurRange(VALUE);</set>
+		<get>VALUE = engine.render.getDOFFarBlurRange();</get>
+	</parameter>
+	<parameter type="render.dof.farBlurRadius" track="float" min="0.0">
+		<set>engine.render.setDOFFarBlurRadius(VALUE);</set>
+		<get>VALUE = engine.render.getDOFFarBlurRadius();</get>
+	</parameter>
+	<parameter type="render.dof.farBlurPower" track="float" min="0.0">
+		<set>engine.render.setDOFFarBlurPower(VALUE);</set>
+		<get>VALUE = engine.render.getDOFFarBlurPower();</get>
+	</parameter>
+	<parameter type="render.dof.farFocalRange" track="float" min="0.0">
+		<set>engine.render.setDOFFarFocalRange(VALUE);</set>
+		<get>VALUE = engine.render.getDOFFarFocalRange();</get>
+	</parameter>
+	<parameter type="render.dof.farFocalScale" track="float" min="1.0">
+		<set>engine.render.setDOFFarFocalScale(VALUE);</set>
+		<get>VALUE = engine.render.getDOFFarFocalScale();</get>
+	</parameter>
+	<parameter type="render.dof.farFocalPower" track="float" min="0.0">
+		<set>engine.render.setDOFFarFocalPower(VALUE);</set>
+		<get>VALUE = engine.render.getDOFFarFocalPower();</get>
+	</parameter>
+	<parameter type="render.dof.nearBlurRange" track="float" min="0.0">
+		<set>engine.render.setDOFNearBlurRange(VALUE);</set>
+		<get>VALUE = engine.render.getDOFNearBlurRange();</get>
+	</parameter>
+	<parameter type="render.dof.nearBlurRadius" track="float" min="0.0">
+		<set>engine.render.setDOFNearBlurRadius(VALUE);</set>
+		<get>VALUE = engine.render.getDOFNearBlurRadius();</get>
+	</parameter>
+	<parameter type="render.dof.nearBlurPower" track="float" min="0.0">
+		<set>engine.render.setDOFNearBlurPower(VALUE);</set>
+		<get>VALUE = engine.render.getDOFNearBlurPower();</get>
+	</parameter>
+	<parameter type="render.dof.nearFocalRange" track="float" min="0.0">
+		<set>engine.render.setDOFNearFocalRange(VALUE);</set>
+		<get>VALUE = engine.render.getDOFNearFocalRange();</get>
+	</parameter>
+	<parameter type="render.dof.nearFocalScale" track="float" min="1.0">
+		<set>engine.render.setDOFNearFocalScale(VALUE);</set>
+		<get>VALUE = engine.render.getDOFNearFocalScale();</get>
+	</parameter>
+	<parameter type="render.dof.nearFocalPower" track="float" min="0.0">
+		<set>engine.render.setDOFNearFocalPower(VALUE);</set>
+		<get>VALUE = engine.render.getDOFNearFocalPower();</get>
+	</parameter>
+	
+	<!-- HDR parameters -->
+	<parameter type="render.hdr.exposure" track="float" min="0.0">
+		<set>engine.render.setHDRExposure(VALUE);</set>
+		<get>VALUE = engine.render.getHDRExposure();</get>
+	</parameter>
+	<parameter type="render.hdr.adaptation" track="float" min="0.0">
+		<set>engine.render.setHDRAdaptation(VALUE);</set>
+		<get>VALUE = engine.render.getHDRAdaptation();</get>
+	</parameter>
+	<parameter type="render.hdr.minLuminance" track="float" min="-10.0" max="10.0">
+		<set>engine.render.setHDRMinLuminance(VALUE);</set>
+		<get>VALUE = engine.render.getHDRMinLuminance();</get>
+	</parameter>
+	<parameter type="render.hdr.maxLuminance" track="float" min="-10.0" max="10.0">
+		<set>engine.render.setHDRMaxLuminance(VALUE);</set>
+		<get>VALUE = engine.render.getHDRMaxLuminance();</get>
+	</parameter>
+	<parameter type="render.hdr.threshold" track="float" min="0.0">
+		<set>engine.render.setHDRThreshold(VALUE);</set>
+		<get>VALUE = engine.render.getHDRThreshold();</get>
+	</parameter>
+	<parameter type="render.hdr.largeExposure" track="float" min="0.0">
+		<set>engine.render.setHDRLargeExposure(VALUE);</set>
+		<get>VALUE = engine.render.getHDRLargeExposure();</get>
+	</parameter>
+	<parameter type="render.hdr.mediumExposure" track="float" min="0.0">
+		<set>engine.render.setHDRMediumExposure(VALUE);</set>
+		<get>VALUE = engine.render.getHDRMediumExposure();</get>
+	</parameter>
+	<parameter type="render.hdr.smallExposure" track="float" min="0.0">
+		<set>engine.render.setHDRSmallExposure(VALUE);</set>
+		<get>VALUE = engine.render.getHDRSmallExposure();</get>
+	</parameter>
+	<parameter type="render.hdr.brightExposure" track="float" min="0.0">
+		<set>engine.render.setHDRBrightExposure(VALUE);</set>
+		<get>VALUE = engine.render.getHDRBrightExposure();</get>
+	</parameter>
+	
+	<!-- HDR cross parameters -->
+	<parameter type="render.hdr.filmic.shoulderScale" track="float" min="0.0" max="1.0">
+		<set>engine.render.setHDRFilmicShoulderScale(VALUE);</set>
+		<get>VALUE = engine.render.getHDRFilmicShoulderScale();</get>
+	</parameter>
+	<parameter type="render.hdr.filmic.linearScale" track="float" min="0.0" max="1.0">
+		<set>engine.render.setHDRFilmicLinearScale(VALUE);</set>
+		<get>VALUE = engine.render.getHDRFilmicLinearScale();</get>
+	</parameter>
+	<parameter type="render.hdr.filmic.linearAngle" track="float" min="0.0" max="1.0">
+		<set>engine.render.setHDRFilmicLinearAngle(VALUE);</set>
+		<get>VALUE = engine.render.getHDRFilmicLinearAngle();</get>
+	</parameter>
+	<parameter type="render.hdr.filmic.toeScale" track="float" min="0.0" max="1.0">
+		<set>engine.render.setHDRFilmicToeScale(VALUE);</set>
+		<get>VALUE = engine.render.getHDRFilmicToeScale();</get>
+	</parameter>
+	<parameter type="render.hdr.filmic.toeNumerator" track="float" min="0.0" max="1.0">
+		<set>engine.render.setHDRFilmicToeNumerator(VALUE);</set>
+		<get>VALUE = engine.render.getHDRFilmicToeNumerator();</get>
+	</parameter>
+	<parameter type="render.hdr.filmic.toeDenominator" track="float" min="0.0" max="1.0">
+		<set>engine.render.setHDRFilmicToeDenominator(VALUE);</set>
+		<get>VALUE = engine.render.getHDRFilmicToeDenominator();</get>
+	</parameter>
+	<parameter type="render.hdr.filmic.whiteLevel" track="float" min="0.0">
+		<set>engine.render.setHDRFilmicWhiteLevel(VALUE);</set>
+		<get>VALUE = engine.render.getHDRFilmicWhiteLevel();</get>
+	</parameter>
+	
+	<!-- HDR cross parameters -->
+	<parameter type="render.hdr.cross.enabled" track="toggle">
+		<set>engine.render.setHDRCrossEnabled(VALUE);</set>
+		<get>VALUE = engine.render.isHDRCrossEnabled();</get>
+	</parameter>
+	<parameter type="render.hdr.cross.color" track="color">
+		<set>engine.render.setHDRCrossColor(VALUE);</set>
+		<get>VALUE = engine.render.getHDRCrossColor();</get>
+	</parameter>
+	<parameter type="render.hdr.cross.scale" track="float" min="0.0">
+		<set>engine.render.setHDRCrossScale(VALUE);</set>
+		<get>VALUE = engine.render.getHDRCrossScale();</get>
+	</parameter>
+	<parameter type="render.hdr.cross.shafts" track="switch" min="2" max="8">
+		<set>engine.render.setHDRCrossShafts(VALUE);</set>
+		<get>VALUE = engine.render.getHDRCrossShafts();</get>
+	</parameter>
+	<parameter type="render.hdr.cross.length" track="float" min="0.0" max="2.0">
+		<set>engine.render.setHDRCrossLength(VALUE);</set>
+		<get>VALUE = engine.render.getHDRCrossLength();</get>
+	</parameter>
+	<parameter type="render.hdr.cross.angle" track="float">
+		<set>engine.render.setHDRCrossAngle(VALUE);</set>
+		<get>VALUE = engine.render.getHDRCrossAngle();</get>
+	</parameter>
+	<parameter type="render.hdr.cross.threshold" track="float" min="0.0">
+		<set>engine.render.setHDRCrossThreshold(VALUE);</set>
+		<get>VALUE = engine.render.getHDRCrossThreshold();</get>
+	</parameter>
+	
+	<!-- HDR bokeh parameters -->
+	<parameter type="render.hdr.bokeh.enabled" track="toggle">
+		<set>engine.render.setHDRBokehEnabled(VALUE);</set>
+		<get>VALUE = engine.render.isHDRBokehEnabled();</get>
+	</parameter>
+	<parameter type="render.hdr.bokeh.color" track="color">
+		<set>engine.render.setHDRBokehColor(VALUE);</set>
+		<get>VALUE = engine.render.getHDRBokehColor();</get>
+	</parameter>
+	<parameter type="render.hdr.bokeh.scale" track="float" min="0.0">
+		<set>engine.render.setHDRBokehScale(VALUE);</set>
+		<get>VALUE = engine.render.getHDRBokehScale();</get>
+	</parameter>
+	<parameter type="render.hdr.bokeh.farSize" track="float" min="0.0" max="1.0">
+		<set>engine.render.setHDRBokehFarSize(VALUE);</set>
+		<get>VALUE = engine.render.getHDRBokehFarSize();</get>
+	</parameter>
+	<parameter type="render.hdr.bokeh.farPower" track="float" min="0.0">
+		<set>engine.render.setHDRBokehFarPower(VALUE);</set>
+		<get>VALUE = engine.render.getHDRBokehFarPower();</get>
+	</parameter>
+	<parameter type="render.hdr.bokeh.nearSize" track="float" min="0.0" max="1.0">
+		<set>engine.render.setHDRBokehNearSize(VALUE);</set>
+		<get>VALUE = engine.render.getHDRBokehNearSize();</get>
+	</parameter>
+	<parameter type="render.hdr.bokeh.nearPower" track="float" min="0.0">
+		<set>engine.render.setHDRBokehNearPower(VALUE);</set>
+		<get>VALUE = engine.render.getHDRBokehNearPower();</get>
+	</parameter>
+	<parameter type="render.hdr.bokeh.threshold" track="float" min="0.0">
+		<set>engine.render.setHDRBokehThreshold(VALUE);</set>
+		<get>VALUE = engine.render.getHDRBokehThreshold();</get>
+	</parameter>
+	<parameter type="render.hdr.bokeh.texture" track="string" filter="image">
+		<set>if(engine.render.getHDRBokehTextureName() != VALUE) engine.render.setHDRBokehTextureName(VALUE);</set>
+		<get>VALUE = engine.render.getHDRBokehTextureName();</get>
+	</parameter>
+	
+	<!-- HDR shaft parameters -->
+	<parameter type="render.hdr.shaft.enabled" track="toggle">
+		<set>engine.render.setHDRShaftEnabled(VALUE);</set>
+		<get>VALUE = engine.render.isHDRShaftEnabled();</get>
+	</parameter>
+	<parameter type="render.hdr.shaft.color" track="color">
+		<set>engine.render.setHDRShaftColor(VALUE);</set>
+		<get>VALUE = engine.render.getHDRShaftColor();</get>
+	</parameter>
+	<parameter type="render.hdr.shaft.scale" track="float" min="0.0">
+		<set>engine.render.setHDRShaftScale(VALUE);</set>
+		<get>VALUE = engine.render.getHDRShaftScale();</get>
+	</parameter>
+	<parameter type="render.hdr.shaft.length" track="float" min="0.0" max="1.0">
+		<set>engine.render.setHDRShaftLength(VALUE);</set>
+		<get>VALUE = engine.render.getHDRShaftLength();</get>
+	</parameter>
+	<parameter type="render.hdr.shaft.attenuation" track="float" min="0.0" max="1.0">
+		<set>engine.render.setHDRShaftAttenuation(VALUE);</set>
+		<get>VALUE = engine.render.getHDRShaftAttenuation();</get>
+	</parameter>
+	<parameter type="render.hdr.shaft.threshold" track="float" min="0.0">
+		<set>engine.render.setHDRShaftThreshold(VALUE);</set>
+		<get>VALUE = engine.render.getHDRShaftThreshold();</get>
+	</parameter>
+	
+	<!-- HDR lens parameters -->
+	<parameter type="render.hdr.lens.enabled" track="toggle">
+		<set>engine.render.setHDRLensEnabled(VALUE);</set>
+		<get>VALUE = engine.render.isHDRLensEnabled();</get>
+	</parameter>
+	<parameter type="render.hdr.lens.color" track="color">
+		<set>engine.render.setHDRLensColor(VALUE);</set>
+		<get>VALUE = engine.render.getHDRLensColor();</get>
+	</parameter>
+	<parameter type="render.hdr.lens.scale" track="float" min="0.0">
+		<set>engine.render.setHDRLensScale(VALUE);</set>
+		<get>VALUE = engine.render.getHDRLensScale();</get>
+	</parameter>
+	<parameter type="render.hdr.lens.length" track="float" min="0.0" max="1.0">
+		<set>engine.render.setHDRLensLength(VALUE);</set>
+		<get>VALUE = engine.render.getHDRLensLength();</get>
+	</parameter>
+	<parameter type="render.hdr.lens.radius" track="float" min="0.0" max="1.0">
+		<set>engine.render.setHDRLensRadius(VALUE);</set>
+		<get>VALUE = engine.render.getHDRLensRadius();</get>
+	</parameter>
+	<parameter type="render.hdr.lens.threshold" track="float" min="0.0">
+		<set>engine.render.setHDRLensThreshold(VALUE);</set>
+		<get>VALUE = engine.render.getHDRLensThreshold();</get>
+	</parameter>
+	<parameter type="render.hdr.lens.dispersion" track="vec3">
+		<set>engine.render.setHDRLensDispersion(VALUE);</set>
+		<get>VALUE = engine.render.getHDRLensDispersion();</get>
+	</parameter>
+	<parameter type="render.hdr.lens.texture" track="string" filter="image">
+		<set>if(engine.render.getHDRLensTextureName() != VALUE) engine.render.setHDRLensTextureName(VALUE);</set>
+		<get>VALUE = engine.render.getHDRLensTextureName();</get>
+	</parameter>
+	
+	<!-- Color post parameters -->
+	<parameter type="render.color.brightness" track="float" min="-1.0" max="1.0">
+		<set>engine.render.setColorBrightness(VALUE);</set>
+		<get>VALUE = engine.render.getColorBrightness();</get>
+	</parameter>
+	<parameter type="render.color.contrast" track="float" min="-1.0" max="1.0">
+		<set>engine.render.setColorContrast(VALUE);</set>
+		<get>VALUE = engine.render.getColorContrast();</get>
+	</parameter>
+	<parameter type="render.color.saturation" track="float" min="0.0" max="2.0">
+		<set>engine.render.setColorSaturation(VALUE);</set>
+		<get>VALUE = engine.render.getColorSaturation();</get>
+	</parameter>
+	<parameter type="render.color.gamma" track="float" min="0.5" max="1.5">
+		<set>engine.render.setColorGamma(VALUE);</set>
+		<get>VALUE = engine.render.getColorGamma();</get>
+	</parameter>
+	<parameter type="render.color.white" track="color">
+		<set>engine.render.setColorWhite(VALUE);</set>
+		<get>VALUE = engine.render.getColorWhite();</get>
+	</parameter>
+	<parameter type="render.color.texture" track="string" filter="image">
+		<set>if(engine.render.getColorTextureName() != VALUE) engine.render.setColorTextureName(VALUE);</set>
+		<get>VALUE = engine.render.getColorTextureName();</get>
+	</parameter>
+	
+	<!-- Render post parameters -->
+	<parameter type="render.renderMaterials" track="string" filter="material">
+		<set>engine.render.setRenderMaterials(VALUE);</set>
+		<get>VALUE = engine.render.getRenderMaterials();</get>
+	</parameter>
+	<parameter type="render.compositeMaterial" track="string" filter="material">
+		<set>engine.render.setCompositeMaterial(VALUE);</set>
+		<get>VALUE = engine.render.getCompositeMaterial();</get>
+	</parameter>
+	<parameter type="render.postMaterials" track="string" filter="material">
+		<set>engine.render.setPostMaterials(VALUE);</set>
+		<get>VALUE = engine.render.getPostMaterials();</get>
+	</parameter>
+	
+	<!-- Fade post parameters -->
+	<parameter type="render.fadeColor" track="color">
+		<set>engine.render.setFadeColor(VALUE);</set>
+		<get>VALUE = engine.render.getFadeColor();</get>
+	</parameter>
+	
+</parameters>

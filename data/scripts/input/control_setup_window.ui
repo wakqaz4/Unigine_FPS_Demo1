@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+<ui version="1.0">
+
+<!--
+/*
+ * ControlSetupWindow
+ */
+-->
+<window name="Unigine::Input::ControlSetupWindow::window" export="1" pos_x="100" pos_y="100" align="overlap,top,right" blendable="1" snap_distance="16">
+	<text>Controls setup</text>
+	<icon texture="core/gui/window_close.png" pos_x="4" pos_y="-24" align="overlap,top,right">
+		<tooltip>close (Esc)</tooltip>
+		<callback type="clicked" accel_key="esc">Unigine::Input::ControlSetupWindow::hide</callback>
+	</icon>
+	
+	<gridbox name="Unigine::Input::ControlSetupWindow::client_area" align="expand" export="1" space="4">
+	</gridbox>
+	
+</window>
+
+</ui>

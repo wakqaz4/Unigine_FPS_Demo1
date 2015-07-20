@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_objects.ui
+ * Desc:    Unigine editor
+ * Version: 1.25
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Object surfaces
+ */
+-->
+<vbox name="Nodes::Object::main_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<vbox>
+			<hbox align="expand">
+				<label><text>Search:</text></label>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::name_el" next="Nodes::Object::name_el" export="1" align="expand">
+					<tooltip>Type first letters of surface name here</tooltip>
+					<callback type="changed">Nodes::Object::name_changed</callback>
+					<callback type="pressed">Nodes::Object::name_changed</callback>
+					<callback type="focus_in">Nodes::Object::name_focus_in</callback>
+					<callback type="focus_out">Nodes::Object::name_focus_out</callback>
+				</editline>
+			</hbox>
+		</vbox>
+		
+		<vbox space="2"/>
+		
+		<scrollbox align="expand" width="120" height="120">
+			<treebox name="Nodes::Object::surfaces_tb" export="1" align="expand" editable="1" multi_selection="1">
+				<tooltip>Drag surfaces with pressed ALT to edit hierarchy</tooltip>
+				<callback type="changed">Nodes::Object::surfaces_changed</callback>
+				<callback type="double_clicked">Nodes::Object::surfaces_double_clicked</callback>
+				<callback type="drag_drop">Nodes::Object::surfaces_changed</callback>
+			</treebox>
+		</scrollbox>
+		
+		<vbox space="2"/>
+		
+		<vbox>
+			
+			<gridbox align="expand" columns="2" space="4">
+				<checkbox name="Nodes::Object::enabled_cb" export="1" align="left">
+					<tooltip>The surface is enabled</tooltip>
+					<text>Enabled</text>
+					<callback type="clicked">Nodes::Object::enabled_clicked</callback>
+				</checkbox>
+				
+				<checkbox name="Nodes::Object::decal_cb" export="1" align="left">
+					<tooltip>The surface receives decal</tooltip>
+					<text>Decal</text>
+					<callback type="clicked">Nodes::Object::decal_clicked</callback>
+				</checkbox>
+				
+				<checkbox name="Nodes::Object::cast_shadow_cb" export="1" align="left">
+					<tooltip>The surface casts shadow</tooltip>
+					<text>Cast shadows</text>
+					<callback type="clicked">Nodes::Object::cast_shadow_clicked</callback>
+				</checkbox>
+				
+				<checkbox name="Nodes::Object::cast_world_shadow_cb" export="1" align="left">
+					<tooltip>The surface casts world shadow</tooltip>
+					<text>Cast world shadows</text>
+					<callback type="clicked">Nodes::Object::cast_world_shadow_clicked</callback>
+				</checkbox>
+				
+				<checkbox name="Nodes::Object::receive_shadow_cb" export="1" align="left">
+					<tooltip>The surface receives shadow</tooltip>
+					<text>Receive shadows</text>
+					<callback type="clicked">Nodes::Object::receive_shadow_clicked</callback>
+				</checkbox>
+				
+				<checkbox name="Nodes::Object::receive_world_shadow_cb" export="1" align="left">
+					<tooltip>The surface receives world shadow</tooltip>
+					<text>Receive world shadows</text>
+					<callback type="clicked">Nodes::Object::receive_world_shadow_clicked</callback>
+				</checkbox>
+				
+				<checkbox name="Nodes::Object::intersection_cb" export="1" align="left">
+					<tooltip>The surface is intersectable</tooltip>
+					<text>Intersection</text>
+					<callback type="clicked">Nodes::Object::intersection_clicked</callback>
+				</checkbox>
+				
+				<checkbox name="Nodes::Object::collision_cb" export="1" align="left">
+					<tooltip>The surface is collidable</tooltip>
+					<text>Collision</text>
+					<callback type="clicked">Nodes::Object::collision_clicked</callback>
+				</checkbox>
+			</gridbox>
+			
+			<vbox space="2"/>
+			
+			<gridbox align="expand" columns="4" space="4">
+				
+				<label align="right"><text>Light:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::light_mask_el" export="1" capacity="8" align="expand">
+						<tooltip>Light mask</tooltip>
+						<text face="core/gui/console.ttf"/>
+						<callback type="pressed,focus_out">Nodes::Object::light_mask_pressed</callback>
+						<callback type="double_clicked">Nodes::Object::light_mask_clicked</callback>
+					</editline>
+					<icon texture="editor/gui/action_edit.png" width="24" height="24">
+						<callback type="clicked">Nodes::Object::light_mask_clicked</callback>
+						<tooltip>Edit mask</tooltip>
+					</icon>
+				</hbox>
+				
+				<label align="right"><text>Decal:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::decal_mask_el" export="1" capacity="8" align="expand">
+						<tooltip>Decal mask</tooltip>
+						<text face="core/gui/console.ttf"/>
+						<callback type="pressed,focus_out">Nodes::Object::decal_mask_pressed</callback>
+						<callback type="double_clicked">Nodes::Object::decal_mask_clicked</callback>
+					</editline>
+					<icon texture="editor/gui/action_edit.png" width="24" height="24">
+						<callback type="clicked">Nodes::Object::decal_mask_clicked</callback>
+						<tooltip>Edit mask</tooltip>
+					</icon>
+				</hbox>
+				
+				<label align="right"><text>Intersection:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::intersection_mask_el" export="1" capacity="8" align="expand">
+						<tooltip>Intersection mask</tooltip>
+						<text face="core/gui/console.ttf"/>
+						<callback type="pressed,focus_out">Nodes::Object::intersection_mask_pressed</callback>
+						<callback type="double_clicked">Nodes::Object::intersection_mask_clicked</callback>
+					</editline>
+					<icon texture="editor/gui/action_edit.png" width="24" height="24">
+						<callback type="clicked">Nodes::Object::intersection_mask_clicked</callback>
+						<tooltip>Edit mask</tooltip>
+					</icon>
+				</hbox>
+				
+				<label align="right"><text>Collision:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::collision_mask_el" export="1" capacity="8" align="expand">
+						<tooltip>Collision mask</tooltip>
+						<text face="core/gui/console.ttf"/>
+						<callback type="pressed,focus_out">Nodes::Object::collision_mask_pressed</callback>
+						<callback type="double_clicked">Nodes::Object::collision_mask_clicked</callback>
+					</editline>
+					<icon texture="editor/gui/action_edit.png" width="24" height="24">
+						<callback type="clicked">Nodes::Object::collision_mask_clicked</callback>
+						<tooltip>Edit mask</tooltip>
+					</icon>
+				</hbox>
+				
+				<label align="right"><text>Viewport:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::viewport_mask_el" export="1" capacity="8" align="expand">
+						<tooltip>Viewport mask</tooltip>
+						<text face="core/gui/console.ttf"/>
+						<callback type="pressed,focus_out">Nodes::Object::viewport_mask_pressed</callback>
+						<callback type="double_clicked">Nodes::Object::viewport_mask_clicked</callback>
+					</editline>
+					<icon texture="editor/gui/action_edit.png" width="24" height="24">
+						<callback type="clicked">Nodes::Object::viewport_mask_clicked</callback>
+						<tooltip>Edit mask</tooltip>
+					</icon>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Min parent:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::min_parent_el" export="1" align="expand" validator="int">
+						<tooltip>Levels in hierarchy to parent used for reference distance<br>0 for distance to current surface</tooltip>
+						<callback type="pressed,focus_out">Nodes::Object::min_parent_pressed</callback>
+					</editline>
+					<vbox space="2"/>
+					<vbox width="85"><label align="right"><text>Min Visibility:</text></label></vbox>
+					<vbox space="2"/>
+					<editline name="Nodes::Object::min_visible_distance_el" export="1" align="expand" validator="float">
+						<tooltip>Minimal distance of the surface visibility</tooltip>
+						<callback type="pressed,focus_out">Nodes::Object::min_visible_distance_pressed</callback>
+					</editline>
+					<vbox space="2"/>
+					<vbox width="65"><label align="right"><text>Min Fade:</text></label></vbox>
+					<vbox space="2"/>
+					<editline name="Nodes::Object::min_fade_distance_el" export="1" align="expand" validator="float">
+						<tooltip>Distance after which the object is completely visible</tooltip>
+						<callback type="pressed,focus_out">Nodes::Object::min_fade_distance_pressed</callback>
+					</editline>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Max parent:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::max_parent_el" export="1" align="expand" validator="int">
+						<tooltip>Levels in hierarchy to parent used for reference distance<br>0 for distance to current surface</tooltip>
+						<callback type="pressed,focus_out">Nodes::Object::max_parent_pressed</callback>
+					</editline>
+					<vbox space="2"/>
+					<vbox width="85"><label align="right"><text>Max Visibility:</text></label></vbox>
+					<vbox space="2"/>
+					<editline name="Nodes::Object::max_visible_distance_el" export="1" align="expand" validator="float">
+						<tooltip>Maximal distance of the surface visibility</tooltip>
+						<callback type="pressed,focus_out">Nodes::Object::max_visible_distance_pressed</callback>
+					</editline>
+					<vbox space="2"/>
+					<vbox width="65"><label align="right"><text>Max Fade:</text></label></vbox>
+					<vbox space="2"/>
+					<editline name="Nodes::Object::max_fade_distance_el" export="1" align="expand" validator="float">
+						<tooltip>Distance up to which the object fades out completely</tooltip>
+						<callback type="pressed,focus_out">Nodes::Object::max_fade_distance_pressed</callback>
+					</editline>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Material:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::material_el" export="1" align="expand">
+						<tooltip>Assigned material</tooltip>
+						<callback type="pressed,focus_out">Nodes::Object::material_pressed</callback>
+					</editline>
+					<icon name="Nodes::Object::material_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+						<tooltip>Load material</tooltip>
+						<callback type="clicked">Nodes::Object::material_load_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::material_edit_i" export="1" texture="editor/gui/action_edit.png" width="22" height="20">
+						<tooltip>Edit material</tooltip>
+						<callback type="clicked">Nodes::Object::material_edit_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::material_clear_i" export="1" texture="editor/gui/action_clear.png" width="22" height="20">
+						<tooltip>Clear material</tooltip>
+						<callback type="clicked">Nodes::Object::material_clear_clicked</callback>
+					</icon>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Property:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::property_el" next="Nodes::Object::light_mask_el" export="1" align="expand">
+						<tooltip>Assigned property</tooltip>
+						<callback type="pressed,focus_out">Nodes::Object::property_pressed</callback>
+					</editline>
+					<icon name="Nodes::Object::property_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+						<tooltip>Load property</tooltip>
+						<callback type="clicked">Nodes::Object::property_load_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::property_edit_i" export="1" texture="editor/gui/action_edit.png" width="22" height="20">
+						<tooltip>Edit property</tooltip>
+						<callback type="clicked">Nodes::Object::property_edit_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::property_clear_i" export="1" texture="editor/gui/action_clear.png" width="22" height="20">
+						<tooltip>Clear property</tooltip>
+						<callback type="clicked">Nodes::Object::property_clear_clicked</callback>
+					</icon>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				
+			</gridbox>
+			
+			<hbox space="4">
+				<gridbox align="center" columns="2" space="4">
+					<button>
+						<text>Copy</text>
+						<callback type="clicked">Nodes::Object::copy_clicked</callback>
+						<tooltip>Copy all surface settings</tooltip>
+					</button>
+					<button name="Nodes::Object::paste_b" export="1">
+						<text>Paste</text>
+						<callback type="clicked">Nodes::Object::paste_clicked</callback>
+						<tooltip>Paste surface settings</tooltip>
+					</button>
+				</gridbox>
+			</hbox>
+			
+		</vbox>
+		
+	</vbox>
+</vbox>
+
+</ui>

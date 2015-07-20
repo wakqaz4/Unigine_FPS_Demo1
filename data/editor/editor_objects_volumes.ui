@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_objects_volumes.ui
+ * Desc:    Unigine editor
+ * Version: 1.07
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Valia Vaneeva <fattie@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* ObjectVolumeBox
+ */
+-->
+<vbox name="Nodes::Object::VolumeBox::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::Object::VolumeBox::size_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeBox::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::VolumeBox::size_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeBox::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::VolumeBox::size_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeBox::size_pressed</callback>
+			</editline>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* ObjectVolumeSphere
+ */
+-->
+<vbox name="Nodes::Object::VolumeSphere::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Object::VolumeSphere::radius_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeSphere::radius_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::VolumeSphere::radius_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeSphere::radius_pressed</callback>
+				<callback type="enter" string="y">Nodes::Object::VolumeSphere::radius_enter</callback>
+				<callback type="leave" string="y">Nodes::Object::VolumeSphere::radius_leave</callback>
+			</editline>
+			<editline name="Nodes::Object::VolumeSphere::radius_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeSphere::radius_pressed</callback>
+				<callback type="enter" string="z">Nodes::Object::VolumeSphere::radius_enter</callback>
+				<callback type="leave" string="z">Nodes::Object::VolumeSphere::radius_leave</callback>
+			</editline>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* ObjectVolumeOmni
+ */
+-->
+<vbox name="Nodes::Object::VolumeOmni::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="2" space="4">
+			
+			<label align="right"><text>Width:</text></label>
+			<editline name="Nodes::Object::VolumeOmni::width_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeOmni::width_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Height:</text></label>
+			<editline name="Nodes::Object::VolumeOmni::height_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeOmni::height_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Object::VolumeOmni::radius_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeOmni::radius_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Attenuation:</text></label>
+			<editline name="Nodes::Object::VolumeOmni::attenuation_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeOmni::attenuation_pressed</callback>
+			</editline>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* ObjectVolumeProj
+ */
+-->
+<vbox name="Nodes::Object::VolumeProj::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::Object::VolumeProj::size_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeProj::size_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Object::VolumeProj::radius_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeProj::radius_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>FOV:</text></label>
+			<editline name="Nodes::Object::VolumeProj::fov_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeProj::fov_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::VolumeProj::fov_sl" export="1" align="expand" min="10000" max="90000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::VolumeProj::fov_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Step:</text></label>
+			<editline name="Nodes::Object::VolumeProj::step_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeProj::step_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::VolumeProj::step_sl" export="1" align="expand" min="100" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::VolumeProj::step_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Velocity:</text></label>
+			<editline name="Nodes::Object::VolumeProj::velocity_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeProj::velocity_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Rotation:</text></label>
+			<editline name="Nodes::Object::VolumeProj::rotation_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::VolumeProj::rotation_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+</ui>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="LightOmni" id="1613632796">
+		<radius>10 10 10</radius>
+		<shadow_bias>5</shadow_bias>
+		<shadow_slope>5</shadow_slope>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

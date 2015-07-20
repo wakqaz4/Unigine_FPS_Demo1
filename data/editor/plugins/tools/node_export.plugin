@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin name="node_export" version="1.0">
+	<text>Node Export</text>
+	<description>Exporting assets from one project into another</description>
+	<source>node_export.cpp</source>
+</plugin>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_panel_brush.ui
+ * Desc:    Unigine editor
+ * Version: 1.15
+ * Author:  Mikhail Lyubimov <alterego@unigine.com>
+            Alexander Zapryagaev <frustum@unigine.com>
+ *          Andrey Viktorov <unclebob@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+<groupbox name="main_gb" export="1" background="1" space="5" align="bottom,right">
+	<callback type="pressed" instance="instance" string="brush_panel_move">callback_redirector</callback>
+	<callback type="released" instance="instance" string="brush_panel_move_end">callback_redirector</callback>
+	<callback type="double_clicked" instance="instance" string="brush_panel_windowed_toggle">callback_redirector</callback>
+	
+	<icon name="to_external_i" export="1" align="overlap,top,right" pos_x="-0" pos_y="0" texture="editor/gui/panel_make_external.png">
+		<tooltip>Move outside of the main window</tooltip>
+		<callback type="clicked" instance="instance" string="brush_panel_windowed_toggle">callback_redirector</callback>
+	</icon>
+	
+	<label name="main_l" export="1">
+		<text size="20" >Terrain Editor</text>
+		<callback type="pressed" instance="instance" string="brush_panel_move">callback_redirector</callback>
+		<callback type="released" instance="instance" string="brush_panel_move_end">callback_redirector</callback>
+		<callback type="double_clicked" instance="instance" string="brush_panel_windowed_toggle">callback_redirector</callback>
+	</label>
+	
+	<!--<hspacer/>-->
+	
+	<vbox padding="1">
+		<label name="hotkey_l" export="1"><text size="10"></text></label>
+	</vbox>
+	<hbox name="brushes_h" export="1" align="left">
+		<icon name="brushes_i[0]" export="1" texture="editor/gui/terrain_heights_brush.png" toggleable="1">
+			<tooltip>Heights brush</tooltip>
+			<callback type="clicked" instance="instance" string="brush_changed_heights">callback_redirector</callback>
+		</icon>
+		
+		<icon name="brushes_i[1]" export="1" texture="editor/gui/terrain_holes_brush.png" toggleable="1">
+			<tooltip>Holes brush</tooltip>
+			<callback type="clicked" instance="instance" string="brush_changed_holes">callback_redirector</callback>
+		</icon>
+		
+		<icon name="brushes_i[2]" export="1" texture="editor/gui/terrain_diffuse_brush.png" toggleable="1">
+			<tooltip>Diffuse brush</tooltip>
+			<callback type="clicked" instance="instance" string="brush_changed_diffuse">callback_redirector</callback>
+		</icon>
+		
+		<icon name="brushes_i[3]" export="1" texture="editor/gui/terrain_mask_brush.png" toggleable="1">
+			<tooltip>Mask brush</tooltip>
+			<callback type="clicked" instance="instance" string="brush_changed_mask">callback_redirector</callback>
+		</icon>
+		
+		<icon name="brushes_i[4]" export="1" texture="editor/gui/terrain_diffuse_mask_brush.png" toggleable="1">
+			<tooltip>Diffuse+Mask brush</tooltip>
+			<callback type="clicked" instance="instance" string="brush_changed_material">callback_redirector</callback>
+		</icon>
+	</hbox>
+	
+	<hbox align="left" padding="4">
+		<label align="right"><text>Mode: </text></label>
+		<combobox name="mode_cb" export="1" align="expand">
+			<callback type="changed" instance="instance" string="mode_changed">callback_redirector</callback>
+		</combobox>
+	</hbox>
+	
+	<hbox align="left">
+		<vbox>
+			<icon name="shapes_i[0]" export="1" texture="editor/gui/editor_empty.png" toggleable="1">
+				<tooltip>Circle</tooltip>
+				<callback type="clicked" instance="instance" string="shape_changed_circle">callback_redirector</callback>
+			</icon>
+			<sprite align="overlap" texture="editor/gui/brush_circle_sprite.png" translate="4"/>
+		</vbox>
+		
+		<vbox>
+			<icon name="shapes_i[1]" export="1" texture="editor/gui/editor_empty.png" toggleable="1">
+				<tooltip>Square</tooltip>
+				<callback type="clicked" instance="instance" string="shape_changed_square">callback_redirector</callback>
+			</icon>
+			<sprite align="overlap" texture="editor/gui/brush_square_sprite.png" translate="4"/>
+		</vbox>
+		
+		<vbox>
+			<icon name="shapes_i[2]" export="1" texture="editor/gui/editor_empty.png" toggleable="1">
+				<tooltip>Diamond</tooltip>
+				<callback type="clicked" instance="instance" string="shape_changed_diamond">callback_redirector</callback>
+			</icon>
+			<sprite align="overlap" texture="editor/gui/brush_diamond_sprite.png" translate="4"/>
+		</vbox>
+		
+		<vbox>
+			<icon name="shapes_i[3]" export="1" texture="editor/gui/editor_empty.png" toggleable="1">
+				<tooltip>Texture</tooltip>
+				<callback type="clicked" instance="instance" string="shape_changed_texture">callback_redirector</callback>
+			</icon>
+			<sprite name="sprite_shape_texture" export="1" align="overlap" texture="editor/gui/brush_circle_sprite.png" translate="4"/>
+		</vbox>
+		
+		<icon texture="editor/gui/editor_open.png">
+			<callback type="clicked" instance="instance" string="texture_shape_button_clicked">callback_redirector</callback>
+		</icon>
+		
+	</hbox>
+	<vbox padding="2"/>
+	<groupbox background="1" space="4">
+		<text>Parameters</text>
+		<gridbox align="expand" columns="3" space="4">
+			<label align="right"><text>Radius:</text></label>
+			<editline name="radius_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out" instance="instance" string="radius_changed">callback_redirector</callback>
+			</editline>
+			<hslider align="expand" width="96" min="1000" max="50000">
+				<attach multiplier="1000">radius_el</attach>
+			</hslider>
+			
+			<label align="right"><text>Sharpness:</text></label>
+			<editline name="power_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out" instance="instance" string="power_changed">callback_redirector</callback>
+			</editline>
+			<hslider align="expand" min="0" max="2000">
+				<attach multiplier="1000">power_el</attach>
+			</hslider>
+			
+			<label align="right"><text>Opacity:</text></label>
+			<editline name="opacity_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out" instance="instance" string="opacity_changed">callback_redirector</callback>
+			</editline>
+			<hslider align="expand" min="0" max="1000">
+				<attach multiplier="1000">opacity_el</attach>
+			</hslider>
+			
+			<label name="value_l" export="1" align="right"><text>Value:</text></label>
+			<editline name="heights_value_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out" instance="instance" string="heights_value_changed">callback_redirector</callback>
+			</editline>
+			<hslider name="heights_value_sl" export="1" align="expand" min="0" max="50000">
+				<attach multiplier="500">heights_value_el</attach>
+			</hslider>
+			
+			<groupbox name="diffuse_value_gb" export="1" align="expand">
+				<hbox align="expand">
+					<sprite name="diffuse_value_s" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+						<callback type="clicked" instance="instance" string="diffuse_value_clicked">callback_redirector</callback>
+					</sprite>
+				</hbox>
+			</groupbox>
+			
+			<combobox name="mask_value_cb" export="1" align="expand">
+				<callback type="changed" instance="instance" string="mask_value_changed">callback_redirector</callback>
+			</combobox>
+			
+			<hbox name="channels_value_h" export="1" align="expand">
+				<button name="channels_value_b[0]" export="1" toggleable="1" align="expand">
+					<text>R</text>
+					<callback type="clicked" instance="instance" string="channels_value_changed">callback_redirector</callback>
+				</button>
+				<button name="channels_value_b[1]" export="1" toggleable="1" align="expand">
+					<text>G</text>
+					<callback type="clicked" instance="instance" string="channels_value_changed">callback_redirector</callback>
+				</button>
+				<button name="channels_value_b[2]" export="1" toggleable="1" align="expand">
+					<text>B</text>
+					<callback type="clicked" instance="instance" string="channels_value_changed">callback_redirector</callback>
+				</button>
+				<button name="channels_value_b[3]" export="1" toggleable="1" align="expand">
+					<text>A</text>
+					<callback type="clicked" instance="instance" string="channels_value_changed">callback_redirector</callback>
+				</button>
+			</hbox>
+			
+			<vbox/>
+			
+		</gridbox>
+	</groupbox>
+	
+	
+	<groupbox name="limits_g" export="1" background="1" space="4">
+		<text>Limits</text>
+		<gridbox align="expand" columns="3" space="4">
+			<label align="right"><text>Min angle:</text></label>
+			<editline name="min_angle_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out" instance="instance" string="min_angle_changed">callback_redirector</callback>
+			</editline>
+			<hslider align="expand" min="0" max="90000">
+				<attach multiplier="1000">min_angle_el</attach>
+			</hslider>
+			
+			<label align="right"><text>Max angle:</text></label>
+			<editline name="max_angle_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out" instance="instance" string="max_angle_changed">callback_redirector</callback>
+			</editline>
+			<hslider align="expand" min="0" max="90000">
+				<attach multiplier="1000">max_angle_el</attach>
+			</hslider>
+			
+			<label align="right"><text>Min height:</text></label>
+			<editline name="min_height_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out" instance="instance" string="min_height_changed">callback_redirector</callback>
+			</editline>
+			<hslider name="min_height_sl" export="1" align="expand" min="-100000" max="100000">
+				<attach multiplier="1000">min_height_el</attach>
+			</hslider>
+			
+			<label align="right"><text>Max height:</text></label>
+			<editline name="max_height_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out" instance="instance" string="max_height_changed">callback_redirector</callback>
+			</editline>
+			<hslider name="max_height_sl" export="1" align="expand" min="0" max="100000">
+				<attach multiplier="1000">max_height_el</attach>
+			</hslider>
+		</gridbox>
+	</groupbox>
+	
+	<groupbox background="1" space="4">
+		<text>Palette</text>
+		<label><text size="10">Drag the brush to a slot to save it</text></label>
+		<hbox>
+			<hbox align="left" space="4">
+				<vbox>
+					<icon name="current_slot_i" export="1" texture="editor/gui/terrain_heights_brush.png">
+						<callback type="drag_drop" instance="instance" string="current_slot_drag_drop">callback_redirector</callback>
+					</icon>
+					
+					<sprite name="current_slot_s" export="1" align="overlap" texture="editor/gui/terrain_diffuse_brush_color.png">
+					</sprite>
+				</vbox>
+			</hbox>
+			<hbox align="right">
+				<gridbox name="slots_gb" export="1" align="expand" columns="4" >
+				</gridbox>
+			</hbox>
+		</hbox>
+	</groupbox>
+	
+	<button align="expand">
+		<text>Apply</text>
+		<callback type="clicked" instance="instance" string="apply_clicked">callback_redirector</callback>
+		<tooltip>Apply changes</tooltip>
+	</button>
+	<button align="expand">
+		<text>Cancel changes</text>
+		<callback type="clicked" instance="instance" string="cancel_clicked">callback_redirector</callback>
+		<tooltip>Cancel changes</tooltip>
+	</button>
+	
+</groupbox>
+
+</ui>

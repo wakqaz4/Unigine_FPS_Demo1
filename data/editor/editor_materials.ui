@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_materials.ui
+ * Desc:    Unigine editor
+ * Version: 1.52
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Maxim Belobryukhov <maxi@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Materials
+ */
+-->
+<window name="Materials::window" export="1">
+	<text>Materials</text>
+	<vbox align="expand">
+		<hpaned name="Materials::window_hp" export="1" value="-32767" fixed="1" align="expand">
+			
+			<vbox align="expand">
+				
+				<groupbox>
+					<vbox name="Materials::material_vb" export="1"/>
+				</groupbox>
+				
+				<vbox space="2"/>
+				
+				<vbox>
+					<hbox align="expand">
+						<icon name="Materials::libraries_i" export="1" texture="editor/gui/materials_libraries.png">
+							<tooltip>List of preloaded material libraries</tooltip>
+							<callback type="clicked">Materials::libraries_clicked</callback>
+						</icon>
+						<icon name="Materials::save_i" export="1" texture="editor/gui/editor_save.png">
+							<tooltip>Save materials</tooltip>
+							<callback type="clicked">Materials::save_clicked</callback>
+						</icon>
+						<icon name="Materials::clone_i" export="1" texture="editor/gui/materials_clone.png" align="right">
+							<tooltip>Clone material</tooltip>
+							<callback type="clicked">Materials::clone_clicked</callback>
+						</icon>
+						<icon name="Materials::inherit_i" export="1" texture="editor/gui/materials_inherit.png">
+							<tooltip>Inherit material</tooltip>
+							<callback type="clicked">Materials::inherit_clicked</callback>
+						</icon>
+						<icon name="Materials::move_i" export="1" texture="editor/gui/materials_move.png">
+							<tooltip>Rename/move material</tooltip>
+							<callback type="clicked">Materials::move_clicked</callback>
+						</icon>
+						<icon name="Materials::remove_i" export="1" texture="editor/gui/materials_remove.png">
+							<tooltip>Remove material</tooltip>
+							<callback type="clicked">Materials::remove_clicked</callback>
+						</icon>
+						<icon name="Materials::assign_i" export="1" texture="editor/gui/materials_assign.png">
+							<tooltip>Assign material</tooltip>
+							<callback type="clicked">Materials::assign_clicked</callback>
+						</icon>
+					</hbox>
+				</vbox>
+				
+				<vbox space_y="4">
+					<gridbox align="expand" columns="2" space="4">
+						<label align="right"><text>Library:</text></label>
+						<combobox name="Materials::libraries_cb" export="1" align="expand">
+							<callback type="changed">Materials::libraries_changed</callback>
+						</combobox>
+						<label align="right"><text>Search:</text></label>
+						<editline name="Materials::name_el" export="1" align="expand">
+							<tooltip>Type first letters of material name here</tooltip>
+							<callback type="changed">Materials::name_changed</callback>
+							<callback type="pressed">Materials::name_pressed</callback>
+							<callback type="focus_in">Materials::name_focus_in</callback>
+							<callback type="focus_out">Materials::name_focus_out</callback>
+						</editline>
+					</gridbox>
+				</vbox>
+				
+				<scrollbox align="expand" height="200">
+					<treebox name="Materials::materials_tb" export="1" align="expand">
+						<callback type="changed">Materials::materials_changed</callback>
+						<callback type="double_clicked">Materials::materials_double_clicked</callback>
+					</treebox>
+				</scrollbox>
+				
+			</vbox>
+			
+			<tabbox name="Materials::material_tb" export="1" align="expand">
+				
+				<tab>
+					<text>Common</text>
+					<vbox name="Materials::common_vb" export="1" space_x="4">
+						
+						<groupbox space="4">
+							<text>Info</text>
+							<gridbox align="left" columns="2" space="4">
+								<label align="right"><text>Library:</text></label>
+								<label name="Materials::info_library_l" export="1" align="left"/>
+								<label align="right"><text>Name:</text></label>
+								<label name="Materials::info_name_l" export="1" align="left"/>
+								<label align="right"><text>Parent:</text></label>
+								<label name="Materials::info_parent_l" export="1" align="left"/>
+								<label align="right"><text>Children:</text></label>
+								<label name="Materials::info_childs_l" export="1" align="left"/>
+							</gridbox>
+						</groupbox>
+						
+						<groupbox space="4">
+							<text>Blending</text>
+							<gridbox align="expand" columns="2" space="4">
+								<label name="Materials::blend_src_func_l" export="1" align="right"><text>Src:</text></label>
+								<combobox name="Materials::blend_src_func_cb" export="1" align="expand">
+									<tooltip>Resulting color is (polygon color * Src) + (screen buffer color * Dest)</tooltip>
+									<text>none</text>
+									<text>zero</text>
+									<text>one</text>
+									<text>src color</text>
+									<text>one minus src color</text>
+									<text>src alpha</text>
+									<text>one minus src alpha</text>
+									<text>dest color</text>
+									<text>one minus dest color</text>
+									<text>dest alpha</text>
+									<text>one minus dest alpha</text>
+									<callback type="changed">Materials::blend_src_func_changed</callback>
+								</combobox>
+								<label name="Materials::blend_dest_func_l" export="1" align="right"><text>Dest:</text></label>
+								<combobox name="Materials::blend_dest_func_cb" export="1" align="expand">
+									<tooltip>Resulting color is (polygon color * Src) + (screen buffer color * Dest)</tooltip>
+									<text>none</text>
+									<text>zero</text>
+									<text>one</text>
+									<text>src color</text>
+									<text>one minus src color</text>
+									<text>src alpha</text>
+									<text>one minus src alpha</text>
+									<text>dest color</text>
+									<text>one minus dest color</text>
+									<text>dest alpha</text>
+									<text>one minus dest alpha</text>
+									<callback type="changed">Materials::blend_dest_func_changed</callback>
+								</combobox>
+							</gridbox>
+						</groupbox>
+						
+						<groupbox space="4">
+							<text>Options</text>
+							<gridbox align="expand" columns="2" space="4">
+								<label name="Materials::downsize_l" export="1" align="right"><text>Downsize:</text></label>
+								<combobox name="Materials::downsize_cb" export="1" align="expand">
+									<tooltip>Render transparent surfaces into a smaller buffer (performance optimization)</tooltip>
+									<text>none</text>
+									<text>always scale</text>
+									<text>always filter</text>
+									<text>greater scale</text>
+									<text>greater filter</text>
+									<text>forward scale</text>
+									<text>forward filter</text>
+									<callback type="changed">Materials::downsize_changed</callback>
+								</combobox>
+								<label name="Materials::group_l" export="1" align="right"><text>Render group:</text></label>
+								<combobox name="Materials::group_cb" export="1" align="expand">
+									<tooltip>Rendering group for objects<br/>surfaces with lowest group will be rendered first<br/>surfaces with highest group will be rendered last</tooltip>
+									<text>default</text>
+									<text>+1</text>
+									<text>+2</text>
+									<text>+3</text>
+									<text>+4</text>
+									<text>+5</text>
+									<text>+6</text>
+									<text>+7</text>
+									<callback type="changed">Materials::group_changed</callback>
+								</combobox>
+								<label name="Materials::order_l" export="1" align="right"><text>Render order:</text></label>
+								<combobox name="Materials::order_cb" export="1" align="expand">
+									<tooltip>Rendering order for objects in the same group<br/>surfaces with lowest order will be rendered first<br/>surfaces with highest order will be rendered last</tooltip>
+									<text>-8</text>
+									<text>-7</text>
+									<text>-6</text>
+									<text>-5</text>
+									<text>-4</text>
+									<text>-3</text>
+									<text>-2</text>
+									<text>-1</text>
+									<text>default</text>
+									<text>+1</text>
+									<text>+2</text>
+									<text>+3</text>
+									<text>+4</text>
+									<text>+5</text>
+									<text>+6</text>
+									<text>+7</text>
+									<text>+8</text>
+									<callback type="changed">Materials::order_changed</callback>
+								</combobox>
+								<label name="Materials::offset_l" export="1" align="right"><text>Polygon offset:</text></label>
+								<combobox name="Materials::offset_cb" export="1" align="expand">
+									<tooltip>Polygon offset level</tooltip>
+									<text>default</text>
+									<text>1</text>
+									<text>2</text>
+									<text>4</text>
+									<text>8</text>
+									<text>16</text>
+									<text>32</text>
+									<text>64</text>
+									<text>128</text>
+									<text>256</text>
+									<text>512</text>
+									<text>1024</text>
+									<callback type="changed">Materials::offset_changed</callback>
+								</combobox>
+								<label name="Materials::light_mask_l" export="1" align="right"><text>Light mask:</text></label>
+								<hbox align="expand">
+									<editline name="Materials::light_mask_el" export="1" capacity="8" align="expand">
+										<tooltip>Light mask (double click to edit)<br/>The material is illuminated by a light source if they both have corresponding masks</tooltip>
+										<text face="core/gui/console.ttf"/>
+										<callback type="pressed,focus_out">Materials::light_mask_pressed</callback>
+										<callback type="double_clicked">Materials::light_mask_clicked</callback>
+									</editline>
+									<icon texture="editor/gui/action_edit.png" width="24" height="24">
+										<callback type="clicked">Materials::light_mask_clicked</callback>
+										<tooltip>Edit mask</tooltip>
+									</icon>
+								</hbox>
+								<label name="Materials::viewport_mask_l" export="1" align="right"><text>Viewport mask:</text></label>
+								<hbox align="expand">
+									<editline name="Materials::viewport_mask_el" export="1" capacity="8" align="expand">
+										<tooltip>Viewport mask (double click to edit)<br/>The material is rendered in a viewport if they both have corresponding masks</tooltip>
+										<text face="core/gui/console.ttf"/>
+										<callback type="pressed,focus_out">Materials::viewport_mask_pressed</callback>
+										<callback type="double_clicked">Materials::viewport_mask_clicked</callback>
+									</editline>
+									<icon texture="editor/gui/action_edit.png" width="24" height="24">
+										<callback type="clicked">Materials::viewport_mask_clicked</callback>
+										<tooltip>Edit mask</tooltip>
+									</icon>
+								</hbox>
+							</gridbox>
+							<gridbox align="expand" columns="2" space="4">
+								<hspacer align="expand"/>
+								<vbox/>
+								<checkbox name="Materials::depth_mask_cb" export="1" align="left,expand">
+									<tooltip>Enable writing depth into the deferred buffer and associated Z-buffer</tooltip>
+									<text>Depth mask</text>
+									<callback type="clicked" string="depth_mask">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::post_deferred_cb" export="1" align="left,expand">
+									<tooltip>Transparent surface will be rendered into deferred buffer after rendering into color buffer</tooltip>
+									<text>Post deferred</text>
+									<callback type="clicked" string="post_deferred">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::glow_mask_cb" export="1" align="left,expand">
+									<tooltip>Enable writing glow into the deffered buffer<br/>(alpha channel of emission texture is used)</tooltip>
+									<text>Glow mask</text>
+									<callback type="clicked" string="glow_mask">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::post_scattering_cb" export="1" align="left,expand">
+									<tooltip>Transparent surface will be rendered into color buffer after the fullscreen light scattering pass</tooltip>
+									<text>Post scattering</text>
+									<callback type="clicked" string="post_scattering">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::parallax_mask_cb" export="1" align="left,expand">
+									<tooltip>Enable writing parallax offsets into the deferred buffer</tooltip>
+									<text>Parallax mask</text>
+									<callback type="clicked" string="parallax_mask">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::post_refraction_cb" export="1" align="left,expand">
+									<tooltip>Transparent surface will be rendered into color buffer after the fullscreen refraction pass</tooltip>
+									<text>Post refraction</text>
+									<callback type="clicked" string="post_refraction">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::occlusion_mask_cb" export="1" align="left,expand">
+									<tooltip>Ambient occlusion mask</tooltip>
+									<text>Occlusion mask</text>
+									<callback type="clicked" string="occlusion_mask">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::alpha_test_cb" export="1" align="left,expand">
+									<tooltip>Enable alpha testing<br/>(alpha channel of diffuse texture is used)</tooltip>
+									<text>Alpha test</text>
+									<callback type="clicked" string="alpha_test">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::light_blending_cb" export="1" align="left,expand">
+									<tooltip>Lighting pass blending</tooltip>
+									<text>Light blending</text>
+									<callback type="clicked" string="light_blending">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::two_sided_cb" export="1" align="left,expand">
+									<tooltip>Polygons will be rendered two times in lighting pass</tooltip>
+									<text>Two sided</text>
+									<callback type="clicked" string="two_sided">Materials::option_clicked</callback>
+								</checkbox>
+								<hspacer align="expand"/>
+								<vbox/>
+								<checkbox name="Materials::cast_shadow_cb" export="1" align="left,expand">
+									<tooltip>Enable casting shadows from omni and projected lights</tooltip>
+									<text>Cast shadow</text>
+									<callback type="clicked" string="cast_shadow">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::cast_world_shadow_cb" export="1" align="left,expand">
+									<tooltip>Enable casting shadows from world light</tooltip>
+									<text>Cast world shadow</text>
+									<callback type="clicked" string="cast_world_shadow">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::receive_shadow_cb" export="1" align="left,expand">
+									<tooltip>Enable receiving shadows from omni and projected lights</tooltip>
+									<text>Receive shadow</text>
+									<callback type="clicked" string="receive_shadow">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::receive_world_shadow_cb" export="1" align="left,expand">
+									<tooltip>Enable receiving shadows from world light</tooltip>
+									<text>Receive world shadow</text>
+									<callback type="clicked" string="receive_world_shadow">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::cast_translucent_cb" export="1" align="left,expand">
+									<tooltip>Enable casting colored translucent shadows</tooltip>
+									<text>Cast translucence</text>
+									<callback type="clicked" string="cast_translucent">Materials::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Materials::receive_translucent_cb" export="1" align="left,expand">
+									<tooltip>Enable receiving colored translucent shadows</tooltip>
+									<text>Receive translucence</text>
+									<callback type="clicked" string="receive_translucent">Materials::option_clicked</callback>
+								</checkbox>
+							</gridbox>
+						</groupbox>
+						
+					</vbox>
+					
+					<hbox space="4">
+						<gridbox align="center" columns="2" space="4">
+							<button name="Materials::copy_b" export="1">
+								<text>Copy settings</text>
+								<callback type="clicked">Materials::copy_clicked</callback>
+								<tooltip>Copy all material settings</tooltip>
+							</button>
+							<button name="Materials::paste_b" export="1">
+								<text>Paste settings</text>
+								<callback type="clicked">Materials::paste_clicked</callback>
+								<tooltip>Paste material settings</tooltip>
+							</button>
+						</gridbox>
+					</hbox>
+				</tab>
+				
+				<tab>
+					<text>States</text>
+					<scrollbox align="expand" border="0" henabled="0">
+						<vbox name="Materials::states_vb" export="1" space="4"/>
+					</scrollbox>
+				</tab>
+				
+				<tab>
+					<text>Textures</text>
+					<scrollbox align="expand" border="0" henabled="0">
+						<vbox name="Materials::textures_vb" export="1" space="4"/>
+					</scrollbox>
+				</tab>
+				
+				<tab>
+					<text>Parameters</text>
+					<scrollbox align="expand" border="0" henabled="0">
+						<vbox name="Materials::parameters_vb" export="1" space="4"/>
+					</scrollbox>
+				</tab>
+				
+			</tabbox>
+			
+		</hpaned>
+	</vbox>
+</window>
+
+<!--
+/* Materials::Editor
+ */
+-->
+<dialog name="Materials::Editor::dialog" export="1">
+	<text>Assigned material</text>
+	<vbox space="4" align="expand">
+		<tabbox name="Materials::Editor::material_tb" export="1" align="expand">
+			
+			<tab>
+				<text>Common</text>
+				<vbox space_x="4">
+					
+					<groupbox space="4">
+						<text>Info</text>
+						<gridbox align="left" columns="2" space="4">
+							<label align="right"><text>Library:</text></label>
+							<label name="Materials::Editor::info_library_l" export="1" align="left"/>
+							<label align="right"><text>Name:</text></label>
+							<label name="Materials::Editor::info_name_l" export="1" align="left"/>
+						</gridbox>
+					</groupbox>
+					
+					<groupbox space="4">
+						<text>Blending</text>
+						<gridbox align="expand" columns="2" space="4">
+							<label name="Materials::Editor::blend_src_func_l" export="1" align="right"><text>Src:</text></label>
+							<combobox name="Materials::Editor::blend_src_func_cb" export="1" align="expand">
+								<tooltip>Resulting color is (polygon color * Src) + (screen buffer color * Dest)</tooltip>
+								<text>none</text>
+								<text>zero</text>
+								<text>one</text>
+								<text>src color</text>
+								<text>one minus src color</text>
+								<text>src alpha</text>
+								<text>one minus src alpha</text>
+								<text>dest color</text>
+								<text>one minus dest color</text>
+								<text>dest alpha</text>
+								<text>one minus dest alpha</text>
+								<callback type="changed">Materials::Editor::blend_src_func_changed</callback>
+							</combobox>
+							<label name="Materials::Editor::blend_dest_func_l" export="1" align="right"><text>Dest:</text></label>
+							<combobox name="Materials::Editor::blend_dest_func_cb" export="1" align="expand">
+								<tooltip>Resulting color is (polygon color * Src) + (screen buffer color * Dest)</tooltip>
+								<text>none</text>
+								<text>zero</text>
+								<text>one</text>
+								<text>src color</text>
+								<text>one minus src color</text>
+								<text>src alpha</text>
+								<text>one minus src alpha</text>
+								<text>dest color</text>
+								<text>one minus dest color</text>
+								<text>dest alpha</text>
+								<text>one minus dest alpha</text>
+								<callback type="changed">Materials::Editor::blend_dest_func_changed</callback>
+							</combobox>
+						</gridbox>
+					</groupbox>
+					
+					<groupbox space="4">
+						<text>Options</text>
+						<gridbox align="expand" columns="2" space="4">
+							<label name="Materials::Editor::downsize_l" export="1" align="right"><text>Downsize:</text></label>
+							<combobox name="Materials::Editor::downsize_cb" export="1" align="expand">
+								<tooltip>Downsize transparent materials buffer</tooltip>
+								<text>none</text>
+								<text>always scale</text>
+								<text>always filter</text>
+								<text>greater scale</text>
+								<text>greater filter</text>
+								<text>forward scale</text>
+								<text>forward filter</text>
+								<callback type="changed">Materials::Editor::downsize_changed</callback>
+							</combobox>
+							<label name="Materials::Editor::group_l" export="1" align="right"><text>Render group:</text></label>
+							<combobox name="Materials::Editor::group_cb" export="1" align="expand">
+								<tooltip>Rendering group for objects<br/>surfaces with lowest group will be rendered first<br/>surfaces with highest group will be rendered last</tooltip>
+								<text>default</text>
+								<text>+1</text>
+								<text>+2</text>
+								<text>+3</text>
+								<text>+4</text>
+								<text>+5</text>
+								<text>+6</text>
+								<text>+7</text>
+								<callback type="changed">Materials::Editor::group_changed</callback>
+							</combobox>
+							<label name="Materials::Editor::order_l" export="1" align="right"><text>Render order:</text></label>
+							<combobox name="Materials::Editor::order_cb" export="1" align="expand">
+								<tooltip>Rendering order for objects in the same group<br/>surfaces with lowest order will be rendered first<br/>surfaces with highest order will be rendered last</tooltip>
+								<text>-8</text>
+								<text>-7</text>
+								<text>-6</text>
+								<text>-5</text>
+								<text>-4</text>
+								<text>-3</text>
+								<text>-2</text>
+								<text>-1</text>
+								<text>default</text>
+								<text>+1</text>
+								<text>+2</text>
+								<text>+3</text>
+								<text>+4</text>
+								<text>+5</text>
+								<text>+6</text>
+								<text>+7</text>
+								<text>+8</text>
+								<callback type="changed">Materials::Editor::order_changed</callback>
+							</combobox>
+							<label name="Materials::Editor::offset_l" export="1" align="right"><text>Polygon offset:</text></label>
+							<combobox name="Materials::Editor::offset_cb" export="1" align="expand">
+								<tooltip>Polygon offset level</tooltip>
+								<text>default</text>
+								<text>1</text>
+								<text>2</text>
+								<text>4</text>
+								<text>8</text>
+								<text>16</text>
+								<text>32</text>
+								<text>64</text>
+								<text>128</text>
+								<text>256</text>
+								<text>512</text>
+								<text>1024</text>
+								<callback type="changed">Materials::Editor::offset_changed</callback>
+							</combobox>
+							<label name="Materials::Editor::light_mask_l" export="1" align="right"><text>Light mask:</text></label>						
+							<hbox align="expand">
+								<editline name="Materials::Editor::light_mask_el" export="1" capacity="8" align="expand">
+									<tooltip>Light mask (double click to edit)<br/>The material is illuminated by a light source if they both have corresponding masks</tooltip>
+									<text face="core/gui/console.ttf"/>
+									<callback type="pressed,focus_out">Materials::Editor::light_mask_pressed</callback>
+									<callback type="double_clicked">Materials::Editor::light_mask_clicked</callback>
+								</editline>
+								<icon texture="editor/gui/action_edit.png" width="24" height="24">
+									<callback type="clicked">Materials::Editor::light_mask_clicked</callback>
+									<tooltip>Edit mask</tooltip>
+								</icon>
+							</hbox>
+							<label name="Materials::Editor::viewport_mask_l" export="1" align="right"><text>Viewport mask:</text></label>
+							<hbox align="expand">
+								<editline name="Materials::Editor::viewport_mask_el" export="1" capacity="8" align="expand">
+									<tooltip>Viewport mask (double click to edit)<br/>The material is rendered in a viewport if they both have corresponding masks</tooltip>
+									<text face="core/gui/console.ttf"/>
+									<callback type="pressed,focus_out">Materials::Editor::viewport_mask_pressed</callback>
+									<callback type="double_clicked">Materials::Editor::viewport_mask_clicked</callback>
+								</editline>
+								<icon texture="editor/gui/action_edit.png" width="24" height="24">
+									<callback type="clicked">Materials::Editor::viewport_mask_clicked</callback>
+									<tooltip>Edit mask</tooltip>
+								</icon>
+							</hbox>
+						</gridbox>
+						<gridbox align="expand" columns="2" space="4">
+							<hspacer align="expand"/>
+							<vbox/>
+							<checkbox name="Materials::Editor::depth_mask_cb" export="1" align="left,expand">
+								<tooltip>Enable writing depth into the deferred buffer and associated Z-buffer</tooltip>
+								<text>Depth mask</text>
+								<callback type="clicked" string="depth_mask">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::post_deferred_cb" export="1" align="left,expand">
+								<tooltip>Transparent surface will be rendered into deferred buffer after rendering into color buffer</tooltip>
+								<text>Post deferred</text>
+								<callback type="clicked" string="post_deferred">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::glow_mask_cb" export="1" align="left,expand">
+								<tooltip>Enable writing glow into the deffered buffer<br/>(alpha channel of emission texture is used)</tooltip>
+								<text>Glow mask</text>
+								<callback type="clicked" string="glow_mask">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::post_scattering_cb" export="1" align="left,expand">
+								<tooltip>Transparent surface will be rendered into color buffer after the fullscreen light scattering pass</tooltip>
+								<text>Post scattering</text>
+								<callback type="clicked" string="post_scattering">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::parallax_mask_cb" export="1" align="left,expand">
+								<tooltip>Enable writing parallax offsets into the deferred buffer</tooltip>
+								<text>Parallax mask</text>
+								<callback type="clicked" string="parallax_mask">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::post_refraction_cb" export="1" align="left,expand">
+								<tooltip>Transparent surface will be rendered into color buffer after the fullscreen refraction pass</tooltip>
+								<text>Post refraction</text>
+								<callback type="clicked" string="post_refraction">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::occlusion_mask_cb" export="1" align="left,expand">
+								<tooltip>Ambient occlusion mask</tooltip>
+								<text>Occlusion mask</text>
+								<callback type="clicked" string="occlusion_mask">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::alpha_test_cb" export="1" align="left,expand">
+								<tooltip>Enable alpha testing<br/>(alpha channel of diffuse texture is used)</tooltip>
+								<text>Alpha test</text>
+								<callback type="clicked" string="alpha_test">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::light_blending_cb" export="1" align="left,expand">
+								<tooltip>Lighting pass blending</tooltip>
+								<text>Light blending</text>
+								<callback type="clicked" string="light_blending">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::two_sided_cb" export="1" align="left,expand">
+								<tooltip>Polygons will be rendered two times in lighting pass</tooltip>
+								<text>Two sided</text>
+								<callback type="clicked" string="two_sided">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<hspacer align="expand"/>
+							<vbox/>
+							<checkbox name="Materials::Editor::cast_shadow_cb" export="1" align="left,expand">
+								<tooltip>Enable casting shadows from omni and projected lights</tooltip>
+								<text>Cast shadow</text>
+								<callback type="clicked" string="cast_shadow">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::cast_world_shadow_cb" export="1" align="left,expand">
+								<tooltip>Enable casting shadows from world light</tooltip>
+								<text>Cast world shadow</text>
+								<callback type="clicked" string="cast_world_shadow">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::receive_shadow_cb" export="1" align="left,expand">
+								<tooltip>Enable receiving shadows from omni and projected lights</tooltip>
+								<text>Receive shadow</text>
+								<callback type="clicked" string="receive_shadow">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::receive_world_shadow_cb" export="1" align="left,expand">
+								<tooltip>Enable receiving shadows from world light</tooltip>
+								<text>Receive world shadow</text>
+								<callback type="clicked" string="receive_world_shadow">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::cast_translucent_cb" export="1" align="left,expand">
+								<tooltip>Enable casting colored translucent shadows</tooltip>
+								<text>Cast translucence</text>
+								<callback type="clicked" string="cast_translucent">Materials::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Materials::Editor::receive_translucent_cb" export="1" align="left,expand">
+								<tooltip>Enable receiving colored translucent shadows</tooltip>
+								<text>Receive translucence</text>
+								<callback type="clicked" string="receive_translucent">Materials::Editor::option_clicked</callback>
+							</checkbox>
+						</gridbox>
+					</groupbox>
+					
+					<hbox space="8">
+					  <gridbox align="center" columns="2" space="4">
+						<button>
+						  <text>Copy settings</text>
+						  <callback type="clicked">Materials::Editor::copy_clicked</callback>
+						  <tooltip>Copy all material settings</tooltip>
+						</button>
+						<button name="Materials::Editor::paste_b" export="1">
+						  <text>Paste settings</text>
+						  <callback type="clicked">Materials::Editor::paste_clicked</callback>
+						  <tooltip>Paste material settings</tooltip>
+						</button>
+					  </gridbox>
+					</hbox>
+					
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>States</text>
+				<scrollbox align="expand" border="0" henabled="0">
+					<vbox space_x="4">
+						<gridbox name="Materials::Editor::states_gb" export="1" columns="3" space="4" align="expand"/>
+					</vbox>
+				</scrollbox>
+			</tab>
+			
+			<tab>
+				<text>Textures</text>
+				<scrollbox align="expand" border="0" henabled="0">
+					<vbox space_x="4">
+						<gridbox name="Materials::Editor::textures_gb" export="1" columns="3" space="4" align="expand"/>
+					</vbox>
+				</scrollbox>
+			</tab>
+			
+			<tab>
+				<text>Parameters</text>
+				<scrollbox align="expand" border="0" henabled="0">
+					<vbox space_x="4">
+						<gridbox name="Materials::Editor::parameters_gb" export="1" columns="3" space="4" align="expand"/>
+					</vbox>
+				</scrollbox>
+			</tab>
+			
+		</tabbox>
+	</vbox>
+</dialog>
+
+</ui>

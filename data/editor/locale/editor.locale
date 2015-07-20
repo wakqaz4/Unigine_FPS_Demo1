@@ -1,0 +1,7328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dictionary version="1.01">
+	<msg>
+		<src>SpeedTree Import</src>
+		<ru>Плагин SpeedTree</ru>
+	</msg>
+	<msg>
+		<src>Import scale</src>
+		<ru>Масштаб при импорте</ru>
+	</msg>
+	<msg>
+		<src>Mesh fade:</src>
+		<ru>Затухание каркасной сетки:</ru>
+	</msg>
+	<msg>
+		<src>Mesh alpha fade distance</src>
+		<ru>Расстояние альфа-затухания каркасной сетки</ru>
+	</msg>
+	<msg>
+		<src>Leaf fade:</src>
+		<ru>Затухание листвы:</ru>
+	</msg>
+	<msg>
+		<src>Import</src>
+		<ru>Импорт</ru>
+	</msg>
+	<msg>
+		<src>Import SRT file</src>
+		<ru>Импортировать SRT файл</ru>
+	</msg>
+	<msg>
+		<src>Leaf alpha fade distance</src>
+		<ru>Расстояние альфа-затухания листвы</ru>
+	</msg>
+	<msg>
+		<src>+1</src>
+		<ru>+1</ru>
+	</msg>
+	<msg>
+		<src>+2</src>
+		<ru>+2</ru>
+	</msg>
+	<msg>
+		<src>+3</src>
+		<ru>+3</ru>
+	</msg>
+	<msg>
+		<src>+4</src>
+		<ru>+4</ru>
+	</msg>
+	<msg>
+		<src>+5</src>
+		<ru>+5</ru>
+	</msg>
+	<msg>
+		<src>+6</src>
+		<ru>+6</ru>
+	</msg>
+	<msg>
+		<src>+7</src>
+		<ru>+7</ru>
+	</msg>
+	<msg>
+		<src>+8</src>
+		<ru>+8</ru>
+	</msg>
+	<msg>
+		<src>-1</src>
+		<ru>-1</ru>
+	</msg>
+	<msg>
+		<src>-2</src>
+		<ru>-2</ru>
+	</msg>
+	<msg>
+		<src>-3</src>
+		<ru>-3</ru>
+	</msg>
+	<msg>
+		<src>-4</src>
+		<ru>-4</ru>
+	</msg>
+	<msg>
+		<src>-5</src>
+		<ru>-5</ru>
+	</msg>
+	<msg>
+		<src>-6</src>
+		<ru>-6</ru>
+	</msg>
+	<msg>
+		<src>-7</src>
+		<ru>-7</ru>
+	</msg>
+	<msg>
+		<src>-8</src>
+		<ru>-8</ru>
+	</msg>
+	<msg>
+		<src>...</src>
+		<ru>...</ru>
+	</msg>
+	<msg>
+		<src>0</src>
+		<ru>0</ru>
+	</msg>
+	<msg>
+		<src>0 means a default sorting according to bounding boxes of particle system</src>
+		<ru>0 означает сортировку по умолчанию в соответствии с габаритными контейнерами системы частиц</ru>
+	</msg>
+	<msg>
+		<src>1</src>
+		<ru>1</ru>
+	</msg>
+	<msg>
+		<src>1%</src>
+		<ru>1%</ru>
+	</msg>
+	<msg>
+		<src>1/1</src>
+		<ru>1/1</ru>
+	</msg>
+	<msg>
+		<src>1/2</src>
+		<ru>1/2</ru>
+	</msg>
+	<msg>
+		<src>1/4</src>
+		<ru>1/4</ru>
+	</msg>
+	<msg>
+		<src>1024</src>
+		<ru>1024</ru>
+	</msg>
+	<msg>
+		<src>1024x576</src>
+		<ru>1024x576</ru>
+	</msg>
+	<msg>
+		<src>1024x768</src>
+		<ru>1024x768</ru>
+	</msg>
+	<msg>
+		<src>128</src>
+		<ru>128</ru>
+	</msg>
+	<msg>
+		<src>1280x1024</src>
+		<ru>1280x1024</ru>
+	</msg>
+	<msg>
+		<src>1280x720</src>
+		<ru>1280x720</ru>
+	</msg>
+	<msg>
+		<src>16</src>
+		<ru>16</ru>
+	</msg>
+	<msg>
+		<src>16%</src>
+		<ru>16%</ru>
+	</msg>
+	<msg>
+		<src>1600x1200</src>
+		<ru>1600x1200</ru>
+	</msg>
+	<msg>
+		<src>1600x900</src>
+		<ru>1600x900</ru>
+	</msg>
+	<msg>
+		<src>1920x1080</src>
+		<ru>1920x1080</ru>
+	</msg>
+	<msg>
+		<src>1x</src>
+		<ru>1x</ru>
+	</msg>
+	<msg>
+		<src>2</src>
+		<ru>2</ru>
+	</msg>
+	<msg>
+		<src>2%</src>
+		<ru>2%</ru>
+	</msg>
+	<msg>
+		<src>2/1</src>
+		<ru>2/1</ru>
+	</msg>
+	<msg>
+		<src>2048</src>
+		<ru>2048</ru>
+	</msg>
+	<msg>
+		<src>256</src>
+		<ru>256</ru>
+	</msg>
+	<msg>
+		<src>2D</src>
+		<ru>2D</ru>
+	</msg>
+	<msg>
+		<src>2x</src>
+		<ru>2x</ru>
+	</msg>
+	<msg>
+		<src>3</src>
+		<ru>3</ru>
+	</msg>
+	<msg>
+		<src>32</src>
+		<ru>32</ru>
+	</msg>
+	<msg>
+		<src>32%</src>
+		<ru>32%</ru>
+	</msg>
+	<msg>
+		<src>3DStudio Max</src>
+		<ru>3DStudio Max</ru>
+	</msg>
+	<msg>
+		<src>4</src>
+		<ru>4</ru>
+	</msg>
+	<msg>
+		<src>4%</src>
+		<ru>4%</ru>
+	</msg>
+	<msg>
+		<src>4/1</src>
+		<ru>4/1</ru>
+	</msg>
+	<msg>
+		<src>4096</src>
+		<ru>4096</ru>
+	</msg>
+	<msg>
+		<src>4x</src>
+		<ru>4x</ru>
+	</msg>
+	<msg>
+		<src>512</src>
+		<ru>512</ru>
+	</msg>
+	<msg>
+		<src>64</src>
+		<ru>64</ru>
+	</msg>
+	<msg>
+		<src>640x360</src>
+		<ru>640x360</ru>
+	</msg>
+	<msg>
+		<src>640x480</src>
+		<ru>640x480</ru>
+	</msg>
+	<msg>
+		<src>8</src>
+		<ru>8</ru>
+	</msg>
+	<msg>
+		<src>8%</src>
+		<ru>8%</ru>
+	</msg>
+	<msg>
+		<src>800x600</src>
+		<ru>800x600</ru>
+	</msg>
+	<msg>
+		<src>8192</src>
+		<ru>8192</ru>
+	</msg>
+	<msg>
+		<src>8x</src>
+		<ru>8x</ru>
+	</msg>
+	<msg>
+		<src>960x540</src>
+		<ru>960x540</ru>
+	</msg>
+	<msg>
+		<src>A</src>
+		<ru>A</ru>
+	</msg>
+	<msg>
+		<src>About</src>
+		<ru>О программе</ru>
+	</msg>
+	<msg>
+		<src>ADamping:</src>
+		<ru>Угл. затухание:</ru>
+	</msg>
+	<msg>
+		<src>Anim:</src>
+		<ru>Анимация:</ru>
+	</msg>
+	<msg>
+		<src>Animation scene</src>
+		<ru>Анимационная сцена</ru>
+	</msg>
+	<msg>
+		<src>Clean</src>
+		<ru>Пустая маска</ru>
+	</msg>
+	<msg>
+		<src>Clean mask creation</src>
+		<ru>Создание новой пустой маски</ru>
+	</msg>
+	<msg>
+		<src>Clean node creation</src>
+		<ru>Создание нового пустого узла</ru>
+	</msg>
+	<msg>
+		<src>Combine</src>
+		<ru>Объеденить</ru>
+	</msg>
+	<msg>
+		<src>Create dynamic meshes</src>
+		<ru>Создать динамические каркасные сетки</ru>
+	</msg>
+	<msg>
+		<src>Create instance materials</src>
+		<ru>Создать материалы экземпляра</ru>
+	</msg>
+	<msg>
+		<src>Instance materials</src>
+		<ru>Материалы экземпляра</ru>
+	</msg>
+	<msg>
+		<src>Create material textures</src>
+		<ru>Создать текстуры материалов</ru>
+	</msg>
+	<msg>
+		<src>Create nodes</src>
+		<ru>Создать узлы</ru>
+	</msg>
+	<msg>
+		<src>Update nodes</src>
+		<ru>Обновить узлы</ru>
+	</msg>
+	<msg>
+		<src>DAE file info</src>
+		<ru>Информация о DAE файле</ru>
+	</msg>
+	<msg>
+		<src>Determines how fast the objects become blurred across the far blur range</src>
+		<ru>Определяет, насколько быстро происходит размытие объекта на расстоянии дальнего размытия</ru>
+	</msg>
+	<msg>
+		<src>Determines the area between the focal point and objects in crisp focus (not blurred)</src>
+		<ru>Определяет область между точкой фокусировки и объектом, находящимся в точном фокусе (неразмытым)</ru>
+	</msg>
+	<msg>
+		<src>Diffuse Name Pattern (relative to the terrain directory)</src>
+		<ru>Шаблон имени диффузной текстуры ландшафта (относительно пути до ландшафта)</ru>
+	</msg>
+	<msg>
+		<src>Distance of the first level of detail</src>
+		<ru>Расстояние до первого уровня детализации, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Distance up to which meshes is fully visible</src>
+		<ru>Расстояние, до достижения которого каркасные сетки полностью видимы</ru>
+	</msg>
+	<msg>
+		<src>Distance up to which nodes are fully visible</src>
+		<ru>Расстояние, до достижения которого узлы полностью видимы</ru>
+	</msg>
+	<msg>
+		<src>Diffuse Name:</src>
+		<ru>Имя диф. текстуры:</ru>
+	</msg>
+	<msg>
+		<src>Diffuse size per terrain</src>
+		<ru>Размер диффузной текстуры для одного ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Depth</src>
+		<ru>Глубина</ru>
+	</msg>
+	<msg>
+		<src>Dynamic mesh</src>
+		<ru>Динамическая каркасная сетка</ru>
+	</msg>
+	<msg>
+		<src>FBX file info</src>
+		<ru>Информация о файле FBX</ru>
+	</msg>
+	<msg>
+		<src>Add to scene</src>
+		<ru>Добавить к сцене</ru>
+	</msg>
+	<msg>
+		<src>Flip tiles vertically</src>
+		<ru>Отразить слоты вертикально</ru>
+	</msg>
+	<msg>
+		<src>Import X:</src>
+		<ru>Смещение по X при импорте:</ru>
+	</msg>
+	<msg>
+		<src>Import Y:</src>
+		<ru>Смещение по Y при импорте:</ru>
+	</msg>
+	<msg>
+		<src>Import animation FPS</src>
+		<ru>FPS анимации при импорте</ru>
+	</msg>
+	<msg>
+		<src>Import animations</src>
+		<ru>Импортировать анимацию</ru>
+	</msg>
+	<msg>
+		<src>Import cameras</src>
+		<ru>Импортировать камеры</ru>
+	</msg>
+	<msg>
+		<src>Import data</src>
+		<ru>Импортировать данные</ru>
+	</msg>
+	<msg>
+		<src>Import horizontal offset</src>
+		<ru>Горизонтальное смещение при импорте</ru>
+	</msg>
+	<msg>
+		<src>Import horizontal size</src>
+		<ru>Горизонтальный размер при импорте</ru>
+	</msg>
+	<msg>
+		<src>Import joints</src>
+		<ru>Импортировать соединения</ru>
+	</msg>
+	<msg>
+		<src>Import lights</src>
+		<ru>Импортировать источники освещения</ru>
+	</msg>
+	<msg>
+		<src>Import materials</src>
+		<ru>Импортировать материалы</ru>
+	</msg>
+	<msg>
+		<src>Import scale</src>
+		<ru>Масштаб при импорте</ru>
+	</msg>
+	<msg>
+		<src>Import scene time</src>
+		<ru>Время анимации при импорте</ru>
+	</msg>
+	<msg>
+		<src>Import textures</src>
+		<ru>Импортировать текстуры</ru>
+	</msg>
+	<msg>
+		<src>Import vertical offset</src>
+		<ru>Вертикальное смещение при импорте</ru>
+	</msg>
+	<msg>
+		<src>Import vertical size</src>
+		<ru>Вертикальный размер при импорте</ru>
+	</msg>
+	<msg>
+		<src>Import:</src>
+		<ru>Импорт:</ru>
+	</msg>
+	<msg>
+		<src>Landscape</src>
+		<ru>Плагин Landscape</ru>
+	</msg>
+	<msg>
+		<src>Landscape Path (relative to the data directory)</src>
+		<ru>Путь до ландшафта (относительно папки data)</ru>
+	</msg>
+	<msg>
+		<src>Landscape Path:</src>
+		<ru>Путь до ландшафта:</ru>
+	</msg>
+	<msg>
+		<src>Load DAE file</src>
+		<ru>Загрузить DAE файл</ru>
+	</msg>
+	<msg>
+		<src>Load FBX file</src>
+		<ru>Загрузить FBX файл</ru>
+	</msg>
+	<msg>
+		<src>Load FLT file</src>
+		<ru>Загрузить FLT файл</ru>
+	</msg>
+	<msg>
+		<src>Load animation DAE file</src>
+		<ru>Загрузить файл анимации DAE</ru>
+	</msg>
+	<msg>
+		<src>Load animation FBX file</src>
+		<ru>Загрузить файл анимации FBX</ru>
+	</msg>
+	<msg>
+		<src>Load landscape settings</src>
+		<ru>Загрузить настройки ландшафта</ru>
+	</msg>
+	<msg>
+		<src>FLT file info</src>
+		<ru>Информация о FLT файле</ru>
+	</msg>
+	<msg>
+		<src>Mask 0:</src>
+		<ru>Маска 0:</ru>
+	</msg>
+	<msg>
+		<src>Mask 1:</src>
+		<ru>Маска 1:</ru>
+	</msg>
+	<msg>
+		<src>Mask 2:</src>
+		<ru>Маска 2:</ru>
+	</msg>
+	<msg>
+		<src>Mask 3:</src>
+		<ru>Маска 3:</ru>
+	</msg>
+	<msg>
+		<src>Mask 4:</src>
+		<ru>Маска 4:</ru>
+	</msg>
+	<msg>
+		<src>Mask 5:</src>
+		<ru>Маска 5:</ru>
+	</msg>
+	<msg>
+		<src>Mask 6:</src>
+		<ru>Маска 6:</ru>
+	</msg>
+	<msg>
+		<src>Mask 7:</src>
+		<ru>Маска 7:</ru>
+	</msg>
+	<msg>
+		<src>Elevation:</src>
+		<ru>Высота:</ru>
+	</msg>
+	<msg>
+		<src>Diffuse color:</src>
+		<ru>Множитель цвета диф. текстуры:</ru>
+	</msg>
+	<msg>
+		<src>Diffuse coarse per terrain</src>
+		<ru>Размер упрощенной диффузной текстуры для одного ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Diffuse Size:</src>
+		<ru>Размер диффузной текстуры:</ru>
+	</msg>
+	<msg>
+		<src>DOF</src>
+		<ru>DOF</ru>
+	</msg>
+	<msg>
+		<src>Mask Image Name (relative to the terrain directory)</src>
+		<ru>Имя маски (относительно пути до ландшафта)</ru>
+	</msg>
+	<msg>
+		<src>Mask Image Source Name</src>
+		<ru>Исходное имя маски</ru>
+	</msg>
+	<msg>
+		<src>Mask Mesh Name (relative to the terrain directory)</src>
+		<ru>Имя каркасной сетки маски (относительно пути до ландшафта)</ru>
+	</msg>
+	<msg>
+		<src>Mask Name Pattern (relative to the terrain directory)</src>
+		<ru>Шаблон имени маски (относительно пути до ландшафта)</ru>
+	</msg>
+	<msg>
+		<src>Mask Name:</src>
+		<ru>Имя маски:</ru>
+	</msg>
+	<msg>
+		<src>Mask Size:</src>
+		<ru>Размер маски:</ru>
+	</msg>
+	<msg>
+		<src>Mask brush</src>
+		<ru>Кисть для редактирования маски</ru>
+	</msg>
+	<msg>
+		<src>Mask coarse per terrain</src>
+		<ru>Упрощенный размер маски для каждого ландшафта, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Mask format</src>
+		<ru>Формат маски</ru>
+	</msg>
+	<msg>
+		<src>OpenFlight Import</src>
+		<ru>Плагин OpenFlight</ru>
+	</msg>
+	<msg>
+		<src>Create normal textures</src>
+		<ru>Создать карты нормалей</ru>
+	</msg>
+	<msg>
+		<src>Mask size per terrain</src>
+		<ru>Размер маски для каждого ландшафта, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Material name prefix</src>
+		<ru>Префикс имени материала</ru>
+	</msg>
+	<msg>
+		<src>Merge LOD nodes</src>
+		<ru>Объединить все уровни детализации</ru>
+	</msg>
+	<msg>
+		<src>Merge group nodes</src>
+		<ru>Объединить группу узлов</ru>
+	</msg>
+	<msg>
+		<src>Merge hierarchical LOD nodes</src>
+		<ru>Объединить все уровни детализации узлов в одну каркасную сетку</ru>
+	</msg>
+	<msg>
+		<src>Merge hierarchical group nodes</src>
+		<ru>Объединить группу иерархических узлов в одну каркасную сетку</ru>
+	</msg>
+	<msg>
+		<src>Merge hierarchical object nodes</src>
+		<ru>Объединить все иерархические узлы в одну каркасную сетку</ru>
+	</msg>
+	<msg>
+		<src>Merge object nodes</src>
+		<ru>Объединить все узлы</ru>
+	</msg>
+	<msg>
+		<src>Mesh name prefix</src>
+		<ru>Префикс имени каркасной сетки</ru>
+	</msg>
+	<msg>
+		<src>Node:</src>
+		<ru>Узел:</ru>
+	</msg>
+	<msg>
+		<src>Nodes horizontal offset</src>
+		<ru>Горизонтальное смещение узлов</ru>
+	</msg>
+	<msg>
+		<src>Nodes horizontal size</src>
+		<ru>Горизонтальный размер узлов</ru>
+	</msg>
+	<msg>
+		<src>Nodes vertical offset</src>
+		<ru>Вертикальное смещение узлов</ru>
+	</msg>
+	<msg>
+		<src>Nodes vertical size</src>
+		<ru>Вертикальный размер узлов</ru>
+	</msg>
+	<msg>
+		<src>NodeLayer or WorldLayer Reference Node Name (relative to the terrain directory)</src>
+		<ru>Имя ссылки на NodeLayer или WorldLayer (относительно пути до ландшафта)</ru>
+	</msg>
+	<msg>
+		<src>Node depth in the terrain children hierarchy</src>
+		<ru>Положение узла в иерархии узлов ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Normal Name Pattern (relative to the terrain directory)</src>
+		<ru>Шаблон имени карты нормалей (относительно пути до ландшафта)</ru>
+	</msg>
+	<msg>
+		<src>Normal Name:</src>
+		<ru>Имя карты нормалей:</ru>
+	</msg>
+	<msg>
+		<src>Normal Size:</src>
+		<ru>Размер карты нормалей:</ru>
+	</msg>
+	<msg>
+		<src>Normal coarse per terrain</src>
+		<ru>Размер упрощенной карты нормалей для каждого ландшафта, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Normal size per terrain</src>
+		<ru>Размер карты нормалей для каждого ландшафта, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Create materials</src>
+		<ru>Создать материалы</ru>
+	</msg>
+	<msg>
+		<src>Create joint nodes</src>
+		<ru>Создать узлы соединений</ru>
+	</msg>
+	<msg>
+		<src>Create light nodes</src>
+		<ru>Создать узлы источников освещения</ru>
+	</msg>
+	<msg>
+		<src>Compress material textures</src>
+		<ru>Сжать текстуры материалов</ru>
+	</msg>
+	<msg>
+		<src>Create an empty landscape</src>
+		<ru>Создать пустой ландшафт</ru>
+	</msg>
+	<msg>
+		<src>Create animation files</src>
+		<ru>Создать файлы анимации</ru>
+	</msg>
+	<msg>
+		<src>Create camera nodes</src>
+		<ru>Создать узлы камеры</ru>
+	</msg>
+	<msg>
+		<src>Compress textures</src>
+		<ru>Сжать текстуры</ru>
+	</msg>
+	<msg>
+		<src>Combine all nodes into the single node reference</src>
+		<ru>Объеденить все узлы в одну ссылку на узел</ru>
+	</msg>
+	<msg>
+		<src>Path to diffuse data</src>
+		<ru>Путь к информации о диффузной текстуре</ru>
+	</msg>
+	<msg>
+		<src>Path to height data</src>
+		<ru>Путь к информации о высотах</ru>
+	</msg>
+	<msg>
+		<src>Path to mask data</src>
+		<ru>Путь к информации о маске</ru>
+	</msg>
+	<msg>
+		<src>Path to normal data</src>
+		<ru>Путь к информации о карте нормалей</ru>
+	</msg>
+	<msg>
+		<src>Coefficient specifying how fast the optimal longitudinal force can be achieved</src>
+		<ru>Коэффициент, определяющий как быстро будет достигнута оптимальная продольная сила</ru>
+	</msg>
+	<msg>
+		<src>Collada Import</src>
+		<ru>Плагин Collada</ru>
+	</msg>
+	<msg>
+		<src>Pixels</src>
+		<ru>Пиксели</ru>
+	</msg>
+	<msg>
+		<src>  Normal</src>
+		<ru>Создать карту нормалей</ru>
+	</msg>
+	<msg>
+		<src>Coarse:</src>
+		<ru>Размер упрощенной текстуры:</ru>
+	</msg>
+	<msg>
+		<src>Source X:</src>
+		<ru>Смещение слотов по оси X:</ru>
+	</msg>
+	<msg>
+		<src>Source Y:</src>
+		<ru>Смещение слотов по оси Y:</ru>
+	</msg>
+	<msg>
+		<src>Storage:</src>
+		<ru>Память:</ru>
+	</msg>
+	<msg>
+		<src>Terrain Name Pattern (relative to the landscape directory)</src>
+		<ru>Шаблон имени ландшафта (относительно пути до ландшафта)</ru>
+	</msg>
+	<msg>
+		<src>Terrain Name:</src>
+		<ru>Имя ландшафта:</ru>
+	</msg>
+	<msg>
+		<src>Terrain Step:</src>
+		<ru>Шаг ячейки сетки:</ru>
+	</msg>
+	<msg>
+		<src>Terrain elevation in units</src>
+		<ru>Высота ландшафта, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Terrain grid in units</src>
+		<ru>Шаг ячейки ландшафта, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Terrain horizontal count</src>
+		<ru>Количество ячеек ландшафта по горизонтали, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Texture name prefix</src>
+		<ru>Префикс имени текстуры</ru>
+	</msg>
+	<msg>
+		<src>Terrain horizontal size</src>
+		<ru>Размер ландшафта по горизонтали, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Terrain size</src>
+		<ru>Размер ландшафта, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Verbose operations</src>
+		<ru>Подробные операции</ru>
+	</msg>
+	<msg>
+		<src>Terrain storage size</src>
+		<ru>Размер памяти, занимаемой ландшафтом</ru>
+	</msg>
+	<msg>
+		<src>Terrain vertical count</src>
+		<ru>Количество ячеек ландшафта по вертикали, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Terrain vertical size</src>
+		<ru>Размер ландшафта по вертикали, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Terrains</src>
+		<ru>Ландшафты</ru>
+	</msg>
+	<msg>
+		<src>Save landscape settings</src>
+		<ru>Сохранить настройки ландшафта</ru>
+	</msg>
+	<msg>
+		<src>ARestitution:</src>
+		<ru>Угл. упругое восстановление:</ru>
+	</msg>
+	<msg>
+		<src>AScale:</src>
+		<ru>Угл. множитель:</ru>
+	</msg>
+	<msg>
+		<src>ASoftness:</src>
+		<ru>Угл. эластичность:</ru>
+	</msg>
+	<msg>
+		<src>Autodesk FBX Import</src>
+		<ru>Плагин Autodesk FBX</ru>
+	</msg>
+	<msg>
+		<src>AThreshold:</src>
+		<ru>Угл. порог:</ru>
+	</msg>
+	<msg>
+		<src>Attenuation factor value</src>
+		<ru>Значение коэффициента затухания</ru>
+	</msg>
+	<msg>
+		<src>Absorption</src>
+		<ru>Поглощение</ru>
+	</msg>
+	<msg>
+		<src>Acceleration:</src>
+		<ru>Ускорение:</ru>
+	</msg>
+	<msg>
+		<src>Adaptation:</src>
+		<ru>Адаптация:</ru>
+	</msg>
+	<msg>
+		<src>Add</src>
+		<ru>Добавить</ru>
+	</msg>
+	<msg>
+		<src>Add library</src>
+		<ru>Добавить библиотеку</ru>
+	</msg>
+	<msg>
+		<src>Add material</src>
+		<ru>Добавить материал</ru>
+	</msg>
+	<msg>
+		<src>Add node reference</src>
+		<ru>Добавить ссылку на узел</ru>
+	</msg>
+	<msg>
+		<src>Add tab (ctrl+t)</src>
+		<ru>Добавить вкладку (ctrl+t)</ru>
+	</msg>
+	<msg>
+		<src>Addition</src>
+		<ru>Сложение</ru>
+	</msg>
+	<msg>
+		<src>Additional shadow radius</src>
+		<ru>Расстояние, на котором отрисовываются дополнительные каркасные сетки/полигоны (для ландшафта) за пределами поля видимости.<br/>Используется для предотвращения выскакивания теней по краям при повороте камеры</ru>
+	</msg>
+	<msg>
+		<src>Air absorption:</src>
+		<ru>Поглощение воздухом:</ru>
+	</msg>
+	<msg>
+		<src>All decals</src>
+		<ru>Все декали</ru>
+	</msg>
+	<msg>
+		<src>All extensions</src>
+		<ru>Все файлы</ru>
+	</msg>
+	<msg>
+		<src>All fields</src>
+		<ru>Все поля</ru>
+	</msg>
+	<msg>
+		<src>All lights</src>
+		<ru>Все источники освещения</ru>
+	</msg>
+	<msg>
+		<src>All navigations</src>
+		<ru>Все узлы навигации</ru>
+	</msg>
+	<msg>
+		<src>All nodes</src>
+		<ru>Все узлы</ru>
+	</msg>
+	<msg>
+		<src>All objects</src>
+		<ru>Все объекты</ru>
+	</msg>
+	<msg>
+		<src>All obstacles</src>
+		<ru>Все препятствия</ru>
+	</msg>
+	<msg>
+		<src>All physicals</src>
+		<ru>Все физические эффекты</ru>
+	</msg>
+	<msg>
+		<src>All players</src>
+		<ru>Все персонажи</ru>
+	</msg>
+	<msg>
+		<src>All sounds</src>
+		<ru>Все звуки</ru>
+	</msg>
+	<msg>
+		<src>All worlds</src>
+		<ru>Все миры</ru>
+	</msg>
+	<msg>
+		<src>Alpha channel noise</src>
+		<ru>Шум альфа-канала</ru>
+	</msg>
+	<msg>
+		<src>Alpha test</src>
+		<ru>Альфа-тест</ru>
+	</msg>
+	<msg>
+		<src>Always simulate volumetric clouds</src>
+		<ru>Постоянно моделировать трехмерные облака</ru>
+	</msg>
+	<msg>
+		<src>Always update</src>
+		<ru>Фоновое обновление</ru>
+	</msg>
+	<msg>
+		<src>Update application window even when it is not in focus.</src>
+		<ru>Обновлять окно приложения, даже если оно не в фокусе.</ru>
+	</msg>
+	<msg>
+		<src>Ambient color:</src>
+		<ru>Цвет фонового освещения:</ru>
+	</msg>
+	<msg>
+		<src>Ambient occlusion mask</src>
+		<ru>Маска взаимного затенения</ru>
+	</msg>
+	<msg>
+		<src>Ambient occlusion radius (use 0.0 to disable ambient occlusion)</src>
+		<ru>Радиус взаимного затенения (используйте <b>0.0</b>, чтобы выключить взаимное затенение)</ru>
+	</msg>
+	<msg>
+		<src>Ambient power:</src>
+		<ru>Степень взаимного затенения:</ru>
+	</msg>
+	<msg>
+		<src>Ambient scale:</src>
+		<ru>Яркость теней:</ru>
+	</msg>
+	<msg>
+		<src>Brightness scale of ambient occlusion shadowing</src>
+		<ru>Яркость теней при взаимном затенении</ru>
+	</msg>
+	<msg>
+		<src>Ambient:</src>
+		<ru>Фоновый:</ru>
+	</msg>
+	<msg>
+		<src>Amount of air absorption applied to the source</src>
+		<ru>Уровень поглощения звука воздухом, примененный к источнику</ru>
+	</msg>
+	<msg>
+		<src>Amount of cyclic echo in the reverberation decay</src>
+		<ru>Длительность циклического эха при затухании реверберации</ru>
+	</msg>
+	<msg>
+		<src>Amount of pitch modulation in the reverberant sound</src>
+		<ru>Величина модуляции высоты звука в реверберирующем звуке</ru>
+	</msg>
+	<msg>
+		<src>Amplitude:</src>
+		<ru>Амплитуда:</ru>
+	</msg>
+	<msg>
+		<src>Anchor 0:</src>
+		<ru>Опорная точка 0:</ru>
+	</msg>
+	<msg>
+		<src>Anchor 1:</src>
+		<ru>Опорная точка 1:</ru>
+	</msg>
+	<msg>
+		<src>Anchor point:</src>
+		<ru>Опорная точка:</ru>
+	</msg>
+	<msg>
+		<src>Angle:</src>
+		<ru>Угол:</ru>
+	</msg>
+	<msg>
+		<src>Angular damp:</src>
+		<ru>Угловое затухание:</ru>
+	</msg>
+	<msg>
+		<src>Angular damping</src>
+		<ru>Угловое затухание</ru>
+	</msg>
+	<msg>
+		<src>Low rotation limit angle</src>
+		<ru>Нижний предел угла поворота</ru>
+	</msg>
+	<msg>
+		<src>High rotation limit angle</src>
+		<ru>Верхний предел угла поворота</ru>
+	</msg>
+	<msg>
+		<src>Angular motor maximum torque</src>
+		<ru>Максимальный крутящий момент углового двигателя</ru>
+	</msg>
+	<msg>
+		<src>Angular motor target velocity</src>
+		<ru>Заданная скорость углового двигателя</ru>
+	</msg>
+	<msg>
+		<src>Angular restitution</src>
+		<ru>Угловое упругое восстановление</ru>
+	</msg>
+	<msg>
+		<src>Angular spring coefficient</src>
+		<ru>Угловая жесткость пружины</ru>
+	</msg>
+	<msg>
+		<src>Angular spring target angle</src>
+		<ru>Заданный угол пружины</ru>
+	</msg>
+	<msg>
+		<src>Angular swing limit angle</src>
+		<ru>Предельный угол колебаний</ru>
+	</msg>
+	<msg>
+		<src>Angular threshold</src>
+		<ru>Максимальный угол складывания</ru>
+	</msg>
+	<msg>
+		<src>Low twist limit angle</src>
+		<ru>Нижний предел угла скручивания</ru>
+	</msg>
+	<msg>
+		<src>High twist limit angle</src>
+		<ru>Верхний предел угла скручивания</ru>
+	</msg>
+	<msg>
+		<src>Angular velocity damping</src>
+		<ru>Затухание угловой скорости</ru>
+	</msg>
+	<msg>
+		<src>Angular velocity scale</src>
+		<ru>Множитель угловой скорости тела</ru>
+	</msg>
+	<msg>
+		<src>Angular:</src>
+		<ru>Угловое затухание:</ru>
+	</msg>
+	<msg>
+		<src>Angularity:</src>
+		<ru>Искривленность:</ru>
+	</msg>
+	<msg>
+		<src>Animation</src>
+		<ru>Анимация</ru>
+	</msg>
+	<msg>
+		<src>Animation is controlled by parent skinned mesh bones</src>
+		<ru>Анимация контролируется костями родительской скелетной каркасной сетки</ru>
+	</msg>
+	<msg>
+		<src>Leaf animation coefficient</src>
+		<ru>Множитель амплитуды вращения листьев внутри анимационного поля</ru>
+	</msg>
+	<msg>
+		<src>Animation leaf:</src>
+		<ru>Множитель угла вращения листьев:</ru>
+	</msg>
+	<msg>
+		<src>Animation scale</src>
+		<ru>Множитель скорости покачивания растений внутри анимационного поля</ru>
+	</msg>
+	<msg>
+		<src>Animation scale:</src>
+		<ru>Множитель скорости покачивания растений:</ru>
+	</msg>
+	<msg>
+		<src>Stem animation coefficient</src>
+		<ru>Множитель амплитуды движения ствола растения внутри анимационного поля</ru>
+	</msg>
+	<msg>
+		<src>Animation stem:</src>
+		<ru>Множитель амплитуды движения ствола растения:</ru>
+	</msg>
+	<msg>
+		<src>Animation wind:</src>
+		<ru>Смещение ствола растения на ветру:</ru>
+	</msg>
+	<msg>
+		<src>Animation:</src>
+		<ru>Анимация:</ru>
+	</msg>
+	<msg>
+		<src>Anisotropy</src>
+		<ru>Анизотропия</ru>
+	</msg>
+	<msg>
+		<src>Append to the current world</src>
+		<ru>Добавить к текущему миру</ru>
+	</msg>
+	<msg>
+		<src>Apply</src>
+		<ru>Применить</ru>
+	</msg>
+	<msg>
+		<src>Apply changes</src>
+		<ru>Применить изменения</ru>
+	</msg>
+	<msg>
+		<src>Apply changes and close dialog</src>
+		<ru>Применить изменения и закрыть диалоговое окно</ru>
+	</msg>
+	<msg>
+		<src>Apply collision mask to selected object surfaces</src>
+		<ru>Применить маску столкновений к выбранным поверхностям объекта</ru>
+	</msg>
+	<msg>
+		<src>Apply decal mask to selected object surfaces</src>
+		<ru>Применить маску декалей к выбранным поверхностям объекта</ru>
+	</msg>
+	<msg>
+		<src>Apply intersection mask to selected object surfaces</src>
+		<ru>Применить маску пересечений к выбранным поверхностям объекта</ru>
+	</msg>
+	<msg>
+		<src>Apply light mask to selected object surfaces</src>
+		<ru>Применить маску источника освещения к выбранным поверхностям объекта</ru>
+	</msg>
+	<msg>
+		<src>Apply to all children</src>
+		<ru>Применить ко всем наследникам</ru>
+	</msg>
+	<msg>
+		<src>Apply viewport mask to selected object surfaces</src>
+		<ru>Применить маску видового окна к выбранным поверхностям объекта</ru>
+	</msg>
+	<msg>
+		<src>Approximation error:</src>
+		<ru>Ошибка аппроксимации:</ru>
+	</msg>
+	<msg>
+		<src>Aerial perspective scale (scale of atmospheric curvature)</src>
+		<ru>Степень кривизны атмосферы</ru>
+	</msg>
+	<msg>
+		<src>Aerial:</src>
+		<ru>Воздушная перспектива:</ru>
+	</msg>
+	<msg>
+		<src>Aspect ratio (width/height)</src>
+		<ru>Соотношение ширины и высоты (ширина/высота)</ru>
+	</msg>
+	<msg>
+		<src>Aspect:</src>
+		<ru>Соотношение ширины и высоты:</ru>
+	</msg>
+	<msg>
+		<src>Assign material</src>
+		<ru>Назначить материал</ru>
+	</msg>
+	<msg>
+		<src>Assign property</src>
+		<ru>Назначить свойство</ru>
+	</msg>
+	<msg>
+		<src>Assigned material</src>
+		<ru>Назначенный материал</ru>
+	</msg>
+	<msg>
+		<src>Assigned property</src>
+		<ru>Назначенное свойство</ru>
+	</msg>
+	<msg>
+		<src>Atmosphere refractive index (Rayleigh scattering)</src>
+		<ru>Индекс атмосферного преломления (рассеяние Рэлея)</ru>
+	</msg>
+	<msg>
+		<src>Atmosphere turbidity (Mie scattering)</src>
+		<ru>Мутность атмосферы (рассеяние Ми)</ru>
+	</msg>
+	<msg>
+		<src>Attached</src>
+		<ru>Приложенная</ru>
+	</msg>
+	<msg>
+		<src>Creator parameters</src>
+		<ru>Параметры создания</ru>
+	</msg>
+	<msg>
+		<src>Expressions</src>
+		<ru>Выражения</ru>
+	</msg>
+	<msg>
+		<src>Attached </src>
+		<ru>Приложенный</ru>
+	</msg>
+	<msg>
+		<src>Atten:</src>
+		<ru>Затухание:</ru>
+	</msg>
+	<msg>
+		<src>Attenuation of early reflections and reverberation</src>
+		<ru>Ослабление ранних отражений и реверберации звука</ru>
+	</msg>
+	<msg>
+		<src>Attenuation of high frequencies in the rear of the source</src>
+		<ru>Затухание высоких частот позади источника звука</ru>
+	</msg>
+	<msg>
+		<src>Attenuation of the reflected sound according to source-listener distance</src>
+		<ru>Затухание отраженного звука в зависимости от расстояния до источника-слушателя</ru>
+	</msg>
+	<msg>
+		<src>Attenuation on high frequencies of reflected sound</src>
+		<ru>Затухание на высоких частотах отраженного звука</ru>
+	</msg>
+	<msg>
+		<src>Attenuation on low frequencies of reflected sound</src>
+		<ru>Затухание на низких частотах отраженного звука</ru>
+	</msg>
+	<msg>
+		<src>Attenuation value</src>
+		<ru>Значение коэффициента затухания</ru>
+	</msg>
+	<msg>
+		<src>Attenuation:</src>
+		<ru>Затухание:</ru>
+	</msg>
+	<msg>
+		<src>Ambient attenuation:</src>
+		<ru>Затухание:</ru>
+	</msg>
+	<msg>
+		<src>Coefficient that compensates for falloff of the ambient occlusion with a distance</src>
+		<ru>Коэффициент компенсации затухания эффекта взаимного затенения</ru>
+	</msg>
+	<msg>
+		<src>Light attenuation:</src>
+		<ru>Затухание:</ru>
+	</msg>
+	<msg>
+		<src>Coefficient that compensates for falloff of the light occlusion with a distance</src>
+		<ru>Коэффициент компенсации затухания эффекта затенения с учетом переотраженного света</ru>
+	</msg>
+	<msg>
+		<src>Attraction component of the force</src>
+		<ru>Сила притяжения, применяемая к объектам в радиусе действия физической силы</ru>
+	</msg>
+	<msg>
+		<src>Attractor:</src>
+		<ru>Притяжение:</ru>
+	</msg>
+	<msg>
+		<src>Autogenerate bones from the mesh</src>
+		<ru>Автоматически сгенерировать кости из каркасной сетки</ru>
+	</msg>
+	<msg>
+		<src>Autogenerated</src>
+		<ru>Автоматически сгенерированная</ru>
+	</msg>
+	<msg>
+		<src>Automatic border adjustment</src>
+		<ru>Автоматическая настройка границ</ru>
+	</msg>
+	<msg>
+		<src>Automatic selection of edit lines</src>
+		<ru>Автоматическое выделение строк редактирования</ru>
+	</msg>
+	<msg>
+		<src>Automatically clears the node when the distance to the layer is bigger than clear distance</src>
+		<ru>Узел очищается автоматически, когда расстояние до слоя больше, чем расстояние сброса</ru>
+	</msg>
+	<msg>
+		<src>Automatically loads the node when the distance to the layer is smaller than loading distance</src>
+		<ru>Узел загружается автоматически, когда расстояние до слоя меньше расстояния загрузки</ru>
+	</msg>
+	<msg>
+		<src>Axis 0:</src>
+		<ru>Ось 0:</ru>
+	</msg>
+	<msg>
+		<src>Axis 10:</src>
+		<ru>Ось 10:</ru>
+	</msg>
+	<msg>
+		<src>Axis 11:</src>
+		<ru>Ось 11:</ru>
+	</msg>
+	<msg>
+		<src>Axis 1:</src>
+		<ru>Ось 1:</ru>
+	</msg>
+	<msg>
+		<src>B</src>
+		<ru>B</ru>
+	</msg>
+	<msg>
+		<src>BAngle:</src>
+		<ru>Поперечный импульс:</ru>
+	</msg>
+	<msg>
+		<src>BFriction:</src>
+		<ru>Боковое трение:</ru>
+	</msg>
+	<msg>
+		<src>Back face</src>
+		<ru>Задняя поверхность</ru>
+	</msg>
+	<msg>
+		<src>Back-to-front depth sorting for correct alpha blending</src>
+		<ru>Обратная сортировка по глубине для корректного альфа-смешивания</ru>
+	</msg>
+	<msg>
+		<src>Background</src>
+		<ru>Фон</ru>
+	</msg>
+	<msg>
+		<src>Background color:</src>
+		<ru>Цвет фона:</ru>
+	</msg>
+	<msg>
+		<src>Bakes all identical meshes specified in the world into the mesh cluster</src>
+		<ru>Запечь одинаковые каркасные сетки, размещенные внутри мира, в кластер</ru>
+	</msg>
+	<msg>
+		<src>Ball</src>
+		<ru>Шарнирное сферическое</ru>
+	</msg>
+	<msg>
+		<src>Batch</src>
+		<ru>Пакетная обработка</ru>
+	</msg>
+	<msg>
+		<src>Batch node processing</src>
+		<ru>Пакетная обработка узлов</ru>
+	</msg>
+	<msg>
+		<src>Begin time of the late reverberation relative to the time of the initial reflection</src>
+		<ru>Время начала последующих ревербераций относительно времени начальных отражений</ru>
+	</msg>
+	<msg>
+		<src>Bias:</src>
+		<ru>Смещение тени:</ru>
+	</msg>
+	<msg>
+		<src>Billboard</src>
+		<ru>Билборд</ru>
+	</msg>
+	<msg>
+		<src>Billboard particles</src>
+		<ru>Частицы-билборды</ru>
+	</msg>
+	<msg>
+		<src>Bind</src>
+		<ru>Связать</ru>
+	</msg>
+	<msg>
+		<src>Bind anchors</src>
+		<ru>Связать опорные точки</ru>
+	</msg>
+	<msg>
+		<src>Сoefficient specifying how fast the optimal lateral force can be achieved</src>
+		<ru>Коэффициент, определяющий, насколько быстро может быть достигнута оптимальная величина поперечной силы</ru>
+	</msg>
+	<msg>
+		<src>Lateral friction of the tire</src>
+		<ru>Боковое трение шины</ru>
+	</msg>
+	<msg>
+		<src>Blending</src>
+		<ru>Смешивание</ru>
+	</msg>
+	<msg>
+		<src>Blue:</src>
+		<ru>Синий:</ru>
+	</msg>
+	<msg>
+		<src>Blur:</src>
+		<ru>Размытие:</ru>
+	</msg>
+	<msg>
+		<src>Bokeh</src>
+		<ru>Блики</ru>
+	</msg>
+	<msg>
+		<src>Bone:</src>
+		<ru>Кость:</ru>
+	</msg>
+	<msg>
+		<src>Bones:</src>
+		<ru>Кости:</ru>
+	</msg>
+	<msg>
+		<src>Border:</src>
+		<ru>Граница:</ru>
+	</msg>
+	<msg>
+		<src>Bound expand:</src>
+		<ru>Расширение габаритного контейнера:</ru>
+	</msg>
+	<msg>
+		<src>Bound mesh:</src>
+		<ru>Габаритная каркасная сетка:</ru>
+	</msg>
+	<msg>
+		<src>Bound:</src>
+		<ru>Габаритная каркасная сетка:</ru>
+	</msg>
+	<msg>
+		<src>Bounding box expand by X axis</src>
+		<ru>Расширение габаритного контейнера по оси X</ru>
+	</msg>
+	<msg>
+		<src>Bounding box expand by Y axis</src>
+		<ru>Расширение габаритного контейнера по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Bounding box expand by Z axis</src>
+		<ru>Расширение габаритного контейнера по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Bounding mesh which restricts LightProb positions</src>
+		<ru>Габаритная каркасная сетка, которая ограничивает положения источника запеченного освещения</ru>
+	</msg>
+	<msg>
+		<src>Box </src>
+		<ru>Кубический</ru>
+	</msg>
+	<msg>
+		<src>Box filtering</src>
+		<ru>Кубическая фильтрация</ru>
+	</msg>
+	<msg>
+		<src>Bright:</src>
+		<ru>Яркость бликов:</ru>
+	</msg>
+	<msg>
+		<src>Brightness:</src>
+		<ru>Яркость:</ru>
+	</msg>
+	<msg>
+		<src>Broken</src>
+		<ru>Разрушенное</ru>
+	</msg>
+	<msg>
+		<src>Brush:</src>
+		<ru>Кисть:</ru>
+	</msg>
+	<msg>
+		<src>CMass:</src>
+		<ru>Центр массы:</ru>
+	</msg>
+	<msg>
+		<src>Camera</src>
+		<ru>Камера</ru>
+	</msg>
+	<msg>
+		<src>Camera Editor</src>
+		<ru>Редактор камеры</ru>
+	</msg>
+	<msg>
+		<src>Camera parameters</src>
+		<ru>Параметры камеры</ru>
+	</msg>
+	<msg>
+		<src>Camera Flash-light parameters</src>
+		<ru>Параметры фонарика камеры</ru>
+	</msg>
+	<msg>
+		<src>Cancel</src>
+		<ru>Отмена</ru>
+	</msg>
+	<msg>
+		<src>Cancel changes</src>
+		<ru>Отменить изменения</ru>
+	</msg>
+	<msg>
+		<src>Cancel changes and close dialog</src>
+		<ru>Отменить изменения и закрыть диалоговое окно</ru>
+	</msg>
+	<msg>
+		<src>Capsule</src>
+		<ru>Капсула</ru>
+	</msg>
+	<msg>
+		<src>Capsule shape</src>
+		<ru>Капсульная форма</ru>
+	</msg>
+	<msg>
+		<src>Sphere shape</src>
+		<ru>Сфера</ru>
+	</msg>
+	<msg>
+		<src>Cylinder shape</src>
+		<ru>Цилиндр</ru>
+	</msg>
+	<msg>
+		<src>Box shape</src>
+		<ru>Куб</ru>
+	</msg>
+	<msg>
+		<src>Convex shape</src>
+		<ru>Выпуклая оболочка</ru>
+	</msg>
+	
+	<msg>
+		<src>Cast shadow</src>
+		<ru>Отбрасывать тени</ru>
+	</msg>
+	<msg>
+		<src>Cast shadows</src>
+		<ru>Отбрасывать тени</ru>
+	</msg>
+	<msg>
+		<src>Cast translucence</src>
+		<ru>Просвечивать</ru>
+	</msg>
+	<msg>
+		<src>Cast world shadow</src>
+		<ru>Отбрасывать глобальные тени</ru>
+	</msg>
+	<msg>
+		<src>Cast world shadows</src>
+		<ru>Отбрасывать глобальные тени</ru>
+	</msg>
+	<msg>
+		<src>Catalog:</src>
+		<ru>Каталог:</ru>
+	</msg>
+	<msg>
+		<src>Cell step</src>
+		<ru>Шаг ячейки (количество ячеек, на которые разделено поле, засеиваемое травой)</ru>
+	</msg>
+	<msg>
+		<src>Cell subdivision</src>
+		<ru>Подразделение ячеек на более мелкие ячейки</ru>
+	</msg>
+	<msg>
+		<src>Center of mass of the body</src>
+		<ru>Центр массы тела</ru>
+	</msg>
+	<msg>
+		<src>Chain</src>
+		<ru>Цепочка</ru>
+	</msg>
+	<msg>
+		<src>Chain particles</src>
+		<ru>Цепочечные частицы</ru>
+	</msg>
+	<msg>
+		<src>Channels:</src>
+		<ru>Каналы:</ru>
+	</msg>
+	<msg>
+		<src>Children:</src>
+		<ru>Наследники:</ru>
+	</msg>
+	<msg>
+		<src>Circle</src>
+		<ru>Круг</ru>
+	</msg>
+	<msg>
+		<src>Clamp X</src>
+		<ru>Зафиксировать по оси X</ru>
+	</msg>
+	<msg>
+		<src>Clamp XYZ</src>
+		<ru>Зафиксировать по осям XYZ</ru>
+	</msg>
+	<msg>
+		<src>Clamp Y</src>
+		<ru>Зафиксировать по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Clamp Z</src>
+		<ru>Зафиксировать по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Clear</src>
+		<ru>Очистить</ru>
+	</msg>
+	<msg>
+		<src>Clear LUT image</src>
+		<ru>Сбросить LUT изображение</ru>
+	</msg>
+	<msg>
+		<src>Clear LUT texture editor</src>
+		<ru>Очистить редактор LUT текстуры</ru>
+	</msg>
+	<msg>
+		<src>Clear distance:</src>
+		<ru>Расстояние сброса:</ru>
+	</msg>
+	<msg>
+		<src>Clear mask image</src>
+		<ru>Сбросить маску на основе изображения</ru>
+	</msg>
+	<msg>
+		<src>Clear mask mesh</src>
+		<ru>Сбросить маску на основе каркасной сетки</ru>
+	</msg>
+	<msg>
+		<src>Clear material</src>
+		<ru>Сбросить материал</ru>
+	</msg>
+	<msg>
+		<src>Clear property</src>
+		<ru>Сбросить свойства</ru>
+	</msg>
+	<msg>
+		<src>Clear terrain diffuse textures</src>
+		<ru>Сбросить диффузную текстуру ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Clear terrain mask textures</src>
+		<ru>Сбросить маску деталей ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Clear terrain normal textures</src>
+		<ru>Сбросить карту номалей ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Clipper</src>
+		<ru>Отсекатель</ru>
+	</msg>
+	<msg>
+		<src>Clone</src>
+		<ru>Клонировать</ru>
+	</msg>
+	<msg>
+		<src>Clone Nodes</src>
+		<ru>Клонировать узлы</ru>
+	</msg>
+	<msg>
+		<src>Clone material</src>
+		<ru>Клонировать материал</ru>
+	</msg>
+	<msg>
+		<src>Clone node</src>
+		<ru>Клонировать узел</ru>
+	</msg>
+	<msg>
+		<src>Clone property</src>
+		<ru>Клонировать свойство</ru>
+	</msg>
+	<msg>
+		<src>Close file</src>
+		<ru>Закрыть файл</ru>
+	</msg>
+	<msg>
+		<src>Cloth</src>
+		<ru>Ткань</ru>
+	</msg>
+	<msg>
+		<src>Clutter distance:</src>
+		<ru>Дальность видимости клаттера:</ru>
+	</msg>
+	<msg>
+		<src>Coarse diffuse texture</src>
+		<ru>Упрощенная диффузная текстура</ru>
+	</msg>
+	<msg>
+		<src>Coarse mask texture</src>
+		<ru>Упрощенная маска деталей</ru>
+	</msg>
+	<msg>
+		<src>Coarse normal texture</src>
+		<ru>Упрощенная текстура нормалей</ru>
+	</msg>
+	<msg>
+		<src>Coarse size:</src>
+		<ru>Размер упрощенной текстуры:</ru>
+	</msg>
+	<msg>
+		<src>Coefficient of friction</src>
+		<ru>Коэффициент трения</ru>
+	</msg>
+	<msg>
+		<src>Coefficient of restitution</src>
+		<ru>Кэффициент упругого восстановления</ru>
+	</msg>
+	<msg>
+		<src>Collect</src>
+		<ru>Собрать</ru>
+	</msg>
+	<msg>
+		<src>Collect selected node references</src>
+		<ru>Собрать выделенные ссылки на узлы</ru>
+	</msg>
+	<msg>
+		<src>Collision</src>
+		<ru>Столкновения</ru>
+	</msg>
+	<msg>
+		<src>Collision mask</src>
+		<ru>Маска столкновений</ru>
+	</msg>
+	<msg>
+		<src>Collision mask of the body</src>
+		<ru>Маска столкновений тела</ru>
+	</msg>
+	<msg>
+		<src>Collision mask of the physical</src>
+		<ru>Маска столкновений физического эффекта</ru>
+	</msg>
+	<msg>
+		<src>Collision mask of the shape</src>
+		<ru>Маска столкновений формы</ru>
+	</msg>
+	<msg>
+		<src>Collision mask:</src>
+		<ru>Маска столкновений:</ru>
+	</msg>
+	<msg>
+		<src>Collision radius of the body</src>
+		<ru>Радиус столкновений тела</ru>
+	</msg>
+	<msg>
+		<src>Collision:</src>
+		<ru>Столкновения:</ru>
+	</msg>
+	<msg>
+		<src>Collision with physical environment</src>
+		<ru>Столкновения с физическим окружением</ru>
+	</msg>
+	<msg>
+		<src>Color</src>
+		<ru>Цвет</ru>
+	</msg>
+	<msg>
+		<src>Color Dialog</src>
+		<ru>Диалоговое окно выбора цвета</ru>
+	</msg>
+	<msg>
+		<src>Color:</src>
+		<ru>Цвет:</ru>
+	</msg>
+	<msg>
+		<src>Coloration of the late reverb</src>
+		<ru>Тональная окраска поздней реверберации</ru>
+	</msg>
+	<msg>
+		<src>Combine MipMaps</src>
+		<ru>Комбинировать мипмапы</ru>
+	</msg>
+	<msg>
+		<src>Common</src>
+		<ru>Общее</ru>
+	</msg>
+	<msg>
+		<src>Common editor parameters</src>
+		<ru>Общие параметры редактора</ru>
+	</msg>
+	<msg>
+		<src>Composite:</src>
+		<ru>Составной шейдер:</ru>
+	</msg>
+	<msg>
+		<src>Compress</src>
+		<ru>Сжать</ru>
+	</msg>
+	<msg>
+		<src>Compress all terrain textures</src>
+		<ru>Сжать все текстуры ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Compress image</src>
+		<ru>Сжать изображение</ru>
+	</msg>
+	<msg>
+		<src>Continuous</src>
+		<ru>Непрерывность</ru>
+	</msg>
+	<msg>
+		<src>Continuous collision detection</src>
+		<ru>Непрерывное определение столкновений</ru>
+	</msg>
+	<msg>
+		<src>Continuous particles flowing emitter transformation</src>
+		<ru>Непрерывная трансформация частиц, испускаемых эмиттером</ru>
+	</msg>
+	<msg>
+		<src>Contour extrude in pixels</src>
+		<ru>Выдавливание контура в пикселях</ru>
+	</msg>
+	<msg>
+		<src>Contrast:</src>
+		<ru>Контраст:</ru>
+	</msg>
+	<msg>
+		<src>Control distance:</src>
+		<ru>Расстояние управления:</ru>
+	</msg>
+	<msg>
+		<src>Controlled</src>
+		<ru>Контролировать</ru>
+	</msg>
+	<msg>
+		<src>Controls</src>
+		<ru>Управление</ru>
+	</msg>
+	<msg>
+		<src>Convex</src>
+		<ru>Выпуклая оболочка</ru>
+	</msg>
+	<msg>
+		<src>Coordinate System</src>
+		<ru>Система координат</ru>
+	</msg>
+	<msg>
+		<src>Copy</src>
+		<ru>Копировать</ru>
+	</msg>
+	<msg>
+		<src>Copy all material settings</src>
+		<ru>Копировать все настройки материалов</ru>
+	</msg>
+	<msg>
+		<src>Copy all property settings</src>
+		<ru>Копировать все настройки свойств</ru>
+	</msg>
+	<msg>
+		<src>Copy all surface settings</src>
+		<ru>Копировать все настройки поверхности</ru>
+	</msg>
+	<msg>
+		<src>Copy node transformation into clipboard</src>
+		<ru>Копировать значения трансформации узла в буфер обмена</ru>
+	</msg>
+	<msg>
+		<src>Copy settings</src>
+		<ru>Копировать настройки</ru>
+	</msg>
+	<msg>
+		<src>Copy transformation</src>
+		<ru>Копировать значения трансформации</ru>
+	</msg>
+	<msg>
+		<src>Core</src>
+		<ru>Основные</ru>
+	</msg>
+	<msg>
+		<src>Count:</src>
+		<ru>Количество:</ru>
+	</msg>
+	<msg>
+		<src>Create</src>
+		<ru>Создать</ru>
+	</msg>
+	<msg>
+		<src>Create LightMaps</src>
+		<ru>Создать карты освещения</ru>
+	</msg>
+	<msg>
+		<src>Create LightProbs</src>
+		<ru>Создать источники запеченного освещения</ru>
+	</msg>
+	<msg>
+		<src>Create LightProbs for selected nodes</src>
+		<ru>Создать источники запеченного освещения для выбранных узлов</ru>
+	</msg>
+	<msg>
+		<src>Create a default LUT image</src>
+		<ru>Создать стандартное LUT изображение</ru>
+	</msg>
+	<msg>
+		<src>Create default terrain diffuse textures</src>
+		<ru>Создать стандартную диффузную текстуру ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Create default terrain mask textures</src>
+		<ru>Создать стандартную маску деталей</ru>
+	</msg>
+	<msg>
+		<src>Create default terrain normal textures</src>
+		<ru>Создать стандартную карту нормалей для ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Create lightmaps for selected ObjectMeshes</src>
+		<ru>Создать карты освещения для выбранных статических каркасных сеток (ObjectMesh)</ru>
+	</msg>
+	<msg>
+		<src>Create mask image</src>
+		<ru>Создать маску на основе изображения</ru>
+	</msg>
+	<msg>
+		<src>Create mipmaps</src>
+		<ru>Создать мипмапы</ru>
+	</msg>
+	<msg>
+		<src>Create name for the new created node</src>
+		<ru>Создать имя для вновь созданного узла</ru>
+	</msg>
+	<msg>
+		<src>Create new file</src>
+		<ru>Создать новый файл</ru>
+	</msg>
+	<msg>
+		<src>Create new node as a child of the currently selected node</src>
+		<ru>Создать новый узел в качестве наследника текущего узла</ru>
+	</msg>
+	<msg>
+		<src>Create normals</src>
+		<ru>Создать нормали</ru>
+	</msg>
+	<msg>
+		<src>Cross</src>
+		<ru>Перекрестные вспышки</ru>
+	</msg>
+	<msg>
+		<src>Cube</src>
+		<ru>Куб</ru>
+	</msg>
+	<msg>
+		<src>Culled by clutter tree</src>
+		<ru>Добавить в дерево клаттера</ru>
+	</msg>
+	<msg>
+		<src>Culled by occlusion query</src>
+		<ru>Использовать запросы на перекрытие</ru>
+	</msg>
+	<msg>
+		<src>Culling</src>
+		<ru>Отбрасывать частицы</ru>
+	</msg>
+	<msg>
+		<src>Custom</src>
+		<ru>Пользовательское</ru>
+	</msg>
+	<msg>
+		<src>Custom composite shader for the final screen composition</src>
+		<ru>Пользовательский составной шейдер, используемый вместо стандартного шейдера для заключительной композиции экрана</ru>
+	</msg>
+	<msg>
+		<src>Cyclic echo in the reverberation decay</src>
+		<ru>Циклическое эхо при затухании реверберации</ru>
+	</msg>
+	<msg>
+		<src>Cylinder</src>
+		<ru>Цилиндр</ru>
+	</msg>	
+	<msg>
+		<src>Cylindrical</src>
+		<ru>Цилиндрическое</ru>
+	</msg>
+	<msg>
+		<src>DOF</src>
+		<ru>Глубина резкости</ru>
+	</msg>
+	<msg>
+		<src>Damping:</src>
+		<ru>Затухание:</ru>
+	</msg>
+	<msg>
+		<src>Camera damping:</src>
+		<ru>Замедление:</ru>
+	</msg>
+	<msg>
+		<src>Dangerous:</src>
+		<ru>Фактор опасности:</ru>
+	</msg>
+	<msg>
+		<src>Decal</src>
+		<ru>Декаль</ru>
+	</msg>
+	<msg>
+		<src>Decal distance:</src>
+		<ru>Дальность видимости декалей:</ru>
+	</msg>
+	<msg>
+		<src>Decal fade time</src>
+		<ru>Время затухания декаля</ru>
+	</msg>
+	<msg>
+		<src>Decal life time</src>
+		<ru>Период жизни декаля</ru>
+	</msg>
+	<msg>
+		<src>Decal mask</src>
+		<ru>Маска декалей</ru>
+	</msg>
+	<msg>
+		<src>Decal mask:</src>
+		<ru>Маска декалей:</ru>
+	</msg>
+	<msg>
+		<src>Decal:</src>
+		<ru>Декаль:</ru>
+	</msg>
+	<msg>
+		<src>Decay HF ratio:</src>
+		<ru>Коэффициент затухания ВЧ:</ru>
+	</msg>
+	<msg>
+		<src>Decay LF ratio:</src>
+		<ru>Коэффициент затухания НЧ:</ru>
+	</msg>
+	<msg>
+		<src>Decay time:</src>
+		<ru>Время затухания:</ru>
+	</msg>
+	<msg>
+		<src>Decompress</src>
+		<ru>Распаковать</ru>
+	</msg>
+	<msg>
+		<src>Decompress all terrain textures</src>
+		<ru>Распаковать все текстуры ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Default</src>
+		<ru>По умолчанию</ru>
+	</msg>
+	<msg>
+		<src>Default (1024)</src>
+		<ru>По умолчанию (1024)</ru>
+	</msg>
+	<msg>
+		<src>Default (512)</src>
+		<ru>По умолчанию (512)</ru>
+	</msg>
+	<msg>
+		<src>Deferred dist:</src>
+		<ru>Отложенное расстояние:</ru>
+	</msg>
+	<msg>
+		<src>Delay between the arrival time of the direct path from the source to the first reflection from the source</src>
+		<ru>Задержка между временем прибытия прямого пути из источника и первым отражением источника</ru>
+	</msg>
+	<msg>
+		<src>Delay:</src>
+		<ru>Задержка:</ru>
+	</msg>
+	<msg>
+		<src>Delete Nodes</src>
+		<ru>Удалить узлы</ru>
+	</msg>
+	<msg>
+		<src>Density mask threshold</src>
+		<ru>Пороговое значение для маски плотности (начиная с какого значения плотности должна расти трава)</ru>
+	</msg>
+	<msg>
+		<src>Density of the shape</src>
+		<ru>Плотность формы</ru>
+	</msg>
+	<msg>
+		<src>Density of the water</src>
+		<ru>Плотность воды</ru>
+	</msg>
+	<msg>
+		<src>Density:</src>
+		<ru>Плотность:</ru>
+	</msg>
+	<msg>
+		<src>Depolarization factor (Rayleigh scattering)</src>
+		<ru>Деполяризующий фактор (рассеяние Рэлея)</ru>
+	</msg>
+	<msg>
+		<src>Depolarization:</src>
+		<ru>Деполяризация:</ru>
+	</msg>
+	<msg>
+		<src>Depth mask</src>
+		<ru>Маска глубины</ru>
+	</msg>
+	<msg>
+		<src>Depth of the volumetric clouds</src>
+		<ru>Глубина трехмерных облаков</ru>
+	</msg>
+	<msg>
+		<src>Depth sort</src>
+		<ru>Сортировка по глубине</ru>
+	</msg>
+	<msg>
+		<src>Depth test</src>
+		<ru>Тест глубины</ru>
+	</msg>
+	<msg>
+		<src> Depth: </src>
+		<ru>Положение:</ru>
+	</msg>
+	<msg>
+		<src>Depth:</src>
+		<ru>Глубина:</ru>
+	</msg>
+	<msg>
+		<src>Desired pitch shift</src>
+		<ru>Желаемое смещение высоты звука</ru>
+	</msg>
+	<msg>
+		<src>Dest:</src>
+		<ru>Назначение:</ru>
+	</msg>
+	<msg>
+		<src>Detail:</src>
+		<ru>Детали:</ru>
+	</msg>
+	<msg>
+		<src>Diamond</src>
+		<ru>Бриллиант</ru>
+	</msg>
+	<msg>
+		<src>Diffuse</src>
+		<ru>Диффузная текстура</ru>
+	</msg>
+	<msg>
+		<src>Diffuse brush</src>
+		<ru>Кисть для изменения цвета диффузной текстуры</ru>
+	</msg>
+	<msg>
+		<src>Diffuse color:</src>
+		<ru>Диффузный цвет:</ru>
+	</msg>
+	<msg>
+		<src>Diffuse color multiplier</src>
+		<ru>Степень интенсивности диффузного цвета</ru>
+	</msg>
+	<msg>
+		<src>Diffuse scale:</src>
+		<ru>Степень интенсивности диффузного цвета:</ru>
+	</msg>
+	<msg>
+		<src>Diffuse+Mask</src>
+		<ru>Цвет диффузной текстуры+Маска деталей</ru>
+	</msg>
+	<msg>
+		<src>Diffuse+Mask brush</src>
+		<ru>Кисть для изменения цвета диффузной текстуры+маски деталей</ru>
+	</msg>
+	<msg>
+		<src>Diffuse:</src>
+		<ru>Диффузная текстура:</ru>
+	</msg>
+	<msg>
+		<src>Diffuse shading:</src>
+		<ru>Диффузное затенение:</ru>
+	</msg>
+	<msg>
+		<src>Diffusion:</src>
+		<ru>Диффузия:</ru>
+	</msg>
+	<msg>
+		<src>Direct illumination scale</src>
+		<ru>Степень насыщенности цветов карты источника направленного освещения</ru>
+	</msg>
+	<msg>
+		<src>Direct scale:</src>
+		<ru>Насыщенность источника направленного освещения:</ru>
+	</msg>
+	<msg>
+		<src>Direction:</src>
+		<ru>Направление:</ru>
+	</msg>
+	<msg>
+		<src>Directionality factor of phase function (Mie scattering)</src>
+		<ru>Коэффициент направленности фазовой функции (рассеяние Ми)</ru>
+	</msg>
+	<msg>
+		<src>Dirt:</src>
+		<ru>Текстура для эффекта грязных линз:</ru>
+	</msg>
+	<msg>
+		<src>Disable LightMaps</src>
+		<ru>Отключить карты освещения</ru>
+	</msg>
+	<msg>
+		<src>Disable lightmaps on selected ObjectMeshes</src>
+		<ru>Отключить карты освещения для выбранных статических каркасных сеток (ObjectMesh)</ru>
+	</msg>
+	<msg>
+		<src>Display information about the objects pointed at with the mouse</src>
+		<ru>Показывать информацию об объекте, на который наведен указатель мыши</ru>
+	</msg>
+	<msg>
+		<src>Display handle</src>
+		<ru>Показывать метку узла</ru>
+	</msg>
+	<msg>
+		<src>Distance after which the light is rendered as deferred</src>
+		<ru>Расстояние, на котором источник освещения отрисовывается как отложенный</ru>
+	</msg>
+	<msg>
+		<src>Distance after which the object is completely visible</src>
+		<ru>Расстояние, на котором объект становится полностью видимым</ru>
+	</msg>
+	<msg>
+		<src>Distance, at which the Gui becomes controllable</src>
+		<ru>Расстояние, начиная с которого графическим интерфейсом можно управлять</ru>
+	</msg>
+	<msg>
+		<src>Distance of terrain shadow</src>
+		<ru>Расстояние, до достижения которого отрисовываются тени от гор, холмов и т.д.</ru>
+	</msg>
+	<msg>
+		<src>Distance of terrain visibility</src>
+		<ru>Расстояние, до которого ландшафт виден</ru>
+	</msg>
+	<msg>
+		<src>Distance to the first level of detail</src>
+		<ru>Расстояние до первого уровня детализации</ru>
+	</msg>
+	<msg>
+		<src>Distance power</src>
+		<ru>Величина затухания на расстоянии</ru>
+	</msg>
+	<msg>
+		<src>Distance scale:</src>
+		<ru>Масштаб расстояний:</ru>
+	</msg>
+	<msg>
+		<src>Distance to the bounding sphere center</src>
+		<ru>Расстояние до центра габаритной сферы</ru>
+	</msg>
+	<msg>
+		<src>Distance to the near clipping plane</src>
+		<ru>Расстояние до ближней плокости отсечения</ru>
+	</msg>
+	<msg>
+		<src>Distance up to which meshes fade out completely</src>
+		<ru>Расстояние, на котором каркасные сетки полностью затухают (становятся невидимыми)</ru>
+	</msg>
+	<msg>
+		<src>Distance up to which meshes are fully visible</src>
+		<ru>Расстояние, до достижения которого каркасные сетки полностью видимы</ru>
+	</msg>
+	<msg>
+		<src>Distance up to which nodes fade out completely</src>
+		<ru>Расстояние, на котором узлы полностью затухают (становятся невидимыми)</ru>
+	</msg>
+	<msg>
+		<src>Distance up to which nodes are fully visible</src>
+		<ru>Расстояние, до достижения которого узлы полностью видимы</ru>
+	</msg>
+	<msg>
+		<src>Distance up to which the light fades out completely</src>
+		<ru>Расстояние, на котором источник освещения полностью затухает (становится невидимым)</ru>
+	</msg>
+	<msg>
+		<src>Distance up to which the light is fully visible</src>
+		<ru>Расстояние, до достижения которого источник света является полностью видимым</ru>
+	</msg>
+	<msg>
+		<src>Distance up to which the object fades out completely</src>
+		<ru>Расстояние, на котором объект полностью затухает (становится невидимым)</ru>
+	</msg>
+	<msg>
+		<src>Distance up to which the casted shadows are fading out</src>
+		<ru>Расстояние, до достижения которого тени постепенно затухают</ru>
+	</msg>
+	<msg>
+		<src>Distance when all nodes are turned off</src>
+		<ru>Расстояние, на котором все узлы не отрисовываются</ru>
+	</msg>
+	<msg>
+		<src>Distance when clutter objects are turned off</src>
+		<ru>Расстояние, на котором объекты клаттера не отрисовываются</ru>
+	</msg>
+	<msg>
+		<src>Distance when decals are turned off</src>
+		<ru>Расстояние, на котором декали не отрисовываются</ru>
+	</msg>
+	<msg>
+		<src>Distance when fields are turned off</src>
+		<ru>Расстояние, на котором поля не отрисовываются</ru>
+	</msg>
+	<msg>
+		<src>Distance when lights are turned off</src>
+		<ru>Расстояние, на котором источники света не отрисовываются</ru>
+	</msg>
+	<msg>
+		<src>Distance when objects are turned off</src>
+		<ru>Расстояние, на котором объекты не отрисовываются</ru>
+	</msg>
+	<msg>
+		<src>Distance when physics is turned off</src>
+		<ru>Расстояние, на котором физические взаимодействия не отрисовываются</ru>
+	</msg>
+	<msg>
+		<src>Distance when reflections are turned off</src>
+		<ru>Расстояние, на котором отражения не отрисовываются</ru>
+	</msg>
+	<msg>
+		<src>Distance when shadows are turned off</src>
+		<ru>Расстояние, на котором тени не отрисовываются</ru>
+	</msg>
+	<msg>
+		<src>Distance-dependent attenuation at high frequencies caused by the propagation medium</src>
+		<ru>Зависимое от расстояния затухание на высоких частотах, обусловленное средой распространения</ru>
+	</msg>
+	<msg>
+		<src>Distance:</src>
+		<ru>Расстояние:</ru>
+	</msg>
+	<msg>
+		<src>Distribute:</src>
+		<ru>Распространение:</ru>
+	</msg>
+	<msg>
+		<src>Doppler:</src>
+		<ru>Эффект Допплера:</ru>
+	</msg>
+	<msg>
+		<src>Down</src>
+		<ru>Вниз</ru>
+	</msg>
+	<msg>
+		<src>Downsize transparent materials buffer</src>
+		<ru>Уменьшить буфер прозрачных материалов</ru>
+	</msg>
+	<msg>
+		<src>Downsize:</src>
+		<ru>Сжатие:</ru>
+	</msg>
+	<msg>
+		<src>Drag nodes with ALT pressed to edit hierarchy</src>
+		<ru>Для изменения иерархии узлов удерживайте ALT и перемещайте узлы с помощью мыши</ru>
+	</msg>
+	<msg>
+		<src>Drag surfaces with pressed ALT to edit hierarchy</src>
+		<ru>Для изменения иерархии поверхностей удерживайте ALT и перемещайте поверхности с помощью мыши</ru>
+	</msg>
+	<msg>
+		<src>Drop the node down on the ground</src>
+		<ru>Бросить узел на землю</ru>
+	</msg>
+	<msg>
+		<src>Dummy</src>
+		<ru>Пустой</ru>
+	</msg>
+	<msg>
+		<src>Duration:</src>
+		<ru>Продолжительность:</ru>
+	</msg>	
+	<msg>
+		<src>Dynamic creation</src>
+		<ru>Динамическое создание</ru>
+	</msg>
+	<msg>
+		<src>Dynamic creation on transformation</src>
+		<ru>Динамическое создание при трансформации</ru>
+	</msg>
+	<msg>
+		<src>Dynamic info</src>
+		<ru>Динамическая информация</ru>
+	</msg>
+	<msg>
+		<src>Earth</src>
+		<ru>Параметры земли</ru>
+	</msg>
+	<msg>
+		<src>Echo density in the reverberation decay</src>
+		<ru>Плотность эха при затухании реверберации</ru>
+	</msg>
+	<msg>
+		<src>Echo depth:</src>
+		<ru>Глубина эха:</ru>
+	</msg>
+	<msg>
+		<src>Echo time:</src>
+		<ru>Время эха:</ru>
+	</msg>
+	<msg>
+		<src>Edit</src>
+		<ru>Редактировать</ru>
+	</msg>
+	<msg>
+		<src>Edit camera</src>
+		<ru>Редактировать камеру</ru>
+	</msg>
+	<msg>
+		<src>Edit material</src>
+		<ru>Редактировать материал</ru>
+	</msg>
+	<msg>
+		<src>Edit materials</src>
+		<ru>Редактировать материалы</ru>
+	</msg>
+	<msg>
+		<src>Edit mesh</src>
+		<ru>Редактировать каркасную сетку</ru>
+	</msg>
+	<msg>
+		<src>Edit pivot</src>
+		<ru>Редактировать точку привязки</ru>
+	</msg>
+	<msg>
+		<src>Edit position and direction of this camera using controls</src>
+		<ru>Редактировать положение и направление камеры с помощью элементов управления</ru>
+	</msg>
+	<msg>
+		<src>Edit property</src>
+		<ru>Редактировать свойства</ru>
+	</msg>
+	<msg>
+		<src>Edit terrain</src>
+		<ru>Редактировать ландшафт</ru>
+	</msg>
+	<msg>
+		<src>Ellipse</src>
+		<ru>Эллипс</ru>
+	</msg>
+	<msg>
+		<src>Ellipse shape</src>
+		<ru>Поле в форме эллипса</ru>
+	</msg>
+	<msg>
+		<src>Emitter based</src>
+		<ru>Трасформация на основе эмиттера</ru>
+	</msg>
+	<msg>
+		<src>Emitter based transformation of the whole particle system</src>
+		<ru>Трансформация всей системы частиц на основе эмиттера</ru>
+	</msg>
+	<msg>
+		<src>Emitter continuous</src>
+		<ru>Непрерывное испускание частиц эмиттером</ru>
+	</msg>
+	<msg>
+		<src>Emitter enabled</src>
+		<ru>Вкл. эмиттер</ru>
+	</msg>
+	<msg>
+		<src>Emitter normal:</src>
+		<ru>Влияние нормалей на точки, отбрасывающие тени:</ru>
+	</msg>
+	<msg>
+		<src>Ambient emitter normal:</src>
+		<ru>Влияние нормалей на точки, отбрасывающие тени:</ru>
+	</msg>
+	<msg>
+		<src>Light emitter normal:</src>
+		<ru>Влияние нормалей на точки-источники освещения:</ru>
+	</msg>
+	<msg>
+		<src>Emitter shift</src>
+		<ru>Смещение эмиттера</ru>
+	</msg>
+	<msg>
+		<src>Emitter sync</src>
+		<ru>Синхронизация эмиттера</ru>
+	</msg>
+	<msg>
+		<src>Emitter:</src>
+		<ru>Эмиттер:</ru>
+	</msg>
+	<msg>
+		<src>Enable LightMaps</src>
+		<ru>Включить карты освещения</ru>
+	</msg>
+	<msg>
+		<src>Enable alpha testing<br/>(alpha channel of diffuse texture is used)</src>
+		<ru>Включить альфа-тестирование<br/>(используется альфа-компонента диффузной текстуры)</ru>
+	</msg>
+	<msg>
+		<src>Enable casting shadows from omni and projected lights</src>
+		<ru>Включить отбрасывание теней от объектов, освещенных всенаправленными и проецируемыми источниками освещения</ru>
+	</msg>
+	<msg>
+		<src>Enable casting shadows from world light</src>
+		<ru>Включить отбрасывание теней от объектов, освещенных глобальными источниками освещения</ru>
+	</msg>
+	<msg>
+		<src>Enable casting translucence from translucent lights</src>
+		<ru>Включить просвечивание для от объектов, освещенных источниками освещения с установленным параметром просвечивание</ru>
+	</msg>
+	<msg>
+		<src>Enable collision</src>
+		<ru>Вкл. столкновения</ru>
+	</msg>
+	<msg>
+		<src>Enable intersection</src>
+		<ru>Вкл. пересечения</ru>
+	</msg>
+	<msg>
+		<src>Enable lightmaps on selected ObjectMeshes</src>
+		<ru>Включить карты освещения для выбранных статических каркасных сеток (ObjectMesh)</ru>
+	</msg>
+	<msg>
+		<src>Enable receiving shadows from omni and projected lights</src>
+		<ru>Включить принятие теней объектами, освещенными всенаправленными и проецируемыми источниками освещения</ru>
+	</msg>
+	<msg>
+		<src>Enable receiving shadows from world light</src>
+		<ru>Включить принятие теней объектами, освещенными глобальными источниками освещения</ru>
+	</msg>
+	<msg>
+		<src>Enable receiving translucence from translucent lights</src>
+		<ru>Включить принятие просвечивания для от объектов, освещенных источниками освещения с установленным параметром просвечивание</ru>
+	</msg>
+	<msg>
+		<src>Enable writing depth into the deferred buffer and associated Z-buffer</src>
+		<ru>Включить запись значения глубины в отложенный буфер и соответствующий Z-буфер</ru>
+	</msg>
+	<msg>
+		<src>Enable writing glow into the deffered buffer<br/>(alpha channel of emission texture is used)</src>
+		<ru>Включить запись яркости в отложенный буфер<br/>(используется альфа-компонента эмиссионной текстуры)</ru>
+	</msg>
+	<msg>
+		<src>Enable writing parallax offsets into the deferred buffer</src>
+		<ru>Включить запись сдвигов параллакса в отложенный буфер</ru>
+	</msg>
+	<msg>
+		<src>Enabled</src>
+		<ru>Включить</ru>
+	</msg>
+	<msg>
+		<src>Enabled:</src>
+		<ru>Включить:</ru>
+	</msg>
+	<msg>
+		<src>Enables occlusion low-pass filter effects</src>
+		<ru>Включить затухание звука при его перекрытии</ru>
+	</msg>
+	<msg>
+		<src>Energy:</src>
+		<ru>Энергия:</ru>
+	</msg>
+	<msg>
+		<src>Enter:</src>
+		<ru>Вход:</ru>
+	</msg>
+	<msg>
+		<src>Environment:</src>
+		<ru>Окружение:</ru>
+	</msg>
+	<msg>
+		<src>Error of the shape</src>
+		<ru>Ошибка формы</ru>
+	</msg>
+	<msg>
+		<src>Approximation error permissible by creating convex shape for the mesh</src>
+		<ru>Допустимая ошибка аппроксимации с помощью выпуклой формы для каркасной сетки</ru>
+	</msg>
+	<msg>
+		<src>Error:</src>
+		<ru>Ошибка:</ru>
+	</msg>
+	<msg>
+		<src>Exclusion mask of the body that prevents collisions of the body with other ones</src>
+		<ru>Маска исключений тела, которая позволяет предотвратить столкновения тела в другими телами</ru>
+	</msg>
+	<msg>
+		<src>Exclusion mask of the shape</src>
+		<ru>Маска исключений формы</ru>
+	</msg>
+	<msg>
+		<src>Exclusion:</src>
+		<ru>Исключения:</ru>
+	</msg>
+	<msg>
+		<src>Exit</src>
+		<ru>Выход</ru>
+	</msg>
+	<msg>
+		<src>Expand</src>
+		<ru>Расширить</ru>
+	</msg>
+	<msg>
+		<src>Export</src>
+		<ru>Экспортировать</ru>
+	</msg>
+	<msg>
+		<src>Export selected nodes into the mesh file</src>
+		<ru>Экспортировать выбранные узлы в .mesh файл</ru>
+	</msg>
+	<msg>
+		<src>Export terrain diffuse textures into the image</src>
+		<ru>Экспортировать диффузную текстуру ландшафта в файл изображения</ru>
+	</msg>
+	<msg>
+		<src>Export terrain heights into the image</src>
+		<ru>Экспортировать карту высот в файл изображения</ru>
+	</msg>
+	<msg>
+		<src>Export terrain holes into the image</src>
+		<ru>Экпортировать текстуру дыр в файл изображения</ru>
+	</msg>
+	<msg>
+		<src>Export terrain mask textures into the image</src>
+		<ru>Экспортировать маску материала деталей в файл изображения</ru>
+	</msg>
+	<msg>
+		<src>Export terrain normal textures into the image</src>
+		<ru>Экспортировать карту нормалей ландшафта в файл изображения</ru>
+	</msg>
+	<msg>
+		<src>Exposure:</src>
+		<ru>Экспозиция:</ru>
+	</msg>
+	<msg>
+		<src>Brightness of ambient lighting</src>
+		<ru>Яркость фонового освещения</ru>
+	</msg>
+	<msg>
+		<src>Expression source file</src>
+		<ru>Исходный файл выражения</ru>
+	</msg>
+	<msg>
+		<src>Extinction:</src>
+		<ru>Исчезание:</ru>
+	</msg>
+	<msg>
+		<src>Extrude:</src>
+		<ru>Выдавливание:</ru>
+	</msg>
+	<msg>
+		<src>FAVelocity:</src>
+		<ru>Угловая скорость заморож. объекта:</ru>
+	</msg>
+	<msg>
+		<src>FLVelocity:</src>
+		<ru>Линейная скорость заморож. объекта:</ru>
+	</msg>
+	<msg>
+		<src>FOV:</src>
+		<ru>Область видимости:</ru>
+	</msg>
+	<msg>
+		<src>FPS counter</src>
+		<ru>Счетчик FPS</ru>
+	</msg>
+	<msg>
+		<src>FPS:</src>
+		<ru>FPS:</ru>
+	</msg>
+	<msg>
+		<src>Fade dist:</src>
+		<ru>Расстояние затухания:</ru>
+	</msg>
+	<msg>
+		<src>Fade time:</src>
+		<ru>Время затухания:</ru>
+	</msg>
+	<msg>
+		<src>Fade:</src>
+		<ru>Затухание:</ru>
+	</msg>
+	<msg>
+		<src>Far blur power:</src>
+		<ru>Степень дальнего размытия:</ru>
+	</msg>
+	<msg>
+		<src>Far blur radius:</src>
+		<ru>Радиус дальнего размытия:</ru>
+	</msg>
+	<msg>
+		<src>Far blur range:</src>
+		<ru>Расстояние дальнего размытия:</ru>
+	</msg>
+	<msg>
+		<src>Far clipping</src>
+		<ru>Дальнее отсечение</ru>
+	</msg>
+	<msg>
+		<src>Far clipping plane</src>
+		<ru>Дальняя плоскость отсечения</ru>
+	</msg>
+	<msg>
+		<src>Far clipping:</src>
+		<ru>Дальнее отсечение:</ru>
+	</msg>
+	<msg>
+		<src>Far focal power:</src>
+		<ru>Сила дальнего фокуса:</ru>
+	</msg>
+	<msg>
+		<src>Adjusts the DOF across the far blur range: the higher the value, the longer objects stay in-focus</src>
+		<ru>Регулирует глубину резкости на расстоянии дальнего фокуса: чем больше значение, тем дольше объекты остаются в фокусе</ru>
+	</msg>
+	<msg>
+		<src>Far focal range:</src>
+		<ru>Расстояние дальнего фокуса:</ru>
+	</msg>
+	<msg>
+		<src>Determines how fast the objects become blurred across the far blur range</src>
+		<ru>Определяет, насколько быстро происходит размытие объекта на расстоянии дальнего размытия</ru>
+	</msg>
+	<msg>
+		<src>Far focal scale:</src>
+		<ru>Множитель дальнего фокуса:</ru>
+	</msg>
+	<msg>
+		<src>Shifts the far blur range closer to camera (i.e. the blurring starts closer to the camera)</src>
+		<ru>Уменьшает расстояние дальнего размытия</ru>
+	</msg>
+	<msg>
+		<src>Far power:</src>
+		<ru>Частота появления бликов по всему расстоянию дальнего размытия:</ru>
+	</msg>
+	<msg>
+		<src>Far size:</src>
+		<ru>Размер бликов по всему расстоянию дальнего размытия:</ru>
+	</msg>
+	<msg>
+		<src>Field distance:</src>
+		<ru>Дальность видимости полей:</ru>
+	</msg>
+	<msg>
+		<src>Field mask</src>
+		<ru>Маска поля</ru>
+	</msg>
+	<msg>
+		<src>Field of view:</src>
+		<ru>Область видимости:</ru>
+	</msg>
+	<msg>
+		<src>Field:</src>
+		<ru>Поле:</ru>
+	</msg>
+	<msg>
+		<src>File Dialog</src>
+		<ru>Диалоговое окно работы с файлами</ru>
+	</msg>
+	<msg>
+		<src>File:</src>
+		<ru>Файл:</ru>
+	</msg>
+	<msg>
+		<src>Filed of view of 2D image grabber</src>
+		<ru>Область видимости граббера 2D изображения</ru>
+	</msg>
+	<msg>
+		<src>Filmic</src>
+		<ru>Кинематографичность</ru>
+	</msg>
+	<msg>
+		<src> Find:</src>
+		<ru>Найти:</ru>
+	</msg>
+	<msg>
+		<src>Fix 0</src>
+		<ru>Зафиксировать 0</ru>
+	</msg>
+	<msg>
+		<src>Fix 01</src>
+		<ru>Зафиксировать 01</ru>
+	</msg>
+	<msg>
+		<src>Fix 1</src>
+		<ru>Зафиксировать 1</ru>
+	</msg>
+	<msg>
+		<src>Fix anchor of second body</src>
+		<ru>Зафиксировать опорную точку второго тела</ru>
+	</msg>
+	<msg>
+		<src>Fix anchor of selected body</src>
+		<ru>Зафиксировать опорную точку выделенного тела</ru>
+	</msg>
+	<msg>
+		<src>Fix both anchors</src>
+		<ru>Зафиксировать обе опорных точки</ru>
+	</msg>
+	<msg>
+		<src>Fixed</src>
+		<ru>Неподвижное</ru>
+	</msg>
+	<msg>
+		<src>Fixed angles</src>
+		<ru>Фиксированные углы</ru>
+	</msg>
+	<msg>
+		<src>Flash-light</src>
+		<ru>Фонарик</ru>
+	</msg>
+	<msg>
+		<src>Flat</src>
+		<ru>Плоский</ru>
+	</msg>
+	<msg>
+		<src>Flat particles</src>
+		<ru>Плоские частицы</ru>
+	</msg>
+	<msg>
+		<src>Flatness:</src>
+		<ru>Гладкость:</ru>
+	</msg>
+	<msg>
+		<src>Flip X</src>
+		<ru>Отразить горизонтально</ru>
+	</msg>
+	<msg>
+		<src>Flip Y</src>
+		<ru>Отразить вертикально</ru>
+	</msg>
+	<msg>
+		<src>Flip Y axis</src>
+		<ru>Отразить вертикально</ru>
+	</msg>
+	<msg>
+		<src>Focal distance:</src>
+		<ru>Фокусное расстояние:</ru>
+	</msg>
+	<msg>
+		<src>Focus camera on the node</src>
+		<ru>Сфокусировать камеру на узле</ru>
+	</msg>
+	<msg>
+		<src>Fold all nodes</src>
+		<ru>Свернуть все узлы</ru>
+	</msg>
+	<msg>
+		<src>Force deferred</src>
+		<ru>Форсировать проход с отложенными источниками освещения</ru>
+	</msg>
+	<msg>
+		<src>Force deferred lighting</src>
+		<ru>Форсировать отложенное освещение</ru>
+	</msg>
+	<msg>
+		<src>Force no shadows</src>
+		<ru>Не отрисовывать тени</ru>
+	</msg>
+	<msg>
+		<src>Force:</src>
+		<ru>Сила:</ru>
+	</msg>
+	<msg>
+		<src>Format:</src>
+		<ru>Формат:</ru>
+	</msg>
+	<msg>
+		<src>Fracture</src>
+		<ru>Разрушающееся тело</ru>
+	</msg>
+	<msg>
+		<src>Frame-based animation</src>
+		<ru>Кадровая анимация</ru>
+	</msg>
+	<msg>
+		<src>Frame-based animation transformations</src>
+		<ru>Трансформации кадровой анимации</ru>
+	</msg>
+	<msg>
+		<src>Frame-based bone animation transformations</src>
+		<ru>Трансформации кадровой анимации костей</ru>
+	</msg>
+	<msg>
+		<src>Frames:</src>
+		<ru>Кадры:</ru>
+	</msg>
+	<msg>
+		<src>Freezable</src>
+		<ru>Замораживаемый</ru>
+	</msg>
+	<msg>
+		<src>Frequency:</src>
+		<ru>Частота:</ru>
+	</msg>
+	<msg>
+		<src>Friction:</src>
+		<ru>Трение:</ru>
+	</msg>
+	<msg>
+		<src>From:</src>
+		<ru>От:</ru>
+	</msg>
+	<msg>
+		<src>Frozen angular velocity</src>
+		<ru>Угловая скорость замороженного объекта</ru>
+	</msg>
+	<msg>
+		<src>Frozen angular velocity:</src>
+		<ru>Угловая скорость заморож. объекта:</ru>
+	</msg>
+	<msg>
+		<src>Angular velocity at which the object becomes frozen</src>
+		<ru>Угловая скорость, при которой объект становится замороженным</ru>
+	</msg>
+	<msg>
+		<src>Frozen frames:</src>
+		<ru>Количество кадров:</ru>
+	</msg>
+	<msg>
+		<src>Frozen linear velocity</src>
+		<ru>Линейная скорость замороженного объекта</ru>
+	</msg>
+	<msg>
+		<src>Frozen linear velocity:</src>
+		<ru>Линейная скорость заморож. объекта:</ru>
+	</msg>
+	<msg>
+		<src>Linear velocity at which the object becomes frozen</src>
+		<ru>Линейная скорость при которой объект становится замороженным</ru>
+	</msg>
+	<msg>
+		<src>Number of frames, during which an object should keep both its angular and linear velocities under the specified level to become frozen</src>
+		<ru>Число кадров, в течение которых объект должен сохранять как линейную, так и угловую скорость ниже указанного уровня, чтобы стать замороженным</ru>
+	</msg>
+	<msg>
+		<src>G</src>
+		<ru>G</ru>
+	</msg>
+	<msg>
+		<src>Gain HF:</src>
+		<ru>Усиление ВЧ:</ru>
+	</msg>
+	<msg>
+		<src>Gain LF:</src>
+		<ru>Усиление НЧ:</ru>
+	</msg>
+	<msg>
+		<src>Gain outside the cone defined by the outer angle</src>
+		<ru>Усиление вне звукового конуса, определенное внешним углом</ru>
+	</msg>
+	<msg>
+		<src>Gain:</src>
+		<ru>Усиление:</ru>
+	</msg>
+	<msg>
+		<src>Game camera</src>
+		<ru>Игровая камера</ru>
+	</msg>
+	<msg>
+		<src>Game:</src>
+		<ru>Множитель скорости игрового времени:</ru>
+	</msg>
+	<msg>
+		<src>Gamma:</src>
+		<ru>Коррекция градаций яркости:</ru>
+	</msg>
+	<msg>
+		<src>Generate</src>
+		<ru>Сгенерировать</ru>
+	</msg>
+	<msg>
+		<src>Generate Decals</src>
+		<ru>Сгенерировать декали</ru>
+	</msg>
+	<msg>
+		<src>Generate clutter cells on collision requests</src>
+		<ru>Генерировать ячейки клаттера при столкновениях</ru>
+	</msg>
+	<msg>
+		<src>Generate nodes by density mask</src>
+		<ru>Сгенерировать узлы по маске плотности</ru>
+	</msg>
+	<msg>
+		<src>Generate selected decals</src>
+		<ru>Сгенерировать выбранные декали</ru>
+	</msg>
+	<msg>
+		<src>Geometry offset in units</src>
+		<ru>Смещение геометрии в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Mask that determines rendering of LightProb-based global illumination</src>
+		<ru>Маска для отрисовки глобального освещения на основе источника запеченного света (LightProb)</ru>
+	</msg>
+	<msg>
+		<src>The color used to color all objects during the ambient rendering passes</src>
+		<ru>Цвет объектов после прохода визуализации с источником фонового освещения</ru>
+	</msg>
+	<msg>
+		<src>Global attenuation:</src>
+		<ru>Коэффициент затухания глобального источника освещения:</ru>
+	</msg>
+	<msg>
+		<src>Solid color rendered on the scene background</src>
+		<ru>Сплошной фоновый цвет сцены</ru>
+	</msg>
+	<msg>
+		<src>Global bias:</src>
+		<ru>Яркость глобальных бликов:</ru>
+	</msg>
+	<msg>
+		<src>Global diffuse:</src>
+		<ru>Степень интенсивности глобального диффузного света:</ru>
+	</msg>
+	<msg>
+		<src>Global distance:</src>
+		<ru>Дальность видимости глобального освещения:</ru>
+	</msg>
+	<msg>
+		<src>Global mask:</src>
+		<ru>Маска глобального освещения:</ru>
+	</msg>
+	<msg>
+		<src>Global power:</src>
+		<ru>Сила эффекта Френеля для бликов при глобальном освещении:</ru>
+	</msg>
+	<msg>
+		<src>Reflection color for reflective mesh materials</src>
+		<ru>Цвет света, отраженного от отражающего материала каркасной сетки</ru>
+	</msg>
+	<msg>
+		<src>Global specular:</src>
+		<ru>Степень интенсивности глобальных бликов:</ru>
+	</msg>
+	<msg>
+		<src>Glossiness:</src>
+		<ru>Глянец:</ru>
+	</msg>
+	<msg>
+		<src>Glow large:</src>
+		<ru>Яркость свечения большого радиуса:</ru>
+	</msg>
+	<msg>
+		<src>Glow mask</src>
+		<ru>Маска яркости</ru>
+	</msg>
+	<msg>
+		<src>Glow medium:</src>
+		<ru>Яркость свечения среднего радиуса:</ru>
+	</msg>
+	<msg>
+		<src>Glow small:</src>
+		<ru>Яркость свечения небольшого радиуса:</ru>
+	</msg>
+	<msg>
+		<src>Glow threshold:</src>
+		<ru>Порог яркости свечения:</ru>
+	</msg>
+	<msg>
+		<src>Grab</src>
+		<ru>Захватить</ru>
+	</msg>
+	<msg>
+		<src>Grab 2D or Cube image in HDR format</src>
+		<ru>Захватить 2D или кубическое изображение в HDR формате</ru>
+	</msg>
+	<msg>
+		<src>Grab LightProb:</src>
+		<ru>Захватить источник запеченного освещения:</ru>
+	</msg>
+	<msg>
+		<src>Grab selected LightProbs</src>
+		<ru>Захватить выделенные источники запеченного освещения</ru>
+	</msg>
+	<msg>
+		<src>Grab terrain diffuse image</src>
+		<ru>Захватить диффузную текстуру ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Grab terrain lightmap image</src>
+		<ru>Захватить карту освещения ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Grab terrain normal image</src>
+		<ru>Захватить карту нормалей ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Grab:</src>
+		<ru>Захват:</ru>
+	</msg>
+	<msg>
+		<src>Grabber</src>
+		<ru>Граббер</ru>
+	</msg>
+	<msg>
+		<src>Gravity</src>
+		<ru>Гравитация</ru>
+	</msg>
+	<msg>
+		<src>Gravity:</src>
+		<ru>Гравитация:</ru>
+	</msg>
+	<msg>
+		<src>Green:</src>
+		<ru>Зеленый:</ru>
+	</msg>
+	<msg>
+		<src>Greenstein:</src>
+		<ru>Фазовая функция Гринштейна:</ru>
+	</msg>
+	<msg>
+		<src>Grid</src>
+		<ru>Сетка</ru>
+	</msg>
+	<msg>
+		<src>Grid depth test</src>
+		<ru>Тест глубины для сетки</ru>
+	</msg>
+	<msg>
+		<src>Ground intersection</src>
+		<ru>Пересечение с землей</ru>
+	</msg>
+	<msg>
+		<src>Ground level:</src>
+		<ru>Высота над/ниже уровня моря:</ru>
+	</msg>
+	<msg>
+		<src>Ground zero level</src>
+		<ru>Принятый за ноль уровень моря</ru>
+	</msg>
+	<msg>
+		<src>Group Nodes</src>
+		<ru>Сгруппировать узлы</ru>
+	</msg>
+	<msg>
+		<src>Group:</src>
+		<ru>Группа:</ru>
+	</msg>
+	<msg>
+		<src>Growth damp:</src>
+		<ru>Затухание роста:</ru>
+	</msg>
+	<msg>
+		<src>Growth:</src>
+		<ru>Рост:</ru>
+	</msg>
+	<msg>
+		<src>HDR</src>
+		<ru>HDR</ru>
+	</msg>
+	<msg>
+		<src>Handle size:</src>
+		<ru>Размер метки:</ru>
+	</msg>
+	<msg>
+		<src>Height in pixels</src>
+		<ru>Высота в пикселях</ru>
+	</msg>
+	<msg>
+		<src>Height in units</src>
+		<ru>Высота в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Height of the volumetric clouds</src>
+		<ru>Высота трехмерных облаков</ru>
+	</msg>
+	<msg>
+		<src>Height:</src>
+		<ru>Высота:</ru>
+	</msg>
+	<msg>
+		<src>Heights</src>
+		<ru>Высоты</ru>
+	</msg>
+	<msg>
+		<src>Heights brush</src>
+		<ru>Кисть для редактирования возвышенностей</ru>
+	</msg>
+	<msg>
+		<src>Heights:</src>
+		<ru>Возвышенности:</ru>
+	</msg>
+	<msg>
+		<src>Hide Nodes</src>
+		<ru>Скрыть узлы</ru>
+	</msg>
+	<msg>
+		<src>Hide Surfaces</src>
+		<ru>Скрыть поверхости</ru>
+	</msg>
+	<msg>
+		<src>Hide panel</src>
+		<ru>Скрыть главное меню редактора</ru>
+	</msg>
+	<msg>
+		<src>Hierarchical</src>
+		<ru>Иерархическая</ru>
+	</msg>
+	<msg>
+		<src>Hinge</src>
+		<ru>Шарнирное цилиндрическое</ru>
+	</msg>
+	<msg>
+		<src>Hole</src>
+		<ru>Дыра</ru>
+	</msg>
+	<msg>
+		<src>Holes</src>
+		<ru>Дыры</ru>
+	</msg>
+	<msg>
+		<src>Holes brush</src>
+		<ru>Кисть для редактирования дыр</ru>
+	</msg>
+	<msg>
+		<src>Holes:</src>
+		<ru>Дыры:</ru>
+	</msg>
+	<msg>
+		<src>Hong Kong</src>
+		<ru>Гонконг</ru>
+	</msg>
+	<msg>
+		<src>Horizontal subdivision</src>
+		<ru>Горизонтальное разделение</ru>
+	</msg>
+	<msg>
+		<src>Hot Keys</src>
+		<ru>Горячие клавиши</ru>
+	</msg>
+	<msg>
+		<src>Hotkey binding</src>
+		<ru>Назначение горячей клавиши</ru>
+	</msg>
+	<msg>
+		<src>Humidity:</src>
+		<ru>Влажность:</ru>
+	</msg>
+	<msg>
+		<src>Illumination grabber tool</src>
+		<ru>Инструмент захвата освещения</ru>
+	</msg>
+	<msg>
+		<src>Illumination</src>
+		<ru>Освещение</ru>
+	</msg>
+	<msg>
+		<src>Image Dialog</src>
+		<ru>Диалоговое окно выбора изображения</ru>
+	</msg>
+	<msg>
+		<src>Image grabber tool</src>
+		<ru>Инструмент захвата изображения</ru>
+	</msg>
+	<msg>
+		<src>Image blur fliter</src>
+		<ru>Размытие изображения с помощью фильтра</ru>
+	</msg>
+	<msg>
+		<src>Image format:</src>
+		<ru>Формат изображения:</ru>
+	</msg>
+	<msg>
+		<src>Image mask horizontal flip</src>
+		<ru>Горизонтально отразить маску на основе изображения</ru>
+	</msg>
+	<msg>
+		<src>Image mask vertical flip</src>
+		<ru>Вертикально отразить маску на основе изображения</ru>
+	</msg>
+	<msg>
+		<src>Image mask:</src>
+		<ru>Маска на основе изображения:</ru>
+	</msg>
+	<msg>
+		<src>Image size in pixels</src>
+		<ru>Размер изображения в пикселях</ru>
+	</msg>
+	<msg>
+		<src>Image size:</src>
+		<ru>Размер изображения:</ru>
+	</msg>
+	<msg>
+		<src>Image supersampling antialiasing<br/>The grabbed image is rendered in higher resolution (N times bigger) and than down-sampled to the specified size</src>
+		<ru>Cглаживание изображения с помощью избыточной выборки <br/>(изображение отрисовывается в более высоком разрешении (в N раз больше), а затем разрешение понижается до указанного размера)</ru>
+	</msg>
+	<msg>
+		<src>Immovable</src>
+		<ru>Неподвижный</ru>
+	</msg>
+	<msg>
+		<src>Import</src>
+		<ru>Импортировать</ru>
+	</msg>
+	<msg>
+		<src>Import Mask:</src>
+		<ru>Импортировать маску</ru>
+	</msg>
+	<msg>
+		<src>Import terrain diffuse textures from the image</src>
+		<ru>Импортировать диффузную текстуру ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Import terrain heights from the image</src>
+		<ru>Импортировать карту высот ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Import terrain holes from the image</src>
+		<ru>Импортировать текстуру дыр для ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Import terrain mask textures from the image</src>
+		<ru>Импортировать маску деталей ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Import terrain normal textures from the image</src>
+		<ru>Импортировать карту нормалей ландшафта из файла</ru>
+	</msg>
+	<msg>
+		<src>Impostor</src>
+		<ru>Импостор</ru>
+	</msg>
+	<msg>
+		<src>Indirect illumination scale</src>
+		<ru>Степень бледности цветов карты источника непрямого освещения</ru>
+	</msg>
+	<msg>
+		<src>Indirect scale:</src>
+		<ru>Бледность источника непрямого освещения:</ru>
+	</msg>
+	<msg>
+		<src>Inertia tensor of the body (mass distribution)</src>
+		<ru>Тензор инерции тела (распределение массы)</ru>
+	</msg>
+	<msg>
+		<src>Inertia:</src>
+		<ru>Инерция:</ru>
+	</msg>
+	<msg>
+		<src>Info</src>
+		<ru>Информация</ru>
+	</msg>
+	<msg>
+		<src>Inherit material</src>
+		<ru>Унаследовать материал</ru>
+	</msg>
+	<msg>
+		<src>Inherit property</src>
+		<ru>Унаследовать свойство</ru>
+	</msg>
+	<msg>
+		<src>Inner angle:</src>
+		<ru>Внутренний угол:</ru>
+	</msg>
+	<msg>
+		<src>Inside angle of the sound cone, in degrees</src>
+		<ru>Внутренний угол звукового конуса в градусах</ru>
+	</msg>
+	<msg>
+		<src>Intensity:</src>
+		<ru>Интенсивность:</ru>
+	</msg>
+	<msg>
+		<src>Interaction force</src>
+		<ru>Сила взаимодействия</ru>
+	</msg>
+	<msg>
+		<src>Interaction:</src>
+		<ru>Взаимодействие:</ru>
+	</msg>
+	<msg>
+		<src>Interface</src>
+		<ru>Интерфейс</ru>
+	</msg>
+	<msg>
+		<src>Intersection</src>
+		<ru>Пересечения</ru>
+	</msg>
+	<msg>
+		<src>Intersection mask</src>
+		<ru>Маска пересечений</ru>
+	</msg>
+	<msg>
+		<src>Intersection mask of the shape</src>
+		<ru>Маска пересечений формы</ru>
+	</msg>
+	<msg>
+		<src>Intersection mask:</src>
+		<ru>Маска пересечений:</ru>
+	</msg>
+	<msg>
+		<src>Intersection with physical environment</src>
+		<ru>Пересечения с физическим окружением</ru>
+	</msg>
+	<msg>
+		<src>Intersection:</src>
+		<ru>Пересечения:</ru>
+	</msg>
+	<msg>
+		<src>Intersections with parent object</src>
+		<ru>Пересечения с родительским объектом</ru>
+	</msg>
+	<msg>
+		<src>Inverse</src>
+		<ru>Инверсия</ru>
+	</msg>
+	<msg>
+		<src>Invert Y channel</src>
+		<ru>Инвертировать канал Y</ru>
+	</msg>
+	<msg>
+		<src>Iris:</src>
+		<ru>Эффект радужной оболочки:</ru>
+	</msg>
+	<msg>
+		<src>Irradiance of the sun</src>
+		<ru>Интенсивность солнечного излучения</ru>
+	</msg>
+	<msg>
+		<src>Isolate Nodes</src>
+		<ru>Изолировать узлы</ru>
+	</msg>
+	<msg>
+		<src>Isolation Mode</src>
+		<ru>Режим изоляции</ru>
+	</msg>
+	<msg>
+		<src>Iterations:</src>
+		<ru>Итерации:</ru>
+	</msg>
+	<msg>
+		<src>Keep backups</src>
+		<ru>Хранить резервные копии</ru>
+	</msg>
+	<msg>
+		<src>Keep editor backups</src>
+		<ru>Хранить резервные копии редактора</ru>
+	</msg>
+	<msg>
+		<src>Keep surface orientation</src>
+		<ru>Сохранять ориентацию поверхности</ru>
+	</msg>
+	<msg>
+		<src>Key bindings</src>
+		<ru>Настройка горячих клавиш</ru>
+	</msg>
+	<msg>
+		<src>LDamping:</src>
+		<ru>Лин. затухание:</ru>
+	</msg>
+	<msg>
+		<src>LRestitution:</src>
+		<ru>Лин. упругое восстановление:</ru>
+	</msg>
+	<msg>
+		<src>LScale:</src>
+		<ru>Лин. множитель:</ru>
+	</msg>
+	<msg>
+		<src>LSoftness:</src>
+		<ru>Лин. эластичность:</ru>
+	</msg>
+	<msg>
+		<src>LStretch:</src>
+		<ru>Лин. растяжение:</ru>
+	</msg>
+	<msg>
+		<src>LThreshold:</src>
+		<ru>Лин. порог:</ru>
+	</msg>
+	<msg>
+		<src>LUT</src>
+		<ru>LUT</ru>
+	</msg>
+	<msg>
+		<src>LUT texture:</src>
+		<ru>LUT текстура:</ru>
+	</msg>
+	<msg>
+		<src>LUT texture configuration tool</src>
+		<ru>Инструмент конфигурирования LUT текстур</ru>
+	</msg>
+	<msg>
+		<src>Large:</src>
+		<ru>Выдержка при большом радиусе:</ru>
+	</msg>
+	<msg>
+		<src>Late reverb delay:</src>
+		<ru>Задержка последующих ревербераций:</ru>
+	</msg>
+	<msg>
+		<src>Late reverb gain:</src>
+		<ru>Усиление последующих ревербераций:</ru>
+	</msg>
+	<msg>
+		<src>Latitude:</src>
+		<ru>Широта:</ru>
+	</msg>
+	<msg>
+		<src>Layer:</src>
+		<ru>Слой:</ru>
+	</msg>
+	<msg>
+		<src> Layer: </src>
+		<ru>Слой:</ru>
+	</msg>
+	<msg>
+		<src>Leaf:</src>
+		<ru>Лист растения:</ru>
+	</msg>
+	<msg>
+		<src>Leave:</src>
+		<ru>Выход:</ru>
+	</msg>
+	<msg>
+		<src>Length</src>
+		<ru>Длина</ru>
+	</msg>
+	<msg>
+		<src>Length particles</src>
+		<ru>Вытянутые частицы</ru>
+	</msg>
+	<msg>
+		<src>Length flattening:</src>
+		<ru>Уплощение вытянутых частиц:</ru>
+	</msg>
+	<msg>
+		<src>Length stretch:</src>
+		<ru>Растяжение в длину:</ru>
+	</msg>
+	<msg>
+		<src>Length:</src>
+		<ru>Длина:</ru>
+	</msg>
+	<msg>
+		<src>Lens</src>
+		<ru>Линзы</ru>
+	</msg>
+	<msg>
+		<src>Level of detail thinning</src>
+		<ru>Растительность становится менее густой с увеличение расстояния</ru>
+	</msg>
+	<msg>
+		<src>Levels in hierarchy to parent used for reference distance<br>0 for distance to current surface</src>
+		<ru>Количество уровней в иерархии до родительской поверхности, относительно которой измеряется дальность видимости (используется при переключении уровней детализации)<br>0 означает, что дальность видимости измеряется относительно текущей поверхности</ru>
+	</msg>
+	<msg>
+		<src>Library:</src>
+		<ru>Библиотека:</ru>
+	</msg>
+	<msg>
+		<src>Life time:</src>
+		<ru>Период жизни:</ru>
+	</msg>
+	<msg>
+		<src>Light blending</src>
+		<ru>Смешивание освещения</ru>
+	</msg>
+	<msg>
+		<src>Light distance:</src>
+		<ru>Дальность видимости источников освещения:</ru>
+	</msg>
+	<msg>
+		<src>Light mask</src>
+		<ru>Маска источника освещения</ru>
+	</msg>
+	<msg>
+		<src>Light mask (double click to edit)<br/>The material is illuminated by a light source if they both have corresponding masks</src>
+		<ru>Маска источника освещения (двойное нажатие для редактирования)<br/>Материал будет освещен источником света если их маски соответствуют друг другу</ru>
+	</msg>
+	<msg>
+		<src>Light mask:</src>
+		<ru>Маска источника освещения:</ru>
+	</msg>
+	<msg>
+		<src>Light power:</src>
+		<ru>Степень затенения:</ru>
+	</msg>
+	<msg>
+		<src>Power of light occlusion</src>
+		<ru>Степень затенения с учетом переотраженного света</ru>
+	</msg>
+	<msg>
+		<src>Light scale:</src>
+		<ru>Яркость освещения:</ru>
+	</msg>
+	<msg>
+		<src>Brightness scale for light occlusion</src>
+		<ru>Яркость освещения при затенении с учетом переотраженного света</ru>
+	</msg>
+	<msg>
+		<src>Light:</src>
+		<ru>Источник освещения:</ru>
+	</msg>
+	<msg>
+		<src>LightMap</src>
+		<ru>Карта освещения</ru>
+	</msg>
+	<msg>
+		<src>LightProbe merging threshold</src>
+		<ru>Порог слияния источников запеченного света</ru>
+	</msg>
+	<msg>
+		<src>Lighting pass blending</src>
+		<ru>Смешивание во время отрисовки в проход визуализации источника света</ru>
+	</msg>
+	<msg>
+		<src>Lightmaps blur</src>
+		<ru>Размытие карты освещения в пикселях</ru>
+	</msg>
+	<msg>
+		<src>Lightmaps contour extrude</src>
+		<ru>Выдавливание контура карты освещения в пикселях</ru>
+	</msg>
+	<msg>
+		<src>Lightmaps supersampling</src>
+		<ru>Степень увеличения разрешения карты освещения (для сглаживания теней)</ru>
+	</msg>
+	<msg>
+		<src>Limit:</src>
+		<ru>Предел:</ru>
+	</msg>
+	<msg>
+		<src>Linear Angle:</src>
+		<ru>Угол наклона области нормальных экспозиций:</ru>
+	</msg>
+	<msg>
+		<src>Linear Scale:</src>
+		<ru>Область нормальных экспозиций:</ru>
+	</msg>
+	<msg>
+		<src>Linear damp:</src>
+		<ru>Линейное затухание:</ru>
+	</msg>
+	<msg>
+		<src>Linear damping</src>
+		<ru>Линейное затухание</ru>
+	</msg>
+	<msg>
+		<src>Low limit distance that specifies how far a connected body can move along the joint axis</src>
+		<ru>Нижний предел расстояния, на которое может перемещаться тело вдоль оси соединения</ru>
+	</msg>
+	<msg>
+		<src>Low limit of the suspension ride</src>
+		<ru>Нижний предел хода подвески</ru>
+	</msg>
+	<msg>
+		<src>High limit distance that specifies how far a connected body can move along the joint axis</src>
+		<ru>Верхний предел расстояния, на которое может перемещаться тело вдоль оси соединения</ru>
+	</msg>
+	<msg>
+		<src>High limit of the suspension ride</src>
+		<ru>Верхний предел хода подвески</ru>
+	</msg>
+	<msg>
+		<src>Linear motor maximum force</src>
+		<ru>Максимальная сила линейного двигателя</ru>
+	</msg>
+	<msg>
+		<src>Linear motor target velocity</src>
+		<ru>Заданная скорость линейного двигателя</ru>
+	</msg>
+	<msg>
+		<src>Linear restitution</src>
+		<ru>Линейное упругое восстановление</ru>
+	</msg>
+	<msg>
+		<src>Linear spring coefficient</src>
+		<ru>Коэффициент жесткости линейной пружины</ru>
+	</msg>
+	<msg>
+		<src>Rigidity coefficient of the suspension</src>
+		<ru>Коэффициент жесткости подвески</ru>
+	</msg>
+	<msg>
+		<src>Linear spring target distance</src>
+		<ru>Заданное расстояние между соединенными телами, которое поддерживает линейная пружина</ru>
+	</msg>
+	<msg>
+		<src>Target height of the suspension</src>
+		<ru>Заданная высота подвески</ru>
+	</msg>
+	<msg>
+		<src>Linear stretch</src>
+		<ru>Линейное растяжение</ru>
+	</msg>
+	<msg>
+		<src>Linear threshold</src>
+		<ru>Линейный порог растяжения</ru>
+	</msg>
+	<msg>
+		<src>Linear velocity damping</src>
+		<ru>Линейное затухание скорости</ru>
+	</msg>
+	<msg>
+		<src>Linear velocity scale</src>
+		<ru>Множитель линейной скорости тела</ru>
+	</msg>
+	<msg>
+		<src>Linear:</src>
+		<ru>Линейное:</ru>
+	</msg>
+	<msg>
+		<src>Liquidity:</src>
+		<ru>Текучесть:</ru>
+	</msg>
+	<msg>
+		<src>List of preloaded material libraries</src>
+		<ru>Список предварительно загруженных библиотек материалов</ru>
+	</msg>
+	<msg>
+		<src>List of preloaded property libraries</src>
+		<ru>Список предварительно загруженных библиотек свойств</ru>
+	</msg>
+	<msg>
+		<src>Load</src>
+		<ru>Загрузить</ru>
+	</msg>
+	<msg>
+		<src>Load LUT image</src>
+		<ru>Загрузить LUT изображение</ru>
+	</msg>
+	<msg>
+		<src>Load LUT texture</src>
+		<ru>Загрузить LUT текстуру</ru>
+	</msg>
+	<msg>
+		<src>Load a plugin from a file</src>
+		<ru>Загрузить плагин из файла</ru>
+	</msg>
+	<msg>
+		<src>Load a plugin from the core package</src>
+		<ru>Загрузить плагин из основного пакета</ru>
+	</msg>
+	<msg>
+		<src>Load animation</src>
+		<ru>Загрузить файл анимации</ru>
+	</msg>
+	<msg>
+		<src>Load bones from the node file</src>
+		<ru>Загрузить кости из .node файла</ru>
+	</msg>
+	<msg>
+		<src>Load distance:</src>
+		<ru>Расстояние загрузки:</ru>
+	</msg>
+	<msg>
+		<src>Load material</src>
+		<ru>Загрузить материал</ru>
+	</msg>
+	<msg>
+		<src>Load mesh</src>
+		<ru>Загрузить файл каркасной сетки (.mesh)</ru>
+	</msg>
+	<msg>
+		<src>Load node reference</src>
+		<ru>Загрузить ссылку на узел</ru>
+	</msg>
+	<msg>
+		<src>Load previously saved bindings</src>
+		<ru>Загрузить ранее сохраненные настройки горячих клавиш</ru>
+	</msg>
+	<msg>
+		<src>Load property</src>
+		<ru>Загрузить свойства</ru>
+	</msg>
+	<msg>
+		<src>Load spline</src>
+		<ru>Загрузить сплайн</ru>
+	</msg>
+	<msg>
+		<src>Load world node</src>
+		<ru>Загрузить глобальный узел</ru>
+	</msg>
+	<msg>
+		<src>Local</src>
+		<ru>Локальная</ru>
+	</msg>
+	<msg>
+		<src>Local position:</src>
+		<ru>Положение в локальной системе координат:</ru>
+	</msg>
+	<msg>
+		<src>Local rotation:</src>
+		<ru>Вращение в локальной системе координат:</ru>
+	</msg>
+	<msg>
+		<src>Local scale:</src>
+		<ru>Масштаб в локальной системе координат:</ru>
+	</msg>
+	<msg>
+		<src>Location:</src>
+		<ru>Местоположение:</ru>
+	</msg>
+	<msg>
+		<src>Lock axis X</src>
+		<ru>Блокировать перемещение вдоль оси X</ru>
+	</msg>
+	<msg>
+		<src>Lock axis Z</src>
+		<ru>Блокировать перемещение вдоль оси Z</ru>
+	</msg>
+	<msg>
+		<src>Lods:</src>
+		<ru>Уровни детализации:</ru>
+	</msg>
+	<msg>
+		<src>London</src>
+		<ru>Лондон</ru>
+	</msg>
+	<msg>
+		<src>Longitude:</src>
+		<ru>Долгота:</ru>
+	</msg>
+	<msg>
+		<src>Loop </src>
+		<ru>Зациклить</ru>
+	</msg>
+	<msg>
+		<src>Loop</src>
+		<ru>Зацикленный</ru>
+	</msg>
+	<msg>
+		<src>MAVelocity:</src>
+		<ru>Макс. угловая скорость:</ru>
+	</msg>
+	<msg>
+		<src>MLVelocity:</src>
+		<ru>Макс. линейная скорость:</ru>
+	</msg>
+	<msg>
+		<src>Make a NodeRefence file (export selected node with all children into the file)</src>
+		<ru>Создать файл со ссылкой на узел (экспортировать выбранный узел и его дочерние узлы в файл)</ru>
+	</msg>
+	<msg>
+		<src>Mask</src>
+		<ru>Маска</ru>
+	</msg>
+	<msg>
+		<src>Mask brush</src>
+		<ru>Кисть для изменения маски деталей</ru>
+	</msg>
+	<msg>
+		<src>Mask Editor</src>
+		<ru>Редактор масок</ru>
+	</msg>
+	<msg>
+		<src>Mask image:</src>
+		<ru>Маска на основе изображения:</ru>
+	</msg>
+	<msg>
+		<src>Mask mesh:</src>
+		<ru>Маска на основе каркасной сетки:</ru>
+	</msg>
+	<msg>
+		<src>Mask:</src>
+		<ru>Маска:</ru>
+	</msg>
+	<msg>
+		<src>Mass of the body</src>
+		<ru>Масса тела</ru>
+	</msg>
+	<msg>
+		<src>Mass of the shape</src>
+		<ru>Масса формы</ru>
+	</msg>
+	<msg>
+		<src>Mass:</src>
+		<ru>Масса:</ru>
+	</msg>
+	<msg>
+		<src>Master volume control for the reflected sound</src>
+		<ru>Контроль общей громкости отраженного звука</ru>
+	</msg>
+	<msg>
+		<src>Material</src>
+		<ru>Материал</ru>
+	</msg>
+	<msg>
+		<src>Material:</src>
+		<ru>Материал:</ru>
+	</msg>
+	<msg>
+		<src>Materials</src>
+		<ru>Материалы</ru>
+	</msg>
+	<msg>
+		<src>Materials Editor</src>
+		<ru>Редактор материалов</ru>
+	</msg>
+	<msg>
+		<src>Max Visible:</src>
+		<ru>Макс. видимость:</ru>
+	</msg>
+	<msg>
+		<src>Max angle:</src>
+		<ru>Макс. угол:</ru>
+	</msg>
+	<msg>
+		<src>Max angular velocity:</src>
+		<ru>Макс. угловая скорость:</ru>
+	</msg>
+	<msg>
+		<src>Max distance:</src>
+		<ru>Макс. расстояние:</ru>
+	</msg>
+	<msg>
+		<src>Max height:</src>
+		<ru>Макс. высота:</ru>
+	</msg>
+	<msg>
+		<src>Max linear velocity:</src>
+		<ru>Макс. линейная скорость:</ru>
+	</msg>
+	<msg>
+		<src>Max luminance:</src>
+		<ru>Макс. свечение:</ru>
+	</msg>
+	<msg>
+		<src>Max parent:</src>
+		<ru>Макс. родитель:</ru>
+	</msg>
+	<msg>
+		<src>Max scale:</src>
+		<ru>Макс. масштабирование:</ru>
+	</msg>
+	<msg>
+		<src>Max slices:</src>
+		<ru>Макс. количество срезов:</ru>
+	</msg>
+	<msg>
+		<src>Max value:</src>
+		<ru>Макс. значение:</ru>
+	</msg>
+	<msg>
+		<src>Max velocity:</src>
+		<ru>Макс. скорость:</ru>
+	</msg>
+	<msg>
+		<src>Max:</src>
+		<ru>Макс.:</ru>
+	</msg>
+	<msg>
+		<src>A distance starting at which the sound completely fades out, in units</src>
+		<ru>Расстояние, начиная с которого звук полностью затухает, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Maximal distance of the surface visibility</src>
+		<ru>Максимальное расстояние, на котором видна поверхность</ru>
+	</msg>
+	<msg>
+		<src>Maximum angular velocity</src>
+		<ru>Максимальная угловая скорость</ru>
+	</msg>
+	<msg>
+		<src>Maximum applied force</src>
+		<ru>Максимальная приложенная сила</ru>
+	</msg>
+	<msg>
+		<src>Maximum applied torque</src>
+		<ru>Максимальный приложенный момент</ru>
+	</msg>
+	<msg>
+		<src>Maximum distance to the target node</src>
+		<ru>Максимальное расстояние до целевого узла</ru>
+	</msg>
+	<msg>
+		<src>Maximum fade distance</src>
+		<ru>Максимальное расстояние затухания</ru>
+	</msg>
+	<msg>
+		<src>Maximum linear velocity</src>
+		<ru>Максимальная линейная скорость</ru>
+	</msg>
+	<msg>
+		<src>Maximum mask value</src>
+		<ru>Максимальное значение маски</ru>
+	</msg>
+	<msg>
+		<src>Maximum mean scale of meshes</src>
+		<ru>Максимальное среднее значение масштаба каркасных сеток</ru>
+	</msg>
+	<msg>
+		<src>Maximum mean scale of nodes</src>
+		<ru>Максимальное среднее значение масштаба узлов</ru>
+	</msg>
+	<msg>
+		<src>Maximum number of per-update emitted particles</src>
+		<ru>Максимальное число частиц, испускаемых за одно обновление</ru>
+	</msg>
+	<msg>
+		<src>Maximum shadow split</src>
+		<ru>Максимальное разбиение тени</ru>
+	</msg>
+	<msg>
+		<src>Maximum spread scale of meshes</src>
+		<ru>Максимальный разброс значений масштаба каркасных сеток</ru>
+	</msg>
+	<msg>
+		<src>Maximum spread scale of nodes</src>
+		<ru>Максимальный разброс значений масштаба узлов</ru>
+	</msg>
+	<msg>
+		<src>Maximum stars angular radius</src>
+		<ru>Максимальный угловой диаметр звезд</ru>
+	</msg>
+	<msg>
+		<src>Maximum theta angle to the target node</src>
+		<ru>Максимальный зенитный угол целевого узла</ru>
+	</msg>
+	<msg>
+		<src>Maximum velocity:</src>
+		<ru>Максимальное размытие при движении физических объектов:</ru>
+	</msg>
+	<msg>
+		<src>Maximum visible distance</src>
+		<ru>Максмальная дальность видимости</ru>
+	</msg>
+	<msg>
+		<src>Maximum water depth</src>
+		<ru>Максимальная глубина воды</ru>
+	</msg>
+	<msg>
+		<src>Mean offset from surface</src>
+		<ru>Среднее вертикальное смещение относительно поверхности</ru>
+	</msg>
+	<msg>
+		<src>Mean rotation around X axis</src>
+		<ru>Среднее значение вращения относительно оси X</ru>
+	</msg>
+	<msg>
+		<src>Mean rotation around Y axis</src>
+		<ru>Среднее значение вращения относительно оси Y</ru>
+	</msg>
+	<msg>
+		<src>Mean rotation around Z axis</src>
+		<ru>Среднее значение вращения относительно оси Z</ru>
+	</msg>
+	<msg>
+		<src>Medium:</src>
+		<ru>Выдержка при среднем радиусе:</ru>
+	</msg>
+	<msg>
+		<src>Merge threshold:</src>
+		<ru>Порог слияния:</ru>
+	</msg>
+	<msg>
+		<src>Merging threshold:</src>
+		<ru>Порог слияния:</ru>
+	</msg>
+	<msg>
+		<src>Mesh bones</src>
+		<ru>Кости скелетного меша</ru>
+	</msg>
+	<msg>
+		<src>Mesh mask inverse</src>
+		<ru>Инвертировать маску на основе каркасной сетки</ru>
+	</msg>
+	<msg>
+		<src>Mesh:</src>
+		<ru>Каркасная сетка:</ru>
+	</msg>
+	<msg>
+		<src>Mesh </src>
+		<ru>Каркасная сетка</ru>
+	</msg>
+	<msg>
+		<src>Message Dialog</src>
+		<ru>Окно сообщений</ru>
+	</msg>
+	<msg>
+		<src>Messages</src>
+		<ru>Отладочные сообщения</ru>
+	</msg>
+	<msg>
+		<src>Mie color:</src>
+		<ru>Цвет для рассеяния Ми:</ru>
+	</msg>
+	<msg>
+		<src>Mie height:</src>
+		<ru>Высота рассеяния Ми:</ru>
+	</msg>
+	<msg>
+		<src>Mie scattering distance threshold</src>
+		<ru>Пороговое расстояние для рассеяния Ми <br/>(чем больше значение, тем ближе расстояние до камеры, на котором применяется рассеяние Ми)</ru>
+	</msg>
+	<msg>
+		<src>Mie scattering height falloff</src>
+		<ru>Высота, до которой распространяется рассеяние Рэлея</ru>
+	</msg>
+	<msg>
+		<src>Mie scattering scale</src>
+		<ru>Степень интенсивности рассеяния Ми</ru>
+	</msg>
+	<msg>
+		<src>Mie:</src>
+		<ru>Рассеяние Ми:</ru>
+	</msg>
+	<msg>
+		<src>Min Visible:</src>
+		<ru>Мин. видимость:</ru>
+	</msg>
+	<msg>
+		<src>Min angle:</src>
+		<ru>Мин. угол:</ru>
+	</msg>
+	<msg>
+		<src>Min distance:</src>
+		<ru>Мин. расстояние:</ru>
+	</msg>
+	<msg>
+		<src>Min height:</src>
+		<ru>Мин. высота:</ru>
+	</msg>
+	<msg>
+		<src>Min luminance:</src>
+		<ru>Мин. свечение:</ru>
+	</msg>
+	<msg>
+		<src>Min parent:</src>
+		<ru>Мин. родитель:</ru>
+	</msg>
+	<msg>
+		<src>Min scale:</src>
+		<ru>Мин. масштабирование:</ru>
+	</msg>
+	<msg>
+		<src>Min slices:</src>
+		<ru>Мин. количество срезов:</ru>
+	</msg>
+	<msg>
+		<src>Min theta:</src>
+		<ru>Мин. зенитный угол:</ru>
+	</msg>
+	<msg>
+		<src>Min value:</src>
+		<ru>Мин. значение:</ru>
+	</msg>
+	<msg>
+		<src>Min velocity:</src>
+		<ru>Мин. скорость:</ru>
+	</msg>
+	<msg>
+		<src>A distance starting at which the sound starts to fade, in units</src>
+		<ru>Расстояние, начиная с которого звук начинает постепенно затухать, в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Minimal distance of the surface visibility</src>
+		<ru>Минимальное расстояние, на котором видна поверхность</ru>
+	</msg>
+	<msg>
+		<src>Minimal number of slices</src>
+		<ru>Минимальное количество срезов</ru>
+	</msg>
+	<msg>
+		<src>Minimum distance to the target node</src>
+		<ru>Минимальное расстояние до целевого узла</ru>
+	</msg>
+	<msg>
+		<src>Minimum fade distance</src>
+		<ru>Минимальное расстояние затухания</ru>
+	</msg>
+	<msg>
+		<src>Minimum mask value</src>
+		<ru>Минимальное значение маски</ru>
+	</msg>
+	<msg>
+		<src>Minimum mean scale of meshes</src>
+		<ru>Минимальное среднее значение масштаба каркасных сеток</ru>
+	</msg>
+	<msg>
+		<src>Minimum mean scale of nodes</src>
+		<ru>Минимальное среднее значение масштаба узлов</ru>
+	</msg>
+	<msg>
+		<src>Minimum shape volume</src>
+		<ru>Минимальный объем формы</ru>
+	</msg>
+	<msg>
+		<src>Minimum spread scale of meshes</src>
+		<ru>Минимальный разброс значений масштаба каркасных сеток</ru>
+	</msg>
+	<msg>
+		<src>Minimum spread scale of nodes</src>
+		<ru>Минимальный разброс значений масштаба узлов</ru>
+	</msg>
+	<msg>
+		<src>Minimum theta angle to the target node</src>
+		<ru>Минимальный зенитный угол целевого узла</ru>
+	</msg>
+	<msg>
+		<src>Minimum visible distance</src>
+		<ru>Минимальная дальность видимости</ru>
+	</msg>
+	<msg>
+		<src>Mip: </src>
+		<ru>Мип: </ru>
+	</msg>
+	<msg>
+		<src>MipMap type:</src>
+		<ru>Тип мипмапы:</ru>
+	</msg>
+	<msg>
+		<src>Mipmaps</src>
+		<ru>Мипмапы</ru>
+	</msg>
+	<msg>
+		<src>Maximal number of slices</src>
+		<ru>Максимальное количество срезов</ru>
+	</msg>
+	<msg>
+		<src>Mode:</src>
+		<ru>Режим:</ru>
+	</msg>
+	<msg>
+		<src>Modulation depth:</src>
+		<ru>Глубина модуляции:</ru>
+	</msg>
+	<msg>
+		<src>Modulation time:</src>
+		<ru>Время модуляции:</ru>
+	</msg>
+	<msg>
+		<src>Motion blur angular:</src>
+		<ru>Размытие при вращении:</ru>
+	</msg>
+	<msg>
+		<src>Motion blur linear:</src>
+		<ru>Размытие при линейном движении:</ru>
+	</msg>
+	<msg>
+		<src>Motion blur velocity:</src>
+		<ru>Размытие при движении физических объектов:</ru>
+	</msg>
+	<msg>
+		<src>Mouse show</src>
+		<ru>Показывать курсор мыши</ru>
+	</msg>
+	<msg>
+		<src>Move Object</src>
+		<ru>Переместить объект</ru>
+	</msg>
+	<msg>
+		<src>Move a node by a grid</src>
+		<ru>Перемещать узел по сетке</ru>
+	</msg>
+	<msg>
+		<src>Move library down</src>
+		<ru>Переместить библиотеку вниз по списку</ru>
+	</msg>
+	<msg>
+		<src>Move library up</src>
+		<ru>Переместить библиотеку вверх по списку</ru>
+	</msg>
+	<msg>
+		<src>Move material down</src>
+		<ru>Переместить материал вниз по списку</ru>
+	</msg>
+	<msg>
+		<src>Move material up</src>
+		<ru>Переместить материал вверх по списку</ru>
+	</msg>
+	<msg>
+		<src>Move node down in the list</src>
+		<ru>Переместить узел вниз по списку</ru>
+	</msg>
+	<msg>
+		<src>Move node up in the list</src>
+		<ru>Переместить узел вверх по списку</ru>
+	</msg>
+	<msg>
+		<src>Move the node to camera</src>
+		<ru>Поместить узел перед камерой</ru>
+	</msg>
+	<msg>
+		<src>Multiplier:</src>
+		<ru>Множитель:</ru>
+	</msg>
+	<msg>
+		<src>Name of enabled world script callback function</src>
+		<ru>Имя функции обратного вызова, которая вызывается при включении триггера</ru>
+	</msg>
+	<msg>
+		<src>Name of enter world script callback function</src>
+		<ru>Имя функции обратного вызова, которая вызывается, когда узлы попадают в глобальный триггер</ru>
+	</msg>
+	<msg>
+		<src>Name of leave world script callback function</src>
+		<ru>Имя функции обратного вызова, которая вызывается, когда узлы покидают глобальный триггер</ru>
+	</msg>
+	<msg>
+		<src>Name of position world script callback function</src>
+		<ru>Имя функции обратного вызова, которая вызывается при изменении положения триггера</ru>
+	</msg>
+	<msg>
+		<src>Name of the body</src>
+		<ru>Имя тела</ru>
+	</msg>
+	<msg>
+		<src>Name of the density heights</src>
+		<ru>Имя карты высот, которая посторяет высоты ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Name of the density mask</src>
+		<ru>Имя маски плотности</ru>
+	</msg>
+	<msg>
+		<src>Name of the joint</src>
+		<ru>Имя соединения</ru>
+	</msg>
+	<msg>
+		<src>Name of the mesh mask</src>
+		<ru>Имя маски на основе каркасной сетки</ru>
+	</msg>
+	<msg>
+		<src>Name of the node</src>
+		<ru>Имя узла</ru>
+	</msg>
+	<msg>
+		<src>Name of the shape</src>
+		<ru>Имя формы</ru>
+	</msg>
+	<msg>
+		<src>Name:</src>
+		<ru>Имя:</ru>
+	</msg>
+	<msg>
+		<src>Native</src>
+		<ru>Встроенный</ru>
+	</msg>
+	<msg>
+		<src>Navigation mask</src>
+		<ru>Маска навигации</ru>
+	</msg>
+	<msg>
+		<src>Navigation:</src>
+		<ru>Навигация:</ru>
+	</msg>
+	<msg>
+		<src>Near blur power:</src>
+		<ru>Степень ближнего размытия:</ru>
+	</msg>
+	<msg>
+		<src>Near blur radius:</src>
+		<ru>Радиус ближнего размытия:</ru>
+	</msg>
+	<msg>
+		<src>Near blur range:</src>
+		<ru>Расстояние ближнего размытия:</ru>
+	</msg>
+	<msg>
+		<src>Near clipping</src>
+		<ru>Ближнее отсечение</ru>
+	</msg>
+	<msg>
+		<src>Near clipping plane</src>
+		<ru>Ближняя плоскость отсечения</ru>
+	</msg>
+	<msg>
+		<src>Near clipping:</src>
+		<ru>Ближнее отсечение:</ru>
+	</msg>
+	<msg>
+		<src>Near focal power:</src>
+		<ru>Сила ближнего фокуса:</ru>
+	</msg>
+	<msg>
+		<src>Adjusts the DOF across the near blur range</src>
+		<ru>Регулирует глубину резкости на расстоянии ближнего размытия</ru>
+	</msg>
+	<msg>
+		<src>Near focal range:</src>
+		<ru>Расстояние ближнего фокуса:</ru>
+	</msg>
+	<msg>
+		<src>Determines the area between the focal point and objects in crisp focus (not blurred)</src>
+		<ru>Определяет область между точкой фокусировки и объектом, находящимся в точном фокусе (неразмытым)</ru>
+	</msg>
+	<msg>
+		<src>Near focal scale:</src>
+		<ru>Множитель ближнего фокуса:</ru>
+	</msg>
+	<msg>
+		<src>Shifts the near blur range closer to the camera</src>
+		<ru>Уменьшает расстояние ближнего размытия</ru>
+	</msg>
+	<msg>
+		<src>Near power:</src>
+		<ru>Частота появления бликов по всему расстоянию ближнего размытия:</ru>
+	</msg>
+	<msg>
+		<src>Near size:</src>
+		<ru>Размер бликов по всему расстоянию ближнего размытия:</ru>
+	</msg>
+	<msg>
+		<src>New World</src>
+		<ru>Новый мир</ru>
+	</msg>
+	<msg>
+		<src>New York</src>
+		<ru>Нью-Йорк</ru>
+	</msg>
+	<msg>
+		<src>New node naming</src>
+		<ru>Именование нового узла</ru>
+	</msg>
+	<msg>
+		<src>New node reparenting</src>
+		<ru>Переподчинение нового узла</ru>
+	</msg>
+	<msg>
+		<src>Node</src>
+		<ru>Узел</ru>
+	</msg>
+	<msg>
+		<src>Node clone confirmation</src>
+		<ru>Подтверждение клонирования узла</ru>
+	</msg>
+	<msg>
+		<src>Node info</src>
+		<ru>Информация об узле</ru>
+	</msg>
+	<msg>
+		<src>Node layer name</src>
+		<ru>Имя слоя узла</ru>
+	</msg>
+	<msg>
+		<src>Node materials</src>
+		<ru>Материалы узла</ru>
+	</msg>
+	<msg>
+		<src>Node property</src>
+		<ru>Свойства узла</ru>
+	</msg>
+	<msg>
+		<src>Node reference name</src>
+		<ru>Имя ссылки на узел</ru>
+	</msg>
+	<msg>
+		<src>Node type filter</src>
+		<ru>Фильтр типов узлов</ru>
+	</msg>
+	<msg>
+		<src>Nodes</src>
+		<ru>Узлы</ru>
+	</msg>
+	<msg>
+		<src>Nodes Editor</src>
+		<ru>Редактор узлов</ru>
+	</msg>
+	<msg>
+		<src>Noise</src>
+		<ru>Шум</ru>
+	</msg>
+	<msg>
+		<src>Noise force value</src>
+		<ru>Сила шума</ru>
+	</msg>
+	<msg>
+		<src>Noise frequency octaves</src>
+		<ru>Октавы частоты шума</ru>
+	</msg>
+	<msg>
+		<src>Noise image size</src>
+		<ru>Размер текстуры шума</ru>
+	</msg>
+	<msg>
+		<src>Noise spatial scale</src>
+		<ru>Масштаб текстуры пространственного шума</ru>
+	</msg>
+	<msg>
+		<src>None</src>
+		<ru>Отсутствует</ru>
+	</msg>
+	<msg>
+		<src>Normal </src>
+		<ru>Нормальный</ru>
+	</msg>
+	<msg>
+		<src>Normal scale:</src>
+		<ru>Масштаб карты нормалей:</ru>
+	</msg>
+	<msg>
+		<src>Normal:</src>
+		<ru>Карта нормалей:</ru>
+	</msg>
+	<msg>
+		<src>Normals</src>
+		<ru>Нормали</ru>
+	</msg>
+	<msg>
+		<src>Num textures:</src>
+		<ru>Количество текстур:</ru>
+	</msg>
+	<msg>
+		<src>Num:</src>
+		<ru>Количество:</ru>
+	</msg>
+	<msg>
+		<src>Number of ambient occlusion samples</src>
+		<ru>Число лучей в выборке при взаимном затенении</ru>
+	</msg>
+	<msg>
+		<src>Number of blades per square unit</src>
+		<ru>Количество травинок на один квадратный юнит</ru>
+	</msg>
+	<msg>
+		<src>Number of meshes per square unit</src>
+		<ru>Количество каркасных сеток на квадратный юнит</ru>
+	</msg>
+	<msg>
+		<src>Number of molecules per unit volume (Rayleigh scattering)</src>
+		<ru>Число молекул на единицу объема (рассеяние Рэлея)</ru>
+	</msg>
+	<msg>
+		<src>Number of nodes per square unit</src>
+		<ru>Количество узлов на один квадратный юнит</ru>
+	</msg>
+	<msg>
+		<src>Number of particles depends on particles movement</src>
+		<ru>Число частиц зависит от перемещения частиц</ru>
+	</msg>
+	<msg>
+		<src>Number of texture slots</src>
+		<ru>Количество слотов текстуры</ru>
+	</msg>
+	<msg>
+		<src>Object bounds</src>
+		<ru>Границы объекта</ru>
+	</msg>
+	<msg>
+		<src>Object distance:</src>
+		<ru>Дальность видимости объектов:</ru>
+	</msg>
+	<msg>
+		<src>Object wireframe</src>
+		<ru>Каркас объекта</ru>
+	</msg>
+	<msg>
+		<src>Obstacle mask</src>
+		<ru>Маска препятствий</ru>
+	</msg>
+	<msg>
+		<src>Obstacle:</src>
+		<ru>Препятствие:</ru>
+	</msg>
+	<msg>
+		<src>Occluder uses back faces instead of front ones</src>
+		<ru>Преграда использует заднюю поверхность вместо передней</ru>
+	</msg>
+	<msg>
+		<src>Occlusion </src>
+		<ru>Затенение</ru>
+	</msg>
+	<msg>
+		<src>Occlusion mask</src>
+		<ru>Маска перекрытий</ru>
+	</msg>
+	<msg>
+		<src>Offset X:</src>
+		<ru>Смещение по оси Х:</ru>
+	</msg>
+	<msg>
+		<src>Offset Y:</src>
+		<ru>Смещение по оси Y:</ru>
+	</msg>
+	<msg>
+		<src>Offset:</src>
+		<ru>Смещение:</ru>
+	</msg>
+	<msg>
+		<src>Ok</src>
+		<ru>Да</ru>
+	</msg>
+	<msg>
+		<src>Opacity:</src>
+		<ru>Непрозрачность:</ru>
+	</msg>
+	<msg>
+		<src>Open World</src>
+		<ru>Открыть мир</ru>
+	</msg>
+	<msg>
+		<src>Open file</src>
+		<ru>Открыть файл</ru>
+	</msg>
+	<msg>
+		<src>Open mask image</src>
+		<ru>Открыть маску на основе изображения</ru>
+	</msg>
+	<msg>
+		<src>Open mask mesh</src>
+		<ru>Открыть маску на основе каркасной сетки</ru>
+	</msg>
+	<msg>
+		<src>Open system file browser (ctrl+o)</src>
+		<ru>Открыть системный браузер файлов (ctrl+o)</ru>
+	</msg>
+	<msg>
+		<src>Options</src>
+		<ru>Опции</ru>
+	</msg>
+	<msg>
+		<src>Orientation</src>
+		<ru>Ориентация</ru>
+	</msg>
+	<msg>
+		<src>Outer angle of the sound cone, in degrees</src>
+		<ru>Внешний угол звукового конуса в градусах</ru>
+	</msg>
+	<msg>
+		<src>Outer angle:</src>
+		<ru>Внешний угол:</ru>
+	</msg>
+	<msg>
+		<src>Outer gain HF:</src>
+		<ru>Внешнее усиление ВЧ:</ru>
+	</msg>
+	<msg>
+		<src>Outer gain:</src>
+		<ru>Внешнее усиление:</ru>
+	</msg>
+	<msg>
+		<src>Overall amount of initial reflections</src>
+		<ru>Общее количество начальных отражений</ru>
+	</msg>
+	<msg>
+		<src>Overall amount of later reverberation</src>
+		<ru>Общее количество последующих ревербераций</ru>
+	</msg>
+	<msg>
+		<src>Overlap</src>
+		<ru>Режим перекрытия</ru>
+	</msg>
+	<msg>
+		<src>Overlay</src>
+		<ru>Режим наложения</ru>
+	</msg>
+	<msg>
+		<src>C<font size="13">lose <font color="#ff9900">this</font> window to cancel.<br/>Press the same key combination to remove a binding.</font></src>
+		<ru>З<font size="13">кройте <font color="#ff9900">это</font> окно для отмены.<br/>Нажмите ту же комбинацию клавиш, чтобы удалить назначенную горячую клавишу.</font></ru>
+	</msg>
+	<msg>
+		<src>Parallax mask</src>
+		<ru>Маска параллакса</ru>
+	</msg>
+	<msg>
+		<src>Parameters</src>
+		<ru>Параметры</ru>
+	</msg>
+	<msg>
+		<src>Parent</src>
+		<ru>Родительская</ru>
+	</msg>
+	<msg>
+		<src>Parent emitter synchronization</src>
+		<ru>Синхронизация с родительским эмиттером</ru>
+	</msg>
+	<msg>
+		<src>Parent:</src>
+		<ru>Родитель:</ru>
+	</msg>
+	<msg>
+		<src>Paris</src>
+		<ru>Париж</ru>
+	</msg>
+	<msg>
+		<src>Particle emitter is enabled</src>
+		<ru>Включить эмиттер частиц</ru>
+	</msg>
+	<msg>
+		<src>Particles</src>
+		<ru>Частицы</ru>
+	</msg>
+	<msg>
+		<src>Particles physics</src>
+		<ru>Физика частиц</ru>
+	</msg>
+	<msg>
+		<src>Paste</src>
+		<ru>Вставить</ru>
+	</msg>
+	<msg>
+		<src>Paste material settings</src>
+		<ru>Вставить настройки материала</ru>
+	</msg>
+	<msg>
+		<src>Paste node transformation from clipboard</src>
+		<ru>Вставить значения трансформации узла из буфера обмена</ru>
+	</msg>
+	<msg>
+		<src>Paste property settings</src>
+		<ru>Вставить настройки свойства</ru>
+	</msg>
+	<msg>
+		<src>Paste settings</src>
+		<ru>Вставить настройки</ru>
+	</msg>
+	<msg>
+		<src>Paste surface settings</src>
+		<ru>Вставить настройки поверхности</ru>
+	</msg>
+	<msg>
+		<src>Paste transformation</src>
+		<ru>Вставить значения трансформации</ru>
+	</msg>
+	<msg>
+		<src>Penetration factor:</src>
+		<ru>Коэффициент проницаемости:</ru>
+	</msg>
+	<msg>
+		<src>Penetration tolerance:</src>
+		<ru>Допустимая проницаемость:</ru>
+	</msg>
+	<msg>
+		<src>Period:</src>
+		<ru>Период:</ru>
+	</msg>
+	<msg>
+		<src>Ambient perspective:</src>
+		<ru>Коррекция перспективы:</ru>
+	</msg>
+	<msg>
+		<src>Perspective compensation for the ambient occlusion</src>
+		<ru>Коррекция перспективы при взаимном затенении</ru>
+	</msg>
+	<msg>
+		<src>Light perspective:</src>
+		<ru>Коррекция перспективы:</ru>
+	</msg>
+	<msg>
+		<src>Perspective compensation for the light occlusion</src>
+		<ru>Коррекция перспективы при затенениии с учетом переотраженного света</ru>
+	</msg>
+	<msg>
+		<src>Phi:</src>
+		<ru>Фита:</ru>
+	</msg>
+	<msg>
+		<src>Physical height:</src>
+		<ru>Физическая высота:</ru>
+	</msg>
+	<msg>
+		<src>Physical mask of the body</src>
+		<ru>Физическая маска тела</ru>
+	</msg>
+	<msg>
+		<src>Physical mask of the physical</src>
+		<ru>Физическая маска физического эффекта</ru>
+	</msg>
+	<msg>
+		<src>Physical mask:</src>
+		<ru>Физическая маска:</ru>
+	</msg>
+	<msg>
+		<src>Physical mass:</src>
+		<ru>Физическая масса:</ru>
+	</msg>
+	<msg>
+		<src>Collider object</src>
+		<ru>Коллайдер</ru>
+	</msg>
+	<msg>
+		<src>Physical width:</src>
+		<ru>Физическая ширина:</ru>
+	</msg>
+	<msg>
+		<src>Physical:</src>
+		<ru>Силовое поле:</ru>
+	</msg>
+	<msg>
+		<src>Physics Settings</src>
+		<ru>Настройки физики</ru>
+	</msg>
+	<msg>
+		<src>Physics budget:</src>
+		<ru>Бюджет времени моделирования физики:</ru>
+	</msg>
+	<msg>
+		<src>Physics contacts</src>
+		<ru>Физические контакты</ru>
+	</msg>
+	<msg>
+		<src>Physics distance:</src>
+		<ru>Дальность симуляции физики:</ru>
+	</msg>
+	<msg>
+		<src>Physics joints</src>
+		<ru>Физические соединения</ru>
+	</msg>
+	<msg>
+		<src>Physics settings</src>
+		<ru>Настройки физики</ru>
+	</msg>
+	<msg>
+		<src>Physics shapes</src>
+		<ru>Физические формы</ru>
+	</msg>
+	<msg>
+		<src>Physics simulation time budget in frames per second</src>
+		<ru>Бюджет времени моделирования физики в кадрах в секунду</ru>
+	</msg>
+	<msg>
+		<src>Physics:</src>
+		<ru>Физика:</ru>
+	</msg>
+	<msg>
+		<src>Physics scale:</src>
+		<ru>Множитель времени моделирования физики:</ru>
+	</msg>
+	<msg>
+		<src>Pitch modulation in the reverberant sound</src>
+		<ru>Модуляция высоты звука в реверберирующем звуке</ru>
+	</msg>
+	<msg>
+		<src>Pitch:</src>
+		<ru>Высота звука:</ru>
+	</msg>
+	<msg>
+		<src>Pivot position:</src>
+		<ru>Положение точки привязки:</ru>
+	</msg>
+	<msg>
+		<src>Pivot rotation:</src>
+		<ru>Вращение точки привяки:</ru>
+	</msg>
+	<msg>
+		<src>Pivot scale:</src>
+		<ru>Масштаб точки привязки:</ru>
+	</msg>
+	<msg>
+		<src>Place node on the surface underneath, use mouse scroll to adjust placement height</src>
+		<ru>Свободное перемещение узла с помощью мыши. Используте колесо прокрутки мыши для изменения высоты размещения узла относительно поверхности.</ru>
+	</msg>
+	<msg>
+		<src>Play</src>
+		<ru>Проиграть</ru>
+	</msg>
+	<msg>
+		<src>Plugins</src>
+		<ru>Плагины</ru>
+	</msg>
+	<msg>
+		<src>Plugins management</src>
+		<ru>Управление плагинами</ru>
+	</msg>
+	<msg>
+		<src>Point  </src>
+		<ru>Точечный</ru>
+	</msg>
+	<msg>
+		<src>Point </src>
+		<ru>Отсчитывать из центра</ru>
+	</msg>
+	<msg>
+		<src>Point filtering</src>
+		<ru>Точечная фильтрация</ru>
+	</msg>
+	<msg>
+		<src>Point particles</src>
+		<ru>Точечные частицы</ru>
+	</msg>
+	<msg>
+		<src>Polygon offset level</src>
+		<ru>Уровень смещения полигона</ru>
+	</msg>
+	<msg>
+		<src>Polygon offset:</src>
+		<ru>Смещение полигона:</ru>
+	</msg>
+	<msg>
+		<src>Polygons will be rendered two times in lighting pass</src>
+		<ru>Полигоны будут отрисованы дважды за один проход визуализации источников света</ru>
+	</msg>
+	<msg>
+		<src>Position:</src>
+		<ru> Положение: </ru>
+	</msg>
+	<msg>
+		<src>Post deferred</src>
+		<ru>Пост-отложенный</ru>
+	</msg>
+	<msg>
+		<src>Post materials applied as the very last post-processes (after HDR, DOF, etc.)</src>
+		<ru>Материалы пост-обработки, применямые в заключительной пост-обработке (после HDR, DOF и т.д.)</ru>
+	</msg>
+	<msg>
+		<src>Post refraction</src>
+		<ru>Пост-преломленный</ru>
+	</msg>
+	<msg>
+		<src>Post scattering</src>
+		<ru>Пост-рассеянный</ru>
+	</msg>
+	<msg>
+		<src>Post:</src>
+		<ru>Пост-обработка:</ru>
+	</msg>
+	<msg>
+		<src>Postprocess</src>
+		<ru>Пост-обработка</ru>
+	</msg>
+	<msg>
+		<src>Power:</src>
+		<ru>Сила:</ru>
+	</msg>
+	<msg>
+		<src>Preset:</src>
+		<ru>Предварительные настройки:</ru>
+	</msg>
+	<msg>
+		<src>Press ALT to use the brush</src>
+		<ru>Нажмите ALT, чтобы воспользоваться кистью</ru>
+	</msg>
+	<msg>
+		<src>Press ALT to use the terrain brush<br>Press CTRL to grab the value</src>
+		<ru>Нажмите ALT, чтобы воспользоваться ландшафтной кистью<br>Нажмите CTRL, чтобы захватить значение</ru>
+	</msg>
+	<msg>
+		<src>Preview mask image</src>
+		<ru>Предпросмотр маски на основе изображения</ru>
+	</msg>
+	<msg>
+		<src>Prismatic</src>
+		<ru>Призматическое</ru>
+	</msg>
+	<msg>
+		<src>Probability:</src>
+		<ru>Вероятность:</ru>
+	</msg>
+	<msg>
+		<src>Profiler</src>
+		<ru>Профайлер</ru>
+	</msg>
+	<msg>
+		<src>Progression of the level of detail</src>
+		<ru>Шаг переключения между уровнями детализации (в юнитах)</ru>
+	</msg>
+	<msg>
+		<src>Progression:</src>
+		<ru>Шаг переключения:</ru>
+	</msg>
+	<msg>
+		<src>Project</src>
+		<ru>Спроецировать</ru>
+	</msg>
+	<msg>
+		<src>Projection of material textures on three planes</src>
+		<ru>Проецирование текстур материала на три плоскости</ru>
+	</msg>
+	<msg>
+		<src>Projection radius</src>
+		<ru>Радиус проекции</ru>
+	</msg>
+	<msg>
+		<src>Properties</src>
+		<ru>Свойства</ru>
+	</msg>
+	<msg>
+		<src>Properties Editor</src>
+		<ru>Редактор свойств</ru>
+	</msg>
+	<msg>
+		<src>Property:</src>
+		<ru>Свойства:</ru>
+	</msg>
+	<msg>
+		<src>Particles will be rendered after simulation during life time has passed</src>
+		<ru>Частицы будут отрисованы немедленно</ru>
+	</msg>
+	<msg>
+		<src>Quality:</src>
+		<ru>Качество:</ru>
+	</msg>
+	<msg>
+		<src>Quit from UnigineEditor</src>
+		<ru>Выйти из редактора</ru>
+	</msg>
+	<msg>
+		<src>Quit from application?</src>
+		<ru>Выйти из приложения?</ru>
+	</msg>
+	<msg>
+		<src>R</src>
+		<ru>R</ru>
+	</msg>
+	<msg>
+		<src>R8</src>
+		<ru>R8</ru>
+	</msg>
+	<msg>
+		<src>RG8</src>
+		<ru>RG8</ru>
+	</msg>
+	<msg>
+		<src>RGB8</src>
+		<ru>RGB8</ru>
+	</msg>
+	<msg>
+		<src>RGBA8</src>
+		<ru>RGBA8</ru>
+	</msg>
+	<msg>
+		<src>Radius of the force</src>
+		<ru>Радиус действия силы</ru>
+	</msg>
+	<msg>
+		<src>Radius:</src>
+		<ru>Радиус:</ru>
+	</msg>
+	<msg>
+		<src>RagDoll</src>
+		<ru>Тряпичная кукла</ru>
+	</msg>
+	<msg>
+		<src>Rail</src>
+		<ru>Рельсы</ru>
+	</msg>
+	<msg>
+		<src>Random</src>
+		<ru>Случайный</ru>
+	</msg>
+	<msg>
+		<src>Random particles</src>
+		<ru>Случайные частицы</ru>
+	</msg>
+	<msg>
+		<src>Random seed</src>
+		<ru>Произвольное засеивание</ru>
+	</msg>
+	<msg>
+		<src>Randomize</src>
+		<ru>Случайное значение</ru>
+	</msg>
+	<msg>
+		<src>Range:</src>
+		<ru>Диапазон:</ru>
+	</msg>
+	<msg>
+		<src>Ray color:</src>
+		<ru>Цвет для рассеяния Рэлея:</ru>
+	</msg>
+	<msg>
+		<src>Ray height:</src>
+		<ru>Высота рассеяния Рэлея:</ru>
+	</msg>
+	<msg>
+		<src>Ray scattering angularity</src>
+		<ru>Искривленность распространения рассеяния Рэлея</ru>
+	</msg>
+	<msg>
+		<src>Ray:</src>
+		<ru>Рассеяние Рэлея:</ru>
+	</msg>
+	<msg>
+		<src>Rayleigh scattering height falloff</src>
+		<ru>Высота, до которой распространяется рассеяние Рэлея</ru>
+	</msg>
+	<msg>
+		<src>Rayleigh scattering scale</src>
+		<ru>Степень интенсивности рассеяния Рэлея</ru>
+	</msg>
+	<msg>
+		<src>Receive shadow</src>
+		<ru>Принимать тени</ru>
+	</msg>
+	<msg>
+		<src>Receive shadows</src>
+		<ru>Принимать тени</ru>
+	</msg>
+	<msg>
+		<src>Receive translucence</src>
+		<ru>Принимать просвечивание</ru>
+	</msg>
+	<msg>
+		<src>Receive world shadow</src>
+		<ru>Принимать глобальные тени</ru>
+	</msg>
+	<msg>
+		<src>Receive world shadows</src>
+		<ru>Принимать глобальные тени</ru>
+	</msg>
+	<msg>
+		<src>Receiver normal:</src>
+		<ru>Влияние нормалей на затеняемые точки:</ru>
+	</msg>
+	<msg>
+		<src>Ambient receiver normal:</src>
+		<ru>Влияние нормалей на затеняемые точки:</ru>
+	</msg>
+	<msg>
+		<src>Light receiver normal:</src>
+		<ru>Влияние нормалей на освещаемые точки:</ru>
+	</msg>
+	<msg>
+		<src>Recursion depth:</src>
+		<ru>Глубина рекурсии:</ru>
+	</msg>
+	<msg>
+		<src>Red:</src>
+		<ru>Красный:</ru>
+	</msg>
+	<msg>
+		<src>ReferenceNode Editor</src>
+		<ru>Редактор ссылки на узел</ru>
+	</msg>
+	<msg>
+		<src>Reflection color:</src>
+		<ru>Цвет отражений:</ru>
+	</msg>
+	<msg>
+		<src>Reflection delay:</src>
+		<ru>Задержка отражения:</ru>
+	</msg>
+	<msg>
+		<src>Reflection distance:</src>
+		<ru>Дальность видимости отражений:</ru>
+	</msg>
+	<msg>
+		<src>Reflection gain:</src>
+		<ru>Усиление отражения:</ru>
+	</msg>
+	<msg>
+		<src>Reflection mask</src>
+		<ru>Маска отражений</ru>
+	</msg>
+	<msg>
+		<src>Reflection mask:</src>
+		<ru>Маска отражений:</ru>
+	</msg>
+	<msg>
+		<src>Reflection:</src>
+		<ru>Отражение:</ru>
+	</msg>
+	<msg>
+		<src>Reflector</src>
+		<ru>Отражатель</ru>
+	</msg>
+	<msg>
+		<src>Refraction blue:</src>
+		<ru>Смещение преломления для синего канала:</ru>
+	</msg>
+	<msg>
+		<src>Refraction green:</src>
+		<ru>Смещение преломления для зеленого канала:</ru>
+	</msg>
+	<msg>
+		<src>Refraction red:</src>
+		<ru>Смещение преломления для красного канала:</ru>
+	</msg>
+	<msg>
+		<src>Refractive:</src>
+		<ru>Индекс преломления:</ru>
+	</msg>
+	<msg>
+		<src>Reload</src>
+		<ru>Перезагрузить</ru>
+	</msg>
+	<msg>
+		<src>Reload all node references</src>
+		<ru>Перезагрузить все ссылки на узлы</ru>
+	</msg>
+	<msg>
+		<src>Remove</src>
+		<ru>Удалить</ru>
+	</msg>
+	<msg>
+		<src>Unload</src>
+		<ru>Выгрузить</ru>
+	</msg>
+	<msg>
+		<src>Remove all bones</src>
+		<ru>Удалить все кости</ru>
+	</msg>
+	<msg>
+		<src>Remove library from the list</src>
+		<ru>Удалить библиотеку из списка</ru>
+	</msg>
+	<msg>
+		<src>Remove material</src>
+		<ru>Удалить материал</ru>
+	</msg>
+	<msg>
+		<src>Remove node</src>
+		<ru>Удалить узел</ru>
+	</msg>
+	<msg>
+		<src>Remove particle when intersection or collision has occurred</src>
+		<ru>Удалять частицу, когда происходит пересечение и столкновение</ru>
+	</msg>
+	<msg>
+		<src>Remove property</src>
+		<ru>Удалить свойство</ru>
+	</msg>
+	<msg>
+		<src>Remove selected node references</src>
+		<ru>Удалить выбранные ссылки на узлы</ru>
+	</msg>
+	<msg>
+		<src>Remove tab (ctrl+w)</src>
+		<ru>Удалить вкладку (ctrl+w)</ru>
+	</msg>
+	<msg>
+		<src>Rename/move material</src>
+		<ru>Переименовать/переместить материал</ru>
+	</msg>
+	<msg>
+		<src>Rename/move property</src>
+		<ru>Переименовать/переместить свойство</ru>
+	</msg>
+	<msg>
+		<src>Render</src>
+		<ru>Визуализатор</ru>
+	</msg>
+	<msg>
+		<src>Render budget:</src>
+		<ru>Бюджет времени визуализатора:</ru>
+	</msg>
+	<msg>
+		<src>Render creation time budget in frames per second</src>
+		<ru>Бюджет времени создания графических ресурсов (измеряется в кадрах в секунду)</ru>
+	</msg>
+	<msg>
+		<src>Render decals</src>
+		<ru>Отображать декали</ru>
+	</msg>
+	<msg>
+		<src>Render frames:</src>
+		<ru>Кадры визуализации:</ru>
+	</msg>
+	<msg>
+		<src>Render group:</src>
+		<ru>Группа отрисовки:</ru>
+	</msg>
+	<msg>
+		<src>Render lights</src>
+		<ru>Отрисовывать источники освещения</ru>
+	</msg>
+	<msg>
+		<src>Render materials applied before post-processes (HDR, DOF, etc.)</src>
+		<ru>Материалы пост-обработки, которые накладываются до пост-обработки средствами движка (HDR, DOF и т.д.)</ru>
+	</msg>
+	<msg>
+		<src>Render mipmaps</src>
+		<ru>Отображать мипмапы</ru>
+	</msg>
+	<msg>
+		<src>Render normals</src>
+		<ru>Отображать нормали</ru>
+	</msg>
+	<msg>
+		<src>Render occluder</src>
+		<ru>Отображать преграду</ru>
+	</msg>
+	<msg>
+		<src>Render occlusion</src>
+		<ru>Отображать затенение объектов</ru>
+	</msg>
+	<msg>
+		<src>Render order:</src>
+		<ru>Порядок отрисовки:</ru>
+	</msg>
+	<msg>
+		<src>Render parameters</src>
+		<ru>Параметры визуализатора</ru>
+	</msg>
+	<msg>
+		<src>Render penumbra</src>
+		<ru>Отображать полутени</ru>
+	</msg>
+	<msg>
+		<src>Render queries</src>
+		<ru>Отображать запросы на перекрытие</ru>
+	</msg>
+	<msg>
+		<src>Render scissors</src>
+		<ru>Отображать плоскости отсечения</ru>
+	</msg>
+	<msg>
+		<src>Render settings</src>
+		<ru>Настройки отображения</ru>
+	</msg>
+	<msg>
+		<src>Render splits</src>
+		<ru>Отображать разбиения</ru>
+	</msg>
+	<msg>
+		<src>Render textures</src>
+		<ru>Отображать текстуры</ru>
+	</msg>
+	<msg>
+		<src>Render transparent surfaces into a smaller buffer (performance optimization)</src>
+		<ru>Отрисовывать прозрачные поверхности в меньший буфер (для оптимизации производительности)</ru>
+	</msg>
+	<msg>
+		<src>Render triangles</src>
+		<ru>Отображать треугольники</ru>
+	</msg>
+	<msg>
+		<src>Render:</src>
+		<ru>Визуализатор:</ru>
+	</msg>
+	<msg>
+		<src>Rendering Settings</src>
+		<ru>Настройки визуализации</ru>
+	</msg>
+	<msg>
+		<src>Rendering group for objects<br/>surfaces with lowest group will be rendered first<br/>surfaces with highest group will be rendered last</src>
+		<ru>Группа отрисовки для объектов<br/>поверхности меньших групп будут отрисованы первыми<br/>поверхности больших групп будут отрисованы последними</ru>
+	</msg>
+	<msg>
+		<src>Rendering order for objects in the same group<br/>surfaces with lowest order will be rendered first<br/>surfaces with highest order will be rendered last</src>
+		<ru>Порядок отрисовки для объектов входящих в одну группу<br/>поверхности наименьшего порядка будут отрисованы первыми<br/>поверхности наибольшего порядка будут отрисованы последними</ru>
+	</msg>
+	<msg>
+		<src>Reset position to zero</src>
+		<ru>Сбросить координаты положения</ru>
+	</msg>
+	<msg>
+		<src>Reset rotation to zero</src>
+		<ru>Сбросить значения углов поворота узла</ru>
+	</msg>
+	<msg>
+		<src>Reset scale to one</src>
+		<ru>Сбросить значения масштаба</ru>
+	</msg>
+	<msg>
+		<src>Restitution:</src>
+		<ru>Упругое восстановление:</ru>
+	</msg>
+	<msg>
+		<src>Resulting color is (polygon color * Src) + (screen buffer color * Dest)</src>
+		<ru>Итоговый цвет: (цвет полигона * Источник) + (цвет буфера экрана * Назначение)</ru>
+	</msg>
+	<msg>
+		<src>Reverb mask</src>
+		<ru>Маска реверберации</ru>
+	</msg>
+	<msg>
+		<src>Reverb mask that determines what reverberation zones can be heard</src>
+		<ru>Маска реверберации, определяющая, какие зоны реверберации являются слышимыми</ru>
+	</msg>
+	<msg>
+		<src>Reverb mask:</src>
+		<ru>Маска реверберации:</ru>
+	</msg>
+	<msg>
+		<src>Reverb:</src>
+		<ru>Реверберация:</ru>
+	</msg>
+	<msg>
+		<src>Reverberation decay time</src>
+		<ru>Время затухания реверберации</ru>
+	</msg>
+	<msg>
+		<src>Rigid</src>
+		<ru>Твердое тело</ru>
+	</msg>
+	<msg>
+		<src>Rigidity of the body</src>
+		<ru>Жесткость тела</ru>
+	</msg>
+	<msg>
+		<src>Rigidity:</src>
+		<ru>Жесткость:</ru>
+	</msg>
+	<msg>
+		<src>Room rolloff:</src>
+		<ru>Спад звука:</ru>
+	</msg>
+	<msg>
+		<src>Rope</src>
+		<ru>Веревка</ru>
+	</msg>
+	<msg>
+		<src>Rotate Object</src>
+		<ru>Повернуть объект</ru>
+	</msg>
+	<msg>
+		<src>Rotate a node by a grid</src>
+		<ru>Вращать узел относительно сетки</ru>
+	</msg>
+	<msg>
+		<src>Rotation 0:</src>
+		<ru>Вращение 0:</ru>
+	</msg>
+	<msg>
+		<src>Rotation 1:</src>
+		<ru>Вращение 1:</ru>
+	</msg>
+	<msg>
+		<src>Rotation X:</src>
+		<ru>Вращение X:</ru>
+	</msg>
+	<msg>
+		<src>Rotation Y:</src>
+		<ru>Вращение Y:</ru>
+	</msg>
+	<msg>
+		<src>Rotation Z:</src>
+		<ru>Вращение Z:</ru>
+	</msg>
+	<msg>
+		<src>Rotation component of the force</src>
+		<ru>Вращающая сила, применяемая к объектам в радиусе действия физической силы</ru>
+	</msg>
+	<msg>
+		<src>Rotation order:</src>
+		<ru>Порядок вращения:</ru>
+	</msg>
+	<msg>
+		<src>Rotation:</src>
+		<ru>Вращение:</ru>
+	</msg>
+	<msg>
+		<src>Rotator:</src>
+		<ru>Вращение:</ru>
+	</msg>
+	<msg>
+		<src>Roughness:</src>
+		<ru>Шероховатость:</ru>
+	</msg>
+	<msg>
+		<src>Route</src>
+		<ru>Маршрут</ru>
+	</msg>
+	<msg>
+		<src>Route particles</src>
+		<ru>Частицы маршрута</ru>
+	</msg>
+	<msg>
+		<src>Run all scenes from the "data/samples" directory</src>
+		<ru>Запустить все сцены из папки "data/samples"</ru>
+	</msg>
+	<msg>
+		<src>Run samples</src>
+		<ru>Запустить примеры</ru>
+	</msg>
+	<msg>
+		<src>Ambient sample radius:</src>
+		<ru>Радиус выборки при взаимном затенении:</ru>
+	</msg>
+	<msg>
+		<src>Light sample radius:</src>
+		<ru>Радиус выборки:</ru>
+	</msg>
+	<msg>
+		<src>Distance for each of the points in the world space, up to which they can shadow their neighbouring points</src>
+		<ru>Расстояние для каждой точки в глобальном пространстве, на котором она может затенять соседние с ней точки</ru>
+	</msg>	
+	<msg>
+		<src>Distance for each of the points in the world space, up to which they can illuminate their neighbouring points</src>
+		<ru>Расстояние для каждой точки в глобальном пространстве, на котором она может освещать соседние с ней точки</ru>
+	</msg>
+	<msg>
+		<src>Sample:</src>
+		<ru>Звуковой файл:</ru>
+	</msg>
+	<msg>
+		<src>Samples:</src>
+		<ru>Выборка:</ru>
+	</msg>
+	<msg>
+		<src>San Francisco</src>
+		<ru>Сан-Франциско</ru>
+	</msg>
+	<msg>
+		<src>Saturation:</src>
+		<ru>Насыщенность:</ru>
+	</msg>
+	<msg>
+		<src>Save</src>
+		<ru>Сохранить</ru>
+	</msg>
+	<msg>
+		<src>Save LUT texture</src>
+		<ru>Сохранить LUT текстуру</ru>
+	</msg>
+	<msg>
+		<src>Save World</src>
+		<ru>Сохранить мир</ru>
+	</msg>
+	<msg>
+		<src>Save bones to the node file</src>
+		<ru>Сохранить кости в .node файл</ru>
+	</msg>
+	<msg>
+		<src>Save current bindings into a file</src>
+		<ru>Сохранить текущие настройки горячих клавиш в файл</ru>
+	</msg>
+	<msg>
+		<src>Save file</src>
+		<ru>Сохранить файл</ru>
+	</msg>
+	<msg>
+		<src>Save library</src>
+		<ru>Сохранить библиотеку</ru>
+	</msg>
+	<msg>
+		<src>Save materials</src>
+		<ru>Сохранить материалы</ru>
+	</msg>
+	<msg>
+		<src>Save node materials</src>
+		<ru>Сохранять материалы в узле</ru>
+	</msg>
+	<msg>
+		<src>Save properties</src>
+		<ru>Сохранить свойства</ru>
+	</msg>
+	<msg>
+		<src>Save to Mesh File</src>
+		<ru>Сохранить в .mesh файл</ru>
+	</msg>
+	<msg>
+		<src>Save to Node File</src>
+		<ru>Сохранить в .node файл</ru>
+	</msg>
+	<msg>
+		<src>Scalar amplitude multiplier</src>
+		<ru>Скалярный множитель амплитуды</ru>
+	</msg>
+	<msg>
+		<src>Scale Object</src>
+		<ru>Масштабировать объект</ru>
+	</msg>
+	<msg>
+		<src>Scale X:</src>
+		<ru>Масштабирование по оси Х:</ru>
+	</msg>
+	<msg>
+		<src>Scale Y:</src>
+		<ru>Масштабирование по оси Y:</ru>
+	</msg>
+	<msg>
+		<src>Scale:</src>
+		<ru>Масштаб:</ru>
+	</msg>
+	<msg>
+		<src>ScaleX:</src>
+		<ru>Масштабирование по оси Х:</ru>
+	</msg>
+	<msg>
+		<src>ScaleY:</src>
+		<ru>Масштабирование по оси Y:</ru>
+	</msg>
+	<msg>
+		<src>Scattering</src>
+		<ru>Рассеивание</ru>
+	</msg>
+	<msg>
+		<src>Screen aligned</src>
+		<ru>Разместить параллельно плоскости экрана</ru>
+	</msg>
+	<msg>
+		<src>Screen height:</src>
+		<ru>Высота экрана:</ru>
+	</msg>
+	<msg>
+		<src>Ambient screen radius:</src>
+		<ru>Радиус взаимного затенения:</ru>
+	</msg>
+	<msg>
+		<src>Distance in the screen space, within which the geometry is sampled to compute self-shadowing.</src>
+		<ru>Расстояние в экранном пространстве, на котором производится выборка для вычисления затенения.</ru>
+	</msg>
+	<msg>
+		<src>Light screen radius:</src>
+		<ru>Радиус затенения:</ru>
+	</msg>
+	<msg>
+		<src>Light occlusion radius in the screen space</src>
+		<ru>Радиус затенения с учетом переотраженного света в экранном пространстве</ru>
+	</msg>
+	<msg>
+		<src>Screen width:</src>
+		<ru>Ширина экрана:</ru>
+	</msg>
+	<msg>
+		<src>Search:</src>
+		<ru>Поиск:</ru>
+	</msg>
+	<msg>
+		<src>Seed:</src>
+		<ru>Засеивание:</ru>
+	</msg>
+	<msg>
+		<src>Select Object</src>
+		<ru>Выбрать объект</ru>
+	</msg>
+	<msg>
+		<src>Select all</src>
+		<ru>Выделить все</ru>
+	</msg>
+	<msg>
+		<src>Select none</src>
+		<ru>Снять выделение</ru>
+	</msg>
+	<msg>
+		<src>Selection</src>
+		<ru>Выделение</ru>
+	</msg>
+	<msg>
+		<src>Sequence:</src>
+		<ru>Последовательность:</ru>
+	</msg>
+	<msg>
+		<src>Set</src>
+		<ru>Установить</ru>
+	</msg>
+	<msg>
+		<src>Set default values for all hotkeys</src>
+		<ru>Установить настройки по умолчанию для всех горячих клавиш</ru>
+	</msg>
+	<msg>
+		<src>Shadow dist:</src>
+		<ru>Дальность видимости тени:</ru>
+	</msg>
+	<msg>
+		<src>Shadow distance:</src>
+		<ru>Дальность видимости тени:</ru>
+	</msg>
+	<msg>
+		<src>Shadow mask</src>
+		<ru>Маска теней</ru>
+	</msg>
+	<msg>
+		<src>Shadow size:</src>
+		<ru>Размер тени:</ru>
+	</msg>
+	<msg>
+		<src>Shadow:</src>
+		<ru>Тень:</ru>
+	</msg>
+	<msg>
+		<src>Shadows</src>
+		<ru>Тени</ru>
+	</msg>
+	<msg>
+		<src>Shaft</src>
+		<ru>Пучок света</ru>
+	</msg>
+	<msg>
+		<src>Shafts:</src>
+		<ru>Пучки света:</ru>
+	</msg>
+	<msg>
+		<src>Shape-based mass parameters</src>
+		<ru>Использовать параметры формы для расчетов массы и инерции</ru>
+	</msg>
+	<msg>
+		<src>Shape-based parameters</src>
+		<ru>Параметры формы</ru>
+	</msg>
+	<msg>
+		<src>Shape:</src>
+		<ru>Форма:</ru>
+	</msg>
+	<msg>
+		<src>Shift:</src>
+		<ru>Настройка:</ru>
+	</msg>
+	<msg>
+		<src> Size: </src>
+		<ru> Размер: </ru>
+	</msg>
+	<msg>
+		<src> Format: </src>
+		<ru> Формат: </ru>
+	</msg>
+	<msg>
+		<src>Shoulder Scale:</src>
+		<ru>Область передержек:</ru>
+	</msg>
+	<msg>
+		<src>Show</src>
+		<ru>Отображение</ru>
+	</msg>
+	<msg>
+		<src>Show a grid when the mouse hovers over a manipulator axis.<br/>Otherwise, the grid is shown only when the node is moved.</src>
+		<ru>Показывать сетку при наведении указателя мыши на ось манипулятора.<br/>Если параметр не выбран, сетка будет отображаться только во время перемещения узла.</ru>
+	</msg>
+	<msg>
+		<src>Show grid</src>
+		<ru>Показать сетку</ru>
+	</msg>
+	<msg>
+		<src>Show grid on selection</src>
+		<ru>Показать сетку при выделении</ru>
+	</msg>
+	<msg>
+		<src>Show grid used for snapping</src>
+		<ru>Показать сетку, к которой осущевляется привязка</ru>
+	</msg>
+	<msg>
+		<src>Show the grid only if it is not occluded by other objects</src>
+		<ru>Включить перекрытие сетки объектами</ru>
+	</msg>
+	<msg>
+		<src>Show/Hide Clone node confirmation dialog</src>
+		<ru>Показать/скрыть диалоговое окно подтвержения клонирования узла</ru>
+	</msg>
+	<msg>
+		<src>Sidney</src>
+		<ru>Сидней</ru>
+	</msg>
+	<msg>
+		<src>Simulation</src>
+		<ru>Моделирование</ru>
+	</msg>
+	<msg>
+		<src>Simulation distance</src>
+		<ru>Расстояние моделирования</ru>
+	</msg>
+	<msg>
+		<src>Size X:</src>
+		<ru>Размер по оси X:</ru>
+	</msg>
+	<msg>
+		<src>Size Y:</src>
+		<ru>Размер по оси Y:</ru>
+	</msg>
+	<msg>
+		<src>Size of the terrain surface in pixels</src>
+		<ru>Размер поверхности ландшафта в пикселях</ru>
+	</msg>
+	<msg>
+		<src>Size:</src>
+		<ru>Размер:</ru>
+	</msg>
+	<msg>
+		<src>Size: </src>
+		<ru>Размер: </ru>
+	</msg>
+	<msg>
+		<src>Size: %s</src>
+		<ru>Размер: %s</ru>
+	</msg>
+	<msg>
+		<src>SizeX:</src>
+		<ru>Размер по оси X:</ru>
+	</msg>
+	<msg>
+		<src>SizeY:</src>
+		<ru>Размер по оси Y:</ru>
+	</msg>
+	<msg>
+		<src>Skip auxiliary</src>
+		<ru>Пропустить отрисовку во вспомогательный буфер</ru>
+	</msg>
+	<msg>
+		<src>Skip decal ambient</src>
+		<ru>Пропустить проход с фоновым освещением декалей</ru>
+	</msg>
+	<msg>
+		<src>Skip decal light</src>
+		<ru>Пропустить проход с освещением декалей</ru>
+	</msg>
+	<msg>
+		<src>Skip deferred</src>
+		<ru>Пропустить отложенный проход</ru>
+	</msg>
+	<msg>
+		<src>Skip light prob</src>
+		<ru>Пропустить отрисовку запеченного освещения</ru>
+	</msg>
+	<msg>
+		<src>Skip motion blur</src>
+		<ru>Пропустить отрисовку размытия при движении</ru>
+	</msg>
+	<msg>
+		<src>Skip occlusion</src>
+		<ru>Пропустить проход с затенением и непрямым освещением</ru>
+	</msg>
+	<msg>
+		<src>Skip opacity ambient</src>
+		<ru>Пропустить проход с фоновым освещением непрозрачных объектов</ru>
+	</msg>
+	<msg>
+		<src>Skip opacity light</src>
+		<ru>Пропустить проход с освещением непрозрачных объектов</ru>
+	</msg>
+	<msg>
+		<src>Skip post materials</src>
+		<ru>Пропустить отрисовку пост-эффектов</ru>
+	</msg>
+	<msg>
+		<src>Skip reflection</src>
+		<ru>Пропустить отрисовку отражений</ru>
+	</msg>
+	<msg>
+		<src>Skip refraction</src>
+		<ru>Пропустить отрисовку преломлений</ru>
+	</msg>
+	<msg>
+		<src>Skip render materials</src>
+		<ru>Пропустить отрисовку материалов</ru>
+	</msg>
+	<msg>
+		<src>Skip scattering</src>
+		<ru>Пропустить атмосферное рассеивание света</ru>
+	</msg>
+	<msg>
+		<src>Skip transparent ambient</src>
+		<ru>Пропустить проход с фоновым освещением прозрачных объектов</ru>
+	</msg>
+	<msg>
+		<src>Skip transparent light</src>
+		<ru>Пропустить проход с освещением прозрачных объектов</ru>
+	</msg>
+	<msg>
+		<src>Slope:</src>
+		<ru>Наклон тени:</ru>
+	</msg>
+	<msg>
+		<src>Small:</src>
+		<ru>Выдержка при небольшом радиусе:</ru>
+	</msg>
+	<msg>
+		<src>Smooth</src>
+		<ru>Сглаживание</ru>
+	</msg>
+	<msg>
+		<src>Snap position</src>
+		<ru>Привязка положения</ru>
+	</msg>
+	<msg>
+		<src>Snap rotation</src>
+		<ru>Привяка вращения</ru>
+	</msg>
+	<msg>
+		<src>Softness:</src>
+		<ru>Плавность теней:</ru>
+	</msg>
+	<msg>
+		<src>Sound Settings</src>
+		<ru>Настройки звука</ru>
+	</msg>
+	<msg>
+		<src>Sound settings</src>
+		<ru>Настройки звука</ru>
+	</msg>
+	<msg>
+		<src>Sound:</src>
+		<ru>Звук:</ru>
+	</msg>
+	<msg>
+		<src> Sound:</src>
+		<ru>Множитель скорости воспроизведения звука:</ru>
+	</msg>
+	<msg>
+		<src>Source mask</src>
+		<ru>Маска источника</ru>
+	</msg>
+	<msg>
+		<src>Source mask that determines what sound channels can be heard</src>
+		<ru>Маска источника, определяющая, какие звуковые каналы являются слышимыми</ru>
+	</msg>
+	<msg>
+		<src>Source mask:</src>
+		<ru>Маска источника:</ru>
+	</msg>
+	<msg>
+		<src>Source:</src>
+		<ru>Источник:</ru>
+	</msg>
+	<msg>
+		<src> Source:</src>
+		<ru>Исходный код:</ru>
+	</msg>
+	<msg>
+		<src>Sources</src>
+		<ru>Источники</ru>
+	</msg>
+	<msg>
+		<src>Spark</src>
+		<ru>Искрящийся</ru>
+	</msg>
+	<msg>
+		<src>Spawn rate</src>
+		<ru>Скорость обновления ячеек</ru>
+	</msg>
+	<msg>
+		<src>Spawn rate:</src>
+		<ru>Скорость появления:</ru>
+	</msg>
+	<msg>
+		<src>Spawn thres:</src>
+		<ru>Порог появления:</ru>
+	</msg>
+	<msg>
+		<src>Spawn:</src>
+		<ru>Появление:</ru>
+	</msg>
+	<msg>
+		<src>Specular angle</src>
+		<ru>Угол видимости бликов</ru>
+	</msg>
+	<msg>
+		<src>Specular shift</src>
+		<ru>Настройка угла видимости бликов</ru>
+	</msg>
+	<msg>
+		<src>Width of specular highlights</src>
+		<ru>Ширина бликов</ru>
+	</msg>
+	<msg>
+		<src>Specular power:</src>
+		<ru>Степень рассеивания бликов:</ru>
+	</msg>
+	<msg>
+		<src>Specular color multiplier</src>
+		<ru>Степень интенсивности цвета блика</ru>
+	</msg>
+	<msg>
+		<src>Specular scale:</src>
+		<ru>Интенсивность цвета бликов:</ru>
+	</msg>
+	<msg>
+		<src>Specular:</src>
+		<ru>Текстура бликов:</ru>
+	</msg>
+	<msg>
+		<src>Specular lighting:</src>
+		<ru>Бликовое освещение:</ru>
+	</msg>
+	<msg>
+		<src>Speed:</src>
+		<ru>Скорость:</ru>
+	</msg>
+	<msg>
+		<src>Sphere </src>
+		<ru>Сферический</ru>
+	</msg>
+	<msg>
+		<src>Spherical</src>
+		<ru>Сферический небосвод</ru>
+	</msg>
+	<msg>
+		<src>Spherical sky sphere</src>
+		<ru>Сферический небосвод</ru>
+	</msg>
+	<msg>
+		<src>Spline:</src>
+		<ru>Сплайн:</ru>
+	</msg>
+	<msg>
+		<src>Split:</src>
+		<ru>Разбиение:</ru>
+	</msg>
+	<msg>
+		<src>Splits:</src>
+		<ru>Разбиения:</ru>
+	</msg>
+	<msg>
+		<src>Spread offset from surface</src>
+		<ru>Распределение вертикального смещения относительно поверхности</ru>
+	</msg>
+	<msg>
+		<src>Spread rotation around X axis</src>
+		<ru>Распределение вращения вокруг оси X</ru>
+	</msg>
+	<msg>
+		<src>Spread rotation around Y axis</src>
+		<ru>Распределение вращения вокруг оси Y</ru>
+	</msg>
+	<msg>
+		<src>Spread rotation around Z axis</src>
+		<ru>Распределение вращения вокруг оси Z</ru>
+	</msg>
+	<msg>
+		<src>Spread:</src>
+		<ru>Распределение:</ru>
+	</msg>
+	<msg>
+		<src>Spring:</src>
+		<ru>Пружина:</ru>
+	</msg>
+	<msg>
+		<src>Square</src>
+		<ru>Квадрат</ru>
+	</msg>
+	<msg>
+		<src>Src:</src>
+		<ru>Источник:</ru>
+	</msg>
+	<msg>
+		<src>Stars catalog in "Fifth Fundamental Catalogue (FK5)" format</src>
+		<ru>Каталог звездного неба в формате FK5 (Пятый фундаментальный каталог)</ru>
+	</msg>
+	<msg>
+		<src>Stars sphere radius</src>
+		<ru>Радиус сферы, в которой находятся билборды-звезды</ru>
+	</msg>
+	<msg>
+		<src>States</src>
+		<ru>Свойства</ru>
+	</msg>
+	<msg>
+		<src>Stem:</src>
+		<ru>Ствол растения:</ru>
+	</msg>
+	<msg>
+		<src>Step of LightProb grid</src>
+		<ru>Шаг сетки запеченного освещения</ru>
+	</msg>
+	<msg>
+		<src>Step:</src>
+		<ru>Шаг:</ru>
+	</msg>
+	<msg>
+		<src>Stereo distance:</src>
+		<ru>Фокусное расстояние для стерео:</ru>
+	</msg>
+	<msg>
+		<src>Stereo offset:</src>
+		<ru>Смещение виртуальной камеры для стерео:</ru>
+	</msg>
+	<msg>
+		<src>Stereo radius:</src>
+		<ru>Радиус для стерео:</ru>
+	</msg>
+	<msg>
+		<src>Sticky placement on the surface</src>
+		<ru>Гибкое размещение</ru>
+	</msg>
+	<msg>
+		<src>Stop</src>
+		<ru>Остановить</ru>
+	</msg>
+	<msg>
+		<src>Subdivision:</src>
+		<ru>Разделение:</ru>
+	</msg>
+	<msg>
+		<src>Subtraction</src>
+		<ru>Деление</ru>
+	</msg>
+	<msg>
+		<src>Sun color scale</src>
+		<ru>Степень яркости цвета солнечного диска</ru>
+	</msg>
+	<msg>
+		<src>Sun color:</src>
+		<ru>Цвет солнечного диска:</ru>
+	</msg>
+	<msg>
+		<src>Sun:</src>
+		<ru>Солнце:</ru>
+	</msg>
+	<msg>
+		<src>Supersampling:</src>
+		<ru>Избыточная выборка:</ru>
+	</msg>
+	<msg>
+		<src>Surface angle threshold</src>
+		<ru>Пороговое значение угла поверхности</ru>
+	</msg>
+	<msg>
+		<src>Surface size:</src>
+		<ru>Размер поверхности:</ru>
+	</msg>
+	<msg>
+		<src>Suspension</src>
+		<ru>Шарнир подвески</ru>
+	</msg>
+	<msg>
+		<src>System mouse</src>
+		<ru>Системная мышь</ru>
+	</msg>
+	<msg>
+		<src>TAngle:</src>
+		<ru>Продольная сила:</ru>
+	</msg>
+	<msg>
+		<src>TFriction:</src>
+		<ru>Продольное трение:</ru>
+	</msg>
+	<msg>
+		<src>Coefficient specifying how fast the optimal longitudinal force can be achieved</src>
+		<ru>Коэффициент, определяющий, насколько быстро может быть достигнута оптимальная величина продольной силы</ru>
+	</msg>
+	<msg>
+		<src>Longitudinal friction of the tire</src>
+		<ru>Продольное трение шины</ru>
+	</msg>
+	<msg>
+		<src>Terrain Editor</src>
+		<ru>Редактор ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Tessellation distance:</src>
+		<ru>Расстояние тесселяции:</ru>
+	</msg>
+	<msg>
+		<src>Tessellation factor:</src>
+		<ru>Разбиение полигонов при тесселяции:</ru>
+	</msg>
+	<msg>
+		<src>Tessellation scale:</src>
+		<ru>Смещение вертексов при тесселяции:</ru>
+	</msg>
+	<msg>
+		<src>Text Editor</src>
+		<ru>Текстовый редактор</ru>
+	</msg>
+	<msg>
+		<src>Text editor</src>
+		<ru>Текстовый редактор</ru>
+	</msg>
+	<msg>
+		<src>Texture</src>
+		<ru>Текстура</ru>
+	</msg>
+	<msg>
+		<src>Worlds</src>
+		<ru>Миры</ru>
+	</msg>
+	<msg>
+		<src>Material name</src>
+		<ru>Имя материала</ru>
+	</msg>
+	<msg>
+		<src>Material libraries</src>
+		<ru>Библиотеки материалов</ru>
+	</msg>
+	<msg>
+		<src>Property name</src>
+		<ru>Имя свойства</ru>
+	</msg>
+	<msg>
+		<src>Property libraries</src>
+		<ru>Библиотеки свойств</ru>
+	</msg>
+	<msg>
+		<src>Bodies</src>
+		<ru>Тела</ru>
+	</msg>
+	<msg>
+		<src>Decompose</src>
+		<ru>Декомпозиция</ru>
+	</msg>
+	<msg>
+		<src>Image size</src>
+		<ru>Размер изображения</ru>
+	</msg>
+	<msg>
+		<src>Terrain export</src>
+		<ru>Экспорт ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Terrain import</src>
+		<ru>Импорт ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Terrain material</src>
+		<ru>Материал ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Terrain surface materials</src>
+		<ru>Материалы поверхности ландшафта</ru>
+	</msg>
+	<msg>
+		<src>CorePlugin</src>
+		<ru>Основные плагины</ru>
+	</msg>
+	<msg>
+		<src>Mesh import settings</src>
+		<ru>Параметры импорта каркасной сетки</ru>
+	</msg>
+	<msg>
+		<src>Texture atlas</src>
+		<ru>Текстурный атлас</ru>
+	</msg>
+	<msg>
+		<src>Validator</src>
+		<ru>Проверка</ru>
+	</msg>
+	<msg>
+		<src>Texture coordinate variations</src>
+		<ru>Изменение текстурных координат для достижения дополнительного разнообразия травы</ru>
+	</msg>
+	<msg>
+		<src>Texture coordinate variations along X axis</src>
+		<ru>Изменение текстурных координат вдоль оси X</ru>
+	</msg>
+	<msg>
+		<src>Texture coordinate variations along Y axis</src>
+		<ru>Изменение текстурных координат вдоль оси Y</ru>
+	</msg>
+	<msg>
+		<src>Texture:</src>
+		<ru>Текстура:</ru>
+	</msg>
+	<msg>
+		<src>Textures</src>
+		<ru>Текстуры</ru>
+	</msg>
+	<msg>
+		<src>The body is broken</src>
+		<ru>Тело сломано</ru>
+	</msg>
+	<msg>
+		<src>The body is enabled</src>
+		<ru>Включить тело</ru>
+	</msg>
+	<msg>
+		<src>The body is freezable</src>
+		<ru>Тело является замораживаемым</ru>
+	</msg>
+	<msg>
+		<src>The body type</src>
+		<ru>Тип тела</ru>
+	</msg>
+	<msg>
+		<src>The bone is enabled</src>
+		<ru>Включить кость</ru>
+	</msg>
+	<msg>
+		<src>The collision is enabled</src>
+		<ru>Включить столкновения</ru>
+	</msg>
+	<msg>
+		<src>The gravity is enabled</src>
+		<ru>Включить гравитацию</ru>
+	</msg>
+	<msg>
+		<src>The joint angular restitution parameter</src>
+		<ru>Угловое упругое восстановление соединения</ru>
+	</msg>
+	<msg>
+		<src>The joint angular softness parameter</src>
+		<ru>Угловая эластичность соединения</ru>
+	</msg>
+	<msg>
+		<src>The joint collision flag</src>
+		<ru>Флаг столкновений соединения</ru>
+	</msg>
+	<msg>
+		<src>The joint is enabled</src>
+		<ru>Соединение активно</ru>
+	</msg>
+	<msg>
+		<src>The joint linear restitution parameter</src>
+		<ru>Линейное упругое восстановление соединения</ru>
+	</msg>
+	<msg>
+		<src>The joint linear softness parameter</src>
+		<ru>Линейная эластичность соединения</ru>
+	</msg>
+	<msg>
+		<src>The joint number of iterations</src>
+		<ru>Число итераций, используемых для рассчета соединения</ru>
+	</msg>
+	<msg>
+		<src>The node handle is displayed</src>
+		<ru>Отображать/Не отображать метку узла</ru>
+	</msg>
+	<msg>
+		<src>The node is enabled</src>
+		<ru>Узел активен</ru>
+	</msg>
+	<msg>
+		<src>The node is mainly immovable<br/>Culls immovable ObjectMesh by immovable Light bounding</src>
+		<ru>Узел неподвижен<br/>Отрисовываются только те полигоны неподвижного узла, которые освещены неподвижным источником света.</ru>
+	</msg>
+	<msg>
+		<src>The node will be updated last</src>
+		<ru>Узел будет обновляться последним</ru>
+	</msg>
+	<msg>
+		<src>The number of additional render frames to warmup WorldCluster and WorldClutter nodes</src>
+		<ru>Количество дополнительных кадров для запекания глобального кластера и клаттера</ru>
+	</msg>
+	<msg>
+		<src>The number of iterations</src>
+		<ru>Количество итераций</ru>
+	</msg>
+	<msg>
+		<src>The number of stars</src>
+		<ru>Количество звезд</ru>
+	</msg>
+	<msg>
+		<src>The observer's latitude</src>
+		<ru>Широта, на которой находится наблюдатель</ru>
+	</msg>
+	<msg>
+		<src>The observer's location</src>
+		<ru>Местоположение наблюдателя</ru>
+	</msg>
+	<msg>
+		<src>The observer's longitude</src>
+		<ru>Долгота, на которой находится наблюдатель</ru>
+	</msg>
+	<msg>
+		<src>The player is controlled</src>
+		<ru>Контроль на персонажем</ru>
+	</msg>
+	<msg>
+		<src>The shape is enabled</src>
+		<ru>Включить форму</ru>
+	</msg>
+	<msg>
+		<src>The surface casts shadow</src>
+		<ru>Поверхность отбрасывает тень</ru>
+	</msg>
+	<msg>
+		<src>The surface casts world shadow</src>
+		<ru>Поверхность отбрасывает тень, когда освещается глобальным источником света</ru>
+	</msg>
+	<msg>
+		<src>The surface is collidable</src>
+		<ru>Поверхность участвует в столкновениях с другими объектами</ru>
+	</msg>
+	<msg>
+		<src>The surface is enabled</src>
+		<ru>Поверхность активна</ru>
+	</msg>
+	<msg>
+		<src>The surface is intersectable</src>
+		<ru>Поверхность может быть пересечена</ru>
+	</msg>
+	<msg>
+		<src>The surface receives decal</src>
+		<ru>На поверхность можно спроецировать декаль</ru>
+	</msg>
+	<msg>
+		<src>The surface receives shadow</src>
+		<ru>На поверхность могут падать тени</ru>
+	</msg>
+	<msg>
+		<src>The surface receives world shadow</src>
+		<ru>На поверхность могут падать тени от объектов, перекрывающих глобальный источник света</ru>
+	</msg>
+	<msg>
+		<src>Theta:</src>
+		<ru>Тета:</ru>
+	</msg>
+	<msg>
+		<src>Thinning</src>
+		<ru>Уменьшение густоты растительности</ru>
+	</msg>
+	<msg>
+		<src>Threshold</src>
+		<ru>Пороговое значение</ru>
+	</msg>
+	<msg>
+		<src>Threshold to flatten polygons</src>
+		<ru>Пороговое значение, используемое для сглаживания полигонов</ru>
+	</msg>
+	<msg>
+		<src>Threshold to flatten polygons<br/>-1 is terrain flatness</src>
+		<ru>Пороговое значение, используемое для сглаживания полигонов<br/><b>-1</b> означает гладкость ландшафта</ru>
+	</msg>
+	<msg>
+		<src>Threshold:</src>
+		<ru>Пороговое значение:</ru>
+	</msg>
+	<msg>
+		<src>Ambient threshold:</src>
+		<ru>Пороговое значение:</ru>
+	</msg>
+	<msg>
+		<src>Depth threshold used to filter ambient occlusion</src>
+		<ru>Пороговое значение глубины фильтрации взаимного затенения</ru>
+	</msg>
+	<msg>
+		<src>Light threshold:</src>
+		<ru>Пороговое значение:</ru>
+	</msg>
+	<msg>
+		<src>Depth threshold used to filter light occlusion</src>
+		<ru>Пороговое значение глубины фильтрации затенения с учетом переотраженного света</ru>
+	</msg>
+	<msg>
+		<src>Time:</src>
+		<ru>Время:</ru>
+	</msg>
+	<msg>
+		<src>To:</src>
+		<ru>До:</ru>
+	</msg>
+	<msg>
+		<src>Toe Denominator:</src>
+		<ru>Знаменатель области недодержек:</ru>
+	</msg>
+	<msg>
+		<src>Toe Numerator:</src>
+		<ru>Числитель области недодержек:</ru>
+	</msg>
+	<msg>
+		<src>Toe Scale:</src>
+		<ru>Область недодержек:</ru>
+	</msg>
+	<msg>
+		<src>Tokyo</src>
+		<ru>Токио</ru>
+	</msg>
+	<msg>
+		<src>Tomsk</src>
+		<ru>Томск</ru>
+	</msg>
+	<msg>
+		<src>Tools</src>
+		<ru>Инструменты</ru>
+	</msg>
+	<msg>
+		<src>Torque:</src>
+		<ru>Момент:</ru>
+	</msg>
+	<msg>
+		<src>Total mass:</src>
+		<ru>Общая масса:</ru>
+	</msg>
+	<msg>
+		<src>Touch</src>
+		<ru>Касание</ru>
+	</msg>
+	<msg>
+		<src>Track Editor</src>
+		<ru>Редактор треков</ru>
+	</msg>
+	<msg>
+		<src>Track editor</src>
+		<ru>Редактор треков</ru>
+	</msg>
+	<msg>
+		<src>Transform:</src>
+		<ru>Трансформация:</ru>
+	</msg>
+	<msg>
+		<src>Transition:</src>
+		<ru>Фазовый переход:</ru>
+	</msg>
+	<msg>
+		<src>TranslateX:</src>
+		<ru>Перемещение по оси X:</ru>
+	</msg>
+	<msg>
+		<src>TranslateY:</src>
+		<ru>Перемещение по оси Y:</ru>
+	</msg>
+	<msg>
+		<src>Translucence</src>
+		<ru>Прозрачность</ru>
+	</msg>
+	<msg>
+		<src>Translucence size:</src>
+		<ru>Размер прозрачности:</ru>
+	</msg>
+	<msg>
+		<src>Transparent surface will be rendered into color buffer after the fullscreen light scattering pass</src>
+		<ru>Полупрозрачные поверхности будут отрисованы в цветовой буфер после отрисовки в полноэкранный проход рассеяния света</ru>
+	</msg>
+	<msg>
+		<src>Transparent surface will be rendered into color buffer after the fullscreen refraction pass</src>
+		<ru>Полупрозрачные поверхности будут отрисованы в цветовой буфер после отрисовки в полноэкранный проход преломления</ru>
+	</msg>
+	<msg>
+		<src>Transparent surface will be rendered into deferred buffer after rendering into color buffer</src>
+		<ru>Полупрозрачные поверхности будут отрисованы в отложенный буфер после отрисовки в цветовой буфер</ru>
+	</msg>
+	<msg>
+		<src>Triangles:</src>
+		<ru>Треугольников:</ru>
+	</msg>
+	<msg>
+		<src>Trigger activates on bounding box touch</src>
+		<ru>Триггер становится активным при касании габаритного контейнера</ru>
+	</msg>
+	<msg>
+		<src>Triplanar</src>
+		<ru>Трипланарность</ru>
+	</msg>
+	<msg>
+		<src>Turbidity:</src>
+		<ru>Мутность:</ru>
+	</msg>
+	<msg>
+		<src>Two sided</src>
+		<ru>Двусторонний</ru>
+	</msg>
+	<msg>
+		<src>Two sided projection</src>
+		<ru>Двусторонняя проекция</ru>
+	</msg>
+	<msg>
+		<src>Two sided surface</src>
+		<ru>Двусторонняя поверхность</ru>
+	</msg>
+	<msg>
+		<src>Type first letters of material name here</src>
+		<ru>Введите первые несколько символов названия материала</ru>
+	</msg>
+	<msg>
+		<src>Type first letters of property name here</src>
+		<ru>Введите первые несколько символов имени свойства</ru>
+	</msg>
+	<msg>
+		<src>Type first letters of surface name here</src>
+		<ru>Введите первые несколько символов имени поверхности</ru>
+	</msg>
+	<msg>
+		<src>Type:</src>
+		<ru>Тип:</ru>
+	</msg>
+	<msg>
+		<src>Type: </src>
+		<ru>Тип: </ru>
+	</msg>
+	<msg>
+		<src>Up</src>
+		<ru>Вверх</ru>
+	</msg>
+	<msg>
+		<src>Up directory (backspace)</src>
+		<ru>На папку выше (клавиша Backspace)</ru>
+	</msg>
+	<msg>
+		<src>Up:</src>
+		<ru>Вверх:</ru>
+	</msg>
+	<msg>
+		<src>Update</src>
+		<ru>Обновить</ru>
+	</msg>
+	<msg>
+		<src>Update LUT texture</src>
+		<ru>Обновить LUT текстуру</ru>
+	</msg>
+	<msg>
+		<src>Update LightMaps</src>
+		<ru>Обновить карты освещения</ru>
+	</msg>
+	<msg>
+		<src>Update a coarse diffuse texture from surface diffuse textures</src>
+		<ru>Обновить упрощенную диффузную текстуру из диффузных текстур поверхности</ru>
+	</msg>
+	<msg>
+		<src>Update already created lightmaps</src>
+		<ru>Обновить уже созданные карты освещения</ru>
+	</msg>
+	<msg>
+		<src>Update coarse diffuse</src>
+		<ru>Обновить упрощенную диффузную текстуру</ru>
+	</msg>
+	<msg>
+		<src>Update game camera position</src>
+		<ru>Обновлять положение игровой камеры</ru>
+	</msg>
+	<msg>
+		<src>Show point forces and deflectors for particles.</src>
+		<ru>Показывать точечные силы и дефлекторы для частиц.</ru>
+	</msg>
+	<msg>
+		<src>Update node references list</src>
+		<ru>Обновить список ссылок на узлы</ru>
+	</msg>
+	<msg>
+		<src>Updated last</src>
+		<ru>Обновлять последним</ru>
+	</msg>
+	<msg>
+		<src>Use 4x4 texture atlas</src>
+		<ru>Использовать текстурный атлас размером 4x4 </ru>
+	</msg>
+	<msg>
+		<src>Use RGB10A2</src>
+		<ru>Использовать RGB10A2</ru>
+	</msg>
+	<msg>
+		<src>Use WorldSector and WorldPortal to visibility determination<br/>Ortherwise the node is always visible</src>
+		<ru>Использовать глобальные секторы (WorldSector) и глобальные порталы (WorldPortal) для определения видимости узла<br/>В противном случае узел будет виден всегда</ru>
+	</msg>
+	<msg>
+		<src>Use clutter tree for this node<br/>Clutter nodes can be culled in more efficient way in this tree</src>
+		<ru>Использовать дерево клаттера для узла<br/>Узлы в данном дереве отсекаются наиболее эффективным образом</ru>
+	</msg>
+	<msg>
+		<src>Move into spatial tree for colliding objects<br/>All physical nodes should be placed in this tree</src>
+		<ru>Поместить узел в пространственное дерево<br/>Все физические узлы должны быть помещены в это дерево</ru>
+	</msg>
+	<msg>
+		<src>Use directional lightmaps</src>
+		<ru>Использовать карты направленного освещения</ru>
+	</msg>
+	<msg>
+		<src>Use dual quaternions</src>
+		<ru>Использовать двойные кватернионы</ru>
+	</msg>
+	<msg>
+		<src>Use environment</src>
+		<ru>Использовать текстуру окружения</ru>
+	</msg>
+	<msg>
+		<src>Use filmic</src>
+		<ru>Использовать кинематографичный HDR</ru>
+	</msg>
+	<msg>
+		<src>Use normalization</src>
+		<ru>Использовать нормализацию</ru>
+	</msg>
+	<msg>
+		<src>Use occlusion query for this node</src>
+		<ru>Использовать запросы на перекрытие для узла</ru>
+	</msg>
+	<msg>
+		<src>Use phong-rim</src>
+		<ru>Использовать контур Фонга</ru>
+	</msg>
+	<msg>
+		<src>Use queries</src>
+		<ru>Использовать запросы на перекрытие</ru>
+	</msg>
+	<msg>
+		<src>Use scissors</src>
+		<ru>Использовать плоскости отсечения</ru>
+	</msg>
+	<msg>
+		<src>Use shadow kernel</src>
+		<ru>Использовать тени высокого качества</ru>
+	</msg>
+	<msg>
+		<src>Use srgb</src>
+		<ru>Использовать цветовое пространство srgb</ru>
+	</msg>
+	<msg>
+		<src>Use vertex float</src>
+		<ru>Использовать вершины в формате с плавающей точкой</ru>
+	</msg>
+	<msg>
+		<src>Validate Current World</src>
+		<ru>Проверить текущий мир</ru>
+	</msg>
+	<msg>
+		<src>Value:</src>
+		<ru>Значение:</ru>
+	</msg>
+	<msg>
+		<src>Variation</src>
+		<ru>Изменение</ru>
+	</msg>
+	<msg>
+		<src>VariationX</src>
+		<ru>Изменение по оси X</ru>
+	</msg>
+	<msg>
+		<src>VariationY</src>
+		<ru>Изменение по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Velocity:</src>
+		<ru>Скорость:</ru>
+	</msg>
+	<msg>
+		<src>Vertex cache</src>
+		<ru>Кэш вертексов</ru>
+	</msg>
+	<msg>
+		<src>Vertex cache optimization</src>
+		<ru>Оптимизация кэша вертексов</ru>
+	</msg>
+	<msg>
+		<src>Vertical subdivision</src>
+		<ru>Вертикальное разделение</ru>
+	</msg>
+	<msg>
+		<src>Video</src>
+		<ru>Видео</ru>
+	</msg>
+	<msg>
+		<src>View LUT image</src>
+		<ru>Показать LUT изображение</ru>
+	</msg>
+	<msg>
+		<src>View node in a separate window</src>
+		<ru>Показать узел в отдельном окне</ru>
+	</msg>
+	<msg>
+		<src>Viewport mask</src>
+		<ru>Маска видового окна</ru>
+	</msg>
+	<msg>
+		<src>Viewport mask (double click to edit)<br/>The material is rendered in a viewport if they both have corresponding masks</src>
+		<ru>Маска видового окна (двойное нажатие для редактирования)<br/>Материал будет отрисован в видовое окно если их маски соответствуют друг другу</ru>
+	</msg>
+	<msg>
+		<src>Viewport mask:</src>
+		<ru>Маска видового окна:</ru>
+	</msg>
+	<msg>
+		<src>Viewport:</src>
+		<ru>Видовое окно:</ru>
+	</msg>
+	<msg>
+		<src>Visibility by sectors/portals</src>
+		<ru>Видимость через секторы/порталы</ru>
+	</msg>
+	<msg>
+		<src>Visible dist:</src>
+		<ru>Дальность видимости:</ru>
+	</msg>
+	<msg>
+		<src>Visibility:</src>
+		<ru>Видимость:</ru>
+	</msg>
+	<msg>
+		<src>Visible:</src>
+		<ru>Видимость:</ru>
+	</msg>
+	<msg>
+		<src>Visual</src>
+		<ru>Визуальный</ru>
+	</msg>
+	<msg>
+		<src>Visualizer</src>
+		<ru>Визуализатор</ru>
+	</msg>
+	<msg>
+		<src>Visualizer parameters</src>
+		<ru>Параметры отображения</ru>
+	</msg>
+	<msg>
+		<src>Volume threshold:</src>
+		<ru>Порог объема:</ru>
+	</msg>
+	<msg>
+		<src>Volume:</src>
+		<ru>Громкость:</ru>
+	</msg>
+	<msg>
+		<src>Volumetric attenuation:</src>
+		<ru>Затухание объемных теней:</ru>
+	</msg>
+	<msg>
+		<src>Volumetric exposure:</src>
+		<ru>Экспозиция объемных теней:</ru>
+	</msg>
+	<msg>
+		<src>Volumetric length:</src>
+		<ru>Длина объемных теней:</ru>
+	</msg>
+	<msg>
+		<src>W:</src>
+		<ru>W:</ru>
+	</msg>
+	<msg>
+		<src>Warming</src>
+		<ru>Разогрев</ru>
+	</msg>
+	<msg>
+		<src>Water</src>
+		<ru>Вода</ru>
+	</msg>
+	<msg>
+		<src>Water density</src>
+		<ru>Плотность воды</ru>
+	</msg>
+	<msg>
+		<src>Water liquidity</src>
+		<ru>Текучесть воды</ru>
+	</msg>
+	<msg>
+		<src>Waves are absorbed by the boundaries</src>
+		<ru>Волны поглощаются границами</ru>
+	</msg>
+	<msg>
+		<src>Weight:</src>
+		<ru>Вес:</ru>
+	</msg>
+	<msg>
+		<src>Wheel</src>
+		<ru>Колесо</ru>
+	</msg>
+	<msg>
+		<src>Wheel mass</src>
+		<ru>Масса колеса</ru>
+	</msg>
+	<msg>
+		<src>Wheel mass:</src>
+		<ru>Масса колеса:</ru>
+	</msg>
+	<msg>
+		<src>Wheel radius</src>
+		<ru>Радиус колеса</ru>
+	</msg>
+	<msg>
+		<src>Wheel width</src>
+		<ru>Ширина колеса</ru>
+	</msg>
+	<msg>
+		<src>White Level:</src>
+		<ru>Баланс белого:</ru>
+	</msg>
+	<msg>
+		<src>White color</src>
+		<ru>Баланс белого</ru>
+	</msg>
+	<msg>
+		<src>White:</src>
+		<ru>Баланс белого:</ru>
+	</msg>
+	<msg>
+		<src>Width in pixels</src>
+		<ru>Ширина в пикселях</ru>
+	</msg>
+	<msg>
+		<src>Width in units</src>
+		<ru>Ширина в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Width of the volumetric clouds</src>
+		<ru>Ширина трехмерных облаков</ru>
+	</msg>
+	<msg>
+		<src>Width:</src>
+		<ru>Ширина:</ru>
+	</msg>
+	<msg>
+		<src>Wind:</src>
+		<ru>Ветер:</ru>
+	</msg>
+	<msg>
+		<src>World</src>
+		<ru>Мир</ru>
+	</msg>
+	<msg>
+		<src>World </src>
+		<ru>Мировая</ru>
+	</msg>
+	<msg>
+		<src>World budget:</src>
+		<ru>Глобальный бюджет времени:</ru>
+	</msg>
+	<msg>
+		<src>World distance:</src>
+		<ru>Дальность видимости узлов:</ru>
+	</msg>
+	<msg>
+		<src>World fields</src>
+		<ru>Глобальные поля</ru>
+	</msg>
+	<msg>
+		<src>World generation time budget in frames per second</src>
+		<ru>Бюджет времени на генерацию мира (измеряется в кадрах в секунду)</ru>
+	</msg>
+	<msg>
+		<src>World handlers</src>
+		<ru>Глобальные метки</ru>
+	</msg>
+	<msg>
+		<src>World lights</src>
+		<ru>Глобальные источники освещения</ru>
+	</msg>
+	<msg>
+		<src>World navigations</src>
+		<ru>Глобальные навигационные объекты</ru>
+	</msg>
+	<msg>
+		<src>World node name</src>
+		<ru>Имя глобального узла</ru>
+	</msg>
+	<msg>
+		<src>World obstacles</src>
+		<ru>Глобальные препятствия</ru>
+	</msg>
+	<msg>
+		<src>World occluders</src>
+		<ru>Глобальные преграды</ru>
+	</msg>
+	<msg>
+		<src>World physicals</src>
+		<ru>Глобальные физические эффекты</ru>
+	</msg>
+	<msg>
+		<src>World players</src>
+		<ru>Глобальные персонажи</ru>
+	</msg>
+	<msg>
+		<src>World portals</src>
+		<ru>Глобальные порталы</ru>
+	</msg>
+	<msg>
+		<src>World sectors</src>
+		<ru>Глобальные секторы</ru>
+	</msg>
+	<msg>
+		<src>World sounds</src>
+		<ru>Глобальные звуки</ru>
+	</msg>
+	<msg>
+		<src>World spatial</src>
+		<ru>Глобальное пространственное дерево</ru>
+	</msg>
+	<msg>
+		<src>World transforms</src>
+		<ru>Глобальные трансформации</ru>
+	</msg>
+	<msg>
+		<src>World triggers</src>
+		<ru>Глобальные триггеры</ru>
+	</msg>
+	<msg>
+		<src>X anchor coordinate of second body</src>
+		<ru>Координата опорной точки второго тела по оси X</ru>
+	</msg>
+	<msg>
+		<src>X anchor coordinate of selected body</src>
+		<ru>Координата опорной точки выбранного тела по оси X</ru>
+	</msg>
+	<msg>
+		<src>X angular axis coordinate of second body</src>
+		<ru>Угловая координата второго тела по оси X</ru>
+	</msg>
+	<msg>
+		<src>X angular axis coordinate of selected body</src>
+		<ru>Угловая координата выделенного тела по оси X</ru>
+	</msg>
+	<msg>
+		<src>X axis coordinate of second body</src>
+		<ru>Координата второго тела по оси X</ru>
+	</msg>
+	<msg>
+		<src>X axis coordinate of selected body</src>
+		<ru>Координата выделенного тела по оси X</ru>
+	</msg>
+	<msg>
+		<src>X axis rotation in degrees</src>
+		<ru>Поворот относительно оси X в градусах</ru>
+	</msg>
+	<msg>
+		<src>X axis rotation of second body</src>
+		<ru>Поворот второго тела относительно оси X</ru>
+	</msg>
+	<msg>
+		<src>X axis rotation of selected body</src>
+		<ru>Поворот выделенного тела относительно оси X</ru>
+	</msg>
+	<msg>
+		<src>X axis scale</src>
+		<ru>Масштаб по оси X</ru>
+	</msg>
+	<msg>
+		<src>X component of velocity</src>
+		<ru>Скорость ветра по оси X</ru>
+	</msg>
+	<msg>
+		<src>X component of velocity of the flow in physical water</src>
+		<ru>Скорость течения физической воды по оси X</ru>
+	</msg>
+	<msg>
+		<src>X coordinate in units</src>
+		<ru>Координата по оси Х в юнитах</ru>
+	</msg>
+	<msg>
+		<src>X linear axis coordinate</src>
+		<ru>Линейная координата по оси X</ru>
+	</msg>
+	<msg>
+		<src>X offset</src>
+		<ru>Смещение по оси X</ru>
+	</msg>
+	<msg>
+		<src>X offset of the noise</src>
+		<ru>Смещение кубоидной области, в которой моделируется физический шум, по оси X</ru>
+	</msg>
+	<msg>
+		<src>X scale</src>
+		<ru>Масштабирование по оси X</ru>
+	</msg>
+	<msg>
+		<src>X size of clutter area</src>
+		<ru>Размер области клаттера по оси X</ru>
+	</msg>
+	<msg>
+		<src>X size of generated area</src>
+		<ru>Размер сгенерированной области по оси X</ru>
+	</msg>
+	<msg>
+		<src>X size of grass area</src>
+		<ru>Размер области с травой по оси X</ru>
+	</msg>
+	<msg>
+		<src>X size of the noise</src>
+		<ru>Размер кубоидной области, в которой моделируется физический шум, по оси X</ru>
+	</msg>
+	<msg>
+		<src>X size of the trigger</src>
+		<ru>Размер триггера по оси X</ru>
+	</msg>
+	<msg>
+		<src>X size of the water</src>
+		<ru>Размер кубоидной области, в которой действует силовое поле, влияющее на воду, по оси X</ru>
+	</msg>
+	<msg>
+		<src>X size of the wind</src>
+		<ru>Размер кубоидной области, в которой дует ветер, по оси X</ru>
+	</msg>
+	<msg>
+		<src>X step of the noise</src>
+		<ru>Шаг шума по оси X</ru>
+	</msg>
+	<msg>
+		<src>X threshold of the noise</src>
+		<ru>Пороговое значение шума по оси X</ru>
+	</msg>
+	<msg>
+		<src>X threshold of the wind</src>
+		<ru>Пороговое расстояние по оси X, которое определяет область изменения скорости ветра</ru>
+	</msg>
+	<msg>
+		<src>X:</src>
+		<ru>X:</ru>
+	</msg>
+	<msg>
+		<src>XYZ</src>
+		<ru>XYZ</ru>
+	</msg>
+	<msg>
+		<src>XZY</src>
+		<ru>XZY</ru>
+	</msg>
+	<msg>
+		<src>Y anchor coordinate of second body</src>
+		<ru>Координата опорной точки второго тела по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y anchor coordinate of selected body</src>
+		<ru>Координата опорной точки выбранного тела по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y angular axis coordinate of second body</src>
+		<ru>Угловая координата второго тела по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y angular axis coordinate of selected body</src>
+		<ru>Угловая координата выделенного тела по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y axis coordinate of second body</src>
+		<ru>Координата второго тела по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y axis coordinate of selected body</src>
+		<ru>Координата выделенного тела по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y axis rotation in degrees</src>
+		<ru>Поворот относительно оси Y в градусах</ru>
+	</msg>
+	<msg>
+		<src>Y axis rotation of second body</src>
+		<ru>Поворот второго тела относительно оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y axis rotation of selected body</src>
+		<ru>Поворот выделенного тела относительно оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y axis scale</src>
+		<ru>Масштаб по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y component of velocity</src>
+		<ru>Скорость ветра по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y component of velocity of the flow in physical water</src>
+		<ru>Скорость течения физической воды по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y coordinate in units</src>
+		<ru>Координата по оси Y в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Y linear axis coordinate</src>
+		<ru>Линейная координата по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y offset</src>
+		<ru>Смещение по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y offset of the noise</src>
+		<ru>Смещение кубоидной области, в которой моделируется физический шум, по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y scale</src>
+		<ru>Масштабирование по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y size of clutter area</src>
+		<ru>Размер области клаттера по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y size of generated area</src>
+		<ru>Размер сгенерированной области по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y size of grass area</src>
+		<ru>Размер области с травой по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y size of the noise</src>
+		<ru>Размер кубоидной области, в которой моделируется физический шум, по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y size of the trigger</src>
+		<ru>Размер триггера по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y size of the water</src>
+		<ru>Размер кубоидной области, в которой действует силовое поле, влияющее на воду, по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y size of the wind</src>
+		<ru>Размер кубоидной области, в которой дует ветер, по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y step of the noise</src>
+		<ru>Шаг шума по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y threshold of the noise</src>
+		<ru>Пороговое значение шума по оси Y</ru>
+	</msg>
+	<msg>
+		<src>Y threshold of the wind</src>
+		<ru>Пороговое расстояние по оси Y, которое определяет область изменения скорости ветра</ru>
+	</msg>
+	<msg>
+		<src>Y:</src>
+		<ru>Y:</ru>
+	</msg>
+	<msg>
+		<src>YXZ</src>
+		<ru>YXZ</ru>
+	</msg>
+	<msg>
+		<src>YZX</src>
+		<ru>YZX</ru>
+	</msg>
+	<msg>
+		<src>Z anchor coordinate of second body</src>
+		<ru>Координата опорной точки второго тела по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z anchor coordinate of selected body</src>
+		<ru>Координата опорной точки выбранного тела по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z angular axis coordinate of second body</src>
+		<ru>Угловая координата второго тела по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z angular axis coordinate of selected body</src>
+		<ru>Угловая координата выделенного тела по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z axis coordinate of second body</src>
+		<ru>Координата второго тела по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z axis coordinate of selected body</src>
+		<ru>Координата выделенного тела по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z axis rotation in degrees</src>
+		<ru>Поворот относительно оси Z в градусах</ru>
+	</msg>
+	<msg>
+		<src>Z axis rotation of second body</src>
+		<ru>Поворот второго тела относительно оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z axis rotation of selected body</src>
+		<ru>Поворот выделенного тела относительно оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z axis scale</src>
+		<ru>Масштаб по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z component of velocity</src>
+		<ru>Скорость ветра по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z component of velocity of the flow in physical water</src>
+		<ru>Скорость течения физической воды по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z coordinate in units</src>
+		<ru>Координата по оси Z в юнитах</ru>
+	</msg>
+	<msg>
+		<src>Z linear axis coordinate</src>
+		<ru>Линейная координата по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z offset of the noise</src>
+		<ru>Смещение кубоидной области, в которой моделируется физический шум, по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z size of the noise</src>
+		<ru>Размер кубоидной области, в которой моделируется физический шум, по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z size of the trigger</src>
+		<ru>Размер триггера по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z size of the water</src>
+		<ru>Размер кубоидной области, в которой действует силовое поле, влияющее на воду, по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z size of the wind</src>
+		<ru>Размер кубоидной области, в которой дует ветер, по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z step of the noise</src>
+		<ru>Шаг шума по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z threshold of the noise</src>
+		<ru>Пороговое значение шума по оси Z</ru>
+	</msg>
+	<msg>
+		<src>Z threshold of the wind</src>
+		<ru>Пороговое расстояние по оси Z, которое определяет область изменения скорости ветра</ru>
+	</msg>
+	<msg>
+		<src>Z:</src>
+		<ru>Z:</ru>
+	</msg>
+	<msg>
+		<src>ZNear:</src>
+		<ru>Ближняя плоскость отсечения:</ru>
+	</msg>
+	<msg>
+		<src>ZXY</src>
+		<ru>ZXY</ru>
+	</msg>
+	<msg>
+		<src>ZYX</src>
+		<ru>ZYX</ru>
+	</msg>
+	<msg>
+		<src>Zoom: </src>
+		<ru>Zoom: </ru>
+	</msg>
+	<msg>
+		<src>Adjusts the spectral quality of the decay time on high frequencies</src>
+		<ru>Регулирует спектральное качество времени затухания на высоких частотах</ru>
+	</msg>
+	<msg>
+		<src>Adjusts the spectral quality of the decay time on low frequencies</src>
+		<ru>Регулирует спектральное качество времени затухания на низких частотах</ru>
+	</msg>
+	<msg>
+		<src>always filter</src>
+		<ru>always filter</ru>
+	</msg>
+	<msg>
+		<src>always scale</src>
+		<ru>always scale</ru>
+	</msg>
+	<msg>
+		<src>default</src>
+		<ru>по умолчанию</ru>
+	</msg>
+	<msg>
+		<src>dest alpha</src>
+		<ru>альфа-компонента назначения</ru>
+	</msg>
+	<msg>
+		<src>dest color</src>
+		<ru>цвет назначения</ru>
+	</msg>
+	<msg>
+		<src>forward filter</src>
+		<ru>forward filter</ru>
+	</msg>
+	<msg>
+		<src>forward scale</src>
+		<ru>forward scale</ru>
+	</msg>
+	<msg>
+		<src>greater filter</src>
+		<ru>greater filter</ru>
+	</msg>
+	<msg>
+		<src>greater scale</src>
+		<ru>greater scale</ru>
+	</msg>
+	<msg>
+		<src>none</src>
+		<ru>отсутствует</ru>
+	</msg>
+	<msg>
+		<src>one</src>
+		<ru>единица</ru>
+	</msg>
+	<msg>
+		<src>one minus dest alpha</src>
+		<ru>единица минус альфа-компонента назначения</ru>
+	</msg>
+	<msg>
+		<src>one minus dest color</src>
+		<ru>единица минус цвет назначения</ru>
+	</msg>
+	<msg>
+		<src>one minus src alpha</src>
+		<ru>единица минус альфа-компонента источника</ru>
+	</msg>
+	<msg>
+		<src>one minus src color</src>
+		<ru>единица минус цвет источника</ru>
+	</msg>
+	<msg>
+		<src>src alpha</src>
+		<ru>альфа-компонента источника</ru>
+	</msg>
+	<msg>
+		<src>src color</src>
+		<ru>цвет источника</ru>
+	</msg>
+	<msg>
+		<src>zero</src>
+		<ru>ноль</ru>
+	</msg>
+</dictionary>

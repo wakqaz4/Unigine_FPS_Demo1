@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_objects_terrain.ui
+ * Desc:    Unigine editor
+ * Version: 1.22
+ * Author:  Mikhail Lyubimov <alterego@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* ObjectTerrain
+ */
+-->
+<vbox name="Import::vb" export="1" space="4">
+	<vbox align="expand">
+		<vbox>
+			<groupbox space="4" align="expand">
+				<text>Textures</text>
+				<gridbox align="expand" columns="5" space="4">
+					
+					<checkbox name="Import::height_cb" export="1" align="left" checked="1">
+						<text>Height:</text>
+					</checkbox>
+					
+					<editline name="Import::height_name_el" export="1" align="expand">
+						<tooltip>Path to height data</tooltip>
+					</editline>
+					
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked"widget="Import::height_name_el">Import::open_heights_dialog</callback>
+					</icon>
+					<icon name="Import::height_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked"widget="Import::height_name_el">view_image</callback>
+					</icon>
+					
+					<hbox>
+						<vbox space="2"/>
+						<label align="right">Max Height:</label>
+						<vbox space="2"/>
+						<editline name="Import::height_scale_el" export="1" align="right" validator="float">
+							<tooltip></tooltip>
+							<text>1</text>
+						</editline>
+					</hbox>
+					
+					
+					<checkbox name="Import::diffuse_cb" export="1" align="left" checked="1">
+						<text>Diffuse:</text>
+					</checkbox>
+					<editline name="Import::diffuse_name_el" export="1" align="expand">
+						<tooltip>Path to diffuse data</tooltip>
+					</editline>
+					
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked"widget="Import::diffuse_name_el">Import::open_texture_dialog</callback>
+					</icon>
+					<icon name="Import::diffuse_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked"widget="Import::diffuse_name_el">view_image</callback>
+					</icon>
+					<vbox/>
+					
+					
+					<checkbox name="Import::normal_cb" export="1" align="left" checked="1">
+						<text>Normal:</text>
+					</checkbox>
+					<editline name="Import::normal_name_el" export="1" align="expand">
+						<tooltip>Path to normal data</tooltip>
+					</editline>
+					
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked" widget="Import::normal_name_el">Import::open_texture_dialog</callback>
+					</icon>
+					<icon name="Import::normal_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked" widget="Import::normal_name_el">view_image</callback>
+					</icon>
+					<vbox/>
+					
+					
+					<checkbox name="Import::holes_cb" export="1" align="left" checked="1">
+						<text>Holes:</text>
+					</checkbox>
+					<editline name="Import::holes_name_el" export="1" align="expand">
+						<tooltip>Path to holes data</tooltip>
+					</editline>
+					
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked" widget="Import::holes_name_el">Import::open_texture_dialog</callback>
+					</icon>
+					<icon name="Import::holes_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked" widget="Import::holes_name_el">view_image</callback>
+					</icon>
+					<vbox/>
+					
+				</gridbox>
+			</groupbox>
+		</vbox>
+		
+		<vbox space="4"/>
+		
+		<vbox>
+			<groupbox space="4" align="expand">
+				<gridbox align="expand" columns="5" space="4">
+					<checkbox name="Import::masks_cb" export="1" align="left" checked="1" >
+						<text>Import masks</text>
+					</checkbox>
+					
+					<hbox align="expand" space="2">
+						<hbox>
+							<vbox space="2"/>
+							<label align="right">Number of channels:</label>
+							<vbox space="2"/>
+							<editline name="Import::num_channels_el" export="0" align="right" validator="int">
+								<tooltip>Number of channels</tooltip>
+								<text>4</text>
+							</editline>
+						</hbox>
+						
+						<hslider name="Import::num_channels_sl" export="1" align="expand" min="1" max="16" value="4">
+							<attach multiplier="1">Import::num_channels_el</attach>
+						</hslider>
+					</hbox>
+					
+				</gridbox>
+			</groupbox>
+		</vbox>
+		
+		<groupbox space="4" align="expand">
+			<text>Masks</text>
+			<scrollbox space="4" border="0" align="expand">
+				<vbox>
+					<gridbox name="Import::masks_gb" export="1" align="expand" columns="3" space="4">
+						
+					</gridbox>
+				</vbox>
+			</scrollbox>
+		</groupbox>
+		
+		<hbox space="4"  align="left">
+			<checkbox name="Import::coarse_cb" export="1" align="left" checked="1">
+				<text>Coarse</text>
+			</checkbox>
+			
+			<checkbox name="Import::refined_cb" export="1" align="left" checked="1">
+				<text>Refined</text>
+			</checkbox>
+		</hbox>
+		
+		<vbox>
+			<button name="Import::import_b" export="0" align="expand">
+				<text>Import</text>
+				<tooltip>Import data</tooltip>
+				<callback type="clicked">Import::import_clicked</callback>
+			</button>
+		</vbox>
+	</vbox>
+</vbox>
+
+</ui>

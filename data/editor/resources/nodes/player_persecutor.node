@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="PlayerPersecutor" id="724060725">
+		<fixed>0</fixed>
+		<collision>1</collision>
+		<collision_mask>1</collision_mask>
+		<collision_radius>0.5</collision_radius>
+		<anchor>0 0 0</anchor>
+		<min_distance>1</min_distance>
+		<max_distance>1000</max_distance>
+		<min_theta_angle>-89.9</min_theta_angle>
+		<max_theta_angle>89.9</max_theta_angle>
+		<turning>90</turning>
+		<znear>0.3</znear>
+		<zfar>20000</zfar>
+		<transform>0 -1 0 0 0 0 1 0 -1 0 0 0 0 0 0 1</transform>
+	</node>
+</nodes>

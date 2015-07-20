@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_widget_dialog_file.ui
+ * Desc:    Unigine editor
+ * Version: 1.07
+ * Author:  Andrey Viktorov <unclebob@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Menu
+ */
+-->
+<menubox name="actions_m" space="8">
+	<text separator="1">Rename</text>
+	<text>Delete</text>
+</menubox>
+
+<!--
+/* Dialog
+ */
+-->
+<window name="editor_dialog_file" width="640" height="480" sizeable="1">
+	<text>File dialog</text>
+	
+	<icon name="cancel_i" align="overlap,top,right" pos_x="4" pos_y="-24" texture="core/gui/window_close.png"/>
+	
+	<editline name="files_rename_el" width="200" hidden="1" align="overlap"/>
+	
+	<vbox>
+		<hbox align="expand" space_y="4">
+			<label align="right">
+				<text>Folder:</text>
+			</label>
+			
+			<hbox align="expand" space_x="4">
+				
+				<combobox name="drives_cb" align="left" hidden="1"/>
+				
+				<button name="path_left_b" align="right">
+					<text>&lt;</text>
+				</button>
+				<scrollbox name="path_sb" align="expand" henabled="1" hhidden="3" venabled="0" border="0" height="10">
+					<hbox name="path_hb" align="expand"/>
+				</scrollbox>
+				<button name="path_right_b" align="right">
+					<text>&gt;</text>
+				</button>
+				
+			</hbox>
+			
+			<button name="create_b" align="right" texture="editor/gui/file_icon_create_folder.png">
+				<text>New Folder</text>
+				<tooltip>Create a new folder in current directory (Ctrl+N)</tooltip>
+			</button>
+			
+			<button name="open_b" align="right">
+				<text>File Browser</text>
+				<tooltip>Open current directory in system file browser (Ctrl+O)</tooltip>
+			</button>
+		</hbox>
+	</vbox>
+	
+	<hbox align="expand" height="400">
+		<hpaned name="right_vp" align="expand" value="32767">
+			<hpaned name="left_vp" align="expand" value="-32767">
+				<hbox align="expand">
+					<scrollbox align="expand" henabled="1" hhidden="3" venabled="0" width="170">
+						<vbox align="top" space_x="4" space_y="4" background="1" color="#CCCCCC">
+							<label align="left"><text>Bookmarks</text></label>
+						</vbox>
+						
+						<scrollbox name="bookmarks_sb" align="expand" henabled="0" border="0" space_x="4" space_y="4">
+							<vbox name="bookmarks_vb" align="expand" space_x="4" space_y="4">
+								<vbox name="bookmarks_extern_vb" space_y="4">
+									<button name="bookmarks_data_b" align="expand" background="0" texture="editor/gui/file_icon_bookmark.png">
+										<text align="left">data</text>
+									</button>
+								</vbox>
+								
+								<hspacer/>
+								
+								<hbox name="bookmarks_tooltip_hb" width="130" height="90">
+									<groupbox align="expand" space_x="4" space_y="4">
+										<label align="center,expand"><text rich="1" wrap="1"><center>Drag folder here or press Ctrl+T to create a bookmark</center></text></label>
+									</groupbox>
+								</hbox>
+							</vbox>
+						</scrollbox>
+					</scrollbox>
+				</hbox>
+				
+				<hbox align="expand">
+					<scrollbox align="expand" henabled="0" venabled="0">
+						<vbox>
+							<gridbox align="expand" columns="3">
+								<vbox align="expand" space_x="4" space_y="4" background="1" color="#CCCCCC" width="260">
+									<label align="left"><text>Name</text></label>
+								</vbox>
+								
+								<vbox align="top" space_x="4" space_y="4" background="1" color="#CCCCCC" width="120">
+									<label align="left"><text>Modified</text></label>
+								</vbox>
+								
+								<vbox align="top" space_x="4" space_y="4" background="1" color="#CCCCCC" width="87">
+									<label align="left"><text>Size</text></label>
+								</vbox>
+							</gridbox>
+						</vbox>
+						
+						<vbox space_y="1"/>
+						
+						<scrollbox name="files_sb" align="expand" henabled="0" border="0">
+							<canvas name="files_c" align="expand"/>
+						</scrollbox>
+					</scrollbox>
+				</hbox>
+			</hpaned>
+			
+			<hbox align="expand">
+				<scrollbox align="expand" henabled="0" venabled="0" width="200">
+					<vbox align="top" space_x="4" space_y="4" background="1" color="#CCCCCC">
+						<label align="left"><text>Preview</text></label>
+					</vbox>
+					<vbox align="center">
+						<sprite name="preview_s"/>
+						<vbox height="5"/>
+						<label name="preview_l"/>
+					</vbox>
+				</scrollbox>
+			</hbox>
+		</hpaned>
+	</hbox>
+	
+	<vbox space="4"/>
+	
+	<vbox>
+		<gridbox align="expand" space_x="4" space_y="4">
+			<label align="right"><text>Name:</text></label>
+			<editline align="expand" name="file_el"/>
+			
+			<label align="right"><text>Type:</text></label>
+			<combobox align="expand" name="filter_cb"/>
+		</gridbox>
+		
+		<vbox space="4"/>
+		
+		<hbox align="expand">
+			<button name="ok_b" align="right" texture="core/gui/dialog_ok.png">
+				<text>Ok</text>
+			</button>
+			<button name="cancel_b" align="right" texture="core/gui/dialog_cancel.png"> 
+				<text>Cancel</text>
+			</button>
+		</hbox>
+	</vbox>
+</window>
+
+</ui>

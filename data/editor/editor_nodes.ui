@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_nodes.ui
+ * Desc:    Unigine editor
+ * Version: 1.61
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Valia Vaneeva <fattie@unigine.com>
+ *          Anna Ishina <anet@unigine.com>
+ *          Andrey Viktorov <unclebob@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Nodes
+ */
+-->
+<window name="Nodes::window" export="1">
+	<text>Nodes</text>
+	<vbox align="expand">
+		<hpaned name="Nodes::window_hp" export="1" value="-32767" fixed="1" align="expand">
+			
+			<vbox align="expand">
+				
+				<vbox>
+					<hbox align="expand">
+						<icon name="Nodes::clone_i" export="1" texture="editor/gui/nodes_clone.png">
+							<tooltip>Clone node</tooltip>
+							<callback type="clicked">Nodes::clone_clicked</callback>
+						</icon>
+						<icon name="Nodes::remove_i" export="1" texture="editor/gui/nodes_remove.png">
+							<tooltip>Remove node</tooltip>
+							<callback type="clicked">Nodes::remove_clicked</callback>
+						</icon>
+						<icon name="Nodes::up_i" export="1" texture="editor/gui/nodes_up.png">
+							<tooltip>Move node up in the list</tooltip>
+							<callback type="clicked" string="up">Nodes::swap_clicked</callback>
+						</icon>
+						<icon name="Nodes::down_i" export="1" texture="editor/gui/nodes_down.png">
+							<tooltip>Move node down in the list</tooltip>
+							<callback type="clicked" string="down">Nodes::swap_clicked</callback>
+						</icon>
+						<icon name="Nodes::fold_i" export="1" texture="editor/gui/nodes_fold.png" align="right">
+							<tooltip>Fold all nodes</tooltip>
+							<callback type="clicked">Nodes::fold_clicked</callback>
+						</icon>
+						<vbox space="4"/>
+						<icon name="Nodes::save_i" export="1" texture="editor/gui/nodes_save.png">
+							<tooltip>Make a NodeRefence file (export selected node with all children into the file)</tooltip>
+							<callback type="clicked">Nodes::save_clicked</callback>
+						</icon>
+						<icon name="Nodes::export_i" export="1" texture="editor/gui/nodes_export.png">
+							<tooltip>Export selected nodes into the mesh file</tooltip>
+							<callback type="clicked">Nodes::export_clicked</callback>
+						</icon>
+					</hbox>
+				</vbox>
+				
+				<vbox space="2"/>
+				
+				<vbox>
+					<gridbox align="expand" columns="2" space="4">
+						<label align="right"><text>Type:</text></label>
+						<combobox name="Nodes::type_cb" export="1" align="expand">
+							<tooltip>Node type filter</tooltip>
+							<text>All nodes</text>
+							<text>All worlds</text>
+							<text>All fields</text>
+							<text>All lights</text>
+							<text>All decals</text>
+							<text>All objects</text>
+							<text>All players</text>
+							<text>All physicals</text>
+							<text>All navigations</text>
+							<text>All obstacles</text>
+							<text>All sounds</text>
+							<callback type="changed">Nodes::type_changed</callback>
+						</combobox>
+						<label align="right"><text>Search:</text></label>
+						<editline name="Nodes::search_el" export="1" align="expand">
+							<tooltip>Type first letters of property name here</tooltip>
+							<callback type="changed">Nodes::search_changed</callback>
+							<callback type="pressed">Nodes::search_changed</callback>
+							<callback type="focus_in">Nodes::search_focus_in</callback>
+							<callback type="focus_out">Nodes::search_focus_out</callback>
+						</editline>
+					</gridbox>
+				</vbox>
+				
+				<vbox space="2"/>
+				
+				<scrollbox align="expand" width="200" height="320">
+					<treebox name="Nodes::nodes_tb" export="1" align="expand" editable="1" multi_selection="1" texture="editor/gui/nodes_icons.png">
+						<tooltip>Drag nodes with ALT pressed to edit hierarchy</tooltip>
+						<callback type="changed">Nodes::nodes_changed</callback>
+						<callback type="double_clicked">Nodes::nodes_double_clicked</callback>
+						<callback type="drag_drop">Nodes::nodes_changed</callback>
+					</treebox>
+				</scrollbox>
+				
+			</vbox>
+			
+			<tabbox name="Nodes::parameters_tb" export="1" align="expand">
+				
+				<tab>
+					<text>Node</text>
+					<vbox name="Nodes::nodes_vb" export="1" space="4" width="380">
+						<gridbox align="expand" columns="2" space="4">
+							
+							<label align="right"><text>Type:</text></label>
+							<hbox align="expand">
+								<label name="Nodes::type_l" export="1" align="left"/>
+								<label name="Nodes::id_l" export="1" align="right"><text face="core/gui/console.ttf"/></label>
+							</hbox>
+							
+							<vbox/>
+							<vbox align="expand">
+								<gridbox align="left" columns="2" space_x="16" space_y="4">
+									<checkbox name="Nodes::enabled_cb" export="1" align="left">
+										<tooltip>The node is enabled</tooltip>
+										<text>Enabled</text>
+										<callback type="clicked">Nodes::enabled_clicked</callback>
+									</checkbox>
+									<checkbox name="Nodes::handled_cb" export="1" align="left">
+										<tooltip>The node handle is displayed</tooltip>
+										<text>Display handle</text>
+										<callback type="clicked">Nodes::handled_clicked</callback>
+									</checkbox>
+									<checkbox name="Nodes::collider_cb" export="1" align="left">
+										<tooltip>Move into spatial tree for colliding objects<br/>All physical nodes should be placed in this tree</tooltip>
+										<text>Collider object</text>
+										<callback type="clicked">Nodes::collider_clicked</callback>
+									</checkbox>
+									<checkbox name="Nodes::clutter_cb" export="1" align="left">
+										<tooltip>Use clutter tree for this node<br/>Clutter nodes can be culled in more efficient way in this tree</tooltip>
+										<text>Culled by clutter tree</text>
+										<callback type="clicked">Nodes::clutter_clicked</callback>
+									</checkbox>
+									<checkbox name="Nodes::spatial_cb" export="1" align="left">
+										<tooltip>Use WorldSector and WorldPortal to visibility determination<br/>Ortherwise the node is always visible</tooltip>
+										<text>Visibility by sectors/portals</text>
+										<callback type="clicked">Nodes::spatial_clicked</callback>
+									</checkbox>
+									<checkbox name="Nodes::query_cb" export="1" align="left">
+										<tooltip>Use occlusion query for this node</tooltip>
+										<text>Culled by occlusion query</text>
+										<callback type="clicked">Nodes::query_clicked</callback>
+									</checkbox>
+									<checkbox name="Nodes::latest_cb" export="1" align="left">
+										<tooltip>The node will be updated last</tooltip>
+										<text>Updated last</text>
+										<callback type="clicked">Nodes::latest_clicked</callback>
+									</checkbox>
+								</gridbox>
+							</vbox>
+							
+							<label align="right"><text>Name:</text></label>
+							<editline name="Nodes::name_el" export="1" align="expand">
+								<tooltip>Name of the node</tooltip>
+								<callback type="pressed,focus_out">Nodes::name_pressed</callback>
+							</editline>
+							
+							<label align="right"><text>Property:</text></label>
+							<hbox align="expand">
+								<editline name="Nodes::property_el" export="1" align="expand">
+									<tooltip>Node property</tooltip>
+									<callback type="pressed,focus_out">Nodes::property_pressed</callback>
+								</editline>
+								<icon name="Nodes::property_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+									<tooltip>Load property</tooltip>
+									<callback type="clicked">Nodes::property_load_clicked</callback>
+								</icon>
+								<icon name="Nodes::property_edit_i" export="1" texture="editor/gui/action_edit.png" width="22" height="20">
+									<tooltip>Edit property</tooltip>
+									<callback type="clicked">Nodes::property_edit_clicked</callback>
+								</icon>
+								<icon name="Nodes::property_clear_i" export="1" texture="editor/gui/action_clear.png" width="22" height="20">
+									<tooltip>Clear property</tooltip>
+									<callback type="clicked">Nodes::property_clear_clicked</callback>
+								</icon>
+							</hbox>
+							
+							<vbox/>
+							<hspacer align="expand"/>
+							
+							<label align="right"><text>Position:</text></label>
+							<hbox align="expand" space="4" padding="-4">
+								<editline name="Nodes::position_el[0]" export="1" align="expand" validator="float">
+									<tooltip>X coordinate in units</tooltip>
+									<callback type="pressed">Nodes::transform_pressed</callback>
+									<callback type="focus_out">Nodes::transform_focus_out</callback>
+								</editline>
+								<spinbox align="overlap" name="Nodes::position_sb[0]" export="1" min="-5000" max="5000">
+									<attach flags="expand" multiplier="10">Nodes::position_el[0]</attach>
+									<callback type="clicked">Nodes::spinbox_clicked</callback>
+									<callback type="changed">Nodes::spinbox_changed</callback>
+								</spinbox>
+								<editline name="Nodes::position_el[1]" export="1" align="expand" validator="float">
+									<tooltip>Y coordinate in units</tooltip>
+									<callback type="pressed">Nodes::transform_pressed</callback>
+									<callback type="focus_out">Nodes::transform_focus_out</callback>
+								</editline>
+								<spinbox align="overlap" name="Nodes::position_sb[1]" export="1" min="-5000" max="5000">
+									<attach flags="expand" multiplier="10">Nodes::position_el[1]</attach>
+									<callback type="clicked">Nodes::spinbox_clicked</callback>
+									<callback type="changed">Nodes::spinbox_changed</callback>
+								</spinbox>
+								<editline name="Nodes::position_el[2]" export="1" align="expand" validator="float">
+									<tooltip>Z coordinate in units</tooltip>
+									<callback type="pressed">Nodes::transform_pressed</callback>
+									<callback type="focus_out">Nodes::transform_focus_out</callback>
+								</editline>
+								<spinbox align="overlap" name="Nodes::position_sb[2]" export="1" min="-5000" max="5000">
+									<attach flags="expand" multiplier="10">Nodes::position_el[2]</attach>
+									<callback type="clicked">Nodes::spinbox_clicked</callback>
+									<callback type="changed">Nodes::spinbox_changed</callback>
+								</spinbox>
+								<icon name="Nodes::position_clear_i" export="1" texture="editor/gui/action_clear.png" width="22" height="20">
+									<tooltip>Reset position to zero</tooltip>
+									<callback type="clicked">Nodes::position_clear_clicked</callback>
+								</icon>
+							</hbox>
+							
+							<label align="right"><text>Rotation:</text></label>
+							<hbox align="expand" space="4" padding="-4">
+								<editline name="Nodes::rotation_el[0]" export="1" align="expand" validator="float">
+									<tooltip>X axis rotation in degrees</tooltip>
+									<callback type="pressed">Nodes::transform_pressed</callback>
+									<callback type="focus_out">Nodes::transform_focus_out</callback>
+								</editline>
+								<spinbox align="overlap" name="Nodes::rotation_sb[0]" export="1" min="-360" max="360">
+									<attach flags="expand">Nodes::rotation_el[0]</attach>
+									<callback type="clicked">Nodes::spinbox_clicked</callback>
+									<callback type="changed">Nodes::spinbox_changed</callback>
+								</spinbox>
+								<editline name="Nodes::rotation_el[1]" export="1" align="expand" validator="float">
+									<tooltip>Y axis rotation in degrees</tooltip>
+									<callback type="pressed">Nodes::transform_pressed</callback>
+									<callback type="focus_out">Nodes::transform_focus_out</callback>
+								</editline>
+								<spinbox align="overlap" name="Nodes::rotation_sb[1]" export="1" min="-360" max="360">
+									<attach flags="expand">Nodes::rotation_el[1]</attach>
+									<callback type="clicked">Nodes::spinbox_clicked</callback>
+									<callback type="changed">Nodes::spinbox_changed</callback>
+								</spinbox>
+								<editline name="Nodes::rotation_el[2]" export="1" align="expand" validator="float">
+									<tooltip>Z axis rotation in degrees</tooltip>
+									<callback type="pressed">Nodes::transform_pressed</callback>
+									<callback type="focus_out">Nodes::transform_focus_out</callback>
+								</editline>
+								<spinbox align="overlap" name="Nodes::rotation_sb[2]" export="1" min="-360" max="360">
+									<attach flags="expand">Nodes::rotation_el[2]</attach>
+									<callback type="clicked">Nodes::spinbox_clicked</callback>
+									<callback type="changed">Nodes::spinbox_changed</callback>
+								</spinbox>
+								<icon name="Nodes::rotation_clear_i" export="1" texture="editor/gui/action_clear.png" width="22" height="20">
+									<tooltip>Reset rotation to zero</tooltip>
+									<callback type="clicked">Nodes::rotation_clear_clicked</callback>
+								</icon>
+							</hbox>
+							
+							<label align="right"><text>Scale:</text></label>
+							<hbox align="expand" space="4" padding="-4">
+								<editline name="Nodes::scale_el[0]" export="1" align="expand" validator="float">
+									<tooltip>X axis scale</tooltip>
+									<callback type="pressed">Nodes::transform_pressed</callback>
+									<callback type="focus_out">Nodes::transform_focus_out</callback>
+								</editline>
+								<spinbox align="overlap" name="Nodes::scale_sb[0]" export="1" min="0" max="100">
+									<attach flags="max_expand" multiplier="10">Nodes::scale_el[0]</attach>
+									<callback type="clicked">Nodes::spinbox_clicked</callback>
+									<callback type="changed">Nodes::spinbox_changed</callback>
+								</spinbox>
+								<editline name="Nodes::scale_el[1]" export="1" align="expand" validator="float">
+									<tooltip>Y axis scale</tooltip>
+									<callback type="pressed">Nodes::transform_pressed</callback>
+									<callback type="focus_out">Nodes::transform_focus_out</callback>
+								</editline>
+								<spinbox align="overlap" name="Nodes::scale_sb[1]" export="1" min="0" max="100">
+									<attach flags="max_expand" multiplier="10">Nodes::scale_el[1]</attach>
+									<callback type="clicked">Nodes::spinbox_clicked</callback>
+									<callback type="changed">Nodes::spinbox_changed</callback>
+								</spinbox>
+								<editline name="Nodes::scale_el[2]" export="1" align="expand" validator="float">
+									<tooltip>Z axis scale</tooltip>
+									<callback type="pressed">Nodes::transform_pressed</callback>
+									<callback type="focus_out">Nodes::transform_focus_out</callback>
+								</editline>
+								<spinbox align="overlap" name="Nodes::scale_sb[2]" export="1" min="0" max="100">
+									<attach flags="max_expand" multiplier="10">Nodes::scale_el[2]</attach>
+									<callback type="clicked">Nodes::spinbox_clicked</callback>
+									<callback type="changed">Nodes::spinbox_changed</callback>
+								</spinbox>
+								<icon name="Nodes::scale_clear_i" export="1" texture="editor/gui/action_clear.png" width="22" height="20">
+									<tooltip>Reset scale to one</tooltip>
+									<callback type="clicked">Nodes::scale_clear_clicked</callback>
+								</icon>
+							</hbox>
+							
+							<vbox/>
+							<gridbox align="expand" columns="2" space="4">
+								<button name="Nodes::copy_b" align="expand" export="1" enabled="0">
+									<text>Copy transformation</text>
+									<callback type="clicked">Nodes::copy_clicked</callback>
+									<tooltip>Copy node transformation into clipboard</tooltip>
+								</button>
+								<button name="Nodes::paste_b" align="expand" export="1" enabled="0">
+									<text>Paste transformation</text>
+									<callback type="clicked">Nodes::paste_clicked</callback>
+									<tooltip>Paste node transformation from clipboard</tooltip>
+								</button>
+								<button name="Nodes::place_here_b" align="expand" export="1" enabled="0">
+									<text>Move the node to camera</text>
+									<callback type="clicked">Nodes::place_here_clicked</callback>
+								</button>
+								<vbox/>
+								<button name="Nodes::place_manually_b" align="expand" export="1" enabled="0">
+									<text>Sticky placement on the surface</text>
+									<callback type="clicked">Nodes::place_manually_clicked</callback>
+									<tooltip>Place node on the surface underneath, use mouse scroll to adjust placement height</tooltip>
+								</button>
+								<vbox/>
+								<button name="Nodes::close_up_b" align="expand" export="1" enabled="0">
+									<text>Focus camera on the node</text>
+									<callback type="clicked">Nodes::close_up_clicked</callback>
+								</button>
+								<vbox/>
+								<button name="Nodes::view_b" align="expand" export="1" enabled="0">
+									<text>View node in a separate window</text>
+									<callback type="clicked">Nodes::view_clicked</callback>
+								</button>
+								<vbox/>
+							</gridbox>
+							
+						</gridbox>
+					</vbox>
+					
+				</tab>
+				
+			</tabbox>
+			
+		</hpaned>
+	</vbox>
+</window>
+
+</ui>

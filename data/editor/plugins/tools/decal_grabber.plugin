@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin name="decal_grabber" version="1.0">
+	<text>Decal Grabber</text>
+	<description>Bakes objects scattered across the terrain to decals</description>
+	<source>decal_grabber.cpp</source>
+</plugin>

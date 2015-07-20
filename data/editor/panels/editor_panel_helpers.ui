@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_panel_helpers.ui
+ * Desc:    Unigine editor
+ * Version: 1.0
+ * Author:  Mikhail Lyubimov <alterego@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.0">
+
+<!--
+/* PanelHelpers
+ */
+-->
+<groupbox name="main_widget" export="1" space="1" height="28">
+	<button name="main_b" export="1" align="expand" width="100" toggleable="1">
+		<text>Helpers</text>
+		<callback type="clicked,double_clicked" instance="instance" string="show_clicked" widget="main_b">callback_redirector_1</callback>
+	</button>
+</groupbox>
+
+<hbox name="item_parent" reference="1">
+	<hbox align="expand">
+		<data>parent</data>
+		
+		<icon texture="editor/gui/helpers_add.png" toggleable="1" toggled="1" align="left" width="14" height="12"/>
+		
+		<label>
+			<text>label</text>
+			<data>text</data>
+			<tooltip>tooltip</tooltip>
+		</label>
+		
+		<label align="right">
+			<text>hotkey</text>
+			<data>helpers_widget</data>
+		</label>
+		
+		<hbox align="right" space_x="4"/>
+		
+		<checkbox name="widget_icon" align="right">
+			<data>icon</data>
+			<callback type="clicked,double_clicked" instance="instance" string="world_show_handler" widget="widget_icon">check_box_clicked</callback>
+		</checkbox>
+		
+		<hbox align="right" space_x="4"/>
+		
+		<checkbox name="widget_gizmo" align="right">
+			<data>gizmo</data>
+			<callback type="clicked,double_clicked" instance="instance" string="world_show_visualizer" widget="widget_gizmo">check_box_clicked</callback>
+		</checkbox>
+		
+		
+	</hbox>
+</hbox>
+
+<hbox name="item_parent_no_gizmo" reference="1">
+	<hbox align="expand">
+		<data>parent</data>
+		
+		<icon texture="editor/gui/helpers_add.png" toggleable="1" toggled="1" align="left" width="14" height="12"/>
+		
+		<label>
+			<text>label</text>
+			<data>text</data>
+			<tooltip>tooltip</tooltip>
+		</label>
+		
+		<label align="right">
+			<text>hotkey</text>
+			<data>helpers_widget</data>
+		</label>
+		
+		<hbox align="right" space_x="4"/>
+		
+		<checkbox name="widget_icon" align="right">
+			<data>icon</data>
+			<callback type="clicked,double_clicked" instance="instance" string="world_show_handler" widget="widget_icon">check_box_clicked</callback>
+		</checkbox>
+		
+		<hbox align="right" space_x="13"/>
+	</hbox>
+</hbox>
+
+<hbox name="item_child" reference="1">
+	<hbox align="expand">
+		<data>item</data>
+		
+		<sprite>
+			<layer texture="editor/gui/helpers_tree.png" translate_y="-26.0" translate_x="6.0"/>
+		</sprite>
+		
+		<hbox space_x="10"/>
+		
+		<label>
+			<text>text</text>
+			<callback type="double_clicked" instance="instance" string="type">icon_and_gizmo_clicked</callback>
+		</label>
+		
+		<hbox align="right" space_x="4"/>
+		
+		<checkbox name="type_icon" align="right">
+			<data>icon,type</data>
+			<callback type="clicked,double_clicked" instance="instance" string="world_show_handler" widget="type_icon">check_box_clicked</callback>
+		</checkbox>
+		
+		<hbox align="right" space_x="4"/>
+		
+		<checkbox name="type_gizmo" align="right">
+			<data>gizmo,type</data>
+			<callback type="clicked,double_clicked" instance="instance" string="world_show_visualizer" widget="type_gizmo">check_box_clicked</callback>
+		</checkbox>
+		
+	</hbox>
+</hbox>
+
+<hbox name="item_child_no_gizmo" reference="1">
+	<hbox align="expand">
+		<data>item</data>
+		
+		<sprite>
+			<layer texture="editor/gui/helpers_tree.png" translate_y="-26.0" translate_x="6.0"/>
+		</sprite>
+		
+		<hbox space_x="10"/>
+		
+		<label>
+			<text>text</text>
+			<callback type="double_clicked" instance="instance" string="type">icon_and_gizmo_clicked</callback>
+		</label>
+		
+		<hbox align="right" space_x="4"/>
+		
+		<checkbox name="type_icon" align="right">
+			<data>icon,type</data>
+			<callback type="clicked,double_clicked" instance="instance" string="world_show_handler" widget="type_icon">check_box_clicked</callback>
+		</checkbox>
+		
+		<hbox align="right" space_x="13"/>
+		
+	</hbox>
+</hbox>
+
+<hbox name="cmd_item" reference="1">
+	<checkbox name="cmd" align="left">
+		<text>text</text>
+		<data>cmd</data>
+		<callback type="clicked" instance="instance" widget="cmd">console_clicked</callback>
+		<tooltip>tooltip</tooltip>
+	</checkbox>
+</hbox>
+
+<vbox name="menu_vb" background="1" export="1" space="0">
+	<vbox space="4" align="expand">
+		<data>items</data>
+		
+		<reference name="cmd_item" text="FPS counter" cmd="show_fps" tooltip="Shows the FPS counter in the upper right corner"/>
+		<reference name="cmd_item" text="Messages" cmd="show_messages" tooltip="Shows the system messages in the viewport"/>
+		<reference name="cmd_item" text="Visualizer" cmd="show_visualizer" tooltip="Shows the visualizer"/>
+		
+		<checkbox name="viewcube_cb" export="1" align="left">
+			<text>ViewCube</text>
+			<tooltip>Shows the ViewCube in the upper right corner</tooltip>
+			<callback type="clicked" instance="instance" string="viewcube_clicked" widget="viewcube_cb">callback_redirector_1</callback>
+		</checkbox>
+		
+		<checkbox name="node_info_cb" export="1" align="left">
+			<text>Selected node info</text>
+			<tooltip>Shows information on the selected object $(nodes_info)</tooltip>
+		</checkbox>
+		
+		<checkbox name="dynamic_info_cb" export="1" align="left">
+			<text>Pointed node info</text>
+			<tooltip>Shows information on the object pointed at with the mouse cursor</tooltip>
+		</checkbox>
+		
+		<checkbox name="mesh_skinned_bones_cb" export="1" align="left">
+			<text>Mesh bones</text>
+			<tooltip>Shows bones of the selected skinned mesh. To toggle press $(mesh_bones)</tooltip>
+		</checkbox>
+		
+		<checkbox name="object_bounds_cb" export="1" align="left">
+			<text>Object bounds</text>
+			<tooltip>Shows bounding boxes of the selected objects. To toggle press $(object_bounds)</tooltip>
+		</checkbox>
+		
+		<checkbox name="object_wireframe_cb" export="1" align="left">
+			<text>Object wireframe</text>
+			<tooltip>Shows a wireframe of the selected object $(object_wireframe)</tooltip>
+		</checkbox>
+		
+		<checkbox name="particles_physics_cb" export="1" align="left">
+			<text>Particles physics</text>
+			<tooltip>Shows point forces and deflectors used for the selected particles</tooltip>
+		</checkbox>
+		
+		<hbox align="expand" space_x="4">
+			<label>
+				<text>Icon size</text>
+			</label>
+			<hslider name="size_s" export="1" align="expand" min="10" max="400" value="1">
+				<callback type="changed" instance="instance" string="size_changed">callback_redirector</callback>
+				<tooltip>Changes the size of the visualized icons of the nodes</tooltip>
+			</hslider>
+			
+		</hbox>
+	</vbox>
+	
+	<hbox align="expand" space_x="0" space_y="0">
+		<label align="right">
+			<text size="10">Icon</text>
+		</label>
+		<hbox align="right" space_x="2" space_y="0"/>
+		<label align="right">
+			<text size="10">Gizmo</text>
+		</label>
+		<hbox align="right" space_x="2" space_y="0"/>
+		<hbox name="space_hb" export="1" align="right" space_x="8" space_y="0"/>
+	</hbox>
+	<hbox align="right" space_y="2"/>
+	
+	<scrollbox name="scroll_box" export="1" henabled="0">
+		<vbox name="gizmo_vb" export="1">
+			<reference name="item_parent_no_gizmo" label="Nodes" widget="nodes" tooltip="Visualize icons of nodes"/>
+			<vbox hidden="1">
+				<data>childs</data>
+				<reference name="item_child_no_gizmo" text="Dummy" type="NodeDummy"/>
+				<reference name="item_child_no_gizmo" text="Layer" type="NodeLayer"/>
+				<reference name="item_child_no_gizmo" text="Pivot" type="NodePivot"/>
+				<reference name="item_child_no_gizmo" text="Trigger" type="NodeTrigger"/>
+				<hspacer/>
+			</vbox>
+			
+			<reference name="item_parent_no_gizmo" label="Objects" widget="objects" tooltip="Visualize icons of objects"/>
+			<vbox hidden="1">
+				<data>childs</data>
+				<reference name="item_child_no_gizmo" text="Water Global" type="ObjectWater"/>
+				<reference name="item_child_no_gizmo" text="Water Mesh" type="ObjectWaterMesh"/>
+				<reference name="item_child_no_gizmo" text="Sky" type="ObjectSky"/>
+				<reference name="item_child_no_gizmo" text="Grass" type="ObjectGrass"/>
+				<reference name="item_child_no_gizmo" text="Billboard" type="ObjectBillboard"/>
+				<reference name="item_child_no_gizmo" text="Billboards" type="ObjectBillboards"/>
+				<reference name="item_child_no_gizmo" text="Dummy" type="ObjectDummy"/>
+				<reference name="item_child_no_gizmo" text="MeshCluster" type="ObjectMeshCluster"/>
+				<reference name="item_child_no_gizmo" text="MeshClutter" type="ObjectMeshClutter"/>
+				<hspacer/>
+			</vbox>
+			
+			<reference name="item_parent" label="Effects" widget="effects" tooltip="Visualize icons and gizmos of special effects"/>
+			<vbox hidden="1">
+				<data>childs</data>
+				<reference name="item_child" text="Particle System" type="ObjectParticles"/>
+				<reference name="item_child" text="Field Spacer" type="FieldSpacer"/>
+				<reference name="item_child" text="Field Animation" type="FieldAnimation"/>
+				<reference name="item_child" text="Physical Wind" type="PhysicalWind"/>
+				<reference name="item_child" text="Physical Force" type="PhysicalForce"/>
+				<reference name="item_child" text="Physical Noise" type="PhysicalNoise"/>
+				<reference name="item_child" text="Physical Water" type="PhysicalWater"/>
+				<reference name="item_child" text="Physical Trigger" type="PhysicalTrigger"/>
+				<reference name="item_child_no_gizmo" text="Volume Box" type="ObjectVolumeBox"/>
+				<reference name="item_child_no_gizmo" text="Volume Sphere" type="ObjectVolumeSphere"/>
+				<reference name="item_child_no_gizmo" text="Volume Omni" type="ObjectVolumeOmni"/>
+				<reference name="item_child_no_gizmo" text="Volume Projected" type="ObjectVolumeProj"/>
+				<hspacer/>
+			</vbox>
+			
+			<reference name="item_parent" label="Lights" widget="lights" tooltip="Visualize icons and gizmos of light sources"/>
+			<vbox hidden="1">
+				<data>childs</data>
+				<reference name="item_child" text="Spot" type="LightSpot"/>
+				<reference name="item_child" text="Omni" type="LightOmni"/>
+				<reference name="item_child" text="Projected" type="LightProj"/>
+				<reference name="item_child" text="World" type="LightWorld"/>
+				<reference name="item_child" text="Probe" type="LightProb"/>
+				<hspacer/>
+			</vbox>
+			
+			<reference name="item_parent" label="Decal" widget="decals" tooltip="Visualize icons and gizmos of decals"/>
+			<vbox hidden="1">
+				<data>childs</data>
+				<reference name="item_child" text="Object Omni" type="DecalObjectOmni"/>
+				<reference name="item_child" text="Object Projected" type="DecalObjectProj"/>
+				<reference name="item_child" text="Object Orthographic" type="DecalObjectOrtho"/>
+				<reference name="item_child" text="Terrain Projected" type="DecalTerrainProj"/>
+				<reference name="item_child" text="Terrain Orthographic" type="DecalTerrainOrtho"/>
+				<reference name="item_child" text="Deferred Projected" type="DecalDeferredProj"/>
+				<reference name="item_child" text="Deferred Orthographic" type="DecalDeferredOrtho"/>
+				<reference name="item_child" text="Deferred Mesh" type="DecalDeferredMesh"/>
+				<hspacer/>
+			</vbox>
+			
+			<reference name="item_parent" label="Worlds" widget="worlds" tooltip="Visualize icons and gizmos of world objects"/>
+			<vbox hidden="1">
+				<data>childs</data>
+				<reference name="item_child" text="Sector" type="WorldSector"/>
+				<reference name="item_child" text="Portal" type="WorldPortal"/>
+				<reference name="item_child" text="Trigger" type="WorldTrigger"/>
+				<reference name="item_child" text="Switcher" type="WorldSwitcher"/>
+				<reference name="item_child" text="Occluder" type="WorldOccluder"/>
+				<reference name="item_child" text="Occluder Mesh" type="WorldOccluderMesh"/>
+				<reference name="item_child" text="Occluder Terrain" type="WorldOccluderTerrain"/>
+				<reference name="item_child" text="Transform Bone" type="WorldTransformBone"/>
+				<reference name="item_child" text="Transform Path" type="WorldTransformPath"/>
+				<reference name="item_child" text="Expression" type="WorldExpression"/>
+				<reference name="item_child_no_gizmo" text="WorldCluster" type="WorldCluster"/>
+				<reference name="item_child_no_gizmo" text="WorldClutter" type="WorldClutter"/>
+				<reference name="item_child_no_gizmo" text="Layer" type="WorldLayer"/>
+				<hspacer/>
+			</vbox>
+			
+			<reference name="item_parent" label="Sounds" widget="sounds" tooltip="Visualize icons and gizmos of sound objects"/>
+			<vbox hidden="1">
+				<data>childs</data>
+				<reference name="item_child" text="Source" type="SoundSource"/>
+				<reference name="item_child" text="Reverberation Zone" type="SoundReverb"/>
+				<hspacer/>
+			</vbox>
+			
+			<reference name="item_parent" label="Paths" widget="paths" tooltip="Visualize icons and gizmos of pathfinding objects"/>
+			<vbox hidden="1">
+				<data>childs</data>
+				<reference name="item_child" text="Navigation Sector" type="NavigationSector"/>
+				<reference name="item_child" text="Navigation Mesh" type="NavigationMesh"/>
+				<reference name="item_child" text="Obstacle Box" type="ObstacleBox"/>
+				<reference name="item_child" text="Obstacle Sphere" type="ObstacleSphere"/>
+				<reference name="item_child" text="Obstacle Capsule" type="ObstacleCapsule"/>
+				<hspacer/>
+			</vbox>
+			
+			<reference name="item_parent" label="Players" widget="players" tooltip="Visualize icons and gizmos of players"/>
+			<vbox hidden="1">
+				<data>childs</data>
+				<reference name="item_child" text="Dummy" type="PlayerDummy"/>
+				<reference name="item_child" text="Persecutor" type="PlayerPersecutor"/>
+			</vbox>
+		</vbox>
+	</scrollbox>
+	
+	<hbox space="4" align="expand">
+		<data>item</data>
+		
+		<hbox space_x="7"/>
+		<label align="left">
+			<text>Physics</text>
+			<tooltip>Visualize shapes, joints and contacts of the physical bodies</tooltip>
+		</label>
+		<label align="right"><text size="10">►</text></label>
+		
+		<vbox background="1" space="0">
+			<data>menu</data>
+			<vbox space="4" align="expand">
+				<data>items</data>
+				<reference name="cmd_item" text="Shapes" cmd="physics_show_shapes"/>
+				<reference name="cmd_item" text="Joints" cmd="physics_show_joints"/>
+				<reference name="cmd_item" text="Contacts" cmd="physics_show_contacts"/>
+			</vbox>
+		</vbox>
+	</hbox>
+</vbox>
+</ui>

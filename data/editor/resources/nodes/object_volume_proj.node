@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="ObjectVolumeProj" id="2096928343" collider="0">
+		<size>0.1</size>
+		<radius>10</radius>
+		<fov>60</fov>
+		<step>0.5</step>
+		<velocity>0</velocity>
+		<rotation>0</rotation>
+		<surface name="volume" material="volume_proj_base" property="surface_base"/>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

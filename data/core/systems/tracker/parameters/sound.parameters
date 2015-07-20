@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<parameters version="1.00">
+	
+	<!-- Common parameters -->
+	<parameter type="sound.enabled" track="toggle">
+		<set>engine.sound.setEnabled(VALUE);</set>
+		<get>VALUE = engine.sound.isEnabled();</get>
+	</parameter>
+	<parameter type="sound.scale" track="float" min="0.0" max="2.0">
+		<set>engine.sound.setScale(VALUE);</set>
+		<get>VALUE = engine.sound.getScale();</get>
+	</parameter>
+	<parameter type="sound.volume" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setVolume(VALUE);</set>
+		<get>VALUE = engine.sound.getVolume();</get>
+	</parameter>
+	<parameter type="sound.doppler" track="float" min="0.0">
+		<set>engine.sound.setDoppler(VALUE);</set>
+		<get>VALUE = engine.sound.getDoppler();</get>
+	</parameter>
+	<parameter type="sound.velocity" track="float" min="0.0">
+		<set>engine.sound.setVelocity(VALUE);</set>
+		<get>VALUE = engine.sound.getVelocity();</get>
+	</parameter>
+	<parameter type="sound.adaptation" track="float" min="0.0">
+		<set>engine.sound.setAdaptation(VALUE);</set>
+		<get>VALUE = engine.sound.getAdaptation();</get>
+	</parameter>
+	
+	<!-- Source parameters -->
+	<parameter type="sound.volume0" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(0,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(0);</get>
+	</parameter>
+	<parameter type="sound.volume1" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(1,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(1);</get>
+	</parameter>
+	<parameter type="sound.volume2" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(2,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(2);</get>
+	</parameter>
+	<parameter type="sound.volume3" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(3,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(3);</get>
+	</parameter>
+	<parameter type="sound.volume4" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(4,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(4);</get>
+	</parameter>
+	<parameter type="sound.volume5" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(5,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(5);</get>
+	</parameter>
+	<parameter type="sound.volume6" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(6,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(6);</get>
+	</parameter>
+	<parameter type="sound.volume7" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(7,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(7);</get>
+	</parameter>
+	<parameter type="sound.volume8" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(8,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(8);</get>
+	</parameter>
+	<parameter type="sound.volume9" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(9,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(9);</get>
+	</parameter>
+	<parameter type="sound.volume10" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(10,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(10);</get>
+	</parameter>
+	<parameter type="sound.volume11" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(11,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(11);</get>
+	</parameter>
+	<parameter type="sound.volume12" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(12,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(12);</get>
+	</parameter>
+	<parameter type="sound.volume13" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(13,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(13);</get>
+	</parameter>
+	<parameter type="sound.volume14" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(14,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(14);</get>
+	</parameter>
+	<parameter type="sound.volume15" track="float" min="0.0" max="1.0">
+		<set>engine.sound.setSourceVolume(15,VALUE);</set>
+		<get>VALUE = engine.sound.getSourceVolume(15);</get>
+	</parameter>
+	
+</parameters>

@@ -1,0 +1,2006 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_render.ui
+ * Desc:    Unigine editor
+ * Version: 1.42
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Valia Vaneeva <fattie@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Render
+ */
+-->
+<window name="Render::window" export="1">
+	<text>Rendering settings</text>
+	<vbox align="expand">
+		<tabbox name="Render::tabbox" export="1" align="expand">
+			
+			<tab>
+				<text>Common</text>
+				<vbox space="4">
+					<gridbox align="expand" columns="4" space="4">
+						
+						<label align="right"><text>Distance scale:</text></label>
+						<editline name="Render::Common::distance_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::distance_scale_pressed</callback>
+						</editline>
+						<hslider name="Render::Common::distance_scale_sl" export="0" align="expand" min="1" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Common::distance_scale_el</attach>
+							<callback type="clicked">Render::Common::slider_clicked</callback>
+							<callback type="changed">Render::Common::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>World distance:</text></label>
+						<editline name="Render::Common::world_distance_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::world_distance_pressed</callback>
+							<tooltip>Distance when all nodes are turned off</tooltip>
+						</editline>
+						<label align="right"><text>World budget:</text></label>
+						<editline name="Render::Common::world_budget_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::world_budget_pressed</callback>
+							<tooltip>World generation time budget in frames per second</tooltip>
+						</editline>
+						
+						<label align="right"><text>Physics distance:</text></label>
+						<editline name="Render::Common::physics_distance_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::physics_distance_pressed</callback>
+							<tooltip>Distance when physics is turned off</tooltip>
+						</editline>
+						<label align="right"><text>Physics budget:</text></label>
+						<editline name="Render::Common::physics_budget_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::physics_budget_pressed</callback>
+							<tooltip>Physics simulation time budget in frames per second</tooltip>
+						</editline>
+						
+						<label align="right"><text>Field distance:</text></label>
+						<editline name="Render::Common::field_distance_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::field_distance_pressed</callback>
+							<tooltip>Distance when fields are turned off</tooltip>
+						</editline>
+						<label align="right"><text>Render budget:</text></label>
+						<editline name="Render::Common::render_budget_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::render_budget_pressed</callback>
+							<tooltip>Render creation time budget in frames per second</tooltip>
+						</editline>
+						
+						<label align="right"><text>Decal distance:</text></label>
+						<editline name="Render::Common::decal_distance_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::decal_distance_pressed</callback>
+							<tooltip>Distance when decals are turned off</tooltip>
+						</editline>
+						<label align="right"><text>Light distance:</text></label>
+						<editline name="Render::Common::light_distance_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::light_distance_pressed</callback>
+							<tooltip>Distance when lights are turned off</tooltip>
+						</editline>
+						
+						<label align="right"><text>Clutter distance:</text></label>
+						<editline name="Render::Common::clutter_distance_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::clutter_distance_pressed</callback>
+							<tooltip>Distance when clutter objects are turned off</tooltip>
+						</editline>
+						<label align="right"><text>Object distance:</text></label>
+						<editline name="Render::Common::object_distance_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::object_distance_pressed</callback>
+							<tooltip>Distance when objects are turned off</tooltip>
+						</editline>
+						
+						<label align="right"><text>Reflection distance:</text></label>
+						<editline name="Render::Common::reflection_distance_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::reflection_distance_pressed</callback>
+							<tooltip>Distance when reflections are turned off</tooltip>
+						</editline>
+						<label align="right"><text>Shadow distance:</text></label>
+						<editline name="Render::Common::shadow_distance_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::shadow_distance_pressed</callback>
+							<callback type="changed" widget="Render::Common::shadow_distance_el" string="0,10000000">Creator::validate_editline</callback>
+							<callback type="focus_out" widget="Render::Common::shadow_distance_el" string="0,10000000">Creator::validate_float_editline_focus_out</callback>
+							<tooltip>Distance when shadows are turned off</tooltip>
+						</editline>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Ambient color:</text></label>
+						<groupbox align="expand">
+							<hbox align="expand">
+								<sprite name="Render::Common::ambient_color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<tooltip>The color used to color all objects during the ambient rendering passes</tooltip>
+									<callback type="clicked">Render::Common::ambient_color_clicked</callback>
+								</sprite>
+								<sprite name="Render::Common::ambient_color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<callback type="clicked">Render::Common::ambient_color_clicked</callback>
+								</sprite>
+							</hbox>
+						</groupbox>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Reflection color:</text></label>
+						<groupbox align="expand">
+							<hbox align="expand">
+								<sprite name="Render::Common::reflection_color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<tooltip>Reflection color for reflective mesh materials</tooltip>
+									<callback type="clicked">Render::Common::reflection_color_clicked</callback>
+								</sprite>
+								<sprite name="Render::Common::reflection_color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<callback type="clicked">Render::Common::reflection_color_clicked</callback>
+								</sprite>
+							</hbox>
+						</groupbox>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Background color:</text></label>
+						<groupbox align="expand">
+							<hbox align="expand">
+								<sprite name="Render::Common::background_color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<tooltip>Solid color rendered on the scene background</tooltip>
+									<callback type="clicked">Render::Common::background_color_clicked</callback>
+								</sprite>
+								<sprite name="Render::Common::background_color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<callback type="clicked">Render::Common::background_color_clicked</callback>
+								</sprite>
+							</hbox>
+						</groupbox>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Wireframe color:</text></label>
+						<groupbox align="expand">
+							<hbox align="expand">
+								<sprite name="Render::Common::wireframe_color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<tooltip>Solid color rendered on the scene wireframe</tooltip>
+									<callback type="clicked">Render::Common::wireframe_color_clicked</callback>
+								</sprite>
+								<sprite name="Render::Common::wireframe_color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<callback type="clicked">Render::Common::wireframe_color_clicked</callback>
+								</sprite>
+							</hbox>
+						</groupbox>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Environment:</text></label>
+						<hbox align="expand">
+							<editline name="Render::Common::environment_texture_el" export="1" align="expand">
+								<callback type="pressed,focus_out">Render::Common::environment_texture_pressed</callback>
+							</editline>
+							<icon texture="editor/gui/action_load.png" width="22" height="20">
+								<callback type="clicked">Render::Common::environment_texture_load_clicked</callback>
+							</icon>
+							<icon texture="editor/gui/action_view.png" width="22" height="20">
+								<callback type="clicked">Render::Common::environment_texture_view_clicked</callback>
+							</icon>
+							<icon texture="editor/gui/action_clear.png" width="22" height="20">
+								<callback type="clicked">Render::Common::environment_texture_clear_clicked</callback>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Exposure:</text></label>
+						<editline name="Render::Common::environment_exposure_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Common::environment_exposure_pressed</callback>
+							<tooltip>Brightness of ambient lighting</tooltip>
+						</editline>
+						<hslider name="Render::Common::environment_exposure_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000" flags="max_expand">Render::Common::environment_exposure_el</attach>
+							<callback type="clicked">Render::Common::slider_clicked</callback>
+							<callback type="changed">Render::Common::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Render:</text></label>
+						<hbox align="expand">
+							<editline name="Render::Common::render_materials_el" export="1" align="expand">
+								<callback type="pressed,focus_out">Render::Common::render_materials_pressed</callback>
+								<tooltip>Render materials applied before post-processes (HDR, DOF, etc.)</tooltip>
+							</editline>
+							<icon texture="editor/gui/action_clear.png" width="22" height="20">
+								<callback type="clicked">Render::Common::render_materials_clear_clicked</callback>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Composite:</text></label>
+						<hbox align="expand">
+							<editline name="Render::Common::composite_material_el" export="1" align="expand">
+								<callback type="pressed,focus_out">Render::Common::composite_material_pressed</callback>
+								<tooltip>Custom composite shader for the final screen composition</tooltip>
+							</editline>
+							<icon texture="editor/gui/action_clear.png" width="22" height="20">
+								<callback type="clicked">Render::Common::composite_material_clear_clicked</callback>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Post:</text></label>
+						<hbox align="expand">
+							<editline name="Render::Common::post_materials_el" export="1" align="expand">
+								<callback type="pressed,focus_out">Render::Common::post_materials_pressed</callback>
+								<tooltip>Post materials applied as the very last post-processes (after HDR, DOF, etc.)</tooltip>
+							</editline>
+							<icon texture="editor/gui/action_clear.png" width="22" height="20">
+								<callback type="clicked">Render::Common::post_materials_clear_clicked</callback>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						
+					</gridbox>
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>Parameters</text>
+				<vbox space="4">
+					<gridbox align="expand" columns="4" space="4">
+						
+						<label align="right"><text>Tessellation scale:</text></label>
+						<editline name="Render::Parameters::tessellation_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::tessellation_scale_pressed</callback>
+						</editline>
+						<hslider name="Render::Parameters::tessellation_scale_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Parameters::tessellation_scale_el</attach>
+							<callback type="clicked">Render::Parameters::slider_clicked</callback>
+							<callback type="changed">Render::Parameters::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Tessellation factor:</text></label>
+						<editline name="Render::Parameters::tessellation_factor_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::tessellation_factor_pressed</callback>
+						</editline>
+						<hslider name="Render::Parameters::tessellation_factor_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Parameters::tessellation_factor_el</attach>
+							<callback type="clicked">Render::Parameters::slider_clicked</callback>
+							<callback type="changed">Render::Parameters::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Tessellation distance:</text></label>
+						<editline name="Render::Parameters::tessellation_distance_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::tessellation_distance_pressed</callback>
+						</editline>
+						<hslider name="Render::Parameters::tessellation_distance_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Parameters::tessellation_distance_el</attach>
+							<callback type="clicked">Render::Parameters::slider_clicked</callback>
+							<callback type="changed">Render::Parameters::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Animation stem:</text></label>
+						<editline name="Render::Parameters::animation_stem_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::animation_stem_pressed</callback>
+						</editline>
+						<hslider name="Render::Parameters::animation_stem_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Parameters::animation_stem_el</attach>
+							<callback type="clicked">Render::Parameters::slider_clicked</callback>
+							<callback type="changed">Render::Parameters::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Animation leaf:</text></label>
+						<editline name="Render::Parameters::animation_leaf_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::animation_leaf_pressed</callback>
+						</editline>
+						<hslider name="Render::Parameters::animation_leaf_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Parameters::animation_leaf_el</attach>
+							<callback type="clicked">Render::Parameters::slider_clicked</callback>
+							<callback type="changed">Render::Parameters::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Animation scale:</text></label>
+						<editline name="Render::Parameters::animation_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::animation_scale_pressed</callback>
+						</editline>
+						<hslider name="Render::Parameters::animation_scale_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Parameters::animation_scale_el</attach>
+							<callback type="clicked">Render::Parameters::slider_clicked</callback>
+							<callback type="changed">Render::Parameters::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Animation wind:</text></label>
+						<editline name="Render::Parameters::animation_wind_el[0]" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::animation_wind_pressed</callback>
+						</editline>
+						<editline name="Render::Parameters::animation_wind_el[1]" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::animation_wind_pressed</callback>
+						</editline>
+						<editline name="Render::Parameters::animation_wind_el[2]" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::animation_wind_pressed</callback>
+						</editline>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Global mask:</text></label>
+						<hbox align="expand">
+							<editline name="Render::Parameters::light_prob_mask_el" export="1" align="expand">
+								<tooltip>Mask that determines rendering of LightProb-based global illumination</tooltip>
+								<text face="core/gui/console.ttf"/>
+								<callback type="pressed,focus_out">Render::Parameters::light_prob_mask_pressed</callback>
+								<callback type="double_clicked">Render::Parameters::light_prob_mask_clicked</callback>
+							</editline>
+							<icon texture="editor/gui/action_edit.png" width="24" height="24">
+								<callback type="clicked">Render::Parameters::light_prob_mask_clicked</callback>
+								<tooltip>Edit mask</tooltip>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Global distance:</text></label>
+						<editline name="Render::Parameters::light_prob_distance_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::light_prob_distance_pressed</callback>
+						</editline>
+						<hslider name="Render::Parameters::light_prob_distance_sl" export="0" align="expand" min="0" max="20000">
+							<attach multiplier="100" flags="max_expand">Render::Parameters::light_prob_distance_el</attach>
+							<callback type="clicked">Render::Parameters::slider_clicked</callback>
+							<callback type="changed">Render::Parameters::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Global attenuation:</text></label>
+						<editline name="Render::Parameters::light_prob_attenuation_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::light_prob_attenuation_pressed</callback>
+						</editline>
+						<hslider name="Render::Parameters::light_prob_attenuation_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Parameters::light_prob_attenuation_el</attach>
+							<callback type="clicked">Render::Parameters::slider_clicked</callback>
+							<callback type="changed">Render::Parameters::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Global bias:</text></label>
+						<editline name="Render::Parameters::light_prob_fresnel_bias_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::light_prob_fresnel_bias_pressed</callback>
+						</editline>
+						<hslider name="Render::Parameters::light_prob_fresnel_bias_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Parameters::light_prob_fresnel_bias_el</attach>
+							<callback type="clicked">Render::Parameters::slider_clicked</callback>
+							<callback type="changed">Render::Parameters::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Global power:</text></label>
+						<editline name="Render::Parameters::light_prob_fresnel_power_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::light_prob_fresnel_power_pressed</callback>
+						</editline>
+						<hslider name="Render::Parameters::light_prob_fresnel_power_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="log10,max_expand">Render::Parameters::light_prob_fresnel_power_el</attach>
+							<callback type="clicked">Render::Parameters::slider_clicked</callback>
+							<callback type="changed">Render::Parameters::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Global diffuse:</text></label>
+						<editline name="Render::Parameters::light_prob_diffuse_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::light_prob_diffuse_scale_pressed</callback>
+						</editline>
+						<hslider name="Render::Parameters::light_prob_diffuse_scale_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Parameters::light_prob_diffuse_scale_el</attach>
+							<callback type="clicked">Render::Parameters::slider_clicked</callback>
+							<callback type="changed">Render::Parameters::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Global specular:</text></label>
+						<editline name="Render::Parameters::light_prob_specular_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Parameters::light_prob_specular_scale_pressed</callback>
+						</editline>
+						<hslider name="Render::Parameters::light_prob_specular_scale_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Parameters::light_prob_specular_scale_el</attach>
+							<callback type="clicked">Render::Parameters::slider_clicked</callback>
+							<callback type="changed">Render::Parameters::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						
+					</gridbox>
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>Occlusion </text>
+				<vbox space="4">
+					<gridbox align="expand" columns="4" space="4">
+						
+						<label align="right"><text>Ambient screen radius:</text></label>
+						<editline name="Render::Occlusion::ambient_screen_radius_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::ambient_screen_radius_pressed</callback>
+							<tooltip>Distance in the screen space, within which the geometry is sampled to compute self-shadowing.</tooltip>
+						</editline>
+						<hslider name="Render::Occlusion::ambient_screen_radius_sl" export="0" align="expand" min="0" max="200">
+							<attach multiplier="1000">Render::Occlusion::ambient_screen_radius_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Ambient sample radius:</text></label>
+						<editline name="Render::Occlusion::ambient_sample_radius_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::ambient_sample_radius_pressed</callback>
+							<tooltip>Distance for each of the points in the world space, up to which they can shadow their neighbouring points</tooltip>
+						</editline>
+						<hslider name="Render::Occlusion::ambient_sample_radius_sl" export="0" align="expand" min="0" max="10000">
+							<attach multiplier="1000" flags="max_expand">Render::Occlusion::ambient_sample_radius_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Ambient perspective:</text></label>
+						<editline name="Render::Occlusion::ambient_perspective_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::ambient_perspective_pressed</callback>
+							<tooltip>Perspective compensation for the ambient occlusion</tooltip>
+						</editline>
+						<hslider name="Render::Occlusion::ambient_perspective_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Occlusion::ambient_perspective_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Ambient attenuation:</text></label>
+						<editline name="Render::Occlusion::ambient_attenuation_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::ambient_attenuation_pressed</callback>
+							<tooltip>Coefficient that compensates for falloff of the ambient occlusion with a distance</tooltip>
+						</editline>
+						<hslider name="Render::Occlusion::ambient_attenuation_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Occlusion::ambient_attenuation_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Ambient threshold:</text></label>
+						<editline name="Render::Occlusion::ambient_threshold_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::ambient_threshold_pressed</callback>
+							<tooltip>Depth threshold used to filter ambient occlusion</tooltip>
+						</editline>
+						<hslider name="Render::Occlusion::ambient_threshold_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Occlusion::ambient_threshold_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Ambient emitter normal:</text></label>
+						<editline name="Render::Occlusion::ambient_emitter_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::ambient_emitter_pressed</callback>
+						</editline>
+						<hslider name="Render::Occlusion::ambient_emitter_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Occlusion::ambient_emitter_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Ambient receiver normal:</text></label>
+						<editline name="Render::Occlusion::ambient_receiver_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::ambient_receiver_pressed</callback>
+						</editline>
+						<hslider name="Render::Occlusion::ambient_receiver_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Occlusion::ambient_receiver_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Ambient scale:</text></label>
+						<editline name="Render::Occlusion::ambient_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::ambient_scale_pressed</callback>
+							<tooltip>Brightness scale of ambient occlusion shadowing</tooltip>
+						</editline>
+						<hslider name="Render::Occlusion::ambient_scale_sl" export="0"  align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Occlusion::ambient_scale_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Ambient power:</text></label>
+						<editline name="Render::Occlusion::ambient_power_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::ambient_power_pressed</callback>
+						</editline>
+						<hslider name="Render::Occlusion::ambient_power_sl" export="0"  align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Occlusion::ambient_power_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Light screen radius:</text></label>
+						<editline name="Render::Occlusion::light_screen_radius_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::light_screen_radius_pressed</callback>
+							<tooltip>Light occlusion radius in the screen space</tooltip>
+						</editline>
+						<hslider name="Render::Occlusion::light_screen_radius_sl" export="0" align="expand" min="0" max="200">
+							<attach multiplier="1000">Render::Occlusion::light_screen_radius_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Light sample radius:</text></label>
+						<editline name="Render::Occlusion::light_sample_radius_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::light_sample_radius_pressed</callback>
+							<tooltip>Distance for each of the points in the world space, up to which they can illuminate their neighbouring points</tooltip>
+						</editline>
+						<hslider name="Render::Occlusion::light_sample_radius_sl" export="0" align="expand" min="0" max="10000">
+							<attach multiplier="1000" flags="max_expand">Render::Occlusion::light_sample_radius_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Light perspective:</text></label>
+						<editline name="Render::Occlusion::light_perspective_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::light_perspective_pressed</callback>
+							<tooltip>Perspective compensation for the light occlusion</tooltip>
+						</editline>
+						<hslider name="Render::Occlusion::light_perspective_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Occlusion::light_perspective_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Light attenuation:</text></label>
+						<editline name="Render::Occlusion::light_attenuation_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::light_attenuation_pressed</callback>
+							<tooltip>Coefficient that compensates for falloff of the light occlusion with a distance</tooltip>
+						</editline>
+						<hslider name="Render::Occlusion::light_attenuation_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Occlusion::light_attenuation_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Light threshold:</text></label>
+						<editline name="Render::Occlusion::light_threshold_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::light_threshold_pressed</callback>
+							<tooltip>Depth threshold used to filter light occlusion</tooltip>
+						</editline>
+						<hslider name="Render::Occlusion::light_threshold_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Occlusion::light_threshold_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Light emitter normal:</text></label>
+						<editline name="Render::Occlusion::light_emitter_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::light_emitter_pressed</callback>
+						</editline>
+						<hslider name="Render::Occlusion::light_emitter_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Occlusion::light_emitter_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Light receiver normal:</text></label>
+						<editline name="Render::Occlusion::light_receiver_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::light_receiver_pressed</callback>
+						</editline>
+						<hslider name="Render::Occlusion::light_receiver_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Occlusion::light_receiver_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Light scale:</text></label>
+						<editline name="Render::Occlusion::light_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::light_scale_pressed</callback>
+							<tooltip>Brightness scale for light occlusion</tooltip>
+						</editline>
+						<hslider name="Render::Occlusion::light_scale_sl" export="0"  align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Occlusion::light_scale_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Light power:</text></label>
+						<editline name="Render::Occlusion::light_power_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Occlusion::light_power_pressed</callback>
+							<tooltip>Power of light occlusion</tooltip>
+						</editline>
+						<hslider name="Render::Occlusion::light_power_sl" export="0"  align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Occlusion::light_power_el</attach>
+							<callback type="clicked">Render::Occlusion::slider_clicked</callback>
+							<callback type="changed">Render::Occlusion::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						
+					</gridbox>
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>Scattering</text>
+				<vbox space="4">
+					<gridbox align="expand" columns="4" space="4">
+						
+						<label align="right"><text>Sun color:</text></label>
+						<groupbox align="expand">
+							<hbox align="expand">
+								<sprite name="Render::Scattering::sun_color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<callback type="clicked">Render::Scattering::sun_color_clicked</callback>
+								</sprite>
+								<sprite name="Render::Scattering::sun_color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<callback type="clicked">Render::Scattering::sun_color_clicked</callback>
+								</sprite>
+							</hbox>
+						</groupbox>
+						<vbox space="2"/>
+						<vbox/>
+						
+						<label align="right"><text>Ray color:</text></label>
+						<groupbox align="expand">
+							<hbox align="expand">
+								<sprite name="Render::Scattering::ray_color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<callback type="clicked">Render::Scattering::ray_color_clicked</callback>
+								</sprite>
+								<sprite name="Render::Scattering::ray_color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<callback type="clicked">Render::Scattering::ray_color_clicked</callback>
+								</sprite>
+							</hbox>
+						</groupbox>
+						<label align="right"><text>Mie color:</text></label>
+						<groupbox align="expand">
+							<hbox align="expand">
+								<sprite name="Render::Scattering::mie_color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<callback type="clicked">Render::Scattering::mie_color_clicked</callback>
+								</sprite>
+								<sprite name="Render::Scattering::mie_color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<callback type="clicked">Render::Scattering::mie_color_clicked</callback>
+								</sprite>
+							</hbox>
+						</groupbox>
+						
+						<label align="right"><text>Inner angle:</text></label>
+						<editline name="Render::Scattering::inner_angle_el" export="1" align="expand" validator="float">
+							<tooltip></tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::inner_angle_pressed</callback>
+						</editline>
+						<label align="right"><text>Outer angle:</text></label>
+						<editline name="Render::Scattering::outer_angle_el" export="1" align="expand" validator="float">
+							<tooltip></tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::outer_angle_pressed</callback>
+						</editline>
+						
+						<label align="right"><text>Refractive:</text></label>
+						<editline name="Render::Scattering::refractive_el" export="1" align="expand" validator="float">
+							<tooltip>Atmosphere refractive index (Rayleigh scattering)</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::refractive_pressed</callback>
+						</editline>
+						<label align="right"><text>Density:</text></label>
+						<editline name="Render::Scattering::density_el" export="1" align="expand" validator="float">
+							<tooltip>Number of molecules per unit volume (Rayleigh scattering)</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::density_pressed</callback>
+						</editline>
+						
+						<label align="right"><text>Depolarization:</text></label>
+						<editline name="Render::Scattering::depolarization_el" export="1" align="expand" validator="float">
+							<tooltip>Depolarization factor (Rayleigh scattering)</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::depolarization_pressed</callback>
+						</editline>
+						<label align="right"><text>Turbidity:</text></label>
+						<editline name="Render::Scattering::turbidity_el" export="1" align="expand" validator="float">
+							<tooltip>Atmosphere turbidity (Mie scattering)</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::turbidity_pressed</callback>
+						</editline>
+						
+						<label align="right"><text>Ground level:</text></label>
+						<editline name="Render::Scattering::ground_el" export="1" align="expand" validator="float">
+							<tooltip>Ground zero level</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::ground_pressed</callback>
+						</editline>
+						<label align="right"><text>Aerial:</text></label>
+						<editline name="Render::Scattering::areal_el" export="1" align="expand" validator="float">
+							<tooltip>Aerial perspective scale (scale of atmospheric curvature)</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::areal_pressed</callback>
+						</editline>
+						
+						<label align="right"><text>Ray height:</text></label>
+						<editline name="Render::Scattering::ray_height_el" export="1" align="expand" validator="float">
+							<tooltip>Rayleigh scattering height falloff</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::ray_height_pressed</callback>
+						</editline>
+						<label align="right"><text>Mie height:</text></label>
+						<editline name="Render::Scattering::mie_height_el" export="1" align="expand" validator="float">
+							<tooltip>Mie scattering height falloff</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::mie_height_pressed</callback>
+						</editline>
+						
+						<label align="right"><text>Angularity:</text></label>
+						<editline name="Render::Scattering::angularity_el" export="1" align="expand" validator="float">
+							<tooltip>Ray scattering angularity</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::angularity_pressed</callback>
+						</editline>
+						<label align="right"><text>Threshold:</text></label>
+						<editline name="Render::Scattering::threshold_el" export="1" align="expand" validator="float">
+							<tooltip>Mie scattering distance threshold</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::threshold_pressed</callback>
+						</editline>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Direction:</text></label>
+						<editline name="Render::Scattering::direction_el[0]" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Scattering::direction_pressed</callback>
+						</editline>
+						<editline name="Render::Scattering::direction_el[1]" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Scattering::direction_pressed</callback>
+						</editline>
+						<editline name="Render::Scattering::direction_el[2]" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Scattering::direction_pressed</callback>
+						</editline>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Greenstein:</text></label>
+						<editline name="Render::Scattering::greenstein_el" export="1" align="expand" validator="float">
+							<tooltip>Directionality factor of phase function (Mie scattering)</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::greenstein_pressed</callback>
+						</editline>
+						<hslider name="Render::Scattering::greenstein_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Scattering::greenstein_el</attach>
+							<callback type="clicked">Render::Scattering::slider_clicked</callback>
+							<callback type="changed">Render::Scattering::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Energy:</text></label>
+						<editline name="Render::Scattering::energy_el" export="1" align="expand" validator="float">
+							<tooltip>Irradiance of the sun</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::energy_pressed</callback>
+						</editline>
+						<hslider name="Render::Scattering::energy_sl" export="0" align="expand" min="0" max="20000">
+							<attach multiplier="1000" flags="max_expand">Render::Scattering::energy_el</attach>
+							<callback type="clicked">Render::Scattering::slider_clicked</callback>
+							<callback type="changed">Render::Scattering::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Power:</text></label>
+						<editline name="Render::Scattering::power_el" export="1" align="expand" validator="float">
+							<tooltip>Distance power</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::power_pressed</callback>
+						</editline>
+						<hslider name="Render::Scattering::power_sl" export="0"  align="expand" min="-601" max="601">
+							<attach multiplier="1000" flags="max_expand,log10">Render::Scattering::power_el</attach>
+							<callback type="clicked">Render::Scattering::slider_clicked</callback>
+							<callback type="changed">Render::Scattering::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Sun:</text></label>
+						<editline name="Render::Scattering::sun_el" export="1" align="expand" validator="float">
+							<tooltip>Sun color scale</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::sun_pressed</callback>
+						</editline>
+						<hslider name="Render::Scattering::sun_sl" export="0" align="expand" min="0" max="4000">
+							<attach multiplier="1000" flags="log10">Render::Scattering::sun_el</attach>
+							<callback type="clicked">Render::Scattering::slider_clicked</callback>
+							<callback type="changed">Render::Scattering::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Ray:</text></label>
+						<editline name="Render::Scattering::ray_el" export="1" align="expand" validator="float">
+							<tooltip>Rayleigh scattering scale</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::ray_pressed</callback>
+						</editline>
+						<hslider name="Render::Scattering::ray_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Scattering::ray_el</attach>
+							<callback type="clicked">Render::Scattering::slider_clicked</callback>
+							<callback type="changed">Render::Scattering::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Mie:</text></label>
+						<editline name="Render::Scattering::mie_el" export="1" align="expand" validator="float">
+							<tooltip>Mie scattering scale</tooltip>
+							<callback type="pressed,focus_out">Render::Scattering::mie_pressed</callback>
+						</editline>
+						<hslider name="Render::Scattering::mie_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Scattering::mie_el</attach>
+							<callback type="clicked">Render::Scattering::slider_clicked</callback>
+							<callback type="changed">Render::Scattering::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<button align="expand">
+							<text>Earth</text>
+							<callback type="clicked">Render::Scattering::earth_clicked</callback>
+						</button>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						
+					</gridbox>
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>Postprocess</text>
+				<vbox space="4">
+					<gridbox align="expand" columns="4" space="4">
+						
+						<label align="right"><text>Refraction red:</text></label>
+						<editline name="Render::Postprocess::refraction_dispersion_x_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::refraction_dispersion_x_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::refraction_dispersion_x_sl" export="0" align="expand" min="0" max="4000">
+							<attach multiplier="1000" flags="max_expand">Render::Postprocess::refraction_dispersion_x_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Refraction green:</text></label>
+						<editline name="Render::Postprocess::refraction_dispersion_y_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::refraction_dispersion_y_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::refraction_dispersion_y_sl" export="0" align="expand" min="0" max="4000">
+							<attach multiplier="1000" flags="max_expand">Render::Postprocess::refraction_dispersion_y_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Refraction blue:</text></label>
+						<editline name="Render::Postprocess::refraction_dispersion_z_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::refraction_dispersion_z_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::refraction_dispersion_z_sl" export="0" align="expand" min="0" max="4000">
+							<attach multiplier="1000" flags="max_expand">Render::Postprocess::refraction_dispersion_z_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Motion blur linear:</text></label>
+						<editline name="Render::Postprocess::motion_blur_linear_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::motion_blur_linear_scale_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::motion_blur_linear_scale_sl" export="0" align="expand" min="0" max="4000">
+							<attach multiplier="1000" flags="max_expand">Render::Postprocess::motion_blur_linear_scale_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Motion blur angular:</text></label>
+						<editline name="Render::Postprocess::motion_blur_angular_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::motion_blur_angular_scale_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::motion_blur_angular_scale_sl" export="0" align="expand" min="0" max="4000">
+							<attach multiplier="1000" flags="max_expand">Render::Postprocess::motion_blur_angular_scale_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Motion blur velocity:</text></label>
+						<editline name="Render::Postprocess::motion_blur_velocity_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::motion_blur_velocity_scale_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::motion_blur_velocity_scale_sl" export="0" align="expand" min="0" max="4000">
+							<attach multiplier="1000" flags="max_expand">Render::Postprocess::motion_blur_velocity_scale_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Maximum velocity:</text></label>
+						<editline name="Render::Postprocess::motion_blur_max_velocity_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::motion_blur_max_velocity_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::motion_blur_max_velocity_sl" export="0" align="expand" min="0" max="200000">
+							<attach multiplier="1000" flags="max_expand">Render::Postprocess::motion_blur_max_velocity_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Volumetric exposure:</text></label>
+						<editline name="Render::Postprocess::volumetric_exposure_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::volumetric_exposure_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::volumetric_exposure_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Postprocess::volumetric_exposure_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Volumetric length:</text></label>
+						<editline name="Render::Postprocess::volumetric_length_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::volumetric_length_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::volumetric_length_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Render::Postprocess::volumetric_length_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Volumetric attenuation:</text></label>
+						<editline name="Render::Postprocess::volumetric_attenuation_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::volumetric_attenuation_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::volumetric_attenuation_sl" export="0" align="expand" min="800" max="1000">
+							<attach multiplier="1000">Render::Postprocess::volumetric_attenuation_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Glow threshold:</text></label>
+						<editline name="Render::Postprocess::glow_threshold_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::glow_threshold_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::glow_threshold_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Postprocess::glow_threshold_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Glow small:</text></label>
+						<editline name="Render::Postprocess::glow_small_exposure_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::glow_small_exposure_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::glow_small_exposure_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Postprocess::glow_small_exposure_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Glow medium:</text></label>
+						<editline name="Render::Postprocess::glow_medium_exposure_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::glow_medium_exposure_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::glow_medium_exposure_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Postprocess::glow_medium_exposure_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Glow large:</text></label>
+						<editline name="Render::Postprocess::glow_large_exposure_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Postprocess::glow_large_exposure_pressed</callback>
+						</editline>
+						<hslider name="Render::Postprocess::glow_large_exposure_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::Postprocess::glow_large_exposure_el</attach>
+							<callback type="clicked">Render::Postprocess::slider_clicked</callback>
+							<callback type="changed">Render::Postprocess::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						
+					</gridbox>
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>DOF</text>
+				<vbox space="4">
+					<gridbox align="expand" columns="4" space="4">
+						
+						<label align="right"><text>Focal distance:</text></label>
+						<editline name="Render::DOF::focal_distance_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::DOF::focal_distance_pressed</callback>
+						</editline>
+						<hslider name="Render::DOF::focal_distance_sl" export="0" align="expand" min="0" max="10000">
+							<attach multiplier="100" flags="max_expand">Render::DOF::focal_distance_el</attach>
+							<callback type="clicked">Render::DOF::slider_clicked</callback>
+							<callback type="changed">Render::DOF::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Far blur range:</text></label>
+						<editline name="Render::DOF::far_blur_range_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::DOF::far_blur_range_pressed</callback>
+						</editline>
+						<hslider name="Render::DOF::far_blur_range_sl" export="0" align="expand" min="0" max="10000">
+							<attach multiplier="100" flags="max_expand">Render::DOF::far_blur_range_el</attach>
+							<callback type="clicked">Render::DOF::slider_clicked</callback>
+							<callback type="changed">Render::DOF::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Far blur radius:</text></label>
+						<editline name="Render::DOF::far_blur_radius_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::DOF::far_blur_radius_pressed</callback>
+						</editline>
+						<hslider name="Render::DOF::far_blur_radius_sl" export="0" align="expand" min="0" max="16000">
+							<attach multiplier="1000" flags="max_expand">Render::DOF::far_blur_radius_el</attach>
+							<callback type="clicked">Render::DOF::slider_clicked</callback>
+							<callback type="changed">Render::DOF::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Far blur power:</text></label>
+						<editline name="Render::DOF::far_blur_power_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::DOF::far_blur_power_pressed</callback>
+						</editline>
+						<hslider name="Render::DOF::far_blur_power_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::DOF::far_blur_power_el</attach>
+							<callback type="clicked">Render::DOF::slider_clicked</callback>
+							<callback type="changed">Render::DOF::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Far focal range:</text></label>
+						<editline name="Render::DOF::far_focal_range_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::DOF::far_focal_range_pressed</callback>
+							<tooltip>Determines how fast the objects become blurred across the far blur range</tooltip>
+						</editline>
+						<hslider name="Render::DOF::far_focal_range_sl" export="0" align="expand" min="0" max="10000">
+							<attach multiplier="100" flags="max_expand">Render::DOF::far_focal_range_el</attach>
+							<callback type="clicked">Render::DOF::slider_clicked</callback>
+							<callback type="changed">Render::DOF::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Far focal scale:</text></label>
+						<editline name="Render::DOF::far_focal_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::DOF::far_focal_scale_pressed</callback>
+							<tooltip>Shifts the far blur range closer to camera (i.e. the blurring starts closer to the camera)</tooltip>
+						</editline>
+						<hslider name="Render::DOF::far_focal_scale_sl" export="0" align="expand" min="1000" max="3000">
+							<attach multiplier="1000" flags="max_expand">Render::DOF::far_focal_scale_el</attach>
+							<callback type="clicked">Render::DOF::slider_clicked</callback>
+							<callback type="changed">Render::DOF::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Far focal power:</text></label>
+						<editline name="Render::DOF::far_focal_power_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::DOF::far_focal_power_pressed</callback>
+							<tooltip>Adjusts the DOF across the far blur range: the higher the value, the longer objects stay in-focus</tooltip>
+						</editline>
+						<hslider name="Render::DOF::far_focal_power_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::DOF::far_focal_power_el</attach>
+							<callback type="clicked">Render::DOF::slider_clicked</callback>
+							<callback type="changed">Render::DOF::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Near blur range:</text></label>
+						<editline name="Render::DOF::near_blur_range_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::DOF::near_blur_range_pressed</callback>
+						</editline>
+						<hslider name="Render::DOF::near_blur_range_sl" export="0" align="expand" min="0" max="10000">
+							<attach multiplier="100" flags="max_expand">Render::DOF::near_blur_range_el</attach>
+							<callback type="clicked">Render::DOF::slider_clicked</callback>
+							<callback type="changed">Render::DOF::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Near blur radius:</text></label>
+						<editline name="Render::DOF::near_blur_radius_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::DOF::near_blur_radius_pressed</callback>
+						</editline>
+						<hslider name="Render::DOF::near_blur_radius_sl" export="0" align="expand" min="0" max="16000">
+							<attach multiplier="1000" flags="max_expand">Render::DOF::near_blur_radius_el</attach>
+							<callback type="clicked">Render::DOF::slider_clicked</callback>
+							<callback type="changed">Render::DOF::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Near blur power:</text></label>
+						<editline name="Render::DOF::near_blur_power_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::DOF::near_blur_power_pressed</callback>
+						</editline>
+						<hslider name="Render::DOF::near_blur_power_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::DOF::near_blur_power_el</attach>
+							<callback type="clicked">Render::DOF::slider_clicked</callback>
+							<callback type="changed">Render::DOF::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Near focal range:</text></label>
+						<editline name="Render::DOF::near_focal_range_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::DOF::near_focal_range_pressed</callback>
+							<tooltip>Determines the area between the focal point and objects in crisp focus (not blurred)</tooltip>
+						</editline>
+						<hslider name="Render::DOF::near_focal_range_sl" export="0" align="expand" min="0" max="10000">
+							<attach multiplier="100" flags="max_expand">Render::DOF::near_focal_range_el</attach>
+							<callback type="clicked">Render::DOF::slider_clicked</callback>
+							<callback type="changed">Render::DOF::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Near focal scale:</text></label>
+						<editline name="Render::DOF::near_focal_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::DOF::near_focal_scale_pressed</callback>
+							<tooltip>Shifts the near blur range closer to the camera</tooltip>
+						</editline>
+						<hslider name="Render::DOF::near_focal_scale_sl" export="0" align="expand" min="1000" max="3000">
+							<attach multiplier="1000" flags="max_expand">Render::DOF::near_focal_scale_el</attach>
+							<callback type="clicked">Render::DOF::slider_clicked</callback>
+							<callback type="changed">Render::DOF::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Near focal power:</text></label>
+						<editline name="Render::DOF::near_focal_power_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::DOF::near_focal_power_pressed</callback>
+							<tooltip>Adjusts the DOF across the near blur range</tooltip>
+						</editline>
+						<hslider name="Render::DOF::near_focal_power_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000" flags="max_expand">Render::DOF::near_focal_power_el</attach>
+							<callback type="clicked">Render::DOF::slider_clicked</callback>
+							<callback type="changed">Render::DOF::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						
+					</gridbox>
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>HDR</text>
+				<vbox space="4" align="expand">
+					<vbox>
+						<gridbox align="expand" columns="4" space="4">
+							
+							<label align="right"><text>Exposure:</text></label>
+							<editline name="Render::HDR::exposure_el" export="1" align="expand" validator="float">
+								<callback type="pressed,focus_out">Render::HDR::exposure_pressed</callback>
+							</editline>
+							<hslider name="Render::HDR::exposure_sl" export="0" align="expand" min="0" max="1000">
+								<attach multiplier="1000" flags="max_expand">Render::HDR::exposure_el</attach>
+								<callback type="clicked">Render::HDR::slider_clicked</callback>
+								<callback type="changed">Render::HDR::slider_changed</callback>
+							</hslider>
+							<vbox/>
+							
+							<label align="right"><text>Adaptation:</text></label>
+							<editline name="Render::HDR::adaptation_el" export="1" align="expand" validator="float">
+								<callback type="pressed,focus_out">Render::HDR::adaptation_pressed</callback>
+							</editline>
+							<hslider name="Render::HDR::adaptation_sl" export="0" align="expand" min="0" max="4000">
+								<attach multiplier="1000" flags="max_expand">Render::HDR::adaptation_el</attach>
+								<callback type="clicked">Render::HDR::slider_clicked</callback>
+								<callback type="changed">Render::HDR::slider_changed</callback>
+							</hslider>
+							<vbox/>
+							
+							<label align="right"><text>Min luminance:</text></label>
+							<editline name="Render::HDR::min_luminance_el" export="1" align="expand" validator="float">
+								<callback type="pressed,focus_out">Render::HDR::min_luminance_pressed</callback>
+							</editline>
+							<hslider name="Render::HDR::min_luminance_sl" export="0" align="expand" min="-10000" max="10000">
+								<attach multiplier="1000">Render::HDR::min_luminance_el</attach>
+								<callback type="clicked">Render::HDR::slider_clicked</callback>
+								<callback type="changed">Render::HDR::slider_changed</callback>
+							</hslider>
+							<vbox/>
+							
+							<label align="right"><text>Max luminance:</text></label>
+							<editline name="Render::HDR::max_luminance_el" export="1" align="expand" validator="float">
+								<callback type="pressed,focus_out">Render::HDR::max_luminance_pressed</callback>
+							</editline>
+							<hslider name="Render::HDR::max_luminance_sl" export="0" align="expand" min="-10000" max="10000">
+								<attach multiplier="1000">Render::HDR::max_luminance_el</attach>
+								<callback type="clicked">Render::HDR::slider_clicked</callback>
+								<callback type="changed">Render::HDR::slider_changed</callback>
+							</hslider>
+							<vbox/>
+							
+							<label align="right"><text>Threshold:</text></label>
+							<editline name="Render::HDR::threshold_el" export="1" align="expand" validator="float">
+								<callback type="pressed,focus_out">Render::HDR::threshold_pressed</callback>
+							</editline>
+							<hslider name="Render::HDR::threshold_sl" export="0" align="expand" min="0" max="4000">
+								<attach multiplier="1000" flags="max_expand">Render::HDR::threshold_el</attach>
+								<callback type="clicked">Render::HDR::slider_clicked</callback>
+								<callback type="changed">Render::HDR::slider_changed</callback>
+							</hslider>
+							<vbox/>
+							
+							<label align="right"><text>Small:</text></label>
+							<editline name="Render::HDR::small_exposure_el" export="1" align="expand" validator="float">
+								<callback type="pressed,focus_out">Render::HDR::small_exposure_pressed</callback>
+							</editline>
+							<hslider name="Render::HDR::small_exposure_sl" export="0" align="expand" min="0" max="2000">
+								<attach multiplier="1000" flags="max_expand">Render::HDR::small_exposure_el</attach>
+								<callback type="clicked">Render::HDR::slider_clicked</callback>
+								<callback type="changed">Render::HDR::slider_changed</callback>
+							</hslider>
+							<vbox/>
+							
+							<label align="right"><text>Medium:</text></label>
+							<editline name="Render::HDR::medium_exposure_el" export="1" align="expand" validator="float">
+								<callback type="pressed,focus_out">Render::HDR::medium_exposure_pressed</callback>
+							</editline>
+							<hslider name="Render::HDR::medium_exposure_sl" export="0" align="expand" min="0" max="2000">
+								<attach multiplier="1000" flags="max_expand">Render::HDR::medium_exposure_el</attach>
+								<callback type="clicked">Render::HDR::slider_clicked</callback>
+								<callback type="changed">Render::HDR::slider_changed</callback>
+							</hslider>
+							<vbox/>
+							
+							<label align="right"><text>Large:</text></label>
+							<editline name="Render::HDR::large_exposure_el" export="1" align="expand" validator="float">
+								<callback type="pressed,focus_out">Render::HDR::large_exposure_pressed</callback>
+							</editline>
+							<hslider name="Render::HDR::large_exposure_sl" export="0" align="expand" min="0" max="2000">
+								<attach multiplier="1000" flags="max_expand">Render::HDR::large_exposure_el</attach>
+								<callback type="clicked">Render::HDR::slider_clicked</callback>
+								<callback type="changed">Render::HDR::slider_changed</callback>
+							</hslider>
+							<vbox/>
+							
+							<label align="right"><text>Bright:</text></label>
+							<editline name="Render::HDR::bright_exposure_el" export="1" align="expand" validator="float">
+								<callback type="pressed,focus_out">Render::HDR::bright_exposure_pressed</callback>
+							</editline>
+							<hslider name="Render::HDR::bright_exposure_sl" export="0" align="expand" min="0" max="1000">
+								<attach multiplier="1000" flags="max_expand">Render::HDR::bright_exposure_el</attach>
+								<callback type="clicked">Render::HDR::slider_clicked</callback>
+								<callback type="changed">Render::HDR::slider_changed</callback>
+							</hslider>
+							<vbox/>
+							
+							<vbox/>
+							<vbox space_x="32" align="expand"/>
+							<vbox space_x="32" align="expand"/>
+							<vbox space_x="32" align="expand"/>
+							
+						</gridbox>
+					</vbox>
+					
+					<vbox align="expand"/>
+					
+					<tabbox name="Render::HDR::tabbox" export="1" space="4">
+						<tab>
+							<text>Filmic</text>
+							<vbox>
+								<gridbox space_x="4" columns="4" align="expand">
+									
+									<label align="right"><text>Shoulder Scale:</text></label>
+									<editline name="Render::HDR::filmic_shoulder_scale_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::filmic_shoulder_scale_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::filmic_shoulder_scale_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000">Render::HDR::filmic_shoulder_scale_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<icon texture="editor/gui/action_clear.png" width="22" height="20">
+										<callback type="clicked">Render::HDR::filmic_shoulder_scale_clear_clicked</callback>
+									</icon>
+									
+									<label align="right"><text>Linear Scale:</text></label>
+									<editline name="Render::HDR::filmic_linear_scale_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::filmic_linear_scale_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::filmic_linear_scale_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000">Render::HDR::filmic_linear_scale_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<icon texture="editor/gui/action_clear.png" width="22" height="20">
+										<callback type="clicked">Render::HDR::filmic_linear_scale_clear_clicked</callback>
+									</icon>
+									
+									<label align="right"><text>Linear Angle:</text></label>
+									<editline name="Render::HDR::filmic_linear_angle_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::filmic_linear_angle_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::filmic_linear_angle_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000">Render::HDR::filmic_linear_angle_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<icon texture="editor/gui/action_clear.png" width="22" height="20">
+										<callback type="clicked">Render::HDR::filmic_linear_angle_clear_clicked</callback>
+									</icon>
+									
+									<label align="right"><text>Toe Scale:</text></label>
+									<editline name="Render::HDR::filmic_toe_scale_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::filmic_toe_scale_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::filmic_toe_scale_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000">Render::HDR::filmic_toe_scale_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<icon texture="editor/gui/action_clear.png" width="22" height="20">
+										<callback type="clicked">Render::HDR::filmic_toe_scale_clear_clicked</callback>
+									</icon>
+									
+									<label align="right"><text>Toe Numerator:</text></label>
+									<editline name="Render::HDR::filmic_toe_numerator_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::filmic_toe_numerator_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::filmic_toe_numerator_sl" export="0" align="expand" min="0" max="100">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::filmic_toe_numerator_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<icon texture="editor/gui/action_clear.png" width="22" height="20">
+										<callback type="clicked">Render::HDR::filmic_toe_numerator_clear_clicked</callback>
+									</icon>
+									
+									<label align="right"><text>Toe Denominator:</text></label>
+									<editline name="Render::HDR::filmic_toe_denominator_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::filmic_toe_denominator_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::filmic_toe_denominator_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000">Render::HDR::filmic_toe_denominator_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<icon texture="editor/gui/action_clear.png" width="22" height="20">
+										<callback type="clicked">Render::HDR::filmic_toe_denominator_clear_clicked</callback>
+									</icon>
+									
+									<label align="right"><text>White Level:</text></label>
+									<editline name="Render::HDR::filmic_white_level_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::filmic_white_level_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::filmic_white_level_sl" export="0" align="expand" min="0" max="2000">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::filmic_white_level_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<icon texture="editor/gui/action_clear.png" width="22" height="20">
+										<callback type="clicked">Render::HDR::filmic_white_level_clear_clicked</callback>
+									</icon>
+									
+								</gridbox>
+							</vbox>
+						</tab>
+						<tab>
+							<text>Cross</text>
+							<vbox>
+								<gridbox space="4" columns="4" align="expand">
+									
+									<vbox/>
+									<checkbox name="Render::HDR::cross_enabled_cb" export="1" align="left">
+										<text>Enabled</text>
+										<callback type="clicked">Render::HDR::cross_enabled_clicked</callback>
+									</checkbox>
+									<vbox/>
+									<vbox/>
+									
+									<label align="right"><text>Color:</text></label>
+									<groupbox align="expand">
+										<hbox align="expand">
+											<sprite name="Render::HDR::cross_color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+												<callback type="clicked">Render::HDR::cross_color_clicked</callback>
+											</sprite>
+											<sprite name="Render::HDR::cross_color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+												<callback type="clicked">Render::HDR::cross_color_clicked</callback>
+											</sprite>
+										</hbox>
+									</groupbox>
+									<vbox/>
+									<vbox/>
+									
+									<label align="right"><text>Scale:</text></label>
+									<editline name="Render::HDR::cross_scale_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::cross_scale_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::cross_scale_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::cross_scale_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Shafts:</text></label>
+									<editline name="Render::HDR::cross_shafts_el" export="1" align="expand" validator="uint">
+										<callback type="pressed,focus_out">Render::HDR::cross_shafts_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::cross_shafts_sl" export="0" align="expand" min="2" max="32">
+										<attach>Render::HDR::cross_shafts_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Length:</text></label>
+									<editline name="Render::HDR::cross_length_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::cross_length_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::cross_length_sl" export="0" align="expand" min="0" max="2000">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::cross_length_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Angle:</text></label>
+									<editline name="Render::HDR::cross_angle_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::cross_angle_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::cross_angle_sl" export="0" align="expand" min="0" max="360000">
+										<attach multiplier="1000">Render::HDR::cross_angle_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Threshold:</text></label>
+									<editline name="Render::HDR::cross_threshold_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::cross_threshold_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::cross_threshold_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::cross_threshold_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+								</gridbox>
+							</vbox>
+						</tab>
+						<tab>
+							<text>Bokeh</text>
+							<vbox>
+								<gridbox space="4" columns="4" align="expand">
+									
+									<vbox/>
+									<checkbox name="Render::HDR::bokeh_enabled_cb" export="1" align="left">
+										<text>Enabled</text>
+										<callback type="clicked">Render::HDR::bokeh_enabled_clicked</callback>
+									</checkbox>
+									<vbox/>
+									<vbox/>
+									
+									<label align="right"><text>Color:</text></label>
+									<groupbox align="expand">
+										<hbox align="expand">
+											<sprite name="Render::HDR::bokeh_color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+												<callback type="clicked">Render::HDR::bokeh_color_clicked</callback>
+											</sprite>
+											<sprite name="Render::HDR::bokeh_color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+												<callback type="clicked">Render::HDR::bokeh_color_clicked</callback>
+											</sprite>
+										</hbox>
+									</groupbox>
+									<vbox/>
+									<vbox/>
+									
+									<label align="right"><text>Scale:</text></label>
+									<editline name="Render::HDR::bokeh_scale_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::bokeh_scale_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::bokeh_scale_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::bokeh_scale_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Far size:</text></label>
+									<editline name="Render::HDR::bokeh_far_size_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::bokeh_far_size_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::bokeh_far_size_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000">Render::HDR::bokeh_far_size_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Far power:</text></label>
+									<editline name="Render::HDR::bokeh_far_power_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::bokeh_far_power_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::bokeh_far_power_sl" export="0" align="expand" min="0" max="2000">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::bokeh_far_power_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Near size:</text></label>
+									<editline name="Render::HDR::bokeh_near_size_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::bokeh_near_size_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::bokeh_near_size_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000">Render::HDR::bokeh_near_size_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Near power:</text></label>
+									<editline name="Render::HDR::bokeh_near_power_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::bokeh_near_power_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::bokeh_near_power_sl" export="0" align="expand" min="0" max="2000">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::bokeh_near_power_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Threshold:</text></label>
+									<editline name="Render::HDR::bokeh_threshold_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::bokeh_threshold_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::bokeh_threshold_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::bokeh_threshold_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Iris:</text></label>
+									<hbox align="expand">
+										<editline name="Render::HDR::bokeh_texture_el" export="1" align="expand">
+											<callback type="pressed,focus_out">Render::HDR::bokeh_texture_pressed</callback>
+										</editline>
+										<icon texture="editor/gui/action_load.png" width="22" height="20">
+											<callback type="clicked">Render::HDR::bokeh_texture_load_clicked</callback>
+										</icon>
+										<icon texture="editor/gui/action_view.png" width="22" height="20">
+											<callback type="clicked">Render::HDR::bokeh_texture_view_clicked</callback>
+										</icon>
+										<icon texture="editor/gui/action_clear.png" width="22" height="20">
+											<callback type="clicked">Render::HDR::bokeh_texture_clear_clicked</callback>
+										</icon>
+									</hbox>
+									<vbox/>
+									<vbox/>
+									
+								</gridbox>
+							</vbox>
+						</tab>
+						<tab>
+							<text>Shaft</text>
+							<vbox>
+								<gridbox space="4" columns="4" align="expand">
+									
+									<vbox/>
+									<checkbox name="Render::HDR::shaft_enabled_cb" export="1" align="left">
+										<text>Enabled</text>
+										<callback type="clicked">Render::HDR::shaft_enabled_clicked</callback>
+									</checkbox>
+									<vbox/>
+									<vbox/>
+									
+									<label align="right"><text>Color:</text></label>
+									<groupbox align="expand">
+										<hbox align="expand">
+											<sprite name="Render::HDR::shaft_color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+												<callback type="clicked">Render::HDR::shaft_color_clicked</callback>
+											</sprite>
+											<sprite name="Render::HDR::shaft_color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+												<callback type="clicked">Render::HDR::shaft_color_clicked</callback>
+											</sprite>
+										</hbox>
+									</groupbox>
+									<vbox/>
+									<vbox/>
+									
+									<label align="right"><text>Scale:</text></label>
+									<editline name="Render::HDR::shaft_scale_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::shaft_scale_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::shaft_scale_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::shaft_scale_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Length:</text></label>
+									<editline name="Render::HDR::shaft_length_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::shaft_length_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::shaft_length_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000">Render::HDR::shaft_length_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Attenuation:</text></label>
+									<editline name="Render::HDR::shaft_attenuation_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::shaft_attenuation_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::shaft_attenuation_sl" export="0" align="expand" min="800" max="1000">
+										<attach multiplier="1000">Render::HDR::shaft_attenuation_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Threshold:</text></label>
+									<editline name="Render::HDR::shaft_threshold_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::shaft_threshold_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::shaft_threshold_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::shaft_threshold_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+								</gridbox>
+							</vbox>
+						</tab>
+						<tab>
+							<text>Lens</text>
+							<vbox>
+								<gridbox space="4" columns="4" align="expand">
+									
+									<vbox/>
+									<checkbox name="Render::HDR::lens_enabled_cb" export="1" align="left">
+										<text>Enabled</text>
+										<callback type="clicked">Render::HDR::lens_enabled_clicked</callback>
+									</checkbox>
+									<vbox/>
+									<vbox/>
+									
+									<label align="right"><text>Color:</text></label>
+									<groupbox align="expand">
+										<hbox align="expand">
+											<sprite name="Render::HDR::lens_color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+												<callback type="clicked">Render::HDR::lens_color_clicked</callback>
+											</sprite>
+											<sprite name="Render::HDR::lens_color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+												<callback type="clicked">Render::HDR::lens_color_clicked</callback>
+											</sprite>
+										</hbox>
+									</groupbox>
+									<vbox/>
+									<vbox/>
+									
+									<label align="right"><text>Scale:</text></label>
+									<editline name="Render::HDR::lens_scale_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::lens_scale_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::lens_scale_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::lens_scale_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Length:</text></label>
+									<editline name="Render::HDR::lens_length_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::lens_length_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::lens_length_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000">Render::HDR::lens_length_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Radius:</text></label>
+									<editline name="Render::HDR::lens_radius_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::lens_radius_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::lens_radius_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000">Render::HDR::lens_radius_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Threshold:</text></label>
+									<editline name="Render::HDR::lens_threshold_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::lens_threshold_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::lens_threshold_sl" export="0" align="expand" min="0" max="1000">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::lens_threshold_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Red:</text></label>
+									<editline name="Render::HDR::lens_dispersion_x_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::lens_dispersion_x_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::lens_dispersion_x_sl" export="0" align="expand" min="900" max="1100">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::lens_dispersion_x_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Green:</text></label>
+									<editline name="Render::HDR::lens_dispersion_y_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::lens_dispersion_y_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::lens_dispersion_y_sl" export="0" align="expand" min="900" max="1100">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::lens_dispersion_y_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Blue:</text></label>
+									<editline name="Render::HDR::lens_dispersion_z_el" export="1" align="expand" validator="float">
+										<callback type="pressed,focus_out">Render::HDR::lens_dispersion_z_pressed</callback>
+									</editline>
+									<hslider name="Render::HDR::lens_dispersion_z_sl" export="0" align="expand" min="900" max="1100">
+										<attach multiplier="1000" flags="max_expand">Render::HDR::lens_dispersion_z_el</attach>
+										<callback type="clicked">Render::HDR::slider_clicked</callback>
+										<callback type="changed">Render::HDR::slider_changed</callback>
+									</hslider>
+									<vbox/>
+									
+									<label align="right"><text>Dirt:</text></label>
+									<hbox align="expand">
+										<editline name="Render::HDR::lens_texture_el" export="1" align="expand">
+											<callback type="pressed,focus_out">Render::HDR::lens_texture_pressed</callback>
+										</editline>
+										<icon texture="editor/gui/action_load.png" width="22" height="20">
+											<callback type="clicked">Render::HDR::lens_texture_load_clicked</callback>
+										</icon>
+										<icon texture="editor/gui/action_view.png" width="22" height="20">
+											<callback type="clicked">Render::HDR::lens_texture_view_clicked</callback>
+										</icon>
+										<icon texture="editor/gui/action_clear.png" width="22" height="20">
+											<callback type="clicked">Render::HDR::lens_texture_clear_clicked</callback>
+										</icon>
+									</hbox>
+									<vbox/>
+									<vbox/>
+									
+								</gridbox>
+							</vbox>
+						</tab>
+					</tabbox>
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>Color</text>
+				<vbox space="4">
+					<gridbox align="expand" columns="4" space="4">
+						
+						<label align="right"><text>Brightness:</text></label>
+						<editline name="Render::Color::brightness_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Color::brightness_pressed</callback>
+						</editline>
+						<hslider name="Render::Color::brightness_sl" export="0" align="expand" min="-127" max="127">
+							<attach>Render::Color::brightness_el</attach>
+							<callback type="clicked">Render::Color::slider_clicked</callback>
+							<callback type="changed">Render::Color::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Contrast:</text></label>
+						<editline name="Render::Color::contrast_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Color::contrast_pressed</callback>
+						</editline>
+						<hslider name="Render::Color::contrast_sl" export="0" align="expand" min="-127" max="127">
+							<attach>Render::Color::contrast_el</attach>
+							<callback type="clicked">Render::Color::slider_clicked</callback>
+							<callback type="changed">Render::Color::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Saturation:</text></label>
+						<editline name="Render::Color::saturation_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Color::saturation_pressed</callback>
+						</editline>
+						<hslider name="Render::Color::saturation_sl" export="0" align="expand" min="0" max="100">
+							<attach>Render::Color::saturation_el</attach>
+							<callback type="clicked">Render::Color::slider_clicked</callback>
+							<callback type="changed">Render::Color::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Gamma:</text></label>
+						<editline name="Render::Color::gamma_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Render::Color::gamma_pressed</callback>
+						</editline>
+						<hslider name="Render::Color::gamma_sl" export="0" align="expand" min="50" max="150">
+							<attach>Render::Color::gamma_el</attach>
+							<callback type="clicked">Render::Color::slider_clicked</callback>
+							<callback type="changed">Render::Color::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>White:</text></label>
+						<groupbox align="expand">
+							<hbox align="expand">
+								<sprite name="Render::Color::white_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<tooltip>White color</tooltip>
+									<callback type="clicked">Render::Color::white_clicked</callback>
+								</sprite>
+								<sprite name="Render::Color::white_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+									<callback type="clicked">Render::Color::white_clicked</callback>
+								</sprite>
+							</hbox>
+						</groupbox>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>LUT texture:</text></label>
+						<hbox align="expand">
+							<editline name="Render::Color::texture_el" export="1" align="expand">
+								<callback type="pressed,focus_out">Render::Color::texture_pressed</callback>
+							</editline>
+							<icon texture="editor/gui/action_load.png" width="22" height="20">
+								<callback type="clicked">Render::Color::texture_load_clicked</callback>
+								<tooltip>Load LUT image</tooltip>
+							</icon>
+							<icon texture="editor/gui/action_view.png" width="22" height="20">
+								<callback type="clicked">Render::Color::texture_view_clicked</callback>
+								<tooltip>View LUT image</tooltip>
+							</icon>
+							<icon texture="editor/gui/action_add.png" width="22" height="20">
+								<callback type="clicked">Render::Color::texture_create_clicked</callback>
+								<tooltip>Create a default LUT image</tooltip>
+							</icon>
+							<icon texture="editor/gui/action_clear.png" width="22" height="20">
+								<callback type="clicked">Render::Color::texture_clear_clicked</callback>
+								<tooltip>Clear LUT image</tooltip>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						<vbox space_x="32" align="expand"/>
+						
+					</gridbox>
+				</vbox>
+			</tab>
+			
+		</tabbox>
+	</vbox>
+	<hbox align="right" space="4">
+		<button>
+			<text>Load</text>
+			<callback type="clicked">Render::load_clicked</callback>
+		</button>
+		<button>
+			<text>Save</text>
+			<callback type="clicked">Render::save_clicked</callback>
+		</button>
+	</hbox>
+</window>
+
+</ui>

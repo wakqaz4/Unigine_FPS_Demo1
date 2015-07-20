@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin name="city" version="1.0">
+	<text>City Import</text>
+	<description>Import large populated areas</description>
+	<source>city.cpp</source>
+</plugin>

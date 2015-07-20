@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="ObjectVolumeBox" id="1600955064" collider="0">
+		<size>10 10 10</size>
+		<surface name="volume" material="volume_fog_base" property="surface_base"/>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

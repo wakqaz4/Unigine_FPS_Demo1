@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_panel_placement.ui
+ * Desc:    Unigine editor
+ * Version: 1.00
+ * Author:  Vladimir Borovskikh <futurist@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.02">
+
+<!--
+/* Manipulators
+ */
+-->
+<groupbox name="manipulators_gb" export="1" background="1" space="0">
+	<hbox align="left">
+		
+		<icon name="selector_i" export="1" texture="editor/gui/manipulator_selector.png" toggleable="1" toggled="1" width="24" height="24">
+			<tooltip><b>Select node</b> $(manipulator_selector)<br/><br/>
+			Changes the mode to nodes selection. To select a node use the $(select) on it. To select several nodes press and hold $(add_selection). To remove from selection press and hold $(remove_selection). To deselect all the selected nodes press $(reset_selection). To hide all nodes except for the selected ones press $(isolate_nodes).
+			</tooltip>
+			<callback type="changed" instance="instance" string="manipulator_changed_selector">callback_redirector</callback>
+		</icon>
+		<icon name="translator_i" export="1" texture="editor/gui/manipulator_translator.png" toggleable="1" width="24" height="24">
+			<tooltip><b>Move node</b> $(manipulator_translator)<br/><br/>
+			Changes the mode to nodes positioning. To move a node use the $(select) on it and drag the arrow manipulator (to move along 1 axis) or a rectangular manipulator (to move along 2 axes). To move a node without its children press and hold $(move_without_children). To move the selected node to the camera press $(nodes_place_here).
+			</tooltip>
+			<callback type="changed" instance="instance" string="manipulator_changed_translator">callback_redirector</callback>
+		</icon>
+		<icon name="rotator_i" export="1" texture="editor/gui/manipulator_rotator.png" toggleable="1" width="24" height="24">
+			<tooltip><b>Rotate node</b> $(manipulator_rotator)<br/><br/>
+			Changes the mode to nodes rotation. To rotate a node use the $(select) on it and drag the axis of the sphere (to rotate a node around this axis) or drag the sphere (to rotate a node around several axes).
+			</tooltip>
+			<callback type="changed" instance="instance" string="manipulator_changed_rotator">callback_redirector</callback>
+		</icon>
+		<icon name="scaler_i" export="1" texture="editor/gui/manipulator_scaler.png" toggleable="1" width="24" height="24">
+			<tooltip><b>Scale node</b> $(manipulator_scaler)<br/><br/>
+			Changes the mode to nodes scaling. To scale a node use the $(select) on it and drag a cube manipulator (to scale a node along 1 axis) or drag a triangular manipulator (to scale a node along 3 axes).
+			</tooltip>
+			<callback type="changed" instance="instance" string="manipulator_changed_scaler">callback_redirector</callback>
+		</icon>
+		
+		<vbox space="2"/>
+		
+		<combobox name="pivot_cb" export="1">
+			<tooltip><b>Pivot point</b><br/><br/>
+			Sets a pivot point for a node. <i>Center</i> - set to the center of selection; <i>Pivot</i> - set to the center of the last selected node. To toggle the pivot point press $(manipulator_pivot).
+			</tooltip>
+			<text>Center</text>
+			<text>Pivot</text>
+			<callback type="clicked" instance="instance" string="manipulator_pivot_changed">callback_redirector</callback>
+		</combobox>
+		<combobox name="basis_cb" export="1">
+			<tooltip><b>Coordinate system</b><br/><br/>
+			Sets a basis for the pivot point of a node manipulator. <i>World</i> - use a world space orientation; <i>Parent</i> - use a coordinate system of a parent node; <i>Local</i> - use a node local coordinate system (won't depend on a parent node orientation). To toggle the manipulator basis press $(manipulator_basis).
+			</tooltip>
+			<text>World </text>
+			<text>Parent</text>
+			<text>Local</text>
+			<callback type="clicked" instance="instance" string="manipulator_basis_changed">callback_redirector</callback>
+		</combobox>
+		
+		<vbox space="2"/>
+		
+		<icon name="axis_x_i" export="1" texture="editor/gui/panel_axis_x.png" toggleable="1" toggled="1" width="24" height="24">
+			<tooltip><b>Enable X axis</b><br/><br/>
+			Enables the <i>X</i> axis for nodes manipulations (disabled axes become locked).
+			</tooltip>
+			<callback type="clicked" instance="instance" string="axis_lock_clicked">callback_redirector</callback>
+		</icon>
+		<icon name="axis_y_i" export="1" texture="editor/gui/panel_axis_y.png" toggleable="1" toggled="1" width="24" height="24">
+			<tooltip><b>Enable Y axis</b><br/><br/>
+			Enables the <i>Y</i> axis for nodes manipulations (disabled axes become locked).</tooltip>
+			<callback type="clicked" instance="instance" string="axis_lock_clicked">callback_redirector</callback>
+		</icon>
+		<icon name="axis_z_i" export="1" texture="editor/gui/panel_axis_z.png" toggleable="1" toggled="1" width="24" height="24">
+			<tooltip><b>Enable Z axis</b><br/><br/>
+			Enables the <i>Z</i> axis for nodes manipulations (disabled axes become locked).</tooltip>
+			<callback type="clicked" instance="instance" string="axis_lock_clicked">callback_redirector</callback>
+		</icon>
+		
+		<vbox space="2"/>
+		
+		<icon name="snap_by_grid_i" export="1" texture="editor/gui/panel_snap_grid.png" toggleable="1" width="24" height="24">
+			<tooltip><b>Snap by grid</b> $(nodes_position_snap)<br/><br/>
+			Positions a node along the axis or over the grid with a given step (in units). To confirm placement press $(place_node_success). To abort placement press $(place_node_cancel).
+			</tooltip>
+			<callback type="changed" instance="instance" string="snap_by_grid_clicked">callback_redirector</callback>
+			<callback type="leave" instance="instance" string="on_leave">callback_redirector</callback>
+			<callback type="enter" instance="instance" string="show_setting_snap_by_grid">callback_redirector</callback>
+		</icon>
+		<icon name="snap_by_angle_i" export="1" texture="editor/gui/panel_snap_angle.png" toggleable="1" width="24" height="24">
+			<tooltip><b>Snap by angle</b> $(nodes_rotation_snap)<br/><br/>
+			Rotates a node along the axis with a given step that depends on the specified angle (in degrees). To confirm placement press $(place_node_success). To abort placement press $(place_node_cancel).</tooltip>
+			<callback type="changed" instance="instance" string="snap_by_angle_clicked">callback_redirector</callback>
+			<callback type="leave" instance="instance" string="on_leave">callback_redirector</callback>
+			<callback type="enter" instance="instance" string="show_setting_snap_by_angle">callback_redirector</callback>
+		</icon>
+		<icon name="snap_to_surface_i" export="1" texture="editor/gui/panel_snap_surface.png" toggleable="1" width="24" height="24">
+			<tooltip><b>Snap to surface</b> $(nodes_place_manually)<br/><br/>
+			Positions nodes relative to each other. To confirm placement press $(place_node_success). To abort placement press $(place_node_cancel). <i>Offset from surface</i> specifies the distance from the node's pivot point to the surface (in units). To increase the value press $(place_node_increase_offset), to decrease press $(place_node_decrease_offset), to reset press $(place_node_offset_reset). <i>Orient by normal</i> specifies whether the node should be oriented by the surface normal or not. To toggle press $(place_node_relative_transform).
+			</tooltip>
+			<callback type="changed" instance="instance" string="snap_to_surface_clicked">callback_redirector</callback>
+			<callback type="leave" instance="instance" string="on_leave">callback_redirector</callback>
+			<callback type="enter" instance="instance" string="show_setting_snap_to_surface">callback_redirector</callback>
+		</icon>
+		<icon name="drop_down_i" export="1" texture="editor/gui/panel_drop_down.png" width="24" height="24">
+			<tooltip><b>Drop to ground</b> $(nodes_drop_down)<br/><br/>
+				Positions selected nodes to the surface below them. <i>Offset from surface</i> specifies the distance from the node's pivot point to the surface (in units). <i>Orient by normal</i> specifies whether the node should be oriented by the surface normal or not. <i>Intersection mask</i> defines whether the selected node (nodes) will be positioned on the surface to which this node (nodes) is dropped.
+			</tooltip>
+			<callback type="clicked" instance="instance" string="drop_down_clicked">callback_redirector</callback>
+			<callback type="leave" instance="instance" string="on_leave">callback_redirector</callback>
+			<callback type="enter" instance="instance" string="show_setting_drop_down">callback_redirector</callback>
+		</icon>
+		
+		<vbox space="2"/>
+	</hbox>
+</groupbox>
+</ui>

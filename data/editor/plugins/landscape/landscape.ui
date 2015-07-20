@@ -1,0 +1,1094 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    landscape.ui
+ * Desc:    Landscape plugin
+ * Version: 1.03
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.02">
+
+<window name="Landscape::window" export="1" sizeable="1">
+	<text>Landscape</text>
+	
+	<icon texture="core/gui/window_close.png" pos_x="4" pos_y="-24" align="overlap,top,right">
+		<callback type="clicked" widget="Landscape::window" string="game_framework">Landscape::windowHide</callback>
+	</icon>
+	
+	<tabbox name="Landscape::tabbox" export="1" align="expand">
+		
+		<tab>
+			<text>Common</text>
+			<vbox space="4">
+				<gridbox align="expand" columns="4" space="4">
+					
+					<label align="right">Terrain Step:</label>
+					<editline name="Landscape::Common::terrain_step_el" export="1" align="expand" validator="float">
+						<tooltip>Terrain grid in units</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::terrain_step_pressed</callback>
+					</editline>
+					<label align="right">Size:</label>
+					<combobox name="Landscape::Common::terrain_size_cb" export="1" align="expand">
+						<text>513</text>
+						<text>1025</text>
+						<text>2049</text>
+						<text>4097</text>
+						<text>8193</text>
+						<text>16385</text>
+						<tooltip>Terrain size</tooltip>
+						<callback type="changed">Landscape::Common::terrain_size_changed</callback>
+					</combobox>
+					
+					<label align="right">Elevation:</label>
+					<editline name="Landscape::Common::terrain_elevation_el" export="1" align="expand" validator="float">
+						<tooltip>Terrain elevation in units</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::terrain_elevation_pressed</callback>
+					</editline>
+					<label align="right">Storage:</label>
+					<label name="Landscape::Common::terrain_storage_l" export="1" align="left">
+						<tooltip>Terrain storage size</tooltip>
+					</label>
+					
+					<label align="right">Size X:</label>
+					<editline name="Landscape::Common::terrain_size_x_el" export="1" align="expand" validator="uint">
+						<tooltip>Terrain horizontal count</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::terrain_size_x_pressed</callback>
+					</editline>
+					<label align="right">Width:</label>
+					<label name="Landscape::Common::terrain_width_l" export="1" align="left">
+						<tooltip>Terrain horizontal size</tooltip>
+					</label>
+					
+					<label align="right">Size Y:</label>
+					<editline name="Landscape::Common::terrain_size_y_el" export="1" align="expand" validator="uint">
+						<tooltip>Terrain vertical count</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::terrain_size_y_pressed</callback>
+					</editline>
+					<label align="right">Height:</label>
+					<label name="Landscape::Common::terrain_height_l" export="1" align="left">
+						<tooltip>Terrain vertical size</tooltip>
+					</label>
+					
+					<vbox/>
+					<hspacer align="expand"/>
+					<vbox/>
+					<vbox/>
+					
+					<label align="right">Flatness:</label>
+					<editline name="Landscape::Common::terrain_flatness_el" export="1" align="expand" validator="float">
+						<tooltip>Threshold to flatten polygons</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::terrain_flatness_pressed</callback>
+					</editline>
+					<vbox/>
+					<vbox/>
+					
+					<label align="right">Lods:</label>
+					<editline name="Landscape::Common::terrain_lod_distance_el" export="1" align="expand" validator="float">
+						<tooltip>Distance of the first level of detail</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::terrain_lod_distance_pressed</callback>
+					</editline>
+					<label align="right">Progression:</label>
+					<editline name="Landscape::Common::terrain_lod_progression_el" export="1" align="expand" validator="float">
+						<tooltip>Progression of the level of detail</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::terrain_lod_progression_pressed</callback>
+					</editline>
+					
+					<label align="right">Visibility:</label>
+					<editline name="Landscape::Common::terrain_visible_distance_el" export="1" align="expand" validator="uint">
+						<tooltip>Distance of terrain visibility</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::terrain_visible_distance_pressed</callback>
+					</editline>
+					<vbox/>
+					<vbox/>
+					
+					<checkbox name="Landscape::Common::terrain_cast_shadow_cb" export="1" align="right">
+						<text>Shadow:</text>
+						<callback type="changed">Landscape::Common::terrain_cast_shadow_changed</callback>
+					</checkbox>
+					<editline name="Landscape::Common::terrain_shadow_distance_el" export="1" align="expand" validator="float">
+						<tooltip>Distance of terrain shadow</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::terrain_shadow_distance_pressed</callback>
+					</editline>
+					<label align="right">Radius:</label>
+					<editline name="Landscape::Common::terrain_shadow_radius_el" export="1" align="expand" validator="float">
+						<tooltip>Additional shadow radius</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::terrain_shadow_radius_pressed</callback>
+					</editline>
+					
+					<vbox/>
+					<hspacer align="expand"/>
+					<vbox/>
+					<vbox/>
+					
+					<label align="right">Diffuse Size:</label>
+					<combobox name="Landscape::Common::diffuse_size_cb" export="1" align="expand">
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+						<text>8192</text>
+						<text>16536</text>
+						<text>32768</text>
+						<tooltip>Diffuse size per terrain</tooltip>
+						<callback type="changed">Landscape::Common::diffuse_size_changed</callback>
+					</combobox>
+					<label align="right">Coarse:</label>
+					<combobox name="Landscape::Common::diffuse_coarse_cb" export="1" align="expand">
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+						<text>8192</text>
+						<tooltip>Diffuse coarse per terrain</tooltip>
+						<callback type="changed">Landscape::Common::diffuse_coarse_changed</callback>
+					</combobox>
+					
+					<label align="right">Normal Size:</label>
+					<combobox name="Landscape::Common::normal_size_cb" export="1" align="expand">
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+						<text>8192</text>
+						<text>16536</text>
+						<text>32768</text>
+						<tooltip>Normal size per terrain</tooltip>
+						<callback type="changed">Landscape::Common::normal_size_changed</callback>
+					</combobox>
+					<label align="right">Coarse:</label>
+					<combobox name="Landscape::Common::normal_coarse_cb" export="1" align="expand">
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+						<text>8192</text>
+						<tooltip>Normal coarse per terrain</tooltip>
+						<callback type="changed">Landscape::Common::normal_coarse_changed</callback>
+					</combobox>
+					
+					<label align="right">Mask Size:</label>
+					<combobox name="Landscape::Common::mask_size_cb" export="1" align="expand">
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+						<text>8192</text>
+						<text>16536</text>
+						<text>32768</text>
+						<tooltip>Mask size per terrain</tooltip>
+						<callback type="changed">Landscape::Common::mask_size_changed</callback>
+					</combobox>
+					<label align="right">Coarse:</label>
+					<combobox name="Landscape::Common::mask_coarse_cb" export="1" align="expand">
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+						<text>8192</text>
+						<tooltip>Mask coarse per terrain</tooltip>
+						<callback type="changed">Landscape::Common::mask_coarse_changed</callback>
+					</combobox>
+					
+					<vbox/>
+					<hspacer align="expand"/>
+					<vbox/>
+					<vbox/>
+					
+					<label align="right">Landscape Path:</label>
+					<editline name="Landscape::Common::landscape_path_el" export="1" align="expand">
+						<tooltip>Landscape Path (relative to the data directory)</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::landscape_path_pressed</callback>
+					</editline>
+					<vbox/>
+					<vbox/>
+					
+					<label align="right">Terrain Name:</label>
+					<editline name="Landscape::Common::terrain_name_el" export="1" align="expand">
+						<tooltip>Terrain Name Pattern (relative to the landscape directory)</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::terrain_name_pressed</callback>
+					</editline>
+					<vbox/>
+					<vbox/>
+					
+					<label align="right">Diffuse Name:</label>
+					<editline name="Landscape::Common::diffuse_name_el" export="1" align="expand">
+						<tooltip>Diffuse Name Pattern (relative to the terrain directory)</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::diffuse_name_pressed</callback>
+					</editline>
+					<vbox/>
+					<vbox/>
+					
+					<label align="right">Normal Name:</label>
+					<editline name="Landscape::Common::normal_name_el" export="1" align="expand">
+						<tooltip>Normal Name Pattern (relative to the terrain directory)</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::normal_name_pressed</callback>
+					</editline>
+					<vbox/>
+					<vbox/>
+					
+					<label align="right">Mask Name:</label>
+					<editline name="Landscape::Common::mask_name_el" export="1" align="expand">
+						<tooltip>Mask Name Pattern (relative to the terrain directory)</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::mask_name_pressed</callback>
+					</editline>
+					<vbox/>
+					<vbox/>
+					
+					<label align="right">Index Name:</label>
+					<editline name="Landscape::Common::index_name_el" export="1" align="expand">
+						<tooltip>Index Name Pattern (relative to the terrain directory)</tooltip>
+						<callback type="pressed,focus_out">Landscape::Common::index_name_pressed</callback>
+					</editline>
+					<vbox/>
+					<vbox/>
+					
+					<vbox/>
+					<hspacer align="expand"/>
+					<vbox/>
+					<vbox/>
+					
+					<vbox/>
+					<button name="Landscape::Common::load_b" export="1" align="expand">
+						<text>Load</text>
+						<tooltip>Load landscape settings</tooltip>
+						<callback type="clicked">Landscape::Common::load_clicked</callback>
+					</button>
+					<button name="Landscape::Common::save_b" export="1" align="expand">
+						<text>Save</text>
+						<tooltip>Save landscape settings</tooltip>
+						<callback type="clicked">Landscape::Common::save_clicked</callback>
+					</button>
+					<button name="Landscape::Common::create_b" export="1" align="expand">
+						<text>Create</text>
+						<tooltip>Create an empty landscape</tooltip>
+						<callback type="clicked">Landscape::Common::create_clicked</callback>
+					</button>
+					
+					<vbox/>
+					<button name="Landscape::Common::normal_b" export="1" align="expand">
+						<text>  Normal</text>
+						<tooltip>Create normal textures</tooltip>
+						<callback type="clicked">Landscape::Common::normal_clicked</callback>
+					</button>
+					<button name="Landscape::Common::compress_b" export="1" align="expand">
+						<text>Compress</text>
+						<tooltip>Compress all terrain textures</tooltip>
+						<callback type="clicked">Landscape::Common::compress_clicked</callback>
+					</button>
+					<button name="Landscape::Common::decompress_b" export="1" align="expand">
+						<text>Decompress</text>
+						<tooltip>Decompress all terrain textures</tooltip>
+						<callback type="clicked">Landscape::Common::decompress_clicked</callback>
+					</button>
+					
+				</gridbox>
+			</vbox>
+		</tab>
+		
+		<tab>
+			<text>Layers</text>
+			<vbox align="expand" space="4">
+				
+				<vbox>
+					<hbox align="expand">
+						<button name="Landscape::Materials::add_b" export="1" align="right">
+							<text>Add</text>
+							<callback type="clicked">Landscape::Materials::add_clicked</callback>
+						</button>
+						<vbox space="2"/>
+						<button name="Landscape::Materials::clone_b" export="1">
+							<text>Clone</text>
+							<callback type="clicked">Landscape::Materials::clone_clicked</callback>
+						</button>
+						<vbox space="2"/>
+						<button name="Landscape::Materials::remove_b" export="1">
+							<text>Remove</text>
+							<callback type="clicked">Landscape::Materials::remove_clicked</callback>
+						</button>
+						
+						<vbox space="2"/>
+						<button name="Landscape::Materials::up_b" export="1">
+							<text>Up</text>
+							<callback type="clicked">Landscape::Materials::up_clicked</callback>
+						</button>
+						<vbox space="2"/>
+						<button name="Landscape::Materials::down_b" export="1">
+							<text>Down</text>
+							<callback type="clicked">Landscape::Materials::down_clicked</callback>
+						</button>
+					</hbox>
+				</vbox>
+				
+				<scrollbox align="expand" height="60">
+					<listbox name="Landscape::Materials::materials_lb" export="1" align="expand">
+						<callback type="changed">Landscape::Materials::material_changed</callback>
+					</listbox>
+				</scrollbox>
+				
+				<vbox>
+					<gridbox align="expand" columns="5" space="4">
+						
+						<label align="right"><text>Name:</text></label>
+						<editline name="Landscape::Materials::name_el" export="1" align="expand">
+							<callback type="pressed,focus_out">Landscape::Materials::name_pressed</callback>
+						</editline>
+						<vbox/>
+						<vbox/>
+						<vbox/>
+						
+						
+						<label align="right"><text>Parent:</text></label>
+						<combobox name="Landscape::Materials::parent_cb" export="1" align="expand">
+							<callback type="clicked">Landscape::Materials::parent_changed</callback>
+						</combobox>
+						<vbox/>
+						<checkbox name="Landscape::Materials::overlap_cb" export="1" align="right">
+							<text>Overlap</text>
+							<callback type="clicked">Landscape::Materials::overlap_changed</callback>
+						</checkbox>
+						<checkbox name="Landscape::Materials::mask_base_cb" export="1" align="right">
+							<text>Mask Base</text>
+							<callback type="clicked">Landscape::Materials::mask_base_changed</callback>
+						</checkbox>
+						
+						
+						
+						<label align="right"><text>Transform:</text></label>
+						<editline name="Landscape::Materials::transform_el[0]" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Landscape::Materials::transform_pressed</callback>
+							<tooltip>X scale</tooltip>
+						</editline>
+						<editline name="Landscape::Materials::transform_el[1]" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Landscape::Materials::transform_pressed</callback>
+							<tooltip>Y scale</tooltip>
+						</editline>
+						<editline name="Landscape::Materials::transform_el[2]" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Landscape::Materials::transform_pressed</callback>
+							<tooltip>X offset</tooltip>
+						</editline>
+						<editline name="Landscape::Materials::transform_el[3]" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Landscape::Materials::transform_pressed</callback>
+							<tooltip>Y offset</tooltip>
+						</editline>
+						
+						<label align="right"><text>Value:</text></label>
+						<editline name="Landscape::Materials::mask_value_el" export="1" align="expand">
+							<callback type="pressed,focus_out">Landscape::Materials::mask_value_pressed</callback>
+						</editline>
+						<hslider align="expand" min="0" max="1000">
+							<attach multiplier="1000">Landscape::Materials::mask_value_el</attach>
+						</hslider>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Width:</text></label>
+						<editline name="Landscape::Materials::mask_width_el" export="1" align="expand">
+							<callback type="pressed,focus_out">Landscape::Materials::mask_width_pressed</callback>
+						</editline>
+						<hslider align="expand" min="0" max="1000">
+							<attach multiplier="1000">Landscape::Materials::mask_width_el</attach>
+						</hslider>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Threshold:</text></label>
+						<editline name="Landscape::Materials::mask_threshold_el" export="1" align="expand">
+							<callback type="pressed,focus_out">Landscape::Materials::mask_threshold_pressed</callback>
+						</editline>
+						<hslider align="expand" min="0" max="1000">
+							<attach multiplier="1000">Landscape::Materials::mask_threshold_el</attach>
+						</hslider>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Diffuse:</text></label>
+						<hbox align="expand">
+							<editline name="Landscape::Materials::diffuse_texture_el" export="1" align="expand">
+								<callback type="pressed,focus_out">Landscape::Materials::diffuse_texture_pressed</callback>
+							</editline>
+							<icon name="Landscape::Materials::diffuse_texture_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::diffuse_texture_load_clicked</callback>
+							</icon>
+							<icon name="Landscape::Materials::diffuse_texture_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::diffuse_texture_view_clicked</callback>
+							</icon>
+							<icon name="Landscape::Materials::diffuse_texture_edit_i" export="1" texture="editor/gui/action_edit.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::diffuse_texture_edit_clicked</callback>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Scale:</text></label>
+						<editline name="Landscape::Materials::diffuse_scale_el" export="1" align="expand">
+							<callback type="pressed,focus_out">Landscape::Materials::diffuse_scale_pressed</callback>
+						</editline>
+						<hslider align="expand" min="0" max="1000">
+							<attach multiplier="1000">Landscape::Materials::diffuse_scale_el</attach>
+						</hslider>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Normal:</text></label>
+						<hbox align="expand">
+							<editline name="Landscape::Materials::normal_texture_el" export="1" align="expand">
+								<callback type="pressed,focus_out">Landscape::Materials::normal_texture_pressed</callback>
+							</editline>
+							<icon name="Landscape::Materials::normal_texture_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::normal_texture_load_clicked</callback>
+							</icon>
+							<icon name="Landscape::Materials::normal_texture_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::normal_texture_view_clicked</callback>
+							</icon>
+							<icon name="Landscape::Materials::normal_texture_edit_i" export="1" texture="editor/gui/action_edit.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::normal_texture_edit_clicked</callback>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Scale:</text></label>
+						<editline name="Landscape::Materials::normal_scale_el" export="1" align="expand">
+							<callback type="pressed,focus_out">Landscape::Materials::normal_scale_pressed</callback>
+						</editline>
+						<hslider align="expand" min="0" max="1000">
+							<attach multiplier="1000">Landscape::Materials::normal_scale_el</attach>
+						</hslider>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Specular:</text></label>
+						<hbox align="expand">
+							<editline name="Landscape::Materials::specular_texture_el" export="1" align="expand">
+								<callback type="pressed,focus_out">Landscape::Materials::specular_texture_pressed</callback>
+							</editline>
+							<icon name="Landscape::Materials::specular_texture_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::specular_texture_load_clicked</callback>
+							</icon>
+							<icon name="Landscape::Materials::specular_texture_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::specular_texture_view_clicked</callback>
+							</icon>
+							<icon name="Landscape::Materials::specular_texture_edit_i" export="1" texture="editor/gui/action_edit.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::specular_texture_edit_clicked</callback>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Scale:</text></label>
+						<editline name="Landscape::Materials::specular_scale_el" export="1" align="expand">
+							<callback type="pressed,focus_out">Landscape::Materials::specular_scale_pressed</callback>
+						</editline>
+						<hslider align="expand" min="0" max="1000">
+							<attach multiplier="1000">Landscape::Materials::specular_scale_el</attach>
+						</hslider>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Diffuse Array:</text></label>
+						<hbox align="expand">
+							<editline name="Landscape::Materials::diffuse_texture_array_el" export="1" align="expand">
+								<callback type="pressed,focus_out">Landscape::Materials::diffuse_texture_array_pressed</callback>
+								<tooltip>Material diffuse array texture</tooltip>
+							</editline>
+							<combobox name="Landscape::Materials::diffuse_texture_array_cb" export="1">
+								<text>256</text>
+								<text>512</text>
+								<text>1024</text>
+								<text>2048</text>
+								<text>4096</text>
+								<callback type="changed">Landscape::Materials::diffuse_texture_array_pressed</callback>
+							</combobox>
+							<icon texture="editor/gui/action_load.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::diffuse_texture_array_load_clicked</callback>
+							</icon>
+							<icon texture="editor/gui/action_view.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::diffuse_texture_array_view_clicked</callback>
+							</icon>
+							<icon texture="editor/gui/action_clear.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::diffuse_texture_array_clear_clicked</callback>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Normal Array:</text></label>
+						<hbox align="expand">
+							<editline name="Landscape::Materials::normal_texture_array_el" export="1" align="expand">
+								<callback type="pressed,focus_out">Landscape::Materials::normal_texture_array_pressed</callback>
+								<tooltip>Material normal array texture</tooltip>
+							</editline>
+							<combobox name="Landscape::Materials::normal_texture_array_cb" export="1">
+								<text>256</text>
+								<text>512</text>
+								<text>1024</text>
+								<text>2048</text>
+								<text>4096</text>
+								<callback type="changed">Landscape::Materials::normal_texture_array_pressed</callback>
+							</combobox>
+							<icon texture="editor/gui/action_load.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::normal_texture_array_load_clicked</callback>
+							</icon>
+							<icon texture="editor/gui/action_view.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::normal_texture_array_view_clicked</callback>
+							</icon>
+							<icon texture="editor/gui/action_clear.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::normal_texture_array_clear_clicked</callback>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						<vbox/>
+						
+						
+						<label align="right"><text>Specular Array:</text></label>
+						<hbox align="expand">
+							<editline name="Landscape::Materials::specular_texture_array_el" export="1" align="expand">
+								<callback type="pressed,focus_out">Landscape::Materials::specular_texture_array_pressed</callback>
+								<tooltip>Material specular array texture</tooltip>
+							</editline>
+							<combobox name="Landscape::Materials::specular_texture_array_cb" export="1">
+								<text>256</text>
+								<text>512</text>
+								<text>1024</text>
+								<text>2048</text>
+								<text>4096</text>
+								<callback type="changed">Landscape::Materials::specular_texture_array_pressed</callback>
+							</combobox>
+							<icon texture="editor/gui/action_load.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::specular_texture_array_load_clicked</callback>
+							</icon>
+							<icon texture="editor/gui/action_view.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::specular_texture_array_view_clicked</callback>
+							</icon>
+							<icon texture="editor/gui/action_clear.png" width="22" height="20">
+								<callback type="clicked">Landscape::Materials::specular_texture_array_clear_clicked</callback>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						<vbox/>
+						
+					</gridbox>
+				</vbox>
+				
+			</vbox>
+		</tab>
+		
+		<tab>
+			<text>Import</text>
+			<vbox space="4">
+				<gridbox align="expand" columns="4" space="4">
+					
+					<label align="right">Import X:</label>
+					<editline name="Landscape::Import::import_offset_x_el" export="1" align="expand" validator="uint">
+						<tooltip>Import horizontal offset</tooltip>
+						<callback type="pressed,focus_out">Landscape::Import::import_offset_x_pressed</callback>
+					</editline>
+					<label align="right">Size X:</label>
+					<hbox align="expand">
+						<editline name="Landscape::Import::import_size_x_el" export="1" align="expand" validator="uint">
+							<tooltip>Import horizontal size</tooltip>
+							<callback type="pressed,focus_out">Landscape::Import::import_size_x_pressed</callback>
+						</editline>
+						<vbox space="2"/>
+						<combobox name="Landscape::Import::import_unit_x_cb" export="1">
+							<text>Terrains</text>
+							<text>Surfaces</text>
+							<text>Pixels</text>
+							<text>Source</text>
+							<callback type="changed">Landscape::Import::import_unit_x_changed</callback>
+						</combobox>
+					</hbox>
+					
+					<label align="right">Import Y:</label>
+					<editline name="Landscape::Import::import_offset_y_el" export="1" align="expand" validator="uint">
+						<tooltip>Import vertical offset</tooltip>
+						<callback type="pressed,focus_out">Landscape::Import::import_offset_y_pressed</callback>
+					</editline>
+					<label align="right">Size Y:</label>
+					<hbox align="expand">
+						<editline name="Landscape::Import::import_size_y_el" export="1" align="expand" validator="uint">
+							<tooltip>Import vertical size</tooltip>
+							<callback type="pressed,focus_out">Landscape::Import::import_size_y_pressed</callback>
+						</editline>
+						<vbox space="2"/>
+						<combobox name="Landscape::Import::import_unit_y_cb" export="1">
+							<text>Terrains</text>
+							<text>Surfaces</text>
+							<text>Pixels</text>
+							<text>Source</text>
+							<callback type="changed">Landscape::Import::import_unit_y_changed</callback>
+						</combobox>
+					</hbox>
+					
+					<vbox/>
+					<hspacer align="expand"/>
+					<vbox/>
+					<vbox/>
+					
+					<label align="right">Source X:</label>
+					<editline name="Landscape::Import::source_offset_x_el" export="1" align="expand" validator="uint">
+						<tooltip>Import horizontal offset</tooltip>
+						<callback type="pressed,focus_out">Landscape::Import::source_offset_x_pressed</callback>
+					</editline>
+					<label align="right">Size X:</label>
+					<editline name="Landscape::Import::source_size_x_el" export="1" align="expand" validator="uint">
+						<tooltip>Import horizontal size</tooltip>
+						<callback type="pressed,focus_out">Landscape::Import::source_size_x_pressed</callback>
+					</editline>
+					
+					<label align="right">Source Y:</label>
+					<editline name="Landscape::Import::source_offset_y_el" export="1" align="expand" validator="uint">
+						<tooltip>Import vertical offset</tooltip>
+						<callback type="pressed,focus_out">Landscape::Import::source_offset_y_pressed</callback>
+					</editline>
+					<label align="right">Size Y:</label>
+					<editline name="Landscape::Import::source_size_y_el" export="1" align="expand" validator="uint">
+						<tooltip>Import vertical size</tooltip>
+						<callback type="pressed,focus_out">Landscape::Import::source_size_y_pressed</callback>
+					</editline>
+					
+					<vbox/>
+					<hspacer align="expand"/>
+					<vbox/>
+					<vbox/>
+					
+					<checkbox name="Landscape::Import::height_import_cb" export="1" align="right">
+						<text>Height:</text>
+						<callback type="changed">Landscape::Import::height_import_changed</callback>
+					</checkbox>
+					<hbox align="expand">
+						<editline name="Landscape::Import::height_name_el" export="1" align="expand">
+							<tooltip>Path to height data</tooltip>
+							<callback type="pressed,focus_out">Landscape::Import::height_name_pressed</callback>
+							<callback type="double_clicked">Landscape::Import::height_name_double_clicked</callback>
+						</editline>
+						<vbox space="2"/>
+						<label align="right">Scale:</label>
+						<vbox space="2"/>
+						<editline name="Landscape::Import::height_scale_el" export="1" align="right" validator="float">
+							<tooltip>Height scale</tooltip>
+							<callback type="pressed,focus_out">Landscape::Import::height_scale_pressed</callback>
+						</editline>
+					</hbox>
+					<vbox/>
+					<vbox/>
+					
+					<checkbox name="Landscape::Import::diffuse_import_cb" export="1" align="right">
+						<text>Diffuse:</text>
+						<callback type="changed">Landscape::Import::diffuse_import_changed</callback>
+					</checkbox>
+					<editline name="Landscape::Import::diffuse_name_el" export="1" align="expand">
+						<tooltip>Path to diffuse data</tooltip>
+						<callback type="pressed,focus_out">Landscape::Import::diffuse_name_pressed</callback>
+						<callback type="double_clicked">Landscape::Import::diffuse_name_double_clicked</callback>
+					</editline>
+					<vbox/>
+					<vbox/>
+					
+					<checkbox name="Landscape::Import::normal_import_cb" export="1" align="right">
+						<text>Normal:</text>
+						<callback type="changed">Landscape::Import::normal_import_changed</callback>
+					</checkbox>
+					<editline name="Landscape::Import::normal_name_el" export="1" align="expand">
+						<tooltip>Path to normal data</tooltip>
+						<callback type="pressed,focus_out">Landscape::Import::normal_name_pressed</callback>
+						<callback type="double_clicked">Landscape::Import::normal_name_double_clicked</callback>
+					</editline>
+					<vbox/>
+					<vbox/>
+					
+					<vbox/>
+					<hspacer align="expand"/>
+					<vbox/>
+					<vbox/>
+					
+					
+					
+					<label align="right">Number of channels:</label>
+					<hbox align="expand">
+						<editline name="num_channels_el" align="right" validator="int">
+								<tooltip>Number of channels</tooltip>
+							<text>4</text>
+						</editline>
+						
+						<hslider name="Landscape::Import::num_channels_sl" export="1" align="expand" min="1" max="16" value="4">
+							<attach multiplier="1">num_channels_el</attach>
+						</hslider>
+					</hbox>
+					<vbox/>
+					<vbox/>
+					
+					
+					
+					<vbox/>
+					<hspacer align="expand"/>
+					<vbox/>
+					<vbox/>
+					
+					<vbox name="Landscape::Import::mask_import" reference="1">
+						<checkbox name="Landscape::Import::mask_import_cb[NUM]" export="1" align="right">
+							<text>Mask NUM:</text>
+							<callback type="changed">Landscape::Import::mask_import_changed</callback>
+						</checkbox>
+						<hbox align="expand">
+							<editline name="Landscape::Import::mask_name_el[NUM]" export="1" align="expand">
+								<tooltip>Path to mask data</tooltip>
+								<callback type="pressed,focus_out">Landscape::Import::mask_name_pressed</callback>
+								<callback type="double_clicked" string="NUM">Landscape::Import::mask_name_double_clicked</callback>
+							</editline>
+							<vbox space="2"/>
+							<combobox name="Landscape::Import::mask_material_cb[NUM]" export="1">
+								<callback type="pressed,focus_out">Landscape::Import::mask_material_changed</callback>
+							</combobox>
+							<vbox space="2"/>
+						</hbox>
+						<vbox/>
+						<vbox/>
+					</vbox>
+					
+					<reference name="Landscape::Import::mask_import" NUM="0"/>
+					<reference name="Landscape::Import::mask_import" NUM="1"/>
+					<reference name="Landscape::Import::mask_import" NUM="2"/>
+					<reference name="Landscape::Import::mask_import" NUM="3"/>
+					<reference name="Landscape::Import::mask_import" NUM="4"/>
+					<reference name="Landscape::Import::mask_import" NUM="5"/>
+					<reference name="Landscape::Import::mask_import" NUM="6"/>
+					<reference name="Landscape::Import::mask_import" NUM="7"/>
+					<reference name="Landscape::Import::mask_import" NUM="8"/>
+					<reference name="Landscape::Import::mask_import" NUM="9"/>
+					<reference name="Landscape::Import::mask_import" NUM="10"/>
+					<reference name="Landscape::Import::mask_import" NUM="11"/>
+					<reference name="Landscape::Import::mask_import" NUM="12"/>
+					<reference name="Landscape::Import::mask_import" NUM="13"/>
+					<reference name="Landscape::Import::mask_import" NUM="14"/>
+					<reference name="Landscape::Import::mask_import" NUM="15"/>
+					
+					<vbox/>
+					<hspacer align="expand"/>
+					<vbox/>
+					<vbox/>
+					
+					<vbox/>
+					<hbox align="expand">
+						<checkbox name="Landscape::Import::fast_mode_cb" export="1" align="left" checked="0">
+							<text>Experimental Fast Mode</text>
+							<callback type="changed">Landscape::Import::fast_mode_changed</callback>
+						</checkbox>
+						<vbox space="2"/>
+						<checkbox name="Landscape::Import::flip_y_cb" export="1" align="left">
+							<text>Flip Y</text>
+							<tooltip>Flip tiles vertically</tooltip>
+							<callback type="changed">Landscape::Import::flip_y_changed</callback>
+						</checkbox>
+						<vbox space="2"/>
+						<checkbox name="Landscape::Import::clean_cb" export="1" align="left">
+							<text>Clean</text>
+							<tooltip>Clean mask creation</tooltip>
+							<callback type="changed">Landscape::Import::clean_changed</callback>
+						</checkbox>
+					</hbox>
+					<vbox/>
+					<button name="Landscape::Import::import_b" export="1" align="expand">
+						<text>Import</text>
+						<tooltip>Import data</tooltip>
+						<callback type="clicked">Landscape::Import::import_clicked</callback>
+					</button>
+					
+				</gridbox>
+			</vbox>
+		</tab>
+		
+		<tab>
+			<text>Nodes</text>
+			<vbox align="expand" space="4">
+				
+				<vbox>
+					<gridbox align="expand" columns="4" space="4">
+						
+						<label align="right">Import X:</label>
+						<editline name="Landscape::Nodes::import_offset_x_el" export="1" align="expand" validator="uint">
+							<tooltip>Nodes horizontal offset</tooltip>
+							<callback type="pressed,focus_out">Landscape::Nodes::import_offset_x_pressed</callback>
+						</editline>
+						<label align="right">Size X:</label>
+						<hbox align="expand">
+							<editline name="Landscape::Nodes::import_size_x_el" export="1" align="expand" validator="uint">
+								<tooltip>Nodes horizontal size</tooltip>
+								<callback type="pressed,focus_out">Landscape::Nodes::import_size_x_pressed</callback>
+							</editline>
+							<vbox space="2"/>
+							<combobox name="Landscape::Nodes::import_unit_x_cb" export="1">
+								<text>Terrains</text>
+								<text>Source</text>
+								<callback type="changed">Landscape::Nodes::import_unit_x_changed</callback>
+							</combobox>
+						</hbox>
+						
+						<label align="right">Import Y:</label>
+						<editline name="Landscape::Nodes::import_offset_y_el" export="1" align="expand" validator="uint">
+							<tooltip>Nodes vertical offset</tooltip>
+							<callback type="pressed,focus_out">Landscape::Nodes::import_offset_y_pressed</callback>
+						</editline>
+						<label align="right">Size Y:</label>
+						<hbox align="expand">
+							<editline name="Landscape::Nodes::import_size_y_el" export="1" align="expand" validator="uint">
+								<tooltip>Nodes vertical size</tooltip>
+								<callback type="pressed,focus_out">Landscape::Nodes::import_size_y_pressed</callback>
+							</editline>
+							<vbox space="2"/>
+							<combobox name="Landscape::Nodes::import_unit_y_cb" export="1">
+								<text>Terrains</text>
+								<text>Source</text>
+								<callback type="changed">Landscape::Nodes::import_unit_y_changed</callback>
+							</combobox>
+						</hbox>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right">Source X:</label>
+						<editline name="Landscape::Nodes::source_offset_x_el" export="1" align="expand" validator="uint">
+							<tooltip>Nodes horizontal offset</tooltip>
+							<callback type="pressed,focus_out">Landscape::Nodes::source_offset_x_pressed</callback>
+						</editline>
+						<label align="right">Size X:</label>
+						<editline name="Landscape::Nodes::source_size_x_el" export="1" align="expand" validator="uint">
+							<tooltip>Nodes horizontal size</tooltip>
+							<callback type="pressed,focus_out">Landscape::Nodes::source_size_x_pressed</callback>
+						</editline>
+						
+						<label align="right">Source Y:</label>
+						<editline name="Landscape::Nodes::source_offset_y_el" export="1" align="expand" validator="uint">
+							<tooltip>Nodes vertical offset</tooltip>
+							<callback type="pressed,focus_out">Landscape::Nodes::source_offset_y_pressed</callback>
+						</editline>
+						<label align="right">Size Y:</label>
+						<editline name="Landscape::Nodes::source_size_y_el" export="1" align="expand" validator="uint">
+							<tooltip>Nodes vertical size</tooltip>
+							<callback type="pressed,focus_out">Landscape::Nodes::source_size_y_pressed</callback>
+						</editline>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+					</gridbox>
+				</vbox>
+				
+				<vbox>
+					<hbox align="expand">
+						<checkbox name="Landscape::Nodes::enabled_cb" export="1" align="left">
+							<text>Enabled</text>
+							<callback type="changed">Landscape::Nodes::enabled_clicked</callback>
+						</checkbox>
+						<button name="Landscape::Nodes::add_b" export="1" align="right">
+							<text>Add</text>
+							<callback type="clicked">Landscape::Nodes::add_clicked</callback>
+						</button>
+						<vbox space="2"/>
+						<button name="Landscape::Nodes::clone_b" export="1">
+							<text>Clone</text>
+							<callback type="clicked">Landscape::Nodes::clone_clicked</callback>
+						</button>
+						<vbox space="2"/>
+						<button name="Landscape::Nodes::remove_b" export="1">
+							<text>Remove</text>
+							<callback type="clicked">Landscape::Nodes::remove_clicked</callback>
+						</button>
+					</hbox>
+				</vbox>
+				
+				<scrollbox align="expand" height="60">
+					<listbox name="Landscape::Nodes::references_lb" export="1" align="expand">
+						<callback type="changed">Landscape::Nodes::reference_changed</callback>
+					</listbox>
+				</scrollbox>
+				
+				<vbox>
+					<gridbox align="expand" columns="4" space="4">
+						
+						<checkbox name="Landscape::Nodes::node_import_cb" export="1" align="right">
+							<text>Node:</text>
+							<callback type="changed">Landscape::Nodes::node_import_changed</callback>
+						</checkbox>
+						<hbox align="expand">
+							<editline name="Landscape::Nodes::node_name_el" export="1" align="expand">
+								<callback type="pressed,focus_out">Landscape::Nodes::node_name_pressed</callback>
+							</editline>
+							<label align="right"><text> Depth: </text></label>
+							<combobox name="Landscape::Nodes::depth_cb" export="1">
+								<text>0</text>
+								<text>1</text>
+								<text>2</text>
+								<text>3</text>
+								<text>4</text>
+								<text>5</text>
+								<text>6</text>
+								<text>7</text>
+								<tooltip>Node depth in the terrain children hierarchy</tooltip>
+								<callback type="changed">Landscape::Nodes::depth_changed</callback>
+							</combobox>
+							<icon name="Landscape::Nodes::node_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+								<callback type="clicked">Landscape::Nodes::node_load_clicked</callback>
+							</icon>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Import Mask:</text></label>
+						<editline name="Landscape::Nodes::mask_image_import_el" export="1" align="expand">
+							<tooltip>Mask Image Source Name</tooltip>
+							<callback type="pressed,focus_out">Landscape::Nodes::mask_image_import_pressed</callback>
+							<callback type="double_clicked">Landscape::Nodes::mask_image_import_double_clicked</callback>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Mask:</text></label>
+						<hbox align="expand">
+							<editline name="Landscape::Nodes::mask_image_name_el" export="1" align="expand">
+								<tooltip>Mask Image Name (relative to the terrain directory)</tooltip>
+								<callback type="pressed,focus_out">Landscape::Nodes::mask_image_name_pressed</callback>
+							</editline>
+							<label align="right"><text> Size: </text></label>
+							<combobox name="Landscape::Nodes::mask_image_size_cb" export="1">
+								<text>512</text>
+								<text>1024</text>
+								<text>2048</text>
+								<text>4096</text>
+								<text>8192</text>
+								<tooltip>Mask size per terrain</tooltip>
+								<callback type="changed">Landscape::Nodes::mask_image_size_changed</callback>
+							</combobox>
+							<label align="right"><text> Format: </text></label>
+							<combobox name="Landscape::Nodes::mask_image_format_cb" export="1">
+								<text>R8</text>
+								<text>RG8</text>
+								<text>RGB8</text>
+								<text>RGBA8</text>
+								<tooltip>Mask format</tooltip>
+								<callback type="changed">Landscape::Nodes::mask_image_format_changed</callback>
+							</combobox>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Mesh:</text></label>
+						<hbox align="expand">
+							<editline name="Landscape::Nodes::mask_mesh_name_el" export="1" align="expand">
+								<tooltip>Mask Mesh Name (relative to the terrain directory)</tooltip>
+								<callback type="pressed,focus_out">Landscape::Nodes::mask_mesh_name_pressed</callback>
+							</editline>
+							<label align="right"><text> Layer: </text></label>
+							<editline name="Landscape::Nodes::node_layer_name_el" export="1" align="expand">
+								<tooltip>NodeLayer or WorldLayer Reference Node Name (relative to the terrain directory)</tooltip>
+								<callback type="pressed,focus_out">Landscape::Nodes::node_layer_name_pressed</callback>
+							</editline>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Offset:</text></label>
+						<hbox align="expand" space_x="4" padding_lr="-4">
+							<editline name="Landscape::Nodes::node_offset_el[0]" export="1" align="expand">
+								<callback type="pressed,focus_out">Landscape::Nodes::node_offset_pressed</callback>
+							</editline>
+							<editline name="Landscape::Nodes::node_offset_el[1]" export="1" align="expand">
+								<callback type="pressed,focus_out">Landscape::Nodes::node_offset_pressed</callback>
+							</editline>
+							<editline name="Landscape::Nodes::node_offset_el[2]" export="1" align="expand">
+								<callback type="pressed,focus_out">Landscape::Nodes::node_offset_pressed</callback>
+							</editline>
+						</hbox>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hspacer align="expand"/>
+						<vbox/>
+						<vbox/>
+						
+						<vbox/>
+						<hbox align="expand">
+							<checkbox name="Landscape::Nodes::combine_cb" export="1" align="left">
+								<text>Combine</text>
+								<tooltip>Combine all nodes into the single node reference</tooltip>
+								<callback type="changed">Landscape::Nodes::combine_changed</callback>
+							</checkbox>
+							<vbox space="2"/>
+							<checkbox name="Landscape::Nodes::flip_y_cb" export="1" align="left">
+								<text>Flip Y</text>
+								<tooltip>Flip tiles vertically</tooltip>
+								<callback type="changed">Landscape::Nodes::flip_y_changed</callback>
+							</checkbox>
+						</hbox>
+						<vbox/>
+						<hbox align="expand">
+							<button name="Landscape::Nodes::update_b" export="1" align="expand">
+								<text>Update</text>
+								<tooltip>Update nodes</tooltip>
+								<callback type="clicked">Landscape::Nodes::update_clicked</callback>
+							</button>
+							<vbox space="2"/>
+							<button name="Landscape::Nodes::create_b" export="1" align="expand">
+								<text>Create</text>
+								<tooltip>Create nodes</tooltip>
+								<callback type="clicked">Landscape::Nodes::create_clicked</callback>
+							</button>
+						</hbox>
+						
+					</gridbox>
+				</vbox>
+				
+			</vbox>
+		</tab>
+		
+	</tabbox>
+</window>
+
+</ui>

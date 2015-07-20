@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<blocks version="1.00">
+	
+	<!-- base blocks -->
+	<block type="schemer.entry">
+		<output_path>output</output_path>
+	</block>
+	<block type="schemer.input">
+		<output_link>value</output_link>
+	</block>
+	<block type="schemer.output">
+		<input_link>value</input_link>
+	</block>
+	<block type="schemer.boolean">
+		<output_link>value</output_link>
+	</block>
+	<block type="schemer.constant">
+		<output_link>value</output_link>
+	</block>
+	<block type="schemer.file">
+		<output_link>name</output_link>
+	</block>
+	
+	<block type="schemer.copy">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link>value</output_link>
+		<update>value = v;</update>
+	</block>
+	<block type="schemer.value">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<output_link edit="1">value</output_link>
+	</block>
+	
+	<!-- constructors -->
+	<block type="schemer.vec3">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link value="0" edit="1">x</input_link>
+		<input_link value="0" edit="1">y</input_link>
+		<input_link value="0" edit="1">z</input_link>
+		<output_link label="vec3">value</output_link>
+		<update>value = vec3(x,y,z);</update>
+	</block>
+	<block type="schemer.vec4">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link value="0" edit="1">x</input_link>
+		<input_link value="0" edit="1">y</input_link>
+		<input_link value="0" edit="1">z</input_link>
+		<input_link value="1" edit="1">w</input_link>
+		<output_link label="vec4">value</output_link>
+		<update>value = vec4(x,y,z,w);</update>
+	</block>
+	<block type="schemer.quat">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link value="vec3(0,0,1)" edit="1">axis</input_link>
+		<input_link value="0" edit="1">angle</input_link>
+		<output_link label="quat">value</output_link>
+		<update>value = quat(axis,angle);</update>
+	</block>
+	<block type="schemer.mat4">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link value="quat(0,0,1,0)" edit="1">rot</input_link>
+		<input_link value="vec3(0,0,0)" edit="1">pos</input_link>
+		<output_link label="mat4">value</output_link>
+		<update>value = mat4(rot,pos);</update>
+	</block>
+	
+	<!-- swizzles -->
+	<block type="schemer.xyz">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">value</input_link>
+		<output_link label="x">x</output_link>
+		<output_link label="y">y</output_link>
+		<output_link label="z">z</output_link>
+		<update>x = value.x; y = value.y; z = value.z;</update>
+	</block>
+	<block type="schemer.xyzw">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">value</input_link>
+		<output_link label="x">x</output_link>
+		<output_link label="y">y</output_link>
+		<output_link label="z">z</output_link>
+		<output_link label="w">w</output_link>
+		<update>x = value.x; y = value.y; z = value.z; w = value.w;</update>
+	</block>
+	
+	<!-- math operations -->
+	<block type="schemer.mul">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<output_link label="a * b">value</output_link>
+		<update>value = a * b;</update>
+	</block>
+	<block type="schemer.div">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<output_link label="a / b">value</output_link>
+		<update>value = a / b;</update>
+	</block>
+	<block type="schemer.mod">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<output_link label="a % b">value</output_link>
+		<update>value = a % b;</update>
+	</block>
+	<block type="schemer.add">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<output_link label="a + b">value</output_link>
+		<update>value = a + b;</update>
+	</block>
+	<block type="schemer.sub">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<output_link label="a - b">value</output_link>
+		<update>value = a - b;</update>
+	</block>
+	<block type="schemer.mad">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<input_link edit="1">c</input_link>
+		<output_link label="a * b + c">value</output_link>
+		<update>value = a * b + c;</update>
+	</block>
+	
+	<!-- math functions -->
+	<block type="schemer.sign">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="sign">value</output_link>
+		<update>value = sign(v);</update>
+	</block>
+	<block type="schemer.ceil">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="ceil">value</output_link>
+		<update>value = ceil(v);</update>
+	</block>
+	<block type="schemer.floor">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="floor">value</output_link>
+		<update>value = floor(v);</update>
+	</block>
+	<block type="schemer.frac">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="frac">value</output_link>
+		<update>value = frac(v);</update>
+	</block>
+	<block type="schemer.sqrt">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="sqrt">value</output_link>
+		<update>value = sqrt(v);</update>
+	</block>
+	<block type="schemer.rcp">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="rcp">value</output_link>
+		<update>value = rcp(v);</update>
+	</block>
+	<block type="schemer.rsqrt">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="rsqrt">value</output_link>
+		<update>value = rsqrt(v);</update>
+	</block>
+	<block type="schemer.exp">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="exp">value</output_link>
+		<update>value = exp(v);</update>
+	</block>
+	<block type="schemer.log">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="log">value</output_link>
+		<update>value = log(v);</update>
+	</block>
+	<block type="schemer.log10">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="log10">value</output_link>
+		<update>value = log10(v);</update>
+	</block>
+	<block type="schemer.sin">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="sin">value</output_link>
+		<update>value = sin(v);</update>
+	</block>
+	<block type="schemer.cos">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="cos">value</output_link>
+		<update>value = cos(v);</update>
+	</block>
+	<block type="schemer.tan">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="tan">value</output_link>
+		<update>value = tan(v);</update>
+	</block>
+	<block type="schemer.asin">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="asin">value</output_link>
+		<update>value = asin(v);</update>
+	</block>
+	<block type="schemer.acos">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="acos">value</output_link>
+		<update>value = acos(v);</update>
+	</block>
+	<block type="schemer.atan">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="atan">value</output_link>
+		<update>value = atan(v);</update>
+	</block>
+	
+	<block type="schemer.atan2">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<output_link label="atan2">value</output_link>
+		<update>value = atan2(a,b);</update>
+	</block>
+	<block type="schemer.pow">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<output_link label="pow">value</output_link>
+		<update>value = pow(a,b);</update>
+	</block>
+	
+	<block type="schemer.abs">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="abs">value</output_link>
+		<update>value = abs(v);</update>
+	</block>
+	<block type="schemer.min">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<output_link label="min">value</output_link>
+		<update>value = min(a,b);</update>
+	</block>
+	<block type="schemer.max">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<output_link label="max">value</output_link>
+		<update>value = max(a,b);</update>
+	</block>
+	<block type="schemer.clamp">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value" edit="1">v</input_link>
+		<input_link value="0" edit="1">min</input_link>
+		<input_link value="1" edit="1">max</input_link>
+		<output_link label="clamp">value</output_link>
+		<update>value = clamp(v,min,max);</update>
+	</block>
+	<block type="schemer.lerp">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<input_link edit="1">k</input_link>
+		<output_link label="lerp">value</output_link>
+		<update>value = lerp(a,b,k);</update>
+	</block>
+	<block type="schemer.length">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="length">value</output_link>
+		<update>value = length(v);</update>
+	</block>
+	<block type="schemer.length2">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="length2">value</output_link>
+		<update>value = length2(v);</update>
+	</block>
+	<block type="schemer.normalize">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="value">v</input_link>
+		<output_link label="normalize">value</output_link>
+		<update>value = normalize(v);</update>
+	</block>
+	<block type="schemer.dot">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<output_link label="dot">value</output_link>
+		<update>value = dot(a,b);</update>
+	</block>
+	<block type="schemer.dot3">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<output_link label="dot3">value</output_link>
+		<update>value = dot3(a,b);</update>
+	</block>
+	<block type="schemer.cross">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<output_link label="cross">value</output_link>
+		<update>value = cross(a,b);</update>
+	</block>
+	<block type="schemer.rand">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link label="from" value="0" edit="1">from</input_link>
+		<input_link label="to" value="1024" edit="1">to</input_link>
+		<output_link label="rand">value</output_link>
+		<update>value = rand(from,to);</update>
+	</block>
+	
+	<!-- system functions -->
+	<block type="schemer.time">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<output_link label="time">value</output_link>
+		<update>value = time();</update>
+	</block>
+	<block type="schemer.clock">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<output_link label="clock">value</output_link>
+		<update>value = clock();</update>
+	</block>
+	<block type="schemer.message">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link edit="1">value</input_link>
+		<update>log.message("schemer.message: %s\n",string(value));</update>
+	</block>
+	
+	<!-- branching functions -->
+	<block type="schemer.if">
+		<input_path>input</input_path>
+		<output_path label="a > b">output_gt</output_path>
+		<output_path label="a < b">output_lt</output_path>
+		<output_path label="a = b">output_eq</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<update><![CDATA[
+			if(a > b) goto output_gt;
+			if(a < b) goto output_lt;
+			goto output_eq;
+		]]></update>
+	</block>
+	
+	<block type="schemer.and">
+		<input_path>input</input_path>
+		<output_path label="a &amp;&amp; b">output_and</output_path>
+		<output_path label="else">output_else</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<update><![CDATA[
+			if(a && b) goto output_and;
+			goto output_else;
+		]]></update>
+	</block>
+	<block type="schemer.or">
+		<input_path>input</input_path>
+		<output_path label="a || b">output_or</output_path>
+		<output_path label="else">output_else</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<update><![CDATA[
+			if(a || b) goto output_or;
+			goto output_else;
+		]]></update>
+	</block>
+	
+	<block type="schemer.band">
+		<input_path>input</input_path>
+		<output_path label="a &amp; b">output_band</output_path>
+		<output_path label="else">output_else</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<update><![CDATA[
+			if(a & b) goto output_band;
+			goto output_else;
+		]]></update>
+	</block>
+	<block type="schemer.bxor">
+		<input_path>input</input_path>
+		<output_path label="a ^ b">output_bxor</output_path>
+		<output_path label="else">output_else</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<update><![CDATA[
+			if(a ^ b) goto output_bxor;
+			goto output_else;
+		]]></update>
+	</block>
+	<block type="schemer.bor">
+		<input_path>input</input_path>
+		<output_path label="a | b">output_bor</output_path>
+		<output_path label="else">output_else</output_path>
+		<input_link edit="1">a</input_link>
+		<input_link edit="1">b</input_link>
+		<update><![CDATA[
+			if(a | b) goto output_bor;
+			goto output_else;
+		]]></update>
+	</block>
+	
+	<block type="schemer.loop">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<output_path align="bottom">begin</output_path>
+		<input_path align="bottom">end</input_path>
+		<input_link value="0" edit="1">from</input_link>
+		<input_link edit="1">to</input_link>
+		<input_link value="1" edit="1">step</input_link>
+		<output_link>value</output_link>
+		<update><![CDATA[
+		input:
+			if(step <= 0) step = 1;
+			forloop(int i = from; to; step) {
+				value = i;
+				goto begin;
+		end:
+			}
+			goto output;
+		]]></update>
+	</block>
+	<block type="schemer.counter">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_path align="bottom">clear</input_path>
+		<output_path label="output" align="bottom">output_clear</output_path>
+		<output_link label="counter">value</output_link>
+		<update><![CDATA[
+		input:
+			value++;
+			goto output;
+		clear:
+			value = 0;
+			goto output_clear;
+		]]></update>
+	</block>
+	
+	<block type="schemer.event">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<output_path>event</output_path>
+		<input_link>value</input_link>
+		<common><![CDATA[
+			int old_value;
+		]]></common>
+		<init><![CDATA[
+			old_value = value;
+		]]></init>
+		<update><![CDATA[
+			void event_thread() {
+				goto event;
+			}
+			if(old_value != value) {
+				old_value = value;
+				thread(functionid(event_thread));
+			}
+			goto output;
+		]]></update>
+	</block>
+	<block type="schemer.delay">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<output_path>delay</output_path>
+		<input_link value="1" edit="1">time</input_link>
+		<update><![CDATA[
+			void delay_thread() {
+				float begin = clock();
+				while(clock() - begin < time) wait;
+				goto delay;
+			}
+			thread(functionid(delay_thread));
+			goto output;
+		]]></update>
+	</block>
+	<block type="schemer.timer">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<output_path>timer</output_path>
+		<input_path align="bottom">stop</input_path>
+		<output_path label="output" align="bottom">output_stop</output_path>
+		<input_link value="1" edit="1">time</input_link>
+		<common><![CDATA[
+			int done;
+		]]></common>
+		<update><![CDATA[
+		input:
+			done = 0;
+			void timer_thread() {
+				while(done == 0) {
+					float begin = clock();
+					while(clock() - begin < time) wait;
+					thread(functionid(timer_thread));
+					goto timer;
+				}
+			}
+			thread(functionid(timer_thread));
+			goto output;
+		stop:
+			done = 1;
+			goto output_stop;
+		]]></update>
+	</block>
+	
+	<!-- switch functions -->
+	<block type="schemer.switch">
+		<input_path>input</input_path>
+		<output_path label="case 0">output_0</output_path>
+		<output_path label="case 1">output_1</output_path>
+		<output_path>default</output_path>
+		<input_link>value</input_link>
+		<update><![CDATA[
+			switch(value) {
+				case 0: goto output_0;
+				case 1: goto output_1;
+			}
+			goto default;
+		]]></update>
+	</block>
+	<block type="schemer.switch3">
+		<input_path>input</input_path>
+		<output_path label="case 0">output_0</output_path>
+		<output_path label="case 1">output_1</output_path>
+		<output_path label="case 2">output_2</output_path>
+		<output_path>default</output_path>
+		<input_link>value</input_link>
+		<update><![CDATA[
+			switch(value) {
+				case 0: goto output_0;
+				case 1: goto output_1;
+				case 2: goto output_2;
+			}
+			goto default;
+		]]></update>
+	</block>
+	<block type="schemer.switch4">
+		<input_path>input</input_path>
+		<output_path label="case 0">output_0</output_path>
+		<output_path label="case 1">output_1</output_path>
+		<output_path label="case 2">output_2</output_path>
+		<output_path label="case 3">output_3</output_path>
+		<output_path>default</output_path>
+		<input_link>value</input_link>
+		<update><![CDATA[
+			switch(value) {
+				case 0: goto output_0;
+				case 1: goto output_1;
+				case 2: goto output_2;
+				case 3: goto output_3;
+			}
+			goto default;
+		]]></update>
+	</block>
+	<block type="schemer.switch5">
+		<input_path>input</input_path>
+		<output_path label="case 0">output_0</output_path>
+		<output_path label="case 1">output_1</output_path>
+		<output_path label="case 2">output_2</output_path>
+		<output_path label="case 3">output_3</output_path>
+		<output_path label="case 4">output_4</output_path>
+		<output_path>default</output_path>
+		<input_link>value</input_link>
+		<update><![CDATA[
+			switch(value) {
+				case 0: goto output_0;
+				case 1: goto output_1;
+				case 2: goto output_2;
+				case 3: goto output_3;
+				case 4: goto output_4;
+			}
+			goto default;
+		]]></update>
+	</block>
+	
+	<!-- select functions -->
+	<block type="schemer.select">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link>value</input_link>
+		<input_link label="case 0" edit="1">case_0</input_link>
+		<input_link label="case 1" edit="1">case_1</input_link>
+		<input_link label="default" edit="1">default</input_link>
+		<output_link label="value">output_value</output_link>
+		<update><![CDATA[
+			switch(value) {
+				case 0: output_value = case_0; break;
+				case 1: output_value = case_1; break;
+				default: output_value = default; break;
+			}
+		]]></update>
+	</block>
+	<block type="schemer.select3">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link>value</input_link>
+		<input_link label="case 0" edit="1">case_0</input_link>
+		<input_link label="case 1" edit="1">case_1</input_link>
+		<input_link label="case 2" edit="1">case_2</input_link>
+		<input_link label="default" edit="1">default</input_link>
+		<output_link label="value">output_value</output_link>
+		<update><![CDATA[
+			switch(value) {
+				case 0: output_value = case_0; break;
+				case 1: output_value = case_1; break;
+				case 2: output_value = case_2; break;
+				default: output_value = default; break;
+			}
+		]]></update>
+	</block>
+	<block type="schemer.select4">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link>value</input_link>
+		<input_link label="case 0" edit="1">case_0</input_link>
+		<input_link label="case 1" edit="1">case_1</input_link>
+		<input_link label="case 2" edit="1">case_2</input_link>
+		<input_link label="case 3" edit="1">case_3</input_link>
+		<input_link label="default" edit="1">default</input_link>
+		<output_link label="value">output_value</output_link>
+		<update><![CDATA[
+			switch(value) {
+				case 0: output_value = case_0; break;
+				case 1: output_value = case_1; break;
+				case 2: output_value = case_2; break;
+				case 3: output_value = case_3; break;
+				default: output_value = default; break;
+			}
+		]]></update>
+	</block>
+	<block type="schemer.select5">
+		<input_path>input</input_path>
+		<output_path>output</output_path>
+		<input_link>value</input_link>
+		<input_link label="case 0" edit="1">case_0</input_link>
+		<input_link label="case 1" edit="1">case_1</input_link>
+		<input_link label="case 2" edit="1">case_2</input_link>
+		<input_link label="case 3" edit="1">case_3</input_link>
+		<input_link label="case 4" edit="1">case_4</input_link>
+		<input_link label="default" edit="1">default</input_link>
+		<output_link label="value">output_value</output_link>
+		<update><![CDATA[
+			switch(value) {
+				case 0: output_value = case_0; break;
+				case 1: output_value = case_1; break;
+				case 2: output_value = case_2; break;
+				case 3: output_value = case_3; break;
+				case 4: output_value = case_4; break;
+				default: output_value = default; break;
+			}
+		]]></update>
+	</block>
+	
+	<!-- state functions -->
+	<block type="schemer.state">
+		<input_path>input</input_path>
+		<input_path label="input 0">input_0</input_path>
+		<input_path label="input 1">input_1</input_path>
+		<output_path label="output 0">output_0</output_path>
+		<output_path label="output 1">output_1</output_path>
+		<output_link>state</output_link>
+		<update><![CDATA[
+		input:
+			switch(state) {
+				case 0: goto output_0;
+				case 1: goto output_1;
+			}
+		input_0:
+			state = 0;
+			goto output_0;
+		input_1:
+			state = 1;
+			goto output_1;
+		]]></update>
+	</block>
+	<block type="schemer.state3">
+		<input_path>input</input_path>
+		<input_path label="input 0">input_0</input_path>
+		<input_path label="input 1">input_1</input_path>
+		<input_path label="input 2">input_2</input_path>
+		<output_path label="output 0">output_0</output_path>
+		<output_path label="output 1">output_1</output_path>
+		<output_path label="output 2">output_2</output_path>
+		<output_link>state</output_link>
+		<update><![CDATA[
+		input:
+			switch(state) {
+				case 0: goto output_0;
+				case 1: goto output_1;
+				case 2: goto output_2;
+			}
+		input_0:
+			state = 0;
+			goto output_0;
+		input_1:
+			state = 1;
+			goto output_1;
+		input_2:
+			state = 2;
+			goto output_2;
+		]]></update>
+	</block>
+	<block type="schemer.state4">
+		<input_path>input</input_path>
+		<input_path label="input 0">input_0</input_path>
+		<input_path label="input 1">input_1</input_path>
+		<input_path label="input 2">input_2</input_path>
+		<input_path label="input 3">input_3</input_path>
+		<output_path label="output 0">output_0</output_path>
+		<output_path label="output 1">output_1</output_path>
+		<output_path label="output 2">output_2</output_path>
+		<output_path label="output 3">output_3</output_path>
+		<output_link>state</output_link>
+		<update><![CDATA[
+		input:
+			switch(state) {
+				case 0: goto output_0;
+				case 1: goto output_1;
+				case 2: goto output_2;
+				case 3: goto output_3;
+			}
+		input_0:
+			state = 0;
+			goto output_0;
+		input_1:
+			state = 1;
+			goto output_1;
+		input_2:
+			state = 2;
+			goto output_2;
+		input_3:
+			state = 3;
+			goto output_3;
+		]]></update>
+	</block>
+	<block type="schemer.state5">
+		<input_path>input</input_path>
+		<input_path label="input 0">input_0</input_path>
+		<input_path label="input 1">input_1</input_path>
+		<input_path label="input 2">input_2</input_path>
+		<input_path label="input 3">input_3</input_path>
+		<input_path label="input 4">input_4</input_path>
+		<output_path label="output 0">output_0</output_path>
+		<output_path label="output 1">output_1</output_path>
+		<output_path label="output 2">output_2</output_path>
+		<output_path label="output 3">output_3</output_path>
+		<output_path label="output 4">output_4</output_path>
+		<output_link>state</output_link>
+		<update><![CDATA[
+		input:
+			switch(state) {
+				case 0: goto output_0;
+				case 1: goto output_1;
+				case 2: goto output_2;
+				case 3: goto output_3;
+				case 4: goto output_4;
+			}
+		input_0:
+			state = 0;
+			goto output_0;
+		input_1:
+			state = 1;
+			goto output_1;
+		input_2:
+			state = 2;
+			goto output_2;
+		input_3:
+			state = 3;
+			goto output_3;
+		input_4:
+			state = 4;
+			goto output_4;
+		]]></update>
+	</block>
+	
+</blocks>

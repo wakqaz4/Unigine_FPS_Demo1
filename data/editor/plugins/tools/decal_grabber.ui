@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    decal_grabber.ui
+ * Desc:    Decal grabber plugin
+ * Version: 1.00
+ * Author:  Andrey Viktorov <unclebob@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.02">
+	<vbox name="DecalGrabber::main_vb" export="1" space="4">
+		<vbox>
+			<gridbox align="expand" columns="4" space="4">
+				<label align="right"><text>Tile Resolution:</text></label>
+				<combobox name="DecalGrabber::texture_size_cb" export="1" align="expand">
+					<text>64</text>
+					<text>128</text>
+					<text>256</text>
+					<text>512</text>
+					<text>1024</text>
+					<text>2048</text>
+					<text>4096</text>
+				</combobox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Tiles Per Side:</text></label>
+				<combobox name="DecalGrabber::grid_size_cb" export="1" align="expand">
+					<text>1</text>
+					<text>2</text>
+					<text>4</text>
+					<text>6</text>
+					<text>8</text>
+					<text>10</text>
+					<text>12</text>
+					<text>14</text>
+					<text>16</text>
+				</combobox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Grab Distance:</text></label>
+				<editline name="DecalGrabber::height_el" export="1" align="expand" validator="float">
+					<callback type="changed">DecalGrabber::grabber_height_check</callback>
+				</editline>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Min Visible:</text></label>
+				<editline name="DecalGrabber::min_visible_el" export="1" align="expand" validator="float"/>
+				<label align="right"><text>Fade:</text></label>
+				<editline name="DecalGrabber::min_fade_el" export="1" align="expand" validator="float"/>
+				
+				<label align="right"><text>Max Visible:</text></label>
+				<editline name="DecalGrabber::max_visible_el" export="1" align="expand" validator="float"/>
+				<label align="right"><text>Fade:</text></label>
+				<editline name="DecalGrabber::max_fade_el" export="1" align="expand" validator="float"/>
+				
+				
+				<label align="right"><text>Decal Material:</text></label>
+				<hbox align="expand" space="4" padding="-4">
+					<editline name="DecalGrabber::material_el" export="1" align="expand"/>
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">DecalGrabber::material_load_clicked</callback>
+					</icon>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Anti-aliasing:</text></label>
+				<combobox name="DecalGrabber::texture_upscale_cb" export="1" align="expand">
+					<text>1</text>
+					<text>2</text>
+					<text>4</text>
+					<text>8</text>
+					<text>16</text>
+				</combobox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Padding:</text></label>
+				<hbox align="expand" space="4" padding="-4">
+					<editline name="DecalGrabber::padding_el" export="1" align="expand" validator="uint">
+						<tooltip>Extrudes contour of the captured image in the alpha=0 region on given number of pixels</tooltip>
+						<callback type="changed">DecalGrabber::grabber_padding_check</callback>
+					</editline>
+					<spinbox align="overlap" min="0" max="100">
+						<attach flags="expand">DecalGrabber::padding_el</attach>
+					</spinbox>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Path:</text></label>
+				<editline name="DecalGrabber::path_el" export="1" align="expand">
+					<tooltip>Path (relative to data folder) where generated textures for DecalDeferredOrtho will be stored</tooltip>
+				</editline>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<button align="expand">
+					<text>Grab</text>
+					<tooltip>Grab decals</tooltip>
+					<callback type="clicked">DecalGrabber::grab_clicked</callback>
+				</button>
+				<vbox/>
+				<vbox/>
+				
+			</gridbox>
+		</vbox>
+	</vbox>
+</ui>

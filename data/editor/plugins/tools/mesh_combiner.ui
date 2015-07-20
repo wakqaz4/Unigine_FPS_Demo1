@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    mesh_combiner.ui
+ * Desc:    Mesh combiner plugin
+ * Version: 1.00
+ * Author:  Mikhail Lyubimov <alterego@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.02">
+
+<window name="MeshCombiner::window" export="1" sizeable="1">
+	
+	<text>Mesh Combiner</text>
+	<vbox>
+		<icon texture="core/gui/window_close.png" pos_x="4" pos_y="-24" align="overlap,top,right">
+			<callback type="clicked" widget="MeshCombiner::window" >MeshCombiner::windowHide</callback>
+		</icon>
+	</vbox>
+	<vbox name="MeshCombiner::vbox" export="1" align="expand" space="4">
+		<vbox>
+			<gridbox align="expand" columns="4" space="4">
+				
+				<label align="right"><text>Mesh:</text></label>
+				<hbox align="expand">
+					<editline name="MeshCombiner::path_el" export="1" align="expand">
+						<tooltip>Path to a <i>.mesh</i> file into which the resulting mesh will be saved</tooltip>
+					</editline>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right">
+					<text>Grid:</text>
+					<tooltip>Grid for splitting the resulting mesh</tooltip>
+				</label>
+				<editline name="MeshCombiner::grid_x_el" export="1" align="expand" validator="int">
+					<text>1000</text>
+					<tooltip>Grid step along the X axis in units</tooltip>
+				</editline>
+				<editline name="MeshCombiner::grid_y_el" export="1" align="expand" validator="int">
+					<text>1000</text>
+					<tooltip>Grid step along the Y axis in units</tooltip>
+				</editline>
+				<editline name="MeshCombiner::grid_z_el" export="1" align="expand" validator="int">
+					<text>1000</text>
+					<tooltip>Grid step along the Z axis in units</tooltip>
+				</editline>
+			</gridbox>
+			
+		</vbox>
+		
+		<scrollbox align="expand" width="256" height="120" >
+			<treebox name="MeshCombiner::treebox" export="1" align="expand" editable="1" multi_selection="1">
+				<tooltip>List of meshes to be baked<br/>Drag meshes with ALT pressed to edit hierarchy</tooltip>
+			</treebox>
+		</scrollbox>
+		
+		<vbox>
+			
+			<button align="expand">
+				<text>Add</text>
+				<tooltip>Add meshes that are selected in the world to the list for baking</tooltip>
+				<callback type="clicked">MeshCombiner::add_clicked</callback>
+			</button>
+			
+			<button align="expand">
+				<text>Remove</text>
+				<tooltip>Remove the selected meshes from the list</tooltip>
+				<callback type="clicked">MeshCombiner::remove_clicked</callback>
+			</button>
+			
+			<hspacer/>
+			
+			<button name="MeshCombiner::show_b" export="1" align="expand">
+				<text>Show</text>
+				<tooltip>Show the resulting mesh</tooltip>
+				<callback type="clicked">MeshCombiner::show_clicked</callback>
+			</button>
+			
+			<button name="MeshCombiner::hide_b" export="1" align="expand">
+				<text>Hide</text>
+				<tooltip>Hide the resulting mesh</tooltip>
+				<callback type="clicked">MeshCombiner::hide_clicked</callback>
+			</button>
+			
+			<hspacer/>
+			
+			<button align="expand">
+				<text>Combine</text>
+				<tooltip>Bake all meshes from the list into one mesh</tooltip>
+				<callback type="clicked">MeshCombiner::combine_clicked</callback>
+			</button>
+		</vbox>
+	</vbox>
+	
+	<vbox>
+		<button align="expand">
+			<text>New</text>
+			<tooltip>Create a mesh into which meshes will be baked</tooltip>
+			<callback type="clicked">MeshCombiner::create_clicked</callback>
+		</button>
+	</vbox>
+</window>
+
+</ui>

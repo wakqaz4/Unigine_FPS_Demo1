@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<parameters version="1.00">
+	
+	<!-- Node parameters -->
+	<parameter type="node.enabled" track="toggle" object="Node">
+		<set>if(VALUE != OBJECT.isEnabled()) OBJECT.setEnabled(VALUE);</set>
+		<get>VALUE = OBJECT.isEnabled();</get>
+	</parameter>
+	<parameter type="node.position" track="vec3" object="Node">
+		<set>OBJECT.setPosition(Unigine::Tracker::TrackerParameterVec3::getTrackValueScalar(track,time));</set>
+		<get>VALUE = vec3(OBJECT.getPosition());</get>
+	</parameter>
+	<parameter type="node.positionX" track="vec3" object="Node" argument="float">
+		<init>CACHE = float(ARGUMENT);</init>
+		<set><![CDATA[
+			vec3 position = Unigine::Tracker::TrackerParameterVec3::getTrackValueScalar(track,time);
+			vec3 next_position = Unigine::Tracker::TrackerParameterVec3::getTrackValueScalar(track,time + CACHE);
+			if(length(next_position - position) > EPSILON) OBJECT.setTransform(setTo(position,next_position,vec3(0.0f,0.0f,1.0f)) * (rotateX(-90.0f) * rotateZ(90.0f)));
+			else OBJECT.setPosition(position);
+		]]></set>
+		<get>VALUE = vec3(OBJECT.getPosition());</get>
+	</parameter>
+	<parameter type="node.positionY" track="vec3" object="Node" argument="float">
+		<init>CACHE = float(ARGUMENT);</init>
+		<set><![CDATA[
+			vec3 position = Unigine::Tracker::TrackerParameterVec3::getTrackValueScalar(track,time);
+			vec3 next_position = Unigine::Tracker::TrackerParameterVec3::getTrackValueScalar(track,time + CACHE);
+			if(length(next_position - position) > EPSILON) OBJECT.setTransform(setTo(position,next_position,vec3(0.0f,0.0f,1.0f)) * rotateX(-90.0f));
+			else OBJECT.setPosition(position);
+		]]></set>
+		<get>VALUE = vec3(OBJECT.getPosition());</get>
+	</parameter>
+	<parameter type="node.positionZ" track="vec3" object="Node" argument="float">
+		<init>CACHE = float(ARGUMENT);</init>
+		<set><![CDATA[
+			vec3 position = Unigine::Tracker::TrackerParameterVec3::getTrackValueScalar(track,time);
+			vec3 next_position = Unigine::Tracker::TrackerParameterVec3::getTrackValueScalar(track,time + CACHE);
+			if(length(next_position - position) > EPSILON) OBJECT.setTransform(setTo(position,next_position,vec3(0.0f,0.0f,1.0f)));
+			else OBJECT.setPosition(Vec3(position));
+		]]></set>
+		<get>VALUE = vec3(OBJECT.getPosition());</get>
+	</parameter>
+	<parameter type="node.positionLinear" track="vec3" object="Node">
+		<set>OBJECT.setPosition(Unigine::Tracker::TrackerParameterVec3::getTrackValueLinearScalar(track,time));</set>
+		<get>Unigine::Tracker::TrackerParameterVec3::setTrackValueLinear(track,time,vec3(OBJECT.getPosition()));</get>
+	</parameter>
+	<parameter type="node.positionLinearX" track="vec3" object="Node" argument="float">
+		<init>CACHE = float(ARGUMENT);</init>
+		<set><![CDATA[
+			vec3 position = Unigine::Tracker::TrackerParameterVec3::getTrackValueLinearScalar(track,time);
+			vec3 next_position = Unigine::Tracker::TrackerParameterVec3::getTrackValueLinearScalar(track,time + CACHE);
+			if(length(next_position - position) > EPSILON) OBJECT.setTransform(setTo(position,next_position,vec3(0.0f,0.0f,1.0f)) * (rotateX(-90.0f) * rotateZ(90.0f)));
+			else OBJECT.setPosition(position);
+		]]></set>
+		<get>Unigine::Tracker::TrackerParameterVec3::setTrackValueLinear(track,time,vec3(OBJECT.getPosition()));</get>
+	</parameter>
+	<parameter type="node.positionLinearY" track="vec3" object="Node" argument="float">
+		<init>CACHE = float(ARGUMENT);</init>
+		<set><![CDATA[
+			vec3 position = Unigine::Tracker::TrackerParameterVec3::getTrackValueLinearScalar(track,time);
+			vec3 next_position = Unigine::Tracker::TrackerParameterVec3::getTrackValueLinearScalar(track,time + CACHE);
+			if(length(next_position - position) > EPSILON) OBJECT.setTransform(setTo(position,next_position,vec3(0.0f,0.0f,1.0f)) * rotateX(-90.0f));
+			else OBJECT.setPosition(position);
+		]]></set>
+		<get>Unigine::Tracker::TrackerParameterVec3::setTrackValueLinear(track,time,vec3(OBJECT.getPosition()));</get>
+	</parameter>
+	<parameter type="node.positionLinearZ" track="vec3" object="Node" argument="float">
+		<init>CACHE = float(ARGUMENT);</init>
+		<set><![CDATA[
+			vec3 position = Unigine::Tracker::TrackerParameterVec3::getTrackValueLinearScalar(track,time);
+			vec3 next_position = Unigine::Tracker::TrackerParameterVec3::getTrackValueLinearScalar(track,time + CACHE);
+			if(length(next_position - position) > EPSILON) OBJECT.setTransform(setTo(position,next_position,vec3(0.0f,0.0f,1.0f)));
+			else OBJECT.setPosition(position);
+		]]></set>
+		<get>Unigine::Tracker::TrackerParameterVec3::setTrackValueLinear(track,time,vec3(OBJECT.getPosition()));</get>
+	</parameter>
+	<parameter type="node.rotationXYZ" track="vec3" object="Node">
+		<set>OBJECT.setRotation(quat(VALUE.x,VALUE.y,VALUE.z));</set>
+		<get><![CDATA[
+			vec3 rotation = vec3_zero;
+			mat4 transform = mat4(OBJECT.getTransform());
+			if(transform.m02 < 1.0f) {
+				if(transform.m02 > -1.0f) {
+					rotation.x = atan2(-transform.m12,transform.m22);
+					rotation.y = asin(transform.m02);
+					rotation.z = atan2(-transform.m01,transform.m00);
+				} else {
+					rotation.x = -atan2(transform.m10,transform.m11);
+					rotation.y = -PI05;
+				}
+			} else {
+				rotation.x = atan2(transform.m10,transform.m11);
+				rotation.y = PI05;
+			}
+			VALUE = rotation * RAD2DEG;
+		]]></get>
+	</parameter>
+	<parameter type="node.rotationZYX" track="vec3" object="Node">
+		<set>OBJECT.setRotation(quat(0.0f,0.0f,1.0f,VALUE.z) * (quat(0.0f,1.0f,0.0f,VALUE.y) * quat(1.0f,0.0f,0.0f,VALUE.x)));</set>
+		<get><![CDATA[
+			vec3 rotation = vec3_zero;
+			mat4 transform = mat4(OBJECT.getTransform());
+			if(transform.m20 < 1.0f) {
+				if(transform.m20 > -1.0f) {
+					rotation.x = atan2(transform.m21,transform.m22);
+					rotation.y = asin(-transform.m20);
+					rotation.z = atan2(transform.m10,transform.m00);
+				} else {
+					rotation.y = PI05;
+					rotation.z = -atan2(transform.m01,transform.m02);
+				}
+			} else {
+				rotation.y = -PI05;
+				rotation.z = atan2(-transform.m01,-transform.m02);
+			}
+			VALUE = rotation * RAD2DEG;
+		]]></get>
+	</parameter>
+	<parameter type="node.rotationLinearXYZ" track="vec3" object="Node">
+		<set><![CDATA[
+			vec3 rotation = Unigine::Tracker::TrackerParameterVec3::getTrackValueLinear(track,time);
+			OBJECT.setRotation(quat(rotation.x,rotation.y,rotation.z));
+		]]></set>
+		<get><![CDATA[
+			vec3 rotation = vec3_zero;
+			mat4 transform = mat4(OBJECT.getTransform());
+			if(transform.m02 < 1.0f) {
+				if(transform.m02 > -1.0f) {
+					rotation.x = atan2(-transform.m12,transform.m22);
+					rotation.y = asin(transform.m02);
+					rotation.z = atan2(-transform.m01,transform.m00);
+				} else {
+					rotation.x = -atan2(transform.m10,transform.m11);
+					rotation.y = -PI05;
+				}
+			} else {
+				rotation.x = atan2(transform.m10,transform.m11);
+				rotation.y = PI05;
+			}
+			Unigine::Tracker::TrackerParameterVec3::setTrackValueLinear(track,time,rotation * RAD2DEG);
+		]]></get>
+	</parameter>
+	<parameter type="node.rotationLinearZYX" track="vec3" object="Node">
+		<set><![CDATA[
+			vec3 rotation = Unigine::Tracker::TrackerParameterVec3::getTrackValueLinear(track,time);
+			OBJECT.setRotation(quat(0.0f,0.0f,1.0f,rotation.z) * (quat(0.0f,1.0f,0.0f,rotation.y) * quat(1.0f,0.0f,0.0f,rotation.x)));
+		]]></set>
+		<get><![CDATA[
+			vec3 rotation = vec3_zero;
+			mat4 transform = mat4(OBJECT.getTransform());
+			if(transform.m20 < 1.0f) {
+				if(transform.m20 > -1.0f) {
+					rotation.x = atan2(transform.m21,transform.m22);
+					rotation.y = asin(-transform.m20);
+					rotation.z = atan2(transform.m10,transform.m00);
+				} else {
+					rotation.y = PI05;
+					rotation.z = -atan2(transform.m01,transform.m02);
+				}
+			} else {
+				rotation.y = -PI05;
+				rotation.z = atan2(-transform.m01,-transform.m02);
+			}
+			Unigine::Tracker::TrackerParameterVec3::setTrackValueLinear(track,time,rotation * RAD2DEG);
+		]]></get>
+	</parameter>
+	<parameter type="node.scale" track="vec3" object="Node">
+		<set>OBJECT.setScale(VALUE);</set>
+		<get>VALUE = OBJECT.getScale();</get>
+	</parameter>
+	
+	<!-- NodeReference parameters -->
+	<parameter type="node.reference.name" track="string" filter="node" object="NodeReference">
+		<set>if(OBJECT.getNodeName() != VALUE) OBJECT.setNodeName(VALUE);</set>
+		<get>VALUE = OBJECT.getNodeName();</get>
+	</parameter>
+	
+	<!-- FieldSpacer parameters -->
+	<parameter type="node.field.spacer.ellipse" track="toggle" object="FieldSpacer">
+		<set>OBJECT.setEllipse(VALUE);</set>
+		<get>VALUE = OBJECT.isEllipse();</get>
+	</parameter>
+	<parameter type="node.field.spacer.size" track="vec3" object="FieldSpacer">
+		<set>OBJECT.setSize(VALUE);</set>
+		<get>VALUE = OBJECT.getSize();</get>
+	</parameter>
+	<parameter type="node.field.spacer.attenuation" track="float" min="0.0" object="FieldSpacer">
+		<set>OBJECT.setAttenuation(VALUE);</set>
+		<get>VALUE = OBJECT.getAttenuation();</get>
+	</parameter>
+	
+	<!-- FieldAnimation parameters -->
+	<parameter type="node.field.animation.ellipse" track="toggle" object="FieldAnimation">
+		<set>OBJECT.setEllipse(VALUE);</set>
+		<get>VALUE = OBJECT.isEllipse();</get>
+	</parameter>
+	<parameter type="node.field.animation.size" track="vec3" object="FieldAnimation">
+		<set>OBJECT.setSize(VALUE);</set>
+		<get>VALUE = OBJECT.getSize();</get>
+	</parameter>
+	<parameter type="node.field.animation.attenuation" track="float" min="0.0" object="FieldAnimation">
+		<set>OBJECT.setAttenuation(VALUE);</set>
+		<get>VALUE = OBJECT.getAttenuation();</get>
+	</parameter>
+	<parameter type="node.field.animation.stem" track="float" min="0.0" object="FieldAnimation">
+		<set>OBJECT.setStem(VALUE);</set>
+		<get>VALUE = OBJECT.getStem();</get>
+	</parameter>
+	<parameter type="node.field.animation.leaf" track="float" min="0.0" object="FieldAnimation">
+		<set>OBJECT.setLeaf(VALUE);</set>
+		<get>VALUE = OBJECT.getLeaf();</get>
+	</parameter>
+	<parameter type="node.field.animation.scale" track="float" min="0.0" object="FieldAnimation">
+		<set>OBJECT.setScale(VALUE);</set>
+		<get>VALUE = OBJECT.getScale();</get>
+	</parameter>
+	<parameter type="node.field.animation.wind" track="vec3" object="FieldAnimation">
+		<set>OBJECT.setWind(VALUE);</set>
+		<get>VALUE = OBJECT.getWind();</get>
+	</parameter>
+	
+	<!-- Light parameters -->
+	<parameter type="node.light.deferred" track="toggle" object="Light">
+		<set>OBJECT.setDeferred(VALUE);</set>
+		<get>VALUE = OBJECT.getDeferred();</get>
+	</parameter>
+	<parameter type="node.light.color" track="color" object="Light">
+		<set>OBJECT.setColor(VALUE);</set>
+		<get>VALUE = OBJECT.getColor();</get>
+	</parameter>
+	<parameter type="node.light.multiplier" track="float" min="0.0" object="Light">
+		<set>OBJECT.setMultiplier(VALUE);</set>
+		<get>VALUE = OBJECT.getMultiplier();</get>
+	</parameter>
+	<parameter type="node.light.attenuation" track="float" min="0.0" object="Light">
+		<set>OBJECT.setAttenuation(VALUE);</set>
+		<get>VALUE = OBJECT.getAttenuation();</get>
+	</parameter>
+	<parameter type="node.light.diffuseScale" track="float" min="0.0" object="Light">
+		<set>OBJECT.setDiffuseScale(VALUE);</set>
+		<get>VALUE = OBJECT.getDiffuseScale();</get>
+	</parameter>
+	<parameter type="node.light.specularScale" track="float" min="0.0" object="Light">
+		<set>OBJECT.setSpecularScale(VALUE);</set>
+		<get>VALUE = OBJECT.getSpecularScale();</get>
+	</parameter>
+	<parameter type="node.light.specularPower" track="float" min="0.0" object="Light">
+		<set>OBJECT.setSpecularPower(VALUE);</set>
+		<get>VALUE = OBJECT.getSpecularPower();</get>
+	</parameter>
+	<parameter type="node.light.shadow" track="toggle" object="Light">
+		<set>OBJECT.setShadow(VALUE);</set>
+		<get>VALUE = OBJECT.getShadow();</get>
+	</parameter>
+	<parameter type="node.light.translucent" track="toggle" object="Light">
+		<set>OBJECT.setTranslucent(VALUE);</set>
+		<get>VALUE = OBJECT.getTranslucent();</get>
+	</parameter>
+	<parameter type="node.light.shadowSize" track="switch" min="-1" max="8" object="Light">
+		<set>OBJECT.setShadowSize(VALUE);</set>
+		<get>VALUE = OBJECT.getShadowSize();</get>
+	</parameter>
+	<parameter type="node.light.translucentSize" track="switch" min="-1" max="8" object="Light">
+		<set>OBJECT.setTranslucentSize(VALUE);</set>
+		<get>VALUE = OBJECT.getTranslucentSize();</get>
+	</parameter>
+	<parameter type="node.light.shadowOffset" track="vec3" object="Light">
+		<set>OBJECT.setShadowOffset(VALUE);</set>
+		<get>VALUE = OBJECT.getShadowOffset();</get>
+	</parameter>
+	<parameter type="node.light.shadowAmbient" track="float" min="0.0" max="1.0" object="Light">
+		<set>OBJECT.setShadowAmbient(VALUE);</set>
+		<get>VALUE = OBJECT.getShadowAmbient();</get>
+	</parameter>
+	
+	<!-- LightProb parameters -->
+	<parameter type="node.light.prob.radius" track="vec3" object="LightProb">
+		<set>OBJECT.setRadius(VALUE);</set>
+		<get>VALUE = OBJECT.getRadius();</get>
+	</parameter>
+	<parameter type="node.light.prob.environment" track="environment" object="LightProb">
+		<set>OBJECT.setCoefficients(VALUE);</set>
+		<get>OBJECT.getCoefficients(VALUE);</get>
+	</parameter>
+	
+	<!-- LightSpot parameters -->
+	<parameter type="node.light.spot.radius" track="float" min="0.0" object="LightSpot">
+		<set>OBJECT.setRadius(VALUE);</set>
+		<get>VALUE = OBJECT.getRadius();</get>
+	</parameter>
+	
+	<!-- LightOmni parameters -->
+	<parameter type="node.light.omni.radius" track="vec3" object="LightOmni">
+		<set>OBJECT.setRadius(VALUE);</set>
+		<get>VALUE = OBJECT.getRadius();</get>
+	</parameter>
+	<parameter type="node.light.omni.texture" track="string" filter="image" object="LightOmni">
+		<set>OBJECT.setImageTextureName(VALUE);</set>
+		<get>VALUE = OBJECT.getImageTextureName();</get>
+	</parameter>
+	
+	<!-- LightProj parameters -->
+	<parameter type="node.light.proj.radius" track="float" min="0.0" object="LightProj">
+		<set>OBJECT.setRadius(VALUE);</set>
+		<get>VALUE = OBJECT.getRadius();</get>
+	</parameter>
+	<parameter type="node.light.proj.fov" track="float" min="0.0" max="90.0" object="LightProj">
+		<set>OBJECT.setFov(VALUE);</set>
+		<get>VALUE = OBJECT.getFov();</get>
+	</parameter>
+	<parameter type="node.light.proj.texture" track="string" filter="image" object="LightProj">
+		<set>OBJECT.setImageTextureName(VALUE);</set>
+		<get>VALUE = OBJECT.getImageTextureName();</get>
+	</parameter>
+	
+	<!-- LightWorld parameters -->
+	<parameter type="node.light.world.scattering" track="toggle" object="LightWorld">
+		<set>OBJECT.setScattering(VALUE);</set>
+		<get>VALUE = OBJECT.getScattering();</get>
+	</parameter>
+	<parameter type="node.light.world.shadowDistribute" track="float" min="0.0" max="1.0" object="LightWorld">
+		<set>OBJECT.setShadowDistribute(VALUE);</set>
+		<get>VALUE = OBJECT.getShadowDistribute();</get>
+	</parameter>
+	
+	<!-- Object parameters -->
+	<parameter type="node.object.enabled" track="toggle" object="Object" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findSurface(ARGUMENT);
+			if(CACHE == -1) log.error("node.object.enabled: can't find \"%s\" surface\n",ARGUMENT);
+		]]></init>
+		<set>if(CACHE != -1) OBJECT.setEnabled(VALUE,CACHE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.isEnabled(CACHE);</get>
+	</parameter>
+	<parameter type="node.object.material" track="string" filter="material" object="Object" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findSurface(ARGUMENT);
+			if(CACHE == -1) log.error("node.object.material: can't find \"%s\" surface\n",ARGUMENT);
+		]]></init>
+		<set>if(CACHE != -1) OBJECT.setMaterial(VALUE,CACHE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getMaterialName(CACHE);</get>
+	</parameter>
+	<parameter type="node.object.property" track="string" filter="property" object="Object" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findSurface(ARGUMENT);
+			if(CACHE == -1) log.error("node.object.property: can't find \"%s\" surface\n",ARGUMENT);
+		]]></init>
+		<set>if(CACHE != -1) OBJECT.setProperty(VALUE,CACHE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getPropertyName(CACHE);</get>
+	</parameter>
+	
+	<!-- ObjectMeshSkinned parameters -->
+	<parameter type="node.object.meshskinned.play" track="toggle" object="ObjectMeshSkinned">
+		<set>if(VALUE) OBJECT.play(); else OBJECT.stop();</set>
+		<get>VALUE = OBJECT.isPlaying();</get>
+	</parameter>
+	<parameter type="node.object.meshskinned.animation" track="string" filter="animation" object="ObjectMeshSkinned">
+		<init>CACHE = -1;</init>
+		<set>OBJECT.setAnimation(0,VALUE);</set>
+		<get><![CDATA[
+			CACHE = OBJECT.getAnimation(0);
+			if(CACHE != -1) VALUE = OBJECT.getAnimationName(CACHE);
+		]]></get>
+	</parameter>
+	
+	<!-- ObjectParticles parameters -->
+	<parameter type="node.object.particles.swanRate" track="float" min="0.0" object="ObjectParticles">
+		<set>OBJECT.setSpawnRate(VALUE);</set>
+		<get>VALUE = OBJECT.getSpawnRate();</get>
+	</parameter>
+	<parameter type="node.object.particles.lengthStretch" track="float" min="0.0" object="ObjectParticles">
+		<set>OBJECT.setLengthStretch(VALUE);</set>
+		<get>VALUE = OBJECT.getLengthStretch();</get>
+	</parameter>
+	<parameter type="node.object.particles.linearDamping" track="float" min="0.0" object="ObjectParticles">
+		<set>OBJECT.setLinearDamping(VALUE);</set>
+		<get>VALUE = OBJECT.getLinearDamping();</get>
+	</parameter>
+	<parameter type="node.object.particles.angularDamping" track="float" min="0.0" object="ObjectParticles">
+		<set>OBJECT.setAngularDamping(VALUE);</set>
+		<get>VALUE = OBJECT.getAngularDamping();</get>
+	</parameter>
+	<parameter type="node.object.particles.growthDamping" track="float" min="0.0" object="ObjectParticles">
+		<set>OBJECT.setGrowthDamping(VALUE);</set>
+		<get>VALUE = OBJECT.getGrowthDamping();</get>
+	</parameter>
+	<parameter type="node.object.particles.restitution" track="float" min="0.0" object="ObjectParticles">
+		<set>OBJECT.setRestitution(VALUE);</set>
+		<get>VALUE = OBJECT.getRestitution();</get>
+	</parameter>
+	<parameter type="node.object.particles.roughness" track="float" min="0.0" object="ObjectParticles">
+		<set>OBJECT.setRoughness(VALUE);</set>
+		<get>VALUE = OBJECT.getRoughness();</get>
+	</parameter>
+	<parameter type="node.object.particles.emitterEnabled" track="toggle" object="ObjectParticles">
+		<set>OBJECT.setEmitterEnabled(VALUE);</set>
+		<get>VALUE = OBJECT.isEmitterEnabled();</get>
+	</parameter>
+	<parameter type="node.object.particles.emitterSize" track="vec3" object="ObjectParticles">
+		<set>OBJECT.setEmitterSize(VALUE);</set>
+		<get>VALUE = OBJECT.getEmitterSize();</get>
+	</parameter>
+	<parameter type="node.object.particles.emitterDirection" track="vec3" object="ObjectParticles">
+		<set>OBJECT.setEmitterDirection(VALUE);</set>
+		<get>VALUE = OBJECT.getEmitterDirection();</get>
+	</parameter>
+	<parameter type="node.object.particles.emitterSpread" track="vec3" object="ObjectParticles">
+		<set>OBJECT.setEmitterSpread(VALUE);</set>
+		<get>VALUE = OBJECT.getEmitterSpread();</get>
+	</parameter>
+	<parameter type="node.object.particles.emitterVelocity" track="vec3" object="ObjectParticles">
+		<set>OBJECT.setEmitterVelocity(VALUE);</set>
+		<get>VALUE = OBJECT.getEmitterVelocity();</get>
+	</parameter>
+	<parameter type="node.object.particles.delayMean" track="float" object="ObjectParticles">
+		<set>OBJECT.setDelay(VALUE,OBJECT.getDelaySpread());</set>
+		<get>VALUE = OBJECT.getDelayMean();</get>
+	</parameter>
+	<parameter type="node.object.particles.delaySpread" track="float" object="ObjectParticles">
+		<set>OBJECT.setDelay(OBJECT.getDelayMean(),VALUE);</set>
+		<get>VALUE = OBJECT.getDelaySpread();</get>
+	</parameter>
+	<parameter type="node.object.particles.periodMean" track="float" object="ObjectParticles">
+		<set>OBJECT.setPeriod(VALUE,OBJECT.getPeriodSpread());</set>
+		<get>VALUE = OBJECT.getPeriodMean();</get>
+	</parameter>
+	<parameter type="node.object.particles.periodSpread" track="float" object="ObjectParticles">
+		<set>OBJECT.setPeriod(OBJECT.getPeriodMean(),VALUE);</set>
+		<get>VALUE = OBJECT.getPeriodSpread();</get>
+	</parameter>
+	<parameter type="node.object.particles.durationMean" track="float" object="ObjectParticles">
+		<set>OBJECT.setDuration(VALUE,OBJECT.getDurationSpread());</set>
+		<get>VALUE = OBJECT.getDurationMean();</get>
+	</parameter>
+	<parameter type="node.object.particles.durationSpread" track="float" object="ObjectParticles">
+		<set>OBJECT.setDuration(OBJECT.getDurationMean(),VALUE);</set>
+		<get>VALUE = OBJECT.getDurationSpread();</get>
+	</parameter>
+	<parameter type="node.object.particles.lifeMean" track="float" object="ObjectParticles">
+		<set>OBJECT.setLife(VALUE,OBJECT.getLifeSpread());</set>
+		<get>VALUE = OBJECT.getLifeMean();</get>
+	</parameter>
+	<parameter type="node.object.particles.lifeSpread" track="float" object="ObjectParticles">
+		<set>OBJECT.setLife(OBJECT.getLifeMean(),VALUE);</set>
+		<get>VALUE = OBJECT.getLifeSpread();</get>
+	</parameter>
+	<parameter type="node.object.particles.velocityMean" track="float" object="ObjectParticles">
+		<set>OBJECT.setVelocity(VALUE,OBJECT.getVelocitySpread());</set>
+		<get>VALUE = OBJECT.getVelocityMean();</get>
+	</parameter>
+	<parameter type="node.object.particles.velocitySpread" track="float" object="ObjectParticles">
+		<set>OBJECT.setVelocity(OBJECT.getVelocityMean(),VALUE);</set>
+		<get>VALUE = OBJECT.getVelocitySpread();</get>
+	</parameter>
+	<parameter type="node.object.particles.angleMean" track="float" object="ObjectParticles">
+		<set>OBJECT.setAngle(VALUE,OBJECT.getAngleSpread());</set>
+		<get>VALUE = OBJECT.getAngleMean();</get>
+	</parameter>
+	<parameter type="node.object.particles.angleSpread" track="float" object="ObjectParticles">
+		<set>OBJECT.setAngle(OBJECT.getAngleMean(),VALUE);</set>
+		<get>VALUE = OBJECT.getAngleSpread();</get>
+	</parameter>
+	<parameter type="node.object.particles.rotationMean" track="float" object="ObjectParticles">
+		<set>OBJECT.setRotation(VALUE,OBJECT.getRotationSpread());</set>
+		<get>VALUE = OBJECT.getRotationMean();</get>
+	</parameter>
+	<parameter type="node.object.particles.rotationSpread" track="float" object="ObjectParticles">
+		<set>OBJECT.setRotation(OBJECT.getRotationMean(),VALUE);</set>
+		<get>VALUE = OBJECT.getRotationSpread();</get>
+	</parameter>
+	<parameter type="node.object.particles.radiusMean" track="float" object="ObjectParticles">
+		<set>OBJECT.setRadius(VALUE,OBJECT.getRadiusSpread());</set>
+		<get>VALUE = OBJECT.getRadiusMean();</get>
+	</parameter>
+	<parameter type="node.object.particles.radiusSpread" track="float" object="ObjectParticles">
+		<set>OBJECT.setRadius(OBJECT.getRadiusMean(),VALUE);</set>
+		<get>VALUE = OBJECT.getRadiusSpread();</get>
+	</parameter>
+	<parameter type="node.object.particles.growthMean" track="float" object="ObjectParticles">
+		<set>OBJECT.setGrowth(VALUE,OBJECT.getGrowthSpread());</set>
+		<get>VALUE = OBJECT.getGrowthMean();</get>
+	</parameter>
+	<parameter type="node.object.particles.growthSpread" track="float" object="ObjectParticles">
+		<set>OBJECT.setGrowth(OBJECT.getGrowthMean(),VALUE);</set>
+		<get>VALUE = OBJECT.getGrowthSpread();</get>
+	</parameter>
+	<parameter type="node.object.particles.gravity" track="vec3" object="ObjectParticles">
+		<set>OBJECT.setGravity(VALUE);</set>
+		<get>VALUE = OBJECT.getGravity();</get>
+	</parameter>
+	
+	<!-- ObjectSky parameters -->
+	<parameter type="node.object.sky.minSlices" track="switch" min="0" max="1024" object="ObjectSky">
+		<set>OBJECT.setMinSlices(VALUE);</set>
+		<get>VALUE = OBJECT.getMinSlices();</get>
+	</parameter>
+	<parameter type="node.object.sky.maxSlices" track="switch" min="0" max="1024" object="ObjectSky">
+		<set>OBJECT.setMaxSlices(VALUE);</set>
+		<get>VALUE = OBJECT.getMaxSlices();</get>
+	</parameter>
+	<parameter type="node.object.sky.humidity" track="float" min="0.0" max="1.0" object="ObjectSky">
+		<set>OBJECT.setHumidity(VALUE);</set>
+		<get>VALUE = OBJECT.getHumidity();</get>
+	</parameter>
+	<parameter type="node.object.sky.transition" track="float" min="0.0" max="1.0" object="ObjectSky">
+		<set>OBJECT.setTransition(VALUE);</set>
+		<get>VALUE = OBJECT.getTransition();</get>
+	</parameter>
+	<parameter type="node.object.sky.extinction" track="float" min="0.0" max="1.0" object="ObjectSky">
+		<set>OBJECT.setExtinction(VALUE);</set>
+		<get>VALUE = OBJECT.getExtinction();</get>
+	</parameter>
+	<parameter type="node.object.sky.velocity" track="vec3" object="ObjectSky">
+		<set>OBJECT.setDensityVelocity(VALUE);</set>
+		<get>VALUE = OBJECT.getDensityVelocity();</get>
+	</parameter>
+	<parameter type="node.object.sky.offset" track="vec3" object="ObjectSky">
+		<set>OBJECT.setDensityOffset(VALUE);</set>
+		<get>VALUE = OBJECT.getDensityOffset();</get>
+	</parameter>
+	<parameter type="node.object.sky.layer" track="switch" min="0" max="16" object="ObjectSky">
+		<set>OBJECT.setDensityLayer(VALUE);</set>
+		<get>VALUE = OBJECT.getDensityLayer();</get>
+	</parameter>
+	
+	<!-- ObjectWater parameters -->
+	<parameter type="node.object.water.angle0" track="float" min="0.0" max="360.0" object="ObjectWater">
+		<set>OBJECT.setWaveAngle(0,VALUE * DEG2RAD);</set>
+		<get>VALUE = OBJECT.getWaveAngle(0) * RAD2DEG;</get>
+	</parameter>
+	<parameter type="node.object.water.angle1" track="float" min="0.0" max="360.0" object="ObjectWater">
+		<set>OBJECT.setWaveAngle(1,VALUE * DEG2RAD);</set>
+		<get>VALUE = OBJECT.getWaveAngle(1) * RAD2DEG;</get>
+	</parameter>
+	<parameter type="node.object.water.angle2" track="float" min="0.0" max="360.0" object="ObjectWater">
+		<set>OBJECT.setWaveAngle(2,VALUE * DEG2RAD);</set>
+		<get>VALUE = OBJECT.getWaveAngle(2) * RAD2DEG;</get>
+	</parameter>
+	<parameter type="node.object.water.angle3" track="float" min="0.0" max="360.0" object="ObjectWater">
+		<set>OBJECT.setWaveAngle(3,VALUE * DEG2RAD);</set>
+		<get>VALUE = OBJECT.getWaveAngle(3) * RAD2DEG;</get>
+	</parameter>
+	<parameter type="node.object.water.speed0" track="float" min="0.0" object="ObjectWater">
+		<set>OBJECT.setWaveSpeed(0,VALUE);</set>
+		<get>VALUE = OBJECT.getWaveSpeed(0);</get>
+	</parameter>
+	<parameter type="node.object.water.speed1" track="float" min="0.0" object="ObjectWater">
+		<set>OBJECT.setWaveSpeed(1,VALUE);</set>
+		<get>VALUE = OBJECT.getWaveSpeed(1);</get>
+	</parameter>
+	<parameter type="node.object.water.speed2" track="float" min="0.0" object="ObjectWater">
+		<set>OBJECT.setWaveSpeed(2,VALUE);</set>
+		<get>VALUE = OBJECT.getWaveSpeed(2);</get>
+	</parameter>
+	<parameter type="node.object.water.speed3" track="float" min="0.0" object="ObjectWater">
+		<set>OBJECT.setWaveSpeed(3,VALUE);</set>
+		<get>VALUE = OBJECT.getWaveSpeed(3);</get>
+	</parameter>
+	<parameter type="node.object.water.length0" track="float" min="0.0" object="ObjectWater">
+		<set>OBJECT.setWaveLength(0,VALUE);</set>
+		<get>VALUE = OBJECT.getWaveLength(0);</get>
+	</parameter>
+	<parameter type="node.object.water.length1" track="float" min="0.0" object="ObjectWater">
+		<set>OBJECT.setWaveLength(1,VALUE);</set>
+		<get>VALUE = OBJECT.getWaveLength(1);</get>
+	</parameter>
+	<parameter type="node.object.water.length2" track="float" min="0.0" object="ObjectWater">
+		<set>OBJECT.setWaveLength(2,VALUE);</set>
+		<get>VALUE = OBJECT.getWaveLength(2);</get>
+	</parameter>
+	<parameter type="node.object.water.length3" track="float" min="0.0" object="ObjectWater">
+		<set>OBJECT.setWaveLength(3,VALUE);</set>
+		<get>VALUE = OBJECT.getWaveLength(3);</get>
+	</parameter>
+	<parameter type="node.object.water.height0" track="float" min="0.0" object="ObjectWater">
+		<set>OBJECT.setWaveHeight(0,VALUE);</set>
+		<get>VALUE = OBJECT.getWaveHeight(0);</get>
+	</parameter>
+	<parameter type="node.object.water.height1" track="float" min="0.0" object="ObjectWater">
+		<set>OBJECT.setWaveHeight(1,VALUE);</set>
+		<get>VALUE = OBJECT.getWaveHeight(1);</get>
+	</parameter>
+	<parameter type="node.object.water.height2" track="float" min="0.0" object="ObjectWater">
+		<set>OBJECT.setWaveHeight(2,VALUE);</set>
+		<get>VALUE = OBJECT.getWaveHeight(2);</get>
+	</parameter>
+	<parameter type="node.object.water.height3" track="float" min="0.0" object="ObjectWater">
+		<set>OBJECT.setWaveHeight(3,VALUE);</set>
+		<get>VALUE = OBJECT.getWaveHeight(3);</get>
+	</parameter>
+	
+	<!-- Player parameters -->
+	<parameter type="node.player.fov" track="float" min="0.0" object="Player">
+		<set>OBJECT.setFov(VALUE);</set>
+		<get>VALUE = OBJECT.getFov();</get>
+	</parameter>
+	<parameter type="node.player.znear" track="float" min="0.0" object="Player">
+		<set>OBJECT.setZNear(VALUE);</set>
+		<get>VALUE = OBJECT.getZNear();</get>
+	</parameter>
+	<parameter type="node.player.zfar" track="float" min="0.0" object="Player">
+		<set>OBJECT.setZFar(VALUE);</set>
+		<get>VALUE = OBJECT.getZFar();</get>
+	</parameter>
+	<parameter type="node.player.postMaterials" track="string" filter="material" object="Player">
+		<set>OBJECT.setPostMaterials(VALUE);</set>
+		<get>VALUE = OBJECT.getPostMaterials();</get>
+	</parameter>
+	
+	<!-- PlayerPersecutor parameters -->
+	<parameter type="node.player.persecutor.target" track="node" object="PlayerPersecutor">
+		<set>OBJECT.setTarget(VALUE);</set>
+		<get>VALUE = OBJECT.getTarget();</get>
+	</parameter>
+	<parameter type="node.player.persecutor.anchor" track="vec3" object="PlayerPersecutor">
+		<set>OBJECT.setAnchor(VALUE);</set>
+		<get>VALUE = OBJECT.getAnchor();</get>
+	</parameter>
+	<parameter type="node.player.persecutor.distance" track="float" min="0.0" object="PlayerPersecutor">
+		<set>OBJECT.setDistance(VALUE);</set>
+		<get>VALUE = OBJECT.getDistance();</get>
+	</parameter>
+	<parameter type="node.player.persecutor.phiAngle" track="float" object="PlayerPersecutor">
+		<set>OBJECT.setPhiAngle(VALUE);</set>
+		<get>VALUE = OBJECT.getPhiAngle();</get>
+	</parameter>
+	<parameter type="node.player.persecutor.thetaAngle" track="float" object="PlayerPersecutor">
+		<set>OBJECT.setThetaAngle(VALUE);</set>
+		<get>VALUE = OBJECT.getThetaAngle();</get>
+	</parameter>
+	
+	<!-- SoundSource parameters -->
+	<parameter type="node.soundsource.play" track="toggle" object="SoundSource">
+		<set>if(VALUE) OBJECT.play(); else OBJECT.stop();</set>
+		<get>VALUE = OBJECT.isPlaying();</get>
+	</parameter>
+	<parameter type="node.soundsource.pitch" track="float" min="0.0" object="SoundSource">
+		<set>OBJECT.setPitch(VALUE);</set>
+		<get>VALUE = OBJECT.getPitch();</get>
+	</parameter>
+	<parameter type="node.soundsource.gain" track="float" min="0.0" object="SoundSource">
+		<set>OBJECT.setGain(VALUE);</set>
+		<get>VALUE = OBJECT.getGain();</get>
+	</parameter>
+	<parameter type="node.soundsource.minDistance" track="float" min="0.0" object="SoundSource">
+		<set>OBJECT.setMinDistance(VALUE);</set>
+		<get>VALUE = OBJECT.getMinDistance();</get>
+	</parameter>
+	<parameter type="node.soundsource.maxDistance" track="float" min="0.0" object="SoundSource">
+		<set>OBJECT.setMaxDistance(VALUE);</set>
+		<get>VALUE = OBJECT.getMaxDistance();</get>
+	</parameter>
+	
+</parameters>

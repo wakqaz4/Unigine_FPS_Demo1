@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<materials version="1.00" editable="0">
+	
+	<!--
+	/**************************************************************************\
+	*
+	* Grass materials
+	*
+	\**************************************************************************/
+	-->
+	
+	<!--
+	/* Grass base material
+	 */
+	-->
+	<material name="grass_base" editable="0">
+		
+		<!-- options -->
+		<options alpha_test="1"/>
+		
+		<!-- states -->
+		<state name="deferred" type="switch" items="none,default">1</state>
+		<state name="auxiliary" type="switch" items="none,default">0</state>
+		<state name="ambient" type="switch" items="none,opacity,lightmap">1</state>
+		<state name="light_spot" type="switch" items="none,default">1</state>
+		<state name="light_omni" type="switch" items="none,default">1</state>
+		<state name="light_proj" type="switch" items="none,default">1</state>
+		<state name="light_world" type="switch" items="none,default">1</state>
+		<state name="shape" type="switch" items="default,billboard,clutter">0</state>
+		<state name="animation" type="switch" items="none,animation,field_animation">1</state>
+		<state name="field_spacer" type="toggle">0</state>
+		<state name="noise" type="toggle">0</state>
+		<state name="emission" type="toggle">0</state>
+		<state name="ambient_light" type="toggle">0</state>
+		
+		<!-- wireframe shaders -->
+		<shader pass="wireframe" object="grass"
+			defines="BASE_WIREFRAME"
+			shape_defines=",BILLBOARD,CLUTTER"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/grass/vertex_base.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- deferred shaders -->
+		<shader pass="deferred" object="grass"
+			defines="BASE_DEFERRED,ALPHA_TEST"
+			deferred="1"
+			shape_defines=",BILLBOARD,CLUTTER"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			field_spacer_defines=",FIELD_SPACER"
+			noise_defines=",NOISE"
+			emission_defines=",EMISSION"
+			vertex="core/shaders/default/grass/vertex_base.shader"
+			fragment="core/shaders/default/grass/fragment_base_deferred.shader"/>
+		
+		<!-- auxiliary shaders -->
+		<shader pass="auxiliary" object="grass"
+			defines="BASE_AUXILIARY"
+			auxiliary="1"
+			shape_defines=",BILLBOARD,CLUTTER"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/grass/vertex_base.shader"
+			fragment="core/shaders/default/grass/fragment_base_auxiliary.shader"/>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient" object="grass"
+			defines="BASE_AMBIENT,AMBIENT,ALPHA_TEST"
+			receive_world_shadow_defines=",SHADOW"
+			ambient_defines="0,OPACITY,LIGHTMAP"
+			shape_defines=",BILLBOARD,CLUTTER"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			field_spacer_defines=",FIELD_SPACER"
+			noise_defines=",NOISE"
+			emission_defines=",EMISSION"
+			ambient_light_defines=",AMBIENT_LIGHT"
+			vertex="core/shaders/default/grass/vertex_base.shader"
+			fragment="core/shaders/default/grass/fragment_base_ambient.shader"/>
+		
+		<!-- light spot shaders -->
+		<shader pass="light_spot" object="grass"
+			defines="BASE_LIGHT_SPOT,SPOT"
+			light_spot="1"
+			shape_defines=",BILLBOARD,CLUTTER"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			field_spacer_defines=",FIELD_SPACER"
+			noise_defines=",NOISE"
+			vertex="core/shaders/default/grass/vertex_base.shader"
+			fragment="core/shaders/default/grass/fragment_base_light_spot.shader"/>
+		
+		<!-- light omni shaders -->
+		<shader pass="light_omni" object="grass"
+			defines="BASE_LIGHT_OMNI,OMNI"
+			receive_shadow_defines=",SHADOW"
+			light_omni="1"
+			shape_defines=",BILLBOARD,CLUTTER"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			field_spacer_defines=",FIELD_SPACER"
+			noise_defines=",NOISE"
+			vertex="core/shaders/default/grass/vertex_base.shader"
+			fragment="core/shaders/default/grass/fragment_base_light_omni.shader"/>
+		
+		<!-- light proj shaders -->
+		<shader pass="light_proj" object="grass"
+			defines="BASE_LIGHT_PROJ,PROJ"
+			receive_shadow_defines=",SHADOW"
+			light_proj="1"
+			shape_defines=",BILLBOARD,CLUTTER"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			field_spacer_defines=",FIELD_SPACER"
+			noise_defines=",NOISE"
+			vertex="core/shaders/default/grass/vertex_base.shader"
+			fragment="core/shaders/default/grass/fragment_base_light_proj.shader"/>
+		
+		<!-- light world shaders -->
+		<shader pass="light_world" object="grass"
+			defines="BASE_LIGHT_WORLD,WORLD"
+			receive_world_shadow_defines=",SHADOW"
+			light_world="1"
+			shape_defines=",BILLBOARD,CLUTTER"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			field_spacer_defines=",FIELD_SPACER"
+			noise_defines=",NOISE"
+			ambient_light="0"
+			vertex="core/shaders/default/grass/vertex_base.shader"
+			fragment="core/shaders/default/grass/fragment_base_light_world.shader"/>
+		
+		<!-- shadow shaders -->
+		<shader pass="shadow" object="grass"
+			defines="BASE_SHADOW"
+			shape_defines=",BILLBOARD,CLUTTER"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/grass/vertex_base.shader"
+			fragment="core/shaders/default/grass/fragment_base_shadow.shader"/>
+		
+		<!-- textures -->
+		<texture name="diffuse" wrap="clamp" anisotropy="1">core/textures/grass_base_diffuse.dds</texture>
+		<texture name="noise" noise="1">core/textures/grass_base_noise.dds</texture>
+		<texture name="emission" pass="deferred,ambient" emission="1" unit="2" format="srgb" wrap="clamp" anisotropy="1">core/textures/grass_base_emission.dds</texture>
+		<texture name="deferred_occlusion" pass="ambient" unit="12" type="deferred_occlusion"/>
+		<texture name="lightmap" pass="ambient" ambient="2" unit="13" format="srgb">core/textures/grass_base_lightmap.dds</texture>
+		<texture name="deferred_light" pass="ambient" unit="15" type="deferred_light"/>
+		<texture name="light_image" pass="light_omni,light_proj,light_world" unit="13" type="light_image"/>
+		<texture name="light_depth" pass="ambient,light_omni,light_proj,light_world" unit="14" type="light_depth"/>
+		<texture name="light_vcube" pass="light_omni" type="light_vcube"/>
+		
+		<!-- parameters -->
+		<parameter name="animation_stem_noise" animation="1,2" type="slider" min="0.0" max="1.0" flags="max_expand">1.0</parameter>
+		<parameter name="animation_stem_offset" animation="1,2" type="slider" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="animation_stem_radius" animation="1,2" type="slider" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="animation_stem_scale" animation="1,2" type="slider" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="slope_scale" shape="0,1" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="shadow_offset" shape="0,1" type="slider" shared="1" min="-4.0" max="4.0" flags="expand">0.0</parameter>
+		<parameter name="alpha_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="auxiliary_color" auxiliary="1" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="environment_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="translucent_scale" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="diffuse_scale" type="slider" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="lightmap_scale" ambient="2" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="emission_color" emission="1" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="emission_scale" emission="1" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="glow_scale" emission="1" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="noise_transform" noise="1" type="expression" shared="1">vec4(0.1f,0.1f,0.0f,0.0f)</parameter>
+		<parameter name="noise_scale" noise="1" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+	</material>
+	
+	<!--
+	/* Grass impostor base material
+	 */
+	-->
+	<material name="grass_impostor_base" editable="0">
+		
+		<!-- options -->
+		<options alpha_test="1"/>
+		
+		<!-- states -->
+		<state name="deferred" type="switch" items="none,default">1</state>
+		<state name="auxiliary" type="switch" items="none,default">0</state>
+		<state name="ambient" type="switch" items="none,default">1</state>
+		<state name="light_spot" type="switch" items="none,default">1</state>
+		<state name="light_omni" type="switch" items="none,default">1</state>
+		<state name="light_proj" type="switch" items="none,default">1</state>
+		<state name="light_world" type="switch" items="none,default">1</state>
+		<state name="animation" type="switch" items="none,animation,field_animation">1</state>
+		<state name="noise" type="toggle">0</state>
+		<state name="ambient_light" type="toggle">0</state>
+		
+		<!-- wireframe shaders -->
+		<shader pass="wireframe" object="grass"
+			defines="BASE_WIREFRAME"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			vertex="core/shaders/default/grass/vertex_impostor.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- deferred shaders -->
+		<shader pass="deferred" object="grass"
+			defines="IMPOSTOR_DEFERRED,ALPHA_TEST"
+			deferred="1"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			noise_defines=",NOISE"
+			vertex="core/shaders/default/grass/vertex_impostor.shader"
+			fragment="core/shaders/default/grass/fragment_impostor_deferred.shader"/>
+		
+		<!-- auxiliary shaders -->
+		<shader pass="auxiliary" object="grass"
+			defines="IMPOSTOR_AUXILIARY"
+			auxiliary="1"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			vertex="core/shaders/default/grass/vertex_impostor.shader"
+			fragment="core/shaders/default/grass/fragment_impostor_auxiliary.shader"/>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient" object="grass"
+			defines="IMPOSTOR_AMBIENT,AMBIENT,ALPHA_TEST"
+			receive_world_shadow_defines=",SHADOW"
+			ambient="1"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			noise_defines=",NOISE"
+			ambient_light_defines=",AMBIENT_LIGHT"
+			vertex="core/shaders/default/grass/vertex_impostor.shader"
+			fragment="core/shaders/default/grass/fragment_impostor_ambient.shader"/>
+		
+		<!-- light spot shaders -->
+		<shader pass="light_spot" object="grass"
+			defines="IMPOSTOR_LIGHT_SPOT,SPOT"
+			light_spot="1"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			noise_defines=",NOISE"
+			vertex="core/shaders/default/grass/vertex_impostor.shader"
+			fragment="core/shaders/default/grass/fragment_impostor_light_spot.shader"/>
+		
+		<!-- light omni shaders -->
+		<shader pass="light_omni" object="grass"
+			defines="IMPOSTOR_LIGHT_OMNI,OMNI"
+			receive_shadow_defines=",SHADOW"
+			light_omni="1"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			noise_defines=",NOISE"
+			vertex="core/shaders/default/grass/vertex_impostor.shader"
+			fragment="core/shaders/default/grass/fragment_impostor_light_omni.shader"/>
+		
+		<!-- light proj shaders -->
+		<shader pass="light_proj" object="grass"
+			defines="IMPOSTOR_LIGHT_PROJ,PROJ"
+			receive_shadow_defines=",SHADOW"
+			light_proj="1"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			noise_defines=",NOISE"
+			vertex="core/shaders/default/grass/vertex_impostor.shader"
+			fragment="core/shaders/default/grass/fragment_impostor_light_proj.shader"/>
+		
+		<!-- light world shaders -->
+		<shader pass="light_world" object="grass"
+			defines="IMPOSTOR_LIGHT_WORLD,WORLD"
+			receive_world_shadow_defines=",SHADOW"
+			light_world="1"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			noise_defines=",NOISE"
+			ambient_light="0"
+			vertex="core/shaders/default/grass/vertex_impostor.shader"
+			fragment="core/shaders/default/grass/fragment_impostor_light_world.shader"/>
+		
+		<!-- shadow shaders -->
+		<shader pass="shadow" object="grass"
+			defines="IMPOSTOR_SHADOW"
+			animation_defines=",ANIMATION,FIELD_ANIMATION"
+			vertex="core/shaders/default/grass/vertex_impostor.shader"
+			fragment="core/shaders/default/grass/fragment_impostor_shadow.shader"/>
+		
+		<!-- textures -->
+		<texture name="diffuse" anisotropy="1">core/textures/grass_impostor_diffuse.dds</texture>
+		<texture name="normal" pass="deferred,ambient,light_prob,light_spot,light_omni,light_proj,light_world" format="signed" anisotropy="1">core/textures/grass_impostor_normal.dds</texture>
+		<texture name="noise" noise="1">core/textures/grass_base_noise.dds</texture>
+		<texture name="environment" pass="ambient" unit="12" type="environment"/>
+		<texture name="deferred_occlusion" pass="ambient" unit="13" type="deferred_occlusion"/>
+		<texture name="deferred_light" pass="ambient" unit="15" type="deferred_light"/>
+		<texture name="light_image" pass="light_omni,light_proj,light_world" unit="13" type="light_image"/>
+		<texture name="light_depth" pass="ambient,light_omni,light_proj,light_world" unit="14" type="light_depth"/>
+		<texture name="light_vcube" pass="light_omni" type="light_vcube"/>
+		
+		<!-- parameters -->
+		<parameter name="impostor_transform" type="expression" shared="1">vec4(8.0f,2.0f,0.0f,0.0f)</parameter>
+		<parameter name="animation_stem_noise" animation="1,2" type="slider" min="0.0" max="1.0" flags="max_expand">1.0</parameter>
+		<parameter name="animation_stem_offset" animation="1,2" type="slider" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="animation_stem_radius" animation="1,2" type="slider" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="animation_stem_scale" animation="1,2" type="slider" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="shadow_offset" type="slider" shared="1" min="-4.0" max="4.0" flags="expand">0.0</parameter>
+		<parameter name="alpha_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="auxiliary_color" auxiliary="1" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="environment_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="translucent_scale" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="translucent_offset" type="slider" shared="1" min="0.0" max="1.0">0.1</parameter>
+		<parameter name="diffuse_scale" type="slider" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="specular_scale" type="slider" min="0.0" max="8.0" flags="max_expand">1.0</parameter>
+		<parameter name="specular_power" type="slider" min="0.0" max="2.0" flags="log10,max_expand">16.0</parameter>
+		<parameter name="noise_transform" noise="1" type="expression" shared="1">vec4(0.1f,0.1f,0.0f,0.0f)</parameter>
+		<parameter name="noise_scale" noise="1" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+	</material>
+	
+</materials>

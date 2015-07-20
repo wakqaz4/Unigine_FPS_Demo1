@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="SoundSource" id="1981210457">
+		<sample_name>editor/resources/sounds/sound_source.oga</sample_name>
+		<sample_stream>1</sample_stream>
+		<time>63.3371</time>
+		<max_distance>5</max_distance>
+		<cone_outer_angle>180</cone_outer_angle>
+		<playing>1</playing>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

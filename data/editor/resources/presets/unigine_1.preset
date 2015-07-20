@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preset>
+	<hotkey name="create_world" key="110" modifier="2"/>
+	<hotkey name="open_world" key="111" modifier="2"/>
+	<hotkey name="save_world" key="115" modifier="2"/>
+	<hotkey name="reload_world" key="258"/>
+	<hotkey name="undo" key="122" modifier="2"/>
+	<hotkey name="redo" key="122" modifier="3"/>
+	<hotkey name="other_stop_play" key="32" modifier="2"/>
+	<hotkey name="system_menu" key="256"/>
+	<hotkey name="quick_save" key="281"/>
+	<hotkey name="quick_load" key="282"/>
+	<hotkey name="other_screenshot" key="287"/>
+	<hotkey name="quit" key="113" modifier="2"/>
+	<hotkey name="change_direction" button="1"/>
+	<hotkey name="dolly" button="4"/>
+	<hotkey name="track" button="2"/>
+	<hotkey name="orbit" button="1"/>
+	<hotkey name="zoom_in" wheel="1"/>
+	<hotkey name="zoom_out" wheel="2"/>
+	<hotkey name="nodes_focus" key="102"/>
+	<hotkey name="other_camera" key="103"/>
+	<hotkey name="move_forward" key="119"/>
+	<hotkey name="move_backward" key="115"/>
+	<hotkey name="move_left" key="97"/>
+	<hotkey name="move_right" key="100"/>
+	<hotkey name="move_crouch" key="113"/>
+	<hotkey name="move_jump" key="101"/>
+	<hotkey name="move_run" modifier="1"/>
+	<hotkey name="other_light" key="108"/>
+	<hotkey name="select" button="8"/>
+	<hotkey name="rectangle_select" button="1" modifier="2"/>
+	<hotkey name="select_all"/>
+	<hotkey name="add_selection" button="8" modifier="1"/>
+	<hotkey name="reset_selection" key="32"/>
+	<hotkey name="isolate_nodes" key="105" modifier="4"/>
+	<hotkey name="manipulator_selector" key="122"/>
+	<hotkey name="manipulator_translator" key="120"/>
+	<hotkey name="manipulator_rotator" key="99"/>
+	<hotkey name="manipulator_scaler" key="118"/>
+	<hotkey name="manipulator_pivot"/>
+	<hotkey name="manipulator_basis"/>
+	<hotkey name="nodes_clone" key="99" modifier="2"/>
+	<hotkey name="nodes_delete" key="260"/>
+	<hotkey name="clone_node" modifier="1"/>
+	<hotkey name="move_without_children" modifier="4"/>
+	<hotkey name="nodes_place_here" key="120" modifier="4"/>
+	<hotkey name="group_selected"/>
+	<hotkey name="convert_into_node_reference"/>
+	<hotkey name="nodes_position_snap" key="120" modifier="1"/>
+	<hotkey name="nodes_rotation_snap" key="99" modifier="1"/>
+	<hotkey name="nodes_place_manually" key="120" modifier="2"/>
+	<hotkey name="place_node_relative_transform" button="4"/>
+	<hotkey name="place_node_offset_reset" button="2"/>
+	<hotkey name="place_node_increase_offset" wheel="1"/>
+	<hotkey name="place_node_decrease_offset" wheel="2"/>
+	<hotkey name="place_node_success" button="1"/>
+	<hotkey name="place_node_cancel" key="256"/>
+	<hotkey name="brushes_apply_brush" button="1" modifier="4"/>
+	<hotkey name="brushes_get_brush_value" button="1" modifier="2"/>
+	<hotkey name="brushes_increment_brush_radius" wheel="1"/>
+	<hotkey name="brushes_decrement_brush_radius" wheel="2"/>
+	<hotkey name="fps" key="48"/>
+	<hotkey name="messages" key="57"/>
+	<hotkey name="profiler" key="49"/>
+	<hotkey name="nodes_info" key="105"/>
+	<hotkey name="visualizer" key="278"/>
+	<hotkey name="scene_wireframe" key="280"/>
+	<hotkey name="object_wireframe" key="50"/>
+	<hotkey name="object_bounds" key="56"/>
+	<hotkey name="mesh_bones" key="55"/>
+	<hotkey name="toggle_render_mode" key="279"/>
+	<hotkey name="mipmaps" key="51"/>
+	<hotkey name="normals" key="52"/>
+	<hotkey name="textures" key="53"/>
+	<hotkey name="world_objects" key="45"/>
+	<hotkey name="physics_objects" key="43"/>
+	<hotkey name="panel_nodes" key="110"/>
+	<hotkey name="panel_materials" key="109"/>
+	<hotkey name="panel_properties" key="111"/>
+	<hotkey name="panel_render" key="114"/>
+	<hotkey name="panel_sound" key="115" modifier="4"/>
+	<hotkey name="panel_physics" key="112"/>
+	<hotkey name="panel_tools" key="116"/>
+	<hotkey name="panel_keys" key="107"/>
+	<hotkey name="help" key="277"/>
+	<hotkey name="camera_speed_1"/>
+	<hotkey name="camera_speed_2"/>
+	<hotkey name="camera_speed_3"/>
+</preset>

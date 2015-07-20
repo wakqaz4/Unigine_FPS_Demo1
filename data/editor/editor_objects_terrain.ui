@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_objects_terrain.ui
+ * Desc:    Unigine editor
+ * Version: 1.22
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* ObjectTerrain
+ */
+-->
+<vbox name="Nodes::Object::Terrain::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Heights:</text></label>
+			<vbox align="expand">
+				<hbox align="expand">
+					<button align="expand">
+						<text>Export</text>
+						<callback type="clicked">Nodes::Object::Terrain::export_heights_clicked</callback>
+						<tooltip>Export terrain heights into the image</tooltip>
+					</button>
+					
+					<hbox>
+						<vbox space="2"/>
+						<label align="right">Max Height:</label>
+						<vbox space="2"/>
+						<editline name="Nodes::Object::Terrain::height_scale_el" export="1" align="right" validator="float">
+							<tooltip></tooltip>
+							<text>1</text>
+						</editline>
+					</hbox>
+				</hbox>
+			</vbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Holes:</text></label>
+			<vbox align="expand">
+				<hbox align="expand">
+					<button align="expand">
+						<text>Export</text>
+						<callback type="clicked">Nodes::Object::Terrain::export_holes_clicked</callback>
+						<tooltip>Export terrain holes into the image</tooltip>
+					</button>
+				</hbox>
+			</vbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Diffuse:</text></label>
+			<hbox align="expand">
+				<button align="expand">
+					<text>Export</text>
+					<callback type="clicked">Nodes::Object::Terrain::export_diffuse_clicked</callback>
+					<tooltip>Export terrain diffuse textures into the image</tooltip>
+				</button>
+				<vbox space="2"/>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Normal:</text></label>
+			<hbox align="expand">
+				<button align="expand">
+					<text>Export</text>
+					<callback type="clicked">Nodes::Object::Terrain::export_normal_clicked</callback>
+					<tooltip>Export terrain normal textures into the image</tooltip>
+				</button>
+				<vbox space="2"/>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Mask:</text></label>
+			<hbox align="expand">
+				<button align="expand">
+					<text>Export</text>
+					<callback type="clicked">Nodes::Object::Terrain::export_mask_clicked</callback>
+					<tooltip>Export terrain mask textures into the image</tooltip>
+				</button>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+				<hbox align="expand">
+				</hbox>
+			<vbox/>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Object::Terrain::surfaces_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<scrollbox align="expand" height="60">
+			<listbox name="Nodes::Object::Terrain::Surfaces::surfaces_lb" export="1" align="expand" multi_selection="1">
+				<callback type="changed">Nodes::Object::Terrain::Surfaces::surface_changed</callback>
+			</listbox>
+		</scrollbox>
+		
+		<vbox space="2"/>
+		
+		<vbox>
+			<gridbox align="expand" columns="2" space="4">
+				
+				<vbox/>
+				<hbox align="expand">
+					<checkbox name="Nodes::Object::Terrain::Surfaces::enabled_cb" export="1" width="96" align="expand">
+						<text>Enabled</text>
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::enabled_clicked</callback>
+					</checkbox>
+					<checkbox name="Nodes::Object::Terrain::Surfaces::cast_shadow_cb" export="1" align="expand">
+						<text>Cast shadow</text>
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::cast_shadow_clicked</callback>
+					</checkbox>
+				</hbox>
+				
+				<label align="right"><text>Threshold:</text></label>
+				<editline name="Nodes::Object::Terrain::Surfaces::lod_threshold_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Terrain::Surfaces::lod_threshold_pressed</callback>
+					<tooltip>Threshold to flatten polygons<br/>negative value is terrain threshold</tooltip>
+				</editline>
+				
+				<label align="right"><text>Diffuse:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::Terrain::Surfaces::diffuse_texture_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::Object::Terrain::Surfaces::diffuse_texture_pressed</callback>
+					</editline>
+					<icon name="Nodes::Object::Terrain::Surfaces::diffuse_texture_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::diffuse_texture_load_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::Terrain::Surfaces::diffuse_texture_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::diffuse_texture_view_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::Terrain::Surfaces::diffuse_texture_clear_i" export="1" texture="editor/gui/action_clear.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::diffuse_texture_clear_clicked</callback>
+					</icon>
+				</hbox>
+				
+				<label align="right"><text>Normal:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::Terrain::Surfaces::normal_texture_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::Object::Terrain::Surfaces::normal_texture_pressed</callback>
+					</editline>
+					<icon name="Nodes::Object::Terrain::Surfaces::normal_texture_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::normal_texture_load_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::Terrain::Surfaces::normal_texture_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::normal_texture_view_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::Terrain::Surfaces::normal_texture_clear_i" export="1" texture="editor/gui/action_clear.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::normal_texture_clear_clicked</callback>
+					</icon>
+				</hbox>
+				
+				<label align="right"><text>Index:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::Terrain::Surfaces::index_texture_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::Object::Terrain::Surfaces::index_texture_pressed</callback>
+					</editline>
+					<icon name="Nodes::Object::Terrain::Surfaces::index_texture_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::index_texture_load_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::Terrain::Surfaces::index_texture_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::index_texture_view_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::Terrain::Surfaces::index_texture_clear_i" export="1" texture="editor/gui/action_clear.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::index_texture_clear_clicked</callback>
+					</icon>
+				</hbox>
+				
+				<label align="right"><text>Mask:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::Terrain::Surfaces::mask_texture_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::Object::Terrain::Surfaces::mask_texture_pressed</callback>
+					</editline>
+					<icon name="Nodes::Object::Terrain::Surfaces::mask_texture_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::mask_texture_load_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::Terrain::Surfaces::mask_texture_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::mask_texture_view_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::Terrain::Surfaces::mask_texture_clear_i" export="1" texture="editor/gui/action_clear.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Surfaces::mask_texture_clear_clicked</callback>
+					</icon>
+				</hbox>
+				
+			</gridbox>
+		</vbox>
+		
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Object::Terrain::materials_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<vbox>
+			<hbox align="expand">
+				<button align="right">
+					<text>Add</text>
+					<callback type="clicked">Nodes::Object::Terrain::Materials::add_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button name="Nodes::Object::Terrain::Materials::remove_b" export="1">
+					<text>Remove</text>
+					<callback type="clicked">Nodes::Object::Terrain::Materials::remove_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button name="Nodes::Object::Terrain::Materials::clone_b" export="1">
+					<text>Clone</text>
+					<callback type="clicked">Nodes::Object::Terrain::Materials::clone_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button name="Nodes::Object::Terrain::Materials::up_b" export="1">
+					<text>Up</text>
+					<callback type="clicked">Nodes::Object::Terrain::Materials::up_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button name="Nodes::Object::Terrain::Materials::down_b" export="1">
+					<text>Down</text>
+					<callback type="clicked">Nodes::Object::Terrain::Materials::down_clicked</callback>
+				</button>
+			</hbox>
+		</vbox>
+		
+		<vbox space="2"/>
+		
+		<scrollbox align="expand" height="60">
+			<listbox name="Nodes::Object::Terrain::Materials::materials_lb" export="1" align="expand">
+				<callback type="changed">Nodes::Object::Terrain::Materials::material_changed</callback>
+			</listbox>
+		</scrollbox>
+		
+		<vbox space="2"/>
+		
+		<vbox>
+			<gridbox align="expand" columns="5" space="4">
+				
+				<label align="right"><text>Name:</text></label>
+				<editline name="Nodes::Object::Terrain::Materials::name_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::name_pressed</callback>
+				</editline>
+				<vbox/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Parent:</text></label>
+				<combobox name="Nodes::Object::Terrain::Materials::parent_cb" export="1" align="expand">
+					<callback type="clicked">Nodes::Object::Terrain::Materials::parent_changed</callback>
+				</combobox>
+				<vbox/>
+				<checkbox name="Nodes::Object::Terrain::Materials::overlap_cb" export="1" align="right">
+					<text>Overlap</text>
+					<callback type="clicked">Nodes::Object::Terrain::Materials::overlap_clicked</callback>
+				</checkbox>
+				<checkbox name="Nodes::Object::Terrain::Materials::mask_base_cb" export="1" align="right">
+					<text>Mask Base</text>
+					<callback type="clicked">Nodes::Object::Terrain::Materials::mask_base_clicked</callback>
+				</checkbox>
+				
+				<label align="right"><text>Transform:</text></label>
+				<editline name="Nodes::Object::Terrain::Materials::transform_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::transform_pressed</callback>
+					<tooltip>X scale</tooltip>
+				</editline>
+				<editline name="Nodes::Object::Terrain::Materials::transform_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::transform_pressed</callback>
+					<tooltip>Y scale</tooltip>
+				</editline>
+				<editline name="Nodes::Object::Terrain::Materials::transform_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::transform_pressed</callback>
+					<tooltip>X offset</tooltip>
+				</editline>
+				<editline name="Nodes::Object::Terrain::Materials::transform_el[3]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::transform_pressed</callback>
+					<tooltip>Y offset</tooltip>
+				</editline>
+				
+				<label align="right"><text>Value:</text></label>
+				<editline name="Nodes::Object::Terrain::Materials::mask_value_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::mask_value_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Terrain::Materials::mask_value_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::Object::Terrain::Materials::mask_value_el</attach>
+				</hslider>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Width:</text></label>
+				<editline name="Nodes::Object::Terrain::Materials::mask_width_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::mask_width_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Terrain::Materials::mask_width_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::Object::Terrain::Materials::mask_width_el</attach>
+				</hslider>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Threshold:</text></label>
+				<editline name="Nodes::Object::Terrain::Materials::mask_threshold_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::mask_threshold_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Terrain::Materials::mask_threshold_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::Object::Terrain::Materials::mask_threshold_el</attach>
+				</hslider>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Diffuse:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::Terrain::Materials::diffuse_texture_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::diffuse_texture_pressed</callback>
+					</editline>
+					<icon name="Nodes::Object::Terrain::Materials::diffuse_texture_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::diffuse_texture_load_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::Terrain::Materials::diffuse_texture_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::diffuse_texture_view_clicked</callback>
+					</icon>
+					<icon texture="editor/gui/action_edit.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::diffuse_texture_edit_clicked</callback>
+					</icon>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Scale:</text></label>
+				<editline name="Nodes::Object::Terrain::Materials::diffuse_scale_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::diffuse_scale_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Terrain::Materials::diffuse_scale_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::Object::Terrain::Materials::diffuse_scale_el</attach>
+				</hslider>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Normal:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::Terrain::Materials::normal_texture_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::normal_texture_pressed</callback>
+					</editline>
+					<icon name="Nodes::Object::Terrain::Materials::normal_texture_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::normal_texture_load_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::Terrain::Materials::normal_texture_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::normal_texture_view_clicked</callback>
+					</icon>
+					<icon texture="editor/gui/action_edit.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::normal_texture_edit_clicked</callback>
+					</icon>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Scale:</text></label>
+				<editline name="Nodes::Object::Terrain::Materials::normal_scale_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::normal_scale_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Terrain::Materials::normal_scale_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::Object::Terrain::Materials::normal_scale_el</attach>
+				</hslider>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Specular:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::Terrain::Materials::specular_texture_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::specular_texture_pressed</callback>
+					</editline>
+					<icon name="Nodes::Object::Terrain::Materials::specular_texture_load_i" export="1" texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::specular_texture_load_clicked</callback>
+					</icon>
+					<icon name="Nodes::Object::Terrain::Materials::specular_texture_view_i" export="1" texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::specular_texture_view_clicked</callback>
+					</icon>
+					<icon texture="editor/gui/action_edit.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::specular_texture_edit_clicked</callback>
+					</icon>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Scale:</text></label>
+				<editline name="Nodes::Object::Terrain::Materials::specular_scale_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::specular_scale_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Terrain::Materials::specular_scale_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::Object::Terrain::Materials::specular_scale_el</attach>
+				</hslider>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<hspacer align="expand"/>
+				<vbox/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Diffuse Array:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::Terrain::Materials::diffuse_texture_array_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::diffuse_texture_array_pressed</callback>
+						<tooltip>Material diffuse array texture</tooltip>
+					</editline>
+					<combobox name="Nodes::Object::Terrain::Materials::diffuse_texture_array_cb" export="1">
+						<text>256</text>
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+						<callback type="changed">Nodes::Object::Terrain::Materials::diffuse_texture_array_resize</callback>
+					</combobox>
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::diffuse_texture_array_load_clicked</callback>
+					</icon>
+					<icon texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::diffuse_texture_array_view_clicked</callback>
+					</icon>
+					<icon texture="editor/gui/action_clear.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::diffuse_texture_array_clear_clicked</callback>
+					</icon>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Normal Array:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::Terrain::Materials::normal_texture_array_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::normal_texture_array_pressed</callback>
+						<tooltip>Material normal array texture</tooltip>
+					</editline>
+					<combobox name="Nodes::Object::Terrain::Materials::normal_texture_array_cb" export="1">
+						<text>256</text>
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+						<callback type="changed">Nodes::Object::Terrain::Materials::normal_texture_array_resize</callback>
+					</combobox>
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::normal_texture_array_load_clicked</callback>
+					</icon>
+					<icon texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::normal_texture_array_view_clicked</callback>
+					</icon>
+					<icon texture="editor/gui/action_clear.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::normal_texture_array_clear_clicked</callback>
+					</icon>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Specular Array:</text></label>
+				<hbox align="expand">
+					<editline name="Nodes::Object::Terrain::Materials::specular_texture_array_el" export="1" align="expand">
+						<callback type="pressed,focus_out">Nodes::Object::Terrain::Materials::specular_texture_array_pressed</callback>
+						<tooltip>Material specular array texture</tooltip>
+					</editline>
+					<combobox name="Nodes::Object::Terrain::Materials::specular_texture_array_cb" export="1">
+						<text>256</text>
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+						<callback type="changed">Nodes::Object::Terrain::Materials::specular_texture_array_resize</callback>
+					</combobox>
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::specular_texture_array_load_clicked</callback>
+					</icon>
+					<icon texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::specular_texture_array_view_clicked</callback>
+					</icon>
+					<icon texture="editor/gui/action_clear.png" width="22" height="20">
+						<callback type="clicked">Nodes::Object::Terrain::Materials::specular_texture_array_clear_clicked</callback>
+					</icon>
+				</hbox>
+				<vbox/>
+				<vbox/>
+				<vbox/>
+				
+			</gridbox>
+		</vbox>
+		
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Object::Terrain::grabber_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Surface size:</text></label>
+			<combobox name="Nodes::Object::Terrain::Grabber::size_cb" export="1" align="expand">
+				<tooltip>Size of the terrain surface in pixels</tooltip>
+				<text>32</text>
+				<text>64</text>
+				<text>128</text>
+				<text>256</text>
+				<text>512</text>
+				<text>1024</text>
+				<text>2048</text>
+				<text>4096</text>
+			</combobox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Height:</text></label>
+			<editline name="Nodes::Object::Terrain::Grabber::height_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Terrain::Grabber::height_pressed</callback>
+				<tooltip>Grabber rendering height</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Grab:</text></label>
+			<gridbox align="expand" columns="4" space="4">
+				<button align="expand">
+					<text>Color</text>
+					<tooltip>Grab terrain color image</tooltip>
+					<callback type="clicked">Nodes::Object::Terrain::Grabber::grab_color_clicked</callback>
+				</button>
+				<button align="expand">
+					<text>Diffuse</text>
+					<tooltip>Grab terrain diffuse image</tooltip>
+					<callback type="clicked">Nodes::Object::Terrain::Grabber::grab_diffuse_clicked</callback>
+				</button>
+				<button align="expand">
+					<text>Normal</text>
+					<tooltip>Grab terrain normal image</tooltip>
+					<callback type="clicked">Nodes::Object::Terrain::Grabber::grab_normal_clicked</callback>
+				</button>
+				<button align="expand">
+					<text>LightMap</text>
+					<tooltip>Grab terrain lightmap image</tooltip>
+					<callback type="clicked">Nodes::Object::Terrain::Grabber::grab_lightmap_clicked</callback>
+				</button>
+			</gridbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+</ui>

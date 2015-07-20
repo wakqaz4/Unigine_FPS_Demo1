@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_menu.ui
+ * Desc:    Unigine editor
+ * Version: 1.25
+ * Author:  Mikhail Lyubimov <alterego@unigine.com>
+ *          Denis Shergin <binstream@unigine.com>
+ *          Alexey Zagniy <yingaz@unigine.com>
+ *          Andrey Viktorov <unclebob@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* EditorMenu
+ */
+-->
+<groupbox name="menu_gb" export="1" background="1" space="2">
+	<menubar name="menu" export="1" align="left" space_x="8" space_y="2">
+		<menu>
+			<text data="file">File</text>
+			<menubox name="file_mb" width="64" space="8">
+				<menu separator="1">
+					<text data="system_menu">System Menu</text>
+				</menu>
+				<menu>
+					<text data="create_world">Create New World</text>
+				</menu>
+				<menu>
+					<text data="open_world">Open World</text>
+				</menu>
+				
+				<menu>
+					<text data="recent_worlds">Recent Worlds</text>
+					<menubox name="recent_worlds_mb" export="1" width="64" space="8">
+						<callback type="clicked">callback_recent_worlds_clicked</callback>
+					</menubox>
+				</menu>
+				
+				<menu>
+					<text data="save_world">Save World</text>
+				</menu>
+				<menu>
+					<text data="save_world_as">Save World As...</text>
+				</menu>
+				<menu>
+					<text data="reload_world">Reload World</text>
+				</menu>
+				<menu separator="1">
+					<text data="world_quit">Close World</text>
+				</menu>
+				<menu>
+					<text data="quit">Exit Editor</text>
+					<tooltip>Exit UnigineEditor but keep the engine instance running.</tooltip>
+				</menu>
+				<menu>
+					<text data="exit">Exit Application</text>
+				</menu>
+				<callback type="clicked" widget="file_mb">callback_clicked</callback>
+			</menubox>
+		</menu>
+		
+		<menu>
+			<text data="edit">Edit</text>
+			<menubox name="edit_mb" width="64" space="8">
+				<menu>
+					<text data="undo">Undo Action</text>
+				</menu>
+				<menu separator="1">
+					<text data="redo">Redo Action</text>
+				</menu>
+				<menu>
+					<text data="nodes_clone">Clone Object</text>
+				</menu>
+				<menu>
+					<text data="nodes_delete">Delete Object</text>
+				</menu>
+				<menu>
+					<text data="isolate_nodes">Isolated View</text>
+				</menu>
+				<menu>
+					<text data="group_selected">Group Selected</text>
+				</menu>
+				<menu>
+					<text data="convert_into_node_reference">Convert into Node Reference</text>
+				</menu>
+				<callback type="clicked" widget="edit_mb">callback_clicked</callback>
+			</menubox>
+		</menu>
+		
+		<menu>
+			<text data="importer">Import</text>
+			<menubox name="import_mb" width="64" space="8">
+				<menu>
+					<text data="fbx">FBX File</text>
+					<tooltip>Create a node according to data stored in <i>.fbx</i> file. Take notice, that additional meshes, textures and materials could be created according to import options.</tooltip>
+				</menu>
+
+				<menu>
+					<text data="reference">Node File Reference</text>
+					<tooltip>Create a reference (<i>NodeReference</i>) to the <i>.node</i> file storing a pre-fabricated node with all the materials and properties libraries required for its rendering. Note that changing one of the nodes referenced to the same node reference will automatically update the other nodes.</tooltip>
+				</menu>
+				
+				<menu>
+					<text data="node">Node File Contents</text>
+					<tooltip>Copy <i>.node</i> file contents into the world. Once imported, objects aren't linked to the source <i>.node</i> file anymore.</tooltip>
+				</menu>
+				
+				<callback type="clicked" widget="import_mb">callback_clicked</callback>
+			</menubox>
+		</menu>
+		
+		<menu>
+			<text data="creator">Create</text>
+			<menubox name="create_mb" width="64" space="8">
+				<menu>
+					<text data="creator_primitive">Primitive</text>
+					<menubox name="primitive_mb"  width="64" space="8">
+						<menu>
+							<text data="box">Box</text>
+						</menu>
+						<menu>
+							<text data="sphere">Sphere</text>
+						</menu>
+						<menu>
+							<text data="plane">Plane</text>
+						</menu>
+						<menu>
+							<text data="cylinder">Cylinder</text>
+						</menu>
+						<menu>
+							<text data="capsule">Capsule</text>
+						</menu>
+						<callback type="clicked" widget="primitive_mb">callback_clicked</callback>
+					</menubox>
+				</menu>
+				
+				<menu>
+					<text data="creator_node">Node</text>
+					<menubox name="nodes_mb" width="64" space="8">
+						<menu>
+							<text data="node_dummy">Dummy</text>
+							<tooltip>A dummy node (<i>NodeDummy</i>) is an empty node that does not correspond to any object and is not present in the world visually. Designed specially for convenient hierarchy structuring, it serves as a parent node and thus helps organize the selected nodes into a group.</tooltip>
+						</menu>
+						<menu>
+							<text data="node_layer">Layer</text>
+							<tooltip>A layer (<i>NodeLayer</i>) is an invisible node that allows you to save the part of the project you are working on into a separate <i>.node</i> file. It will contain the parent layer node and all its children. Making changes in layer nodes will not affect the source world configuration file, which will help to eliminate the conflicts arising from simultaneous editing of the same world by several people.</tooltip>
+						</menu>
+						<menu>
+							<text data="pivot">Pivot</text>
+							<tooltip>A pivot node (<i>NodePivot</i>) is a new pivot point for all children nodes, which then can be rotated relatively to it. Each node contains two matrices: one sets the basis of rotation, the other one describes local transformations for children nodes.</tooltip>
+						</menu>
+						<menu>
+							<text data="node_trigger">Trigger</text>
+							<tooltip>A trigger (<i>NodeTrigger</i>) is basically similar to the dummy node, but has the additional functionality to fire callbacks when it is enabled/disabled (call an <i>Enabled</i> callback function), or its position is changed (call a <i>Position</i> callback function).</tooltip>
+						</menu>
+						<callback type="clicked" widget="nodes_mb">callback_clicked</callback>
+					</menubox>
+				</menu>
+				
+				<menu>
+					<text data="creator_object">Object</text>
+					<menubox name="objects_mb" width="64" space="8">
+						<menu>
+							<text data="mesh_static">Mesh Static</text>
+							<tooltip>A static mesh (<i>ObjectMeshStatic</i>) is a collection of vertices, edges and faces defining the object's geometry. It can be repositioned, rotated and scaled, but cannot have its vertices animated in any way.</tooltip>
+						</menu>
+						<menu>
+							<text data="mesh_skinned">Mesh Skinned</text>
+							<tooltip>A skinned mesh (<i>ObjectMeshSkinned</i>) is a hierarchical set of interconnected bones used for rendering characters with a bone-based animation. Each bone has its own position, scale and orientation transformation. Bones all together form a bone hierarchy.</tooltip>
+						</menu>
+						<menu>
+							<text data="mesh_dynamic">Mesh Dynamic</text>
+							<tooltip>A dynamic mesh (<i>ObjectMeshDynamic</i>) is an object geometry represented by points, lines or triangles that are modified procedurally. It has all the static meshes' shader functionalities, so you can load an existing static mesh as a dynamic one in order to modify it.</tooltip>
+						</menu>
+						<menu>
+							<text data="mesh_cluster">Mesh Cluster</text>
+							<tooltip>A cluster (<i>ObjectMeshCluster</i>) is an object that can contain a great number of identical meshes. These meshes can be scattered either automatically or each mesh can have custom position, rotation and scale.</tooltip>
+						</menu>
+						<menu>
+							<text data="mesh_clutter">Mesh Clutter</text>
+							<tooltip>A clutter (<i>ObjectMeshClutter</i>) is an object that can contain a great number of identical meshes. Unlike cluster meshes, clutter meshes are always positioned, oriented and scaled randomly and cannot be managed manually.</tooltip>
+						</menu>
+						<menu>
+							<text data="terrain">Terrain</text>
+							<tooltip>A terrain (<i>ObjectTerrain</i>) is a 2D grid based on a height map. It is used to create complex and naturally diverse landscapes such as planes, hills and mountains. (For such relief features as overhangs and caves use static meshes).</tooltip>
+						</menu>
+						<menu>
+							<text data="water">Water Global</text>
+							<tooltip>A water global (<i>ObjectWater</i>) is an infinitely spread liquid with auto-tessellation (wireframe of the water is not scaled - regardless of the camera position it stays the same). It is used to create limitless oceans.</tooltip>
+						</menu>
+						<menu>
+							<text data="water_mesh">Water Mesh</text>
+							<tooltip>A water mesh (<i>ObjectWaterMesh</i>) is a loaded <i>.mesh</i> file used to create finite basins of an arbitrary form. It can provide buoyancy simulation.</tooltip>
+						</menu>
+						<menu>
+							<text data="sky">Sky</text>
+							<tooltip>Sky (<i>ObjectSky</i>) is an object represented as an upper hemisphere, tiled with a texture producing realistic dynamic clouds. Clouds can also be volumetric and cast dynamic shadows on the ground.</tooltip>
+						</menu>
+						<menu>
+							<text data="grass">Grass</text>
+							<tooltip>Grass (<i>ObjectGrass</i>) is a common object for vegetation simulation. Its material contains different variations for each type of vegetation and a color diversity is provided by the probability factor. If only specified areas of the object need to be rendered, it should have a mask assigned.</tooltip>
+						</menu>
+						<menu>
+							<text data="billboard">Billboard</text>
+							<tooltip>A billboard (<i>ObjectBillboard</i>) is a rectangular flat object that always faces the camera. Billboards are used instead of fully functional objects that are barely seen from far off and slightly change their position when the camera moves along them (e.g. clouds, stars, far away forests).</tooltip>
+						</menu>
+						<menu>
+							<text data="billboards">Billboards</text>
+							<tooltip>Billboards (<i>ObjectBillboards</i>) is a group of identical billboards with the same material that are operated as one object.</tooltip>
+						</menu>
+						<menu>
+							<text data="object_dummy">Dummy</text>
+							<tooltip>A dummy object (<i>ObjectDummy</i>) is an object that is not present in the world visually but shares all of the properties that other objects have. It is usually used as an invisible object with physics properties and can also serve as a root node to organize objects in a hierarchy.</tooltip>
+						</menu>
+						<callback type="clicked" widget="objects_mb">callback_clicked</callback>
+					</menubox>
+				</menu>
+				
+				<menu>
+					<text data="creator_effects">Effect</text>
+					<menubox name="effects_mb" width="64" space="8">
+						<menu>
+							<text data="particles">Particle System</text>
+							<tooltip>Particles (<i>ObjectParticles</i>) is a complex object consisting of an emitter, emitted particles and a force applied. They are used to simulate effects of fire, smoke, explosions, precipitations, electricity, fountains etc.</tooltip>
+						</menu>
+						<menu>
+							<text data="volume_box">Volume Box</text>
+							<tooltip>A volume box (<i>ObjectVolumeBox</i>) is a cuboid shaped object used used for fog, clouds and light shafts simulation.</tooltip>
+						</menu>
+						<menu>
+							<text data="volume_sphere">Volume Sphere</text>
+							<tooltip>A volume sphere (<i>ObjectVolumeSphere</i>) is an ellipsoid shaped volume used for creating a light halo around point light sources.</tooltip>
+						</menu>
+						<menu>
+							<text data="volume_omni">Volume Omni</text>
+							<tooltip>A volume omni (<i>ObjectVolumeOmni</i>) is a complex object that has a flat rectangle that emits light and billboards that create a light volume around its edges.</tooltip>
+						</menu>
+						<menu>
+							<text data="volume_proj">Volume Projected</text>
+							<tooltip>A volume projected (<i>ObjectVolumeProj</i>) is a directed light volume that is represented as a number of billboards, where each following billboard is bigger than the previous one. All together they form a volume cone.</tooltip>
+						</menu>
+						<menu>
+							<text data="gui">GUI</text>
+							<tooltip>A GUI (<i>ObjectGui</i>) is a flat GUI object that can have various widgets assigned to it (dialog windows, flash movies, etc.).</tooltip>
+						</menu>
+						<menu>
+							<text data="gui_mesh">GUI Mesh</text>
+							<tooltip>A GUI Mesh (<i>ObjectGuiMesh</i>) is non-flat GUI display based on the arbitrary mesh.</tooltip>
+						</menu>
+						<menu>
+							<text data="field_spacer">Field Spacer</text>
+							<tooltip>A field spacer (<i>FieldSpacer</i>) is an object, specifying geometry areas that should not be rendered.</tooltip>
+						</menu>
+						<menu>
+							<text data="field_animation">Field Animation</text>
+							<tooltip>A field animation (<i>FieldAnimation</i>) is an object, specifying geometry areas that should be animated.</tooltip>
+						</menu>
+						<menu>
+							<text data="physical_wind">Physical Wind</text>
+							<tooltip>A physical wind (<i>PhysicalWind</i>) is a cuboid shaped object that has the blowing wind simulated inside of it.</tooltip>
+						</menu>
+						<menu>
+							<text data="physical_force">Physical Force</text>
+							<tooltip>A physical force (<i>PhysicalForce</i>) is a spherical shaped object with a force applied to its center. It pulls physical objects and particles up to or away from the point or rotates them around.</tooltip>
+						</menu>
+						<menu>
+							<text data="physical_noise">Physical Noise</text>
+							<tooltip>A physical noise (<i>PhysicalNoise</i>) is a cuboid shaped object that adds a distribution flow based on a volumetric noise texture.</tooltip>
+						</menu>
+						<menu>
+							<text data="physical_water">Physical Water</text>
+							<tooltip>A physical water (<i>PhysicalWater</i>) is cuboid shaped object that simulates a force field affecting water objects.</tooltip>
+						</menu>
+						<menu>
+							<text data="physical_trigger">Physical Trigger</text>
+							<tooltip>A physical trigger (<i>PhysicalTrigger</i>) is an object firing callbacks when physical objects or non-physical colliders get inside or outside of it.</tooltip>
+						</menu>
+						<callback type="clicked" widget="effects_mb">callback_clicked</callback>
+					</menubox>
+				</menu>
+				
+				<menu>
+					<text data="creator_light">Light</text>
+					<menubox name="lights_mb" width="64" space="8">
+						<menu>
+							<text data="light_spot">Spot</text>
+							<tooltip>A light spot (<i>LightSpot</i>) emits an omnidirectional light from a single infinitely small point. It is rendered in a bunch of four, so is fast and eminent at very low performance cost. However, unlike omni lights, spot lights cannot cast shadows.</tooltip>
+						</menu>
+						<menu>
+							<text data="light_omni">Omni</text>
+							<tooltip>A light omni (<i>LightOmni</i>) emits an omnidirectional light from a single infinitely small point and realistically reproduces shadow cast. As an omni light uses a cubemap modulation, the shadowing by this source requires six passes and has high performance costs.</tooltip>
+						</menu>
+						<menu>
+							<text data="light_proj">Projected</text>
+							<tooltip>A projected light (<i>LightProj</i>) emits light from a single point forming a focused beam aimed in a specific direction (is visualized in a form of a pyramid). Projected light can produce shadows of accurate perspective projection. They require only a single rendering pass, so they have low performance cost.</tooltip>
+						</menu>
+						<menu>
+							<text data="light_world">World</text>
+							<tooltip>A world light (<i>LightWorld</i>) is an infinitely remote light source casting orthographically projected beams onto the scene. The direction of the source defines the shadow casting orientation.</tooltip>
+						</menu>
+						<menu>
+							<text data="light_prob">Probe</text>
+							<tooltip>A light probe (<i>LightProb</i>)  precalculates an environmental light for some points on the map. The lighting of other points is approximated by interpolating between the values taken by the nearest probes. This method provides a pretty fast imitation of dynamic lighting.</tooltip>
+						</menu>
+						<callback type="clicked" widget="lights_mb">callback_clicked</callback>
+					</menubox>
+				</menu>
+				
+				<menu>
+					<text data="creator_decal">Decal</text>
+					<menubox name="decals_mb" width="64" space="8">
+						<menu>
+							<text data="decal_object_omni">Object Omni</text>
+							<tooltip>An omnidirectional object decal (<i>DecalObjectOmni</i>) is an object decal projected from a single point in all 6 directions.<br/><br/>Object decals are projected right onto the object's geometry and get a new defined shape.</tooltip>
+						</menu>
+						<menu>
+							<text data="decal_object_proj">Object Projected</text>
+							<tooltip>An projected object decal (<i>DecalObjectProj</i>) is an object decal projected onto a surface by means of perspective projection.<br/><br/>Object decals are projected right onto the object's geometry and get a new defined shape.</tooltip>
+						</menu>
+						<menu>
+							<text data="decal_object_ortho">Object Orthographic</text>
+							<tooltip>An orthographic object decal (<i>DecalObjectOrtho</i>) is an object decal projected onto a surface by means of orthographic projection.<br/><br/>Object decals are projected right onto the object's geometry and get a new defined shape.</tooltip>
+						</menu>
+						<menu>
+							<text data="decal_terrain_proj">Terrain Projected</text>
+							<tooltip>A projected terrain decal (<i>DecalTerrainProj</i>) is a terrain decal projected onto a surface by means of perspective projection.<br/><br/>Terrain decals are projected on a terrain with the correct LOD transitions of vertices.</tooltip>
+						</menu>
+						<menu>
+							<text data="decal_terrain_ortho">Terrain Orthographic</text>
+							<tooltip>A terrain orthographic decal (<i>DecalTerrainOrtho</i>) is a terrain decal projected onto a surface by means of orthographic projection.<br/><br/>Terrain decals are projected on a terrain with the correct LOD transitions of vertices.</tooltip>
+						</menu>
+						<menu>
+							<text data="decal_deferred_proj">Deferred Projected</text>
+							<tooltip>A projected deferred decal (<i>DecalDeferredProj</i>) is a deferred decal projected onto a surface by means of perspective projection.<br/><br/>Deferred decals are rendered based on the image deferred buffer depth value and there is no real geometry rendered at all.</tooltip>
+						</menu>
+						<menu>
+							<text data="decal_deferred_ortho">Deferred Orthographic</text>
+							<tooltip>An orthographic deferred decal (<i>DecalDeferredOrtho</i>) is a deferred decal projected onto a surface by means of orthographic projection.<br/><br/>Deferred decals are rendered based on the image deferred buffer depth value and there is no real geometry rendered at all.</tooltip>
+						</menu>
+						<menu>
+							<text data="decal_deferred_mesh">Deferred Mesh</text>
+							<tooltip>A decal deferred mesh (<i>DecalDeferredMesh</i>) is a deferred decal based on the arbitrary <i>.mesh</i> file and projected onto a surface by means of the orthographic projection.<br/><br/>Deferred decals are rendered based on the image deferred buffer depth value and there is no real geometry rendered at all.</tooltip>
+						</menu>
+						<callback type="clicked" widget="decals_mb">callback_clicked</callback>
+					</menubox>
+				</menu>
+				
+				<menu>
+					<text data="creator_world">World</text>
+					<menubox name="worlds_mb" width="64" space="8">
+						<menu>
+							<text data="world_layer">Layer</text>
+							<tooltip>A world layer (<i>WorldLayer</i>) is a world object that performs a background node loading starting at the specified distance.</tooltip>
+						</menu>
+						<menu>
+							<text data="world_sector">Sector</text>
+							<tooltip>A world sector (<i>WorldSector</i>) is a cuboid shaped object, culling all of the objects outside its volume.</tooltip>
+						</menu>
+						<menu>
+							<text data="world_portal">Portal</text>
+							<tooltip>A world portal (<i>WorldPortal</i>) is a cuboid opening between two adjacent sectors, through which one sector can be partially seen if looking from another.</tooltip>
+						</menu>
+						<menu>
+							<text data="world_trigger">Trigger</text>
+							<tooltip>A world trigger (<i>WorldTrigger</i>) is a cuboid shaped object, which fires callbacks when any node (collider or not) gets inside or outside of it.</tooltip>
+						</menu>
+						<menu>
+							<text data="world_cluster">Cluster</text>
+							<tooltip>A world cluster (<i>WorldCluster</i>) is used to manage a great number of node references, baked into one object. Objects can be scattered, but you can also set custom positions and rotations for each object. Using a world cluster is less memory-efficient compared with a world clutter, as it stores transformation info for each node</tooltip>
+						</menu>
+						<menu>
+							<text data="world_clutter">Clutter</text>
+							<tooltip>A world clutter (<i>WorldClutter</i>) is used to manage a great number of node references, baked as one object. Unlike world clusters, objects are always scattered, scaled and oriented randomly, so they are even more memory-efficient. However, they cannot be managed manually.</tooltip>
+						</menu>
+						<menu>
+							<text data="world_switcher">Switcher</text>
+							<tooltip>A world switcher (<i>WorldSwitcher</i>) - is a cuboid shaped object, switching off (or turning on) all of the nodes inside of it immediately. A world switcher should be a parent node for the nodes it controls.</tooltip>
+						</menu>
+						<menu>
+							<text data="world_occluder">Occluder</text>
+							<tooltip>An occluder (<i>WorldOccluder</i>) is a simple cuboid shaped occluder that is used to cull objects that are not seen behind it.</tooltip>
+						</menu>
+						<menu>
+							<text data="world_occluder_mesh">Occluder Mesh</text>
+							<tooltip>An occluder mesh (<i>WorldOccluderMesh</i>) is is an occluder based on an arbitrary <i>.mesh</i> file that is used to cull objects that are not seen behind it.</tooltip>
+						</menu>
+						<menu>
+							<text data="world_occluder_terrain">Occluder Terrain</text>
+							<tooltip>A terrain occluder (<i>WorldOccluderTerrain</i>) is a cuboid shaped occluder based on a height map that is used to cull objects that are not seen behind it.</tooltip>
+						</menu>
+						<menu>
+							<text data="world_transform_bone">Transform Bone</text>
+							<tooltip>A bone world transform (<i>WorldTransformBone</i>) is a succession of transformations based on the bone animation. It should be a child of the skinned mesh and have one bone assigned.</tooltip>
+						</menu>
+						<menu>
+							<text data="world_transform_path">Transform Path</text>
+							<tooltip>A transform path (<i>WorldTransformPath</i>) is a succession of transformations based on an arbitrary spline.</tooltip>
+						</menu>
+						<menu>
+							<text data="world_expression">Expression</text>
+							<tooltip>A world expression (<i>WorldExpression</i>) is a cuboid shaped object, inside of which arbitrary expressions are executed. These expressions can be executed for world expression children nodes as well.</tooltip>
+						</menu>
+						<callback type="clicked" widget="worlds_mb">callback_clicked</callback>
+					</menubox>
+				</menu>
+				
+				<menu>
+					<text data="creator_sound">Sound</text>
+					<menubox name="sounds_mb" width="64" space="8">
+						<menu>
+							<text data="sound">Source</text>
+							<tooltip>A sound source (<i>SoundSource</i>) emits directional sound that fades out linearly in a specified range. Sound sources can be handled manually or automatically by the sound manager.</tooltip>
+						</menu>
+						<menu>
+							<text data="reverb">Reverberation Zone</text>
+							<tooltip>A reverberation zone (<i>SoundReverb</i>) is created for sound sources with the set reverberation flag. A sound inside such zone will have initial reflections, reverberations and echo. Its pitch can also be modified.</tooltip>
+						</menu>
+						<callback type="clicked" widget="sounds_mb">callback_clicked</callback>
+					</menubox>
+				</menu>
+				
+				<menu>
+					<text data="creator_path">Path</text>
+					<menubox name="paths_mb" width="64" space="8">
+						<menu>
+							<text data="navigation_sector">Navigation Sector</text>
+							<tooltip>A navigation sector (<i>NavigationSector</i>) is a cuboid shaped navigation area within which path finding is performed.</tooltip>
+						</menu>
+						<menu>
+							<text data="navigation_mesh">Navigation Mesh</text>
+							<tooltip>A navigation mesh (<i>NavigationMesh</i>) is an arbitrary mesh surface based navigation area within which path finding is performed. Only 2D path finding is available for navigation meshes. Finding routes between two navigation meshes is also not supported.</tooltip>
+						</menu>
+						<menu>
+							<text data="obstacle_box">Obstacle Box</text>
+							<tooltip>An obstacle box (<i>ObstacleBox</i>) is a cuboid shaped obstacle that is detected and bypassed by other objects during the path finding.</tooltip>
+						</menu>
+						<menu>
+							<text data="obstacle_sphere">Obstacle Sphere</text>
+							<tooltip>An obstacle sphere (<i>ObstacleSphere</i>) is a spherical shaped obstacle that is detected and bypassed by other objects during the path finding.</tooltip>
+						</menu>
+						<menu>
+							<text data="obstacle_capsule">Obstacle Capsule</text>
+							<tooltip>An obstacle capsule (<i>ObstacleCapsule</i>) is a capsular shaped obstacle that is detected and bypassed by other objects during the path finding.</tooltip>
+						</menu>
+						<callback type="clicked" widget="paths_mb">callback_clicked</callback>
+					</menubox>
+				</menu>
+				
+				<menu>
+					<text data="creator_player">Player</text>
+					<menubox name="players_mb" width="64" space="8">
+						<menu>
+							<text data="player_dummy">Dummy</text>
+							<tooltip>A dummy player (<i>PlayerDummy</i>) is a simple viewport into the world that has no physical properties and cannot collide with objects.</tooltip>
+						</menu>
+						<menu>
+							<text data="player_persecutor">Persecutor</text>
+							<tooltip>A persecutor player (<i>PlayerPersecutor</i>) is a free flying camera without a physical body that follows the target node at the specified distance. It can collide with objects but cannot interact with them.</tooltip>
+						</menu>
+						<callback type="clicked" widget="players_mb">callback_clicked</callback>
+					</menubox>
+				</menu>
+				<callback type="clicked" widget="create_mb">callback_clicked</callback>
+			</menubox>
+		</menu>
+		
+		<menu>
+			<text data="optimize">Optimize</text>
+			<menubox name="optimize_mb" width="64" space="8">
+				<text data="panel_validator">Validate World</text>
+				<menu>
+					<text data="profiler">Performance Profiler</text>
+					<menubox name="profiler_mb" width="64" space="8">
+						<menu>
+							<text data="profiler_disabled">Disabled</text>
+						</menu>
+						<menu>
+							<text data="profiler_generic">Generic</text>
+						</menu>
+						<menu>
+							<text data="profiler_rendering">Rendering</text>
+						</menu>
+						<menu>
+							<text data="profiler_physics">Physics</text>
+						</menu>
+						<menu>
+							<text data="profiler_world">World Management</text>
+						</menu>
+						<menu>
+							<text data="profiler_pathfinding_sound">Thread</text>
+						</menu>
+						<callback type="clicked" widget="profiler_mb">callback_clicked</callback>
+					</menubox>
+				</menu>
+				<callback type="clicked" widget="optimize_mb">callback_clicked</callback>
+			</menubox>
+		</menu>
+		
+		<menu>
+			<text data="windows">Windows</text>
+			<menubox name="windows_mb" width="64" space="8">
+				<menu>
+					<text data="panel_nodes">Nodes</text>
+					<tooltip>Open the <b>Nodes</b> window providing quick access to nodes, their options and hierarchy.</tooltip>
+				</menu>
+				<menu>
+					<text data="panel_materials">Materials</text>
+					<tooltip>Open the <b>Materials</b> window providing quick access to materials, their options and hierarchy.</tooltip>
+				</menu>
+				<menu>
+					<text data="panel_properties">Properties</text>
+					<tooltip>Open the <b>Properties</b> window providing quick access to properties and their options.</tooltip>
+				</menu>
+				<menu>
+					<text data="panel_render">Rendering Settings</text>
+					<tooltip>Open the <b>Rendering Settings</b> window providing quick access to rendering settings of the world.</tooltip>
+				</menu>
+				<menu>
+					<text data="panel_physics">Physics Settings</text>
+					<tooltip>Open the <b>Physics Settings</b> window providing quick access to physics settings of the world.</tooltip>
+				</menu>
+				<menu>
+					<text data="panel_sound">Sound Settings</text>
+					<tooltip>Open the <b>Sound Settings</b> window providing quick access to sound settings of the world.</tooltip>
+				</menu>
+				<menu>
+					<text data="panel_tracker">Track Editor</text>
+					<tooltip>Open the <b>Track Editor</b> that is used to create sequences animated over time.</tooltip>
+				</menu>
+				<menu separator="1">
+					<text data="panel_tools">Tools</text>
+					<tooltip>Open the <b>Tools</b> window providing quick access to miscellaneous settings and supporting tools.</tooltip>
+				</menu>
+				<menu>
+					<text data="panel_keys">Controls</text>
+				</menu>
+				<menu>
+					<text data="panel_viewport_1">Viewport 1</text>
+				</menu>
+				<menu>
+					<text data="panel_viewport_2">Viewport 2</text>
+				</menu>
+				<menu>
+					<text data="panel_viewport_3">Viewport 3</text>
+				</menu>
+				<menu>
+					<text data="panel_viewport_4">Viewport 4</text>
+				</menu>
+				<callback type="clicked" widget="windows_mb">callback_clicked</callback>
+			</menubox>
+		</menu>
+		
+		<menu>
+			<text data="plugins">Plugins</text>
+			<menubox name="plugins_mb" export="1" width="64" space="8">
+				<menu separator="1">
+					<text data="panel_plugins">Manage...</text>
+				</menu>
+				<callback type="clicked" widget="plugins_mb">callback_clicked</callback>
+			</menubox>
+		</menu>
+		
+		<menu>
+			<text data="help">Help</text>
+			<menubox name="help_mb" width="64" space="8">
+				<menu>
+					<text data="help">Documentation</text>
+				</menu>
+				<menu>
+					<text data="forum">Forums</text>
+				</menu>
+				<menu>
+					<text data="about">About</text>
+				</menu>
+				<callback type="clicked" widget="help_mb">callback_clicked</callback>
+			</menubox>
+		</menu>
+		
+	</menubar>
+	
+</groupbox>
+
+</ui>

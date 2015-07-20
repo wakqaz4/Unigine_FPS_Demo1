@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_creator_primitive.ui
+ * Desc:    Unigine editor
+ * Version: 1.00
+ * Author:  Mikhail Lyubimov <alterego@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<dialog name="Creator::PrimitiveBox::dialog" export="1" width="100" height="10" padding="-4">
+	<text align="left">Create Box</text>
+	<groupbox align="expand" width="500" height="50">
+		<text>Size</text>
+		<hbox align="expand" space="10" padding="-4">
+			
+			<label align="right">
+				<text>X:</text>
+			</label>
+			<editline name="Creator::PrimitiveBox::size_el[0]" export="1" align="expand" validator="float">
+				<text>1.0</text>
+				<callback type="changed" widget="Creator::PrimitiveBox::size_el[0]" string="0,100000000">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitiveBox::size_el[0]" string="0,100000000">Creator::validate_float_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_box_x" align="overlap" min="0" max="100000000" min_expand="0" max_expand="1000000000">
+				<attach flags="expand" multiplier="10">Creator::PrimitiveBox::size_el[0]</attach>
+				<callback type="changed" widget="sb_box_x">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+			<label align="right">
+				<text>Y:</text>
+			</label>
+			<editline name="Creator::PrimitiveBox::size_el[1]" export="1" align="expand" validator="float">
+				<text>1.0</text>
+				<callback type="changed" widget="Creator::PrimitiveBox::size_el[1]" string="0,100000000">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitiveBox::size_el[1]" string="0,100000000">Creator::validate_float_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_box_y" align="overlap" min="0" max="100000000" min_expand="0" max_expand="1000000000">
+				<attach flags="expand" multiplier="10">Creator::PrimitiveBox::size_el[1]</attach>
+				<callback type="changed" widget="sb_box_y">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+			<label align="right">
+				<text>Z:</text>
+			</label>
+			<editline name="Creator::PrimitiveBox::size_el[2]" export="1" align="expand" validator="float">
+				<text>1.0</text>
+				<callback type="changed" widget="Creator::PrimitiveBox::size_el[2]" string="0,100000000">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitiveBox::size_el[2]" string="0,100000000">Creator::validate_float_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_box_z" align="overlap" min="0" max="100000000" min_expand="0" max_expand="1000000000">
+				<attach flags="expand" multiplier="10">Creator::PrimitiveBox::size_el[2]</attach>
+				<callback type="changed" widget="sb_box_z">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+		</hbox>
+	</groupbox>
+</dialog>
+
+<dialog name="Creator::PrimitivePlane::dialog" export="1" width="100" height="10" padding="-4">
+	<text align="left">Create Plane</text>
+	<groupbox align="expand" width="300" height="50">
+		<text>Size</text>
+		<hbox align="expand" space="10" padding="-4">
+			
+			<label align="right">
+				<text>X:</text>
+			</label>
+			<editline name="Creator::PrimitivePlane::width_el" export="1" align="expand" validator="float">
+				<text>10.0</text>
+				<callback type="changed" widget="Creator::PrimitivePlane::width_el" string="0,100000000">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitivePlane::width_el" string="0,100000000">Creator::validate_float_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_plane_x" align="overlap" min="0" max="100000000" min_expand="0" max_expand="1000000000">
+				<attach flags="expand" multiplier="10">Creator::PrimitivePlane::width_el</attach>
+				<callback type="changed" widget="sb_plane_x">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+			<label align="right">
+				<text>Y:</text>
+			</label>
+			<editline name="Creator::PrimitivePlane::height_el" export="1" align="expand" validator="float">
+				<text>10.0</text>
+				<callback type="changed" widget="Creator::PrimitivePlane::height_el" string="0,100000000">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitivePlane::height_el" string="0,100000000">Creator::validate_float_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_plane_y" align="overlap" min="0" max="100000000" min_expand="0" max_expand="1000000000">
+				<attach flags="expand" multiplier="10">Creator::PrimitivePlane::height_el</attach>
+				<callback type="changed" widget="sb_plane_y">Creator::validate_spinbox</callback>
+			</spinbox>
+		</hbox>
+	</groupbox>
+	
+	<hbox align="expand" space="10" padding="-4">
+		<label align="right">
+			<text>Segments:</text>
+		</label>
+		<editline name="Creator::PrimitivePlane::segments_el" export="1" align="expand" validator="uint">
+			<text>1</text>
+			<callback type="changed" widget="Creator::PrimitivePlane::segments_el" string="1,1000">Creator::validate_editline</callback>
+			<callback type="focus_out" widget="Creator::PrimitivePlane::segments_el" string="1,1000">Creator::validate_int_editline_focus_out</callback>
+		</editline>
+		<spinbox name="sb_plane_sg" align="overlap" min="1" max="1000" min_expand="1" max_expand="1000">
+			<attach flags="expand" multiplier="1">Creator::PrimitivePlane::segments_el</attach>
+			<callback type="changed" widget="sb_plane_sg">Creator::validate_spinbox</callback>
+		</spinbox>
+	</hbox>
+	
+</dialog>
+
+<dialog name="Creator::PrimitiveSphere::dialog" export="1" width="100" height="10" padding="-4">
+	<text align="left">Create Sphere</text>
+	
+	<vbox space="4" width="200">
+		<gridbox align="expand" columns="2" space="4">
+			
+			<label align="right">
+				<text>Radius:</text>
+			</label>
+			<editline name="Creator::PrimitiveSphere::radius_el" export="1" align="expand" validator="float">
+				<text>1.0</text>
+				<callback type="changed" widget="Creator::PrimitiveSphere::radius_el" string="0,100000000">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitiveSphere::radius_el" string="0,100000000">Creator::validate_float_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_sphere_r" align="overlap" min="0" max="100000000" min_expand="0" max_expand="1000000000">
+				<attach flags="expand" multiplier="10">Creator::PrimitiveSphere::radius_el</attach>
+				<callback type="changed" widget="sb_sphere_r">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+			<label align="right"><text>Segments:</text></label>
+			<editline name="Creator::PrimitiveSphere::segments_el" export="1" align="expand" validator="uint">
+				<text>40</text>
+				<callback type="changed" widget="Creator::PrimitiveSphere::segments_el" string="4,500">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitiveSphere::segments_el" string="4,500">Creator::validate_int_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_sphere_s" align="overlap" min="4" max="500" min_expand="4" max_expand="500">
+				<attach flags="expand" multiplier="1">Creator::PrimitiveSphere::segments_el</attach>
+				<callback type="changed" widget="sb_sphere_s">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+		</gridbox>
+	</vbox>
+	
+</dialog>
+
+<dialog name="Creator::PrimitiveCylinder::dialog" export="1" width="100" height="10" padding="-4">
+	<text align="left">Create Cylinder</text>
+	
+	<vbox space="4" width="200">
+		<gridbox align="expand" columns="2" space="4">
+			
+			<label align="right">
+				<text>Radius:</text>
+			</label>
+			<editline name="Creator::PrimitiveCylinder::radius_el" export="1" align="expand" validator="float">
+				<text>1.0</text>
+				<callback type="changed" widget="Creator::PrimitiveCylinder::radius_el" string="0,100000000">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitiveCylinder::radius_el" string="0,100000000">Creator::validate_float_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_cylinder_r" align="overlap" min="0" max="100000000" min_expand="0" max_expand="1000000000">
+				<attach flags="expand" multiplier="10">Creator::PrimitiveCylinder::radius_el</attach>
+				<callback type="changed" widget="sb_cylinder_r">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+			<label align="right">
+				<text>Height:</text>
+			</label>
+			<editline name="Creator::PrimitiveCylinder::height_el" export="1" align="expand" validator="float">
+				<text>1.0</text>
+				<callback type="changed" widget="Creator::PrimitiveCylinder::height_el" string="0,100000000">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitiveCylinder::height_el" string="0,100000000">Creator::validate_float_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_cylinder_h" align="overlap" min="0" max="100000000" min_expand="0" max_expand="1000000000">
+				<attach flags="expand" multiplier="10">Creator::PrimitiveCylinder::height_el</attach>
+				<callback type="changed" widget="sb_cylinder_h">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+			<label align="right"><text>Stacks:</text></label>
+			<editline name="Creator::PrimitiveCylinder::stacks_el" export="1" align="expand" validator="uint">
+				<text>40</text>
+				<callback type="changed" widget="Creator::PrimitiveCylinder::stacks_el" string="3,500">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitiveCylinder::stacks_el" string="3,500">Creator::validate_int_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_cylinder_st" align="overlap" min="3" max="500" min_expand="3" max_expand="500">
+				<attach flags="expand" multiplier="1">Creator::PrimitiveCylinder::stacks_el</attach>
+				<callback type="changed" widget="sb_cylinder_st">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+			<label align="right"><text>Slices:</text></label>
+			<editline name="Creator::PrimitiveCylinder::slices_el" export="1" align="expand" validator="uint">
+				<text>40</text>
+				<callback type="changed" widget="Creator::PrimitiveCylinder::slices_el" string="3,500">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitiveCylinder::slices_el" string="3,500">Creator::validate_int_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_cylinder_sl" align="overlap" min="3" max="500" min_expand="3" max_expand="500">
+				<attach flags="expand" multiplier="1">Creator::PrimitiveCylinder::slices_el</attach>
+				<callback type="changed" widget="sb_cylinder_sl">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+		</gridbox>
+	</vbox>
+	
+</dialog>
+
+<dialog name="Creator::PrimitiveCapsule::dialog" export="1" width="100" height="10" padding="-4">
+	<text align="left">Create Capsule</text>
+	
+	<vbox space="4" width="200">
+		<gridbox align="expand" columns="2" space="4">
+			
+			<label align="right">
+				<text>Radius:</text>
+			</label>
+			<editline name="Creator::PrimitiveCapsule::radius_el" export="1" align="expand" validator="float">
+				<text>1.0</text>
+				<callback type="changed" widget="Creator::PrimitiveCapsule::radius_el" string="0,100000000">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitiveCapsule::radius_el" string="0,100000000">Creator::validate_float_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_capsule_r" align="overlap" min="0" max="100000000" min_expand="0" max_expand="1000000000">
+				<attach flags="expand" multiplier="10">Creator::PrimitiveCapsule::radius_el</attach>
+				<callback type="changed" widget="sb_capsule_r">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+			<label align="right">
+				<text>Height:</text>
+			</label>
+			<editline name="Creator::PrimitiveCapsule::height_el" export="1" align="expand" validator="float">
+				<text>1.0</text>
+				<callback type="changed" widget="Creator::PrimitiveCapsule::height_el" string="0,100000000">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitiveCapsule::height_el" string="0,100000000">Creator::validate_float_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_capsule_h" align="overlap" min="0" max="100000000" min_expand="0" max_expand="1000000000">
+				<attach flags="expand" multiplier="10">Creator::PrimitiveCapsule::height_el</attach>
+				<callback type="changed" widget="sb_capsule_h">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+			<label align="right"><text>Stacks:</text></label>
+			<editline name="Creator::PrimitiveCapsule::stacks_el" export="1" align="expand" validator="uint">
+				<text>40</text>
+				<callback type="changed" widget="Creator::PrimitiveCapsule::stacks_el" string="3,500">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitiveCapsule::stacks_el" string="3,500">Creator::validate_int_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_capsule_st" align="overlap" min="3" max="500" min_expand="3" max_expand="500">
+				<attach flags="expand" multiplier="1">Creator::PrimitiveCapsule::stacks_el</attach>
+				<callback type="changed" widget="sb_capsule_st">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+			<label align="right"><text>Slices:</text></label>
+			<editline name="Creator::PrimitiveCapsule::slices_el" export="1" align="expand" validator="uint">
+				<text>40</text>
+				<callback type="changed" widget="Creator::PrimitiveCapsule::slices_el" string="3,500">Creator::validate_editline</callback>
+				<callback type="focus_out" widget="Creator::PrimitiveCapsule::slices_el" string="3,500">Creator::validate_int_editline_focus_out</callback>
+			</editline>
+			<spinbox name="sb_capsule_sl" align="overlap" min="3" max="500" min_expand="3" max_expand="500">
+				<attach flags="expand" multiplier="1">Creator::PrimitiveCapsule::slices_el</attach>
+				<callback type="changed" widget="sb_capsule_sl">Creator::validate_spinbox</callback>
+			</spinbox>
+			
+		</gridbox>
+	</vbox>
+	
+</dialog>
+
+</ui>

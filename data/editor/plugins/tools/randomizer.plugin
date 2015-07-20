@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin name="randomizer" version="1.0">
+	<text>Randomizer</text>
+	<description>Randomizes selected objects (change direction, replace with other nodes)</description>
+	<source>randomizer.cpp</source>
+</plugin>

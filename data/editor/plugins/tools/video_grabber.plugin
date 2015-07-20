@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin name="video_grabber" version="1.0">
+	<text>Video Grabber</text>
+	<description>Grabbing frame sequences in non-real-time mode</description>
+	<dependencies>HAS_INTERFACE</dependencies>
+	<source>video_grabber.cpp</source>
+</plugin>

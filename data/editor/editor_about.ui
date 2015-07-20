@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_about.ui
+ * Desc:    Credits
+ * Version: 1.02
+ * Author:  Mikhail Lyubimov <alterego@unigine.com>
+ *          Denis Shergin <binstream@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.03">
+
+<window name="About::window" export="1" snap_distance="16" >
+	<text size="24">&nbsp;</text>
+	<sprite align="overlap,top,left" pos_x="-4" pos_y="-30" texture="core/gui/unigine.png"/>
+	<icon align="overlap,top,right" pos_x="4" pos_y="-30" texture="core/gui/window_close.png">
+		<callback type="clicked">aboutHide</callback>
+	</icon>
+	<vbox space="4">
+		<vbox align="expand" space="4">
+			<label face="core/gui/fontb.ttf" size="18" color="#ff9900">UnigineEditor</label>
+			<font size="13"><align align="left">
+				<scrollbox align="expand" height="320" henabled="0" space="4">
+					<gridbox columns="2" space_x="4" space_y="1" padding="4">
+						<label face="core/gui/fontb.ttf" size="15" color="#ff9900">Programming</label><vbox space="4"/>
+						<vbox space="4"/><vbox space="4"/>
+						<label>Maxim Belobryukhov</label>
+						<label>Vladimir Borovskikh</label>
+						<label>Maxim Dedkov</label>
+						<label>Alexey Egorov</label>
+						<label>Anna Ishina</label>
+						<label>Mikhail Lubimov</label>
+						<label>Pavel Kurinnoy</label>
+						<label>Valia Vaneeva</label>
+						<label>Andrey Viktorov</label>
+						<label>Alexey Zagniy</label>
+						<label>Alexander Zapryagaev</label>
+						<label></label>
+						<vbox space="4"/><vbox space="4"/>
+						<label face="core/gui/fontb.ttf" size="15" color="#ff9900">Additional Programming</label><vbox space="4"/>
+						<vbox space="4"/><vbox space="4"/>
+						<label>Andrew Aksyonoff</label>
+						<label>Alexey Kuzakov</label>
+						<label>Sergey Korolev</label>
+						<label>Yakov Negrey</label>
+						<label>Vasiliy Simonov</label>
+						<label>Anton Vodostoev</label>
+						<vbox space="4"/><vbox space="4"/>
+						<label face="core/gui/fontb.ttf" size="15" color="#ff9900">Product Management</label><vbox space="4"/>
+						<vbox space="4"/><vbox space="4"/>
+						<label>Denis Shergin</label>
+						<label></label>
+						<vbox space="4"/><vbox space="4"/>
+						<label face="core/gui/fontb.ttf" size="15" color="#ff9900">Quality Assurance</label><vbox space="4"/>
+						<vbox space="4"/><vbox space="4"/>
+						<label>Andrew Bayun</label>
+						<label>Maxim Gribennikov</label>
+						<label>Polina Ignatova</label>
+						<label>Serge Kanashchuk</label>
+						<label>Mike Kondratyev</label>
+						<label>Dmitry Kriventsov</label>
+						<label>Sergey Litvinov</label>
+						<label>Kate Popova</label>
+						<label>Evgeniy Yundin</label>
+						<label></label>
+						<vbox space="4"/><vbox space="4"/>
+						<label face="core/gui/fontb.ttf" size="15" color="#ff9900">GUI design</label><vbox space="4"/>
+						<vbox space="4"/><vbox space="4"/>
+						<label>Dmitriy Cherniy</label>
+						<label>Eugenia Shergina</label>
+						<vbox space="4"/><vbox space="4"/>
+						<label face="core/gui/fontb.ttf" size="15" color="#ff9900">Documentation</label><vbox space="4"/>
+						<vbox space="4"/><vbox space="4"/>
+						<label>Olga Kirichenko</label>
+						<label>Nadezhda Ovchinnikova</label>
+						<label>Andrey Polyakov</label>
+						<label>Denis Shergin</label>
+						<label>Inna Teteniuk</label>
+						<label>Valentina Vaneeva</label>
+						<vbox space="4"/><vbox space="4"/>
+						<label face="core/gui/fontb.ttf" size="15" color="#ff9900">3D Assets</label><vbox space="4"/>
+						<vbox space="4"/><vbox space="4"/>
+						<label>Andrey Kolchin</label>
+						<label>Andrey Kushner</label>
+						<label>Davyd Vidiger</label>
+						<label></label>
+						<vbox space="4"/><vbox space="4"/>
+						<label face="core/gui/fontb.ttf" size="15" color="#ff9900">Special Thanks To:</label><vbox space="4"/>
+						<vbox space="4"/><vbox space="4"/>
+						<label>Iliya Abzaev</label>
+						<label>Dmitriy Alin</label>
+						<label>Evgenia Bocharova</label>
+						<label>Anton Bogachenko</label>
+						<label>Anna Cheremnykh</label>
+						<label>Sergey Cheremnykh</label>
+						<label>Natalia Danko</label>
+						<label>Valery Datsyuk</label>
+						<label>Evgeniy Gerasimenko</label>
+						<label>Andrew Glusynski</label>
+						<label>Ivan Gulyaev</label>
+						<label>Sergey Gradoboev</label>
+						<label>Tricia Gray</label>
+						<label>Joulia Gubieva</label>
+						<label>Alexey Hizhnyak</label>
+						<label>Maxim Ivankin</label>
+						<label>Alena Kalinina</label>
+						<label>Albert Khaiboulline</label>
+						<label>Alexander Kislitsky</label>
+						<label>Eugena Klykova</label>
+						<label>Andrey Korovkin</label>
+						<label>Grigory Korpan</label>
+						<label>Sergey Kovalev</label>
+						<label>Natalia Kruchkova</label>
+						<label>Robert Kudera</label>
+						<label>Dmitry Kuraev</label>
+						<label>Serge Larin</label>
+						<label>Anthony Liot</label>
+						<label>Eric Liu</label>
+						<label>Alexey Maslennikov</label>
+						<label>Tamara Melnikova</label>
+						<label>Konstantin Nechaev</label>
+						<label>Anton Ravin</label>
+						<label>Natalia Zapryagaeva</label>
+						<label>Peter Sannikov</label>
+						<label>Maria Shishkevich</label>
+						<label>Ulf Schroeter</label>
+						<label>Vyacheslav Sedovich</label>
+						<label>Galina Shadrina</label>
+						<label>JoonHee Shin</label>
+						<label>Vitaliy Sidorov</label>
+						<label>Max Sinelnikov</label>
+						<label>Vyacheslav Suldin</label>
+						<label>Anton Suvorov</label>
+						<label>Evgeniy Tetenchuk</label>
+						<label>Beth Thomas</label>
+						<label>Nikita Trofimov</label>
+						<label>Iliya Turkin</label>
+						<label>Eugene Viitman</label>
+						<label>Yaroslav Yunevich</label>
+						<label>Stanislav Zagniy</label>
+						<label>Evgeniya Zinovieva</label>
+						<label>Jimmy Zhang</label>
+						<label>Sara Zhang</label>
+					</gridbox>
+					<vbox>
+						<vbox space="4"/>
+						<label face="core/gui/fontb.ttf" size="15" color="#ff9900">3rd-Party Libraries</label>
+						<vbox space="4"/>
+						<label size="10">axTLS library is copyright (c) 2007, Cameron Rich.</label>
+						<label size="10">libpng library is copyright (c) 2004, 2006-2014, Glenn Randers-Pehrson.</label>
+						<label size="10">libtiff library is copyright (c) 1988-1997 Sam Leffler, 1991-1997 Silicon Graphics, Inc.</label>
+						<label size="10">Regular expressions library is copyright (c) 1991, Tatu Ylonen.</label>
+						<label size="10">OggVorbis software codec is copyright (c) 1994-2011, Xiph.org Foundation.</label>
+						<label size="10">This software is based in part on the work of the Independent JPEG Group.</label>
+						<label size="10">MiniZip library is copyright (c) 1998-2010, Gilles Vollant.</label>
+						<label size="10">zlib library Copyright (C) 1995-2010, Jean-loup Gailly and Mark Adler.</label>
+						<label size="10">Portions of this  software are copyright (c) 2013, The FreeType Project (www.freetype.org).</label>
+						<label size="10">All rights reserved.</label>
+					</vbox>
+				</scrollbox>
+			</align></font>
+			<vbox space="2">
+				<label size="12">UNIGINE Corp. (c) 2005-2015</label>
+				<label size="12">www.unigine.com</label>
+			</vbox>
+		</vbox>
+	</vbox>
+</window>
+
+</ui>

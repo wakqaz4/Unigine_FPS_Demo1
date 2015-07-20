@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<materials version="1.00" editable="0">
+	
+	<!--
+	/**************************************************************************\
+	*
+	* Volume materials
+	*
+	\**************************************************************************/
+	-->
+	
+	<!--
+	/* Volume fog base material
+	 */
+	-->
+	<material name="volume_fog_base" editable="0">
+		
+		<!-- blending -->
+		<blend src="src_alpha" dest="one_minus_src_alpha"/>
+		
+		<!-- options -->
+		<options depth_mask="0" cast_shadow="0" cast_world_shadow="0" receive_shadow="0" receive_world_shadow="0"/>
+		
+		<!-- states -->
+		<state name="noise" type="toggle">0</state>
+		<state name="height" type="toggle">0</state>
+		<state name="multisample" type="toggle">0</state>
+		
+		<!-- wireframe shaders -->
+		<shader pass="wireframe" object="volume_box"
+			vertex="core/shaders/default/volume/vertex_box_wireframe.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		<shader pass="wireframe" object="volume_sphere"
+			vertex="core/shaders/default/volume/vertex_sphere_wireframe.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient" object="volume_box"
+			noise_defines=",NOISE"
+			height_defines=",HEIGHT"
+			multisample_defines=",MULTISAMPLE"
+			vertex="core/shaders/default/volume/vertex_box_fog_ambient.shader"
+			fragment="core/shaders/default/volume/fragment_box_fog_ambient.shader"/>
+		<shader pass="ambient" object="volume_sphere"
+			noise_defines=",NOISE"
+			height_defines=",HEIGHT"
+			multisample_defines=",MULTISAMPLE"
+			vertex="core/shaders/default/volume/vertex_sphere_fog_ambient.shader"
+			fragment="core/shaders/default/volume/fragment_sphere_fog_ambient.shader"/>
+		
+		<!-- textures -->
+		<texture name="noise" noise="1" filter="point">core/textures/volume_base_fog_noise.dds</texture>
+		<texture name="deferred_depth" unit="15" type="deferred_depth"/>
+		
+		<!-- parameters -->
+		<parameter name="diffuse_color" type="color" shared="1" flags="srgb">0.5 0.5 0.5 1.0</parameter>
+		<parameter name="volume_power" type="slider" shared="1" min="0.0" max="2.0" flags="log10,max_expand">1.0</parameter>
+		<parameter name="volume_density" type="slider" shared="1" min="-3.0" max="1.0" flags="log10,max_expand">0.1</parameter>
+		<parameter name="height_falloff" height="1" type="slider" shared="1" min="-3.0" max="0.0" flags="log10,max_expand">0.1</parameter>
+		<parameter name="noise_scale" noise="1" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+		<parameter name="noise_transform" noise="1" type="expression" shared="1">time</parameter>
+	</material>
+	
+	<!--
+	/* Volume cloud base material
+	 */
+	-->
+	<material name="volume_cloud_base" editable="0">
+		
+		<!-- blending -->
+		<blend src="src_alpha" dest="one_minus_src_alpha"/>
+		
+		<!-- options -->
+		<options depth_mask="0" cast_shadow="0" cast_world_shadow="0" receive_shadow="0" receive_world_shadow="0"/>
+		
+		<!-- states -->
+		<state name="samples" type="switch" items="16,32,64,128,256">0</state>
+		<state name="attenuation" type="toggle">0</state>
+		<state name="volume" type="toggle">1</state>
+		
+		<!-- wireframe shaders -->
+		<shader pass="wireframe" object="volume_box"
+			vertex="core/shaders/default/volume/vertex_box_wireframe.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient" object="volume_box"
+			samples_defines="SAMPLES_16,SAMPLES_32,SAMPLES_64,SAMPLES_128,SAMPLES_256"
+			attenuation_defines=",ATTENUATION"
+			volume_defines=",VOLUME"
+			vertex="core/shaders/default/volume/vertex_box_cloud_ambient.shader"
+			fragment="core/shaders/default/volume/fragment_box_cloud_ambient.shader"/>
+		
+		<!-- textures -->
+		<texture name="density" filter="linear">core/textures/volume_base_cloud_density.dds</texture>
+		<texture name="attenuation" format="srgb" filter="linear" wrap="clamp_x">core/textures/volume_base_cloud_attenuation.dds</texture>
+		<texture name="deferred_depth" unit="15" type="deferred_depth"/>
+		
+		<!-- parameters -->
+		<parameter name="attenuation_transform" attenuation="1" type="expression" shared="1">0.5f</parameter>
+		<parameter name="base_scale" type="expression" shared="1">vec3(1.0f,1.0f,1.0f)</parameter>
+		<parameter name="base_offset" type="expression" shared="1">vec3(0.0f,0.0f,0.0f)</parameter>
+		<parameter name="diffuse_color" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="volume_density" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+	</material>
+	
+	<!--
+	/* Volume shaft base material
+	 */
+	-->
+	<material name="volume_shaft_base" editable="0">
+		
+		<!-- blending -->
+		<blend src="one" dest="one"/>
+		
+		<!-- options -->
+		<options depth_mask="0" cast_shadow="0" cast_world_shadow="0" receive_shadow="0"/>
+		
+		<!-- states -->
+		<state name="samples" type="switch" items="16,32,64,128,256">0</state>
+		
+		<!-- wireframe shaders -->
+		<shader pass="wireframe" object="volume_box"
+			vertex="core/shaders/default/volume/vertex_box_wireframe.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- light world shaders -->
+		<shader pass="light_world" object="volume_box"
+			defines="WORLD"
+			samples_defines="SAMPLES_16,SAMPLES_32,SAMPLES_64,SAMPLES_128,SAMPLES_256"
+			vertex="core/shaders/default/volume/vertex_box_shaft_light_world.shader"
+			fragment="core/shaders/default/volume/fragment_box_shaft_light_world.shader"/>
+		
+		<!-- textures -->
+		<texture name="noise" filter="point">core/textures/volume_base_shaft_noise.dds</texture>
+		<texture name="deferred_depth" unit="13" type="deferred_depth"/>
+		<texture name="light_color" type="light_color"/>
+		<texture name="light_depth" type="light_depth"/>
+		
+		<!-- parameters -->
+		<parameter name="diffuse_color" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="volume_density" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="volume_radius" type="slider" shared="1" min="0.0" max="1000.0">100.0</parameter>
+	</material>
+	
+	<!--
+	/* Volume light base material
+	 */
+	-->
+	<material name="volume_light_base" editable="0">
+		
+		<!-- blending -->
+		<blend src="one" dest="one"/>
+		
+		<!-- options -->
+		<options depth_mask="0" cast_shadow="0" cast_world_shadow="0" receive_shadow="0" receive_world_shadow="0"/>
+		
+		<!-- wireframe shaders -->
+		<shader pass="wireframe" object="volume_sphere"
+			vertex="core/shaders/default/volume/vertex_sphere_wireframe.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient" object="volume_sphere"
+			vertex="core/shaders/default/volume/vertex_sphere_light_ambient.shader"
+			fragment="core/shaders/default/volume/fragment_sphere_light_ambient.shader"/>
+		
+		<!-- textures -->
+		<texture name="deferred_depth" unit="15" type="deferred_depth"/>
+		
+		<!-- parameters -->
+		<parameter name="diffuse_color" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="volume_power" type="slider" shared="1" min="0.0" max="2.0" flags="log10,max_expand">1.0</parameter>
+		<parameter name="volume_density" type="slider" shared="1" min="-3.0" max="1.0" flags="log10,max_expand">0.1</parameter>
+	</material>
+	
+	<!--
+	/* Volume omni base material
+	 */
+	-->
+	<material name="volume_omni_base" editable="0">
+		
+		<!-- blending -->
+		<blend src="one" dest="one"/>
+		
+		<!-- options -->
+		<options depth_mask="0" cast_shadow="0" cast_world_shadow="0" receive_shadow="0" receive_world_shadow="0"/>
+		
+		<!-- states -->
+		<state name="volume" type="toggle">0</state>
+		
+		<!-- wireframe shaders -->
+		<shader pass="wireframe" object="volume_omni"
+			vertex="core/shaders/default/volume/vertex_omni_wireframe.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient" object="volume_omni"
+			volume_defines=",VOLUME"
+			vertex="core/shaders/default/volume/vertex_omni_ambient.shader"
+			fragment="core/shaders/default/volume/fragment_omni_ambient.shader"/>
+		
+		<!-- textures -->
+		<texture name="attenuation" format="srgb" wrap="clamp_x">core/textures/volume_base_omni_attenuation.dds</texture>
+		<texture name="deferred_depth" volume="1" unit="15" type="deferred_depth"/>
+		
+		<!-- parameters -->
+		<parameter name="attenuation_transform" type="expression" shared="1">0.5f</parameter>
+		<parameter name="diffuse_color" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="diffuse_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="volume_scale" volume="1" type="slider" shared="1" min="0.5" max="1.0" flags="max_expand">1.0</parameter>
+	</material>
+	
+	<!--
+	/* Volume proj base material
+	 */
+	-->
+	<material name="volume_proj_base" editable="0">
+		
+		<!-- blending -->
+		<blend src="one" dest="one"/>
+		
+		<!-- options -->
+		<options depth_mask="0" cast_shadow="0" cast_world_shadow="0" receive_shadow="0" receive_world_shadow="0"/>
+		
+		<!-- states -->
+		<state name="volume" type="toggle">0</state>
+		
+		<!-- wireframe shaders -->
+		<shader pass="wireframe" object="volume_proj"
+			vertex="core/shaders/default/volume/vertex_proj_wireframe.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient" object="volume_proj"
+			volume_defines=",VOLUME"
+			vertex="core/shaders/default/volume/vertex_proj_ambient.shader"
+			fragment="core/shaders/default/volume/fragment_proj_ambient.shader"/>
+		
+		<!-- textures -->
+		<texture name="diffuse" format="srgb" wrap="clamp">core/textures/volume_base_proj_diffuse.dds</texture>
+		<texture name="attenuation" format="srgb" wrap="clamp_x">core/textures/volume_base_proj_attenuation.dds</texture>
+		<texture name="deferred_depth" volume="1" unit="15" type="deferred_depth"/>
+		
+		<!-- parameters -->
+		<parameter name="attenuation_transform" type="expression" shared="1">0.5f</parameter>
+		<parameter name="diffuse_color" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="diffuse_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="volume_scale" volume="1" type="slider" shared="1" min="-3.0" max="0.0" flags="log10,max_expand">1.0</parameter>
+	</material>
+	
+</materials>

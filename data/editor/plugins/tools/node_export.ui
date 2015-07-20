@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    node_export.ui
+ * Desc:    Node export plugin
+ * Version: 1.03
+ * Author:  Andrey Viktorov <unclebob@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.02">
+
+<!--
+/* Main plugin window
+ */
+-->
+<window name="NodeExport::window" export="1" sizeable="0" space="4">
+	<text>Node Export</text>
+	
+	<icon align="overlap,top,right" pos_x="4" pos_y="-24" texture="core/gui/window_close.png">
+		<callback type="clicked">NodeExport::UI::window_close_clicked</callback>
+	</icon>
+	
+	<groupbox space="4">
+		<text>Destination</text>
+		
+		<gridbox columns="3" space="4" align="expand" width="300">
+			
+			<label align="right">Data folder:</label>
+			<editline name="NodeExport::UI::project_to_data_el" export="1" align="expand">
+				<tooltip>Absolute path to the target project <b><i>data</i></b> folder</tooltip>
+			</editline>
+			<vbox/>
+			
+			<label align="right">Local folder:</label>
+			<editline name="NodeExport::UI::project_to_name_el" export="1" align="expand">
+				<tooltip>Target folder (relative to the target project <b><i>data</i></b> directory) into which assets will be copied</tooltip>
+				<callback type="changed">NodeExport::UI::project_changed</callback>
+			</editline>
+			<vbox/>
+			
+		</gridbox>
+	</groupbox>
+	
+	<vbox space="4"/>
+	
+	<checkbox name="NodeExport::UI::custom_paths_cb" align="left" export="1">
+		<tooltip>Switch the export mode (if unchecked, the folder structure of the source project will be used)</tooltip>
+		<text>Custom destination structure</text>
+		<callback type="changed">NodeExport::UI::custom_paths_changed</callback>
+	</checkbox>
+	
+	<groupbox space="4" name="NodeExport::UI::custom_paths_gb" export="1">
+		<text>Custom folder</text>
+		<gridbox columns="2" space="4" align="expand" width="300">
+			
+			<label align="right">Nodes:</label>
+			<editline name="NodeExport::UI::nodes_el" export="1" align="expand">
+				<tooltip>Target folder (relative to the target project <b><i>data</i></b> directory) for nodes</tooltip>
+			</editline>
+			
+			<label align="right">Meshes:</label>
+			<editline name="NodeExport::UI::meshes_el" export="1" align="expand">
+				<tooltip>Target folder (relative to the target project <b><i>data</i></b> directory) for meshes</tooltip>
+			</editline>
+			
+			<label align="right">Textures:</label>
+			<editline name="NodeExport::UI::textures_el" export="1" align="expand">
+				<tooltip>Target folder (relative to the target project <b><i>data</i></b> directory) for textures. The <b><i>uncompressed</i></b> folder will be created as a subfolder</tooltip>
+			</editline>
+			
+			<label align="right">Materials:</label>
+			<editline name="NodeExport::UI::materials_el" export="1" align="expand">
+				<tooltip>Target folder (relative to the target project <b><i>data</i></b> directory) for material libraries</tooltip>
+			</editline>
+			
+			<label align="right">Properties:</label>
+			<editline name="NodeExport::UI::properties_el" export="1" align="expand">
+				<tooltip>Target folder (relative to the target project <b><i>data</i></b> directory) for property libraries</tooltip>
+			</editline>
+			
+			<label align="right">Terrains:</label>
+			<editline name="NodeExport::UI::terrain_el" export="1" align="expand">
+				<tooltip>Target folder (relative to the target project <b><i>data</i></b> directory) for terrain data. The <b><i>materials</i></b> folder will be created for terrain materials</tooltip>
+			</editline>
+		</gridbox>
+	</groupbox>
+	
+	<vbox space="4"/>
+	
+	<hbox space="0" align="expand">
+		<checkbox name="NodeExport::UI::remove_part_cb" align="left" export="1">
+			<tooltip>Remove the specified part of the path to a source project folder with assets during exporting. Use this option if the assets aren't stored directly in the root of the <b><i>data</i></b> folder</tooltip>
+			<text>Remove part of the path:</text>
+			<callback type="changed">NodeExport::UI::custom_paths_changed</callback>
+		</checkbox>
+		<hbox space="4"/>
+		<editline name="NodeExport::UI::project_from_data_el" export="1" align="expand">
+			<tooltip>Path to the source project folder with assets relative to the <b><i>data</i></b> folder</tooltip>
+		</editline>
+	</hbox>
+	
+	<button align="expand">
+		<text>Export</text>
+		<callback type="clicked">NodeExport::UI::export_clicked</callback>
+	</button>
+	
+</window>
+
+</ui>

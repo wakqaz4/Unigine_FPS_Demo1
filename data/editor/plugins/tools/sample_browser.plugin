@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin name="sample_browser" version="1.0">
+	<text>Sample Browser</text>
+	<description>Browser for data/samples</description>
+	<source>sample_browser.cpp</source>
+</plugin>

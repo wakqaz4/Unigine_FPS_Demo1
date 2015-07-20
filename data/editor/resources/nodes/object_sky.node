@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="ObjectSky" id="1963843531" collider="0">
+		<simulation>1</simulation>
+		<size>24000 24000 800</size>
+		<min_slices>500</min_slices>
+		<max_slices>600</max_slices>
+		<distribute>2</distribute>
+		<humidity>0.96</humidity>
+		<transition>0.5</transition>
+		<extinction>0.7</extinction>
+		<density_velocity>30 30 0</density_velocity>
+		<density_offset>1111.83 1111.83 0</density_offset>
+		<density_layer>3</density_layer>
+		<surface name="sphere" material="sky_base" property="surface_base">
+			<material>
+				<blend src="src_alpha" dest="one_minus_src_alpha"/>
+				<options post_scattering="1"/>
+			</material>
+		</surface>
+		<surface name="volume" property="surface_base"/>
+		<surface name="shadow" material="sky_base" property="surface_base">
+			<material>
+				<blend src="zero" dest="src_alpha"/>
+				<options/>
+				<state name="surface">2</state>
+			</material>
+		</surface>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

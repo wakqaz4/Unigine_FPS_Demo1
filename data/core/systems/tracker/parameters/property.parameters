@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<parameters version="1.00">
+	
+	<!-- Option parameters -->
+	<parameter type="property.intersection" track="toggle" object="Property">
+		<set>OBJECT.setIntersection(VALUE);</set>
+		<get>VALUE = OBJECT.getIntersection();</get>
+	</parameter>
+	<parameter type="property.collision" track="toggle" object="Property">
+		<set>OBJECT.setCollision(VALUE);</set>
+		<get>VALUE = OBJECT.getCollision();</get>
+	</parameter>
+	
+	<!-- State parameters -->
+	<parameter type="property.stateToggle" track="toggle" object="Property" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findState(ARGUMENT);
+			if(CACHE == -1) {
+				log.error("property.stateToggle: can't find \"%s\" state\n",ARGUMENT);
+			} else if(OBJECT.getStateType(CACHE) != PROPERTY_STATE_TOGGLE) {
+				log.error("property.stateToggle: bad \"%s\" state type\n",ARGUMENT);
+				CACHE = -1;
+			}
+		]]></init>
+		<set>if(CACHE != -1 &amp;&amp; OBJECT.getState(CACHE) != VALUE) OBJECT.setState(CACHE,VALUE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getState(CACHE);</get>
+	</parameter>
+	<parameter type="property.stateSwitch" track="switch" object="Property" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findState(ARGUMENT);
+			if(CACHE == -1) {
+				log.error("property.stateSwitch: can't find \"%s\" state\n",ARGUMENT);
+			} else if(OBJECT.getStateType(CACHE) != PROPERTY_STATE_SWITCH) {
+				log.error("property.stateSwitch: bad \"%s\" state type\n",ARGUMENT);
+				CACHE = -1;
+			}
+		]]></init>
+		<set>if(CACHE != -1 &amp;&amp; OBJECT.getState(CACHE) != VALUE) OBJECT.setState(CACHE,VALUE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getState(CACHE);</get>
+	</parameter>
+	
+	<!-- Parameter parameters -->
+	<parameter type="property.parameterFloat" track="float" object="Property" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findParameter(ARGUMENT);
+			if(CACHE == -1) {
+				log.error("property.parameterFloat: can't find \"%s\" parameter\n",ARGUMENT);
+			} else if(OBJECT.getParameterType(CACHE) != PROPERTY_PARAMETER_FLOAT) {
+				log.error("property.parameterFloat: bad \"%s\" parameter type\n",ARGUMENT);
+				CACHE = -1;
+			}
+		]]></init>
+		<set>if(CACHE != -1 &amp;&amp; OBJECT.getParameterFloat(CACHE) != VALUE) OBJECT.setParameterFloat(CACHE,VALUE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getParameterFloat(CACHE);</get>
+	</parameter>
+	<parameter type="property.parameterToggle" track="toggle" object="Property" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findParameter(ARGUMENT);
+			if(CACHE == -1) {
+				log.error("property.parameterToggle: can't find \"%s\" parameter\n",ARGUMENT);
+			} else if(OBJECT.getParameterType(CACHE) != PROPERTY_PARAMETER_TOGGLE) {
+				log.error("property.parameterToggle: bad \"%s\" parameter type\n",ARGUMENT);
+				CACHE = -1;
+			}
+		]]></init>
+		<set>if(CACHE != -1 &amp;&amp; OBJECT.getParameterToggle(CACHE) != VALUE) OBJECT.setParameterToggle(CACHE,VALUE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getParameterToggle(CACHE);</get>
+	</parameter>
+	<parameter type="property.parameterSwitch" track="switch" object="Property" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findParameter(ARGUMENT);
+			if(CACHE == -1) {
+				log.error("property.parameterSwitch: can't find \"%s\" parameter\n",ARGUMENT);
+			} else if(OBJECT.getParameterType(CACHE) != PROPERTY_PARAMETER_SWITCH) {
+				log.error("property.parameterSwitch: bad \"%s\" parameter type\n",ARGUMENT);
+				CACHE = -1;
+			}
+		]]></init>
+		<set>if(CACHE != -1 &amp;&amp; OBJECT.getParameterSwitch(CACHE) != VALUE) OBJECT.setParameterSwitch(CACHE,VALUE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getParameterSwitch(CACHE);</get>
+	</parameter>
+	<parameter type="property.parameterString" track="string" object="Property" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findParameter(ARGUMENT);
+			if(CACHE == -1) {
+				log.error("property.parameterString: can't find \"%s\" parameter\n",ARGUMENT);
+			} else if(OBJECT.getParameterType(CACHE) != PROPERTY_PARAMETER_STRING) {
+				log.error("property.parameterString: bad \"%s\" parameter type\n",ARGUMENT);
+				CACHE = -1;
+			}
+		]]></init>
+		<set>if(CACHE != -1 &amp;&amp; OBJECT.getParameterString(CACHE) != VALUE) OBJECT.setParameterString(CACHE,VALUE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getParameterString(CACHE);</get>
+	</parameter>
+	<parameter type="property.parameterColor" track="color" object="Property" argument="string">
+		<init><![CDATA[
+			CACHE = OBJECT.findParameter(ARGUMENT);
+			if(CACHE == -1) {
+				log.error("property.parameterColor: can't find \"%s\" parameter\n",ARGUMENT);
+			} else if(OBJECT.getParameterType(CACHE) != PROPERTY_PARAMETER_COLOR) {
+				log.error("property.parameterColor: bad \"%s\" parameter type\n",ARGUMENT);
+				CACHE = -1;
+			}
+		]]></init>
+		<set>if(CACHE != -1 &amp;&amp; OBJECT.getParameterColor(CACHE) != VALUE) OBJECT.setParameterColor(CACHE,VALUE);</set>
+		<get>if(CACHE != -1) VALUE = OBJECT.getParameterColor(CACHE);</get>
+	</parameter>
+	
+	<!-- Object property state parameters -->
+	<parameter type="node.object.property.stateToggle" track="toggle" object="Object" argument="string">
+		<init><![CDATA[
+			int pos = strstr(ARGUMENT,":");
+			if(pos == -1) {
+				log.error("node.object.property.stateToggle: can't find delimiter\n");
+				CACHE = ivec3(-1);
+			} else {
+				string surface_name = substr(ARGUMENT,0,pos);
+				string state_name = substr(ARGUMENT,pos + 1);
+				int surface = OBJECT.findSurface(surface_name);
+				if(surface == -1) {
+					log.error("node.object.property.stateToggle: can't find \"%s\" surface\n",surface_name);
+					CACHE = ivec3(-1);
+				} else {
+					Property property = OBJECT.getProperty(surface);
+					if(property == 0) {
+						log.error("node.object.property.stateToggle: property is NULL in \"%s\" surface\n",surface_name);
+						CACHE = ivec3(-1);
+					} else {
+						int state = property.findState(state_name);
+						if(state == -1) {
+							log.error("node.object.property.stateToggle: can't find \"%s\" state\n",state_name);
+							CACHE = ivec3(-1);
+						} else if(property.getStateType(state) != PROPERTY_STATE_TOGGLE) {
+							log.error("node.object.property.stateToggle: bad \"%s\" state type\n",state_name);
+							CACHE = ivec3(-1);
+						} else {
+							CACHE = ivec3(surface,state,0);
+						}
+					}
+				}
+			}
+		]]></init>
+		<set><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Property property = OBJECT.getPropertyInherit(CACHE.x);
+				if(property.getState(CACHE.y) != VALUE) property.setState(CACHE.y,VALUE);
+			}
+		]]></set>
+		<get><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Property property = OBJECT.getPropertyInherit(CACHE.x);
+				VALUE = property.getState(CACHE.y);
+			}
+		]]></get>
+	</parameter>
+	<parameter type="node.object.property.stateSwitch" track="switch" object="Object" argument="string">
+		<init><![CDATA[
+			int pos = strstr(ARGUMENT,":");
+			if(pos == -1) {
+				log.error("node.object.property.stateSwitch: can't find delimiter\n");
+				CACHE = ivec3(-1);
+			} else {
+				string surface_name = substr(ARGUMENT,0,pos);
+				string state_name = substr(ARGUMENT,pos + 1);
+				int surface = OBJECT.findSurface(surface_name);
+				if(surface == -1) {
+					log.error("node.object.property.stateSwitch: can't find \"%s\" surface\n",surface_name);
+					CACHE = ivec3(-1);
+				} else {
+					Property property = OBJECT.getProperty(surface);
+					if(property == 0) {
+						log.error("node.object.property.stateSwitch: property is NULL in \"%s\" surface\n",surface_name);
+						CACHE = ivec3(-1);
+					} else {
+						int state = property.findState(state_name);
+						if(state == -1) {
+							log.error("node.object.property.stateSwitch: can't find \"%s\" state\n",state_name);
+							CACHE = ivec3(-1);
+						} else if(property.getStateType(state) != PROPERTY_STATE_SWITCH) {
+							log.error("node.object.property.stateSwitch: bad \"%s\" state type\n",state_name);
+							CACHE = ivec3(-1);
+						} else {
+							CACHE = ivec3(surface,state,0);
+						}
+					}
+				}
+			}
+		]]></init>
+		<set><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Property property = OBJECT.getPropertyInherit(CACHE.x);
+				if(property.getState(CACHE.y) != VALUE) property.setState(CACHE.y,VALUE);
+			}
+		]]></set>
+		<get><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Property property = OBJECT.getPropertyInherit(CACHE.x);
+				VALUE = property.getState(CACHE.y);
+			}
+		]]></get>
+	</parameter>
+	
+	<!-- Object property parameter parameters -->
+	<parameter type="node.object.property.parameterFloat" track="float" object="Object" argument="string">
+		<init><![CDATA[
+			int pos = strstr(ARGUMENT,":");
+			if(pos == -1) {
+				log.error("node.object.property.parameterFloat: can't find delimiter\n");
+				CACHE = ivec3(-1);
+			} else {
+				string surface_name = substr(ARGUMENT,0,pos);
+				string parameter_name = substr(ARGUMENT,pos + 1);
+				int surface = OBJECT.findSurface(surface_name);
+				if(surface == -1) {
+					log.error("node.object.property.parameterFloat: can't find \"%s\" surface\n",surface_name);
+					CACHE = ivec3(-1);
+				} else {
+					Property property = OBJECT.getProperty(surface);
+					if(property == 0) {
+						log.error("node.object.property.parameterFloat: property is NULL in \"%s\" surface\n",surface_name);
+						CACHE = ivec3(-1);
+					} else {
+						int parameter = property.findParameter(parameter_name);
+						if(parameter == -1) {
+							log.error("node.object.property.parameterFloat: can't find \"%s\" parameter\n",parameter_name);
+							CACHE = ivec3(-1);
+						} else if(property.getParameterType(parameter) != PROPERTY_PARAMETER_FLOAT) {
+							log.error("node.object.property.parameterFloat: bad \"%s\" parameter type\n",parameter_name);
+							CACHE = ivec3(-1);
+						} else {
+							CACHE = ivec3(surface,parameter,0);
+						}
+					}
+				}
+			}
+		]]></init>
+		<set><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Property property = OBJECT.getPropertyInherit(CACHE.x);
+				if(property.getParameterFloat(CACHE.y) != VALUE) property.setParameterFloat(CACHE.y,VALUE);
+			}
+		]]></set>
+		<get><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Property property = OBJECT.getPropertyInherit(CACHE.x);
+				VALUE = property.getParameterFloat(CACHE.y);
+			}
+		]]></get>
+	</parameter>
+	<parameter type="node.object.property.parameterColor" track="color" object="Object" argument="string">
+		<init><![CDATA[
+			int pos = strstr(ARGUMENT,":");
+			if(pos == -1) {
+				log.error("node.object.property.parameterColor: can't find delimiter\n");
+				CACHE = ivec3(-1);
+			} else {
+				string surface_name = substr(ARGUMENT,0,pos);
+				string parameter_name = substr(ARGUMENT,pos + 1);
+				int surface = OBJECT.findSurface(surface_name);
+				if(surface == -1) {
+					log.error("node.object.property.parameterColor: can't find \"%s\" surface\n",surface_name);
+					CACHE = ivec3(-1);
+				} else {
+					Property property = OBJECT.getProperty(surface);
+					if(property == 0) {
+						log.error("node.object.property.parameterColor: property is NULL in \"%s\" surface\n",surface_name);
+						CACHE = ivec3(-1);
+					} else {
+						int parameter = property.findParameter(parameter_name);
+						if(parameter == -1) {
+							log.error("node.object.property.parameterColor: can't find \"%s\" parameter\n",parameter_name);
+							CACHE = ivec3(-1);
+						} else if(property.getParameterType(parameter) != PROPERTY_PARAMETER_COLOR) {
+							log.error("node.object.property.parameterColor: bad \"%s\" parameter type\n",parameter_name);
+							CACHE = ivec3(-1);
+						} else {
+							CACHE = ivec3(surface,parameter,0);
+						}
+					}
+				}
+			}
+		]]></init>
+		<set><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Property property = OBJECT.getPropertyInherit(CACHE.x);
+				if(property.getParameterColor(CACHE.y) != VALUE) property.setParameterColor(CACHE.y,VALUE);
+			}
+		]]></set>
+		<get><![CDATA[
+			if(CACHE != ivec3(-1)) {
+				Property property = OBJECT.getPropertyInherit(CACHE.x);
+				VALUE = property.getParameterColor(CACHE.y);
+			}
+		]]></get>
+	</parameter>
+	
+</parameters>

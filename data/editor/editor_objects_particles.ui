@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_objects_particles.ui
+ * Desc:    Unigine editor
+ * Version: 1.28
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Valia Vaneeva <fattie@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* ObjectParticles
+ */
+-->
+<vbox name="Nodes::Object::Particles::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Type:</text></label>
+			<combobox name="Nodes::Object::Particles::particles_type_cb" export="1" align="expand">
+				<text>Billboard particles</text>
+				<text>Flat particles</text>
+				<text>Point particles</text>
+				<text>Length particles</text>
+				<text>Random particles</text>
+				<text>Route particles</text>
+				<text>Chain particles</text>
+				<callback type="changed">Nodes::Object::Particles::particles_type_changed</callback>
+			</combobox>
+			<vbox/>
+			<hbox align="expand">
+				<label align="right"><text>Num:</text></label>
+				<label name="Nodes::Object::Particles::num_particles_l" export="1"/>
+			</hbox>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Particles::warming_cb" export="1" align="left,expand">
+				<text>Warming</text>
+				<callback type="clicked">Nodes::Object::Particles::warming_clicked</callback>
+				<tooltip>Particles will be rendered after simulation during life time has passed</tooltip>
+			</checkbox>
+			<vbox/>
+			<checkbox name="Nodes::Object::Particles::depth_sort_cb" export="1" align="left,expand">
+				<text>Depth sort</text>
+				<callback type="clicked">Nodes::Object::Particles::depth_sort_clicked</callback>
+				<tooltip>Back-to-front depth sorting for correct alpha blending</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Particles::variation_x_cb" export="1" align="left,expand">
+				<text>VariationX</text>
+				<callback type="clicked">Nodes::Object::Particles::variation_x_clicked</callback>
+				<tooltip>Texture coordinate variations along X axis</tooltip>
+			</checkbox>
+			<vbox/>
+			<checkbox name="Nodes::Object::Particles::variation_y_cb" export="1" align="left,expand">
+				<text>VariationY</text>
+				<callback type="clicked">Nodes::Object::Particles::variation_y_clicked</callback>
+				<tooltip>Texture coordinate variations along Y axis</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Particles::texture_atlas_cb" export="1" align="left,expand">
+				<text>Texture atlas</text>
+				<callback type="clicked">Nodes::Object::Particles::texture_atlas_clicked</callback>
+				<tooltip>Use 4x4 texture atlas</tooltip>
+			</checkbox>
+			<vbox/>
+			<checkbox name="Nodes::Object::Particles::intersection_cb" export="1" align="left,expand">
+				<text>Intersection</text>
+				<callback type="clicked">Nodes::Object::Particles::intersection_clicked</callback>
+				<tooltip>Intersection with physical environment</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Particles::collision_cb" export="1" align="left,expand">
+				<text>Collision</text>
+				<callback type="clicked">Nodes::Object::Particles::collision_clicked</callback>
+				<tooltip>Collision with physical environment</tooltip>
+			</checkbox>
+			<vbox/>
+			<checkbox name="Nodes::Object::Particles::culling_cb" export="1" align="left,expand">
+				<text>Culling</text>
+				<callback type="clicked">Nodes::Object::Particles::culling_clicked</callback>
+				<tooltip>Remove particle when intersection or collision has occurred</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Particles::emitter_enabled_cb" export="1" align="left">
+				<text>Emitter enabled</text>
+				<callback type="clicked">Nodes::Object::Particles::emitter_enabled_clicked</callback>
+				<tooltip>Particle emitter is enabled</tooltip>
+			</checkbox>
+			<vbox/>
+			<checkbox name="Nodes::Object::Particles::emitter_based_cb" export="1" align="left">
+				<text>Emitter based</text>
+				<callback type="clicked">Nodes::Object::Particles::emitter_based_clicked</callback>
+				<tooltip>Emitter based transformation of the whole particle system</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Particles::emitter_continuous_cb" export="1" align="left">
+				<text>Emitter continuous</text>
+				<callback type="clicked">Nodes::Object::Particles::emitter_continuous_clicked</callback>
+				<tooltip>Continuous particles flowing emitter transformation</tooltip>
+			</checkbox>
+			<vbox/>
+			<checkbox name="Nodes::Object::Particles::emitter_shift_cb" export="1" align="left">
+				<text>Emitter shift</text>
+				<callback type="clicked">Nodes::Object::Particles::emitter_shift_clicked</callback>
+				<tooltip>Number of particles depends on particles movement</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Particles::emitter_sync_cb" export="1" align="left">
+				<text>Emitter sync</text>
+				<callback type="clicked">Nodes::Object::Particles::emitter_sync_clicked</callback>
+				<tooltip>Parent emitter synchronization</tooltip>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Spawn rate:</text></label>
+			<editline name="Nodes::Object::Particles::spawn_rate_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::spawn_rate_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Particles::spawn_rate_sl" export="1" align="expand" width="96" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach flags="max_expand">Nodes::Object::Particles::spawn_rate_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Spawn thres:</text></label>
+			<editline name="Nodes::Object::Particles::spawn_threshold_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::spawn_threshold_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Particles::spawn_threshold_sl" export="1" align="expand" min="0" max="400">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="100" flags="max_expand">Nodes::Object::Particles::spawn_threshold_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Physical mask:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Particles::physical_mask_el" export="1" align="expand">
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Object::Particles::physical_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Object::Particles::physical_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Object::Particles::physical_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Physical mass:</text></label>
+			<editline name="Nodes::Object::Particles::physical_mass_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::physical_mass_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Particles::physical_mass_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Object::Particles::physical_mass_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Length stretch:</text></label>
+			<editline name="Nodes::Object::Particles::length_stretch_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::length_stretch_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Particles::length_stretch_sl" export="1" align="expand" min="0" max="400">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Object::Particles::length_stretch_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Length flattening:</text></label>
+			<editline name="Nodes::Object::Particles::length_flattening_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::length_flattening_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Particles::length_flattening_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::Particles::length_flattening_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Linear damp:</text></label>
+			<editline name="Nodes::Object::Particles::linear_damping_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::linear_damping_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Particles::linear_damping_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Object::Particles::linear_damping_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Angular damp:</text></label>
+			<editline name="Nodes::Object::Particles::angular_damping_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::angular_damping_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Particles::angular_damping_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Object::Particles::angular_damping_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Growth damp:</text></label>
+			<editline name="Nodes::Object::Particles::growth_damping_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::growth_damping_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Particles::growth_damping_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Object::Particles::growth_damping_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Restitution:</text></label>
+			<editline name="Nodes::Object::Particles::restitution_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::restitution_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Particles::restitution_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::Particles::restitution_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Roughness:</text></label>
+			<editline name="Nodes::Object::Particles::roughness_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::roughness_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Object::Particles::roughness_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::Particles::roughness_el</attach>
+			</hslider>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Object::Particles::dynamic_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Emitter:</text></label>
+			<combobox name="Nodes::Object::Particles::emitter_type_cb" export="1" align="expand">
+				<text>Point  </text>
+				<text>Sphere </text>
+				<text>Cylinder</text>
+				<text>Box </text>
+				<text>Random</text>
+				<text>Spark</text>
+				<callback type="changed">Nodes::Object::Particles::emitter_type_changed</callback>
+			</combobox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Sequence:</text></label>
+			
+			<editline name="Nodes::Object::Particles::emitter_sequence_el" export="1" align="expand" validator="int">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::emitter_sequence_pressed</callback>
+				<tooltip>0 means a default sorting according to bounding boxes of particle system</tooltip>
+			</editline>
+			<label align="right"><text>Limit:</text></label>
+			<editline name="Nodes::Object::Particles::emitter_limit_el" export="1" align="expand" validator="int">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::emitter_limit_pressed</callback>
+				<tooltip>Maximum number of per-update emitted particles</tooltip>
+			</editline>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::Object::Particles::emitter_size_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::emitter_size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::Particles::emitter_size_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::emitter_size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::Particles::emitter_size_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::emitter_size_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Direction:</text></label>
+			<editline name="Nodes::Object::Particles::emitter_direction_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::emitter_direction_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::Particles::emitter_direction_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::emitter_direction_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::Particles::emitter_direction_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::emitter_direction_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::Particles::emitter_spread_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::emitter_spread_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::Particles::emitter_spread_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::emitter_spread_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::Particles::emitter_spread_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::emitter_spread_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Gravity:</text></label>
+			<editline name="Nodes::Object::Particles::gravity_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::gravity_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::Particles::gravity_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::gravity_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::Particles::gravity_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::gravity_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Delay:</text></label>
+			<editline name="Nodes::Object::Particles::delay_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::delay_pressed</callback>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::Particles::delay_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::delay_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Period:</text></label>
+			<editline name="Nodes::Object::Particles::period_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::period_pressed</callback>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::Particles::period_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::period_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Duration:</text></label>
+			<editline name="Nodes::Object::Particles::duration_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::duration_pressed</callback>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::Particles::duration_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::duration_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Life time:</text></label>
+			<editline name="Nodes::Object::Particles::life_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::life_pressed</callback>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::Particles::life_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::life_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Velocity:</text></label>
+			<editline name="Nodes::Object::Particles::velocity_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::velocity_pressed</callback>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::Particles::velocity_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::velocity_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Angle:</text></label>
+			<editline name="Nodes::Object::Particles::angle_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::angle_pressed</callback>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::Particles::angle_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::angle_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Rotation:</text></label>
+			<editline name="Nodes::Object::Particles::rotation_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::rotation_pressed</callback>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::Particles::rotation_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::rotation_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Object::Particles::radius_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::radius_pressed</callback>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::Particles::radius_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::radius_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Growth:</text></label>
+			<editline name="Nodes::Object::Particles::growth_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::growth_pressed</callback>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::Particles::growth_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Particles::growth_pressed</callback>
+			</editline>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Object::Particles::forces_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<vbox>
+			<hbox align="expand">
+				<button align="right">
+					<text>Add</text>
+					<callback type="clicked">Nodes::Object::Particles::Force::add_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button name="Nodes::Object::Particles::Force::remove_b" export="1">
+					<text>Remove</text>
+					<callback type="clicked">Nodes::Object::Particles::Force::remove_clicked</callback>
+				</button>
+			</hbox>
+		</vbox>
+		
+		<vbox space="2"/>
+		
+		<scrollbox align="expand" height="60">
+			<listbox name="Nodes::Object::Particles::Force::forces_lb" export="1" align="expand">
+				<callback type="changed">Nodes::Object::Particles::Force::force_changed</callback>
+			</listbox>
+		</scrollbox>
+		
+		<vbox space="2"/>
+		
+		<vbox>
+			<gridbox align="expand" columns="4" space="4">
+				
+				<vbox/>
+				<checkbox name="Nodes::Object::Particles::Force::attached_cb" export="1" align="left,expand">
+					<text>Attached</text>
+					<callback type="clicked">Nodes::Object::Particles::Force::attach_clicked</callback>
+				</checkbox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Position:</text></label>
+				<editline name="Nodes::Object::Particles::Force::position_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Force::transform_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Force::position_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Force::transform_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Force::position_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Force::transform_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>Rotation:</text></label>
+				<editline name="Nodes::Object::Particles::Force::rotation_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Force::transform_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Force::rotation_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Force::transform_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Force::rotation_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Force::transform_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>Radius:</text></label>
+				<editline name="Nodes::Object::Particles::Force::radius_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Force::radius_pressed</callback>
+				</editline>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Atten:</text></label>
+				<editline name="Nodes::Object::Particles::Force::attenuation_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Force::attenuation_pressed</callback>
+				</editline>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Attractor:</text></label>
+				<editline name="Nodes::Object::Particles::Force::attractor_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Force::attractor_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Particles::Force::attractor_sl" export="1" align="expand" min="-1000" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="10" flags="expand">Nodes::Object::Particles::Force::attractor_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<label align="right"><text>Rotator:</text></label>
+				<editline name="Nodes::Object::Particles::Force::rotator_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Force::rotator_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Particles::Force::rotator_sl" export="1" align="expand" min="-1000" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="10" flags="expand">Nodes::Object::Particles::Force::rotator_el</attach>
+				</hslider>
+				<vbox/>
+				
+			</gridbox>
+		</vbox>
+		
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Object::Particles::noises_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<vbox>
+			<hbox align="expand">
+				<button align="right">
+					<text>Add</text>
+					<callback type="clicked">Nodes::Object::Particles::Noise::add_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button name="Nodes::Object::Particles::Noise::remove_b" export="1">
+					<text>Remove</text>
+					<callback type="clicked">Nodes::Object::Particles::Noise::remove_clicked</callback>
+				</button>
+			</hbox>
+		</vbox>
+		
+		<vbox space="2"/>
+		
+		<scrollbox align="expand" height="60">
+			<listbox name="Nodes::Object::Particles::Noise::noises_lb" export="1" align="expand">
+				<callback type="changed">Nodes::Object::Particles::Noise::noise_changed</callback>
+			</listbox>
+		</scrollbox>
+		
+		<vbox space="2"/>
+		
+		<vbox>
+			<gridbox align="expand" columns="4" space="4">
+				
+				<vbox/>
+				<checkbox name="Nodes::Object::Particles::Noise::attached_cb" export="1" align="left,expand">
+					<text>Attached </text>
+					<callback type="clicked">Nodes::Object::Particles::Noise::attach_clicked</callback>
+				</checkbox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Position:</text></label>
+				<editline name="Nodes::Object::Particles::Noise::position_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::transform_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Noise::position_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::transform_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Noise::position_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::transform_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>Rotation:</text></label>
+				<editline name="Nodes::Object::Particles::Noise::rotation_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::transform_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Noise::rotation_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::transform_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Noise::rotation_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::transform_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>Offset:</text></label>
+				<editline name="Nodes::Object::Particles::Noise::offset_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::offset_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Noise::offset_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::offset_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Noise::offset_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::offset_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>Step:</text></label>
+				<editline name="Nodes::Object::Particles::Noise::step_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::step_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Noise::step_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::step_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Noise::step_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::step_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>Force:</text></label>
+				<editline name="Nodes::Object::Particles::Noise::force_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::force_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Particles::Noise::force_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="10" flags="max_expand">Nodes::Object::Particles::Noise::force_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<label align="right"><text>Scale:</text></label>
+				<editline name="Nodes::Object::Particles::Noise::scale_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::scale_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Particles::Noise::scale_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::Object::Particles::Noise::scale_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<label align="right"><text>Frequency:</text></label>
+				<editline name="Nodes::Object::Particles::Noise::frequency_el" export="1" align="expand" validator="uint">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::frequency_pressed</callback>
+				</editline>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Size:</text></label>
+				<editline name="Nodes::Object::Particles::Noise::size_el" export="1" align="expand" validator="uint">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Noise::size_pressed</callback>
+				</editline>
+				<vbox/>
+				<vbox/>
+				
+			</gridbox>
+		</vbox>
+		
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Object::Particles::deflectors_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<vbox>
+			<hbox align="expand">
+				<button align="right">
+					<text>Add</text>
+					<callback type="clicked">Nodes::Object::Particles::Deflector::add_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button name="Nodes::Object::Particles::Deflector::remove_b" export="1">
+					<text>Remove</text>
+					<callback type="clicked">Nodes::Object::Particles::Deflector::remove_clicked</callback>
+				</button>
+			</hbox>
+		</vbox>
+		
+		<vbox space="2"/>
+		
+		<scrollbox align="expand" height="60">
+			<listbox name="Nodes::Object::Particles::Deflector::deflectors_lb" export="1" align="expand">
+				<callback type="changed">Nodes::Object::Particles::Deflector::deflector_changed</callback>
+			</listbox>
+		</scrollbox>
+		
+		<vbox space="2"/>
+		
+		<vbox>
+			<gridbox align="expand" columns="4" space="4">
+				
+				<label align="right"><text>Type:</text></label>
+				<combobox name="Nodes::Object::Particles::Deflector::type_cb" export="1" align="expand">
+					<text>Reflector</text>
+					<text>Clipper</text>
+					<callback type="changed">Nodes::Object::Particles::Deflector::type_changed</callback>
+				</combobox>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<checkbox name="Nodes::Object::Particles::Deflector::attached_cb" export="1" align="left,expand">
+					<text>Attached </text>
+					<callback type="clicked">Nodes::Object::Particles::Deflector::attach_clicked</callback>
+				</checkbox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Position:</text></label>
+				<editline name="Nodes::Object::Particles::Deflector::position_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Deflector::transform_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Deflector::position_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Deflector::transform_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Deflector::position_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Deflector::transform_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>Rotation:</text></label>
+				<editline name="Nodes::Object::Particles::Deflector::rotation_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Deflector::transform_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Deflector::rotation_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Deflector::transform_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Deflector::rotation_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Deflector::transform_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>Size:</text></label>
+				<editline name="Nodes::Object::Particles::Deflector::size_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Deflector::size_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Deflector::size_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Deflector::size_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Particles::Deflector::size_el[2]" export="1" align="expand" enabled="0">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Deflector::size_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>Restitution:</text></label>
+				<editline name="Nodes::Object::Particles::Deflector::restitution_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Deflector::restitution_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Particles::Deflector::restitution_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::Object::Particles::Deflector::restitution_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<label align="right"><text>Roughness:</text></label>
+				<editline name="Nodes::Object::Particles::Deflector::roughness_el" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Particles::Deflector::roughness_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Particles::Deflector::roughness_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::Object::Particles::Deflector::roughness_el</attach>
+				</hslider>
+				<vbox/>
+				
+			</gridbox>
+		</vbox>
+		
+	</vbox>
+</vbox>
+
+</ui>

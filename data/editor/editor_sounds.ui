@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_sounds.ui
+ * Desc:    Unigine editor
+ * Version: 1.03
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* SoundSource
+ */
+-->
+<vbox name="Nodes::Sound::Source::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Sample:</text></label>
+			<label name="Nodes::Sound::Source::sample_l" export="1" align="left,expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Sound::Source::loop_cb" export="1" align="left,expand">
+				<text>Loop </text>
+				<callback type="clicked">Nodes::Sound::Source::loop_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Sound::Source::occlusion_cb" export="1" align="left,expand">
+				<tooltip>Enables occlusion low-pass filter effects</tooltip>
+				<text>Occlusion</text>
+				<callback type="clicked">Nodes::Sound::Source::occlusion_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Source:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Sound::Source::source_mask_el" export="1" align="expand">
+					<tooltip>Source mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Sound::Source::source_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Sound::Source::source_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Sound::Source::source_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Reverb:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Sound::Source::reverb_mask_el" export="1" align="expand">
+					<tooltip>Reverb mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Sound::Source::reverb_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Sound::Source::reverb_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Sound::Source::reverb_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Pitch:</text></label>
+			<editline name="Nodes::Sound::Source::pitch_el" export="1" align="expand" validator="float">
+				<tooltip>Desired pitch shift</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Source::pitch_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Source::pitch_sl" export="1" align="expand" min="100" max="10000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Source::pitch_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Gain:</text></label>
+			<editline name="Nodes::Sound::Source::gain_el" export="1" align="expand" validator="float">
+				<tooltip>Scalar amplitude multiplier</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Source::gain_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Source::gain_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Source::gain_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Room rolloff:</text></label>
+			<editline name="Nodes::Sound::Source::room_rolloff_el" export="1" align="expand" validator="float">
+				<tooltip>Attenuation of early reflections and reverberation</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Source::room_rolloff_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Source::room_rolloff_sl" export="1" align="expand" min="0" max="10000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Source::room_rolloff_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Air absorption:</text></label>
+			<editline name="Nodes::Sound::Source::air_absorption_el" export="1" align="expand" validator="float">
+				<tooltip>Amount of air absorption applied to the source</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Source::air_absorption_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Source::air_absorption_sl" export="1" align="expand" min="0" max="10000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Source::air_absorption_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Min distance:</text></label>
+			<editline name="Nodes::Sound::Source::min_distance_el" export="1" align="expand" validator="float">
+				<tooltip>A distance starting at which the sound starts to fade, in units</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Source::min_distance_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Max distance:</text></label>
+			<editline name="Nodes::Sound::Source::max_distance_el" export="1" align="expand" validator="float">
+				<tooltip>A distance starting at which the sound completely fades out, in units</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Source::max_distance_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Inner angle:</text></label>
+			<editline name="Nodes::Sound::Source::cone_inner_angle_el" export="1" align="expand" validator="float">
+				<tooltip>Inside angle of the sound cone, in degrees</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Source::cone_inner_angle_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Source::cone_inner_angle_sl" export="1" align="expand" min="0" max="180000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Source::cone_inner_angle_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Outer angle:</text></label>
+			<editline name="Nodes::Sound::Source::cone_outer_angle_el" export="1" align="expand" validator="float">
+				<tooltip>Outer angle of the sound cone, in degrees</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Source::cone_outer_angle_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Source::cone_outer_angle_sl" export="1" align="expand" min="0" max="180000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Source::cone_outer_angle_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Outer gain:</text></label>
+			<editline name="Nodes::Sound::Source::cone_outer_gain_el" export="1" align="expand" validator="float">
+				<tooltip>Gain outside the cone defined by the outer angle</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Source::cone_outer_gain_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Source::cone_outer_gain_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Source::cone_outer_gain_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Outer gain HF:</text></label>
+			<editline name="Nodes::Sound::Source::cone_outer_gain_hf_el" export="1" align="expand" validator="float">
+				<tooltip>Attenuation of high frequencies in the rear of the source</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Source::cone_outer_gain_hf_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Source::cone_outer_gain_hf_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Source::cone_outer_gain_hf_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<vbox align="expand">
+				<hbox>
+					<button name="Nodes::Sound::Source::play_b" export="1" align="expand">
+						<text>Play</text>
+						<callback type="clicked">Nodes::Sound::Source::play_clicked</callback>
+					</button>
+					<vbox space="4"/>
+					<button name="Nodes::Sound::Source::stop_b" export="1" align="expand">
+						<text>Stop</text>
+						<callback type="clicked">Nodes::Sound::Source::stop_clicked</callback>
+					</button>
+				</hbox>
+			</vbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* SoundReverb
+ */
+-->
+<vbox name="Nodes::Sound::Reverb::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+
+			<label align="right"><text>Reverb:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Sound::Reverb::reverb_mask_el" export="1" align="expand">
+					<tooltip>Reverb mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Sound::Reverb::reverb_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Sound::Reverb::reverb_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Sound::Reverb::reverb_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::Sound::Reverb::size_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Sound::Reverb::size_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Sound::Reverb::size_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::size_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Threshold:</text></label>
+			<editline name="Nodes::Sound::Reverb::threshold_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::threshold_pressed</callback>
+			</editline>
+			<editline name="Nodes::Sound::Reverb::threshold_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::threshold_pressed</callback>
+			</editline>
+			<editline name="Nodes::Sound::Reverb::threshold_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::threshold_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Gain:</text></label>
+			<editline name="Nodes::Sound::Reverb::gain_el" export="1" align="expand" validator="float">
+				<tooltip>Master volume control for the reflected sound</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::gain_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::gain_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::gain_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Gain LF:</text></label>
+			<editline name="Nodes::Sound::Reverb::gain_lf_el" export="1" align="expand" validator="float">
+				<tooltip>Attenuation on low frequencies of reflected sound</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::gain_lf_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::gain_lf_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::gain_lf_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Gain HF:</text></label>
+			<editline name="Nodes::Sound::Reverb::gain_hf_el" export="1" align="expand" validator="float">
+				<tooltip>Attenuation on high frequencies of reflected sound</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::gain_hf_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::gain_hf_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::gain_hf_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Room rolloff:</text></label>
+			<editline name="Nodes::Sound::Reverb::room_rolloff_el" export="1" align="expand" validator="float">
+				<tooltip>Attenuation of the reflected sound according to source-listener distance</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::room_rolloff_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::room_rolloff_sl" export="1" align="expand" min="0" max="10000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::room_rolloff_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Air absorption:</text></label>
+			<editline name="Nodes::Sound::Reverb::air_absorption_el" export="1" align="expand" validator="float">
+				<tooltip>Distance-dependent attenuation at high frequencies caused by the propagation medium</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::air_absorption_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::air_absorption_sl" export="1" align="expand" min="892" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::air_absorption_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Density:</text></label>
+			<editline name="Nodes::Sound::Reverb::density_el" export="1" align="expand" validator="float">
+				<tooltip>Coloration of the late reverb</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::density_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::density_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::density_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Diffusion:</text></label>
+			<editline name="Nodes::Sound::Reverb::diffusion_el" export="1" align="expand" validator="float">
+				<tooltip>Echo density in the reverberation decay</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::diffusion_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::diffusion_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::diffusion_el</attach>
+			</hslider>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Sound::Reverb::reverb_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Echo time:</text></label>
+			<editline name="Nodes::Sound::Reverb::echo_time_el" export="1" align="expand" validator="float">
+				<tooltip>Cyclic echo in the reverberation decay</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::echo_time_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::echo_time_sl" export="1" align="expand" min="75" max="250">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::echo_time_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Echo depth:</text></label>
+			<editline name="Nodes::Sound::Reverb::echo_depth_el" export="1" align="expand" validator="float">
+				<tooltip>Amount of cyclic echo in the reverberation decay</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::echo_depth_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::echo_depth_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::echo_depth_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Modulation time:</text></label>
+			<editline name="Nodes::Sound::Reverb::modulation_time_el" export="1" align="expand" validator="float">
+				<tooltip>Pitch modulation in the reverberant sound</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::modulation_time_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::modulation_time_sl" export="1" align="expand" min="40" max="4000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::modulation_time_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Modulation depth:</text></label>
+			<editline name="Nodes::Sound::Reverb::modulation_depth_el" export="1" align="expand" validator="float">
+				<tooltip></tooltip>
+				<tooltip>Amount of pitch modulation in the reverberant sound</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::modulation_depth_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::modulation_depth_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::modulation_depth_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Decay time:</text></label>
+			<editline name="Nodes::Sound::Reverb::decay_time_el" export="1" align="expand" validator="float">
+				<tooltip>Reverberation decay time</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::decay_time_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::decay_time_sl" export="1" align="expand" min="100" max="20000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::decay_time_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Decay LF ratio:</text></label>
+			<editline name="Nodes::Sound::Reverb::decay_lf_ratio_el" export="1" align="expand" validator="float">
+				<tooltip>Adjusts the spectral quality of the decay time on low frequencies</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::decay_lf_ratio_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::decay_lf_ratio_sl" export="1" align="expand" min="100" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::decay_lf_ratio_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Decay HF ratio:</text></label>
+			<editline name="Nodes::Sound::Reverb::decay_hf_ratio_el" export="1" align="expand" validator="float">
+				<tooltip>Adjusts the spectral quality of the decay time on high frequencies</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::decay_hf_ratio_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::decay_hf_ratio_sl" export="1" align="expand" min="100" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::decay_hf_ratio_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Reflection gain:</text></label>
+			<editline name="Nodes::Sound::Reverb::reflection_gain_el" export="1" align="expand" validator="float">
+				<tooltip>Overall amount of initial reflections</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::reflection_gain_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::reflection_gain_sl" export="1" align="expand" min="0" max="3160">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::reflection_gain_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Reflection delay:</text></label>
+			<editline name="Nodes::Sound::Reverb::reflection_delay_el" export="1" align="expand" validator="float">
+				<tooltip>Delay between the arrival time of the direct path from the source to the first reflection from the source</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::reflection_delay_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::reflection_delay_sl" export="1" align="expand" min="0" max="300">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::reflection_delay_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Late reverb gain:</text></label>
+			<editline name="Nodes::Sound::Reverb::late_reverb_gain_el" export="1" align="expand" validator="float">
+				<tooltip>Overall amount of later reverberation</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::late_reverb_gain_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::late_reverb_gain_sl" export="1" align="expand" min="0" max="10000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::late_reverb_gain_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Late reverb delay:</text></label>
+			<editline name="Nodes::Sound::Reverb::late_reverb_delay_el" export="1" align="expand" validator="float">
+				<tooltip>Begin time of the late reverberation relative to the time of the initial reflection</tooltip>
+				<callback type="pressed,focus_out">Nodes::Sound::Reverb::late_reverb_delay_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Sound::Reverb::late_reverb_delay_sl" export="1" align="expand" min="0" max="100">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Sound::Reverb::late_reverb_delay_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Preset:</text></label>
+			<combobox name="Nodes::Sound::Reverb::preset_cb" export="1" align="expand">
+				<callback type="clicked">Nodes::Sound::Reverb::preset_clicked</callback>
+			</combobox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+</ui>

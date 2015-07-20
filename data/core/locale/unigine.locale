@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dictionary version="1.01">
+	<msg>
+		<src>3D Artist</src>
+		<en>3D Artist</en>
+		<ru>3D художник</ru>
+	</msg>
+	<msg>
+		<src>API change requires application restarting</src>
+		<en>API change requires application restarting</en>
+		<ru>Смена API требует перезапуска приложения</ru>
+	</msg>
+	<msg>
+		<src>About</src>
+		<en>About</en>
+		<ru>О программе</ru>
+	</msg>
+	<msg>
+		<src>Albert Khaiboulline</src>
+		<en>Albert Khaiboulline</en>
+		<ru>Альберт Хайбуллин</ru>
+	</msg>
+	<msg>
+		<src>Mikhail Lubimov</src>
+		<en>Mikhail Lubimov</en>
+		<ru>Михаил Любимов</ru>
+	</msg>
+	<msg>
+		<src>Alena Kalinina</src>
+		<en>Alena Kalinina</en>
+		<ru>Алена Калинина</ru>
+	</msg>
+	<msg>
+		<src>Alexander Kislitsky</src>
+		<en>Alexander Kislitsky</en>
+		<ru>Александр Кислицкий</ru>
+	</msg>
+	<msg>
+		<src>Alexander Zapryagaev</src>
+		<en>Alexander Zapryagaev</en>
+		<ru>Александр Запрягаев</ru>
+	</msg>
+	<msg>
+		<src>Alexey Egorov</src>
+		<en>Alexey Egorov</en>
+		<ru>Алексей Егоров</ru>
+	</msg>
+	<msg>
+		<src>Alexey Hizhnyak</src>
+		<en>Alexey Hizhnyak</en>
+		<ru>Алексей Хижняк</ru>
+	</msg>
+	<msg>
+		<src>Alexey Maslennikov</src>
+		<en>Alexey Maslennikov</en>
+		<ru>Алексей Масленников</ru>
+	</msg>
+	<msg>
+		<src>Alexey Zagniy</src>
+		<en>Alexey Zagniy</en>
+		<ru>Алексей Загний</ru>
+	</msg>
+	<msg>
+		<src>Always Run</src>
+		<en>Always Run</en>
+		<ru>Режим бега</ru>
+	</msg>
+	<msg>
+		<src>Andrew Bayun</src>
+		<en>Andrew Bayun</en>
+		<ru>Андрей Баюн</ru>
+	</msg>
+	<msg>
+		<src>Andrew Glusynski</src>
+		<en>Andrew Glusynski</en>
+		<ru>Андрей Глузинский</ru>
+	</msg>
+	<msg>
+		<src>Andrey Kolchin</src>
+		<en>Andrey Kolchin</en>
+		<ru>Андрей Колчин</ru>
+	</msg>
+	<msg>
+		<src>Andrey Korovkin</src>
+		<en>Andrey Korovkin</en>
+		<ru>Андрей Коровкин</ru>
+	</msg>
+	<msg>
+		<src>Andrey Kushner</src>
+		<en>Andrey Kushner</en>
+		<ru>Андрей Кушнер</ru>
+	</msg>
+	<msg>
+		<src>Andrey Viktorov</src>
+		<en>Andrey Viktorov</en>
+		<ru>Андрей Викторов</ru>
+	</msg>
+	<msg>
+		<src>Angle:</src>
+		<en>Angle:</en>
+		<ru>Угол:</ru>
+	</msg>
+	<msg>
+		<src>Anisotropy:</src>
+		<en>Anisotropy:</en>
+		<ru>Анизотропия:</ru>
+	</msg>
+	<msg>
+		<src>Anna Chaplinskaya</src>
+		<en>Anna Chaplinskaya</en>
+		<ru>Анна Чаплинская</ru>
+	</msg>
+	<msg>
+		<src>Anna Ishina</src>
+		<en>Anna Ishina</en>
+		<ru>Анна Ишина</ru>
+	</msg>
+	<msg>
+		<src>Anti-aliasing:</src>
+		<en>Anti-aliasing:</en>
+		<ru>Антиалиасинг:</ru>
+	</msg>
+	<msg>
+		<src>Anton Bogachenko</src>
+		<en>Anton Bogachenko</en>
+		<ru>Антон Богаченко</ru>
+	</msg>
+	<msg>
+		<src>Anton Ravin</src>
+		<en>Anton Ravin</en>
+		<ru>Антон Равин</ru>
+	</msg>
+	<msg>
+		<src>Anton Suvorov</src>
+		<en>Anton Suvorov</en>
+		<ru>Антон Суворов</ru>
+	</msg>
+	<msg>
+		<src>Apply</src>
+		<en>Apply</en>
+		<ru>Применить</ru>
+	</msg>
+	<msg>
+		<src>Apply changes</src>
+		<en>Apply changes</en>
+		<ru>Применить изменения</ru>
+	</msg>
+	<msg>
+		<src>Auxiliary Buffer</src>
+		<en>Auxiliary Buffer</en>
+		<ru>Вспомогательный буфер</ru>
+	</msg>
+	<msg>
+		<src>Backward:</src>
+		<en>Backward:</en>
+		<ru>Назад:</ru>
+	</msg>
+	<msg>
+		<src>Bezel X:</src>
+		<en>Bezel X:</en>
+		<ru>Горизонтальная рамка монитора:</ru>
+	</msg>
+	<msg>
+		<src>Bezel Y:</src>
+		<en>Bezel Y:</en>
+		<ru>Вертикальная рамка монитора:</ru>
+	</msg>
+	<msg>
+		<src>Bezel:</src>
+		<en>Bezel:</en>
+		<ru>Рамка монитора:</ru>
+	</msg>
+	<msg>
+		<src>Bilinear</src>
+		<en>Bilinear</en>
+		<ru>Билинейная</ru>
+	</msg>
+	<msg>
+		<src>Build Engineer</src>
+		<en>Build Engineer</en>
+		<ru>Билд-инженер</ru>
+	</msg>
+	<msg>
+		<src>Content</src>
+		<en>Content</en>
+		<ru>Содержимое</ru>
+	</msg>
+	<msg>
+		<src>Controls</src>
+		<en>Controls</en>
+		<ru>Управление</ru>
+	</msg>
+	<msg>
+		<src>Crouch:</src>
+		<en>Crouch:</en>
+		<ru>Присесть:</ru>
+	</msg>
+	<msg>
+		<src>Davyd Vidiger</src>
+		<en>Davyd Vidiger</en>
+		<ru>Давыд Видигер</ru>
+	</msg>
+	<msg>
+		<src>DOF</src>
+		<en>DOF</en>
+		<ru>Глубина резкости</ru>
+	</msg>
+	<msg>
+		<src>Denis Shergin</src>
+		<en>Denis Shergin</en>
+		<ru>Денис Шергин</ru>
+	</msg>
+	<msg>
+		<src>Designer</src>
+		<en>Designer</en>
+		<ru>Дизайнер</ru>
+	</msg>
+	<msg>
+		<src>Developer</src>
+		<en>Developer</en>
+		<ru>Разработчик</ru>
+	</msg>
+	<msg>
+		<src>Distance:</src>
+		<en>Distance:</en>
+		<ru>Расстояние:</ru>
+	</msg>
+	<msg>
+		<src>Dmitriy Alin</src>
+		<en>Dmitriy Alin</en>
+		<ru>Дмитрий Алин</ru>
+	</msg>
+	<msg>
+		<src>Dmitriy Cherniy</src>
+		<en>Dmitriy Cherniy</en>
+		<ru>Дмитрий Черный</ru>
+	</msg>
+	<msg>
+		<src>Dmitry Kriventsov</src>
+		<en>Dmitry Kriventsov</en>
+		<ru>Дмитрий Кривенцов</ru>
+	</msg>
+	<msg>
+		<src>Dmitry Kuraev</src>
+		<en>Dmitry Kuraev</en>
+		<ru>Дмитрий Кураев</ru>
+	</msg>
+	<msg>
+		<src>Documentation</src>
+		<en>Documentation</en>
+		<ru>Документация</ru>
+	</msg>
+	<msg>
+		<src>English</src>
+		<en>English</en>
+		<ru>Английский</ru>
+	</msg>
+	<msg>
+		<src>Eric Liu</src>
+		<en>Eric Liu</en>
+		<ru>Эрик Лю</ru>
+	</msg>
+	<msg>
+		<src>Eugena Klykova</src>
+		<en>Eugena Klykova</en>
+		<ru>Евгения Клыкова</ru>
+	</msg>
+	<msg>
+		<src>Eugene Viitman</src>
+		<en>Eugene Viitman</en>
+		<ru>Евгений Витман</ru>
+	</msg>
+	<msg>
+		<src>Eugenia Shergina</src>
+		<en>Eugenia Shergina</en>
+		<ru>Евгения Шергина</ru>
+	</msg>
+	<msg>
+		<src>Evgenia Bocharova</src>
+		<en>Evgenia Bocharova</en>
+		<ru>Евгения Бочарова</ru>
+	</msg>
+	<msg>
+		<src>Evgeniy Gerasimenko</src>
+		<en>Evgeniy Gerasimenko</en>
+		<ru>Евгений Герасименко</ru>
+	</msg>
+	<msg>
+		<src>Evgeniy Tetenchuk</src>
+		<en>Evgeniy Tetenchuk</en>
+		<ru>Евгений Тетеньчук</ru>
+	</msg>
+	<msg>
+		<src>Evgeniy Yundin</src>
+		<en>Evgeniy Yundin</en>
+		<ru>Евгений Юндин</ru>
+	</msg>
+	<msg>
+		<src>Evgeniya Zinovieva</src>
+		<en>Evgeniya Zinovieva</en>
+		<ru>Евгения Зиновьева</ru>
+	</msg>
+	<msg>
+		<src>FPS Counter</src>
+		<en>FPS Counter</en>
+		<ru>Счетчик FPS</ru>
+	</msg>
+	<msg>
+		<src>Filter:</src>
+		<en>Filter:</en>
+		<ru>Фильтрация:</ru>
+	</msg>
+	<msg>
+		<src>Fire:</src>
+		<en>Fire:</en>
+		<ru>Огонь:</ru>
+	</msg>
+	<msg>
+		<src>Forward:</src>
+		<en>Forward:</en>
+		<ru>Вперед:</ru>
+	</msg>
+	<msg>
+		<src>Fov:</src>
+		<en>Fov:</en>
+		<ru>Область видимости:</ru>
+	</msg>
+	<msg>
+		<src>Full Screen</src>
+		<en>Full Screen</en>
+		<ru>Во весь экран</ru>
+	</msg>
+	<msg>
+		<src>Galina Shadrina</src>
+		<en>Galina Shadrina</en>
+		<ru>Галина Шадрина</ru>
+	</msg>
+	<msg>
+		<src>GPU Monitor</src>
+		<en>GPU Monitor</en>
+		<ru>Монитор GPU</ru>
+	</msg>
+	<msg>
+		<src>Gamma:</src>
+		<en>Gamma:</en>
+		<ru>Гамма:</ru>
+	</msg>
+	<msg>
+		<src>Global Illumination</src>
+		<en>Global Illumination</en>
+		<ru>Глобальное освещение</ru>
+	</msg>
+	<msg>
+		<src>Glow</src>
+		<en>Glow</en>
+		<ru>Свечение</ru>
+	</msg>
+	<msg>
+		<src>Grigory Korpan</src>
+		<en>Grigory Korpan</en>
+		<ru>Григорий Корпан</ru>
+	</msg>
+	<msg>
+		<src>HDR</src>
+		<en>HDR</en>
+	</msg>
+	<msg>
+		<src>High</src>
+		<en>High</en>
+		<ru>Высокое</ru>
+	</msg>
+	<msg>
+		<src>Iliya Abzaev</src>
+		<en>Iliya Abzaev</en>
+		<ru>Илья Абзаев</ru>
+	</msg>
+	<msg>
+		<src>Iliya Turkin</src>
+		<en>Iliya Turkin</en>
+		<ru>Илья Туркин</ru>
+	</msg>
+	<msg>
+		<src>Interface</src>
+		<en>Interface</en>
+		<ru>Интерфейс</ru>
+	</msg>
+	<msg>
+		<src>Inna Teteniuk</src>
+		<en>Inna Teteniuk</en>
+		<ru>Инна Тетенюк</ru>
+	</msg>
+	<msg>
+		<src>Invert Mouse</src>
+		<en>Invert Mouse</en>
+		<ru>Инвертировать мышь</ru>
+	</msg>
+	<msg>
+		<src>Ivan Gulyaev</src>
+		<en>Ivan Gulyaev</en>
+		<ru>Иван Гуляев</ru>
+	</msg>
+	<msg>
+		<src>Jimmy Zhang</src>
+		<en>Jimmy Zhang</en>
+		<ru>Джимми Чжан</ru>
+	</msg>
+	<msg>
+		<src>JoonHee Shin</src>
+		<en>JoonHee Shin</en>
+		<ru>ЧжунХи Шин</ru>
+	</msg>
+	<msg>
+		<src>Joulia Gubieva</src>
+		<en>Joulia Gubieva</en>
+		<ru>Юлия Губьева</ru>
+	</msg>
+	<msg>
+		<src>Jump:</src>
+		<en>Jump:</en>
+		<ru>Прыжок:</ru>
+	</msg>
+	<msg>
+		<src>Kate Popova</src>
+		<en>Kate Popova</en>
+		<ru>Екатерина Попова</ru>
+	</msg>
+	<msg>
+		<src>Keyboard</src>
+		<en>Keyboard</en>
+		<ru>Клавиатура</ru>
+	</msg>
+	<msg>
+		<src>Konstantin Nechaev</src>
+		<en>Konstantin Nechaev</en>
+		<ru>Константин Нечаев</ru>
+	</msg>
+	<msg>
+		<src>Language:</src>
+		<en>Language:</en>
+		<ru>Язык:</ru>
+	</msg>
+	<msg>
+		<src>Lead Engine Developer</src>
+		<en>Lead Engine Developer</en>
+		<ru>Ведущий разработчик движка</ru>
+	</msg>
+	<msg>
+		<src>Lead Technical Artist</src>
+		<en>Lead Technical Artist</en>
+		<ru>Ведущий технический художник</ru>
+	</msg>
+	<msg>
+		<src>Learn controls</src>
+		<en>Learn controls</en>
+		<ru>Ознакомиться с управлением</ru>
+	</msg>
+	<msg>
+		<src>Light Scattering</src>
+		<en>Light Scattering</en>
+		<ru>Рассеивание света</ru>
+	</msg>
+	<msg>
+		<src>Low</src>
+		<en>Low</en>
+		<ru>Низкое</ru>
+	</msg>
+	<msg>
+		<src>Management</src>
+		<en>Management</en>
+		<ru>Руководство</ru>
+	</msg>
+	<msg>
+		<src>Maria Shishkevich</src>
+		<en>Maria Shishkevich</en>
+		<ru>Мария Шишкевич</ru>
+	</msg>
+	<msg>
+		<src>Max Sinelnikov</src>
+		<en>Max Sinelnikov</en>
+		<ru>Максим Синельников</ru>
+	</msg>
+	<msg>
+		<src>Medium</src>
+		<en>Medium</en>
+		<ru>Среднее</ru>
+	</msg>
+	<msg>
+		<src>Messages</src>
+		<en>Messages</en>
+		<ru>Системные сообщения</ru>
+	</msg>
+	<msg>
+		<src>Mike Kondratyev</src>
+		<en>Mike Kondratyev</en>
+		<ru>Михаил Кондратьев</ru>
+	</msg>
+	<msg>
+		<src>Mode</src>
+		<en>Mode</en>
+		<ru>Режим</ru>
+	</msg>
+	<msg>
+		<src>Motion Blur</src>
+		<en>Motion Blur</en>
+		<ru>Размытие при движении</ru>
+	</msg>
+	<msg>
+		<src>Mouse Speed:</src>
+		<en>Mouse Speed:</en>
+		<ru>Скорость мыши:</ru>
+	</msg>
+	<msg>
+		<src>Move Left:</src>
+		<en>Move Left:</en>
+		<ru>Влево:</ru>
+	</msg>
+	<msg>
+		<src>Move Right:</src>
+		<en>Move Right:</en>
+		<ru>Вправо:</ru>
+	</msg>
+	<msg>
+		<src>Nadezhda Ovchinnikova</src>
+		<en>Nadezhda Ovchinnikova</en>
+		<ru>Надежда Овчинникова</ru>
+	</msg>
+	<msg>
+		<src>Natalia Danko</src>
+		<en>Natalia Danko</en>
+		<ru>Наталья Данко</ru>
+	</msg>
+	<msg>
+		<src>Natalia Kruchkova</src>
+		<en>Natalia Kruchkova</en>
+		<ru>Наталья Крючкова</ru>
+	</msg>
+	<msg>
+		<src>Natalia Riukhova</src>
+		<en>Natalia Riukhova</en>
+		<ru>Наталья Рюхова</ru>
+	</msg>
+	<msg>
+		<src>Network Developer</src>
+		<en>Network Developer</en>
+		<ru>Разработчик сетевого плагина</ru>
+	</msg>
+	<msg>
+		<src>Nikita Trofimov</src>
+		<en>Nikita Trofimov</en>
+		<ru>Никита Трофимов</ru>
+	</msg>
+	<msg>
+		<src>Occlusion</src>
+		<en>Occlusion</en>
+		<ru>Взаимное затенение</ru>
+	</msg>
+	<msg>
+		<src>Off</src>
+		<en>Off</en>
+		<ru>Выкл.</ru>
+	</msg>
+	<msg>
+		<src>Offset:</src>
+		<en>Offset:</en>
+		<ru>Смещение:</ru>
+	</msg>
+	<msg>
+		<src>Olga Kirichenko</src>
+		<en>Olga Kirichenko</en>
+		<ru>Ольга Кириченко</ru>
+	</msg>
+	<msg>
+		<src>Options</src>
+		<en>Options</en>
+		<ru>Дополнительные возможности</ru>
+	</msg>
+	<msg>
+		<src>Parallax Mapping</src>
+		<en>Parallax Mapping</en>
+		<ru>Параллакс-маппинг</ru>
+	</msg>
+	<msg>
+		<src>Pavel Kurinnoy</src>
+		<en>Pavel Kurinnoy</en>
+		<ru>Павел Куринной</ru>
+	</msg>
+	<msg>
+		<src>Peter Sannikov</src>
+		<en>Peter Sannikov</en>
+		<ru>Петр Санников</ru>
+	</msg>
+	<msg>
+		<src>PM assistant</src>
+		<en>PM assistant</en>
+		<ru>Менеджер проектов</ru>
+	</msg>
+	<msg>
+		<src>Polina Ignatova</src>
+		<en>Polina Ignatova</en>
+		<ru>Полина Игнатова</ru>
+	</msg>
+	<msg>
+		<src>Post-processing</src>
+		<en>Post-processing</en>
+		<ru>Постобработка</ru>
+	</msg>
+	<msg>
+		<src>Press a key or mouse button.</src>
+		<en>Press a key or mouse button.</en>
+		<ru>Нажмите любую клавишу или кнопку мыши.</ru>
+	</msg>
+	<msg>
+		<src>Product Manager</src>
+		<en>Product Manager</en>
+		<ru>Менеджер продукта</ru>
+	</msg>
+	<msg>
+		<src>Profiler</src>
+		<en>Profiler</en>
+		<ru>Профайлер</ru>
+	</msg>
+	<msg>
+		<src>Programming</src>
+		<en>Programming</en>
+		<ru>Программирование</ru>
+	</msg>
+	<msg>
+		<src>Projection</src>
+		<en>Projection</en>
+		<ru>Проекция</ru>
+	</msg>
+	<msg>
+		<src>QA Engineer</src>
+		<en>QA Engineer</en>
+		<ru>Инженер отдела обеспечения качества</ru>
+	</msg>
+	<msg>
+		<src>QA Lead</src>
+		<en>QA Lead</en>
+		<ru>Руководитель отдела обеспечения качества</ru>
+	</msg>
+	<msg>
+		<src>Quality Assurance</src>
+		<en>Quality Assurance</en>
+		<ru>Обеспечение качества</ru>
+	</msg>
+	<msg>
+		<src>Quality:</src>
+		<en>Quality:</en>
+		<ru>Качество:</ru>
+	</msg>
+	<msg>
+		<src>Quick Load:</src>
+		<en>Quick Load:</en>
+		<ru>Быстрая загрузка</ru>
+	</msg>
+	<msg>
+		<src>Quick Save:</src>
+		<en>Quick Save:</en>
+		<ru>Быстрое сохранение:</ru>
+	</msg>
+	<msg>
+		<src>Quit</src>
+		<en>Quit</en>
+		<ru>Выход</ru>
+	</msg>
+	<msg>
+		<src>Quit from Unigine</src>
+		<en>Quit from Unigine</en>
+		<ru>Выйти из Unigine</ru>
+	</msg>
+	<msg>
+		<src>Quit from application?</src>
+		<en>Quit from application?</en>
+		<ru>Выйти из приложения?</ru>
+	</msg>
+	<msg>
+		<src>Confirm</src>
+		<en>Confirm</en>
+		<ru>Подтвердите</ru>
+	</msg>
+	<msg>
+		<src>Radius:</src>
+		<en>Radius:</en>
+		<ru>Радиус:</ru>
+	</msg>
+	<msg>
+		<src>Reflection</src>
+		<en>Reflection</en>
+		<ru>Отражение</ru>
+	</msg>
+	<msg>
+		<src>Refraction</src>
+		<en>Refraction</en>
+		<ru>Преломление</ru>
+	</msg>
+	<msg>
+		<src>Render</src>
+		<en>Render</en>
+		<ru>Визуализатор</ru>
+	</msg>
+	<msg>
+		<src>Resolution:</src>
+		<en>Resolution:</en>
+		<ru>Разрешение:</ru>
+	</msg>
+	<msg>
+		<src>Robert Kudera</src>
+		<en>Robert Kudera</en>
+		<ru>Роберт Кудера</ru>
+	</msg>
+	<msg>
+		<src>Run:</src>
+		<en>Run:</en>
+		<ru>Бег:</ru>
+	</msg>
+	<msg>
+		<src>Russian</src>
+		<en>Russian</en>
+		<ru>Русский</ru>
+	</msg>
+	<msg>
+		<src>Screenshot:</src>
+		<en>Screenshot:</en>
+		<ru>Скриншот:</ru>
+	</msg>
+	<msg>
+		<src>Senior Developer</src>
+		<en>Senior Developer</en>
+		<ru>Старший разработчик</ru>
+	</msg>
+	<msg>
+		<src>Serge Kanashchuk</src>
+		<en>Serge Kanashchuk</en>
+		<ru>Сергей Канащук</ru>
+	</msg>
+	<msg>
+		<src>Serge Larin</src>
+		<en>Serge Larin</en>
+		<ru>Сергей Ларин</ru>
+	</msg>
+	<msg>
+		<src>Sergey Cheremnykh</src>
+		<en>Sergey Cheremnykh</en>
+		<ru>Сергей Черемных</ru>
+	</msg>
+	<msg>
+		<src>Sergey Gradoboev</src>
+		<en>Sergey Gradoboev</en>
+		<ru>Сергей Градобоев</ru>
+	</msg>
+	<msg>
+		<src>Sergey Kovalev</src>
+		<en>Sergey Kovalev</en>
+		<ru>Сергей Ковалев</ru>
+	</msg>
+	<msg>
+		<src>Sergey Litvinov</src>
+		<en>Sergey Litvinov</en>
+		<ru>Сергей Литвинов</ru>
+	</msg>
+	<msg>
+		<src>Shaders</src>
+		<en>Shaders</en>
+		<ru>Шейдеры</ru>
+	</msg>
+	<msg>
+		<src>Show</src>
+		<en>Show</en>
+		<ru>Показывать</ru>
+	</msg>
+	<msg>
+		<src>Special Thanks To:</src>
+		<en>Special Thanks To:</en>
+		<ru>Отдельное спасибо:</ru>
+	</msg>
+	<msg>
+		<src>Stanislav Zagniy</src>
+		<en>Stanislav Zagniy</en>
+		<ru>Станислав Загний</ru>
+	</msg>
+	<msg>
+		<src>Stereo</src>
+		<en>Stereo</en>
+		<ru>Стерео</ru>
+	</msg>
+	<msg>
+		<src>Support Coordinator</src>
+		<en>Support Coordinator</en>
+		<ru>Координатор поддержки</ru>
+	</msg>
+	<msg>
+		<src>Support Engineer</src>
+		<en>Support Engineer</en>
+		<ru>Инженер поддержки</ru>
+	</msg>
+	<msg>
+		<src>Tamara Melnikova</src>
+		<en>Tamara Melnikova</en>
+		<ru>Тамара Мельникова</ru>
+	</msg>
+	<msg>
+		<src>Technical Artist</src>
+		<en>Technical Artist</en>
+		<ru>Технический художник</ru>
+	</msg>
+	<msg>
+		<src>Technical Support</src>
+		<en>Technical Support</en>
+		<ru>Техническая поддержка</ru>
+	</msg>
+	<msg>
+		<src>Technical Writer</src>
+		<en>Technical Writer</en>
+		<ru>Технический писатель</ru>
+	</msg>
+	<msg>
+		<src>Textures</src>
+		<en>Textures</en>
+		<ru>Текстуры</ru>
+	</msg>
+	<msg>
+		<src>To cancel learning press ESC.</src>
+		<en>To cancel learning press ESC.</en>
+		<ru>Для отмены нажмите ESC.</ru>
+	</msg>
+	<msg>
+		<src>To clear old control press the same key or button.</src>
+		<en>To clear old control press the same key or button.</en>
+		<ru>Чтобы сбросить предыдущий элемент управления, нажмите ту же клавишу или кнопку.</ru>
+	</msg>
+	<msg>
+		<src>Tools Developer</src>
+		<en>Tools Developer</en>
+		<ru>Разработчик инструментария</ru>
+	</msg>
+	<msg>
+		<src>Translucence</src>
+		<en>Translucence</en>
+		<ru>Светопроницаемость</ru>
+	</msg>
+	<msg>
+		<src>Trilinear</src>
+		<en>Trilinear</en>
+		<ru>Трилинейная</ru>
+	</msg>
+	<msg>
+		<src>Turn Down:</src>
+		<en>Turn Down:</en>
+		<ru>Посмотреть вниз:</ru>
+	</msg>
+	<msg>
+		<src>Turn Left:</src>
+		<en>Turn Left:</en>
+		<ru>Посмотреть налево:</ru>
+	</msg>
+	<msg>
+		<src>Turn Right:</src>
+		<en>Turn Right:</en>
+		<ru>Посмотреть направо:</ru>
+	</msg>
+	<msg>
+		<src>Turn Up:</src>
+		<en>Turn Up:</en>
+		<ru>Посмотреть вверх:</ru>
+	</msg>
+	<msg>
+		<src>Ulf Schroeter</src>
+		<en>Ulf Schroeter</en>
+		<ru>Ульф Шретер</ru>
+	</msg>
+	<msg>
+		<src>Use:</src>
+		<en>Use:</en>
+		<ru>Использовать:</ru>
+	</msg>
+	<msg>
+		<src>Utils Developer</src>
+		<en>Utils Developer</en>
+		<ru>Разработчик утилит</ru>
+	</msg>
+	<msg>
+		<src>VSync</src>
+		<en>VSync</en>
+		<ru>Вертикальная синхронизация</ru>
+	</msg>
+	<msg>
+		<src>Valery Datsyuk</src>
+		<en>Valery Datsyuk</en>
+		<ru>Валерий Дацюк</ru>
+	</msg>
+	<msg>
+		<src>Valia Vaneeva</src>
+		<en>Valia Vaneeva</en>
+		<ru>Валентина Ванеева</ru>
+	</msg>
+	<msg>
+		<src>Vasiliy Simonov</src>
+		<en>Vasiliy Simonov</en>
+		<ru>Василий Симонов</ru>
+	</msg>
+	<msg>
+		<src>Video</src>
+		<en>Video</en>
+		<ru>Видео</ru>
+	</msg>
+	<msg>
+		<src>Vitaliy Sidorov</src>
+		<en>Vitaliy Sidorov</en>
+		<ru>Виталий Сидоров</ru>
+	</msg>
+	<msg>
+		<src>Volumetric Shadows</src>
+		<en>Volumetric Shadows</en>
+		<ru>Объемные тени</ru>
+	</msg>
+	<msg>
+		<src>Vyacheslav Sedovich</src>
+		<en>Vyacheslav Sedovich</en>
+		<ru>Вячеслав Седович</ru>
+	</msg>
+	<msg>
+		<src>Vyacheslav Suldin</src>
+		<en>Vyacheslav Suldin</en>
+		<ru>Вячеслав Сулдин</ru>
+	</msg>
+	<msg>
+		<src>Wall</src>
+		<en>Wall</en>
+		<ru>Стена</ru>
+	</msg>
+	<msg>
+		<src>Wireframe</src>
+		<en>Wireframe</en>
+		<ru>Каркас</ru>
+	</msg>
+	<msg>
+		<src>Yakov Negrey</src>
+		<en>Yakov Negrey</en>
+		<ru>Яков Негрей</ru>
+	</msg>
+</dictionary>

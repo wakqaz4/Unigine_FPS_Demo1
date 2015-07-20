@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    collada.ui
+ * Desc:    Collada plugin
+ * Version: 1.05
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<window name="Collada::window" export="1" sizeable="1">
+	<text>Collada Import</text>
+	
+	<icon align="overlap,top,right" pos_x="4" pos_y="-24" texture="core/gui/window_close.png">
+		<callback type="clicked">Collada::window_close_clicked</callback>
+	</icon>
+	
+	<vbox>
+		<gridbox align="expand" columns="2" space="4">
+			
+			<vbox/>
+			<gridbox align="expand" columns="2" space="4">
+				
+				<button name="Collada::load_b" export="1" align="expand">
+					<text>Load</text>
+					<tooltip>Load DAE file</tooltip>
+					<callback type="clicked">Collada::load_clicked</callback>
+				</button>
+				<button name="Collada::animation_b" export="1" align="expand">
+					<text>Animation</text>
+					<tooltip>Load animation DAE file</tooltip>
+					<callback type="clicked">Collada::animation_clicked</callback>
+				</button>
+				
+				<button name="Collada::info_b" export="1" align="expand">
+					<text>Info</text>
+					<tooltip>DAE file info</tooltip>
+					<callback type="clicked">Collada::info_clicked</callback>
+				</button>
+				<button name="Collada::create_b" export="1" align="expand">
+					<text>Add to scene</text>
+					<tooltip>Add to scene</tooltip>
+					<callback type="clicked">Collada::create_clicked</callback>
+				</button>
+				
+			</gridbox>
+			
+			<vbox/>
+			<checkbox name="Collada::vertex_cache_cb" export="1" align="left">
+				<text>Vertex cache</text>
+				<tooltip>Vertex cache optimization</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Collada::import_joints_cb" export="1" align="left">
+				<text>Import joints</text>
+				<tooltip>Create joint nodes</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Collada::import_lights_cb" export="1" align="left">
+				<text>Import lights</text>
+				<tooltip>Create light nodes</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Collada::import_cameras_cb" export="1" align="left">
+				<text>Import cameras</text>
+				<tooltip>Create camera nodes</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Collada::import_materials_cb" export="1" align="left">
+				<text>Import materials</text>
+				<tooltip>Create materials</tooltip>
+				<callback type="changed">Collada::update_enabled</callback>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Collada::import_textures_cb" export="1" align="left">
+				<text>Import textures</text>
+				<tooltip>Create material textures</tooltip>
+				<callback type="changed">Collada::update_enabled</callback>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Collada::compress_textures_cb" export="1" align="left">
+				<text>Compress textures</text>
+				<tooltip>Compress material textures</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Collada::import_animation_cb" export="1" align="left">
+				<text>Import animations</text>
+				<tooltip>Create animation files</tooltip>
+				<callback type="changed">Collada::update_enabled</callback>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Collada::verbose_operations_cb" export="1" align="left">
+				<text>Verbose operations</text>
+				<tooltip>Verbose operations</tooltip>
+			</checkbox>
+			
+			<label align="right"><text>Mesh:</text></label>
+			<editline name="Collada::meshes_prefix_el" export="1" align="expand">
+				<tooltip>Mesh name prefix</tooltip>
+			</editline>
+			
+			<label align="right"><text>Material:</text></label>
+			<editline name="Collada::materials_prefix_el" export="1" align="expand">
+				<tooltip>Material name prefix</tooltip>
+			</editline>
+			
+			<label align="right"><text>Texture:</text></label>
+			<editline name="Collada::textures_prefix_el" export="1" align="expand">
+				<tooltip>Texture name prefix</tooltip>
+			</editline>
+			
+			<label align="right"><text>Scale:</text></label>
+			<editline name="Collada::scale_el" export="1" align="expand">
+				<tooltip>Import scale</tooltip>
+				<callback type="pressed,focus_out">Collada::scale_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>FPS:</text></label>
+			<editline name="Collada::fps_el" export="1" align="expand">
+				<tooltip>Import animation FPS</tooltip>
+				<callback type="pressed,focus_out">Collada::fps_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Time:</text></label>
+			<editline name="Collada::time_el" export="1" align="expand">
+				<tooltip>Import scene time</tooltip>
+				<callback type="pressed,focus_out">Collada::time_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hslider name="Collada::time_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="changed">Collada::time_changed</callback>
+			</hslider>
+			
+		</gridbox>
+	</vbox>
+</window>
+
+</ui>

@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_objects_meshes.ui
+ * Desc:    Unigine editor
+ * Version: 1.26
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Valia Vaneeva <fattie@unigine.com>
+ *          Andrey Viktorov <unclebob@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* MeshStatic
+ */
+-->
+<vbox name="Nodes::Object::MeshStatic::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Mesh:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::MeshStatic::mesh_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::MeshStatic::mesh_pressed</callback>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<tooltip>Load mesh</tooltip>
+					<callback type="clicked">Nodes::Object::MeshStatic::mesh_load_clicked</callback>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* MeshCluster
+ */
+-->
+<vbox name="Nodes::Object::MeshCluster::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<label name="Nodes::Object::MeshCluster::info_l" export="1" align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Mesh:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::MeshCluster::mesh_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::MeshCluster::mesh_pressed</callback>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<tooltip>Load mesh</tooltip>
+					<callback type="clicked">Nodes::Object::MeshCluster::mesh_load_clicked</callback>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Visible:</text></label>
+			<editline name="Nodes::Object::MeshCluster::visible_distance_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::Object::MeshCluster::visible_distance_pressed</callback>
+				<tooltip>Distance up to which meshes are fully visible</tooltip>
+			</editline>
+			<label align="right"><text>Fade:</text></label>
+			<editline name="Nodes::Object::MeshCluster::fade_distance_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::Object::MeshCluster::fade_distance_pressed</callback>
+				<tooltip>Distance up to which meshes fade out completely</tooltip>
+			</editline>
+			
+			<label align="right"><text>Shadow:</text></label>
+			<editline name="Nodes::Object::MeshCluster::shadow_radius_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::Object::MeshCluster::shadow_radius_pressed</callback>
+				<tooltip>Additional shadow radius</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hbox align="expand">
+				<button align="expand">
+					<text>Create</text>
+					<callback type="clicked">Nodes::Object::MeshCluster::create_clicked</callback>
+				</button>
+				<vbox space="4"/>
+				<button align="expand">
+					<text>Collect</text>
+					<callback type="clicked">Nodes::Object::MeshCluster::collect_clicked</callback>
+					<tooltip>Bakes all identical meshes specified in the world into the mesh cluster</tooltip>
+				</button>
+				<vbox space="4"/>
+				<button align="expand">
+					<text>Expand</text>
+					<callback type="clicked">Nodes::Object::MeshCluster::expand_clicked</callback>
+				</button>
+				<vbox space="4"/>
+				<button align="expand">
+					<text>Clear</text>
+					<callback type="clicked">Nodes::Object::MeshCluster::clear_clicked</callback>
+				</button>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* MeshClutter
+ */
+-->
+<vbox name="Nodes::Object::MeshClutter::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Mesh:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::MeshClutter::mesh_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::MeshClutter::mesh_pressed</callback>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<tooltip>Load mesh</tooltip>
+					<callback type="clicked">Nodes::Object::MeshClutter::mesh_load_clicked</callback>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::MeshClutter::orientation_cb" export="1" align="left,expand">
+				<text>Orientation</text>
+				<callback type="clicked">Nodes::Object::MeshClutter::orientation_clicked</callback>
+				<tooltip>Keep surface orientation</tooltip>
+			</checkbox>
+			<vbox/>
+			<checkbox name="Nodes::Object::MeshClutter::intersection_cb" export="1" align="left,expand">
+				<text>Intersection</text>
+				<callback type="clicked">Nodes::Object::MeshClutter::intersection_clicked</callback>
+				<tooltip>Intersections with parent object</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::MeshClutter::mask_flip_x_cb" export="1" align="left,expand">
+				<text>Flip X</text>
+				<callback type="clicked">Nodes::Object::MeshClutter::mask_flip_x_clicked</callback>
+				<tooltip>Image mask horizontal flip</tooltip>
+			</checkbox>
+			<vbox/>
+			<checkbox name="Nodes::Object::MeshClutter::mask_flip_y_cb" export="1" align="left,expand">
+				<text>Flip Y</text>
+				<callback type="clicked">Nodes::Object::MeshClutter::mask_flip_y_clicked</callback>
+				<tooltip>Image mask vertical flip</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::MeshClutter::mask_inverse_cb" export="1" align="left,expand">
+				<text>Inverse</text>
+				<callback type="clicked">Nodes::Object::MeshClutter::mask_inverse_clicked</callback>
+				<tooltip>Mesh mask inverse</tooltip>
+			</checkbox>
+			<vbox/>
+			<checkbox name="Nodes::Object::MeshClutter::collision_cb" export="1" align="left,expand">
+				<text>Collision</text>
+				<callback type="clicked">Nodes::Object::MeshClutter::collision_clicked</callback>
+				<tooltip>Generate clutter cells on collision requests</tooltip>
+			</checkbox>
+			
+			<label align="right"><text>Image mask:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::MeshClutter::mask_image_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::MeshClutter::mask_image_update_pressed</callback>
+					<tooltip>Name of the density mask</tooltip>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::MeshClutter::mask_image_load_update_clicked</callback>
+					<tooltip>Open mask image</tooltip>
+				</icon>
+				<icon texture="editor/gui/action_view.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::MeshClutter::mask_image_view_clicked</callback>
+					<tooltip>Preview mask image</tooltip>
+				</icon>
+				<icon texture="editor/gui/action_add.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::MeshClutter::mask_image_create_clicked</callback>
+					<tooltip>Create mask image</tooltip>
+				</icon>
+				<icon name="Nodes::Object::MeshClutter::mask_edit_i" export="1" texture="editor/gui/action_edit.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::MeshClutter::mask_image_edit_clicked</callback>
+					<tooltip>Press ALT to use the brush</tooltip>
+				</icon>
+				<icon texture="editor/gui/action_clear.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::MeshClutter::mask_image_clear_update_clicked</callback>
+					<tooltip>Clear mask image</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Mask mesh:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::MeshClutter::mask_mesh_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::MeshClutter::mask_mesh_pressed</callback>
+					<tooltip>Name of the mesh mask</tooltip>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::MeshClutter::mask_mesh_load_clicked</callback>
+					<tooltip>Open mask mesh</tooltip>
+				</icon>
+				<icon texture="editor/gui/action_clear.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::MeshClutter::mask_mesh_clear_clicked</callback>
+					<tooltip>Clear mask mesh</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Min value:</text></label>
+			<editline name="Nodes::Object::MeshClutter::mask_min_value_el" export="1" align="expand" validator="int">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::mask_min_value_pressed</callback>
+				<tooltip>Minimum mask value</tooltip>
+			</editline>
+			<label align="right"><text>Max value:</text></label>
+			<editline name="Nodes::Object::MeshClutter::mask_max_value_el" export="1" align="expand" validator="int">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::mask_max_value_pressed</callback>
+				<tooltip>Maximum mask value</tooltip>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Visible:</text></label>
+			<editline name="Nodes::Object::MeshClutter::visible_distance_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::visible_distance_pressed</callback>
+				<tooltip>Distance up to which meshes is fully visible</tooltip>
+			</editline>
+			<label align="right"><text>Fade:</text></label>
+			<editline name="Nodes::Object::MeshClutter::fade_distance_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::fade_distance_pressed</callback>
+				<tooltip>Distance up to which meshes fade out completely</tooltip>
+			</editline>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Object::MeshClutter::shadow_radius_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::shadow_radius_pressed</callback>
+				<tooltip>Additional shadow radius</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Spawn:</text></label>
+			<editline name="Nodes::Object::MeshClutter::spawn_rate_el" export="1" align="expand" validator="int">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::spawn_rate_pressed</callback>
+				<tooltip>Spawn rate</tooltip>
+			</editline>
+			<label align="right"><text>Seed:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::MeshClutter::seed_el" export="1" align="expand" validator="uint">
+					<callback type="pressed,focus_out">Nodes::Object::MeshClutter::seed_pressed</callback>
+					<tooltip>Random seed</tooltip>
+				</editline>
+				<vbox space="4"/>
+				<button>
+					<text>Randomize</text>
+					<callback type="clicked">Nodes::Object::MeshClutter::randomize_clicked</callback>
+				</button>
+			</hbox>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size X:</text></label>
+			<editline name="Nodes::Object::MeshClutter::size_x_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::size_x_pressed</callback>
+				<tooltip>X size of clutter area</tooltip>
+			</editline>
+			<label align="right"><text>Size Y:</text></label>
+			<editline name="Nodes::Object::MeshClutter::size_y_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::size_y_pressed</callback>
+				<tooltip>Y size of clutter area</tooltip>
+			</editline>
+			
+			<label align="right"><text>Step:</text></label>
+			<editline name="Nodes::Object::MeshClutter::step_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::step_pressed</callback>
+				<tooltip>Cell step</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Density:</text></label>
+			<editline name="Nodes::Object::MeshClutter::density_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::density_pressed</callback>
+				<tooltip>Number of meshes per square unit</tooltip>
+			</editline>
+			<hslider name="Nodes::Object::MeshClutter::density_sl" export="1" align="expand" min="0" max="10000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="10000" flags="max_expand">Nodes::Object::MeshClutter::density_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Threshold:</text></label>
+			<editline name="Nodes::Object::MeshClutter::threshold_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::threshold_pressed</callback>
+				<tooltip>Density mask threshold</tooltip>
+			</editline>
+			<hslider name="Nodes::Object::MeshClutter::threshold_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::MeshClutter::threshold_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Angle:</text></label>
+			<editline name="Nodes::Object::MeshClutter::angle_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::angle_pressed</callback>
+				<tooltip>Surface angle threshold</tooltip>
+			</editline>
+			<hslider name="Nodes::Object::MeshClutter::angle_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::MeshClutter::angle_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Min scale:</text></label>
+			<editline name="Nodes::Object::MeshClutter::min_scale_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::min_scale_pressed</callback>
+				<tooltip>Minimum mean scale of meshes</tooltip>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::MeshClutter::min_scale_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::min_scale_pressed</callback>
+				<tooltip>Minimum spread scale of meshes</tooltip>
+			</editline>
+			
+			<label align="right"><text>Max scale:</text></label>
+			<editline name="Nodes::Object::MeshClutter::max_scale_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::max_scale_pressed</callback>
+				<tooltip>Maximum mean scale of meshes</tooltip>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::MeshClutter::max_scale_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::max_scale_pressed</callback>
+				<tooltip>Maximum spread scale of meshes</tooltip>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Offset:</text></label>
+			<editline name="Nodes::Object::MeshClutter::offset_mean_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::offset_pressed</callback>
+				<tooltip>Mean offset from surface</tooltip>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::MeshClutter::offset_spread_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::offset_pressed</callback>
+				<tooltip>Spread offset from surface</tooltip>
+			</editline>
+			
+			<label align="right"><text>Rotation X:</text></label>
+			<editline name="Nodes::Object::MeshClutter::rotation_mean_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::rotation_pressed</callback>
+				<tooltip>Mean rotation around X axis</tooltip>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::MeshClutter::rotation_spread_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::rotation_pressed</callback>
+				<tooltip>Spread rotation around X axis</tooltip>
+			</editline>
+			
+			<label align="right"><text>Rotation Y:</text></label>
+			<editline name="Nodes::Object::MeshClutter::rotation_mean_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::rotation_pressed</callback>
+				<tooltip>Mean rotation around Y axis</tooltip>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::MeshClutter::rotation_spread_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::rotation_pressed</callback>
+				<tooltip>Spread rotation around Y axis</tooltip>
+			</editline>
+			
+			<label align="right"><text>Rotation Z:</text></label>
+			<editline name="Nodes::Object::MeshClutter::rotation_mean_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::rotation_pressed</callback>
+				<tooltip>Mean rotation around Z axis</tooltip>
+			</editline>
+			<label align="right"><text>Spread:</text></label>
+			<editline name="Nodes::Object::MeshClutter::rotation_spread_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshClutter::rotation_pressed</callback>
+				<tooltip>Spread rotation around Z axis</tooltip>
+			</editline>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* ObjectMeshSkinned
+ */
+-->
+<vbox name="Nodes::Object::MeshSkinned::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Mesh:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::MeshSkinned::mesh_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::MeshSkinned::mesh_pressed</callback>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<tooltip>Load mesh</tooltip>
+					<callback type="clicked">Nodes::Object::MeshSkinned::mesh_load_clicked</callback>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Anim:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::MeshSkinned::anim_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::MeshSkinned::anim_pressed</callback>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<tooltip>Load animation</tooltip>
+					<callback type="clicked">Nodes::Object::MeshSkinned::anim_load_clicked</callback>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::MeshSkinned::loop_cb" export="1" align="left,expand">
+				<text>Loop </text>
+				<callback type="clicked">Nodes::Object::MeshSkinned::loop_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<checkbox name="Nodes::Object::MeshSkinned::controlled_cb" export="1" align="left,expand">
+				<text>Controlled</text>
+				<callback type="clicked">Nodes::Object::MeshSkinned::controlled_clicked</callback>
+				<tooltip>Animation is controlled by parent skinned mesh bones</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Time:</text></label>
+			<editline name="Nodes::Object::MeshSkinned::time_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshSkinned::time_pressed</callback>
+			</editline>
+			<label align="right"><text>Playback Speed:</text></label>
+			<editline name="Nodes::Object::MeshSkinned::speed_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::MeshSkinned::speed_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<vbox align="expand">
+				<hbox align="expand">
+					<button name="Nodes::Object::MeshSkinned::play_b" export="1" align="expand">
+						<text>Play</text>
+						<callback type="clicked">Nodes::Object::MeshSkinned::play_clicked</callback>
+					</button>
+					<vbox space="4"/>
+					<button name="Nodes::Object::MeshSkinned::stop_b" export="1" align="expand">
+						<text>Stop</text>
+						<callback type="clicked">Nodes::Object::MeshSkinned::stop_clicked</callback>
+					</button>
+				</hbox>
+			</vbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* ObjectMeshDynamic
+ */
+-->
+<vbox name="Nodes::Object::MeshDynamic::main_vb" export="1" space="4">
+	<vbox>
+		<hbox space="4">
+			
+			<button>
+				<text>Load</text>
+				<callback type="clicked">Nodes::Object::MeshDynamic::load_clicked</callback>
+			</button>
+			<button>
+				<text>Save</text>
+				<callback type="clicked">Nodes::Object::MeshDynamic::save_clicked</callback>
+			</button>
+			
+		</hbox>
+	</vbox>
+</vbox>
+
+</ui>

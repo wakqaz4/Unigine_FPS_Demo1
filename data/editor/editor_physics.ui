@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_physics.ui
+ * Desc:    Unigine editor
+ * Version: 1.07
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Valia Vaneeva <fattie@unigine.com>
+ *          Maxim Belobryukhov <maxi@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Physics
+ */
+-->
+<window name="Physics::window" export="1">
+	<text>Physics settings</text>
+	<vbox align="expand">
+		<tabbox name="Physics::tabbox" export="1" align="expand">
+			
+			<tab>
+				<text>Common</text>
+				<vbox space="4">
+					<gridbox align="expand" columns="4" space="4">
+						
+						<label align="right"><text>FPS:</text></label>
+						<editline name="Physics::Common::fps_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::fps_pressed</callback>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Game:</text></label>
+						<editline name="Physics::Common::game_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::game_scale_pressed</callback>
+						</editline>
+						<hslider name="Physics::Common::game_scale_sl" export="0" align="expand" min="0" max="32000">
+							<attach multiplier="1000">Physics::Common::game_scale_el</attach>
+							<callback type="clicked">Physics::Common::slider_clicked</callback>
+							<callback type="changed">Physics::Common::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text> Sound:</text></label>
+						<editline name="Physics::Common::sound_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::sound_scale_pressed</callback>
+						</editline>
+						<hslider name="Physics::Common::sound_scale_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000">Physics::Common::sound_scale_el</attach>
+							<callback type="clicked">Physics::Common::slider_clicked</callback>
+							<callback type="changed">Physics::Common::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Physics scale:</text></label>
+						<editline name="Physics::Common::physics_scale_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::physics_scale_pressed</callback>
+						</editline>
+						<hslider name="Physics::Common::physics_scale_sl" export="0" align="expand" min="0" max="16000">
+							<attach multiplier="1000">Physics::Common::physics_scale_el</attach>
+							<callback type="clicked">Physics::Common::slider_clicked</callback>
+							<callback type="changed">Physics::Common::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Iterations:</text></label>
+						<editline name="Physics::Common::num_iterations_el" export="1" align="expand" validator="uint">
+							<callback type="pressed,focus_out">Physics::Common::num_iterations_pressed</callback>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Linear damp:</text></label>
+						<editline name="Physics::Common::linear_damping_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::linear_damping_pressed</callback>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Angular damp:</text></label>
+						<editline name="Physics::Common::angular_damping_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::angular_damping_pressed</callback>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Max linear velocity:</text></label>
+						<editline name="Physics::Common::max_linear_velocity_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::max_linear_velocity_pressed</callback>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Max angular velocity:</text></label>
+						<editline name="Physics::Common::max_angular_velocity_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::max_angular_velocity_pressed</callback>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Frozen linear velocity:</text></label>
+						<editline name="Physics::Common::frozen_linear_velocity_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::frozen_linear_velocity_pressed</callback>
+							<tooltip>Linear velocity at which the object becomes frozen</tooltip>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Frozen angular velocity:</text></label>
+						<editline name="Physics::Common::frozen_angular_velocity_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::frozen_angular_velocity_pressed</callback>
+							<tooltip>Angular velocity at which the object becomes frozen</tooltip>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Frozen frames:</text></label>
+						<editline name="Physics::Common::num_frozen_frames_el" export="1" align="expand" validator="uint">
+							<callback type="pressed,focus_out">Physics::Common::num_frozen_frames_pressed</callback>
+							<tooltip>Number of frames, during which an object should keep both its angular and linear velocities under the specified level to become frozen</tooltip>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Penetration factor:</text></label>
+						<editline name="Physics::Common::penetration_factor_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::penetration_factor_pressed</callback>
+						</editline>
+						<hslider name="Physics::Common::penetration_factor_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Physics::Common::penetration_factor_el</attach>
+							<callback type="clicked">Physics::Common::slider_clicked</callback>
+							<callback type="changed">Physics::Common::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Penetration tolerance:</text></label>
+						<editline name="Physics::Common::penetration_tolerance_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::penetration_tolerance_pressed</callback>
+						</editline>
+						<vbox/>
+						<vbox/>
+						
+						<label align="right"><text>Gravity:</text></label>
+						<editline name="Physics::Common::gravity_el[0]" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::gravity_pressed</callback>
+						</editline>
+						<editline name="Physics::Common::gravity_el[1]" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::gravity_pressed</callback>
+						</editline>
+						<editline name="Physics::Common::gravity_el[2]" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Physics::Common::gravity_pressed</callback>
+						</editline>
+						
+					</gridbox>
+				</vbox>
+			</tab>
+			
+		</tabbox>
+	</vbox>
+	<hbox align="right" space="4">
+		<button>
+			<text>Load</text>
+			<callback type="clicked">Physics::load_clicked</callback>
+		</button>
+		<button>
+			<text>Save</text>
+			<callback type="clicked">Physics::save_clicked</callback>
+		</button>
+	</hbox>
+</window>
+
+</ui>

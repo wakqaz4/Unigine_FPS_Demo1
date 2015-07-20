@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node dynamic="0" two_sided="0" type="DecalObjectOmni" id="1805783754">
+		<radius>1</radius>
+		<znear>0.001</znear>
+		<material>decal_base</material>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

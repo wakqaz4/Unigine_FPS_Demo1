@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="ObjectWater" id="1486558315" collider="0">
+		<wave_0>0 1 6.28319 0</wave_0>
+		<wave_1>0 1 6.28319 0</wave_1>
+		<wave_2>0 1 6.28319 0</wave_2>
+		<wave_3>0 1 6.28319 0</wave_3>
+		<surface name="surface" material="water_base" property="surface_base">
+			<material>
+				<options post_deferred="1" post_scattering="1"/>
+			</material>
+		</surface>
+		<surface name="volume" material="water_base" property="surface_base">
+			<material>
+				<options post_deferred="1" post_scattering="1"/>
+				<state name="surface">1</state>
+			</material>
+		</surface>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

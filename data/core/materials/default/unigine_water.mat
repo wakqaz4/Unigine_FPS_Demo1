@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<materials version="1.00" editable="0">
+	
+	<!--
+	/**************************************************************************\
+	*
+	* Water materials
+	*
+	\**************************************************************************/
+	-->
+	
+	<!--
+	/* Water base material
+	 */
+	-->
+	<material name="water_base" editable="0">
+		
+		<!-- blending -->
+		<blend src="one" dest="src_alpha"/>
+		
+		<!-- options -->
+		<options cast_shadow="0" cast_world_shadow="0"/>
+		
+		<!-- states -->
+		<state name="surface" hidden="1" type="switch" items="surface,volume">0</state>
+		<state name="deferred" type="switch" items="none,default">1</state>
+		<state name="auxiliary" type="switch" items="none,default">0</state>
+		<state name="light_spot" type="switch" items="none,default">1</state>
+		<state name="light_omni" type="switch" items="none,default">1</state>
+		<state name="light_proj" type="switch" items="none,default">1</state>
+		<state name="light_world" type="switch" items="none,default">1</state>
+		<state name="reflection_dynamic" type="toggle" shared="1">1</state>
+		<state name="reflection_size" type="switch" items="128,256,512,1024,2048,quart_height,half_height,height">2</state>
+		<state name="reflection_filter" type="switch" items="disabled,1x,2x,3x,4x">0</state>
+		<state name="reflection_shared" type="toggle">1</state>
+		<state name="reflection_shadow" type="toggle">0</state>
+		<state name="reflection_two_sided" type="toggle">1</state>
+		<state name="subsurface" type="toggle">0</state>
+		<state name="foam" type="toggle">0</state>
+		<state name="caps" type="toggle">0</state>
+		<state name="caustic" type="toggle">0</state>
+		<state name="waves" hidden="1" type="toggle">0</state>
+		<state name="field_spacer" type="toggle">0</state>
+		<state name="ambient_light" type="toggle">0</state>
+		
+		<!-- surface wireframe shaders -->
+		<shader pass="wireframe" object="water"
+			defines="BASE_WIREFRAME"
+			surface="0"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_surface.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		<shader pass="wireframe" object="water_mesh"
+			defines="BASE_WIREFRAME"
+			surface="0"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_mesh.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- volume wireframe shaders -->
+		<shader pass="wireframe" object="water"
+			defines="VOLUME_WIREFRAME"
+			surface="1"
+			vertex="core/shaders/default/water/vertex_volume.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- surface deffered shaders -->
+		<shader pass="deferred" object="water"
+			defines="SURFACE_DEFERRED"
+			surface="0"
+			deferred="1"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_surface.shader"
+			fragment="core/shaders/default/water/fragment_surface_deferred.shader"/>
+		<shader pass="deferred" object="water_mesh"
+			defines="SURFACE_DEFERRED"
+			surface="0"
+			deferred="1"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_mesh.shader"
+			fragment="core/shaders/default/water/fragment_surface_deferred.shader"/>
+		
+		<!-- surface auxiliary shaders -->
+		<shader pass="auxiliary" object="water"
+			defines="SURFACE_AUXILIARY"
+			surface="0"
+			auxiliary="1"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_surface.shader"
+			fragment="core/shaders/default/water/fragment_surface_auxiliary.shader"/>
+		<shader pass="auxiliary" object="water_mesh"
+			defines="SURFACE_AUXILIARY"
+			surface="0"
+			auxiliary="1"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_mesh.shader"
+			fragment="core/shaders/default/water/fragment_surface_auxiliary.shader"/>
+		
+		<!-- surface refraction shaders -->
+		<shader pass="refraction" object="water"
+			defines="SURFACE_REFRACTION"
+			surface="0"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_surface.shader"
+			fragment="core/shaders/default/water/fragment_surface_refraction.shader"/>
+		<shader pass="refraction" object="water_mesh"
+			defines="SURFACE_REFRACTION"
+			surface="0"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_mesh.shader"
+			fragment="core/shaders/default/water/fragment_surface_refraction.shader"/>
+		
+		<!-- surface ambient shaders -->
+		<shader pass="ambient" object="water"
+			defines="SURFACE_AMBIENT,AMBIENT"
+			receive_world_shadow_defines=",SHADOW"
+			surface="0"
+			reflection_dynamic_defines=",REFLECTION_DYNAMIC"
+			ambient_light_defines=",AMBIENT_LIGHT"
+			foam_defines=",FOAM"
+			caps_defines=",CAPS"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_surface.shader"
+			fragment="core/shaders/default/water/fragment_surface_ambient.shader"/>
+		<shader pass="ambient" object="water_mesh"
+			defines="SURFACE_AMBIENT,AMBIENT"
+			receive_world_shadow_defines=",SHADOW"
+			surface="0"
+			reflection_dynamic_defines=",REFLECTION_DYNAMIC"
+			ambient_light_defines=",AMBIENT_LIGHT"
+			foam_defines=",FOAM"
+			caps_defines=",CAPS"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_mesh.shader"
+			fragment="core/shaders/default/water/fragment_surface_ambient.shader"/>
+		
+		<!-- volume ambient shaders -->
+		<shader pass="ambient" object="water"
+			defines="VOLUME_AMBIENT"
+			surface="1"
+			subsurface_defines=",SUBSURFACE"
+			vertex="core/shaders/default/water/vertex_volume.shader"
+			fragment="core/shaders/default/water/fragment_volume_ambient.shader"/>
+		<shader pass="ambient" object="water_mesh"
+			defines="VOLUME_AMBIENT"
+			surface="1"
+			subsurface_defines=",SUBSURFACE"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_mesh.shader"
+			fragment="core/shaders/default/water/fragment_volume_ambient.shader"/>
+		
+		<!-- surface light spot shaders -->
+		<shader pass="light_spot" object="water"
+			defines="SURFACE_LIGHT_SPOT,SPOT"
+			surface="0"
+			light_spot="1"
+			foam_defines=",FOAM"
+			caps_defines=",CAPS"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_surface.shader"
+			fragment="core/shaders/default/water/fragment_surface_light_spot.shader"/>
+		<shader pass="light_spot" object="water_mesh"
+			defines="SURFACE_LIGHT_SPOT,SPOT"
+			surface="0"
+			light_spot="1"
+			foam_defines=",FOAM"
+			caps_defines=",CAPS"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_mesh.shader"
+			fragment="core/shaders/default/water/fragment_surface_light_spot.shader"/>
+		
+		<!-- surface light omni shaders -->
+		<shader pass="light_omni" object="water"
+			defines="SURFACE_LIGHT_OMNI,OMNI"
+			receive_shadow_defines=",SHADOW"
+			surface="0"
+			light_omni="1"
+			foam_defines=",FOAM"
+			caps_defines=",CAPS"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_surface.shader"
+			fragment="core/shaders/default/water/fragment_surface_light_omni.shader"/>
+		<shader pass="light_omni" object="water_mesh"
+			defines="SURFACE_LIGHT_OMNI,OMNI"
+			receive_shadow_defines=",SHADOW"
+			surface="0"
+			light_omni="1"
+			foam_defines=",FOAM"
+			caps_defines=",CAPS"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_mesh.shader"
+			fragment="core/shaders/default/water/fragment_surface_light_omni.shader"/>
+		
+		<!-- surface light proj shaders -->
+		<shader pass="light_proj" object="water"
+			defines="SURFACE_LIGHT_PROJ,PROJ"
+			receive_shadow_defines=",SHADOW"
+			surface="0"
+			light_proj="1"
+			foam_defines=",FOAM"
+			caps_defines=",CAPS"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_surface.shader"
+			fragment="core/shaders/default/water/fragment_surface_light_proj.shader"/>
+		<shader pass="light_proj" object="water_mesh"
+			defines="SURFACE_LIGHT_PROJ,PROJ"
+			receive_shadow_defines=",SHADOW"
+			surface="0"
+			light_proj="1"
+			foam_defines=",FOAM"
+			caps_defines=",CAPS"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_mesh.shader"
+			fragment="core/shaders/default/water/fragment_surface_light_proj.shader"/>
+		
+		<!-- surface light world shaders -->
+		<shader pass="light_world" object="water"
+			defines="SURFACE_LIGHT_WORLD,WORLD"
+			receive_world_shadow_defines=",SHADOW"
+			surface="0"
+			light_world="1"
+			foam_defines=",FOAM"
+			caps_defines=",CAPS"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			ambient_light="0"
+			vertex="core/shaders/default/water/vertex_surface.shader"
+			fragment="core/shaders/default/water/fragment_surface_light_world.shader"/>
+		<shader pass="light_world" object="water_mesh"
+			defines="SURFACE_LIGHT_WORLD,WORLD"
+			receive_shadow_defines=",SHADOW"
+			surface="0"
+			light_world="1"
+			foam_defines=",FOAM"
+			caps_defines=",CAPS"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			ambient_light="0"
+			vertex="core/shaders/default/water/vertex_mesh.shader"
+			fragment="core/shaders/default/water/fragment_surface_light_world.shader"/>
+		
+		<!-- volume light world shaders -->
+		<shader pass="light_world" object="water"
+			defines="VOLUME_LIGHT_WORLD,WORLD"
+			receive_world_shadow_defines=",SHADOW"
+			surface="1"
+			caustic="1"
+			vertex="core/shaders/default/water/vertex_volume.shader"
+			fragment="core/shaders/default/water/fragment_volume_light_world.shader"/>
+		<shader pass="light_world" object="water_mesh"
+			defines="VOLUME_LIGHT_WORLD,WORLD"
+			receive_world_shadow_defines=",SHADOW"
+			surface="1"
+			caustic="1"
+			waves_defines=",WAVES"
+			field_spacer_defines=",FIELD_SPACER"
+			vertex="core/shaders/default/water/vertex_mesh.shader"
+			fragment="core/shaders/default/water/fragment_volume_light_world.shader"/>
+		
+		<!-- textures -->
+		<texture name="normal_01" format="signed">core/textures/water_base_normal.dds</texture>
+		<texture name="normal_23" format="signed">core/textures/water_base_normal.dds</texture>
+		<texture name="foam" foam="1" unit="2">core/textures/water_base_foam.dds</texture>
+		<texture name="caps" caps="1" unit="3">core/textures/water_base_caps.dds</texture>
+		<texture name="reflection" pass="ambient" surface="0" reflection_dynamic="0" unit="4" format="srgb" wrap="clamp">core/textures/water_base_reflection.dds</texture>
+		<texture name="reflection0x" pass="ambient" surface="0" reflection_dynamic="1" reflection_filter="0" unit="4" type="reflection_2d"/>
+		<texture name="reflection1x" pass="ambient" surface="0" reflection_dynamic="1" reflection_filter="1" unit="4" type="reflection_2d" materials="post_hblur_2d,post_vblur_2d"/>
+		<texture name="reflection2x" pass="ambient" surface="0" reflection_dynamic="1" reflection_filter="2" unit="4" type="reflection_2d" materials="post_hblur_2d,post_vblur_2d,post_hblur_2d,post_vblur_2d"/>
+		<texture name="reflection3x" pass="ambient" surface="0" reflection_dynamic="1" reflection_filter="3" unit="4" type="reflection_2d" materials="post_hblur_2d,post_vblur_2d,post_hblur_2d,post_vblur_2d,post_hblur_2d,post_vblur_2d"/>
+		<texture name="reflection4x" pass="ambient" surface="0" reflection_dynamic="1" reflection_filter="4" unit="4" type="reflection_2d" materials="post_hblur_2d,post_vblur_2d,post_hblur_2d,post_vblur_2d,post_hblur_2d,post_vblur_2d,post_hblur_2d,post_vblur_2d"/>
+		<texture name="deferred_depth" unit="12" type="deferred_depth"/>
+		<texture name="environment" pass="ambient" unit="13" type="environment"/>
+		<texture name="light_image" pass="light_omni,light_proj,light_world" unit="13" type="light_image"/>
+		<texture name="light_depth" pass="ambient,light_omni,light_proj,light_world" unit="14" type="light_depth"/>
+		<texture name="light_vcube" pass="light_omni" type="light_vcube"/>
+		
+		<!-- parameters -->
+		<parameter name="normal_0_transform" type="expression" shared="1">vec4(0.01f,0.01f, sin(time/7.0f)/5.0f, cos(time/7.0f)/5.0f + time/60.0f)</parameter>
+		<parameter name="normal_1_transform" type="expression" shared="1">vec4(0.01f,0.01f,-sin(time/7.0f)/5.0f,-cos(time/7.0f)/5.0f + time/60.0f + 0.5f)</parameter>
+		<parameter name="normal_2_transform" type="expression" shared="1">vec4(0.02f,0.02f, sin(time/3.0f)/10.0f, cos(time/3.0f)/10.0f)</parameter>
+		<parameter name="normal_3_transform" type="expression" shared="1">vec4(0.02f,0.02f,-sin(time/3.0f)/10.0f,-cos(time/3.0f)/10.0f + 0.5f)</parameter>
+		<parameter name="foam_0_transform" foam="1" type="expression" shared="1">vec4(0.02f,0.02f,noise(time/3.0f,8.0f,2.0f)/10.0f,noise(time/3.0f+13.0f,8.0f,2.0f)/10.0f)</parameter>
+		<parameter name="foam_1_transform" foam="1" type="expression" shared="1">vec4(0.03f,0.03f,noise(time/3.0f+37.0f,8.0f,2.0f)/10.0f,noise(time/3.0f+73.0f,8.0f,2.0f)/10.0f)</parameter>
+		<parameter name="caps_0_transform" caps="1" type="expression" shared="1">vec4(0.02f,0.02f,noise(time/3.0f,8.0f,2.0f)/10.0f,noise(time/3.0f+13.0f,8.0f,2.0f)/10.0f)</parameter>
+		<parameter name="caps_1_transform" caps="1" type="expression" shared="1">vec4(0.03f,0.03f,noise(time/3.0f+37.0f,8.0f,2.0f)/10.0f,noise(time/3.0f+73.0f,8.0f,2.0f)/10.0f)</parameter>
+		<parameter name="caustic_0_transform" caustic="1" type="expression" shared="1">vec4(0.005f,0.005f, sin(time/5.0f)/15.0f, cos(time/5.0f)/15.0f)</parameter>
+		<parameter name="caustic_1_transform" caustic="1" type="expression" shared="1">vec4(0.007f,0.007f,-sin(time/5.0f)/20.0f,-cos(time/5.0f)/20.0f)</parameter>
+		<parameter name="auxiliary_color" auxiliary="1" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="reflection_mask" reflection_dynamic="1" type="expression">0x01</parameter>
+		<parameter name="reflection_plane" hidden="1" reflection_dynamic="1" type="constant">0.0 0.0 1.0 0.0</parameter>
+		<parameter name="reflection_distance" reflection_dynamic="1" type="expression">-1.0f</parameter>
+		<parameter name="reflection_normal" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="reflection_power" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="reflection_angle" type="slider" shared="1" min="0.0" max="1.0" flags="log10,max_expand">5.0</parameter>
+		<parameter name="reflection_0_color" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="reflection_1_color" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="refraction_scale" type="slider" shared="1" min="-2.0" max="2.0" flags="min_expand,max_expand">1.0</parameter>
+		<parameter name="refraction_power" type="slider" shared="1" min="0.0" max="2.0">1.0</parameter>
+		<parameter name="waves_radius" type="slider" shared="1" min="0.0" max="1000.0">100.0</parameter>
+		<parameter name="surface_color" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="surface_density" type="slider" shared="1" min="-3.0" max="1.0" flags="log10,max_expand">0.1</parameter>
+		<parameter name="volume_color" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="volume_power" type="slider" shared="1" min="0.0" max="2.0" flags="log10,max_expand">1.0</parameter>
+		<parameter name="volume_density" type="slider" shared="1" min="-3.0" max="1.0" flags="log10,max_expand">0.1</parameter>
+		<parameter name="subsurface_color" subsurface="1" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="subsurface_power" subsurface="1" type="slider" shared="1" min="0.0" max="2.0" flags="log10,max_expand">1.0</parameter>
+		<parameter name="subsurface_density" subsurface="1" type="slider" shared="1" min="-3.0" max="1.0" flags="log10,max_expand">0.1</parameter>
+		<parameter name="subsurface_falloff" subsurface="1" type="slider" shared="1" min="-3.0" max="0.0" flags="log10,max_expand">0.1</parameter>
+		<parameter name="foam_color" foam="1" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="foam_scale" foam="1" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="foam_threshold" foam="1" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="foam_falloff" foam="1" type="slider" shared="1" min="-3.0" max="1.0" flags="log10,max_expand">1.0</parameter>
+		<parameter name="caps_color" caps="1" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="caps_scale" caps="1" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="caps_threshold" caps="1" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="caustic_color" caustic="1" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="caustic_power" caustic="1" type="slider" shared="1" min="0.0" max="2.0" flags="log10,max_expand">16.0</parameter>
+		<parameter name="caustic_scale" caustic="1" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="caustic_threshold" caustic="1" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="caustic_density" caustic="1" type="slider" shared="1" min="-3.0" max="1.0" flags="log10,max_expand">1.0</parameter>
+		<parameter name="caustic_falloff" caustic="1" type="slider" shared="1" min="-3.0" max="1.0" flags="log10,max_expand">1.0</parameter>
+		<parameter name="environment_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="diffuse_scale" type="slider" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="normal_scale" type="slider" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="specular_scale" type="slider" min="0.0" max="8.0" flags="max_expand">1.0</parameter>
+		<parameter name="specular_power" type="slider" min="0.0" max="2.0" flags="log10,max_expand">16.0</parameter>
+		<parameter name="fresnel_bias" type="slider" min="0.0" max="1.0">0.2</parameter>
+		<parameter name="fresnel_power" type="slider" min="0.0" max="1.0" flags="log10,max_expand">5.0</parameter>
+	</material>
+	
+</materials>

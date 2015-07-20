@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<materials version="1.00" editable="0">
+	
+	<!--
+	/**************************************************************************\
+	*
+	* Sky materials
+	*
+	\**************************************************************************/
+	-->
+	
+	<!--
+	/* Sky base material
+	 */
+	-->
+	<material name="sky_base" editable="0">
+		
+		<!-- options -->
+		<options depth_mask="0" cast_shadow="0" receive_shadow="0" cast_world_shadow="0" receive_world_shadow="0"/>
+		
+		<!-- states -->
+		<state name="surface" hidden="1" type="switch" items="sphere,clouds,shadow">0</state>
+		<state name="turbulence" hidden="1" type="toggle">1</state>
+		<state name="inscattering" hidden="1" type="toggle">0</state>
+		<state name="ambient" type="switch" items="none,default">1</state>
+		<state name="light_world" type="switch" items="none,default">1</state>
+		<state name="background" type="switch" items="none,single,double">0</state>
+		<state name="clouds" type="toggle">1</state>
+		<state name="volume" type="toggle">0</state>
+		
+		<!-- sphere ambient shaders -->
+		<shader pass="ambient" object="sky"
+			surface="0"
+			inscattering_defines=",INSCATTERING"
+			background_defines=",BACKGROUND_SINGLE,BACKGROUND_DOUBLE"
+			clouds_defines=",CLOUDS"
+			ambient="1"
+			vertex="core/shaders/default/sky/vertex_sphere_ambient.shader"
+			fragment="core/shaders/default/sky/fragment_sphere_ambient.shader"/>
+		
+		<!-- volume ambient shaders -->
+		<shader pass="ambient" object="sky"
+			surface="1"
+			turbulence_defines=",TURBULENCE"
+			inscattering_defines=",INSCATTERING"
+			volume_defines=",VOLUME"
+			ambient="1"
+			vertex="core/shaders/default/sky/vertex_volume_ambient.shader"
+			fragment="core/shaders/default/sky/fragment_volume_ambient.shader"/>
+		
+		<!-- shadow ambient shaders -->
+		<shader pass="light_world" object="sky"
+			surface="2"
+			light_world="1"
+			vertex="core/shaders/default/sky/vertex_shadow_light_world.shader"
+			fragment="core/shaders/default/sky/fragment_shadow_light_world.shader"/>
+		
+		<!-- textures -->
+		<texture name="mask_0" surface="0,2">core/textures/sky_base_mask.dds</texture>
+		<texture name="mask_1" surface="0,2">core/textures/sky_base_mask.dds</texture>
+		<texture name="clouds_01" surface="0,2">core/textures/sky_base_clouds.dds</texture>
+		<texture name="clouds_23" surface="0,2">core/textures/sky_base_clouds.dds</texture>
+		<texture name="background_0" surface="0" background="1,2" wrap="clamp">core/textures/sky_base_background.dds</texture>
+		<texture name="background_1" surface="0" background="2" wrap="clamp">core/textures/sky_base_background.dds</texture>
+		<texture name="noise" surface="1" filter="linear">core/textures/sky_base_noise.dds</texture>
+		<texture name="volume" surface="1" filter="linear" wrap="clamp_z">core/textures/sky_base_volume.dds</texture>
+		<texture name="density" surface="1" filter="linear">core/textures/sky_base_density.dds</texture>
+		<texture name="deferred_depth" surface="1,2" unit="15" type="deferred_depth"/>
+		
+		<!-- parameters -->
+		<parameter name="sphere_transform" type="expression" shared="1">vec4(2.0f,2.0f,0.5f,0.25f)</parameter>
+		<parameter name="volume_transform" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="noise_transform" type="expression" shared="1">vec3(8.0f,8.0f,1.0f)</parameter>
+		<parameter name="mask_0_transform" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="mask_1_transform" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="clouds_0_transform" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="clouds_1_transform" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="clouds_2_transform" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="clouds_3_transform" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,0.0f)</parameter>
+		<parameter name="volume_0_color" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="volume_1_color" type="color" shared="1" flags="srgb">0.0 0.0 0.0 1.0</parameter>
+		<parameter name="volume_01_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="volume_scattering" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="volume_turbulence" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="clouds_01_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="clouds_23_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="clouds_01_threshold" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="clouds_23_threshold" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="sphere_scattering" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="background_0_scale" background="1,2" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="background_1_scale" background="2" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="volume_scale" volume="1" type="slider" shared="1" min="0.0" max="128.0" flags="max_expand">64.0</parameter>
+		<parameter name="shadow_scale" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+	</material>
+	
+</materials>

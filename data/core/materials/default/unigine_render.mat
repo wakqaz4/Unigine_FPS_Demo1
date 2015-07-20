@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<materials version="1.00" editable="0">
+	
+	<!--
+	/**************************************************************************\
+	*
+	* Render materials
+	*
+	\**************************************************************************/
+	-->
+	
+	<!--
+	/* Query material
+	 */
+	-->
+	<material name="render_query" hidden="1">
+		
+		<!-- deferred shaders -->
+		<shader pass="deferred"
+			vertex="core/shaders/default/render/vertex_query_deferred.shader"
+			fragment="core/shaders/default/render/fragment_query_deferred.shader"/>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient"
+			vertex="core/shaders/default/render/vertex_query_ambient.shader"
+			fragment="core/shaders/default/render/fragment_query_ambient.shader"/>
+	</material>
+	
+	<!--
+	/* Light materials
+	 */
+	-->
+	<material name="render_light_prob" hidden="1">
+		
+		<!-- states -->
+		<state name="specular" type="toggle">0</state>
+		
+		<!-- shaders -->
+		<shader pass="light_prob"
+			defines="PROB"
+			specular_defines=",SPECULAR"
+			vertex="core/shaders/default/render/vertex_light_prob.shader"
+			fragment="core/shaders/default/render/fragment_light_prob.shader"/>
+		
+		<!-- textures -->
+		<texture name="deferred_depth" pass="light_prob" type="deferred_depth"/>
+		<texture name="deferred_color" pass="light_prob" type="deferred_color"/>
+		<texture name="deferred_normal" pass="light_prob" type="deferred_normal"/>
+		<texture name="deferred_occlusion" pass="light_prob" type="deferred_occlusion"/>
+		
+		<!-- parameters -->
+		<parameter name="perspective" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="fresnel" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="idistance" type="slider" shared="1">1.0</parameter>
+		<parameter name="attenuation" type="slider" shared="1">1.0</parameter>
+		<parameter name="diffuse_scale" type="slider" shared="1">1.0</parameter>
+		<parameter name="specular_scale" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_light_spot" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="light_spot"
+			defines="SPOT"
+			vertex="core/shaders/default/render/vertex_light_spot.shader"
+			fragment="core/shaders/default/render/fragment_light_spot.shader"/>
+		
+		<!-- textures -->
+		<texture name="deferred_depth" pass="light_spot" type="deferred_depth"/>
+		<texture name="deferred_normal" pass="light_spot" type="deferred_normal"/>
+		
+		<!-- parameters -->
+		<parameter name="perspective" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+	<material name="render_light_omni" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="light_omni"
+			defines="OMNI"
+			receive_shadow_defines=",SHADOW"
+			vertex="core/shaders/default/render/vertex_light_omni.shader"
+			fragment="core/shaders/default/render/fragment_light_omni.shader"/>
+		
+		<!-- textures -->
+		<texture name="deferred_depth" pass="light_omni" type="deferred_depth"/>
+		<texture name="deferred_normal" pass="light_omni" type="deferred_normal"/>
+		<texture name="light_image" pass="light_omni" unit="11" type="light_image"/>
+		<texture name="light_color" pass="light_omni" type="light_color"/>
+		<texture name="light_depth" pass="light_omni" type="light_depth"/>
+		<texture name="light_noise" pass="light_omni" type="light_noise"/>
+		<texture name="light_vcube" pass="light_omni" type="light_vcube"/>
+		
+		<!-- parameters -->
+		<parameter name="perspective" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+	<material name="render_light_proj" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="light_proj"
+			defines="PROJ"
+			receive_shadow_defines=",SHADOW"
+			vertex="core/shaders/default/render/vertex_light_proj.shader"
+			fragment="core/shaders/default/render/fragment_light_proj.shader"/>
+		
+		<!-- textures -->
+		<texture name="deferred_depth" pass="light_proj" type="deferred_depth"/>
+		<texture name="deferred_normal" pass="light_proj" type="deferred_normal"/>
+		<texture name="light_image" pass="light_proj" unit="11" type="light_image"/>
+		<texture name="light_color" pass="light_proj" type="light_color"/>
+		<texture name="light_depth" pass="light_proj" type="light_depth"/>
+		<texture name="light_noise" pass="light_proj" type="light_noise"/>
+		
+		<!-- parameters -->
+		<parameter name="perspective" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+	<material name="render_light_world" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="light_world"
+			defines="WORLD"
+			receive_world_shadow_defines=",SHADOW"
+			vertex="core/shaders/default/render/vertex_light_world.shader"
+			fragment="core/shaders/default/render/fragment_light_world.shader"/>
+		
+		<!-- textures -->
+		<texture name="deferred_depth" pass="light_world" type="deferred_depth"/>
+		<texture name="deferred_normal" pass="light_world" type="deferred_normal"/>
+		<texture name="light_color" pass="light_world" unit="12" type="light_color"/>
+		<texture name="light_depth" pass="light_world" type="light_depth"/>
+		<texture name="light_noise" pass="light_world" type="light_noise"/>
+		
+		<!-- parameters -->
+		<parameter name="perspective" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+	<!--
+	/* Deferred material
+	 */
+	-->
+	<material name="render_deferred" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_deferred.shader"
+			fragment="core/shaders/default/render/fragment_deferred.shader"/>
+		
+		<!-- textures -->
+		<texture name="deferred_color" pass="post" type="procedural"/>
+		<texture name="deferred_normal" pass="post" type="procedural"/>
+		<texture name="deferred_occlusion" pass="post" type="procedural"/>
+		<texture name="deferred_light" pass="post" type="procedural"/>
+		<texture name="environment" pass="post" type="environment"/>
+		
+		<!-- parameters -->
+		<parameter name="perspective" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+	<!--
+	/* Copy material
+	 */
+	-->
+	<material name="render_copy_2d" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_copy_2d.shader"
+			fragment="core/shaders/default/render/fragment_copy_2d.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="render_copy_cube" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_copy_cube.shader"
+			fragment="core/shaders/default/render/fragment_copy_cube.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<!--
+	/* Downsize material
+	 */
+	-->
+	<material name="render_downsize" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_downsize.shader"
+			fragment="core/shaders/default/render/fragment_downsize.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="deferred_depth"/>
+	</material>
+	
+	<!--
+	/* Filter material
+	 */
+	-->
+	<material name="render_filter_hblur" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="HBLUR"
+			vertex="core/shaders/default/render/vertex_filter_blur.shader"
+			fragment="core/shaders/default/render/fragment_filter_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="render_filter_vblur" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="VBLUR"
+			vertex="core/shaders/default/render/vertex_filter_blur.shader"
+			fragment="core/shaders/default/render/fragment_filter_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<!--
+	/* Occlusion materials
+	 */
+	-->
+	<material name="render_occlusion_sample" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_occlusion_sample.shader"
+			fragment="core/shaders/default/render/fragment_occlusion_sample.shader"/>
+		
+		<!-- textures -->
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		<texture name="deferred_normal" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="render_occlusion_ambient" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_occlusion_ambient.shader"
+			fragment="core/shaders/default/render/fragment_occlusion_ambient.shader"/>
+		
+		<!-- textures -->
+		<texture name="sample" pass="post" type="procedural"/>
+		<texture name="noise" pass="post" filter="point">core/textures/render_occlusion_noise.dds</texture>
+		
+		<!-- parameters -->
+		<parameter name="perspective" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="parameters" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="ambient_emitter" type="slider" shared="1">1.0</parameter>
+		<parameter name="ambient_receiver" type="slider" shared="1">1.0</parameter>
+		<parameter name="ambient_scale" type="slider" shared="1">1.0</parameter>
+		<parameter name="ambient_power" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_occlusion_ambient_hblur" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="HBLUR"
+			vertex="core/shaders/default/render/vertex_occlusion_ambient_blur.shader"
+			fragment="core/shaders/default/render/fragment_occlusion_ambient_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="sample" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="threshold" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_occlusion_ambient_vblur" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="VBLUR"
+			vertex="core/shaders/default/render/vertex_occlusion_ambient_blur.shader"
+			fragment="core/shaders/default/render/fragment_occlusion_ambient_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="sample" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="threshold" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_occlusion_color" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_occlusion_color.shader"
+			fragment="core/shaders/default/render/fragment_occlusion_color.shader"/>
+		
+		<!-- textures -->
+		<texture name="screen_color" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="render_occlusion_light" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_occlusion_light.shader"
+			fragment="core/shaders/default/render/fragment_occlusion_light.shader"/>
+		
+		<!-- textures -->
+		<texture name="sample" pass="post" type="procedural"/>
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="noise" pass="post" filter="point">core/textures/render_occlusion_noise.dds</texture>
+		
+		<!-- parameters -->
+		<parameter name="perspective" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="parameters" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="light_emitter" type="slider" shared="1">1.0</parameter>
+		<parameter name="light_receiver" type="slider" shared="1">1.0</parameter>
+		<parameter name="light_scale" type="slider" shared="1">1.0</parameter>
+		<parameter name="light_power" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_occlusion_light_hblur" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="HBLUR"
+			vertex="core/shaders/default/render/vertex_occlusion_light_blur.shader"
+			fragment="core/shaders/default/render/fragment_occlusion_light_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="sample" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="threshold" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_occlusion_light_vblur" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="VBLUR"
+			vertex="core/shaders/default/render/vertex_occlusion_light_blur.shader"
+			fragment="core/shaders/default/render/fragment_occlusion_light_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="sample" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		<texture name="deferred_color" pass="post" type="procedural"/>
+		<texture name="screen_color" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="threshold" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<!--
+	/* Scattering material
+	 */
+	-->
+	<material name="render_scattering_sample" hidden="1">
+		
+		<!-- states -->
+		<state name="sun" type="toggle">0</state>
+		<state name="multisample" type="toggle">0</state>
+		<state name="inscattering" type="toggle">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			sun_defines=",SUN"
+			multisample_defines=",MULTISAMPLE"
+			inscattering_defines=",INSCATTERING"
+			vertex="core/shaders/default/render/vertex_scattering_sample.shader"
+			fragment="core/shaders/default/render/fragment_scattering_sample.shader"/>
+		
+		<!-- textures -->
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="power" type="slider" shared="1">1.0</parameter>
+		<parameter name="sun_color" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="sun_angle" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="perspective" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="up_direction" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="light_direction" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="height_falloff" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="greenstein" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="ray_beta" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="mie_beta" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="ray_dash" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="mie_dash" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+	<!--
+	/* Volumetric materials
+	 */
+	-->
+	<material name="render_volumetric_sample" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_volumetric_sample.shader"
+			fragment="core/shaders/default/render/fragment_volumetric_sample.shader"/>
+		
+		<!-- textures -->
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="render_volumetric_shadow" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_volumetric_shadow.shader"
+			fragment="core/shaders/default/render/fragment_volumetric_shadow.shader"/>
+		
+		<!-- textures -->
+		<texture name="sample" pass="post" type="procedural"/>
+		<texture name="noise" pass="post" filter="linear">core/textures/render_volumetric_noise.dds</texture>
+		
+		<!-- parameters -->
+		<parameter name="texcoord" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="attenuation" type="slider" shared="1">1.0</parameter>
+		<parameter name="exposure" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<!--
+	/* Refraction material
+	 */
+	-->
+	<material name="render_refraction_sample" hidden="1">
+		
+		<!-- states -->
+		<state name="dispersion" type="toggle">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			dispersion_defines=",DISPERSION"
+			vertex="core/shaders/default/render/vertex_refraction_sample.shader"
+			fragment="core/shaders/default/render/fragment_refraction_sample.shader"/>
+		
+		<!-- textures -->
+		<texture name="screen_color" pass="post" type="procedural"/>
+		<texture name="refraction" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="dispersion" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+	<!--
+	/* Glow materials
+	 */
+	-->
+	<material name="render_glow_sample" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_glow_sample.shader"
+			fragment="core/shaders/default/render/fragment_glow_sample.shader"/>
+		
+		<!-- textures -->
+		<texture name="screen_color" pass="post" type="procedural"/>
+		<texture name="deferred_color" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="threshold" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_glow_hblur" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="HBLUR"
+			vertex="core/shaders/default/render/vertex_glow_blur.shader"
+			fragment="core/shaders/default/render/fragment_glow_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="render_glow_vblur" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="VBLUR"
+			vertex="core/shaders/default/render/vertex_glow_blur.shader"
+			fragment="core/shaders/default/render/fragment_glow_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="render_glow_composite" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_glow_composite.shader"
+			fragment="core/shaders/default/render/fragment_glow_composite.shader"/>
+		
+		<!-- textures -->
+		<texture name="small" pass="post" type="procedural"/>
+		<texture name="medium" pass="post" type="procedural"/>
+		<texture name="large" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="small_exposure" type="slider" shared="1">1.0</parameter>
+		<parameter name="medium_exposure" type="slider" shared="1">1.0</parameter>
+		<parameter name="large_exposure" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<!--
+	/* DOF materials
+	 */
+	-->
+	<material name="render_dof_sample" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_dof_sample.shader"
+			fragment="core/shaders/default/render/fragment_dof_sample.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="blur_range" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+	<material name="render_dof_hblur" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="HBLUR"
+			vertex="core/shaders/default/render/vertex_dof_blur.shader"
+			fragment="core/shaders/default/render/fragment_dof_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="blur_radius" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_dof_vblur" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="VBLUR"
+			vertex="core/shaders/default/render/vertex_dof_blur.shader"
+			fragment="core/shaders/default/render/fragment_dof_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="blur_radius" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_dof_hextrude" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="HEXTRUDE"
+			vertex="core/shaders/default/render/vertex_dof_extrude.shader"
+			fragment="core/shaders/default/render/fragment_dof_extrude.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="blur_radius" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_dof_vextrude" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="VEXTRUDE"
+			vertex="core/shaders/default/render/vertex_dof_extrude.shader"
+			fragment="core/shaders/default/render/fragment_dof_extrude.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="blur_radius" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<!--
+	/* HDR materials
+	 */
+	-->
+	<material name="render_hdr_sample" hidden="1">
+		
+		<!-- states -->
+		<state name="glow" type="toggle">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			glow_defines=",GLOW"
+			vertex="core/shaders/default/render/vertex_hdr_sample.shader"
+			fragment="core/shaders/default/render/fragment_hdr_sample.shader"/>
+		
+		<!-- textures -->
+		<texture name="screen_color" pass="post" type="procedural"/>
+		<texture name="glow" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="render_hdr_average" hidden="1">
+		
+		<!-- states -->
+		<state name="quadratic" type="toggle">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			quadratic_defines=",QUADRATIC"
+			vertex="core/shaders/default/render/vertex_hdr_average.shader"
+			fragment="core/shaders/default/render/fragment_hdr_average.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="render_hdr_scale" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_hdr_scale.shader"
+			fragment="core/shaders/default/render/fragment_hdr_scale.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="render_hdr_luminance" hidden="1">
+		
+		<!-- states -->
+		<state name="quadratic" type="toggle">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			quadratic_defines=",QUADRATIC"
+			vertex="core/shaders/default/render/vertex_hdr_luminance.shader"
+			fragment="core/shaders/default/render/fragment_hdr_luminance.shader"/>
+		
+		<!-- textures -->
+		<texture name="average" pass="post" type="procedural"/>
+		<texture name="luminance" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="exposure" type="slider" shared="1">1.0</parameter>
+		<parameter name="interpolation" type="slider" shared="1">1.0</parameter>
+		<parameter name="min_luminance" type="slider" shared="1">1.0</parameter>
+		<parameter name="max_luminance" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_hdr_bright" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_hdr_bright.shader"
+			fragment="core/shaders/default/render/fragment_hdr_bright.shader"/>
+		
+		<!-- textures -->
+		<texture name="sample" pass="post" type="procedural"/>
+		<texture name="luminance" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="filmic_curve" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="filmic_white" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="threshold" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_hdr_hblur" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="HBLUR"
+			vertex="core/shaders/default/render/vertex_hdr_blur.shader"
+			fragment="core/shaders/default/render/fragment_hdr_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="render_hdr_vblur" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="VBLUR"
+			vertex="core/shaders/default/render/vertex_hdr_blur.shader"
+			fragment="core/shaders/default/render/fragment_hdr_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="render_hdr_composite" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_hdr_composite.shader"
+			fragment="core/shaders/default/render/fragment_hdr_composite.shader"/>
+		
+		<!-- textures -->
+		<texture name="small" pass="post" type="procedural"/>
+		<texture name="medium" pass="post" type="procedural"/>
+		<texture name="large" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="small_exposure" type="slider" shared="1">1.0</parameter>
+		<parameter name="medium_exposure" type="slider" shared="1">1.0</parameter>
+		<parameter name="large_exposure" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_hdr_normalize" hidden="1">
+		
+		<!-- states -->
+		<state name="quadratic" type="toggle">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			quadratic_defines=",QUADRATIC"
+			vertex="core/shaders/default/render/vertex_hdr_normalize.shader"
+			fragment="core/shaders/default/render/fragment_hdr_normalize.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="luminance" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="bright_exposure" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_hdr_cross" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_hdr_cross.shader"
+			fragment="core/shaders/default/render/fragment_hdr_cross.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="color" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="direction" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="threshold" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_hdr_bokeh" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_hdr_bokeh.shader"
+			geometry="core/shaders/default/render/geometry_hdr_bokeh.shader"
+			fragment="core/shaders/default/render/fragment_hdr_bokeh.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		<texture name="iris" pass="post" filter="linear">core/textures/render_hdr_bokeh_iris.dds</texture>
+		
+		<!-- parameters -->
+		<parameter name="color" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="threshold" type="slider" shared="1">1.0</parameter>
+		<parameter name="far_blur_range" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="near_blur_range" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+	<material name="render_hdr_shaft" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_hdr_shaft.shader"
+			fragment="core/shaders/default/render/fragment_hdr_shaft.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="noise" pass="post" filter="linear">core/textures/render_hdr_shaft_noise.dds</texture>
+		
+		<!-- parameters -->
+		<parameter name="color" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="texcoord" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="threshold" type="slider" shared="1">1.0</parameter>
+		<parameter name="attenuation" type="slider" shared="1">1.0</parameter>
+	</material>
+	
+	<material name="render_hdr_lens" hidden="1">
+		
+		<!-- states -->
+		<state name="dispersion" type="toggle">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			dispersion_defines=",DISPERSION"
+			vertex="core/shaders/default/render/vertex_hdr_lens.shader"
+			fragment="core/shaders/default/render/fragment_hdr_lens.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="vignette" pass="post" filter="linear" wrap="clamp">core/textures/render_hdr_lens_vignette.dds</texture>
+		
+		<!-- parameters -->
+		<parameter name="color" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="texcoord" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="threshold" type="slider" shared="1">1.0</parameter>
+		<parameter name="dispersion" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+	<!--
+	/* Fade material
+	 */
+	-->
+	<material name="render_fade" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/render/vertex_fade.shader"
+			fragment="core/shaders/default/render/fragment_fade.shader"/>
+		
+		<!-- parameters -->
+		<parameter name="color" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+	<!--
+	/* Composite material
+	 */
+	-->
+	<material name="render_composite">
+		
+		<!-- states -->
+		<state name="auxiliary_mode" type="switch" items="none,overlay">0</state>
+		<state name="blur_mask" type="switch" items="none,red">0</state>
+		<state name="dof_mask" type="switch" items="none,green">0</state>
+		<state name="auxiliary" hidden="1" type="toggle">0</state>
+		<state name="refraction" hidden="1" type="toggle">0</state>
+		<state name="motion_blur" hidden="1" type="switch">0</state>
+		<state name="glow" hidden="1" type="toggle">0</state>
+		<state name="dof" hidden="1" type="toggle">0</state>
+		<state name="hdr" hidden="1" type="switch">0</state>
+		<state name="lens" hidden="1" type="toggle">0</state>
+		<state name="lut" hidden="1" type="toggle">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			auxiliary_mode_defines=",AUXILIARY_OVERLAY"
+			blur_mask_defines=",BLUR_RED"
+			dof_mask_defines=",DOF_GREEN"
+			auxiliary_defines=",AUXILIARY"
+			refraction_defines=",REFRACTION"
+			motion_blur_defines=",MOTION_BLUR,VELOCITY_BLUR"
+			glow_defines=",GLOW"
+			dof_defines=",DOF"
+			hdr_defines=",HDR,HDR_LENS"
+			lut_defines=",LUT"
+			vertex="core/shaders/default/render/vertex_composite.shader"
+			fragment="core/shaders/default/render/fragment_composite.shader"/>
+		
+		<!-- textures -->
+		<texture name="screen_color" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		<texture name="auxiliary" pass="post" type="procedural"/>
+		<texture name="refraction" pass="post" type="procedural"/>
+		<texture name="velocity" pass="post" type="procedural"/>
+		<texture name="glow" pass="post" type="procedural"/>
+		<texture name="dof" pass="post" type="procedural"/>
+		<texture name="luminance" pass="post" type="procedural"/>
+		<texture name="hdr" pass="post" type="procedural"/>
+		<texture name="lens" pass="post" type="procedural"/>
+		<texture name="dirt" pass="post" type="procedural"/>
+		<texture name="color" pass="post" unit="14" type="procedural"/>
+		<texture name="dithering" pass="post" filter="point">core/textures/render_composite_dithering.dds</texture>
+		
+		<!-- parameters -->
+		<parameter name="perspective" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="old_imodelview_x" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="old_imodelview_y" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="old_imodelview_z" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="modelviewprojection_x" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="modelviewprojection_y" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="modelviewprojection_w" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="motion_blur_scale" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="far_blur_range" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="near_blur_range" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="filmic_curve" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="filmic_white" hidden="1" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+</materials>

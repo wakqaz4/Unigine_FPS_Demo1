@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<materials version="1.00" editable="0">
+	
+	<!--
+	/**************************************************************************\
+	*
+	* Gui materials
+	*
+	\**************************************************************************/
+	-->
+	
+	<!--
+	/* Gui base material
+	 */
+	-->
+	<material name="gui_base" editable="0">
+		
+		<!-- options -->
+		<options cast_shadow="0" cast_world_shadow="0"/>
+		
+		<!-- states -->
+		<state name="alpha_fade" hidden="1" type="toggle">0</state>
+		<state name="deferred" type="switch" items="none,default">1</state>
+		<state name="auxiliary" type="switch" items="none,default">0</state>
+		<state name="light_spot" type="switch" items="none,default">1</state>
+		<state name="light_omni" type="switch" items="none,default">1</state>
+		<state name="light_proj" type="switch" items="none,default">1</state>
+		<state name="light_world" type="switch" items="none,default">1</state>
+		<state name="mode" type="switch" items="default,flash,yuv">0</state>
+		<state name="emission" hidden="1" type="toggle">1</state>
+		
+		<!-- wireframe shaders -->
+		<shader pass="wireframe" object="gui"
+			defines="BASE_WIREFRAME"
+			vertex="core/shaders/default/gui/vertex_base.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- deferred shaders -->
+		<shader pass="deferred" object="gui"
+			defines="BASE_DEFERRED"
+			alpha_test_defines=",ALPHA_TEST"
+			alpha_fade_defines=",ALPHA_FADE"
+			mode_defines=",FLASH,YUV"
+			deferred="1"
+			vertex="core/shaders/default/gui/vertex_base.shader"
+			fragment="core/shaders/default/gui/fragment_base_deferred.shader"/>
+		
+		<!-- auxiliary shaders -->
+		<shader pass="auxiliary" object="gui"
+			defines="BASE_AUXILIARY"
+			alpha_fade_defines=",ALPHA_FADE"
+			auxiliary="1"
+			vertex="core/shaders/default/gui/vertex_base.shader"
+			fragment="core/shaders/default/gui/fragment_base_auxiliary.shader"/>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient" object="gui"
+			defines="BASE_AMBIENT,AMBIENT"
+			alpha_test_defines=",ALPHA_TEST"
+			alpha_fade_defines=",ALPHA_FADE"
+			mode_defines=",FLASH,YUV"
+			vertex="core/shaders/default/gui/vertex_base.shader"
+			fragment="core/shaders/default/gui/fragment_base_ambient.shader"/>
+		
+		<!-- light spot shaders -->
+		<shader pass="light_spot" object="gui"
+			defines="BASE_LIGHT_SPOT,SPOT"
+			alpha_fade_defines=",ALPHA_FADE"
+			light_spot="1"
+			vertex="core/shaders/default/gui/vertex_base.shader"
+			fragment="core/shaders/default/gui/fragment_base_light_spot.shader"/>
+		
+		<!-- light omni shaders -->
+		<shader pass="light_omni" object="gui"
+			defines="BASE_LIGHT_OMNI,OMNI"
+			receive_shadow_defines=",SHADOW"
+			alpha_fade_defines=",ALPHA_FADE"
+			light_omni="1"
+			vertex="core/shaders/default/gui/vertex_base.shader"
+			fragment="core/shaders/default/gui/fragment_base_light_omni.shader"/>
+		
+		<!-- light proj shaders -->
+		<shader pass="light_proj" object="gui"
+			defines="BASE_LIGHT_PROJ,PROJ"
+			receive_shadow_defines=",SHADOW"
+			alpha_fade_defines=",ALPHA_FADE"
+			light_proj="1"
+			vertex="core/shaders/default/gui/vertex_base.shader"
+			fragment="core/shaders/default/gui/fragment_base_light_proj.shader"/>
+		
+		<!-- light world shaders -->
+		<shader pass="light_world" object="gui"
+			defines="BASE_LIGHT_WORLD,WORLD"
+			receive_world_shadow_defines=",SHADOW"
+			alpha_fade_defines=",ALPHA_FADE"
+			light_world="1"
+			vertex="core/shaders/default/gui/vertex_base.shader"
+			fragment="core/shaders/default/gui/fragment_base_light_world.shader"/>
+		
+		<!-- bindings -->
+		<bind object="gui_mesh" to="gui" defines="GUI_MESH"/>
+		
+		<!-- textures -->
+		<texture name="color" type="procedural"/>
+		<texture name="normal" format="signed" anisotropy="1">core/textures/gui_base_normal.dds</texture>
+		<texture name="alpha_fade" alpha_fade="1" unit="10" type="alpha_fade"/>
+		<texture name="deferred_light" pass="ambient" unit="15" type="deferred_light"/>
+		<texture name="light_image" pass="light_omni,light_proj,light_world" unit="11" type="light_image"/>
+		<texture name="light_color" pass="light_omni,light_proj,light_world" type="light_color"/>
+		<texture name="light_depth" pass="light_omni,light_proj,light_world" type="light_depth"/>
+		<texture name="light_noise" pass="light_omni,light_proj,light_world" type="light_noise"/>
+		<texture name="light_vcube" pass="light_omni" type="light_vcube"/>
+		
+		<!-- parameters -->
+		<parameter name="auxiliary_color" auxiliary="1" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="emission_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="glow_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">0.0</parameter>
+		<parameter name="diffuse_color" type="color" shared="1">0.0 0.0 0.0 1.0</parameter>
+		<parameter name="diffuse_scale" type="slider" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="normal_scale" type="slider" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="specular_color" type="color" shared="1">0.1 0.1 0.1 1.0</parameter>
+		<parameter name="specular_scale" type="slider" min="0.0" max="8.0" flags="max_expand">1.0</parameter>
+		<parameter name="specular_power" type="slider" min="0.0" max="2.0" flags="log10,max_expand">16.0</parameter>
+	</material>
+	
+</materials>

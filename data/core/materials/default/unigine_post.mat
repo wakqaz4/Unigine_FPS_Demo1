@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<materials version="1.00" editable="0">
+	
+	<!--
+	/**************************************************************************\
+	*
+	* Post materials
+	*
+	\**************************************************************************/
+	-->
+	
+	<!--
+	/* 2D blur materials
+	 */
+	-->
+	<material name="post_hblur_2d">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="HBLUR"
+			vertex="core/shaders/default/post/vertex_blur_2d.shader"
+			fragment="core/shaders/default/post/fragment_blur_2d.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="post_vblur_2d">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="VBLUR"
+			vertex="core/shaders/default/post/vertex_blur_2d.shader"
+			fragment="core/shaders/default/post/fragment_blur_2d.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<!--
+	/* Cube blur materials
+	 */
+	-->
+	<material name="post_hblur_cube">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="HBLUR"
+			vertex="core/shaders/default/post/vertex_blur_cube.shader"
+			fragment="core/shaders/default/post/fragment_blur_cube.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="post_vblur_cube">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="VBLUR"
+			vertex="core/shaders/default/post/vertex_blur_cube.shader"
+			fragment="core/shaders/default/post/fragment_blur_cube.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<!--
+	/* Mask blur materials
+	 */
+	-->
+	<material name="post_hblur_mask">
+		
+		<!-- states -->
+		<state name="mask" type="switch" items="red,green,blue,alpha">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="HBLUR"
+			mask_defines="RED,GREEN,BLUE,ALPHA"
+			vertex="core/shaders/default/post/vertex_blur_mask.shader"
+			fragment="core/shaders/default/post/fragment_blur_mask.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="auxiliary" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="post_vblur_mask">
+		
+		<!-- states -->
+		<state name="mask" type="switch" items="red,green,blue,alpha">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="VBLUR"
+			mask_defines="RED,GREEN,BLUE,ALPHA"
+			vertex="core/shaders/default/post/vertex_blur_mask.shader"
+			fragment="core/shaders/default/post/fragment_blur_mask.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="auxiliary" pass="post" type="procedural"/>
+	</material>
+	
+	<!--
+	/* Gauss blur material
+	 */
+	-->
+	<material name="post_hblur_gauss">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="HBLUR"
+			vertex="core/shaders/default/post/vertex_blur_gauss.shader"
+			fragment="core/shaders/default/post/fragment_blur_gauss.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="radius" type="slider" shared="1" min="1.0" max="16.0" flags="max_expand">4.0</parameter>
+	</material>
+	
+	<material name="post_vblur_gauss">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="VBLUR"
+			vertex="core/shaders/default/post/vertex_blur_gauss.shader"
+			fragment="core/shaders/default/post/fragment_blur_gauss.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="radius" type="slider" shared="1" min="1.0" max="16.0" flags="max_expand">4.0</parameter>
+	</material>
+	
+	<!--
+	/* Radial blur material
+	 */
+	-->
+	<material name="post_blur_radial">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/post/vertex_blur_radial.shader"
+			fragment="core/shaders/default/post/fragment_blur_radial.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="radius" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">1.0</parameter>
+	</material>
+	
+	<!--
+	/* Sobel filter material
+	 */
+	-->
+	<material name="post_filter_sobel">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/post/vertex_filter_sobel.shader"
+			fragment="core/shaders/default/post/fragment_filter_sobel.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="threshold" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">1.0</parameter>
+		<parameter name="scale" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">1.0</parameter>
+	</material>
+	
+	<!--
+	/* rgb2yuv filter material
+	 */
+	-->
+	<material name="post_filter_rgb2yuv">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/post/vertex_filter_rgb2yuv.shader"
+			fragment="core/shaders/default/post/fragment_filter_rgb2yuv.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<!--
+	/* rgb2rgbl filter material
+	 */
+	-->
+	<material name="post_filter_rgb2rgbl">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/post/vertex_filter_rgb2rgbl.shader"
+			fragment="core/shaders/default/post/fragment_filter_rgb2rgbl.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<!--
+	/* AntiAliasing filter material
+	 */
+	-->
+	<material name="post_filter_antialiasing">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/post/vertex_filter_antialiasing.shader"
+			fragment="core/shaders/default/post/fragment_filter_antialiasing.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="sample_offset" type="slider" shared="1" min="0.0" max="1.0">0.5</parameter>
+	</material>
+	
+	<!--
+	/* Scattering filter material
+	 */
+	-->
+	<material name="post_filter_scattering">
+		
+		<!-- states -->
+		<state name="mask" type="switch" items="red,green,blue,alpha">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			mask_defines="RED,GREEN,BLUE,ALPHA"
+			vertex="core/shaders/default/post/vertex_filter_scattering.shader"
+			fragment="core/shaders/default/post/fragment_filter_scattering.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		<texture name="auxiliary" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="screen_radius" type="slider" shared="1" min="0.0" max="0.1" flags="max_expand">0.015</parameter>
+		<parameter name="sample_radius" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="perspective" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="direct_color" type="color" shared="1">0.22 0.43 0.63 1.0</parameter>
+		<parameter name="scattering_color" type="color" shared="1">0.78 0.57 0.37 1.0</parameter>
+	</material>
+	
+	<!--
+	/* Reflection filter material
+	 */
+	-->
+	<material name="post_filter_reflection">
+		
+		<!-- states -->
+		<state name="mask" type="switch" items="red,green,blue,alpha">0</state>
+		<state name="samples" type="switch" items="16,32,64,128">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			mask_defines="RED,GREEN,BLUE,ALPHA"
+			samples_defines="SAMPLES_16,SAMPLES_32,SAMPLES_64,SAMPLES_128"
+			vertex="core/shaders/default/post/vertex_filter_reflection.shader"
+			fragment="core/shaders/default/post/fragment_filter_reflection.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		<texture name="deferred_normal" pass="post" type="procedural"/>
+		<texture name="auxiliary" pass="post" type="procedural"/>
+		<texture name="vignette" pass="post" filter="linear" wrap="clamp">core/textures/post_filter_reflection_vignette.dds</texture>
+		
+		<!-- parameters -->
+		<parameter name="perspective" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="reflection_step" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="reflection_power" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">0.5</parameter>
+		<parameter name="reflection_color" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="fresnel_bias" type="slider" shared="1" min="0.0" max="1.0">1.0</parameter>
+		<parameter name="fresnel_power" type="slider" shared="1" min="0.0" max="1.0" flags="log10,max_expand">5.0</parameter>
+	</material>
+	
+	<!--
+	/* Wet filter material
+	 */
+	-->
+	<material name="post_filter_wet">
+		
+		<!-- states -->
+		<state name="mask" type="switch" items="red,green,blue,alpha">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			mask_defines="RED,GREEN,BLUE,ALPHA"
+			vertex="core/shaders/default/post/vertex_filter_wet.shader"
+			fragment="core/shaders/default/post/fragment_filter_wet.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		<texture name="deferred_normal" pass="post" type="procedural"/>
+		<texture name="auxiliary" pass="post" type="procedural"/>
+		<texture name="normal" pass="post" format="signed">core/textures/post_filter_wet_normal.dds</texture>
+		<texture name="reflection" pass="post">core/textures/post_filter_wet_reflection.dds</texture>
+		
+		<!-- parameters -->
+		<parameter name="perspective" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="normal_transform" type="expression" shared="1">vec4(1.0f,1.0f,0.0f,time)</parameter>
+		<parameter name="normal_threshold" type="slider" shared="1" min="0.0" max="2.0" flags="max_expand">1.0</parameter>
+		<parameter name="reflection_distance" type="slider" shared="1" min="0.0" max="1000.0">100.0</parameter>
+		<parameter name="reflection_normal" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="reflection_color" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="reflection_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="refraction_normal" type="slider" shared="1" min="0.0" max="0.1" flags="max_expand">0.05</parameter>
+		<parameter name="fresnel_bias" type="slider" shared="1" min="0.0" max="1.0">1.0</parameter>
+		<parameter name="fresnel_power" type="slider" shared="1" min="0.0" max="1.0" flags="log10,max_expand">5.0</parameter>
+	</material>
+	
+	<!--
+	/* Deferred materials
+	 */
+	-->
+	<material name="post_deferred_depth" hidden="1">
+		
+		<!-- states -->
+		<state name="decode" type="toggle">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			decode_defines=",DECODE"
+			vertex="core/shaders/default/post/vertex_deferred_depth.shader"
+			fragment="core/shaders/default/post/fragment_deferred_depth.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="post_deferred_color" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="MULTISAMPLE"
+			vertex="core/shaders/default/post/vertex_deferred_sample.shader"
+			fragment="core/shaders/default/post/fragment_deferred_sample.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_color" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="post_deferred_normal" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="MULTISAMPLE"
+			vertex="core/shaders/default/post/vertex_deferred_sample.shader"
+			fragment="core/shaders/default/post/fragment_deferred_sample.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_normal" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="post_deferred_occlusion" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/post/vertex_deferred_sample.shader"
+			fragment="core/shaders/default/post/fragment_deferred_sample.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_occlusion" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="post_deferred_light" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/post/vertex_deferred_sample.shader"
+			fragment="core/shaders/default/post/fragment_deferred_sample.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_light" pass="post" type="procedural"/>
+	</material>
+	
+	<!--
+	/* Stereo materials
+	 */
+	-->
+	<material name="post_stereo_separate" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/post/vertex_stereo_separate.shader"
+			fragment="core/shaders/default/post/fragment_stereo_separate.shader"/>
+		
+		<!-- textures -->
+		<texture name="color_0" pass="post" type="procedural"/>
+		<texture name="color_1" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="post_stereo_horizontal" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/post/vertex_stereo_horizontal.shader"
+			fragment="core/shaders/default/post/fragment_stereo_horizontal.shader"/>
+		
+		<!-- textures -->
+		<texture name="color_0" pass="post" type="procedural"/>
+		<texture name="color_1" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="post_stereo_vertical" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/post/vertex_stereo_vertical.shader"
+			fragment="core/shaders/default/post/fragment_stereo_vertical.shader"/>
+		
+		<!-- textures -->
+		<texture name="color_0" pass="post" type="procedural"/>
+		<texture name="color_1" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="post_stereo_interlaced" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/post/vertex_stereo_interlaced.shader"
+			fragment="core/shaders/default/post/fragment_stereo_interlaced.shader"/>
+		
+		<!-- textures -->
+		<texture name="color_0" pass="post" type="procedural"/>
+		<texture name="color_1" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="post_stereo_anaglyph" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/post/vertex_stereo_anaglyph.shader"
+			fragment="core/shaders/default/post/fragment_stereo_anaglyph.shader"/>
+		
+		<!-- textures -->
+		<texture name="color_0" pass="post" type="procedural"/>
+		<texture name="color_1" pass="post" type="procedural"/>
+	</material>
+	
+	<material name="post_stereo_replicate" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/post/vertex_stereo_replicate.shader"
+			fragment="core/shaders/default/post/fragment_stereo_replicate.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+	</material>
+	
+	<!--
+	/* SSR
+	 */
+	-->
+	<material name="ssr_calculate" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			vertex="core/shaders/default/pbr/vertex/ssr.shader"
+			fragment="core/shaders/default/pbr/fragment/ssr.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		<texture name="deferred_normal" pass="post" type="procedural"/>
+		<texture name="auxiliary" pass="post" type="procedural"/>
+		<texture name="vignette" pass="post" filter="linear" wrap="clamp">core/textures/post_filter_reflection_vignette.dds</texture>
+		
+		<!-- parameters -->
+		<parameter name="perspective" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="samples" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">16</parameter>
+		<parameter name="reflection_step" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="reflection_inc_step" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="vignette_scale" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="stretching" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+	</material>
+	
+	<material name="ssr_blur_h" hidden="1">
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="HBLUR"
+			vertex="core/shaders/default/pbr/vertex/ssr.shader"
+			fragment="core/shaders/default/pbr/fragment/ssr_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		<texture name="deferred_normal" pass="post" type="procedural"/>
+		<texture name="auxiliary" pass="post" type="procedural"/>
+		
+		<!-- parameters -->
+		<parameter name="perspective" type="constant" shared="1">1.0 1.0 1.0 1.0</parameter>
+	</material>
+	
+	<material name="screen_space_reflections">
+		<state name="filter_width" type="switch" hidden="1" items="width">0</state>
+		<state name="filter_height" type="switch" hidden="1" items="height">0</state>
+		
+		<!-- shaders -->
+		<shader pass="post"
+			defines="VBLUR,FINAL"
+			vertex="core/shaders/default/pbr/vertex/ssr.shader"
+			fragment="core/shaders/default/pbr/fragment/ssr_blur.shader"/>
+		
+		<!-- textures -->
+		<texture name="color" pass="post" type="procedural"/>
+		<texture name="deferred_depth" pass="post" type="procedural"/>
+		<texture name="deferred_normal" pass="post" type="procedural"/>
+		<texture name="auxiliary" pass="post" type="procedural"/>
+		<texture name="vignette" pass="post" filter="linear" wrap="clamp">core/textures/post_filter_reflection_vignette.dds</texture>
+		<texture name="color_reflection" pass="post" type="filter" materials="ssr_calculate,ssr_blur_h"/>
+		
+		<!-- parameters -->
+		<parameter name="perspective" type="constant" shared="1">0.918348 1.73205 0 0</parameter>
+		<parameter name="samples" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">64</parameter>
+		<parameter name="reflection_step" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">0.030</parameter>
+		<parameter name="reflection_inc_step" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">500.0</parameter>
+		<parameter name="vignette_scale" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">10.0</parameter>
+		<parameter name="stretching" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">20.0</parameter>
+		
+	</material>
+	
+</materials>

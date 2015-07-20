@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_properties.ui
+ * Desc:    Unigine editor
+ * Version: 1.08
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Properties
+ */
+-->
+<window name="Properties::window" export="1">
+	<text>Properties</text>
+	<vbox align="expand">
+		<hpaned name="Properties::window_hp" export="1" value="-32767" fixed="1" align="expand">
+			
+			<vbox align="expand">
+				
+				<vbox>
+					<hbox align="expand">
+						<icon name="Properties::libraries_i" export="1" texture="editor/gui/properties_libraries.png">
+							<tooltip>List of preloaded property libraries</tooltip>
+							<callback type="clicked">Properties::libraries_clicked</callback>
+						</icon>
+						<icon name="Properties::save_i" export="1" texture="editor/gui/editor_save.png">
+							<tooltip>Save properties</tooltip>
+							<callback type="clicked">Properties::save_clicked</callback>
+						</icon>
+						<icon name="Properties::clone_i" export="1" texture="editor/gui/properties_clone.png" align="right">
+							<tooltip>Clone property</tooltip>
+							<callback type="clicked">Properties::clone_clicked</callback>
+						</icon>
+						<icon name="Properties::inherit_i" export="1" texture="editor/gui/properties_inherit.png">
+							<tooltip>Inherit property</tooltip>
+							<callback type="clicked">Properties::inherit_clicked</callback>
+						</icon>
+						<icon name="Properties::move_i" export="1" texture="editor/gui/properties_move.png">
+							<tooltip>Rename/move property</tooltip>
+							<callback type="clicked">Properties::move_clicked</callback>
+						</icon>
+						<icon name="Properties::remove_i" export="1" texture="editor/gui/properties_remove.png">
+							<tooltip>Remove property</tooltip>
+							<callback type="clicked">Properties::remove_clicked</callback>
+						</icon>
+						<icon name="Properties::assign_i" export="1" texture="editor/gui/properties_assign.png">
+							<tooltip>Assign property</tooltip>
+							<callback type="clicked">Properties::assign_clicked</callback>
+						</icon>
+					</hbox>
+				</vbox>
+				
+				<vbox space_y="4">
+					<gridbox align="expand" columns="2" space="4">
+						<label align="right"><text>Library:</text></label>
+						<combobox name="Properties::libraries_cb" export="1" align="expand">
+							<callback type="changed">Properties::libraries_changed</callback>
+						</combobox>
+						<label align="right"><text>Search:</text></label>
+						<editline name="Properties::name_el" export="1" align="expand">
+							<tooltip>Type first letters of property name here</tooltip>
+							<callback type="changed">Properties::name_changed</callback>
+							<callback type="pressed">Properties::name_pressed</callback>
+							<callback type="focus_in">Properties::name_focus_in</callback>
+							<callback type="focus_out">Properties::name_focus_out</callback>
+						</editline>
+					</gridbox>
+				</vbox>
+				
+				<scrollbox align="expand" height="200">
+					<treebox name="Properties::properties_tb" export="1" align="expand">
+						<callback type="changed">Properties::properties_changed</callback>
+						<callback type="double_clicked">Properties::properties_double_clicked</callback>
+					</treebox>
+				</scrollbox>
+				
+			</vbox>
+			
+			<tabbox name="Properties::property_tb" export="1" align="expand">
+				
+				<tab>
+					<text>Common</text>
+					<vbox name="Properties::common_vb" export="1" space_x="4">
+						
+						<groupbox space="4">
+							<text>Info</text>
+							<gridbox align="left" columns="2" space="4">
+								<label align="right"><text>Library:</text></label>
+								<label name="Properties::info_library_l" export="1" align="left"/>
+								<label align="right"><text>Name:</text></label>
+								<label name="Properties::info_name_l" export="1" align="left"/>
+								<label align="right"><text>Parent:</text></label>
+								<label name="Properties::info_parent_l" export="1" align="left"/>
+								<label align="right"><text>Children:</text></label>
+								<label name="Properties::info_childs_l" export="1" align="left"/>
+							</gridbox>
+						</groupbox>
+						
+						<groupbox space="4">
+							<text>Options</text>
+							<gridbox align="expand" columns="2" space="4">
+								<checkbox name="Properties::intersection_cb" export="1" align="left,expand">
+									<tooltip>Enable intersection</tooltip>
+									<text>Intersection</text>
+									<callback type="clicked" string="intersection">Properties::option_clicked</callback>
+								</checkbox>
+								<checkbox name="Properties::collision_cb" export="1" align="left,expand">
+									<tooltip>Enable collision</tooltip>
+									<text>Collision</text>
+									<callback type="clicked" string="collision">Properties::option_clicked</callback>
+								</checkbox>
+							</gridbox>
+						</groupbox>
+						
+					</vbox>
+					
+					<hbox space="8">
+					  <gridbox align="center" columns="2" space="4">
+						<button name="Properties::copy_b" export="1">
+						  <text>Copy</text>
+						  <callback type="clicked">Properties::copy_clicked</callback>
+						  <tooltip>Copy all property settings</tooltip>
+						</button>
+						<button name="Properties::paste_b" export="1">
+						  <text>Paste</text>
+						  <callback type="clicked">Properties::paste_clicked</callback>
+						  <tooltip>Paste property settings</tooltip>
+						</button>
+					  </gridbox>
+					</hbox>
+				</tab>
+				
+				<tab>
+					<text>States</text>
+					<scrollbox align="expand" border="0" henabled="0">
+						<vbox name="Properties::states_vb" export="1" space="4"/>
+					</scrollbox>
+				</tab>
+				
+				<tab>
+					<text>Parameters</text>
+					<scrollbox align="expand" border="0" henabled="0">
+						<vbox name="Properties::parameters_vb" export="1" space="4"/>
+					</scrollbox>
+				</tab>
+				
+			</tabbox>
+			
+		</hpaned>
+	</vbox>
+</window>
+
+<!--
+/* Properties::Editor
+ */
+-->
+<dialog name="Properties::Editor::dialog" export="1">
+	<text>Assigned property</text>
+	<vbox space="4" align="expand">
+		<tabbox name="Properties::Editor::property_tb" export="1" align="expand">
+			
+			<tab>
+				<text>Common</text>
+				<vbox space_x="4">
+					
+					<groupbox space="4">
+						<text>Info</text>
+						<gridbox align="left" columns="2" space="4">
+							<label align="right"><text>Library:</text></label>
+							<label name="Properties::Editor::info_library_l" export="1" align="left"/>
+							<label align="right"><text>Name:</text></label>
+							<label name="Properties::Editor::info_name_l" export="1" align="left"/>
+						</gridbox>
+					</groupbox>
+					
+					<groupbox space="4">
+						<text>Options</text>
+						<gridbox align="expand" columns="2" space="4">
+							<checkbox name="Properties::Editor::intersection_cb" export="1" align="left,expand">
+								<text>Intersection</text>
+								<callback type="clicked" string="intersection">Properties::Editor::option_clicked</callback>
+							</checkbox>
+							<checkbox name="Properties::Editor::collision_cb" export="1" align="left,expand">
+								<text>Collision</text>
+								<callback type="clicked" string="collision">Properties::Editor::option_clicked</callback>
+							</checkbox>
+						</gridbox>
+					</groupbox>
+					
+					<hbox space="8">
+					  <gridbox align="center" columns="2" space="4">
+						<button>
+						  <text>Copy</text>
+						  <callback type="clicked">Properties::Editor::copy_clicked</callback>
+						  <tooltip>Copy all property settings</tooltip>
+						</button>
+						<button name="Properties::Editor::paste_b" export="1">
+						  <text>Paste</text>
+						  <callback type="clicked">Properties::Editor::paste_clicked</callback>
+						  <tooltip>Paste property settings</tooltip>
+						</button>
+					  </gridbox>
+					</hbox>
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>States</text>
+				<scrollbox align="expand" border="0" henabled="0">
+					<vbox space_x="4">
+						<gridbox name="Properties::Editor::states_gb" export="1" columns="3" space="4" align="expand"/>
+					</vbox>
+				</scrollbox>
+			</tab>
+			
+			<tab>
+				<text>Parameters</text>
+				<scrollbox align="expand" border="0" henabled="0">
+					<vbox space_x="4">
+						<gridbox name="Properties::Editor::parameters_gb" export="1" columns="3" space="4" align="expand"/>
+					</vbox>
+				</scrollbox>
+			</tab>
+			
+		</tabbox>
+	</vbox>
+</dialog>
+
+</ui>

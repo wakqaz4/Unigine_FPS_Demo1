@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_objects_terrain_parameters.ui
+ * Desc:    Unigine editor
+ * Version: 1.22
+ * Author:  Mikhail Lyubimov <alterego@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* ObjectTerrain Parameters
+ */
+-->
+<vbox name="Parameters::vb" export="1" space="4">
+	
+	<hbox>
+		<vbox space="3"/>
+		<label align="right">Grid: </label>
+		<label name="Parameters::grid_l" export="1" align="left">0</label>
+		
+		<vbox space="3"/>
+		<label align="right">Step: </label>
+		<label name="Parameters::step_l" export="1" align="left">0</label>
+		
+		<vbox space="3"/>
+		<label align="right">Chunks: </label>
+		<label name="Parameters::chunks_l" export="1" align="left">0</label>
+	</hbox>
+	
+	<vbox>
+		
+		<hbox align="expand">
+			<groupbox space="4" align="expand">
+				<text>Texture Resolution</text>
+				<gridbox columns="3" space="4">
+					
+					<label align="right">Refined diffuse:</label>
+					<combobox name="Parameters::refined_diffuse_resolution_cb" export="1"align="expand">
+						<text>128</text>
+						<text>256</text>
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+					</combobox>
+					<hbox>
+						<label align="left"> = </label>
+						<label name="Parameters::refined_diffuse_resolution_l" export="1" align="left">2</label>
+						<label align="left"> units/pixel</label>
+					</hbox>
+					
+					<label align="right">Refined normal:</label>
+					<combobox name="Parameters::refined_normal_resolution_cb" export="1" align="expand">
+						<text>128</text>
+						<text>256</text>
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+					</combobox>
+					<hbox>
+						<label align="left"> = </label>
+						<label name="Parameters::refined_normal_resolution_l" export="1" align="left">2</label>
+						<label align="left"> units/pixel</label>
+					</hbox>
+					
+					<label align="right">Refined mask:</label>
+					<combobox name="Parameters::refined_mask_resolution_cb" export="1" align="expand">
+						<text>128</text>
+						<text>256</text>
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+					</combobox>
+					<hbox>
+						<label align="left"> = </label>
+						<label name="Parameters::refined_mask_resolution_l" export="1" align="left">2</label>
+						<label align="left"> units/pixel</label>
+					</hbox>
+					
+					<hspacer align="expand"/>
+					<vbox/>
+					<vbox/>
+					
+					<label align="right">Coarse diffuse:</label>
+					<combobox name="Parameters::coarse_diffuse_resolution_cb" export="1" align="expand">
+						<text>128</text>
+						<text>256</text>
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+					</combobox>
+					<hbox>
+						<label align="left"> = </label>
+						<label name="Parameters::coarse_diffuse_resolution_l" export="1" align="left">2</label>
+						<label align="left"> units/pixel</label>
+					</hbox>
+					
+					<label align="right">Coarse normal:</label>
+					<combobox name="Parameters::coarse_normal_resolution_cb" export="1" align="expand">
+						<text>128</text>
+						<text>256</text>
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+					</combobox>
+					<hbox>
+						<label align="left"> = </label>
+						<label name="Parameters::coarse_normal_resolution_l" export="1" align="left">2</label>
+						<label align="left"> units/pixel</label>
+					</hbox>
+					
+					<label align="right">Coarse mask:</label>
+					<combobox name="Parameters::coarse_mask_resolution_cb" export="1" align="expand">
+						<text>128</text>
+						<text>256</text>
+						<text>512</text>
+						<text>1024</text>
+						<text>2048</text>
+						<text>4096</text>
+					</combobox>
+					<hbox>
+						<label align="left"> = </label>
+						<label name="Parameters::coarse_mask_resolution_l" export="1" align="left">2</label>
+						<label align="left"> units/pixel</label>
+					</hbox>
+				</gridbox>
+			</groupbox>
+		</hbox>
+		
+		<groupbox space="4" align="expand">
+			<text>LODs</text>
+			<gridbox columns="2" space="4" align="expand">
+				
+				<label align="right">Progression:</label>
+				<editline name="Parameters::coarse_distance_el" export="1" align="expand" validator="float"/>
+				
+				<label align="right">1st LOD:</label>
+				<editline name="Parameters::lod_distance_el" export="1" align="expand" validator="float"/>
+				
+				<label align="right">Visibility distance:</label>
+				<editline name="Parameters::visible_distance_el" export="1" align="expand" validator="float"/>
+				
+				<label align="right">Shadow distance:</label>
+				<editline name="Parameters::shadow_distance_el" export="1" align="expand" validator="float"/>
+				
+				<label align="right">Off-Camera shadow extension:</label>
+				<editline name="Parameters::shadow_radius_el" export="1" align="expand" validator="float"/>
+				
+				<label align="right">Flatness threshold:</label>
+				<editline name="Parameters::lod_threshold_el" export="1" align="expand" validator="float"/>
+			</gridbox>
+		</groupbox>
+		
+		<groupbox space="4" align="expand">
+			<text>File Structure</text>
+			
+			<gridbox columns="2" space="4" align="expand">
+				
+				<label align="right">Terrain:</label>
+				<label align="expand" name="Parameters::terrain_name_l" export="1">terrain</label>
+				
+				<label align="right">Root folder:</label>
+				<label align="expand" name="Parameters::root_folder_l" export="1"></label>
+				
+				<label align="right">Refined diffuse:</label>
+				<label align="expand" name="Parameters::refined_diffuse_name_l" export="1">%name/%xy_d</label>
+				
+				<label align="right">Refined normal:</label>
+				<label align="expand" name="Parameters::refined_normal_name_l" export="1">%name/%xy_n</label>
+				
+				<label align="right">Refined mask:</label>
+				<label align="expand" name="Parameters::refined_mask_name_l" export="1">%name/%xy_m</label>
+				
+				<label align="right">Refined index:</label>
+				<label align="expand" name="Parameters::refined_index_name_l" export="1">%name/%xy_i</label>
+				
+			</gridbox>
+		</groupbox>
+		<groupbox space="4" align="expand">
+			<text>Coarse Texture</text>
+			<gridbox columns="3" space="4" align="expand">
+				
+				<label align="right">Coarse diffuse:</label>
+				<editline align="expand" name="Parameters::coarse_diffuse_texture_el" export="1"></editline>
+				<hbox>
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked" widget="Parameters::coarse_diffuse_texture_el">Parameters::open_dialog_file</callback>
+					</icon>
+					<icon texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked" widget="Parameters::coarse_diffuse_texture_el">view_image</callback>
+					</icon>
+				</hbox>
+				
+				<label align="right">Coarse normal:</label>
+				<editline align="expand" name="Parameters::coarse_normal_texture_el" export="1"></editline>
+				<hbox>
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked" widget="Parameters::coarse_normal_texture_el">Parameters::open_dialog_file</callback>
+					</icon>
+					<icon texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked" widget="Parameters::coarse_normal_texture_el">view_image</callback>
+					</icon>
+				</hbox>
+				
+				<label align="right">Coarse mask:</label>
+				<editline align="expand" name="Parameters::coarse_mask_texture_el" export="1"></editline>
+				<hbox>
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked" widget="Parameters::coarse_mask_texture_el">Parameters::open_dialog_file</callback>
+					</icon>
+					<icon texture="editor/gui/action_view.png" width="22" height="20">
+					<callback type="clicked" widget="Parameters::coarse_mask_texture_el">view_image</callback>
+					</icon>
+				</hbox>
+				
+				<label align="right">Coarse index:</label>
+				<editline align="expand" name="Parameters::coarse_index_texture_el" export="1"></editline>
+				<hbox>
+					<icon texture="editor/gui/action_load.png" width="22" height="20">
+						<callback type="clicked" widget="Parameters::coarse_index_texture_el">Parameters::open_dialog_file</callback>
+					</icon>
+					<icon texture="editor/gui/action_view.png" width="22" height="20">
+						<callback type="clicked" widget="Parameters::coarse_index_texture_el">view_image</callback>
+					</icon>
+				</hbox>
+				
+			</gridbox>
+		</groupbox>
+	</vbox>
+	<button align="expand">
+		<text>Compress</text>
+		<callback type="clicked">compress_clicked</callback>
+		<tooltip>Compress all terrain textures</tooltip>
+	</button>
+	<button align="expand">
+		<text>Decompress</text>
+		<callback type="clicked">decompress_clicked</callback>
+		<tooltip>Decompress all terrain textures</tooltip>
+	</button>
+	
+	<button align="expand">
+		<text>Edit terrain</text>
+		<callback type="clicked">Parameters::edit_clicked</callback>
+		<tooltip>Press ALT to use the terrain brush<br>Press CTRL to grab the value</tooltip>
+	</button>
+	
+	
+</vbox>
+
+</ui>

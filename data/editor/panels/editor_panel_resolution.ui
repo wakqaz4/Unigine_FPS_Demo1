@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_panel_resolution.ui
+ * Desc:    Unigine editor
+ * Version: 1.01
+ * Author:  Mikhail Lyubimov <alterego@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.0">
+
+<groupbox name="groupbox" export="1" background="1" space_x="4" height="24" align="expand">
+	<hbox>
+		
+		<combobox name="resolution_cb" export="1">
+			<tooltip>Viewport window resolution</tooltip>
+			<callback type="changed" instance="instance" string="combobox_changed">callback_redirector</callback>
+		</combobox>
+		
+		<icon texture="editor/gui/action_save.png" width="24" height="24">
+			<callback type="clicked" instance="instance">screenshot_clicked</callback>
+			<tooltip>Take a screenshot</tooltip>
+		</icon>
+		
+	</hbox>
+</groupbox>
+
+</ui>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+<ui version="1.03">
+
+<hbox align="center" space_x="4">
+	<vbox align="center" space_y="4">
+		<groupbox align="expand" space="4">
+			<gridbox align="expand" columns="3" space="4">
+				<label align="right">Distance:</label>
+				<editline name="Stereo::distance_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Stereo::distance_pressed</callback>
+				</editline>
+				<hslider align="expand" min="100" max="10000" width="128">
+					<attach multiplier="1000" flags="max_expand" format="%.2f">Stereo::distance_el</attach>
+				</hslider>
+				<label align="right">Radius:</label>
+				<editline name="Stereo::radius_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Stereo::radius_pressed</callback>
+				</editline>
+				<hslider align="expand" min="0" max="500" width="128">
+					<attach multiplier="1000" flags="expand" format="%.3f">Stereo::radius_el</attach>
+				</hslider>
+				<label align="right">Offset:</label>
+				<editline name="Stereo::offset_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Stereo::offset_pressed</callback>
+				</editline>
+				<hslider align="expand" min="-500" max="500" width="128">
+					<attach multiplier="1000" flags="expand" format="%.3f">Stereo::offset_el</attach>
+				</hslider>
+				<label align="right">Angle:</label>
+				<editline name="Stereo::angle_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Stereo::angle_pressed</callback>
+				</editline>
+				<hslider align="expand" min="0" max="9000" width="128">
+					<attach multiplier="100" flags="max_expand" format="%.1f">Stereo::angle_el</attach>
+				</hslider>
+				<label align="right">Bezel:</label>
+				<editline name="Stereo::bezel_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Stereo::bezel_pressed</callback>
+				</editline>
+				<hslider align="expand" min="-200" max="200" width="128">
+					<attach multiplier="1000" flags="expand" format="%.3f">Stereo::bezel_el</attach>
+				</hslider>
+			</gridbox>
+		</groupbox>
+	</vbox>
+</hbox>
+
+</ui>

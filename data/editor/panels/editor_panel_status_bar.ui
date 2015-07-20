@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_panel_status_bar.ui
+ * Desc:    Unigine editor
+ * Version: 1.0
+ * Author:  Alexey Zagniy <yingaz@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.0">
+
+<!--
+/* PanelStatusBar
+ */
+-->
+<hbox name="hbox" background="0" export="1" space="0" height="28">
+	<label name="label" export="1">status bar</label>
+</hbox>
+</ui>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    gdal.ui
+ * Desc:    GDAL plugin
+ * Version: 1.01
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<window name="GDAL::window" export="1" sizeable="1" width="300">
+	<text>GDAL Import</text>
+	
+	<icon align="overlap,top,right" pos_x="4" pos_y="-24" texture="core/gui/window_close.png">
+		<callback type="clicked">GDAL::window_close_clicked</callback>
+	</icon>
+	
+	<button align="expand">
+		<text>Load</text>
+		<tooltip>Load GDAL file</tooltip>
+		<callback type="clicked">GDAL::load_clicked</callback>
+	</button>
+	
+</window>
+
+</ui>

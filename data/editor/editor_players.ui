@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_players.ui
+ * Desc:    Unigine editor
+ * Version: 1.03
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Anna Ishina <anet@unigne.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* PlayerDummy
+ */
+-->
+<vbox name="Nodes::Player::Dummy::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Viewport:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Dummy::viewport_mask_el" export="1" align="expand">
+					<tooltip>Viewport mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::viewport_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::viewport_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::viewport_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<label align="right"><text>Reflection:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Dummy::reflection_mask_el" export="1" align="expand">
+					<tooltip>Reflection mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::reflection_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::reflection_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::reflection_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<label align="right"><text>Source:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Dummy::source_mask_el" export="1" align="expand">
+					<tooltip>Source mask that determines what sound channels can be heard</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::source_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::source_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::source_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<label align="right"><text>Reverb:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Dummy::reverb_mask_el" export="1" align="expand">
+					<tooltip>Reverb mask that determines what reverberation zones can be heard</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::reverb_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::reverb_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::reverb_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Field of view:</text></label>
+			<editline name="Nodes::Player::Dummy::fov_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::fov_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Near clipping:</text></label>
+			<editline name="Nodes::Player::Dummy::znear_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::znear_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Far clipping:</text></label>
+			<editline name="Nodes::Player::Dummy::zfar_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::zfar_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Player::Dummy::post_materials_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<vbox>
+			<hbox align="expand">
+				<button name="Nodes::Player::Dummy::up_b" export="1">
+					<text>Up</text>
+					<callback type="clicked">Nodes::Player::up_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button name="Nodes::Player::Dummy::down_b" export="1">
+					<text>Down</text>
+					<callback type="clicked">Nodes::Player::down_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button align="right">
+					<text>Add</text>
+					<callback type="clicked">Nodes::Player::add_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button name="Nodes::Player::Dummy::remove_b" export="1">
+					<text>Remove</text>
+					<callback type="clicked">Nodes::Player::remove_clicked</callback>
+				</button>
+			</hbox>
+		</vbox>
+		
+		<vbox space="2"/>
+		
+		<scrollbox align="expand">
+			<listbox name="Nodes::Player::Dummy::post_materials_lb" export="1" align="expand">
+				<callback type="changed">Nodes::Player::post_materials_changed</callback>
+			</listbox>
+		</scrollbox>
+		
+	</vbox>
+</vbox>
+
+<groupbox name="Nodes::Player::Dummy::main_gb" export="1" background="1" space="5" align="center">
+	<label><text>Camera Editor</text></label>
+	<hspacer align="expand"/>
+	<button align="expand">
+		<text>Apply</text>
+		<callback type="clicked">Nodes::Player::Dummy::apply_clicked</callback>
+		<tooltip>Apply changes</tooltip>
+	</button>
+	<button align="expand">
+		<text>Cancel changes</text>
+		<callback type="clicked">Nodes::Player::Dummy::cancel_clicked</callback>
+		<tooltip>Cancel changes</tooltip>
+	</button>
+</groupbox>
+
+<!--
+/* PlayerSpectator
+ */
+-->
+<vbox name="Nodes::Player::Spectator::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Viewport:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Spectator::viewport_mask_el" export="1" align="expand">
+					<tooltip>Viewport mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::viewport_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::viewport_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::viewport_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<label align="right"><text>Reflection:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Spectator::reflection_mask_el" export="1" align="expand">
+					<tooltip>Reflection mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::reflection_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::reflection_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::reflection_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<label align="right"><text>Source:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Spectator::source_mask_el" export="1" align="expand">
+					<tooltip>Source mask that determines what sound channels can be heard</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::source_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::source_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::source_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<label align="right"><text>Reverb:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Spectator::reverb_mask_el" export="1" align="expand">
+					<tooltip>Reverb mask that determines what reverberation zones can be heard</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::reverb_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::reverb_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::reverb_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Field of view:</text></label>
+			<editline name="Nodes::Player::Spectator::fov_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::fov_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Near clipping:</text></label>
+			<editline name="Nodes::Player::Spectator::znear_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::znear_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Far clipping:</text></label>
+			<editline name="Nodes::Player::Spectator::zfar_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::zfar_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* PlayerPersecutor
+ */
+-->
+<vbox name="Nodes::Player::Persecutor::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Viewport:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Persecutor::viewport_mask_el" export="1" align="expand">
+					<tooltip>Viewport mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::viewport_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::viewport_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::viewport_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<label align="right"><text>Reflection:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Persecutor::reflection_mask_el" export="1" align="expand">
+					<tooltip>Reflection mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::reflection_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::reflection_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::reflection_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<label align="right"><text>Source:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Persecutor::source_mask_el" export="1" align="expand">
+					<tooltip>Source mask that determines what sound channels can be heard</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::source_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::source_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::source_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<label align="right"><text>Reverb:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Persecutor::reverb_mask_el" export="1" align="expand">
+					<tooltip>Reverb mask that determines what reverberation zones can be heard</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::reverb_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::reverb_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::reverb_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Field of view:</text></label>
+			<editline name="Nodes::Player::Persecutor::fov_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::fov_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Near clipping:</text></label>
+			<editline name="Nodes::Player::Persecutor::znear_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::znear_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Far clipping:</text></label>
+			<editline name="Nodes::Player::Persecutor::zfar_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::zfar_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Player::Persecutor::post_materials_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<vbox>
+			<hbox align="expand">
+				<button name="Nodes::Player::Persecutor::up_b" export="1">
+					<text>Up</text>
+					<callback type="clicked">Nodes::Player::up_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button name="Nodes::Player::Persecutor::down_b" export="1">
+					<text>Down</text>
+					<callback type="clicked">Nodes::Player::down_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button align="right">
+					<text>Add</text>
+					<callback type="clicked">Nodes::Player::add_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button name="Nodes::Player::Persecutor::remove_b" export="1">
+					<text>Remove</text>
+					<callback type="clicked">Nodes::Player::remove_clicked</callback>
+				</button>
+			</hbox>
+		</vbox>
+		
+		<vbox space="2"/>
+		
+		<scrollbox align="expand">
+			<listbox name="Nodes::Player::Persecutor::post_materials_lb" export="1" align="expand">
+				<callback type="changed">Nodes::Player::post_materials_changed</callback>
+			</listbox>
+		</scrollbox>
+		
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Player::Persecutor::persecutor_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::Player::Persecutor::fixed_cb" export="1" align="left,expand">
+				<text>Fixed angles</text>
+				<tooltip>Fixed angles</tooltip>
+				<callback type="clicked">Nodes::Player::Persecutor::fixed_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Player::Persecutor::controlled_cb" export="1" align="left,expand">
+				<text>Controlled</text>
+				<tooltip>The player is controlled</tooltip>
+				<callback type="clicked">Nodes::Player::Persecutor::controlled_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Player::Persecutor::collision_cb" export="1" align="left,expand">
+				<text>Collision</text>
+				<tooltip>The collision is enabled</tooltip>
+				<callback type="clicked">Nodes::Player::Persecutor::collision_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Collision:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Persecutor::collision_mask_el" export="1" align="expand">
+					<tooltip>Collision mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::Persecutor::collision_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::Persecutor::collision_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::Persecutor::collision_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Target node:</text></label>
+			<combobox name="Nodes::Player::Persecutor::target_cb" export="1" align="expand" texture="editor/gui/nodes_icons.png">
+				<callback type="changed">Nodes::Player::Persecutor::target_changed</callback>
+			</combobox>
+			
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Anchor point:</text></label>
+			<editline name="Nodes::Player::Persecutor::anchor_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::Persecutor::anchor_pressed</callback>
+			</editline>
+			<editline name="Nodes::Player::Persecutor::anchor_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::Persecutor::anchor_pressed</callback>
+			</editline>
+			<editline name="Nodes::Player::Persecutor::anchor_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::Persecutor::anchor_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Min distance:</text></label>
+			<editline name="Nodes::Player::Persecutor::min_distance_el" export="1" align="expand" validator="float">
+				<tooltip>Minimum distance to the target node</tooltip>
+				<callback type="pressed,focus_out">Nodes::Player::Persecutor::min_distance_pressed</callback>
+			</editline>
+			<label align="right"><text>Max:</text></label>
+			<editline name="Nodes::Player::Persecutor::max_distance_el" export="1" align="expand" validator="float">
+				<tooltip>Maximum distance to the target node</tooltip>
+				<callback type="pressed,focus_out">Nodes::Player::Persecutor::max_distance_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Min theta:</text></label>
+			<editline name="Nodes::Player::Persecutor::min_theta_angle_el" export="1" align="expand" validator="float">
+				<tooltip>Minimum theta angle to the target node</tooltip>
+				<callback type="pressed,focus_out">Nodes::Player::Persecutor::min_theta_angle_pressed</callback>
+			</editline>
+			<label align="right"><text>Max:</text></label>
+			<editline name="Nodes::Player::Persecutor::max_theta_angle_el" export="1" align="expand" validator="float">
+				<tooltip>Maximum theta angle to the target node</tooltip>
+				<callback type="pressed,focus_out">Nodes::Player::Persecutor::max_theta_angle_pressed</callback>
+			</editline>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* PlayerActor
+ */
+-->
+<vbox name="Nodes::Player::Actor::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Viewport:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Actor::viewport_mask_el" export="1" align="expand">
+					<tooltip>Viewport mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::viewport_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::viewport_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::viewport_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<label align="right"><text>Reflection:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Actor::reflection_mask_el" export="1" align="expand">
+					<tooltip>Reflection mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::reflection_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::reflection_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::reflection_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<label align="right"><text>Source:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Actor::source_mask_el" export="1" align="expand">
+					<tooltip>Source mask that determines what sound channels can be heard</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::source_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::source_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::source_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<label align="right"><text>Reverb:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Player::Actor::reverb_mask_el" export="1" align="expand">
+					<tooltip>Reverb mask that determines what reverberation zones can be heard</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Player::reverb_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Player::reverb_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Player::reverb_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Field of view:</text></label>
+			<editline name="Nodes::Player::Actor::fov_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::fov_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Near clipping:</text></label>
+			<editline name="Nodes::Player::Actor::znear_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::znear_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Far clipping:</text></label>
+			<editline name="Nodes::Player::Actor::zfar_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Player::zfar_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+</ui>

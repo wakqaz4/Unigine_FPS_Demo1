@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+<ui version="1.03">
+
+<window name="System::main_w" export="1" snap_distance="16">
+	<text size="24">&nbsp;</text>
+	<sprite align="overlap,top,left" pos_x="-4" pos_y="-30" texture="core/gui/unigine.png"/>
+	<icon align="overlap,top,right" pos_x="4" pos_y="-30" texture="core/gui/window_close.png">
+		<callback type="clicked">systemHide</callback>
+	</icon>
+	<vbox space="4">
+		<tabbox name="System::main_tb" export="1" align="expand">
+			<tab>
+				<text>Video</text>
+				<hbox align="center" space_x="4">
+					<vbox align="center" space_y="4">
+						<groupbox align="expand" space="4">
+							<text>API</text>
+							<checkbox name="System::Video::opengl_cb" export="1" align="left" enabled="0">
+								<text>OpenGL</text>
+								<tooltip>API change requires application restarting</tooltip>
+							</checkbox>
+							<vbox/>
+							<checkbox name="System::Video::direct3d11_cb" export="1" align="left" enabled="0">
+								<attach>System::Video::opengl_cb</attach>
+								<text>Direct3D11</text>
+								<tooltip>API change requires application restarting</tooltip>
+							</checkbox>
+						</groupbox>
+						<groupbox align="expand" space="4">
+							<text>Mode</text>
+							<gridbox space="4" columns="2">
+								<label align="right">Resolution:</label>
+								<combobox name="System::Video::mode_cb" export="1" align="left,expand">
+									<text>640x360</text>
+									<text>960x540</text>
+									<text>1024x576</text>
+									<text>1280x720</text>
+									<text>1366x768</text>
+									<text>1600x900</text>
+									<text>1920x1080</text>
+									<text>2560x1440</text>
+									<text>3840x2160</text>
+									<text>640x400</text>
+									<text>960x600</text>
+									<text>1024x640</text>
+									<text>1280x800</text>
+									<text>1440x900</text>
+									<text>1680x1050</text>
+									<text>1920x1200</text>
+									<text>2560x1600</text>
+									<text>640x480</text>
+									<text>800x600</text>
+									<text>1024x768</text>
+									<text>1280x960</text>
+									<text>1280x1024</text>
+									<text>1600x1200</text>
+									<text>2048x1536</text>
+									<text>2560x2048</text>
+								</combobox>
+								<label align="right">Anti-aliasing:</label>
+								<combobox name="System::Video::multisample_cb" export="1" align="left,expand">
+									<text>Off</text>
+									<text>2x</text>
+									<text>4x</text>
+									<text>8x</text>
+									<text>16x</text>
+								</combobox>
+								<vbox/>
+								<checkbox name="System::Video::fullscreen_cb" export="1" align="left">
+									<text>Full Screen</text>
+								</checkbox>
+								<vbox/>
+								<checkbox name="System::Video::vsync_cb" export="1" align="left">
+									<text>VSync</text>
+								</checkbox>
+								<label align="right">Gamma:</label>
+								<hbox align="expand">
+									<hslider name="System::Video::gamma_sl" export="1" align="expand" min="500" max="3500" value="1000" width="100">
+										<attach format=" %.1f" multiplier="1000">gamma_l</attach>
+									</hslider>
+									<label name="gamma_l" width="28"/>
+								</hbox>
+							</gridbox>
+						</groupbox>
+					</vbox>
+				</hbox>
+			</tab>
+			<tab>
+				<text>Render</text>
+				<hbox align="center" space_x="4">
+					<vbox align="center" space_y="4">
+						<hbox align="expand">
+							<vbox align="expand">
+								<vbox align="center">
+									<groupbox align="expand" space="4">
+										<text>Shaders</text>
+										<gridbox space="4" columns="2">
+											<label align="right">Quality:</label>
+											<combobox name="System::Render::shaders_cb" export="1" align="left,expand">
+												<text>Low</text>
+												<text>Medium</text>
+												<text>High</text>
+											</combobox>
+										</gridbox>
+									</groupbox>
+									<vbox space="4"/>
+									<groupbox align="expand" space="4">
+										<text>Textures</text>
+										<gridbox space="4" columns="2">
+											<label align="right">Quality:</label>
+											<combobox name="System::Render::textures_cb" export="1" align="left,expand">
+												<text>Low</text>
+												<text>Medium</text>
+												<text>High</text>
+											</combobox>
+											<label align="right">Filter:</label>
+											<combobox name="System::Render::filter_cb" export="1" align="left,expand">
+												<text>Bilinear</text>
+												<text>Trilinear</text>
+											</combobox>
+											<label align="right">Anisotropy:</label>
+											<combobox name="System::Render::anisotropy_cb" export="1" align="left,expand">
+												<text>Off</text>
+												<text>2x</text>
+												<text>4x</text>
+												<text>8x</text>
+												<text>16x</text>
+											</combobox>
+										</gridbox>
+									</groupbox>
+									<vbox space="4"/>
+									<groupbox align="expand" space="4">
+										<text>Options</text>
+										<checkbox name="System::Render::reflection_cb" export="1" align="left" checked="1">
+											<text>Reflection</text>
+										</checkbox>
+										<checkbox name="System::Render::translucent_cb" export="1" align="left" checked="1">
+											<text>Translucence</text>
+										</checkbox>
+										<checkbox name="System::Render::parallax_cb" export="1" align="left" checked="1">
+											<text>Parallax Mapping</text>
+										</checkbox>
+									</groupbox>
+								</vbox>
+							</vbox>
+							<vbox space="4"/>
+							<groupbox align="expand" space="4">
+								<text>Post-processing</text>
+								<checkbox name="System::Render::light_prob_cb" export="1" align="left" checked="1">
+									<text>Global Illumination</text>
+								</checkbox>
+								<checkbox name="System::Render::occlusion_cb" export="1" align="left" checked="1">
+									<text>Occlusion</text>
+								</checkbox>
+								<checkbox name="System::Render::auxiliary_cb" export="1" align="left" checked="1">
+									<text>Auxiliary Buffer</text>
+								</checkbox>
+								<checkbox name="System::Render::refraction_cb" export="1" align="left" checked="1">
+									<text>Refraction</text>
+								</checkbox>
+								<checkbox name="System::Render::motion_blur_cb" export="1" align="left" checked="1">
+									<text>Motion Blur</text>
+								</checkbox>
+								<checkbox name="System::Render::scattering_cb" export="1" align="left" checked="1">
+									<text>Light Scattering</text>
+								</checkbox>
+								<checkbox name="System::Render::volumetric_cb" export="1" align="left" checked="1">
+									<text>Volumetric Shadows</text>
+								</checkbox>
+								<checkbox name="System::Render::glow_cb" export="1" align="left" checked="1">
+									<text>Glow</text>
+								</checkbox>
+								<checkbox name="System::Render::dof_cb" export="1" align="left" checked="1">
+									<text>DOF</text>
+								</checkbox>
+								<checkbox name="System::Render::hdr_cb" export="1" align="left" checked="1">
+									<text>HDR</text>
+								</checkbox>
+							</groupbox>
+						</hbox>
+					</vbox>
+				</hbox>
+			</tab>
+			<tab>
+				<text>Interface</text>
+				<hbox align="center" space_x="4">
+					<vbox align="center" space_y="4">
+						<groupbox align="expand" space="4">
+							<text>Interface</text>
+							<hbox align="expand" space_x="4">
+								<label align="right">Language:</label>
+								<combobox name="System::Interface::language_cb" export="1" align="expand"/>
+							</hbox>
+						</groupbox>
+						<groupbox align="expand" space="4">
+							<text>Show</text>
+							<checkbox name="System::Interface::fps_cb" export="1" align="left">
+								<text>FPS Counter</text>
+							</checkbox>
+							<checkbox name="System::Interface::gpu_cb" export="1" align="left">
+								<text>GPU Monitor</text>
+							</checkbox>
+							<checkbox name="System::Interface::triangles_cb" export="1" align="left">
+								<text>Wireframe</text>
+							</checkbox>
+							<checkbox name="System::Interface::profiler_cb" export="1" align="left">
+								<text>Profiler</text>
+							</checkbox>
+							<checkbox name="System::Interface::messages_cb" export="1" align="left">
+								<text>Messages</text>
+							</checkbox>
+						</groupbox>
+					</vbox>
+				</hbox>
+			</tab>
+			<tab>
+				<text>Controls</text>
+				<hbox align="center" space_x="4">
+					<vbox align="center" space_y="4">
+						<groupbox align="expand" space="4">
+							<text>Keyboard</text>
+							<hbox>
+								<gridbox align="top" columns="2" space_x="4">
+									<label align="right">Forward:</label>
+									<button name="System::Controls::forward_b" export="1" align="left" background="0">
+										<callback type="clicked" string="forward">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Backward:</label>
+									<button name="System::Controls::backward_b" export="1" align="left" background="0">
+										<callback type="clicked" string="backward">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Move Left:</label>
+									<button name="System::Controls::move_left_b" export="1" align="left" background="0">
+										<callback type="clicked" string="move_left">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Move Right:</label>
+									<button name="System::Controls::move_right_b" export="1" align="left" background="0">
+										<callback type="clicked" string="move_right">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Turn Up:</label>
+									<button name="System::Controls::turn_up_b" export="1" align="left" background="0">
+										<callback type="clicked" string="turn_up">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Turn Down:</label>
+									<button name="System::Controls::turn_down_b" export="1" align="left" background="0">
+										<callback type="clicked" string="turn_down">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Turn Left:</label>
+									<button name="System::Controls::turn_left_b" export="1" align="left" background="0">
+										<callback type="clicked" string="turn_left">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Turn Right:</label>
+									<button name="System::Controls::turn_right_b" export="1" align="left" background="0">
+										<callback type="clicked" string="turn_right">System::Controls::event_clicked</callback>
+									</button>
+								</gridbox>
+								<vbox space="8"/>
+								<gridbox align="top" columns="2" space_x="4">
+									<label align="right">Crouch:</label>
+									<button name="System::Controls::crouch_b" export="1" align="left" background="0">
+										<callback type="clicked" string="crouch">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Jump:</label>
+									<button name="System::Controls::jump_b" export="1" align="left" background="0">
+										<callback type="clicked" string="jump">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Run:</label>
+									<button name="System::Controls::run_b" export="1" align="left" background="0">
+										<callback type="clicked" string="run">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Use:</label>
+									<button name="System::Controls::use_b" export="1" align="left" background="0">
+										<callback type="clicked" string="use">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Fire:</label>
+									<button name="System::Controls::fire_b" export="1" align="left" background="0">
+										<callback type="clicked" string="fire">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Quick Save:</label>
+									<button name="System::Controls::save_b" export="1" align="left" background="0">
+										<callback type="clicked" string="save">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Quick Load:</label>
+									<button name="System::Controls::restore_b" export="1" align="left" background="0">
+										<callback type="clicked" string="restore">System::Controls::event_clicked</callback>
+									</button>
+									<label align="right">Screenshot:</label>
+									<button name="System::Controls::screenshot_b" export="1" align="left" background="0">
+										<callback type="clicked" string="screenshot">System::Controls::event_clicked</callback>
+									</button>
+								</gridbox>
+							</hbox>
+						</groupbox>
+						<groupbox align="expand" space="4">
+							<text>Options</text>
+							<gridbox columns="2" space_x="4">
+								<checkbox name="System::Controls::always_run_cb" export="1" align="left">
+									<text>Always Run</text>
+								</checkbox>
+								<checkbox name="System::Controls::mouse_inverse_cb" export="1" align="left">
+									<text>Invert Mouse</text>
+								</checkbox>
+								<label align="right">Mouse Speed:</label>
+								<hbox align="expand">
+									<hslider name="System::Controls::mouse_sensitivity_sl" export="1" align="expand" min="500" max="2000" value="1000" width="100">
+										<attach format=" %.1f" multiplier="1000">mouse_sensitivity_l</attach>
+									</hslider>
+									<label name="mouse_sensitivity_l" width="28"/>
+								</hbox>
+							</gridbox>
+						</groupbox>
+					</vbox>
+				</hbox>
+			</tab>
+			<tab>
+				<text>Stereo</text>
+				<include name="core/scripts/system/stereo.ui"/>
+			</tab>
+			<tab>
+				<text>Wall</text>
+				<include name="core/scripts/system/wall.ui"/>
+			</tab>
+			<tab>
+				<text>About</text>
+				<vbox align="expand" space="4">
+					<font size="13"><align align="left">
+						<scrollbox align="expand" height="200" henabled="0" space="4">
+							<gridbox columns="2" space_x="4" space_y="1" padding="4">
+								<label face="core/gui/fontb.ttf" size="15" color="#ff9900">Programming</label><vbox space="4"/>
+								<vbox space="4"/><vbox space="4"/>
+								<label>Alexander Zapryagaev</label><label>Lead Engine Developer</label>
+								<label>Anna Ishina</label><label>Network Developer</label>
+								<label>Valia Vaneeva</label><label>Tools Developer</label>
+								<label>Alexey Egorov</label><label>Developer</label>
+								<label>Vasiliy Simonov</label><label>Utils Developer</label>
+								<label>Pavel Kurinnoy</label><label>Tools Developer</label>
+								<label>Yakov Negrey</label><label>Utils Developer</label>
+								<label>Andrey Viktorov</label><label>Senior Developer</label>
+								<label>Evgeniy Tetenchuk</label><label>Utils Developer</label>
+								<label>Alexey Zagniy</label><label>Tools Developer</label>
+								<label>Mikhail Lubimov</label><label>Tools Developer</label>
+								<label>Anna Chaplinskaya</label><label>Build Engineer</label>
+								<vbox space="4"/><vbox space="4"/>
+								<label face="core/gui/fontb.ttf" size="15" color="#ff9900">Management</label><vbox space="4"/>
+								<vbox space="4"/><vbox space="4"/>
+								<label>Denis Shergin</label><label>Product Manager</label>
+								<label>Natalia Riukhova</label><label>PM assistant</label>
+								<vbox space="4"/><vbox space="4"/>
+								<label face="core/gui/fontb.ttf" size="15" color="#ff9900">Documentation</label><vbox space="4"/>
+								<vbox space="4"/><vbox space="4"/>
+								<label>Nadezhda Ovchinnikova</label><label>Technical Writer</label>
+								<label>Olga Kirichenko</label><label>Technical Writer</label>
+								<label>Inna Teteniuk</label><label>Technical Writer</label>
+								<vbox space="4"/><vbox space="4"/>
+								<label face="core/gui/fontb.ttf" size="15" color="#ff9900">Content</label><vbox space="4"/>
+								<vbox space="4"/><vbox space="4"/>
+								<label>Andrey Kushner</label><label>Lead Technical Artist</label>
+								<label>Eugenia Shergina</label><label>Designer</label>
+								<label>Andrey Kolchin</label><label>3D Artist</label>
+								<label>Dmitriy Cherniy</label><label>Designer</label>
+								<label>Vyacheslav Sedovich</label><label>Technical Artist</label>
+								<label>Davyd Vidiger</label><label>3D Artist</label>
+								<vbox space="4"/><vbox space="4"/>
+								<label face="core/gui/fontb.ttf" size="15" color="#ff9900">Quality Assurance</label><vbox space="4"/>
+								<vbox space="4"/><vbox space="4"/>
+								<label>Dmitry Kriventsov</label><label>QA Lead</label>
+								<label>Andrew Bayun</label><label>QA Engineer</label>
+								<label>Kate Popova</label><label>QA Engineer</label>
+								<label>Evgeniy Yundin</label><label>QA Engineer</label>
+								<label>Sergey Litvinov</label><label>QA Engineer</label>
+								<label>Serge Kanashchuk</label><label>QA Engineer</label>
+								<label>Polina Ignatova</label><label>QA Engineer</label>
+								<vbox space="4"/><vbox space="4"/>
+								<label face="core/gui/fontb.ttf" size="15" color="#ff9900">Special Thanks To:</label><vbox space="4"/>
+								<vbox space="4"/><vbox space="4"/>
+								<label>Iliya Abzaev</label>
+								<label>Dmitriy Alin</label>
+								<label>Evgenia Bocharova</label>
+								<label>Anton Bogachenko</label>
+								<label>Sergey Cheremnykh</label>
+								<label>Natalia Danko</label>
+								<label>Valery Datsyuk</label>
+								<label>Evgeniy Gerasimenko</label>
+								<label>Andrew Glusynski</label>
+								<label>Ivan Gulyaev</label>
+								<label>Sergey Gradoboev</label>
+								<label>Joulia Gubieva</label>
+								<label>Alexey Hizhnyak</label>
+								<label>Alena Kalinina</label>
+								<label>Albert Khaiboulline</label>
+								<label>Alexander Kislitsky</label>
+								<label>Eugena Klykova</label>
+								<label>Mike Kondratyev</label>
+								<label>Andrey Korovkin</label>
+								<label>Grigory Korpan</label>
+								<label>Sergey Kovalev</label>
+								<label>Natalia Kruchkova</label>
+								<label>Robert Kudera</label>
+								<label>Dmitry Kuraev</label>
+								<label>Serge Larin</label>
+								<label>Eric Liu</label>
+								<label>Alexey Maslennikov</label>
+								<label>Tamara Melnikova</label>
+								<label>Konstantin Nechaev</label>
+								<label>Anton Ravin</label>
+								<label>Peter Sannikov</label>
+								<label>Maria Shishkevich</label>
+								<label>Ulf Schroeter</label>
+								<label>Galina Shadrina</label>
+								<label>JoonHee Shin</label>
+								<label>Vitaliy Sidorov</label>
+								<label>Max Sinelnikov</label>
+								<label>Vyacheslav Suldin</label>
+								<label>Anton Suvorov</label>
+								<label>Nikita Trofimov</label>
+								<label>Iliya Turkin</label>
+								<label>Eugene Viitman</label>
+								<label>Stanislav Zagniy</label>
+								<label>Evgeniya Zinovieva</label>
+								<label>Jimmy Zhang</label>
+							</gridbox>
+						</scrollbox>
+					</align></font>
+					<vbox space="2">
+						<label size="12">Unigine Corp. (c) 2005-2015</label>
+						<label size="12">www.unigine.com</label>
+					</vbox>
+				</vbox>
+			</tab>
+			<callback type="changed">System::tab_changed</callback>
+		</tabbox>
+	</vbox>
+	<hbox align="expand" space_x="4">
+		<button name="System::apply_b" export="1" align="right" width="64">
+			<text>Apply</text>
+			<tooltip>Apply changes</tooltip>
+			<callback type="clicked">System::apply_clicked</callback>
+		</button>
+		<button name="System::quit_b" export="0" width="64">
+			<text>Quit</text>
+			<tooltip>Quit from Unigine</tooltip>
+			<callback type="clicked">System::quit_clicked</callback>
+		</button>
+	</hbox>
+</window>
+
+<window name="System::event_w" export="1" moveable="0">
+	<text align="right">Learn controls</text>
+	<vbox space="4">
+		<label align="left">Press a key or mouse button.</label>
+		<vbox space="4"/>
+		<label align="left" size="12">To clear old control press the same key or button.</label>
+		<label align="left" size="12">To cancel learning press ESC.</label>
+	</vbox>
+	<vbox space="4"/>
+</window>
+
+<dialog name="System::message_d" export="1" moveable="0">
+	<vbox space="4">
+		<label name="System::message_l" export="1" align="left"/>
+	</vbox>
+	<vbox space="4"/>
+</dialog>
+
+</ui>

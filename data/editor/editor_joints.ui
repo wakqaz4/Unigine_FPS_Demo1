@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_joints.ui
+ * Desc:    Unigine editor
+ * Version: 1.23
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Valia Vaneeva <fattie@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Joint
+ */
+-->
+<vbox name="Nodes::Object::Joint::main_vb" export="1" space="4">
+	<vbox align="expand">
+		
+		<vbox>
+			<hbox align="expand">
+				<combobox name="Nodes::Object::Joint::joint_cb" export="1" align="expand">
+					<text>Fixed</text>
+					<text>Ball</text>
+					<text>Hinge</text>
+					<text>Prismatic</text>
+					<text>Cylindrical</text>
+					<text>Suspension</text>
+					<text>Wheel</text>
+					<text>Particles</text>
+					<text>Path</text>
+				</combobox>
+				<vbox space="2"/>
+				<button>
+					<text>Add</text>
+					<callback type="clicked">Nodes::Object::Joint::add_clicked</callback>
+				</button>
+				<vbox space="2"/>
+				<button name="Nodes::Object::Joint::remove_b" export="1">
+					<text>Remove</text>
+					<callback type="clicked">Nodes::Object::Joint::remove_clicked</callback>
+				</button>
+			</hbox>
+		</vbox>
+		
+		<vbox space="2"/>
+		
+		<scrollbox align="expand" height="60">
+			<listbox name="Nodes::Object::Joint::joints_lb" export="1" align="expand">
+				<callback type="changed">Nodes::Object::Joint::joints_changed</callback>
+			</listbox>
+		</scrollbox>
+		
+		<vbox space="2"/>
+		
+		<vbox name="Nodes::Object::Joint::parameters_vb" export="1">
+			<gridbox name="joint_parameters_gb" align="expand" columns="4" space="4">
+				
+				<label align="right"><text>Type:</text></label>
+				<label name="Nodes::Object::Joint::type_l" export="1" align="left,expand"/>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<checkbox name="Nodes::Object::Joint::enabled_cb" export="1" align="left,expand">
+					<tooltip>The joint is enabled</tooltip>
+					<text>Enabled</text>
+					<callback type="clicked">Nodes::Object::Joint::enabled_clicked</callback>
+				</checkbox>
+				<vbox/>
+				<vbox/>
+				
+				<vbox/>
+				<checkbox name="Nodes::Object::Joint::collision_cb" export="1" align="left,expand">
+					<tooltip>The joint collision flag</tooltip>
+					<text>Collision</text>
+					<callback type="clicked">Nodes::Object::Joint::collision_clicked</callback>
+				</checkbox>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Name:</text></label>
+				<editline name="Nodes::Object::Joint::name_el" export="1" align="expand">
+					<tooltip>Name of the joint</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::name_pressed</callback>
+				</editline>
+				<vbox/>
+				<vbox/>
+				
+				<label align="right"><text>Iterations:</text></label>
+				<editline name="Nodes::Object::Joint::num_iterations_el" export="1" align="expand" validator="uint">
+					<tooltip>The joint number of iterations</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::num_iterations_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Joint::num_iterations_sl" export="1" align="expand" min="1" max="16">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach flags="max_expand">Nodes::Object::Joint::num_iterations_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<label align="right"><text>Force:</text></label>
+				<editline name="Nodes::Object::Joint::max_force_el" export="1" align="expand" validator="float">
+					<tooltip>Maximum applied force</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::max_force_pressed</callback>
+				</editline>
+				<label align="right"><text>Torque:</text></label>
+				<editline name="Nodes::Object::Joint::max_torque_el" export="1" align="expand" validator="float">
+					<tooltip>Maximum applied torque</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::max_torque_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>LRestitution:</text></label>
+				<editline name="Nodes::Object::Joint::linear_restitution_el" export="1" align="expand" validator="float">
+					<tooltip>The joint linear restitution parameter</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::linear_restitution_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Joint::linear_restitution_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::Object::Joint::linear_restitution_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<label align="right"><text>ARestitution:</text></label>
+				<editline name="Nodes::Object::Joint::angular_restitution_el" export="1" align="expand" validator="float">
+					<tooltip>The joint angular restitution parameter</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::angular_restitution_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Joint::angular_restitution_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::Object::Joint::angular_restitution_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<label align="right"><text>LSoftness:</text></label>
+				<editline name="Nodes::Object::Joint::linear_softness_el" export="1" align="expand" validator="float">
+					<tooltip>The joint linear softness parameter</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::linear_softness_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Joint::linear_softness_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::Object::Joint::linear_softness_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<label align="right"><text>ASoftness:</text></label>
+				<editline name="Nodes::Object::Joint::angular_softness_el" export="1" align="expand" validator="float">
+					<tooltip>The joint angular softness parameter</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::angular_softness_pressed</callback>
+				</editline>
+				<hslider name="Nodes::Object::Joint::angular_softness_sl" export="1" align="expand" min="0" max="1000">
+					<callback type="clicked">Nodes::slider_clicked</callback>
+					<attach multiplier="1000">Nodes::Object::Joint::angular_softness_el</attach>
+				</hslider>
+				<vbox/>
+				
+				<label align="right"><text>Anchor 0:</text></label>
+				<editline name="Nodes::Object::Joint::anchor_0_el[0]" export="1" align="expand" validator="float">
+					<tooltip>X anchor coordinate of selected body</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::anchor_0_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Joint::anchor_0_el[1]" export="1" align="expand" validator="float">
+					<tooltip>Y anchor coordinate of selected body</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::anchor_0_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Joint::anchor_0_el[2]" export="1" align="expand" validator="float">
+					<tooltip>Z anchor coordinate of selected body</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::anchor_0_pressed</callback>
+				</editline>
+				
+				<label align="right"><text>Anchor 1:</text></label>
+				<editline name="Nodes::Object::Joint::anchor_1_el[0]" export="1" align="expand" validator="float">
+					<tooltip>X anchor coordinate of second body</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::anchor_1_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Joint::anchor_1_el[1]" export="1" align="expand" validator="float">
+					<tooltip>Y anchor coordinate of second body</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::anchor_1_pressed</callback>
+				</editline>
+				<editline name="Nodes::Object::Joint::anchor_1_el[2]" export="1" align="expand" validator="float">
+					<tooltip>Z anchor coordinate of second body</tooltip>
+					<callback type="pressed,focus_out">Nodes::Object::Joint::anchor_1_pressed</callback>
+				</editline>
+				
+				<button name="Nodes::Object::Joint::bind_b" export="1" align="expand" toggleable="1">
+					<tooltip>Bind anchors</tooltip>
+					<text>Bind</text>
+				</button>
+				<button align="expand">
+					<tooltip>Fix anchor of selected body</tooltip>
+					<text>Fix 0</text>
+					<callback type="clicked">Nodes::Object::Joint::fix_0_clicked</callback>
+				</button>
+				<button align="expand">
+					<tooltip>Fix anchor of second body</tooltip>
+					<text>Fix 1</text>
+					<callback type="clicked">Nodes::Object::Joint::fix_1_clicked</callback>
+				</button>
+				<button align="expand">
+					<tooltip>Fix both anchors</tooltip>
+					<text>Fix 01</text>
+					<callback type="clicked">Nodes::Object::Joint::fix_01_clicked</callback>
+				</button>
+				
+			</gridbox>
+			
+			<vbox space="2"/>
+			<vbox name="Nodes::Object::Joint::dummy_vb" export="1"/>
+			
+		</vbox>
+		
+	</vbox>
+</vbox>
+
+<!--
+/* JointFixed
+ */
+-->
+<gridbox name="Nodes::Object::Joint::Fixed::parameters_gb" export="1" columns="4" space="4">
+	<attach>joint_parameters_gb</attach>
+	
+	<label align="right"><text>Rotation 0:</text></label>
+	<editline name="Nodes::Object::Joint::Fixed::rotation_0_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X axis rotation of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Fixed::rotation_0_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Fixed::rotation_0_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y axis rotation of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Fixed::rotation_0_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Fixed::rotation_0_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z axis rotation of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Fixed::rotation_0_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Rotation 1:</text></label>
+	<editline name="Nodes::Object::Joint::Fixed::rotation_1_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X axis rotation of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Fixed::rotation_1_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Fixed::rotation_1_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y axis rotation of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Fixed::rotation_1_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Fixed::rotation_1_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z axis rotation of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Fixed::rotation_1_pressed</callback>
+	</editline>
+	
+</gridbox>
+
+<!--
+/* JointBall
+ */
+-->
+<gridbox name="Nodes::Object::Joint::Ball::parameters_gb" export="1" columns="4" space="4">
+	<attach>joint_parameters_gb</attach>
+	
+	<label align="right"><text>Axis 0:</text></label>
+	<editline name="Nodes::Object::Joint::Ball::axis_0_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Ball::axis_0_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Ball::axis_0_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Ball::axis_0_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Ball::axis_0_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Ball::axis_0_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Axis 1:</text></label>
+	<editline name="Nodes::Object::Joint::Ball::axis_1_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Ball::axis_1_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Ball::axis_1_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Ball::axis_1_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Ball::axis_1_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Ball::axis_1_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Angular:</text></label>
+	<editline name="Nodes::Object::Joint::Ball::angular_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Angular damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Ball::angular_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Joint::Ball::angular_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Joint::Ball::angular_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Angle:</text></label>
+	<editline name="Nodes::Object::Joint::Ball::angular_limit_angle_el" export="1" align="expand" validator="float">
+		<tooltip>Angular swing limit angle</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Ball::angular_limit_angle_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>From:</text></label>
+	<editline name="Nodes::Object::Joint::Ball::angular_limit_from_el" export="1" align="expand" validator="float">
+		<tooltip>Low twist limit angle</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Ball::angular_limit_from_pressed</callback>
+	</editline>
+	<label align="right"><text>To:</text></label>
+	<editline name="Nodes::Object::Joint::Ball::angular_limit_to_el" export="1" align="expand" validator="float">
+		<tooltip>High twist limit angle</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Ball::angular_limit_to_pressed</callback>
+	</editline>
+	
+</gridbox>
+
+<!--
+/* JointHinge
+ */
+-->
+<gridbox name="Nodes::Object::Joint::Hinge::parameters_gb" export="1" columns="4" space="4">
+	<attach>joint_parameters_gb</attach>
+	
+	<label align="right"><text>Axis 0:</text></label>
+	<editline name="Nodes::Object::Joint::Hinge::axis_0_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Hinge::axis_0_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Hinge::axis_0_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Hinge::axis_0_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Hinge::axis_0_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Hinge::axis_0_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Axis 1:</text></label>
+	<editline name="Nodes::Object::Joint::Hinge::axis_1_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Hinge::axis_1_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Hinge::axis_1_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Hinge::axis_1_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Hinge::axis_1_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Hinge::axis_1_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Angular:</text></label>
+	<editline name="Nodes::Object::Joint::Hinge::angular_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Angular damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Hinge::angular_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Joint::Hinge::angular_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Joint::Hinge::angular_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>From:</text></label>
+	<editline name="Nodes::Object::Joint::Hinge::angular_limit_from_el" export="1" align="expand" validator="float">
+		<tooltip>Low rotation limit angle</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Hinge::angular_limit_from_pressed</callback>
+	</editline>
+	<label align="right"><text>To:</text></label>
+	<editline name="Nodes::Object::Joint::Hinge::angular_limit_to_el" export="1" align="expand" validator="float">
+		<tooltip>High rotation limit angle</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Hinge::angular_limit_to_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Hinge::angular_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Angular motor target velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Hinge::angular_velocity_pressed</callback>
+	</editline>
+	<label align="right"><text>Torque:</text></label>
+	<editline name="Nodes::Object::Joint::Hinge::angular_torque_el" export="1" align="expand" validator="float">
+		<tooltip>Angular motor maximum torque</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Hinge::angular_torque_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Angle:</text></label>
+	<editline name="Nodes::Object::Joint::Hinge::angular_angle_el" export="1" align="expand" validator="float">
+		<tooltip>Angular spring target angle</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Hinge::angular_angle_pressed</callback>
+	</editline>
+	<label align="right"><text>Spring:</text></label>
+	<editline name="Nodes::Object::Joint::Hinge::angular_spring_el" export="1" align="expand" validator="float">
+		<tooltip>Angular spring coefficient</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Hinge::angular_spring_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Hinge::current_angular_velocity_el" export="1" align="expand" enabled="0"/>
+	<label align="right"><text>Angle:</text></label>
+	<editline name="Nodes::Object::Joint::Hinge::current_angular_angle_el" export="1" align="expand" enabled="0"/>
+	
+</gridbox>
+
+<!--
+/* JointPrismatic
+ */
+-->
+<gridbox name="Nodes::Object::Joint::Prismatic::parameters_gb" export="1" columns="4" space="4">
+	<attach>joint_parameters_gb</attach>
+	
+	<label name="Nodes::Object::Joint::Prismatic::axis_0_l" export="1" align="right"/>
+	<editline name="Nodes::Object::Joint::Prismatic::axis_0_el[0]" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::axis_0_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Prismatic::axis_0_el[1]" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::axis_0_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Prismatic::axis_0_el[2]" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::axis_0_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Rotation 0:</text></label>
+	<editline name="Nodes::Object::Joint::Prismatic::rotation_0_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X axis rotation of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::rotation_0_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Prismatic::rotation_0_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y axis rotation of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::rotation_0_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Prismatic::rotation_0_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z axis rotation of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::rotation_0_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Rotation 1:</text></label>
+	<editline name="Nodes::Object::Joint::Prismatic::rotation_1_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X axis rotation of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::rotation_1_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Prismatic::rotation_1_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y axis rotation of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::rotation_1_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Prismatic::rotation_1_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z axis rotation of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::rotation_1_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Linear:</text></label>
+	<editline name="Nodes::Object::Joint::Prismatic::linear_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Linear damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::linear_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Joint::Prismatic::linear_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Joint::Prismatic::linear_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>From:</text></label>
+	<editline name="Nodes::Object::Joint::Prismatic::linear_limit_from_el" export="1" align="expand" validator="float">
+		<tooltip>Low limit distance that specifies how far a connected body can move along the joint axis</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::linear_limit_from_pressed</callback>
+	</editline>
+	<label align="right"><text>To:</text></label>
+	<editline name="Nodes::Object::Joint::Prismatic::linear_limit_to_el" export="1" align="expand" validator="float">
+		<tooltip>High limit distance that specifies how far a connected body can move along the joint axis</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::linear_limit_to_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Prismatic::linear_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Linear motor target velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::linear_velocity_pressed</callback>
+	</editline>
+	<label align="right"><text>Force:</text></label>
+	<editline name="Nodes::Object::Joint::Prismatic::linear_force_el" export="1" align="expand" validator="float">
+		<tooltip>Linear motor maximum force</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::linear_force_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Distance:</text></label>
+	<editline name="Nodes::Object::Joint::Prismatic::linear_distance_el" export="1" align="expand" validator="float">
+		<tooltip>Linear spring target distance</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::linear_distance_pressed</callback>
+	</editline>
+	<label align="right"><text>Spring:</text></label>
+	<editline name="Nodes::Object::Joint::Prismatic::linear_spring_el" export="1" align="expand" validator="float">
+		<tooltip>Linear spring coefficient</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Prismatic::linear_spring_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Prismatic::current_linear_velocity_el" export="1" align="expand" enabled="0"/>
+	<label align="right"><text>Distance:</text></label>
+	<editline name="Nodes::Object::Joint::Prismatic::current_linear_distance_el" export="1" align="expand" enabled="0"/>
+	
+</gridbox>
+
+<!--
+/* JointCylindrical
+ */
+-->
+<gridbox name="Nodes::Object::Joint::Cylindrical::parameters_gb" export="1" columns="4" space="4">
+	<attach>joint_parameters_gb</attach>
+	
+	<label align="right"><text>Axis 0:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::axis_0_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::axis_0_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Cylindrical::axis_0_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::axis_0_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Cylindrical::axis_0_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::axis_0_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Axis 1:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::axis_1_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::axis_1_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Cylindrical::axis_1_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::axis_1_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Cylindrical::axis_1_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::axis_1_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Linear:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::linear_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Linear damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::linear_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Joint::Cylindrical::linear_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Joint::Cylindrical::linear_damping_el</attach>
+	</hslider>
+	<vbox/>
+
+	<label align="right"><text>From:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::linear_limit_from_el" export="1" align="expand" validator="float">
+		<tooltip>Low limit distance that specifies how far a connected body can move along the joint axis</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::linear_limit_from_pressed</callback>
+	</editline>
+	<label align="right"><text>To:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::linear_limit_to_el" export="1" align="expand" validator="float">
+		<tooltip>High limit distance that specifies how far a connected body can move along the joint axis</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::linear_limit_to_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::linear_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Linear motor target velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::linear_velocity_pressed</callback>
+	</editline>
+	<label align="right"><text>Force:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::linear_force_el" export="1" align="expand" validator="float">
+		<tooltip>Linear motor maximum force</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::linear_force_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Distance:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::linear_distance_el" export="1" align="expand" validator="float">
+		<tooltip>Linear spring target distance</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::linear_distance_pressed</callback>
+	</editline>
+	<label align="right"><text>Spring:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::linear_spring_el" export="1" align="expand" validator="float">
+		<tooltip>Linear spring coefficient</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::linear_spring_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::current_linear_velocity_el" export="1" align="expand" enabled="0"/>
+	<label align="right"><text>Distance:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::current_linear_distance_el" export="1" align="expand" enabled="0"/>
+	
+	<label align="right"><text>Angular:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::angular_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Angular damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::angular_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Joint::Cylindrical::angular_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Joint::Cylindrical::angular_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>From:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::angular_limit_from_el" export="1" align="expand" validator="float">
+		<tooltip>Low rotation limit angle</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::angular_limit_from_pressed</callback>
+	</editline>
+	<label align="right"><text>To:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::angular_limit_to_el" export="1" align="expand" validator="float">
+		<tooltip>High rotation limit angle</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::angular_limit_to_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::angular_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Angular motor target velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::angular_velocity_pressed</callback>
+	</editline>
+	<label align="right"><text>Torque:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::angular_torque_el" export="1" align="expand" validator="float">
+		<tooltip>Angular motor maximum torque</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::angular_torque_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Angle:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::angular_angle_el" export="1" align="expand" validator="float">
+		<tooltip>Angular spring target angle</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::angular_angle_pressed</callback>
+	</editline>
+	<label align="right"><text>Spring:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::angular_spring_el" export="1" align="expand" validator="float">
+		<tooltip>Angular spring coefficient</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Cylindrical::angular_spring_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::current_angular_velocity_el" export="1" align="expand" enabled="0"/>
+	<label align="right"><text>Angle:</text></label>
+	<editline name="Nodes::Object::Joint::Cylindrical::current_angular_angle_el" export="1" align="expand" enabled="0"/>
+	
+</gridbox>
+
+<!--
+/* JointSuspension
+ */
+-->
+<gridbox name="Nodes::Object::Joint::Suspension::parameters_gb" export="1" columns="4" space="4">
+	<attach>joint_parameters_gb</attach>
+	
+	<label name="Nodes::Object::Joint::Suspension::axis_00_l" export="1" align="right"/>
+	<editline name="Nodes::Object::Joint::Suspension::axis_00_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X linear axis coordinate</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::axis_00_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Suspension::axis_00_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y linear axis coordinate</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::axis_00_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Suspension::axis_00_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z linear axis coordinate</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::axis_00_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Axis 10:</text></label>
+	<editline name="Nodes::Object::Joint::Suspension::axis_10_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X angular axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::axis_10_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Suspension::axis_10_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y angular axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::axis_10_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Suspension::axis_10_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z angular axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::axis_10_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Axis 11:</text></label>
+	<editline name="Nodes::Object::Joint::Suspension::axis_11_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X angular axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::axis_11_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Suspension::axis_11_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y angular axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::axis_11_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Suspension::axis_11_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z angular axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::axis_11_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Linear:</text></label>
+	<editline name="Nodes::Object::Joint::Suspension::linear_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Linear damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::linear_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Joint::Suspension::linear_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Joint::Suspension::linear_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>From:</text></label>
+	<editline name="Nodes::Object::Joint::Suspension::linear_limit_from_el" export="1" align="expand" validator="float">
+		<tooltip>Low limit of the suspension ride</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::linear_limit_from_pressed</callback>
+	</editline>
+	<label align="right"><text>To:</text></label>
+	<editline name="Nodes::Object::Joint::Suspension::linear_limit_to_el" export="1" align="expand" validator="float">
+		<tooltip>High limit of the suspension ride</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::linear_limit_to_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Distance:</text></label>
+	<editline name="Nodes::Object::Joint::Suspension::linear_distance_el" export="1" align="expand" validator="float">
+		<tooltip>Target height of the suspension</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::linear_distance_pressed</callback>
+	</editline>
+	<label align="right"><text>Spring:</text></label>
+	<editline name="Nodes::Object::Joint::Suspension::linear_spring_el" export="1" align="expand" validator="float">
+		<tooltip>Rigidity coefficient of the suspension</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::linear_spring_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Distance:</text></label>
+	<editline name="Nodes::Object::Joint::Suspension::current_linear_distance_el" export="1" align="expand" enabled="0"/>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Angular:</text></label>
+	<editline name="Nodes::Object::Joint::Suspension::angular_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Angular damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::angular_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Joint::Suspension::angular_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Joint::Suspension::angular_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Suspension::angular_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Angular motor target velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::angular_velocity_pressed</callback>
+	</editline>
+	<label align="right"><text>Torque:</text></label>
+	<editline name="Nodes::Object::Joint::Suspension::angular_torque_el" export="1" align="expand" validator="float">
+		<tooltip>Angular motor maximum torque</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Suspension::angular_torque_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Suspension::current_angular_velocity_el" export="1" align="expand" enabled="0"/>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+<!--
+/* JointWheel
+ */
+-->
+<gridbox name="Nodes::Object::Joint::Wheel::parameters_gb" export="1" columns="4" space="4">
+	<attach>joint_parameters_gb</attach>
+	
+	<label name="Nodes::Object::Joint::Wheel::axis_00_l" export="1" align="right"/>
+	<editline name="Nodes::Object::Joint::Wheel::axis_00_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X linear axis coordinate</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::axis_00_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Wheel::axis_00_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y linear axis coordinate</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::axis_00_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Wheel::axis_00_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z linear axis coordinate</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::axis_00_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Axis 10:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::axis_10_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X angular axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::axis_10_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Wheel::axis_10_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y angular axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::axis_10_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Wheel::axis_10_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z angular axis coordinate of selected body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::axis_10_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Axis 11:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::axis_11_el[0]" export="1" align="expand" validator="float">
+		<tooltip>X angular axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::axis_11_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Wheel::axis_11_el[1]" export="1" align="expand" validator="float">
+		<tooltip>Y angular axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::axis_11_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Wheel::axis_11_el[2]" export="1" align="expand" validator="float">
+		<tooltip>Z angular axis coordinate of second body</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::axis_11_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Linear:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::linear_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Linear damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::linear_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Joint::Wheel::linear_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Joint::Wheel::linear_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>From:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::linear_limit_from_el" export="1" align="expand" validator="float">
+		<tooltip>Low limit of the suspension ride</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::linear_limit_from_pressed</callback>
+	</editline>
+	<label align="right"><text>To:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::linear_limit_to_el" export="1" align="expand" validator="float">
+		<tooltip>High limit of the suspension ride</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::linear_limit_to_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Height:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::linear_distance_el" export="1" align="expand" validator="float">
+		<tooltip>Target height of the suspension</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::linear_distance_pressed</callback>
+	</editline>
+	<label align="right"><text>Spring:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::linear_spring_el" export="1" align="expand" validator="float">
+		<tooltip>Rigidity coefficient of the suspension</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::linear_spring_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Distance:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::current_linear_distance_el" export="1" align="expand" enabled="0"/>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Angular:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::angular_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Angular damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::angular_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Joint::Wheel::angular_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Joint::Wheel::angular_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::angular_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Angular motor target velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::angular_velocity_pressed</callback>
+	</editline>
+	<label align="right"><text>Torque:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::angular_torque_el" export="1" align="expand" validator="float">
+		<tooltip>Angular motor maximum torque</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::angular_torque_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::current_angular_velocity_el" export="1" align="expand" enabled="0"/>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>TAngle:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::tangent_angle_el" export="1" align="expand" validator="float">
+		<tooltip>Coefficient specifying how fast the optimal longitudinal force can be achieved</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::tangent_angle_pressed</callback>
+	</editline>
+	<label align="right"><text>TFriction:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::tangent_friction_el" export="1" align="expand" validator="float">
+		<tooltip>Longitudinal friction of the tire</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::tangent_friction_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>BAngle:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::binormal_angle_el" export="1" align="expand" validator="float">
+		<tooltip>Сoefficient specifying how fast the optimal lateral force can be achieved</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::binormal_angle_pressed</callback>
+	</editline>
+	<label align="right"><text>BFriction:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::binormal_friction_el" export="1" align="expand" validator="float">
+		<tooltip>Lateral friction of the tire</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::binormal_friction_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Wheel mass:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::wheel_mass_el" export="1" align="expand" validator="float">
+		<tooltip>Wheel mass</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::wheel_mass_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Radius:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::wheel_radius_el" export="1" align="expand" validator="float">
+		<tooltip>Wheel radius</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::wheel_radius_pressed</callback>
+	</editline>
+	<label align="right"><text>Width:</text></label>
+	<editline name="Nodes::Object::Joint::Wheel::wheel_width_el" export="1" align="expand" validator="float">
+		<tooltip>Wheel width</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Wheel::wheel_width_pressed</callback>
+	</editline>
+	
+</gridbox>
+
+<!--
+/* JointParticles
+ */
+-->
+<gridbox name="Nodes::Object::Joint::Particles::parameters_gb" export="1" columns="4" space="4">
+	<attach>joint_parameters_gb</attach>
+	
+	<label align="right"><text>Size:</text></label>
+	<editline name="Nodes::Object::Joint::Particles::size_el[0]" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Particles::size_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Particles::size_el[1]" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Particles::size_pressed</callback>
+	</editline>
+	<editline name="Nodes::Object::Joint::Particles::size_el[2]" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Particles::size_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Threshold:</text></label>
+	<editline name="Nodes::Object::Joint::Particles::threshold_el" export="1" align="expand" validator="float">
+		<tooltip>Threshold</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Particles::threshold_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+<!--
+/* JointPath
+ */
+-->
+<gridbox name="Nodes::Object::Joint::Path::parameters_gb" export="1" columns="4" space="4">
+	<attach>joint_parameters_gb</attach>
+	
+	<label align="right"><text>Linear:</text></label>
+	<editline name="Nodes::Object::Joint::Path::linear_damping_el" export="1" align="expand" validator="float">
+		<tooltip>Linear damping</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Path::linear_damping_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Object::Joint::Path::linear_damping_sl" export="1" align="expand" min="0" max="2000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000" flags="max_expand">Nodes::Object::Joint::Path::linear_damping_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Path::linear_velocity_el" export="1" align="expand" validator="float">
+		<tooltip>Linear motor target velocity</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Path::linear_velocity_pressed</callback>
+	</editline>
+	<label align="right"><text>Force:</text></label>
+	<editline name="Nodes::Object::Joint::Path::linear_force_el" export="1" align="expand" validator="float">
+		<tooltip>Linear motor maximum force</tooltip>
+		<callback type="pressed,focus_out">Nodes::Object::Joint::Path::linear_force_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Velocity:</text></label>
+	<editline name="Nodes::Object::Joint::Path::current_linear_velocity_el" export="1" align="expand" enabled="0"/>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+</ui>

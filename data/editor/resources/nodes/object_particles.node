@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="ObjectParticles" id="2005465815" collider="0">
+		<spawn_rate>10</spawn_rate>
+		<emitter_enabled>1</emitter_enabled>
+		<life_mean>2</life_mean>
+		<life_spread>0</life_spread>
+		<velocity_mean>2</velocity_mean>
+		<velocity_spread>0</velocity_spread>
+		<radius_mean>0.3</radius_mean>
+		<radius_spread>0</radius_spread>
+		<surface name="particles" material="particles_base" property="surface_base"/>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

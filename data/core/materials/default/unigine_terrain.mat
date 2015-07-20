@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<materials version="1.00" editable="0">
+	
+	<!--
+	/**************************************************************************\
+	*
+	* Terrain materials
+	*
+	\**************************************************************************/
+	-->
+	
+	<!--
+	/* Terrain base material
+	 */
+	-->
+	<material name="terrain_base" editable="0">
+		
+		<!-- states -->
+		<state name="terrain" hidden="1" type="switch" items="patch,surface,coarse">0</state>
+		<state name="deferred" type="switch" items="none,default">1</state>
+		<state name="auxiliary" type="switch" items="none,default">0</state>
+		<state name="ambient" type="switch" items="none,default">1</state>
+		<state name="light_spot" type="switch" items="none,default">1</state>
+		<state name="light_omni" type="switch" items="none,default">1</state>
+		<state name="light_proj" type="switch" items="none,default">1</state>
+		<state name="light_world" type="switch" items="none,default">1</state>
+		<state name="child" hidden="1" type="switch" items="0,1,2,3,4">0</state>
+		<state name="detail" hidden="1" type="switch" items="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16">0</state>
+		<state name="ambient_light" type="toggle">0</state>
+		
+		<!-- wireframe shaders -->
+		<shader pass="wireframe" object="terrain"
+			defines="BASE_WIREFRAME"
+			terrain_defines="PATCH,SURFACE,COARSE"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			geometry="core/shaders/default/terrain/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- deferred shaders -->
+		<shader pass="deferred" object="terrain"
+			defines="BASE_DEFERRED"
+			terrain_defines="PATCH,SURFACE,0"
+			deferred="1"
+			child_defines=",CHILD_1,CHILD_2,CHILD_3,CHILD_4"
+			detail_defines="NO_DETAIL,DETAIL_1,DETAIL_2,DETAIL_3,DETAIL_4,0,DETAIL_6,0,DETAIL_8,0,0,0,DETAIL_12,0,0,0,DETAIL_16"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_deferred.shader"/>
+		<shader pass="deferred" object="terrain"
+			defines="BASE_DEFERRED"
+			terrain_defines="0,0,COARSE"
+			deferred="1"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_deferred.shader"/>
+		
+		<!-- auxiliary shaders -->
+		<shader pass="auxiliary" object="terrain"
+			defines="BASE_AUXILIARY"
+			terrain_defines="PATCH,SURFACE,COARSE"
+			auxiliary="1"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_auxiliary.shader"/>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient" object="terrain"
+			defines="BASE_AMBIENT,AMBIENT"
+			receive_world_shadow_defines=",SHADOW"
+			terrain_defines="PATCH,SURFACE,0"
+			ambient="1"
+			child_defines=",CHILD_1,CHILD_2,CHILD_3,CHILD_4"
+			detail_defines="NO_DETAIL,DETAIL_1,DETAIL_2,DETAIL_3,DETAIL_4,0,DETAIL_6,0,DETAIL_8,0,0,0,DETAIL_12,0,0,0,DETAIL_16"
+			ambient_light_defines=",AMBIENT_LIGHT"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_ambient.shader"/>
+		<shader pass="ambient" object="terrain"
+			defines="BASE_AMBIENT,AMBIENT"
+			receive_world_shadow_defines=",SHADOW"
+			terrain_defines="0,0,COARSE"
+			ambient="1"
+			ambient_light_defines=",AMBIENT_LIGHT"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_ambient.shader"/>
+		
+		<!-- light spot shaders -->
+		<shader pass="light_spot" object="terrain"
+			defines="BASE_LIGHT_SPOT,SPOT"
+			terrain_defines="PATCH,SURFACE,0"
+			light_spot="1"
+			child_defines=",CHILD_1,CHILD_2,CHILD_3,CHILD_4"
+			detail_defines="NO_DETAIL,DETAIL_1,DETAIL_2,DETAIL_3,DETAIL_4,0,DETAIL_6,0,DETAIL_8,0,0,0,DETAIL_12,0,0,0,DETAIL_16"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_light_spot.shader"/>
+		<shader pass="light_spot" object="terrain"
+			defines="BASE_LIGHT_SPOT,SPOT"
+			terrain_defines="0,0,COARSE"
+			light_spot="1"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_light_spot.shader"/>
+		
+		<!-- light omni shaders -->
+		<shader pass="light_omni" object="terrain"
+			defines="BASE_LIGHT_OMNI,OMNI"
+			receive_shadow_defines=",SHADOW"
+			terrain_defines="PATCH,SURFACE,0"
+			light_omni="1"
+			child_defines=",CHILD_1,CHILD_2,CHILD_3,CHILD_4"
+			detail_defines="NO_DETAIL,DETAIL_1,DETAIL_2,DETAIL_3,DETAIL_4,0,DETAIL_6,0,DETAIL_8,0,0,0,DETAIL_12,0,0,0,DETAIL_16"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_light_omni.shader"/>
+		<shader pass="light_omni" object="terrain"
+			defines="BASE_LIGHT_OMNI,OMNI"
+			receive_shadow_defines=",SHADOW"
+			terrain_defines="0,0,COARSE"
+			light_omni="1"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_light_omni.shader"/>
+		
+		<!-- light proj shaders -->
+		<shader pass="light_proj" object="terrain"
+			defines="BASE_LIGHT_PROJ,PROJ"
+			receive_shadow_defines=",SHADOW"
+			terrain_defines="PATCH,SURFACE,0"
+			light_proj="1"
+			child_defines=",CHILD_1,CHILD_2,CHILD_3,CHILD_4"
+			detail_defines="NO_DETAIL,DETAIL_1,DETAIL_2,DETAIL_3,DETAIL_4,0,DETAIL_6,0,DETAIL_8,0,0,0,DETAIL_12,0,0,0,DETAIL_16"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_light_proj.shader"/>
+		<shader pass="light_proj" object="terrain"
+			defines="BASE_LIGHT_PROJ,PROJ"
+			receive_shadow_defines=",SHADOW"
+			terrain_defines="0,0,COARSE"
+			light_proj="1"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_light_proj.shader"/>
+		
+		<!-- light world shaders -->
+		<shader pass="light_world" object="terrain"
+			defines="BASE_LIGHT_WORLD,WORLD"
+			receive_world_shadow_defines=",SHADOW"
+			terrain_defines="PATCH,SURFACE,0"
+			light_world="1"
+			child_defines=",CHILD_1,CHILD_2,CHILD_3,CHILD_4"
+			detail_defines="NO_DETAIL,DETAIL_1,DETAIL_2,DETAIL_3,DETAIL_4,0,DETAIL_6,0,DETAIL_8,0,0,0,DETAIL_12,0,0,0,DETAIL_16"
+			ambient_light="0"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_light_world.shader"/>
+		<shader pass="light_world" object="terrain"
+			defines="BASE_LIGHT_WORLD,WORLD"
+			receive_world_shadow_defines=",SHADOW"
+			terrain_defines="0,0,COARSE"
+			light_world="1"
+			ambient_light="0"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_light_world.shader"/>
+		
+		<!-- shadow shaders -->
+		<shader pass="shadow" object="terrain"
+			defines="BASE_SHADOW"
+			terrain_defines="PATCH,SURFACE,COARSE"
+			vertex="core/shaders/default/terrain/vertex_base.shader"
+			fragment="core/shaders/default/terrain/fragment_base_shadow.shader"/>
+		
+		<!-- textures -->
+		<texture name="deferred_occlusion" pass="ambient" unit="11" type="deferred_occlusion"/>
+		<texture name="deferred_light" pass="ambient" unit="15" type="deferred_light"/>
+		<texture name="light_image" pass="light_omni,light_proj,light_world" unit="11" type="light_image"/>
+		<texture name="light_color" pass="ambient,light_omni,light_proj,light_world" unit="12" type="light_color"/>
+		<texture name="light_depth" pass="ambient,light_omni,light_proj,light_world" type="light_depth"/>
+		<texture name="light_noise" pass="ambient,light_omni,light_proj,light_world" type="light_noise"/>
+		<texture name="light_vcube" pass="light_omni" type="light_vcube"/>
+		
+		<!-- parameters -->
+		<parameter name="auxiliary_color" auxiliary="1" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="environment_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="diffuse_scale" type="slider" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="specular_scale" type="slider" min="0.0" max="8.0" flags="max_expand">1.0</parameter>
+		<parameter name="specular_power" type="slider" min="0.0" max="2.0" flags="log10,max_expand">16.0</parameter>
+		<parameter name="fresnel_bias" type="slider" min="0.0" max="1.0">1.0</parameter>
+		<parameter name="fresnel_power" type="slider" min="0.0" max="1.0" flags="log10,max_expand">5.0</parameter>
+	</material>
+	
+</materials>

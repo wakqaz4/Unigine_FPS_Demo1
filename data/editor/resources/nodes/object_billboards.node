@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node id="1935492579" type="ObjectBillboards" collider="0">
+		<billboards num_billboards="1">0 0 0 1 1 0 0 1 1 0</billboards>
+		<surface name="billboards" material="billboards_base" property="surface_base"/>
+		<data>
+			<generator>
+				<count>16</count>
+				<atlas_width>1</atlas_width>
+				<atlas_height>1</atlas_height>
+				<radius_mean>1</radius_mean>
+				<radius_spread>0</radius_spread>
+				<aspect_mean>1</aspect_mean>
+				<aspect_spread>0</aspect_spread>
+				<angle_mean>0</angle_mean>
+				<angle_spread>0</angle_spread>
+				<mesh/>
+			</generator>
+		</data>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

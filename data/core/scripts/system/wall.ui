@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+<ui version="1.03">
+
+<hbox align="center" space_x="4">
+	<vbox align="center" space_y="4">
+		<groupbox align="expand" space="4">
+			<gridbox align="expand" columns="3" space="4">
+				<label align="right">Fov:</label>
+				<editline name="Wall::fov_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Wall::fov_pressed</callback>
+				</editline>
+				<hslider align="expand" min="100" max="9000" min_expand="100" max_expand="17900" width="128">
+					<attach multiplier="100" flags="max_expand" format="%.1f">Wall::fov_el</attach>
+				</hslider>
+				<label align="right">Angle:</label>
+				<editline name="Wall::angle_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Wall::angle_pressed</callback>
+				</editline>
+				<hslider align="expand" min="0" max="4500" min_expand="-8900" max_expand="8900" width="128">
+					<attach multiplier="100" flags="expand" format="%.1f">Wall::angle_el</attach>
+				</hslider>
+				<label align="right">Bezel X:</label>
+				<editline name="Wall::bezel_x_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Wall::bezel_x_pressed</callback>
+				</editline>
+				<hslider align="expand" min="-200" max="200" min_expand="-1000" max_expand="1000" width="128">
+					<attach multiplier="1000" flags="expand" format="%.3f">Wall::bezel_x_el</attach>
+				</hslider>
+				<label align="right">Bezel Y:</label>
+				<editline name="Wall::bezel_y_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Wall::bezel_y_pressed</callback>
+				</editline>
+				<hslider align="expand" min="-200" max="200" min_expand="-1000" max_expand="1000" width="128">
+					<attach multiplier="1000" flags="expand" format="%.3f">Wall::bezel_y_el</attach>
+				</hslider>
+				<vbox/>
+				<button name="Wall::projection_b" export="1" align="expand">
+					<text>Projection</text>
+					<callback type="clicked">Wall::projection_clicked</callback>
+				</button>
+				<vbox/>
+			</gridbox>
+		</groupbox>
+	</vbox>
+</hbox>
+
+</ui>

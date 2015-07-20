@@ -1,0 +1,1360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_lights.ui
+ * Desc:    Unigine editor
+ * Version: 1.44
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Valia Vaneeva <fattie@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* LightProb
+ */
+-->
+<vbox name="Nodes::Light::Prob::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Light:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Light::Prob::light_mask_el" export="1" align="expand">
+					<tooltip>Light mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Light::light_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Light::light_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Light::light_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Viewport:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Light::Prob::viewport_mask_el" export="1" align="expand">
+					<tooltip>Viewport mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Light::viewport_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Light::viewport_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Light::viewport_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Color:</text></label>
+			<groupbox align="expand">
+				<hbox align="expand">
+					<sprite name="Nodes::Light::Prob::color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+						<callback type="clicked">Nodes::Light::color_clicked</callback>
+					</sprite>
+					<sprite name="Nodes::Light::Prob::color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+						<callback type="clicked">Nodes::Light::color_clicked</callback>
+					</sprite>
+				</hbox>
+			</groupbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Multiplier:</text></label>
+			<editline name="Nodes::Light::Prob::multiplier_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::multiplier_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Prob::multiplier_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="log10,max_expand">Nodes::Light::Prob::multiplier_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Attenuation:</text></label>
+			<editline name="Nodes::Light::Prob::attenuation_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::attenuation_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Prob::attenuation_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Light::Prob::attenuation_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Light::Prob::radius_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::Prob::radius_pressed</callback>
+			</editline>
+			<editline name="Nodes::Light::Prob::radius_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::Prob::radius_pressed</callback>
+				<callback type="enter" string="y">Nodes::Light::Prob::radius_enter</callback>
+				<callback type="leave" string="y">Nodes::Light::Prob::radius_leave</callback>
+			</editline>
+			<editline name="Nodes::Light::Prob::radius_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::Prob::radius_pressed</callback>
+				<callback type="enter" string="z">Nodes::Light::Prob::radius_enter</callback>
+				<callback type="leave" string="z">Nodes::Light::Prob::radius_leave</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Intensity:</text></label>
+			<vbox align="expand">
+				<label name="Nodes::Light::Prob::intensity_l" export="1" align="expand"/>
+			</vbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<vbox align="expand">
+				<sprite name="Nodes::Light::Prob::texture_s" export="1" align="left"/>
+			</vbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<button align="expand">
+				<text>Grab</text>
+				<callback type="clicked">Nodes::Light::Prob::grab_clicked</callback>
+			</button>
+			<button align="expand">
+				<text>Load</text>
+				<callback type="clicked">Nodes::Light::Prob::load_clicked</callback>
+			</button>
+			<button align="expand">
+				<text>Save</text>
+				<callback type="clicked">Nodes::Light::Prob::save_clicked</callback>
+			</button>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* LightSpot
+ */
+-->
+<vbox name="Nodes::Light::Spot::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::Light::Spot::deferred_cb" export="1" align="left,expand">
+				<text>Force deferred lighting</text>
+				<callback type="clicked">Nodes::Light::deferred_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Light:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Light::Spot::light_mask_el" export="1" align="expand">
+					<tooltip>Light mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Light::light_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Light::light_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Light::light_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Viewport:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Light::Spot::viewport_mask_el" export="1" align="expand">
+					<tooltip>Viewport mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Light::viewport_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Light::viewport_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Light::viewport_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Color:</text></label>
+			<groupbox align="expand">
+				<hbox align="expand">
+					<sprite name="Nodes::Light::Spot::color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+						<callback type="clicked">Nodes::Light::color_clicked</callback>
+					</sprite>
+					<sprite name="Nodes::Light::Spot::color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+						<callback type="clicked">Nodes::Light::color_clicked</callback>
+					</sprite>
+				</hbox>
+			</groupbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Multiplier:</text></label>
+			<editline name="Nodes::Light::Spot::multiplier_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::multiplier_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Spot::multiplier_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="log10,max_expand">Nodes::Light::Spot::multiplier_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Attenuation:</text></label>
+			<editline name="Nodes::Light::Spot::attenuation_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::attenuation_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Spot::attenuation_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Light::Spot::attenuation_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Diffuse scale:</text></label>
+			<editline name="Nodes::Light::Spot::diffuse_scale_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::diffuse_scale_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Spot::diffuse_scale_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Spot::diffuse_scale_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Specular scale:</text></label>
+			<editline name="Nodes::Light::Spot::specular_scale_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::specular_scale_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Spot::specular_scale_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Spot::specular_scale_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Specular power:</text></label>
+			<editline name="Nodes::Light::Spot::specular_power_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::specular_power_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Spot::specular_power_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Spot::specular_power_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Light::Spot::radius_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::Spot::radius_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Deferred dist:</text></label>
+			<editline name="Nodes::Light::Spot::deferred_distance_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::deferred_distance_pressed</callback>
+				<tooltip>Distance after which the light is rendered as deferred</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Visible dist:</text></label>
+			<editline name="Nodes::Light::Spot::visible_distance_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::visible_distance_pressed</callback>
+				<tooltip>Distance up to which the light is fully visible</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Fade dist:</text></label>
+			<editline name="Nodes::Light::Spot::fade_distance_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::fade_distance_pressed</callback>
+				<tooltip>Distance up to which the light fades out completely</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* LightOmni
+ */
+-->
+<vbox name="Nodes::Light::Omni::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::Light::Omni::deferred_cb" export="1" align="left,expand">
+				<text>Force deferred lighting</text>
+				<callback type="clicked">Nodes::Light::deferred_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Light:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Light::Omni::light_mask_el" export="1" align="expand">
+					<tooltip>Light mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Light::light_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Light::light_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Light::light_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Viewport:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Light::Omni::viewport_mask_el" export="1" align="expand">
+					<tooltip>Viewport mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Light::viewport_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Light::viewport_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Light::viewport_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Color:</text></label>
+			<groupbox align="expand">
+				<hbox align="expand">
+					<sprite name="Nodes::Light::Omni::color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+						<callback type="clicked">Nodes::Light::color_clicked</callback>
+					</sprite>
+					<sprite name="Nodes::Light::Omni::color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+						<callback type="clicked">Nodes::Light::color_clicked</callback>
+					</sprite>
+				</hbox>
+			</groupbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Multiplier:</text></label>
+			<editline name="Nodes::Light::Omni::multiplier_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::multiplier_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Omni::multiplier_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="log10,max_expand">Nodes::Light::Omni::multiplier_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Attenuation:</text></label>
+			<editline name="Nodes::Light::Omni::attenuation_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::attenuation_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Omni::attenuation_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Light::Omni::attenuation_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Diffuse scale:</text></label>
+			<editline name="Nodes::Light::Omni::diffuse_scale_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::diffuse_scale_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Omni::diffuse_scale_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Omni::diffuse_scale_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Normal scale:</text></label>
+			<editline name="Nodes::Light::Omni::normal_scale_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::normal_scale_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Omni::normal_scale_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Omni::normal_scale_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Specular scale:</text></label>
+			<editline name="Nodes::Light::Omni::specular_scale_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::specular_scale_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Omni::specular_scale_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Omni::specular_scale_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Specular power:</text></label>
+			<editline name="Nodes::Light::Omni::specular_power_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::specular_power_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Omni::specular_power_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Omni::specular_power_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Light::Omni::radius_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::Omni::radius_pressed</callback>
+			</editline>
+			<editline name="Nodes::Light::Omni::radius_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::Omni::radius_pressed</callback>
+				<callback type="enter" string="y">Nodes::Light::Omni::radius_enter</callback>
+				<callback type="leave" string="y">Nodes::Light::Omni::radius_leave</callback>
+			</editline>
+			<editline name="Nodes::Light::Omni::radius_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::Omni::radius_pressed</callback>
+				<callback type="enter" string="z">Nodes::Light::Omni::radius_enter</callback>
+				<callback type="leave" string="z">Nodes::Light::Omni::radius_leave</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Deferred dist:</text></label>
+			<editline name="Nodes::Light::Omni::deferred_distance_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::deferred_distance_pressed</callback>
+				<tooltip>Distance after which the light is rendered as deferred</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Visible dist:</text></label>
+			<editline name="Nodes::Light::Omni::visible_distance_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::visible_distance_pressed</callback>
+				<tooltip>Distance up to which the light is fully visible</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Shadow dist:</text></label>
+			<editline name="Nodes::Light::Omni::shadow_distance_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_distance_pressed</callback>
+				<tooltip>Distance up to which the casted shadows are fading out</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Fade dist:</text></label>
+			<editline name="Nodes::Light::Omni::fade_distance_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::fade_distance_pressed</callback>
+				<tooltip>Distance up to which the light fades out completely</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Texture:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Light::Omni::texture_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Light::Omni::texture_pressed</callback>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<callback type="clicked">Nodes::Light::Omni::texture_load_clicked</callback>
+				</icon>
+				<icon texture="editor/gui/action_view.png" width="22" height="20">
+					<callback type="clicked">Nodes::Light::Omni::texture_view_clicked</callback>
+				</icon>
+				<icon texture="editor/gui/action_clear.png" width="22" height="20">
+					<callback type="clicked">Nodes::Light::Omni::texture_clear_clicked</callback>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Light::Omni::shadow_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::Light::Omni::shadow_cb" export="1" align="left,expand">
+				<text>Shadows</text>
+				<callback type="clicked">Nodes::Light::shadow_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Light::Omni::translucent_cb" export="1" align="left,expand">
+				<text>Translucence</text>
+				<callback type="clicked">Nodes::Light::translucent_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Offset:</text></label>
+			<editline name="Nodes::Light::Omni::shadow_offset_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_offset_pressed</callback>
+			</editline>
+			<editline name="Nodes::Light::Omni::shadow_offset_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_offset_pressed</callback>
+			</editline>
+			<editline name="Nodes::Light::Omni::shadow_offset_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_offset_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Shadow:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Light::Omni::shadow_mask_el" export="1" align="expand">
+					<tooltip>Shadow mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Light::Omni::shadow_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Light::Omni::shadow_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Light::Omni::shadow_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Shadow size:</text></label>
+			<combobox name="Nodes::Light::Omni::shadow_size_cb" export="1" align="expand">
+				<text>Default (512)</text>
+				<text>64</text>
+				<text>128</text>
+				<text>256</text>
+				<text>512</text>
+				<text>1024</text>
+				<text>2048</text>
+				<text>4096</text>
+				<callback type="changed">Nodes::Light::shadow_size_changed</callback>
+			</combobox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Translucence size:</text></label>
+			<combobox name="Nodes::Light::Omni::translucent_size_cb" export="1" align="expand">
+				<text>Default (512)</text>
+				<text>64</text>
+				<text>128</text>
+				<text>256</text>
+				<text>512</text>
+				<text>2048</text>
+				<callback type="changed">Nodes::Light::translucent_size_changed</callback>
+			</combobox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Ambient:</text></label>
+			<editline name="Nodes::Light::Omni::shadow_ambient_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_ambient_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Omni::shadow_ambient_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Omni::shadow_ambient_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Bias:</text></label>
+			<editline name="Nodes::Light::Omni::shadow_bias_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_bias_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Omni::shadow_bias_sl" export="1" align="expand" min="0" max="8000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Omni::shadow_bias_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Slope:</text></label>
+			<editline name="Nodes::Light::Omni::shadow_slope_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_slope_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Omni::shadow_slope_sl" export="1" align="expand" min="0" max="8000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Omni::shadow_slope_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Softness:</text></label>
+			<editline name="Nodes::Light::Omni::shadow_softness_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_softness_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Omni::shadow_softness_sl" export="1" align="expand" min="0" max="4000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Omni::shadow_softness_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Bias:</text></label>
+			<editline name="Nodes::Light::Omni::translucent_bias_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::translucent_bias_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Omni::translucent_bias_sl" export="1" align="expand" min="0" max="8000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Omni::translucent_bias_el</attach>
+			</hslider>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* LightProj
+ */
+-->
+<vbox name="Nodes::Light::Proj::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::Light::Proj::deferred_cb" export="1" align="left,expand">
+				<text>Force deferred lighting</text>
+				<callback type="clicked">Nodes::Light::deferred_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Light:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Light::Proj::light_mask_el" export="1" align="expand">
+					<tooltip>Light mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Light::light_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Light::light_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Light::light_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Viewport:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Light::Proj::viewport_mask_el" export="1" align="expand">
+					<tooltip>Viewport mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Light::viewport_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Light::viewport_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Light::viewport_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Color:</text></label>
+			<groupbox align="expand">
+				<hbox align="expand">
+					<sprite name="Nodes::Light::Proj::color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+						<callback type="clicked">Nodes::Light::color_clicked</callback>
+					</sprite>
+					<sprite name="Nodes::Light::Proj::color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+						<callback type="clicked">Nodes::Light::color_clicked</callback>
+					</sprite>
+				</hbox>
+			</groupbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Multiplier:</text></label>
+			<editline name="Nodes::Light::Proj::multiplier_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::multiplier_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Proj::multiplier_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="log10,max_expand">Nodes::Light::Proj::multiplier_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Attenuation:</text></label>
+			<editline name="Nodes::Light::Proj::attenuation_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::attenuation_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Proj::attenuation_sl" export="1" align="expand" min="1" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Light::Proj::attenuation_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Diffuse scale:</text></label>
+			<editline name="Nodes::Light::Proj::diffuse_scale_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::diffuse_scale_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Proj::diffuse_scale_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Proj::diffuse_scale_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Normal scale:</text></label>
+			<editline name="Nodes::Light::Proj::normal_scale_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::normal_scale_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Proj::normal_scale_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Proj::normal_scale_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Specular scale:</text></label>
+			<editline name="Nodes::Light::Proj::specular_scale_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::specular_scale_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Proj::specular_scale_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Proj::specular_scale_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Specular power:</text></label>
+			<editline name="Nodes::Light::Proj::specular_power_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::specular_power_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Proj::specular_power_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Proj::specular_power_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Light::Proj::radius_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::Proj::radius_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Field of view:</text></label>
+			<editline name="Nodes::Light::Proj::fov_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::Proj::fov_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Proj::fov_sl" export="1" align="expand" min="1000" max="90000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Light::Proj::fov_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Near clipping:</text></label>
+			<editline name="Nodes::Light::Proj::znear_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::Proj::znear_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Deferred dist:</text></label>
+			<editline name="Nodes::Light::Proj::deferred_distance_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::deferred_distance_pressed</callback>
+				<tooltip>Distance after which the light is rendered as deferred</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Visible dist:</text></label>
+			<editline name="Nodes::Light::Proj::visible_distance_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::visible_distance_pressed</callback>
+				<tooltip>Distance up to which the light is fully visible</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Shadow dist:</text></label>
+			<editline name="Nodes::Light::Proj::shadow_distance_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_distance_pressed</callback>
+				<tooltip>Distance up to which the casted shadows are fading out</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Fade dist:</text></label>
+			<editline name="Nodes::Light::Proj::fade_distance_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::fade_distance_pressed</callback>
+				<tooltip>Distance up to which the light fades out completely</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Texture:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Light::Proj::texture_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Light::Proj::texture_pressed</callback>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<callback type="clicked">Nodes::Light::Proj::texture_load_clicked</callback>
+				</icon>
+				<icon texture="editor/gui/action_view.png" width="22" height="20">
+					<callback type="clicked">Nodes::Light::Proj::texture_view_clicked</callback>
+				</icon>
+				<icon texture="editor/gui/action_clear.png" width="22" height="20">
+					<callback type="clicked">Nodes::Light::Proj::texture_clear_clicked</callback>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<vbox space_x="32" align="expand"/>
+			<vbox space_x="32" align="expand"/>
+			<vbox space_x="32" align="expand"/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Light::Proj::shadow_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::Light::Proj::shadow_cb" export="1" align="left,expand">
+				<text>Shadows</text>
+				<callback type="clicked">Nodes::Light::shadow_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Light::Proj::translucent_cb" export="1" align="left,expand">
+				<text>Translucence</text>
+				<callback type="clicked">Nodes::Light::translucent_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Offset:</text></label>
+			<editline name="Nodes::Light::Proj::shadow_offset_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_offset_pressed</callback>
+			</editline>
+			<editline name="Nodes::Light::Proj::shadow_offset_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_offset_pressed</callback>
+			</editline>
+			<editline name="Nodes::Light::Proj::shadow_offset_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_offset_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Shadow size:</text></label>
+			<combobox name="Nodes::Light::Proj::shadow_size_cb" export="1" align="expand">
+				<text>Default (1024)</text>
+				<text>128</text>
+				<text>256</text>
+				<text>512</text>
+				<text>1024</text>
+				<text>2048</text>
+				<text>4096</text>
+				<text>8192</text>
+				<callback type="changed">Nodes::Light::shadow_size_changed</callback>
+			</combobox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Translucence size:</text></label>
+			<combobox name="Nodes::Light::Proj::translucent_size_cb" export="1" align="expand">
+				<text>Default (1024)</text>
+				<text>128</text>
+				<text>256</text>
+				<text>512</text>
+				<text>1024</text>
+				<text>2048</text>
+				<text>4096</text>
+				<callback type="changed">Nodes::Light::translucent_size_changed</callback>
+			</combobox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Ambient:</text></label>
+			<editline name="Nodes::Light::Proj::shadow_ambient_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_ambient_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Proj::shadow_ambient_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Proj::shadow_ambient_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Bias:</text></label>
+			<editline name="Nodes::Light::Proj::shadow_bias_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_bias_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Proj::shadow_bias_sl" export="1" align="expand" min="0" max="8000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Proj::shadow_bias_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Slope:</text></label>
+			<editline name="Nodes::Light::Proj::shadow_slope_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_slope_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Proj::shadow_slope_sl" export="1" align="expand" min="0" max="8000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Proj::shadow_slope_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Softness:</text></label>
+			<editline name="Nodes::Light::Proj::shadow_softness_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_softness_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Proj::shadow_softness_sl" export="1" align="expand" min="0" max="4000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Proj::shadow_softness_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Bias:</text></label>
+			<editline name="Nodes::Light::Proj::translucent_bias_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::translucent_bias_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::Proj::translucent_bias_sl" export="1" align="expand" min="0" max="8000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::Proj::translucent_bias_el</attach>
+			</hslider>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* LightWorld
+ */
+-->
+<vbox name="Nodes::Light::World::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::Light::World::deferred_cb" export="1" align="left,expand">
+				<text>Force deferred lighting</text>
+				<callback type="clicked">Nodes::Light::deferred_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Light:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Light::World::light_mask_el" export="1" align="expand">
+					<tooltip>Light mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Light::light_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Light::light_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Light::light_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Viewport:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Light::World::viewport_mask_el" export="1" align="expand">
+					<tooltip>Viewport mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Light::viewport_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Light::viewport_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+					<callback type="clicked">Nodes::Light::viewport_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Color:</text></label>
+			<groupbox align="expand">
+				<hbox align="expand">
+					<sprite name="Nodes::Light::World::color_s[0]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+						<callback type="clicked">Nodes::Light::color_clicked</callback>
+					</sprite>
+					<sprite name="Nodes::Light::World::color_s[1]" export="1" align="expand" texture="editor/gui/color_white.png" scale="8">
+						<callback type="clicked">Nodes::Light::color_clicked</callback>
+					</sprite>
+				</hbox>
+			</groupbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Multiplier:</text></label>
+			<editline name="Nodes::Light::World::multiplier_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::multiplier_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::World::multiplier_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="log10,max_expand">Nodes::Light::World::multiplier_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Diffuse scale:</text></label>
+			<editline name="Nodes::Light::World::diffuse_scale_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::diffuse_scale_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::World::diffuse_scale_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::World::diffuse_scale_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Normal scale:</text></label>
+			<editline name="Nodes::Light::World::normal_scale_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::normal_scale_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::World::normal_scale_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::World::normal_scale_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Specular scale:</text></label>
+			<editline name="Nodes::Light::World::specular_scale_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::specular_scale_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::World::specular_scale_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::World::specular_scale_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Specular power:</text></label>
+			<editline name="Nodes::Light::World::specular_power_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::specular_power_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::World::specular_power_sl" export="1" align="expand" min="0" max="2000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::World::specular_power_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Light::World::scattering_cb" export="1" align="left,expand">
+				<text>Scattering</text>
+				<callback type="clicked">Nodes::Light::World::scattering_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<vbox space_x="32" align="expand"/>
+			<vbox space_x="32" align="expand"/>
+			<vbox space_x="32" align="expand"/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<vbox name="Nodes::Light::World::shadow_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::Light::World::shadow_cb" export="1" align="left,expand">
+				<text>Shadows</text>
+				<callback type="clicked">Nodes::Light::shadow_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Light::World::translucent_cb" export="1" align="left,expand">
+				<text>Translucence</text>
+				<callback type="clicked">Nodes::Light::translucent_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Shadow size:</text></label>
+			<combobox name="Nodes::Light::World::shadow_size_cb" export="1" align="expand">
+				<text>Default (512)</text>
+				<text>64</text>
+				<text>128</text>
+				<text>256</text>
+				<text>512</text>
+				<text>1024</text>
+				<text>2048</text>
+				<text>4096</text>
+				<callback type="changed">Nodes::Light::shadow_size_changed</callback>
+			</combobox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Translucence size:</text></label>
+			<combobox name="Nodes::Light::World::translucent_size_cb" export="1" align="expand">
+				<text>Default (512)</text>
+				<text>64</text>
+				<text>128</text>
+				<text>256</text>
+				<text>512</text>
+				<text>1024</text>
+				<text>2048</text>
+				<callback type="changed">Nodes::Light::translucent_size_changed</callback>
+			</combobox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Ambient:</text></label>
+			<editline name="Nodes::Light::World::shadow_ambient_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_ambient_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::World::shadow_ambient_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::World::shadow_ambient_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Range:</text></label>
+			<editline name="Nodes::Light::World::shadow_range_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::World::shadow_range_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Distribute:</text></label>
+			<editline name="Nodes::Light::World::shadow_distribute_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::World::shadow_distribute_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::World::shadow_distribute_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::World::shadow_distribute_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Splits:</text></label>
+			<editline name="Nodes::Light::World::num_shadow_splits_el" export="1" align="expand" validator="uint">
+				<callback type="pressed,focus_out">Nodes::Light::World::num_shadow_splits_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::World::num_shadow_splits_sl" export="1" align="expand" min="1" max="4">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1">Nodes::Light::World::num_shadow_splits_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Bias:</text></label>
+			<editline name="Nodes::Light::World::shadow_bias_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_bias_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::World::shadow_bias_sl" export="1" align="expand" min="0" max="8000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::World::shadow_bias_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Slope:</text></label>
+			<editline name="Nodes::Light::World::shadow_slope_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_slope_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::World::shadow_slope_sl" export="1" align="expand" min="0" max="8000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::World::shadow_slope_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Softness:</text></label>
+			<editline name="Nodes::Light::World::shadow_softness_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::shadow_softness_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::World::shadow_softness_sl" export="1" align="expand" min="0" max="4000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::World::shadow_softness_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Bias:</text></label>
+			<editline name="Nodes::Light::World::translucent_bias_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Light::translucent_bias_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Light::World::translucent_bias_sl" export="1" align="expand" min="0" max="8000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000" flags="max_expand">Nodes::Light::World::translucent_bias_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<vbox space_x="32" align="expand"/>
+			<vbox space_x="32" align="expand"/>
+			<vbox space_x="32" align="expand"/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+</ui>

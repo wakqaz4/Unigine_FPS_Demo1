@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, UNIGINE Corp. All rights reserved.
+ *
+ * This file is a part of the UNIGINE 2.0-RC SDK.
+ *
+ * Your use and / or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the UNIGINE License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the UNIGINE License Agreement is available by contacting
+ * UNIGINE Corp. at http://unigine.com/
+ */
+
+-->
+
+<materials version="1.00" editable="0">
+	
+	<!--
+	/**************************************************************************\
+	*
+	* Particles materials
+	*
+	\**************************************************************************/
+	-->
+	
+	<!--
+	/* Particles base material
+	 */
+	-->
+	<material name="particles_base" editable="0">
+		
+		<!-- blending -->
+		<blend src="one" dest="one"/>
+		
+		<!-- options -->
+		<options depth_mask="0" cast_shadow="0" receive_shadow="0" cast_world_shadow="0" receive_world_shadow="0"/>
+		
+		<!-- states -->
+		<state name="deferred" type="switch" items="none,default">0</state>
+		<state name="auxiliary" type="switch" items="none,default">0</state>
+		<state name="refraction" type="switch" items="none,default">0</state>
+		<state name="ambient" type="switch" items="none,opacity,transparent">2</state>
+		<state name="light_prob" type="switch" items="none,default">0</state>
+		<state name="light_spot" type="switch" items="none,default">0</state>
+		<state name="light_omni" type="switch" items="none,default">0</state>
+		<state name="light_proj" type="switch" items="none,default">0</state>
+		<state name="light_world" type="switch" items="none,default">0</state>
+		<state name="animation" type="toggle">0</state>
+		<state name="emission" type="toggle">0</state>
+		<state name="volumetric" type="toggle">0</state>
+		<state name="volume" type="toggle">0</state>
+		<state name="alpha" type="toggle">0</state>
+		<state name="ambient_light" type="toggle">0</state>
+		
+		<!-- wireframe shaders -->
+		<shader pass="wireframe" object="particles"
+			defines="BASE_WIREFRAME"
+			vertex="core/shaders/default/particles/vertex_base.shader"
+			geometry="core/shaders/default/common/geometry_base_wireframe.shader"
+			fragment="core/shaders/default/common/fragment_base_wireframe.shader"/>
+		
+		<!-- deferred shaders -->
+		<shader pass="deferred" object="particles"
+			defines="BASE_DEFERRED"
+			deferred="1"
+			animation_defines=",ANIMATION"
+			emission_defines=",EMISSION"
+			volumetric_defines=",VOLUMETRIC"
+			alpha_defines=",ALPHA_FADE"
+			vertex="core/shaders/default/particles/vertex_base.shader"
+			fragment="core/shaders/default/particles/fragment_base_deferred.shader"/>
+		
+		<!-- auxiliary shaders -->
+		<shader pass="auxiliary" object="particles"
+			defines="BASE_AUXILIARY"
+			auxiliary="1"
+			animation_defines=",ANIMATION"
+			alpha_defines=",ALPHA_FADE"
+			vertex="core/shaders/default/particles/vertex_base.shader"
+			fragment="core/shaders/default/particles/fragment_base_auxiliary.shader"/>
+		
+		<!-- refraction shaders -->
+		<shader pass="refraction" object="particles"
+			defines="BASE_REFRACTION"
+			refraction="1"
+			animation_defines=",ANIMATION"
+			volume_defines=",VOLUME"
+			alpha_defines=",ALPHA_FADE"
+			vertex="core/shaders/default/particles/vertex_base.shader"
+			fragment="core/shaders/default/particles/fragment_base_refraction.shader"/>
+		
+		<!-- ambient shaders -->
+		<shader pass="ambient" object="particles"
+			defines="BASE_AMBIENT,AMBIENT"
+			receive_world_shadow_defines=",SHADOW"
+			ambient_defines="0,OPACITY,TRANSPARENT"
+			animation_defines=",ANIMATION"
+			volume_defines=",VOLUME"
+			alpha_defines=",ALPHA_FADE"
+			ambient_light_defines=",AMBIENT_LIGHT"
+			vertex="core/shaders/default/particles/vertex_base.shader"
+			fragment="core/shaders/default/particles/fragment_base_ambient.shader"/>
+		
+		<!-- light prob shaders -->
+		<shader pass="light_prob" object="particles"
+			defines="BASE_LIGHT_PROB,PROB"
+			light_prob="1"
+			animation_defines=",ANIMATION"
+			volume_defines=",VOLUME"
+			alpha_defines=",ALPHA_FADE"
+			vertex="core/shaders/default/particles/vertex_base.shader"
+			fragment="core/shaders/default/particles/fragment_base_light_prob.shader"/>
+		
+		<!-- light spot shaders -->
+		<shader pass="light_spot" object="particles"
+			defines="BASE_LIGHT_SPOT,SPOT"
+			light_spot="1"
+			animation_defines=",ANIMATION"
+			volume_defines=",VOLUME"
+			alpha_defines=",ALPHA_FADE"
+			vertex="core/shaders/default/particles/vertex_base.shader"
+			fragment="core/shaders/default/particles/fragment_base_light_spot.shader"/>
+		
+		<!-- light omni shaders -->
+		<shader pass="light_omni" object="particles"
+			defines="BASE_LIGHT_OMNI,OMNI"
+			receive_shadow_defines=",SHADOW"
+			light_omni="1"
+			animation_defines=",ANIMATION"
+			volume_defines=",VOLUME"
+			alpha_defines=",ALPHA_FADE"
+			vertex="core/shaders/default/particles/vertex_base.shader"
+			fragment="core/shaders/default/particles/fragment_base_light_omni.shader"/>
+		
+		<!-- light proj shaders -->
+		<shader pass="light_proj" object="particles"
+			defines="BASE_LIGHT_PROJ,PROJ"
+			receive_shadow_defines=",SHADOW"
+			light_proj="1"
+			animation_defines=",ANIMATION"
+			volume_defines=",VOLUME"
+			alpha_defines=",ALPHA_FADE"
+			vertex="core/shaders/default/particles/vertex_base.shader"
+			fragment="core/shaders/default/particles/fragment_base_light_proj.shader"/>
+		
+		<!-- light world shaders -->
+		<shader pass="light_world" object="particles"
+			defines="BASE_LIGHT_WORLD,WORLD"
+			receive_world_shadow_defines=",SHADOW"
+			light_world="1"
+			animation_defines=",ANIMATION"
+			volume_defines=",VOLUME"
+			alpha_defines=",ALPHA_FADE"
+			ambient_light="0"
+			vertex="core/shaders/default/particles/vertex_base.shader"
+			fragment="core/shaders/default/particles/fragment_base_light_world.shader"/>
+		
+		<!-- textures -->
+		<texture name="diffuse" format="srgb" wrap="clamp">core/textures/particles_base_diffuse.dds</texture>
+		<texture name="attenuation" format="srgb" wrap="clamp_x">core/textures/particles_base_attenuation.dds</texture>
+		<texture name="normal" pass="refraction" refraction="1" format="signed" wrap="clamp">core/textures/particles_base_normal.dds</texture>
+		<texture name="deferred_depth" volume="1" unit="12" type="deferred_depth"/>
+		<texture name="light_image" pass="light_omni,light_proj,light_world" unit="13" type="light_image"/>
+		<texture name="light_depth" pass="ambient,light_omni,light_proj,light_world" unit="14" type="light_depth"/>
+		<texture name="light_vcube" pass="light_omni" type="light_vcube"/>
+		
+		<!-- parameters -->
+		<parameter name="animation_transform" type="expression" shared="1">vec4(1.0f,1.0f,1.0f,0.5f)</parameter>
+		<parameter name="auxiliary_color" auxiliary="1" type="color" shared="1">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="environment_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="diffuse_color" type="color" shared="1" flags="srgb">1.0 1.0 1.0 1.0</parameter>
+		<parameter name="diffuse_scale" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="deferred_threshold" deferred="1" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="auxiliary_threshold" auxiliary="1" type="slider" shared="1" min="0.0" max="1.0" flags="max_expand">0.5</parameter>
+		<parameter name="glow_scale" deferred="1" emission="1" type="slider" shared="1" min="0.0" max="4.0" flags="max_expand">1.0</parameter>
+		<parameter name="volume_scale" volume="1" type="slider" shared="1" min="-3.0" max="0.0" flags="log10,max_expand">1.0</parameter>
+		<parameter name="refraction_scale" refraction="1" type="slider" shared="1" min="-2.0" max="2.0" flags="min_expand,max_expand">1.0</parameter>
+		<parameter name="refraction_power" refraction="1" type="slider" shared="1" min="0.0" max="2.0">1.0</parameter>
+	</material>
+	
+</materials>

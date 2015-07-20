@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_decals.ui
+ * Desc:    Unigine editor
+ * Version: 1.09
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Valia Vaneeva <fattie@unigine.com>
+ *          Maxim Belobryukhov <maxi@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.02">
+
+<!--
+/* Decal
+ */
+-->
+<vbox name="Nodes::Decal::main_vb" export="1" space="4">
+	<vbox space_y="4">
+		<vbox name="Nodes::Decal::dummy_vb" export="1"/>
+	</vbox>
+</vbox>
+
+<gridbox name="Nodes::Decal::header_gb" reference="1" align="expand" columns="4" space="4">
+	
+	<label align="right"><text>Decal:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Decal::Type::decal_mask_el" export="1" align="expand">
+			<tooltip>Decal mask</tooltip>
+			<text face="core/gui/console.ttf"/>
+			<callback type="pressed,focus_out">Nodes::Decal::decal_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Decal::decal_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Decal::decal_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Light:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Decal::Type::light_mask_el" export="1" align="expand">
+			<tooltip>Light mask</tooltip>
+			<text face="core/gui/console.ttf"/>
+			<callback type="pressed,focus_out">Nodes::Decal::light_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Decal::light_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Decal::light_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Viewport:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Decal::Type::viewport_mask_el" export="1" align="expand">
+			<tooltip>Viewport mask</tooltip>
+			<text face="core/gui/console.ttf"/>
+			<callback type="pressed,focus_out">Nodes::Decal::viewport_mask_pressed</callback>
+			<callback type="double_clicked">Nodes::Decal::viewport_mask_clicked</callback>
+		</editline>
+		<icon texture="editor/gui/action_edit.png" width="24" height="24" align="right">
+			<callback type="clicked">Nodes::Decal::viewport_mask_clicked</callback>
+			<tooltip>Edit mask</tooltip>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<hspacer align="expand"/>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+<gridbox name="Nodes::Decal::footer_gb" reference="1" align="expand" columns="4" space="4">
+	
+	<vbox/>
+	<hspacer align="expand"/>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Life time:</text></label>
+	<editline name="Nodes::Decal::Type::life_time_el" export="1" align="expand" validator="float">
+		<tooltip>Decal life time</tooltip>
+		<callback type="pressed,focus_out">Nodes::Decal::life_time_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Fade time:</text></label>
+	<editline name="Nodes::Decal::Type::fade_time_el" export="1" align="expand" validator="float">
+		<tooltip>Decal fade time</tooltip>
+		<callback type="pressed,focus_out">Nodes::Decal::fade_time_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<hspacer align="expand"/>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Min Visible:</text></label>
+	<editline name="Nodes::Decal::Type::min_visible_distance_el" export="1" align="expand" validator="float">
+		<tooltip>Minimum visible distance</tooltip>
+		<callback type="pressed,focus_out">Nodes::Decal::min_visible_distance_pressed</callback>
+	</editline>
+	<label align="right"><text>Fade:</text></label>
+	<editline name="Nodes::Decal::Type::min_fade_distance_el" export="1" align="expand" validator="float">
+		<tooltip>Minimum fade distance</tooltip>
+		<callback type="pressed,focus_out">Nodes::Decal::min_fade_distance_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>Max Visible:</text></label>
+	<editline name="Nodes::Decal::Type::max_visible_distance_el" export="1" align="expand" validator="float">
+		<tooltip>Maximum visible distance</tooltip>
+		<callback type="pressed,focus_out">Nodes::Decal::max_visible_distance_pressed</callback>
+	</editline>
+	<label align="right"><text>Fade:</text></label>
+	<editline name="Nodes::Decal::Type::max_fade_distance_el" export="1" align="expand" validator="float">
+		<tooltip>Maximum fade distance</tooltip>
+		<callback type="pressed,focus_out">Nodes::Decal::max_fade_distance_pressed</callback>
+	</editline>
+	
+	<vbox/>
+	<hspacer align="expand"/>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>ScaleX:</text></label>
+	<editline name="Nodes::Decal::Type::texcoord_el[0]" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::texcoord_pressed</callback>
+	</editline>
+	<label align="right"><text>ScaleY:</text></label>
+	<editline name="Nodes::Decal::Type::texcoord_el[1]" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::texcoord_pressed</callback>
+	</editline>
+	
+	<label align="right"><text>TranslateX:</text></label>
+	<editline name="Nodes::Decal::Type::texcoord_el[2]" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::texcoord_pressed</callback>
+	</editline>
+	<label align="right"><text>TranslateY:</text></label>
+	<editline name="Nodes::Decal::Type::texcoord_el[3]" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::texcoord_pressed</callback>
+	</editline>
+	
+	<vbox/>
+	<hspacer align="expand"/>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Material:</text></label>
+	<hbox align="expand">
+		<editline name="Nodes::Decal::Type::material_el" export="1" align="expand">
+			<callback type="pressed,focus_out">Nodes::Decal::material_pressed</callback>
+		</editline>
+		<icon texture="editor/gui/action_load.png" width="22" height="20">
+			<callback type="clicked">Nodes::Decal::material_load_clicked</callback>
+		</icon>
+		<icon texture="editor/gui/action_clear.png" width="22" height="20">
+			<callback type="clicked">Nodes::Decal::material_clear_clicked</callback>
+		</icon>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+<!--
+/* DecalObject
+ */
+-->
+<gridbox name="Nodes::Decal::Object::header_gb" reference="1" align="expand" columns="4" space="4">
+	
+	<vbox/>
+	<checkbox name="Nodes::Decal::Type::dynamic_cb" export="1" align="left,expand">
+		<tooltip>Dynamic creation on transformation</tooltip>
+		<text>Dynamic creation</text>
+		<callback type="clicked">Nodes::Decal::Type::dynamic_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<vbox/>
+	<checkbox name="Nodes::Decal::Type::two_sided_cb" export="1" align="left,expand">
+		<tooltip>Two sided projection</tooltip>
+		<text>Two sided</text>
+		<callback type="clicked">Nodes::Decal::Type::two_sided_clicked</callback>
+	</checkbox>
+	<vbox/>
+	<vbox/>
+	
+	<reference name="Nodes::Decal::header_gb" Type="Type"/>
+	
+	<label align="right"><text>Offset:</text></label>
+	<editline name="Nodes::Decal::Type::offset_el" export="1" align="expand" validator="float">
+		<tooltip>Geometry offset in units</tooltip>
+		<callback type="pressed,focus_out">Nodes::Decal::Type::offset_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Radius:</text></label>
+	<editline name="Nodes::Decal::Type::radius_el" export="1" align="expand" validator="float">
+		<tooltip>Projection radius</tooltip>
+		<callback type="pressed,focus_out">Nodes::Decal::Type::radius_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+<gridbox name="Nodes::Decal::Object::footer_gb" reference="1" align="expand" columns="4" space="4">
+	
+	<label align="right"><text>ZNear:</text></label>
+	<editline name="Nodes::Decal::Type::znear_el" export="1" align="expand" validator="float">
+		<tooltip>Distance to the near clipping plane</tooltip>
+		<callback type="pressed,focus_out">Nodes::Decal::Type::znear_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<reference name="Nodes::Decal::footer_gb" Type="Type"/>
+	
+</gridbox>
+
+<!--
+/* DecalObjectOmni
+ */
+-->
+<gridbox name="Nodes::Decal::ObjectOmni::main_gb" export="1" align="expand" columns="4" space="4">
+	
+	<reference name="Nodes::Decal::Object::header_gb" Type="ObjectOmni"/>
+	
+	<reference name="Nodes::Decal::Object::footer_gb" Type="ObjectOmni"/>
+	
+</gridbox>
+
+<!--
+/* DecalObjectProj
+ */
+-->
+<gridbox name="Nodes::Decal::ObjectProj::main_gb" export="1" align="expand" columns="4" space="4">
+	
+	<reference name="Nodes::Decal::Object::header_gb" Type="ObjectProj"/>
+	
+	<label align="right"><text>Field of view:</text></label>
+	<editline name="Nodes::Decal::ObjectProj::fov_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::ObjectProj::fov_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Decal::ObjectProj::fov_sl" export="1" align="expand" min="1000" max="90000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000">Nodes::Decal::ObjectProj::fov_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Aspect:</text></label>
+	<editline name="Nodes::Decal::ObjectProj::aspect_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::ObjectProj::aspect_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<reference name="Nodes::Decal::Object::footer_gb" Type="ObjectProj"/>
+	
+</gridbox>
+
+<!--
+/* DecalObjectOrtho
+ */
+-->
+<gridbox name="Nodes::Decal::ObjectOrtho::main_gb" export="1" align="expand" columns="4" space="4">
+	
+	<reference name="Nodes::Decal::Object::header_gb" Type="ObjectOrtho"/>
+	
+	<label align="right"><text>Width:</text></label>
+	<editline name="Nodes::Decal::ObjectOrtho::width_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::ObjectOrtho::width_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Height:</text></label>
+	<editline name="Nodes::Decal::ObjectOrtho::height_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::ObjectOrtho::height_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<reference name="Nodes::Decal::Object::footer_gb" Type="ObjectOrtho"/>
+	
+</gridbox>
+
+<!--
+/* DecalTerrain
+ */
+-->
+<gridbox name="Nodes::Decal::Terrain::header_gb" reference="1" align="expand" columns="4" space="4">
+	
+	<reference name="Nodes::Decal::header_gb" Type="Type"/>
+	
+	<label align="right"><text>Radius:</text></label>
+	<editline name="Nodes::Decal::Type::radius_el" export="1" align="expand" validator="float">
+		<tooltip>Projection radius</tooltip>
+		<callback type="pressed,focus_out">Nodes::Decal::Type::radius_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+<gridbox name="Nodes::Decal::Terrain::footer_gb" reference="1" align="expand" columns="4" space="4">
+	
+	<label align="right"><text>ZNear:</text></label>
+	<editline name="Nodes::Decal::Type::znear_el" export="1" align="expand" validator="float">
+		<tooltip>Near clipping plane</tooltip>
+		<callback type="pressed,focus_out">Nodes::Decal::Type::znear_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<reference name="Nodes::Decal::footer_gb" Type="Type"/>
+	
+</gridbox>
+
+<!--
+/* DecalTerrainProj
+ */
+-->
+<gridbox name="Nodes::Decal::TerrainProj::main_gb" export="1" align="expand" columns="4" space="4">
+	
+	<reference name="Nodes::Decal::Terrain::header_gb" Type="TerrainProj"/>
+	
+	<label align="right"><text>Field of view:</text></label>
+	<editline name="Nodes::Decal::TerrainProj::fov_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::TerrainProj::fov_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Decal::TerrainProj::fov_sl" export="1" align="expand" min="1000" max="90000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000">Nodes::Decal::TerrainProj::fov_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Aspect:</text></label>
+	<editline name="Nodes::Decal::TerrainProj::aspect_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::TerrainProj::aspect_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<reference name="Nodes::Decal::Terrain::footer_gb" Type="TerrainProj"/>
+	
+</gridbox>
+
+<!--
+/* DecalTerrainOrtho
+ */
+-->
+<gridbox name="Nodes::Decal::TerrainOrtho::main_gb" export="1" align="expand" columns="4" space="4">
+	
+	<reference name="Nodes::Decal::Terrain::header_gb" Type="TerrainOrtho"/>
+	
+	<label align="right"><text>Width:</text></label>
+	<editline name="Nodes::Decal::TerrainOrtho::width_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::TerrainOrtho::width_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Height:</text></label>
+	<editline name="Nodes::Decal::TerrainOrtho::height_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::TerrainOrtho::height_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<reference name="Nodes::Decal::Terrain::footer_gb" Type="TerrainOrtho"/>
+	
+</gridbox>
+
+<!--
+/* DecalDeferred
+ */
+-->
+<gridbox name="Nodes::Decal::Deferred::header_gb" reference="1" align="expand" columns="4" space="4">
+	
+	<reference name="Nodes::Decal::header_gb" Type="Type"/>
+	
+	<label align="right"><text>Radius:</text></label>
+	<editline name="Nodes::Decal::Type::radius_el" export="1" align="expand" validator="float">
+		<tooltip>Projection radius</tooltip>
+		<callback type="pressed,focus_out">Nodes::Decal::Type::radius_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+</gridbox>
+
+<gridbox name="Nodes::Decal::Deferred::footer_gb" reference="1" align="expand" columns="4" space="4">
+	
+	<label align="right"><text>ZNear:</text></label>
+	<editline name="Nodes::Decal::Type::znear_el" export="1" align="expand" validator="float">
+		<tooltip>Near clipping plane</tooltip>
+		<callback type="pressed,focus_out">Nodes::Decal::Type::znear_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<reference name="Nodes::Decal::footer_gb" Type="Type"/>
+	
+</gridbox>
+
+<!--
+/* DecalDeferredProj
+ */
+-->
+<gridbox name="Nodes::Decal::DeferredProj::main_gb" export="1" align="expand" columns="4" space="4">
+	
+	<reference name="Nodes::Decal::Deferred::header_gb" Type="DeferredProj"/>
+	
+	<label align="right"><text>Field of view:</text></label>
+	<editline name="Nodes::Decal::DeferredProj::fov_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::DeferredProj::fov_pressed</callback>
+	</editline>
+	<hslider name="Nodes::Decal::DeferredProj::fov_sl" export="1" align="expand" min="1000" max="90000">
+		<callback type="clicked">Nodes::slider_clicked</callback>
+		<attach multiplier="1000">Nodes::Decal::DeferredProj::fov_el</attach>
+	</hslider>
+	<vbox/>
+	
+	<label align="right"><text>Aspect:</text></label>
+	<editline name="Nodes::Decal::DeferredProj::aspect_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::DeferredProj::aspect_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<reference name="Nodes::Decal::Deferred::footer_gb" Type="DeferredProj"/>
+	
+</gridbox>
+
+<!--
+/* DecalDeferredOrtho
+ */
+-->
+<gridbox name="Nodes::Decal::DeferredOrtho::main_gb" export="1" align="expand" columns="4" space="4">
+	
+	<reference name="Nodes::Decal::Deferred::header_gb" Type="DeferredOrtho"/>
+	
+	<label align="right"><text>Width:</text></label>
+	<editline name="Nodes::Decal::DeferredOrtho::width_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::DeferredOrtho::width_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<label align="right"><text>Height:</text></label>
+	<editline name="Nodes::Decal::DeferredOrtho::height_el" export="1" align="expand" validator="float">
+		<callback type="pressed,focus_out">Nodes::Decal::DeferredOrtho::height_pressed</callback>
+	</editline>
+	<vbox/>
+	<vbox/>
+	
+	<reference name="Nodes::Decal::Deferred::footer_gb" Type="DeferredOrtho"/>
+	
+</gridbox>
+
+<!--
+/* DecalDeferredMesh
+ */
+-->
+<gridbox name="Nodes::Decal::DeferredMesh::main_gb" export="1" align="expand" columns="4" space="4">
+	
+	<reference name="Nodes::Decal::Deferred::header_gb" Type="DeferredMesh"/>
+	
+	<label align="right"><text>Mesh file:</text></label>
+	<editline name="Nodes::Decal::DeferredMesh::mesh_file_el" export="1" align="expand">
+		<callback type="pressed,focus_out">Nodes::Decal::DeferredMesh::mesh_file_pressed</callback>
+	</editline>
+	
+	<vbox/>
+	<vbox/>
+	<vbox/>
+	
+	<hbox align="expand">
+		<button align="expand">
+			<text>Load</text>
+			<callback type="clicked">Nodes::Decal::DeferredMesh::load_clicked</callback>
+		</button>
+		<vbox space="4"/>
+		<button align="expand">
+			<text>Reload</text>
+			<callback type="clicked">Nodes::Decal::DeferredMesh::reload_clicked</callback>
+		</button>
+		<vbox space="4"/>
+		<button align="expand">
+			<text>Save</text>
+			<callback type="clicked">Nodes::Decal::DeferredMesh::save_clicked</callback>
+		</button>
+		<vbox space="4"/>
+		<button align="expand">
+			<text>Project</text>
+			<callback type="clicked">Nodes::Decal::DeferredMesh::project_clicked</callback>
+		</button>
+	</hbox>
+	<vbox/>
+	<vbox/>
+	
+	<reference name="Nodes::Decal::footer_gb" Type="DeferredMesh"/>
+	
+</gridbox>
+
+</ui>

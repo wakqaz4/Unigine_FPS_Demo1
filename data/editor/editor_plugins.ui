@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_plugins.ui
+ * Desc:    Unigine editor
+ * Version: 1.00
+ * Author:  Vladimir Borovskikh <futurist@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Plugins
+ */
+-->
+<window name="Plugins::window" export="1" width="550" height="450">
+	<text>Plugins</text>
+	<vbox align="expand">
+		<hbox align="right">
+			<button align="right">
+				<callback type="clicked">Plugins::enable_all_callback</callback>
+				<text>Enable all</text>
+			</button>
+			<vbox space="2"/>
+			<button>
+				<callback type="clicked">Plugins::disable_all_callback</callback>
+				<text>Disable all</text>
+			</button>
+		</hbox>
+		<vbox space="2"/>
+		<scrollbox align="expand">
+			<vbox space="4">
+				<gridbox name="Plugins::plugins_gb" export="1" align="expand" columns="3" space="4">
+					<hbox align="left" width="100" padding_b="6">
+						<label><text>Name</text></label>
+					</hbox>
+					<hbox align="expand" padding_b="6" width="200">
+						<label align="expand"><text>Description</text></label>
+					</hbox>
+					<hbox align="right" width="70" padding_b="6">
+						<label align="center"><text>Enabled</text></label>
+					</hbox>
+				</gridbox>
+			</vbox>
+		</scrollbox>
+	</vbox>
+	<callback type="show">Plugins::resize_window_width_callback</callback>
+</window>
+
+</ui>

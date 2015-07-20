@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_sound.ui
+ * Desc:    Unigine editor
+ * Version: 1.02
+ * Author:  Pavel Kurinnoy <figonet@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* Sound
+ */
+-->
+<window name="Sound::window" export="1">
+	<text>Sound settings</text>
+	<vbox align="expand">
+		<tabbox name="Sound::tabbox" export="1" align="expand">
+			
+			<tab>
+				<text>Common</text>
+				<vbox space="4">
+					<gridbox align="expand" columns="4" space="4">
+						
+						<label align="right"><text>Volume:</text></label>
+						<editline name="Sound::Common::volume_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Sound::Common::volume_pressed</callback>
+						</editline>
+						<hslider name="Sound::Common::volume_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Sound::Common::volume_el</attach>
+							<callback type="clicked">Sound::Common::slider_clicked</callback>
+							<callback type="changed">Sound::Common::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Doppler:</text></label>
+						<editline name="Sound::Common::doppler_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Sound::Common::doppler_pressed</callback>
+						</editline>
+						<hslider name="Sound::Common::doppler_sl" export="0" align="expand" min="0" max="2000">
+							<attach multiplier="1000">Sound::Common::doppler_el</attach>
+							<callback type="clicked">Sound::Common::slider_clicked</callback>
+							<callback type="changed">Sound::Common::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Velocity:</text></label>
+						<editline name="Sound::Common::velocity_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Sound::Common::velocity_pressed</callback>
+						</editline>
+						<hslider name="Sound::Common::velocity_sl" export="0" align="expand" min="100" max="100000">
+							<attach multiplier="100">Sound::Common::velocity_el</attach>
+							<callback type="clicked">Sound::Common::slider_clicked</callback>
+							<callback type="changed">Sound::Common::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<label align="right"><text>Adaptation:</text></label>
+						<editline name="Sound::Common::adaptation_el" export="1" align="expand" validator="float">
+							<callback type="pressed,focus_out">Sound::Common::adaptation_pressed</callback>
+						</editline>
+						<hslider name="Sound::Common::adaptation_sl" export="0" align="expand" min="0" max="1000">
+							<attach multiplier="1000">Sound::Common::adaptation_el</attach>
+							<callback type="clicked">Sound::Common::slider_clicked</callback>
+							<callback type="changed">Sound::Common::slider_changed</callback>
+						</hslider>
+						<vbox/>
+						
+						<vbox/>
+						<vbox space_x="128" align="expand"/>
+						<vbox space_x="64" align="expand"/>
+						<vbox space_x="64" align="expand"/>
+						
+					</gridbox>
+				</vbox>
+			</tab>
+			
+			<tab>
+				<text>Sources</text>
+				<scrollbox align="expand" border="0" henabled="0" space="4">
+					<gridbox name="Sound::Sources::sources_gb" export="1" align="expand" columns="5" space="4"/>
+				</scrollbox>
+			</tab>
+			
+		</tabbox>
+	</vbox>
+	<hbox align="right" space="4">
+		<button>
+			<text>Load</text>
+			<callback type="clicked">Sound::load_clicked</callback>
+		</button>
+		<button>
+			<text>Save</text>
+			<callback type="clicked">Sound::save_clicked</callback>
+		</button>
+	</hbox>
+</window>
+
+</ui>

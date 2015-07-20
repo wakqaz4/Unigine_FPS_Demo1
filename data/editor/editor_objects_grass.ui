@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_objects_grass.ui
+ * Desc:    Unigine editor
+ * Version: 1.22
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *          Andrey Viktorov <unclebob@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* ObjectGrass
+ */
+-->
+<vbox name="Nodes::Object::Grass::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Grass::thinning_cb" export="1" align="left,expand">
+				<text>Thinning</text>
+				<callback type="clicked">Nodes::Object::Grass::thinning_clicked</callback>
+				<tooltip>Level of detail thinning</tooltip>
+			</checkbox>
+			<vbox/>
+			<checkbox name="Nodes::Object::Grass::variation_cb" export="1" align="left,expand">
+				<text>Variation</text>
+				<callback type="clicked">Nodes::Object::Grass::variation_clicked</callback>
+				<tooltip>Texture coordinate variations</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Grass::orientation_cb" export="1" align="left,expand">
+				<text>Orientation</text>
+				<callback type="clicked">Nodes::Object::Grass::orientation_clicked</callback>
+				<tooltip>Keep surface orientation</tooltip>
+			</checkbox>
+			<vbox/>
+			<checkbox name="Nodes::Object::Grass::intersection_cb" export="1" align="left,expand">
+				<text>Intersection</text>
+				<callback type="clicked">Nodes::Object::Grass::intersection_clicked</callback>
+				<tooltip>Intersections with parent object</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Grass::mask_flip_x_cb" export="1" align="left,expand">
+				<text>Flip X</text>
+				<callback type="clicked">Nodes::Object::Grass::mask_flip_x_clicked</callback>
+				<tooltip>Image mask horizontal flip</tooltip>
+			</checkbox>
+			<vbox/>
+			<checkbox name="Nodes::Object::Grass::mask_flip_y_cb" export="1" align="left,expand">
+				<text>Flip Y</text>
+				<callback type="clicked">Nodes::Object::Grass::mask_flip_y_clicked</callback>
+				<tooltip>Image mask vertical flip</tooltip>
+			</checkbox>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Grass::mask_inverse_cb" export="1" align="left,expand">
+				<text>Inverse</text>
+				<callback type="clicked">Nodes::Object::Grass::mask_inverse_clicked</callback>
+				<tooltip>Mesh mask inverse</tooltip>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Num textures:</text></label>
+			<editline name="Nodes::Object::Grass::num_textures_el" export="1" align="expand" validator="uint">
+				<callback type="pressed,focus_out">Nodes::Object::Grass::num_textures_pressed</callback>
+				<tooltip>Number of texture slots</tooltip>
+			</editline>
+			<vbox/>
+			<hbox align="left,expand">
+				<label><text>Triangles:</text></label>
+				<label  name="Nodes::Object::Grass::num_triangles_l" export="1"/>
+			</hbox>
+			
+			<label align="right"><text>Mask image:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Grass::mask_image_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::mask_image_update_pressed</callback>
+					<tooltip>Name of the density mask</tooltip>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Grass::mask_image_load_update_clicked</callback>
+					<tooltip>Open mask image</tooltip>
+				</icon>
+				<icon texture="editor/gui/action_view.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Grass::mask_image_view_clicked</callback>
+					<tooltip>Preview mask image</tooltip>
+				</icon>
+				<icon texture="editor/gui/action_add.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Grass::mask_image_create_clicked</callback>
+					<tooltip>Create mask image</tooltip>
+				</icon>
+				<icon name="Nodes::Object::Grass::mask_edit_i" export="1" texture="editor/gui/action_edit.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Grass::mask_image_edit_clicked</callback>
+					<tooltip>Press ALT to use the brush</tooltip>
+				</icon>
+				<icon texture="editor/gui/action_clear.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Grass::mask_image_clear_update_clicked</callback>
+					<tooltip>Clear mask image</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Mask mesh:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Grass::mask_mesh_el" export="1" align="expand">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::mask_mesh_pressed</callback>
+					<tooltip>Name of the mesh mask</tooltip>
+				</editline>
+				<icon texture="editor/gui/action_load.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Grass::mask_mesh_load_clicked</callback>
+					<tooltip>Open mask mesh</tooltip>
+				</icon>
+				<icon texture="editor/gui/action_clear.png" width="22" height="20">
+					<callback type="clicked">Nodes::Object::Grass::mask_mesh_clear_clicked</callback>
+					<tooltip>Clear mask mesh</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Min value:</text></label>
+			<editline name="Nodes::Object::Grass::mask_min_value_el" export="1" align="expand" validator="int">
+				<callback type="pressed,focus_out">Nodes::Object::Grass::mask_min_value_pressed</callback>
+				<tooltip>Minimum mask value</tooltip>
+			</editline>
+			<label align="right"><text>Max value:</text></label>
+			<editline name="Nodes::Object::Grass::mask_max_value_el" export="1" align="expand" validator="int">
+				<callback type="pressed,focus_out">Nodes::Object::Grass::mask_max_value_pressed</callback>
+				<tooltip>Maximum mask value</tooltip>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Field:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Grass::field_mask_el" export="1" align="expand">
+					<tooltip>Field mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Object::Grass::field_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Object::Grass::field_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Object::Grass::field_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Object::Grass::shadow_radius_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::Object::Grass::shadow_radius_pressed</callback>
+				<tooltip>Additional shadow radius</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Spawn:</text></label>
+			<editline name="Nodes::Object::Grass::spawn_rate_el" export="1" align="expand" validator="int">
+				<callback type="pressed,focus_out">Nodes::Object::Grass::spawn_rate_pressed</callback>
+				<tooltip>Spawn rate</tooltip>
+			</editline>
+			<label align="right"><text>Seed:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Grass::seed_el" export="1" align="expand" validator="uint">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::seed_pressed</callback>
+					<tooltip>Random seed</tooltip>
+				</editline>
+				<vbox space="4"/>
+				<button>
+					<text>Randomize</text>
+					<callback type="clicked">Nodes::Object::Grass::randomize_clicked</callback>
+				</button>
+			</hbox>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size X:</text></label>
+			<editline name="Nodes::Object::Grass::size_x_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Grass::size_x_pressed</callback>
+				<tooltip>X size of grass area</tooltip>
+			</editline>
+			<label align="right"><text>Size Y:</text></label>
+			<editline name="Nodes::Object::Grass::size_y_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Grass::size_y_pressed</callback>
+				<tooltip>Y size of grass area</tooltip>
+			</editline>
+			
+			<label align="right"><text>Step:</text></label>
+			<editline name="Nodes::Object::Grass::step_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Grass::step_pressed</callback>
+				<tooltip>Cell step</tooltip>
+			</editline>
+			<label align="right"><text>Subdivision:</text></label>
+			<editline name="Nodes::Object::Grass::subdivision_el" export="1" align="expand" validator="uint">
+				<callback type="pressed,focus_out">Nodes::Object::Grass::subdivision_pressed</callback>
+				<tooltip>Cell subdivision</tooltip>
+			</editline>
+			
+			<label align="right"><text>Density:</text></label>
+			<editline name="Nodes::Object::Grass::density_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Grass::density_pressed</callback>
+				<tooltip>Number of blades per square unit</tooltip>
+			</editline>
+			<hslider name="Nodes::Object::Grass::density_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::Grass::density_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Threshold:</text></label>
+			<editline name="Nodes::Object::Grass::threshold_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Grass::threshold_pressed</callback>
+				<tooltip>Density mask threshold</tooltip>
+			</editline>
+			<hslider name="Nodes::Object::Grass::threshold_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::Grass::threshold_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Angle:</text></label>
+			<editline name="Nodes::Object::Grass::angle_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Grass::angle_pressed</callback>
+				<tooltip>Surface angle threshold</tooltip>
+			</editline>
+			<hslider name="Nodes::Object::Grass::angle_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Object::Grass::angle_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Probability:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Grass::probability_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::probability_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::probability_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::probability_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::probability_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::probability_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::probability_el[3]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::probability_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Min height:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Grass::min_height_mean_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::min_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::min_height_mean_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::min_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::min_height_mean_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::min_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::min_height_mean_el[3]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::min_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Spread:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Grass::min_height_spread_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::min_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::min_height_spread_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::min_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::min_height_spread_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::min_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::min_height_spread_el[3]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::min_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Max height:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Grass::max_height_mean_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::max_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::max_height_mean_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::max_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::max_height_mean_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::max_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::max_height_mean_el[3]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::max_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Spread:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Grass::max_height_spread_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::max_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::max_height_spread_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::max_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::max_height_spread_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::max_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::max_height_spread_el[3]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::max_height_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Aspect:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Grass::aspect_mean_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::aspect_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::aspect_mean_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::aspect_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::aspect_mean_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::aspect_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::aspect_mean_el[3]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::aspect_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Spread:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Grass::aspect_spread_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::aspect_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::aspect_spread_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::aspect_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::aspect_spread_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::aspect_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::aspect_spread_el[3]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::aspect_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Offset:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Grass::offset_mean_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::offset_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::offset_mean_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::offset_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::offset_mean_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::offset_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::offset_mean_el[3]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::offset_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Spread:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Object::Grass::offset_spread_el[0]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::offset_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::offset_spread_el[1]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::offset_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::offset_spread_el[2]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::offset_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+				<editline name="Nodes::Object::Grass::offset_spread_el[3]" export="1" align="expand" validator="float">
+					<callback type="pressed,focus_out">Nodes::Object::Grass::offset_pressed</callback>
+				</editline>
+				<vbox space="2"/>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+</ui>

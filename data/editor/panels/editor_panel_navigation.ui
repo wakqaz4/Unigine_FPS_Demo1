@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_panel_navigation.ui
+ * Desc:    Unigine editor
+ * Version: 1.01
+ * Author:  Mikhail Lyubimov <alterego@unigine.com>
+ *          Andrey Viktorov <unclebob@unigine.com>
+ *          Maxim Belobryukhov <maxi@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.0">
+
+<!--
+/* PanelCamera
+ */
+-->
+<hbox name="hbox" export="1">
+	<groupbox background="1" space="0">
+		<hbox space_x="2">
+			<sprite texture="editor/gui/editor_run.png"/>
+			<editline name="velocity_el" export="1" align="expand" width="40" validator="float">
+				<callback type="pressed,focus_out" instance="instance" string="velocity_pressed">callback_redirector</callback>
+				<tooltip>Camera speed (units/second)</tooltip>
+			</editline>
+			
+			<button name="velocity_index_b[0]" export="1" toggleable="1" toggled="1">
+				<text>1</text>
+				<callback type="clicked" instance="instance" string="set_toggled_0">callback_redirector</callback>
+				<tooltip>The first camera speed $(camera_speed_1)<br/><br/>
+				To cycle camera speeds press $(camera_speed_switch)</tooltip>
+			</button>
+			
+			<button name="velocity_index_b[1]" export="1" toggleable="1" toggled="0">
+				<text>2</text>
+				<callback type="clicked" instance="instance" string="set_toggled_1">callback_redirector</callback>
+				<tooltip>The second camera speed $(camera_speed_2)<br/><br/>
+				To cycle camera speeds press $(camera_speed_switch)</tooltip>
+			</button>
+			
+			<button name="velocity_index_b[2]" export="1" toggleable="1" toggled="0">
+				<text>3</text>
+				<callback type="clicked" instance="instance" string="set_toggled_2">callback_redirector</callback>
+				<tooltip>The third camera speed $(camera_speed_3)<br/><br/>
+				To cycle camera speeds press $(camera_speed_switch)
+				</tooltip>
+			</button>
+			
+			<vspacer height="24"/>
+			
+			<label align="right"><text>X:</text></label>
+			<editline name="pos_el[0]" export="1" align="expand" width="55" validator="float">
+				<callback type="pressed,focus_out" instance="instance" string="transform_pressed">callback_redirector</callback>
+				<tooltip>The X coordinate of the camera (in units)</tooltip>
+			</editline>
+			
+			<label align="right"><text> Y:</text></label>
+			<editline name="pos_el[1]" export="1" align="expand" width="55" validator="float">
+				<callback type="pressed,focus_out" instance="instance" string="transform_pressed">callback_redirector</callback>
+				<tooltip>The Y coordinate of the camera (in units)</tooltip>
+			</editline>
+			
+			<label align="right"><text> Z:</text></label>
+			<editline name="pos_el[2]" export="1" align="expand" width="55" validator="float">
+				<callback type="pressed,focus_out" instance="instance" string="transform_pressed">callback_redirector</callback>
+				<tooltip>The Z coordinate of the camera (in units)</tooltip>
+			</editline>
+		</hbox>
+	</groupbox>
+</hbox>
+</ui>

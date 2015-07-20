@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin name="example_plugin" version="1.0">
+	<text>Sample Plugin</text>
+	<description>Dummy plugin</description>
+	<source>plugin.cpp</source>
+</plugin>

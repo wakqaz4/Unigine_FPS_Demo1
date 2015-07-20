@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="DecalTerrainOrtho" id="1874418959">
+		<radius>1</radius>
+		<width>1</width>
+		<height>1</height>
+		<znear>0.001</znear>
+		<material>decal_base</material>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

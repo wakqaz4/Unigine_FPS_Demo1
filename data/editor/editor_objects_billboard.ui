@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_objects_billboard.ui
+ * Desc:    Unigine editor
+ * Version: 1.07
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* ObjectBillboard
+ */
+-->
+<vbox name="Nodes::Object::Billboard::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Width:</text></label>
+			<editline name="Nodes::Object::Billboard::width_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboard::width_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Height:</text></label>
+			<editline name="Nodes::Object::Billboard::height_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboard::height_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Offset:</text></label>
+			<editline name="Nodes::Object::Billboard::offset_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboard::offset_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::Billboard::offset_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboard::offset_pressed</callback>
+			</editline>
+			<editline name="Nodes::Object::Billboard::offset_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboard::offset_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>ScaleX:</text></label>
+			<editline name="Nodes::Object::Billboard::texcoord_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboard::texcoord_pressed</callback>
+			</editline>
+			<label align="right"><text>ScaleY:</text></label>
+			<editline name="Nodes::Object::Billboard::texcoord_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboard::texcoord_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>TranslateX:</text></label>
+			<editline name="Nodes::Object::Billboard::texcoord_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboard::texcoord_pressed</callback>
+			</editline>
+			<label align="right"><text>TranslateY:</text></label>
+			<editline name="Nodes::Object::Billboard::texcoord_el[3]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Object::Billboard::texcoord_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Billboard::axis_x_cb" export="1" align="left,expand">
+				<text>Lock a billboard rotation around the X axis.</text>
+				<callback type="clicked">Nodes::Object::Billboard::axis_x_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Billboard::axis_z_cb" export="1" align="left,expand">
+				<text>Lock a billboard rotation around the Z axis.</text>
+				<callback type="clicked">Nodes::Object::Billboard::axis_z_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<checkbox name="Nodes::Object::Billboard::screen_cb" export="1" align="left,expand">
+				<text>Screen aligned</text>
+				<callback type="clicked">Nodes::Object::Billboard::screen_clicked</callback>
+			</checkbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+</ui>

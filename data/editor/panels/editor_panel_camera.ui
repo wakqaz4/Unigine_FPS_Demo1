@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_panel_camera.ui
+ * Desc:    Unigine editor
+ * Version: 1.01
+ * Author:  Mikhail Lyubimov <alterego@unigine.com>
+ *          Andrey Viktorov <unclebob@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.0">
+
+<groupbox name="groupbox" export="1" background="1" space_x="4" align="expand">
+	<hbox>
+		
+		<combobox name="camera_cb" export="1">
+			<callback type="clicked" instance="instance" string="select_camera">callback_redirector</callback>
+			<tooltip>The current camera</tooltip>
+		</combobox>
+		
+		<icon name="settings_i" export="1" texture="editor/gui/action_settings.png" width="24" height="24">
+			<callback type="clicked" instance="instance" string="settings_camera">callback_redirector</callback>
+			<tooltip>Camera settings</tooltip>
+		</icon>
+		
+		<icon name="lock_i" export="1" texture="editor/gui/action_lock.png" toggleable="1" width="24" height="24">
+			<callback type="clicked" instance="instance" string="lock_camera_changed">callback_redirector</callback>
+			<tooltip><b>Lock camera</b><br/><br/>
+			Locks the camera position. When locked, a view movement doesn't affect the camera position; when unlocked, the camera remembers the view position.</tooltip>
+		</icon>
+		
+		<icon texture="editor/gui/action_add.png" width="24" height="24">
+			<callback type="clicked" instance="instance" string="create_camera">callback_redirector</callback>
+			<tooltip><b>Create new camera</b><br/><br/>
+			Creates a new camera at the current position.
+		</tooltip>
+		</icon>
+		
+	</hbox>
+</groupbox>
+
+<dialog name="dialog_settings" export="1" width="100" height="10" padding="-8">
+	<text align="left">Camera Settings</text>
+	<vbox space="8" padding="-4" width="220">
+		
+		<gridbox align="expand" columns="2" space="4">
+			
+			<label align="right"><text>Name:</text></label>
+			<editline name="name_el" export="1" align="expand" capacity="50">
+				<tooltip>The name of the current camera</tooltip>
+			</editline>
+			
+			<label align="right">
+				<text>Ortho:</text>
+				<tooltip>The orthographic camera mode (when disabled, the perspective camera mode is enabled)</tooltip>
+			</label>
+			<checkbox name="ortho_cb" export="1" align="left">
+				<callback type="clicked" instance="instance" string="update_projection">callback_redirector</callback>
+			</checkbox>
+			
+			<label name="height_l" export="1" align="right"><text>Height:</text></label>
+			<editline name="height_el" export="1" align="expand" validator="float">
+				<callback type="changed" instance="instance" string="update_projection">callback_redirector</callback>
+				<tooltip>The height of the viewing volume. The width of the viewing volume will be set equal to the height</tooltip>
+			</editline>
+			
+		</gridbox>
+		
+		<groupbox name="fov_gb" export="1" space="8">
+			<text>Field of View</text>
+			<gridbox align="expand" columns="2" space="4">
+				
+				<label align="right"><text>Degrees:</text></label>
+				<editline name="fov_el" export="1" align="expand" validator="float">
+					<callback type="changed" instance="instance" string="update_projection">callback_redirector</callback>
+					<tooltip>The camera horizontal field of view, in degrees</tooltip>
+				</editline>
+				
+				<label align="right"><text>Lens (mm):</text></label>
+				<editline name="fov_film_el" export="1" align="expand" validator="float">
+					<callback type="changed" instance="instance" string="update_projection">callback_redirector</callback>
+					<tooltip>The camera lens focal length</tooltip>
+				</editline>
+				
+			</gridbox>
+		</groupbox>
+		
+		<groupbox space="8">
+			<text>Clipping Planes</text>
+			<gridbox align="expand" columns="2" space="4">
+				<label align="right" width="1"><text>Near:</text></label>
+				<editline name="znear_el" export="1" align="expand" validator="float">
+					<callback type="changed" instance="instance" string="update_projection">callback_redirector</callback>
+					<tooltip>The distance to the camera's near clipping plane</tooltip>
+				</editline>
+				
+				<label align="right"><text>Far:</text></label>
+				<editline name="zfar_el" export="1" align="expand" validator="float">
+					<callback type="changed" instance="instance" string="update_projection">callback_redirector</callback>
+					<tooltip>The distance to the camera far clipping plane. It directly affects the light scattering results and the sky color</tooltip>
+				</editline>
+				
+			</gridbox>
+		</groupbox>
+		
+		<groupbox space="8">
+			<text>Masks</text>
+			<gridbox align="expand" columns="2" space="4">
+				<label align="right"><text>Viewport:</text></label>
+				<hbox align="expand">
+					<editline name="viewport_mask_el" export="1" align="expand">
+						<tooltip>The viewport mask of the camera that specifies objects, decals and lights in the camera viewport to be displayed</tooltip>
+						<text face="core/gui/console.ttf"/>
+						<callback type="double_clicked" instance="instance" string="viewport_mask_clicked">callback_redirector</callback>
+					</editline>
+					<icon texture="editor/gui/action_edit.png" width="24" height="24">
+						<callback type="clicked" instance="instance" string="viewport_mask_clicked">callback_redirector</callback>
+						<tooltip>Edit mask</tooltip>
+					</icon>
+				</hbox>
+				
+				<label align="right"><text>Reflection:</text></label>
+				<hbox align="expand">
+					<editline name="reflection_mask_el" export="1" align="expand">
+						<tooltip>The reflection mask of the camera that specifies reflections from objects to be displayed</tooltip>
+						<text face="core/gui/console.ttf"/>
+						<callback type="double_clicked" instance="instance" string="reflection_mask_clicked">callback_redirector</callback>
+					</editline>
+					<icon texture="editor/gui/action_edit.png" width="24" height="24">
+						<callback type="clicked" instance="instance" string="reflection_mask_clicked">callback_redirector</callback>
+						<tooltip>Edit mask</tooltip>
+					</icon>
+				</hbox>
+				
+				<label align="right"><text>Reverberation:</text></label>
+				<hbox align="expand">
+					<editline name="reverb_mask_el" export="1" align="expand">
+						<tooltip>The reverberation mask of the camera that specifies reverberation zones to be enabled</tooltip>
+						<text face="core/gui/console.ttf"/>
+						<callback type="double_clicked" instance="instance" string="reverb_mask_clicked">callback_redirector</callback>
+					</editline>
+					<icon texture="editor/gui/action_edit.png" width="24" height="24">
+						<callback type="clicked" instance="instance" string="reverb_mask_clicked">callback_redirector</callback>
+						<tooltip>Edit mask</tooltip>
+					</icon>
+				</hbox>
+				
+				<label align="right"><text>Sound:</text></label>
+				<hbox align="expand">
+					<editline name="source_mask_el" export="1" align="expand">
+						<tooltip>The audio mask of the camera that specifies sound channels to be heard</tooltip>
+						<text face="core/gui/console.ttf"/>
+						<callback type="double_clicked" instance="instance" string="source_mask_clicked">callback_redirector</callback>
+					</editline>
+					<icon texture="editor/gui/action_edit.png" width="24" height="24">
+						<callback type="clicked" instance="instance" string="source_mask_clicked">callback_redirector</callback>
+						<tooltip>Edit mask</tooltip>
+					</icon>
+				</hbox>
+			</gridbox>
+		</groupbox>
+	</vbox>
+</dialog>
+
+</ui>

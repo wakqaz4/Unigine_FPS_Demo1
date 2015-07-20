@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_reference.ui
+ * Desc:    Unigine editor
+ * Version: 1.08
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<groupbox name="Reference::main_gb" export="1" background="1" space="5" align="center">
+	
+	<label><text>ReferenceNode Editor</text></label>
+	
+	<button align="expand">
+		<text>Apply</text>
+		<callback type="clicked">Reference::apply_clicked</callback>
+		<tooltip>Apply changes</tooltip>
+	</button>
+	<button align="expand">
+		<text>Cancel changes</text>
+		<callback type="clicked">Reference::cancel_clicked</callback>
+		<tooltip>Cancel changes</tooltip>
+	</button>
+	
+</groupbox>
+
+</ui>

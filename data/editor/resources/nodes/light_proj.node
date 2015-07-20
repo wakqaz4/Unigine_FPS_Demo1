@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="LightProj" id="1301078269">
+		<radius>10</radius>
+		<fov>60</fov>
+		<znear>0.001</znear>
+		<texture>core/textures/light_base_proj.dds</texture>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>

@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_physicals.ui
+ * Desc:    Unigine editor
+ * Version: 1.06
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* PhysicalWind
+ */
+-->
+<vbox name="Nodes::Physical::Wind::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Physical:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Physical::Wind::physical_mask_el" export="1" align="expand">
+					<tooltip>Physical mask of the physical</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Physical::physical_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Physical::physical_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Physical::physical_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::Physical::Wind::size_el[0]" export="1" align="expand" validator="float">
+				<tooltip>X size of the wind</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Wind::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Wind::size_el[1]" export="1" align="expand" validator="float">
+				<tooltip>Y size of the wind</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Wind::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Wind::size_el[2]" export="1" align="expand" validator="float">
+				<tooltip>Z size of the wind</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Wind::size_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Threshold:</text></label>
+			<editline name="Nodes::Physical::Wind::threshold_el[0]" export="1" align="expand" validator="float">
+				<tooltip>X threshold of the wind</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Wind::threshold_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Wind::threshold_el[1]" export="1" align="expand" validator="float">
+				<tooltip>Y threshold of the wind</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Wind::threshold_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Wind::threshold_el[2]" export="1" align="expand" validator="float">
+				<tooltip>Z threshold of the wind</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Wind::threshold_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Velocity:</text></label>
+			<editline name="Nodes::Physical::Wind::velocity_el[0]" export="1" align="expand" validator="float">
+				<tooltip>X component of velocity</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Wind::velocity_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Wind::velocity_el[1]" export="1" align="expand" validator="float">
+				<tooltip>Y component of velocity</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Wind::velocity_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Wind::velocity_el[2]" export="1" align="expand" validator="float">
+				<tooltip>Z component of velocity</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Wind::velocity_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Linear damp:</text></label>
+			<editline name="Nodes::Physical::Wind::linear_damping_el" export="1" align="expand" validator="float">
+				<tooltip>Linear velocity damping</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Wind::linear_damping_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Angular damp:</text></label>
+			<editline name="Nodes::Physical::Wind::angular_damping_el" export="1" align="expand" validator="float">
+				<tooltip>Angular velocity damping</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Wind::angular_damping_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* PhysicalForce
+ */
+-->
+<vbox name="Nodes::Physical::Force::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Physical:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Physical::Force::physical_mask_el" export="1" align="expand">
+					<tooltip>Physical mask of the physical</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Physical::physical_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Physical::physical_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Physical::physical_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Physical::Force::radius_el" export="1" align="expand" validator="float">
+				<tooltip>Radius of the force</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Force::radius_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Atten:</text></label>
+			<editline name="Nodes::Physical::Force::attenuation_el" export="1" align="expand" validator="float">
+				<tooltip>Attenuation value</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Force::attenuation_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Attractor:</text></label>
+			<editline name="Nodes::Physical::Force::attractor_el" export="1" align="expand" validator="float">
+				<tooltip>Attraction component of the force</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Force::attractor_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Physical::Force::attractor_sl" export="1" align="expand" min="-1000" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="10" flags="expand">Nodes::Physical::Force::attractor_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Rotator:</text></label>
+			<editline name="Nodes::Physical::Force::rotator_el" export="1" align="expand" validator="float">
+				<tooltip>Rotation component of the force</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Force::rotator_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Physical::Force::rotator_sl" export="1" align="expand" min="-1000" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="10" flags="expand">Nodes::Physical::Force::rotator_el</attach>
+			</hslider>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* PhysicalNoise
+ */
+-->
+<vbox name="Nodes::Physical::Noise::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Physical:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Physical::Noise::physical_mask_el" export="1" align="expand">
+					<tooltip>Physical mask of the physical</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Physical::physical_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Physical::physical_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Physical::physical_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::Physical::Noise::size_el[0]" export="1" align="expand" validator="float">
+				<tooltip>X size of the noise</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Noise::size_el[1]" export="1" align="expand" validator="float">
+				<tooltip>Y size of the noise</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Noise::size_el[2]" export="1" align="expand" validator="float">
+				<tooltip>Z size of the noise</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::size_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Threshold:</text></label>
+			<editline name="Nodes::Physical::Noise::threshold_el[0]" export="1" align="expand" validator="float">
+				<tooltip>X threshold of the noise</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::threshold_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Noise::threshold_el[1]" export="1" align="expand" validator="float">
+				<tooltip>Y threshold of the noise</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::threshold_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Noise::threshold_el[2]" export="1" align="expand" validator="float">
+				<tooltip>Z threshold of the noise</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::threshold_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Offset:</text></label>
+			<editline name="Nodes::Physical::Noise::offset_el[0]" export="1" align="expand" validator="float">
+				<tooltip>X offset of the noise</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::offset_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Noise::offset_el[1]" export="1" align="expand" validator="float">
+				<tooltip>Y offset of the noise</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::offset_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Noise::offset_el[2]" export="1" align="expand" validator="float">
+				<tooltip>Z offset of the noise</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::offset_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Step:</text></label>
+			<editline name="Nodes::Physical::Noise::step_el[0]" export="1" align="expand" validator="float">
+				<tooltip>X step of the noise</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::step_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Noise::step_el[1]" export="1" align="expand" validator="float">
+				<tooltip>Y step of the noise</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::step_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Noise::step_el[2]" export="1" align="expand" validator="float">
+				<tooltip>Z step of the noise</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::step_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Force:</text></label>
+			<editline name="Nodes::Physical::Noise::force_el" export="1" align="expand" validator="float">
+				<tooltip>Noise force value</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::force_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Physical::Noise::force_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="10" flags="max_expand">Nodes::Physical::Noise::force_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Scale:</text></label>
+			<editline name="Nodes::Physical::Noise::scale_el" export="1" align="expand" validator="float">
+				<tooltip>Noise spatial scale</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::scale_pressed</callback>
+			</editline>
+			<hslider name="Nodes::Physical::Noise::scale_sl" export="1" align="expand" min="0" max="1000">
+				<callback type="clicked">Nodes::slider_clicked</callback>
+				<attach multiplier="1000">Nodes::Physical::Noise::scale_el</attach>
+			</hslider>
+			<vbox/>
+			
+			<label align="right"><text>Frequency:</text></label>
+			<editline name="Nodes::Physical::Noise::frequency_el" export="1" align="expand" validator="uint">
+				<tooltip>Noise frequency octaves</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::frequency_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::Physical::Noise::image_size_el" export="1" align="expand" validator="uint">
+				<tooltip>Noise image size</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Noise::image_size_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<vbox align="expand">
+				<sprite name="Nodes::Physical::Noise::noise_s" export="1" align="left" texture="editor/gui/color_white.png" scale="8"/>
+			</vbox>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* PhysicalWater
+ */
+-->
+<vbox name="Nodes::Physical::Water::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Physical:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Physical::Water::physical_mask_el" export="1" align="expand">
+					<tooltip>Physical mask of the physical</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Physical::physical_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Physical::physical_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Physical::physical_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::Physical::Water::size_el[0]" export="1" align="expand" validator="float">
+				<tooltip>X size of the water</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Water::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Water::size_el[1]" export="1" align="expand" validator="float">
+				<tooltip>Y size of the water</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Water::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Water::size_el[2]" export="1" align="expand" validator="float">
+				<tooltip>Z size of the water</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Water::size_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Velocity:</text></label>
+			<editline name="Nodes::Physical::Water::velocity_el[0]" export="1" align="expand" validator="float">
+				<tooltip>X component of velocity of the flow in physical water</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Water::velocity_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Water::velocity_el[1]" export="1" align="expand" validator="float">
+				<tooltip>Y component of velocity of the flow in physical water</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Water::velocity_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Water::velocity_el[2]" export="1" align="expand" validator="float">
+				<tooltip>Z component of velocity of the flow in physical water</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Water::velocity_pressed</callback>
+			</editline>
+			
+			<label align="right"><text>Density:</text></label>
+			<editline name="Nodes::Physical::Water::density_el" export="1" align="expand" validator="float">
+				<tooltip>Density of the water</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Water::density_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Linear damp:</text></label>
+			<editline name="Nodes::Physical::Water::linear_damping_el" export="1" align="expand" validator="float">
+				<tooltip>Linear velocity damping</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Water::linear_damping_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Angular damp:</text></label>
+			<editline name="Nodes::Physical::Water::angular_damping_el" export="1" align="expand" validator="float">
+				<tooltip>Angular velocity damping</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Water::angular_damping_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* PhysicalTrigger
+ */
+-->
+<vbox name="Nodes::Physical::Trigger::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Physical:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Physical::Trigger::physical_mask_el" export="1" align="expand">
+					<tooltip>Physical mask of the physical</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Physical::physical_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Physical::physical_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Physical::physical_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Collision:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Physical::Trigger::collision_mask_el" export="1" align="expand">
+					<tooltip>Collision mask of the physical</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Physical::Trigger::collision_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Physical::Trigger::collision_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Physical::Trigger::collision_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Type:</text></label>
+			<combobox name="Nodes::Physical::Trigger::type_cb" export="1" align="expand">
+				<text>Sphere</text>
+				<text>Capsule</text>
+				<text>Cylinder</text>
+				<text>Box</text>
+				<callback type="changed">Nodes::Physical::Trigger::type_changed</callback>
+			</combobox>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::Physical::Trigger::size_el[0]" export="1" align="expand" validator="float">
+				<tooltip>X size of the trigger</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Trigger::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Trigger::size_el[1]" export="1" align="expand" validator="float">
+				<tooltip>Y size of the trigger</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Trigger::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Physical::Trigger::size_el[2]" export="1" align="expand" validator="float">
+				<tooltip>Z size of the trigger</tooltip>
+				<callback type="pressed,focus_out">Nodes::Physical::Trigger::size_pressed</callback>
+			</editline>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Enter:</text></label>
+			<editline name="Nodes::Physical::Trigger::enter_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::Physical::Trigger::enter_pressed</callback>
+				<tooltip>Name of enter world script callback function</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Leave:</text></label>
+			<editline name="Nodes::Physical::Trigger::leave_el" export="1" align="expand">
+				<callback type="pressed,focus_out">Nodes::Physical::Trigger::leave_pressed</callback>
+				<tooltip>Name of leave world script callback function</tooltip>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+</ui>

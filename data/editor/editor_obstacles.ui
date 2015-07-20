@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2005-2015, Unigine Corp. All rights reserved.
+ *
+ * File:    editor_obstacles.ui
+ * Desc:    Unigine editor
+ * Version: 1.02
+ * Author:  Alexander Zapryagaev <frustum@unigine.com>
+ *
+ * This file is part of the Unigine engine (http://unigine.com/).
+ *
+ * Your use and or redistribution of this software in source and / or
+ * binary form, with or without modification, is subject to: (i) your
+ * ongoing acceptance of and compliance with the terms and conditions of
+ * the Unigine License Agreement; and (ii) your inclusion of this notice
+ * in any version of this software that you use or redistribute.
+ * A copy of the Unigine License Agreement is available by contacting
+ * Unigine Corp. at http://unigine.com/
+ */
+-->
+<ui version="1.00">
+
+<!--
+/* ObstacleBox
+ */
+-->
+<vbox name="Nodes::Obstacle::Box::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Obstacle:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Obstacle::Box::obstacle_mask_el" export="1" align="expand">
+					<tooltip>Obstacle mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Obstacle::obstacle_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Obstacle::obstacle_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Obstacle::obstacle_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Size:</text></label>
+			<editline name="Nodes::Obstacle::Box::size_el[0]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Obstacle::Box::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Obstacle::Box::size_el[1]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Obstacle::Box::size_pressed</callback>
+			</editline>
+			<editline name="Nodes::Obstacle::Box::size_el[2]" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Obstacle::Box::size_pressed</callback>
+			</editline>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* ObstacleSphere
+ */
+-->
+<vbox name="Nodes::Obstacle::Sphere::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Obstacle:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Obstacle::Sphere::obstacle_mask_el" export="1" align="expand">
+					<tooltip>Obstacle mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Obstacle::obstacle_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Obstacle::obstacle_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Obstacle::obstacle_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Obstacle::Sphere::radius_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Obstacle::Sphere::radius_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+<!--
+/* ObstacleCapsule
+ */
+-->
+<vbox name="Nodes::Obstacle::Capsule::main_vb" export="1" space="4">
+	<vbox>
+		<gridbox align="expand" columns="4" space="4">
+			
+			<label align="right"><text>Obstacle:</text></label>
+			<hbox align="expand">
+				<editline name="Nodes::Obstacle::Capsule::obstacle_mask_el" export="1" align="expand">
+					<tooltip>Obstacle mask</tooltip>
+					<text face="core/gui/console.ttf"/>
+					<callback type="pressed,focus_out">Nodes::Obstacle::obstacle_mask_pressed</callback>
+					<callback type="double_clicked">Nodes::Obstacle::obstacle_mask_clicked</callback>
+				</editline>
+				<icon texture="editor/gui/action_edit.png" width="24" height="24">
+					<callback type="clicked">Nodes::Obstacle::obstacle_mask_clicked</callback>
+					<tooltip>Edit mask</tooltip>
+				</icon>
+			</hbox>
+			<vbox/>
+			<vbox/>
+			
+			<vbox/>
+			<hspacer align="expand"/>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Radius:</text></label>
+			<editline name="Nodes::Obstacle::Capsule::radius_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Obstacle::Capsule::radius_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+			<label align="right"><text>Height:</text></label>
+			<editline name="Nodes::Obstacle::Capsule::height_el" export="1" align="expand" validator="float">
+				<callback type="pressed,focus_out">Nodes::Obstacle::Capsule::height_pressed</callback>
+			</editline>
+			<vbox/>
+			<vbox/>
+			
+		</gridbox>
+	</vbox>
+</vbox>
+
+</ui>

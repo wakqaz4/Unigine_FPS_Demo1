@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<world version="1.17">
+	<render>
+		<background_color>0.0449961 0.180024 0.45 1</background_color>
+		<occlusion_ambient_screen_radius>0.025</occlusion_ambient_screen_radius>
+		<occlusion_ambient_sample_radius>6</occlusion_ambient_sample_radius>
+		<scattering_sun_color>1 0.825 0.3 1</scattering_sun_color>
+		<scattering_ray_color>0.7 0.85 1 1</scattering_ray_color>
+		<scattering_mie_color>0.675 0.718749 0.75 1</scattering_mie_color>
+		<scattering_inner_angle>0.7</scattering_inner_angle>
+		<scattering_outer_angle>1.5</scattering_outer_angle>
+		<scattering_refractive>1.003</scattering_refractive>
+		<scattering_density>2.5e+025</scattering_density>
+		<scattering_depolarization>0.035</scattering_depolarization>
+		<scattering_turbidity>2</scattering_turbidity>
+		<scattering_areal>25</scattering_areal>
+		<scattering_ray_height>20000</scattering_ray_height>
+		<scattering_mie_height>10000</scattering_mie_height>
+		<scattering_greenstein>0.1</scattering_greenstein>
+		<scattering_threshold>15</scattering_threshold>
+		<scattering_energy>12</scattering_energy>
+		<scattering_power>1.1</scattering_power>
+		<scattering_sun>2</scattering_sun>
+		<scattering_ray>0.3</scattering_ray>
+		<scattering_mie>0.07</scattering_mie>
+		<volumetric_exposure>0.4</volumetric_exposure>
+		<volumetric_length>0.4</volumetric_length>
+		<dof_focal_distance>4</dof_focal_distance>
+		<dof_near_blur_range>3.5</dof_near_blur_range>
+		<dof_near_blur_power>0.6</dof_near_blur_power>
+		<dof_near_focal_power>2</dof_near_focal_power>
+		<dof_far_blur_range>15</dof_far_blur_range>
+		<dof_far_blur_power>2</dof_far_blur_power>
+		<dof_far_focal_power>0.4</dof_far_focal_power>
+		<hdr_exposure>0.75</hdr_exposure>
+		<hdr_adaptation>1</hdr_adaptation>
+		<hdr_min_luminance>-0.9</hdr_min_luminance>
+		<hdr_max_luminance>-0.2</hdr_max_luminance>
+		<hdr_threshold>1.25</hdr_threshold>
+		<hdr_large_exposure>5</hdr_large_exposure>
+		<hdr_cross_enabled>1</hdr_cross_enabled>
+		<hdr_cross_color>0.12 0.12 0.12 1</hdr_cross_color>
+		<hdr_cross_shafts>8</hdr_cross_shafts>
+		<hdr_cross_length>0.3</hdr_cross_length>
+		<hdr_cross_angle>25</hdr_cross_angle>
+		<hdr_cross_threshold>2.5</hdr_cross_threshold>
+		<hdr_shaft_enabled>1</hdr_shaft_enabled>
+		<hdr_shaft_color>1 1 1 1</hdr_shaft_color>
+		<hdr_shaft_length>0.98</hdr_shaft_length>
+		<hdr_shaft_threshold>2.5</hdr_shaft_threshold>
+		<hdr_lens_enabled>1</hdr_lens_enabled>
+		<hdr_lens_threshold>2</hdr_lens_threshold>
+	</render>
+	<materials>
+		<library>FPS_Demo1/materials/FPS_Demo1.mat</library>
+	</materials>
+	<editor>
+		<node type="ObjectMeshStatic" id="9" name="Plane">
+			<mesh_name>FPS_Demo1/meshes/plane.mesh</mesh_name>
+			<surface name="plane" material="mesh_base" property="surface_base"/>
+			<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+		</node>
+		<node type="LightWorld" id="597191975" name="sun">
+			<scattering>1</scattering>
+			<shadow_range>6000</shadow_range>
+			<shadow_distribute>0.07</shadow_distribute>
+			<color>1 0.983086 0.925749 1</color>
+			<shadow_size>4</shadow_size>
+			<shadow_softness>1.5</shadow_softness>
+			<transform>0.938494 0.29312 -0.182508 0 -0.0368713 0.610606 0.791076 0 0.34332 -0.735691 0.583858 0 0 0 0 1</transform>
+		</node>
+	</editor>
+</world>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dictionary version="1.01">
+	<msg file="widgets/widget_track.h">
+		<src> Time: </src>
+		<ru> Время: </ru>
+	</msg>
+	<msg file="widgets/widget_track.h">
+		<src> From: </src>
+		<ru> От: </ru>
+	</msg>
+	<msg file="widgets/widget_track.h">
+		<src> To: </src>
+		<ru> До: </ru>
+	</msg>
+	<msg file="widgets/widget_track.h">
+		<src> Value: </src>
+		<ru> Значение: </ru>
+	</msg>
+	<msg file="widgets/widget_dialog_property.h">
+		<src>All libraries</src>
+		<ru>Все библиотеки</ru>
+	</msg>
+	<msg file="widgets/widget_line_track.h">
+		<src>Auto</src>
+		<ru>Авто</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Bad node type "%s" for \"%s\" parameter</src>
+		<ru>Неверный тип узла "%s" для параметра "%s"</ru>
+	</msg>
+	<msg file="widgets/widget_line_track.h">
+		<src>Break</src>
+		<ru>Прервать</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Can't find "%s" material</src>
+		<ru>Невозможно найти материал "%s"</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Can't find "%s" node</src>
+		<ru>Невозможно найти узел "%s"</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Can't find "%s" property</src>
+		<ru>Невозможно найти свойство "%s"</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Can't select node</src>
+		<ru>Невозможно выбрать узел</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Confirm</src>
+		<ru>Подтвердите</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Const velocity</src>
+		<ru>Постоянная скорость</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Const velocity, follow X</src>
+		<ru>Постоянная скорость, узел ориентирован по оси X</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Const velocity, follow Y</src>
+		<ru>Постоянная скорость, узел ориентирован по оси Y</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Const velocity, follow Z</src>
+		<ru>Постоянная скорость, узел ориентирован по оси Z</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Const velocity, order XYZ</src>
+		<ru>Постоянная скорость, порядок вращения XYZ</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Const velocity, order ZYX</src>
+		<ru>Постоянная скорость, порядок вращения ZYX</ru>
+	</msg>
+	<msg file="widgets/widget_line_track.h">
+		<src>Constant</src>
+		<ru>Постоянный</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Continuous</src>
+		<ru>Непрерывный</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Discrete</src>
+		<ru>Дискретный</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Track settings</src>
+		<ru>Настройки трека</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Error</src>
+		<ru>Ошибка</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Add parameter</src>
+		<ru>Добавить параметр</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Select node</src>
+		<ru>Выберите узел</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>ID:</src>
+		<ru>Идентификатор</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Inconst velocity</src>
+		<ru>Непостоянная скорость</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Inconst velocity, follow X</src>
+		<ru>Непостоянная скорость, узел ориентирован по оси X</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Inconst velocity, follow Y</src>
+		<ru>Непостоянная скорость, узел ориентирован по оси Y</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Inconst velocity, follow Z</src>
+		<ru>Непостоянная скорость, узел ориентирован по оси Z</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Inconst velocity, order XYZ</src>
+		<ru>Непостоянная скорость, порядок вращения XYZ</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Inconst velocity, order ZYX</src>
+		<ru>Непостоянная скорость, порядок вращения ZYX</ru>
+	</msg>
+	<msg file="widgets/widget_dialog_property.h">
+		<src>Library:</src>
+		<ru>Библиотека:</ru>
+	</msg>
+	<msg file="widgets/widget_line_track.h">
+		<src>Linear</src>
+		<ru>Линейная интерполяция</ru>
+	</msg>
+	<msg file="widgets/widget_dialog_property.h">
+		<src>Name:</src>
+		<ru>Имя:</ru>
+	</msg>
+	<msg file="widgets/widget_dialog_property.h">
+		<src>Time</src>
+		<ru>Время воспроизведения треков</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Remove "%s" parameter?</src>
+		<ru>Удалить параметр "%s"?</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Remove selected keys?</src>
+		<ru>Удалить выделенные ключи?</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Select material</src>
+		<ru>Выберите материал</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Select property</src>
+		<ru>Выберите свойство</ru>
+	</msg>
+	<msg file="widgets/widget_line_track.h">
+		<src>Smooth</src>
+		<ru>Гладкая интерполяция</ru>
+	</msg>
+	<msg file="widgets/widget_line_track.h">
+		<src>Time:</src>
+		<ru>Время:</ru>
+	</msg>
+	<msg file="widgets/widget_line_track.h">
+		<src>Type:</src>
+		<ru>Тип:</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Unknown</src>
+		<ru>Неизвестный</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Min time:</src>
+		<ru>Начало воспроизведения:</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Max time:</src>
+		<ru>Конец воспроизведения:</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>Unit time:</src>
+		<ru>Время воспроизведения юнита:</ru>
+	</msg>
+	<msg file="widgets/widget_line_track.h">
+		<src>Value:</src>
+		<ru>Значение:</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>"%s" is not editable material</src>
+		<ru>Материал "%s" не может быть отредактирован</ru>
+	</msg>
+	<msg file="tracker/editor/tracker_editor.h">
+		<src>\"%s\" is not editable property</src>
+		<ru>Свойство "%s" не может быть отредактировано</ru>
+	</msg>
+	<msg file="widgets/widget_line_track.h">
+		<src>Weight</src>
+		<ru>Вес трека</ru>
+	</msg>
+</dictionary>

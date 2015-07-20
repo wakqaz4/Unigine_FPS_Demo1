@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodes version="1.21">
+	<node type="WorldClutter" id="866963048">
+		<visible_distance>80</visible_distance>
+		<fade_distance>80</fade_distance>
+		<size_x>50</size_x>
+		<size_y>50</size_y>
+		<step>50</step>
+		<density>0.01</density>
+		<threshold>0.5</threshold>
+		<angle>0</angle>
+		<min_scale_mean>1</min_scale_mean>
+		<min_scale_spread>0</min_scale_spread>
+		<max_scale_mean>1</max_scale_mean>
+		<max_scale_spread>0</max_scale_spread>
+		<offset_mean>0</offset_mean>
+		<offset_spread>0</offset_spread>
+		<rotation_mean>0 0 0</rotation_mean>
+		<rotation_spread>0 0 0</rotation_spread>
+		<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+	</node>
+</nodes>
