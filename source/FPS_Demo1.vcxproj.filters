@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{b63ea368-9e5b-4a7e-8b2b-d9bfd065d9ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Head">
+      <UniqueIdentifier>{bc1a9031-7f78-4982-907a-d83e6e16cb5d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FPS_Demo1.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdPlayerActorSkinned.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="firstPlayerActorSkinned.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IPlayerActorSkinned.h">
+      <Filter>Head</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdPlayerActorSkinned.h">
+      <Filter>Head</Filter>
+    </ClInclude>
+    <ClInclude Include="firstPlayerActorSkinned.h">
+      <Filter>Head</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Head</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

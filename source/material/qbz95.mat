@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<materials version="1.11">
+	<material name="qbz95_03_base" parent="mesh_pbr_base"/>
+	<material name="skin" parent="qbz95_03_base">
+		<state name="workflow">1</state>
+		<state name="ambient">3</state>
+		<parameter name="diffuse_color">0 0 0 1</parameter>
+		<parameter name="emission_color">0 0 0 1</parameter>
+		<parameter name="emission_scale">0</parameter>
+	</material>
+	<material name="cloth" parent="qbz95_03_base">
+		<state name="workflow">1</state>
+		<state name="ambient">3</state>
+		<parameter name="diffuse_color">0 0 0 1</parameter>
+		<parameter name="emission_color">0 0 0 1</parameter>
+		<parameter name="emission_scale">0</parameter>
+	</material>
+	<material name="glove" parent="qbz95_03_base">
+		<state name="workflow">1</state>
+		<state name="ambient">3</state>
+		<parameter name="diffuse_color">0 0 0 1</parameter>
+		<parameter name="emission_color">0 0 0 1</parameter>
+		<parameter name="emission_scale">0</parameter>
+	</material>
+	<material name="Material #0" parent="qbz95_03_base">
+		<state name="workflow">1</state>
+		<parameter name="diffuse_color">0.588 0.588 0.588 1</parameter>
+		<parameter name="emission_color">0 0 0 1</parameter>
+		<parameter name="emission_scale">0</parameter>
+	</material>
+	<material name="gun_03_base" parent="mesh_pbr_base"/>
+	<material name="QBZ95_long" parent="gun_03_base">
+		<state name="workflow">1</state>
+		<state name="ambient">3</state>
+		<parameter name="diffuse_color">0.588235 0.588235 0.588235 1</parameter>
+		<parameter name="emission_color">0 0 0 1</parameter>
+		<parameter name="emission_scale">0</parameter>
+	</material>
+</materials>

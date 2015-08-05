@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<world version="1.17">
+<world version="1.21">
+	<materials>
+		<library>FPS_Demo1/materials/FPS_Demo1.mat</library>
+		<library>../source/material/qbz95.mat</library>
+	</materials>
 	<render>
 		<background_color>0.0449961 0.180024 0.45 1</background_color>
 		<occlusion_ambient_screen_radius>0.025</occlusion_ambient_screen_radius>
@@ -26,18 +30,20 @@
 		<volumetric_exposure>0.4</volumetric_exposure>
 		<volumetric_length>0.4</volumetric_length>
 		<dof_focal_distance>4</dof_focal_distance>
-		<dof_near_blur_range>3.5</dof_near_blur_range>
-		<dof_near_blur_power>0.6</dof_near_blur_power>
-		<dof_near_focal_power>2</dof_near_focal_power>
 		<dof_far_blur_range>15</dof_far_blur_range>
 		<dof_far_blur_power>2</dof_far_blur_power>
 		<dof_far_focal_power>0.4</dof_far_focal_power>
+		<dof_near_blur_range>3.5</dof_near_blur_range>
+		<dof_near_blur_power>0.6</dof_near_blur_power>
+		<dof_near_focal_power>2</dof_near_focal_power>
 		<hdr_exposure>0.75</hdr_exposure>
 		<hdr_adaptation>1</hdr_adaptation>
 		<hdr_min_luminance>-0.9</hdr_min_luminance>
 		<hdr_max_luminance>-0.2</hdr_max_luminance>
 		<hdr_threshold>1.25</hdr_threshold>
 		<hdr_large_exposure>5</hdr_large_exposure>
+		<hdr_filmic_toe_numerator>0.01</hdr_filmic_toe_numerator>
+		<hdr_filmic_toe_denominator>0.3</hdr_filmic_toe_denominator>
 		<hdr_cross_enabled>1</hdr_cross_enabled>
 		<hdr_cross_color>0.12 0.12 0.12 1</hdr_cross_color>
 		<hdr_cross_shafts>8</hdr_cross_shafts>
@@ -45,20 +51,21 @@
 		<hdr_cross_angle>25</hdr_cross_angle>
 		<hdr_cross_threshold>2.5</hdr_cross_threshold>
 		<hdr_shaft_enabled>1</hdr_shaft_enabled>
-		<hdr_shaft_color>1 1 1 1</hdr_shaft_color>
 		<hdr_shaft_length>0.98</hdr_shaft_length>
 		<hdr_shaft_threshold>2.5</hdr_shaft_threshold>
 		<hdr_lens_enabled>1</hdr_lens_enabled>
 		<hdr_lens_threshold>2</hdr_lens_threshold>
 	</render>
-	<materials>
-		<library>FPS_Demo1/materials/FPS_Demo1.mat</library>
-	</materials>
 	<editor>
+		<data>
+			<settings>
+				<item name="save_camera">1</item>
+			</settings>
+		</data>
 		<node type="ObjectMeshStatic" id="9" name="Plane">
 			<mesh_name>FPS_Demo1/meshes/plane.mesh</mesh_name>
 			<surface name="plane" material="mesh_base" property="surface_base"/>
-			<transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform>
+			<transform>1 0 0 0.0 0 1 0 0.0 0 0 1 0.0 0 7.828 0 1.0</transform>
 		</node>
 		<node type="LightWorld" id="597191975" name="sun">
 			<scattering>1</scattering>
@@ -67,7 +74,39 @@
 			<color>1 0.983086 0.925749 1</color>
 			<shadow_size>4</shadow_size>
 			<shadow_softness>1.5</shadow_softness>
-			<transform>0.938494 0.29312 -0.182508 0 -0.0368713 0.610606 0.791076 0 0.34332 -0.735691 0.583858 0 0 0 0 1</transform>
+			<transform>0.938494 0.29312 -0.182508 0.0 -0.0368713 0.610606 0.791076 0.0 0.34332 -0.735691 0.583858 0.0 0 0 0 1.0</transform>
+		</node>
+		<node type="ObjectMeshSkinned" id="1936820055" name="Box47">
+			<mesh_name>../source/meshes/first_person/Box47.mesh</mesh_name>
+			<surface name="initialShadingGroup" material="mesh_pbr_base" property="surface_base"/>
+			<surface name="jianzhu_initialShadingGroup" material="mesh_pbr_base" property="surface_base"/>
+			<transform>1 0 0 0.0 0 1 0 0.0 0 0 1 0.0 222.874435437 115.620849708 -31.1147239214 1.0</transform>
+		</node>
+		<node id="1058127314" type="ObjectMeshDynamic" name="Cuboid_0">
+			<object_surface name="box" begin="0" end="36"/>
+			<vertex type="float" num_vertex="24" offset="0" size="3">0.5 0.5 5 0.5 0.5 5 0.5 0.5 5 0.5 0.5 -5 0.5 0.5 -5 0.5 0.5 -5 0.5 -0.5 5 0.5 -0.5 5 0.5 -0.5 5 0.5 -0.5 -5 0.5 -0.5 -5 0.5 -0.5 -5 -0.5 0.5 5 -0.5 0.5 5 -0.5 0.5 5 -0.5 0.5 -5 -0.5 0.5 -5 -0.5 0.5 -5 -0.5 -0.5 5 -0.5 -0.5 5 -0.5 -0.5 5 -0.5 -0.5 -5 -0.5 -0.5 -5 -0.5 -0.5 -5</vertex>
+			<vertex type="float" num_vertex="24" offset="16" size="4">1 0 1 0 0 0 0 0 0 0 0 0 1 1 1 1 0 1 0 1 1 0 1 0 0 0 0 0 1 0 1 0 1 0 1 0 0 1 0 1 0 0 0 0 1 1 1 1 1 0 1 0 0 1 0 1 0 0 0 0 1 1 1 1 1 1 1 1 0 1 0 1 1 1 1 1 0 0 0 0 1 0 1 0 0 1 0 1 0 1 0 1 1 1 1 1</vertex>
+			<vertex type="float" num_vertex="24" offset="32" size="4">-0.5 -0.5 -0.5 -0.5 -0 -0.707107 -0.707107 -0.001 0 -0 0.707107 -0.707107 -0.5 -0.5 -0.5 -0.5 -0 -0.707107 -0.707107 -0.001 -0.707107 -0.707107 -0 -0.001 -0.5 -0.5 -0.5 -0.5 0 -0 0.707107 -0.707107 -0.707107 -0 -0 -0.707107 -0.5 -0.5 -0.5 -0.5 -0.707107 -0.707107 -0 -0.001 -0.707107 -0 -0 -0.707107 -0 -0.707107 -0.707107 -0.001 0 -0 0.707107 -0.707107 -0.5 0.5 0.5 -0.5 -0 -0.707107 -0.707107 -0.001 -0.707107 -0.707107 -0 -0.001 -0.5 0.5 0.5 -0.5 0 -0 0.707107 -0.707107 -0.707107 -0 -0 -0.707107 -0.5 0.5 0.5 -0.5 -0.707107 -0.707107 -0 -0.001 -0.707107 -0 -0 -0.707107 -0.5 0.5 0.5 -0.5</vertex>
+			<vertex type="float" num_vertex="24" offset="48" size="4">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</vertex>
+			<indices num_indices="36">3 0 6 6 9 3 23 20 14 14 17 23 15 12 1 1 4 15 11 8 19 19 22 11 18 7 2 2 13 18 16 5 10 10 21 16</indices>
+			<surface name="box" material="mesh_pbr_base" property="surface_base"/>
+			<transform>1 0 0 0.0 0 1 0 0.0 0 0 1 0.0 284.132782283 -20.9183149472 0 1.0</transform>
+		</node>
+		<node type="ObjectMeshSkinned" id="675088237" name="1">
+			<mesh_name>../source/meshes/first_person/meshes/arm.mesh</mesh_name>
+			<surface name="skin" material="mesh_pbr_base" property="surface_base"/>
+			<surface name="cloth" material="mesh_pbr_base" property="surface_base"/>
+			<surface name="glove" material="mesh_pbr_base" property="surface_base"/>
+			<transform>1 0 0 0.0 0 1 0 0.0 0 0 1 0.0 232.32 50.456 15 1.0</transform>
+		</node>
+		<node type="ObjectMeshSkinned" id="541601429" name="QBZ95_long_0">
+			<mesh_name>../source/meshes/first_person/meshes/QBZ95_long.mesh</mesh_name>
+			<anim_name>../source/meshes/first_person/meshes/QBZ95_long.anim</anim_name>
+			<loop>1</loop>
+			<time>3.76866</time>
+			<speed>10</speed>
+			<surface name="QBZ95_long" material="mesh_pbr_base" property="surface_base"/>
+			<transform>1 0 0 0.0 0 1 0 0.0 0 0 1 0.0 45.8368678843 98.5261587512 0 1.0</transform>
 		</node>
 	</editor>
 </world>

@@ -23,10 +23,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="firstPlayerActorSkinned.cpp" />
     <ClCompile Include="FPS_Demo1.cpp" />
+    <ClCompile Include="thirdPlayerActorSkinned.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FPS_Demo1.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="IPlayerActorSkinned.h" />
+    <ClInclude Include="thirdPlayerActorSkinned.h" />
+    <ClInclude Include="firstPlayerActorSkinned.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
