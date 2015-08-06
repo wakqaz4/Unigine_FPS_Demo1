@@ -80,10 +80,8 @@ void CFirstPlayerActorSkinned::Update()
 		dvec3 tempVec(0.05, 0.05, 1);
 		dvec3 scaleVec(0.01, 0.01, 0.01);
 		m_armsMesh->setWorldTransform(m_playerActor->getWorldTransform() * rotateZ((double)270.0f) * translate(tempVec) * scale(scaleVec));
-		m_gunMesh->setWorldTransform(m_playerActor->getWorldTransform() * rotateZ((double)270.0f) * translate(tempVec) * scale(scaleVec));
-	
+		m_gunMesh->setWorldTransform(m_playerActor->getWorldTransform() * rotateZ((double)270.0f) * translate(tempVec) * scale(scaleVec));	
 	}
-
 
 #ifdef debug
 	{
@@ -98,11 +96,17 @@ void CFirstPlayerActorSkinned::Update()
 #endif
 
 	//update anim
-	UpdateAnim();
-
+	if (m_enabled)
+	{
+		UpdateAnim();
+	}
 	//
 };
 
+int Test(int)
+{
+	return 1;
+}
 void CFirstPlayerActorSkinned::UpdateAnim()
 {
 	enum
@@ -123,30 +127,107 @@ void CFirstPlayerActorSkinned::UpdateAnim()
 		NUM_STATES,
 	};
 
-	float ifps = Game::get()->getIFps()* 4.0f;
-	//float time = Game::get()->getTime();
-	if (m_playerActor->getState(STATE_FIRE))
+	//float ifps = Game::get()->getIFps()* 4.0f;
+	////float time = Game::get()->getTime();
+	//if (m_playerActor->getState(STATE_FIRE))
+	//{
+	//	INCREASE(m_shoot);
+	//}
+	//else
+	//{
+	//	DECREASE(m_shoot);
+	//}
+	//m_shoot = Saturate(m_shoot);
+	////m_shootAnimTime = m_playerActor->getStateTime(STATE_FIRE);
+
+	////play frame
+	//m_armsMesh->setLayerWeight(0, m_shoot);
+	//if (m_armsMesh->getLayerWeight(0))
+	//{
+	//	float frame = m_playerActor->getStateTime(STATE_FIRE);
+	//	frame *= 300;
+	//	m_armsMesh->setFrame(0, frame);
+	//}
+	//else
+	//{
+	//	m_armsMesh->setFrame(0, 0);
+	//}
+	//m_gunMesh->setLayerWeight(0, m_shoot);
+	//if (m_gunMesh->getLayerWeight(0))
+	//{
+	//	float frame = m_playerActor->getStateTime(STATE_FIRE);
+	//	frame *= 300;
+	//	m_gunMesh->setFrame(0, frame);
+	//}
+	//else
+	//{
+	//	m_gunMesh->setFrame(0, 0);
+	//}
+	assert(app != NULL);
+
+	if (app->getMouseButtonState(Unigine::App::BUTTON_LEFT) == 1)
 	{
-		INCREASE(m_shoot);
+		LButtonDownFunc();
 	}
 	else
 	{
-		DECREASE(m_shoot);
+		LButtonReleaseFunc();
 	}
-	//m_shootAnimTime = m_playerActor->getStateTime(STATE_FIRE);
-
-	//play frame
-	m_armsMesh->setLayerWeight(0, m_shoot);
-	if (m_armsMesh->getLayerWeight(0))
+	if (app->getMouseButtonState(Unigine::App::BUTTON_RIGHT) == 1)
 	{
-		m_armsMesh->setFrame(0, m_playerActor->getStateTime(STATE_FIRE)* ifps);
+		RButtonDownFunc();
+	}
+	else
+	{
+		RButtonReleaseFunc();
+	}
+
+	float ifps = Game::get()->getIFps()* 4.0f;
+	float time = Game::get()->getTime();
+	if (m_lButton && (m_shoot == 0))
+	{
+		INCREASE(m_shoot);
+	}
+	if (m_shoot >= 0.8)
+	{
+		m_shoot = 0;
 	}
 	m_gunMesh->setLayerWeight(0, m_shoot);
 	if (m_gunMesh->getLayerWeight(0))
 	{
-		m_gunMesh->setFrame(0, m_playerActor->getStateTime(STATE_FIRE) * ifps);
+		m_gunMesh->setFrame(0, m_shoot * 30);
+		INCREASE(m_shoot);
 	}
+	else
+	{
+		m_gunMesh->setLayerWeight(0, 1);
+		m_gunMesh->setFrame(0, 0);
+	}
+
 };
+
+int CFirstPlayerActorSkinned::LButtonDownFunc(int abs)
+{
+	m_lButton = true;
+	return 1;
+}
+
+int CFirstPlayerActorSkinned::RButtonDownFunc(int abs)
+{
+	m_rButton = true;
+	return 1;
+}
+int CFirstPlayerActorSkinned::LButtonReleaseFunc(int abs)
+{
+	m_lButton = false;
+	return 1;
+}
+
+int CFirstPlayerActorSkinned::RButtonReleaseFunc(int abs)
+{
+	m_rButton = false;
+	return 1;
+}
 
 float CFirstPlayerActorSkinned::Saturate(float param)
 {
